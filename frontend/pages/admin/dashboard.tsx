@@ -128,8 +128,8 @@ export default function AdminDashboard() {
         <div className="dash-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }}>
           {/* Left - Business Info */}
           <div>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: '22px', color: 'var(--wh)', marginBottom: '4px' }}>Business Info</div>
-            <div style={{ fontSize: '11px', color: 'var(--d1)', marginBottom: '24px' }}>Used on work order and invoice PDFs</div>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: '20px', color: 'var(--wh)', marginBottom: '4px' }}>Business Info</div>
+            <div style={{ fontSize: '12px', color: 'var(--d1)', marginBottom: '24px' }}>Used on work order and invoice PDFs</div>
 
             {adminInfo && fields.map(f => (
               <div key={f.key} style={{ marginBottom: '20px' }}>
