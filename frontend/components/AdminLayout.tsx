@@ -35,8 +35,8 @@ export const adminCss = `
 .sb-foot{padding:16px 24px;border-top:1px solid var(--ln);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--d2);cursor:pointer;transition:color .15s}
 .sb-foot:hover{color:var(--er)}
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--k0)}
-.ph{display:flex;align-items:center;justify-content:space-between;padding:22px 32px;border-bottom:1px solid var(--ln);flex-shrink:0}
-.ph-title{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--wh);letter-spacing:.05em}
+.ph{display:flex;align-items:center;justify-content:space-between;padding:28px 40px;border-bottom:1px solid var(--ln);flex-shrink:0}
+.ph-title{font-family:var(--serif);font-size:26px;font-weight:300;color:var(--wh);letter-spacing:.05em}
 .ph-right{display:flex;align-items:center;gap:12px}
 .ph-actions{display:flex;gap:8px;align-items:center}
 .err-bar{font-size:9.5px;color:var(--er);letter-spacing:.08em;padding:6px 12px;border:1px solid rgba(181,64,64,.25);background:rgba(181,64,64,.07)}
