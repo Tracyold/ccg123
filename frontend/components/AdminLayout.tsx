@@ -259,6 +259,8 @@ export default function AdminLayout({ children, activeNav }: AdminLayoutProps) {
   const router = useRouter();
   const [checking, setChecking] = useState(true);
   const [bellCount, setBellCount] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   // Auth guard
   useEffect(() => {
@@ -284,9 +286,26 @@ export default function AdminLayout({ children, activeNav }: AdminLayoutProps) {
     check();
   }, [router]);
 
+  // Close mobile menu on outside click
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const close = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener('click', close);
+    return () => document.removeEventListener('click', close);
+  }, [mobileMenuOpen]);
+
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     router.push('/admin/login');
+  };
+
+  const handleMobileNav = (route: string) => {
+    setMobileMenuOpen(false);
+    router.push(route);
   };
 
   if (checking) return <div style={{ background: '#060606', height: '100vh' }} />;
@@ -294,7 +313,37 @@ export default function AdminLayout({ children, activeNav }: AdminLayoutProps) {
   return (
     <>
       <style>{adminCss}</style>
+
+      {/* Mobile top bar */}
+      <div className="mob-topbar" ref={menuRef}>
+        <span className="mob-brand">CCG</span>
+        <button
+          className={`mob-burger${mobileMenuOpen ? ' open' : ''}`}
+          onClick={(e) => { e.stopPropagation(); setMobileMenuOpen(p => !p); }}
+          aria-label="Toggle admin menu"
+        >
+          <span className="mb" />
+          <span className="mb" />
+          <span className="mb" />
+        </button>
+      </div>
+
+      {/* Mobile dropdown menu */}
+      <div className={`mob-dropdown${mobileMenuOpen ? ' open' : ''}`}>
+        {NAV_ITEMS.map(item => (
+          <button
+            key={item.id}
+            className={`mob-dropdown-item${activeNav === item.id ? ' on' : ''}`}
+            onClick={() => handleMobileNav(item.route)}
+          >
+            {item.label}
+          </button>
+        ))}
+        <button className="mob-dropdown-signout" onClick={handleSignOut}>Sign Out</button>
+      </div>
+
       <div className="shell">
+        {/* Desktop sidebar — untouched */}
         <div className="sb">
           <div className="sb-brand">
             <div className="sb-name">Cutting Corners<br />Gems</div>
