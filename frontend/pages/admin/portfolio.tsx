@@ -37,8 +37,8 @@ function PhotoSection({ value, onChange }: { value: string; onChange: (f: string
       {mode === 'upload' ? (
         <div className="uz" onClick={() => fileRef.current?.click()}>
           <input ref={fileRef} type="file" accept=".jpg,.jpeg,.png,.tiff,.tif,.dng,.heic" onChange={handleFile} />
-          <div className="ui">\u2191</div><p>Click to upload photo</p>
-          <p style={{ fontSize: 8.5, color: 'var(--d2)', marginTop: 4, letterSpacing: '.08em' }}>JPG \u00B7 PNG \u00B7 TIFF \u00B7 DNG \u00B7 HEIC \u00B7 Max 25MB</p>
+          <div className="ui">↑</div><p>Click to upload photo</p>
+          <p style={{ fontSize: 8.5, color: 'var(--d2)', marginTop: 4, letterSpacing: '.08em' }}>JPG · PNG · TIFF · DNG · HEIC · Max 25MB</p>
           {fileName && <div className="ufn">{fileName}</div>}
         </div>
       ) : (
@@ -50,7 +50,7 @@ function PhotoSection({ value, onChange }: { value: string; onChange: (f: string
       {value && !value.startsWith('[uploaded]') ? (
         <img src={value} alt="" className="photo-preview" onError={(e: any) => (e.target.style.display = 'none')} />
       ) : (
-        <div className="photo-preview-empty">\u25FB</div>
+        <div className="photo-preview-empty">◻</div>
       )}
     </div>
   );
@@ -99,8 +99,8 @@ function PhotoForm({ queue, currentIndex, onCurrentChange, onClose, onAddToQueue
             <div key={item.portfolio_photo_id} className={`qi ${i === currentIndex ? 'cur' : ''}`} onClick={() => onSwitchIndex(i)}>
               {item.photo_url && !item.photo_url.startsWith('[uploaded]') ? (
                 <img src={item.photo_url} alt="" className="qi-thumb" onError={(e: any) => (e.target.style.display = 'none')} />
-              ) : <div className="qi-thumb-empty">\u25FB</div>}
-              <div className="qi-year">{item.year || '\u2014'}</div>
+              ) : <div className="qi-thumb-empty">◻</div>}
+              <div className="qi-year">{item.year || '—'}</div>
               <div className="qi-t">{item.caption || '(New Photo)'}</div>
               <div className="qi-id">{item.portfolio_photo_id}</div>
               <div className="qi-s">{item._saved ? 'Draft saved' : 'Unsaved'}</div>
@@ -116,7 +116,7 @@ function PhotoForm({ queue, currentIndex, onCurrentChange, onClose, onAddToQueue
             {current.caption && <span style={{ fontSize: 13, color: 'var(--d1)', fontWeight: 300, marginLeft: 10 }}>{current.caption}</span>}
             <span style={{ fontSize: 12, color: 'var(--d2)', fontWeight: 300, marginLeft: 10 }}>{currentIndex + 1} / {queue.length}</span>
           </div>
-          <div className="fhr"><span className={`sf ${flash ? 'on' : ''}`}>\u2713 Saved</span><button className="xb" onClick={onClose}>\u00D7</button></div>
+          <div className="fhr"><span className={`sf ${flash ? 'on' : ''}`}>✓ Saved</span><button className="xb" onClick={onClose}>×</button></div>
         </div>
         <div className="fb">
           <div className="fr fr3">
@@ -139,7 +139,7 @@ function PhotoForm({ queue, currentIndex, onCurrentChange, onClose, onAddToQueue
           <div className="ffa">
             {isEdit && <button className="bg arc" onClick={onArchiveCurrent}>Archive</button>}
             <button className="bg" onClick={onSaveDrafts}>{queue.length > 1 ? 'Save Drafts' : 'Save Draft'}</button>
-            {currentIndex < queue.length - 1 && <button className="bn" onClick={() => onSwitchIndex(currentIndex + 1)}>Next \u2192</button>}
+            {currentIndex < queue.length - 1 && <button className="bn" onClick={() => onSwitchIndex(currentIndex + 1)}>Next →</button>}
             <button className="bp" onClick={onPublishAll}>{queue.length > 1 ? `Publish All (${queue.length})` : 'Publish'}</button>
           </div>
         </div>
@@ -257,14 +257,14 @@ export default function AdminPortfolioPage() {
       </div>
       <div className="pb" style={{ padding: '28px 32px' }}>
         {loading ? <div className="loading">Loading Photos...</div> : currentTabPhotos.length === 0 ? (
-          <div className="empty"><div className="empty-ic">\u25FB</div><div className="empty-tx">No {TAB_LABELS[tab].toLowerCase()} photos</div></div>
+          <div className="empty"><div className="empty-ic">◻</div><div className="empty-tx">No {TAB_LABELS[tab].toLowerCase()} photos</div></div>
         ) : (
           <div className="grid">
             {currentTabPhotos.map(photo => (
               <div key={photo.portfolio_photo_id} className={`card ${selected.has(photo.portfolio_photo_id) ? 'selected' : ''}`} onClick={() => openEdit(photo)}>
                 {photo.photo_url && !photo.photo_url.startsWith('[uploaded]') ? (
                   <img src={photo.photo_url} alt={photo.caption || ''} className="card-thumb" onError={(e: any) => (e.target.style.display = 'none')} />
-                ) : <div className="card-thumb-empty">\u25FB</div>}
+                ) : <div className="card-thumb-empty">◻</div>}
                 {selectMode ? (
                   <input type="checkbox" className="card-check" checked={selected.has(photo.portfolio_photo_id)} onChange={e => toggleSelect(photo.portfolio_photo_id, e)} onClick={e => e.stopPropagation()} />
                 ) : tab !== 'archived' && <SortBadge value={photo.sort_order} onCommit={n => handleSortCommit(photo, n)} />}

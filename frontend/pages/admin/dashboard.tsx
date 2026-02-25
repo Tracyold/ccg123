@@ -103,11 +103,11 @@ export default function AdminDashboard() {
   };
 
   const ICON_MAP: Record<string,string> = {
-    account_inquiries: '\u2709',
-    guest_inquiries: '\u2709',
-    service_requests: '\u25C8',
-    chat_messages: '\u25FB',
-    work_orders: '\u25C7',
+    account_inquiries: '✉',
+    guest_inquiries: '✉',
+    service_requests: '◈',
+    chat_messages: '◻',
+    work_orders: '◇',
   };
 
   const fields = [
@@ -122,7 +122,7 @@ export default function AdminDashboard() {
     <AdminLayout activeNav="dashboard">
       <div className="ph">
         <div className="ph-title">Dashboard</div>
-        {flash && <span className="sf on">\u2713 Saved</span>}
+        {flash && <span className="sf on">✓ Saved</span>}
       </div>
       <div className="pb" style={{ padding: '28px 32px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
@@ -143,7 +143,7 @@ export default function AdminDashboard() {
                   />
                 ) : (
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ fontSize: '13px', color: 'var(--tx)' }}>{adminInfo[f.key] || '\u2014'}</span>
+                    <span style={{ fontSize: '13px', color: 'var(--tx)' }}>{adminInfo[f.key] || '—'}</span>
                     <button onClick={() => startEdit(f.key)} style={{ background: 'none', border: 'none', color: 'var(--d2)', cursor: 'pointer', fontSize: '12px' }} title="Edit">✎</button>
                   </div>
                 )}
@@ -153,7 +153,7 @@ export default function AdminDashboard() {
             {/* Login email - read only */}
             <div style={{ marginBottom: '14px' }}>
               <div style={{ fontSize: '8.5px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '4px' }}>Login Email</div>
-              <span style={{ fontSize: '13px', color: 'var(--d2)' }}>{adminInfo?.email || '\u2014'}</span>
+              <span style={{ fontSize: '13px', color: 'var(--d2)' }}>{adminInfo?.email || '—'}</span>
               <span style={{ fontSize: '8px', color: 'var(--d2)', marginLeft: '8px' }}>(read-only)</span>
             </div>
 
@@ -198,10 +198,10 @@ export default function AdminDashboard() {
               notifications.slice(0, 20).map(n => (
                 <div key={n.id} className="notif-row" onClick={() => markOneRead(n.id, n.user_id, n.type)}>
                   <div className="notif-dot" />
-                  <div className="notif-icon">{ICON_MAP[n.type] || '\u25CB'}</div>
+                  <div className="notif-icon">{ICON_MAP[n.type] || '○'}</div>
                   <div className="notif-body">
                     <div className="notif-msg">{n.message}</div>
-                    <div className="notif-meta">{n.account_users?.name || (n.type === 'guest_inquiries' ? 'Guest' : '\u2014')}</div>
+                    <div className="notif-meta">{n.account_users?.name || (n.type === 'guest_inquiries' ? 'Guest' : '—')}</div>
                   </div>
                   <div className="notif-time">{relativeTime(n.created_at)}</div>
                 </div>

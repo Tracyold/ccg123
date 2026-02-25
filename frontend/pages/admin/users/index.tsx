@@ -83,11 +83,11 @@ export default function AdminUsersPage() {
         {loading ? (
           <div className="loading">Loading users...</div>
         ) : sorted.length === 0 ? (
-          <div className="empty"><div className="empty-ic">\u25CB</div><div className="empty-tx">{search ? `No results for '${search}'` : 'No accounts yet'}</div></div>
+          <div className="empty"><div className="empty-ic">○</div><div className="empty-tx">{search ? `No results for '${search}'` : 'No accounts yet'}</div></div>
         ) : (
           <table className="tbl">
             <thead><tr>
-              <th onClick={() => handleSort('name')} style={{ cursor: 'pointer' }}>Name {sortField === 'name' ? (sortDir === 'asc' ? '\u2191' : '\u2193') : ''}</th>
+              <th onClick={() => handleSort('name')} style={{ cursor: 'pointer' }}>Name {sortField === 'name' ? (sortDir === 'asc' ? '↑' : '\u2193') : ''}</th>
               <th onClick={() => handleSort('email')} style={{ cursor: 'pointer' }}>Email</th>
               <th onClick={() => handleSort('phone')} style={{ cursor: 'pointer' }}>Phone</th>
               <th>Address</th>
@@ -100,10 +100,10 @@ export default function AdminUsersPage() {
             <tbody>
               {sorted.map(u => (
                 <tr key={u.account_user_id} onClick={() => router.push(`/admin/users/${u.account_user_id}`)}>
-                  <td><div className="td-name">{u.name || '\u2014'}</div></td>
-                  <td style={{ fontSize: 12, color: 'var(--d1)' }}>{u.email || '\u2014'}</td>
-                  <td style={{ fontSize: 12 }}>{u.phone || '\u2014'}</td>
-                  <td style={{ fontSize: 11, color: 'var(--d1)', maxWidth: 150, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{u.shipping_address || '\u2014'}</td>
+                  <td><div className="td-name">{u.name || '—'}</div></td>
+                  <td style={{ fontSize: 12, color: 'var(--d1)' }}>{u.email || '—'}</td>
+                  <td style={{ fontSize: 12 }}>{u.phone || '—'}</td>
+                  <td style={{ fontSize: 11, color: 'var(--d1)', maxWidth: 150, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{u.shipping_address || '—'}</td>
                   <td style={{ fontSize: 11, color: 'var(--d1)' }}>{fmtDate(u.created_at)}</td>
                   <td style={{ fontSize: 11, color: 'var(--d1)' }}>{fmtTime(u.created_at)}</td>
                   <td><span className={`pill ${u.status === 'ACTIVE' ? 'pill-A' : 'pill-I'}`}>{u.status}</span></td>

@@ -54,7 +54,7 @@ function GIASection({ value, onChange }: { value: string; onChange: (f: string, 
       {mode === 'upload' ? (
         <div className="uz" onClick={() => fileRef.current?.click()}>
           <input ref={fileRef} type="file" accept=".pdf" onChange={handleFile} />
-          <div className="ui">\u2191</div><p>Click to upload GIA PDF</p>
+          <div className="ui">↑</div><p>Click to upload GIA PDF</p>
           {fileName && <div className="ufn">{fileName}</div>}
         </div>
       ) : (
@@ -99,7 +99,7 @@ function ProductForm({ queue, currentIndex, onCurrentChange, onClose, onAddToQue
       <div className="fp">
         <div className="fh">
           <div className="fh-title">{current.title || 'New Product'}<span style={{ fontSize: 12, color: 'var(--d1)', fontWeight: 300, marginLeft: 10 }}>{currentIndex + 1} / {queue.length}</span></div>
-          <div className="fhr"><span className={`sf ${flash ? 'on' : ''}`}>\u2713 Saved</span><button className="xb" onClick={onClose}>\u00D7</button></div>
+          <div className="fhr"><span className={`sf ${flash ? 'on' : ''}`}>✓ Saved</span><button className="xb" onClick={onClose}>×</button></div>
         </div>
         <div className="fb">
           <div className="fr fr3">
@@ -133,7 +133,7 @@ function ProductForm({ queue, currentIndex, onCurrentChange, onClose, onAddToQue
           <div className="ff-note">{queue.length > 1 ? `${queue.length} products in queue` : 'Up to 10 products per session'}</div>
           <div className="ffa">
             <button className="bg" onClick={onSaveDrafts} disabled={saving}>{saving ? 'Saving...' : 'Save Drafts'}</button>
-            {currentIndex < queue.length - 1 && <button className="bn" onClick={() => onSwitchIndex(currentIndex + 1)}>Next \u2192</button>}
+            {currentIndex < queue.length - 1 && <button className="bn" onClick={() => onSwitchIndex(currentIndex + 1)}>Next →</button>}
             <button className="bp" onClick={onPublishAll} disabled={saving}>{saving ? 'Saving...' : queue.length > 1 ? `Publish All (${queue.length})` : 'Publish'}</button>
           </div>
         </div>
@@ -243,7 +243,7 @@ export default function AdminProductsPage() {
             <tbody>
               {filtered[tab].map((p: any) => (
                 <tr key={p.product_id} onClick={() => openEdit(p)}>
-                  <td><div className="td-name">{p.title || '(New Product)'}</div><div className="td-sub">{[p.gem_type, p.color, p.origin].filter(Boolean).join(' \u00B7 ')}</div></td>
+                  <td><div className="td-name">{p.title || '(New Product)'}</div><div className="td-sub">{[p.gem_type, p.color, p.origin].filter(Boolean).join(' · ')}</div></td>
                   <td style={{ fontSize: 11, color: 'var(--d1)' }}>{p.gia_report_number || '--'}</td>
                   <td style={{ fontSize: 12 }}>{p.weight ? `${p.weight} ct` : '--'}</td>
                   <td><span className={`pill pill-${(p.product_state || 'D')[0]}`}>{p.product_state}</span></td>

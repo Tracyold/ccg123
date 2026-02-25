@@ -27,7 +27,7 @@ export default function AdminUserDetail() {
     <AdminLayout activeNav="users">
       <div className="ph">
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <button onClick={() => router.push('/admin/users')} style={{ background: 'none', border: 'none', color: 'var(--d1)', cursor: 'pointer', fontSize: '9.5px', letterSpacing: '.15em', textTransform: 'uppercase' }}>\u2190 Back</button>
+          <button onClick={() => router.push('/admin/users')} style={{ background: 'none', border: 'none', color: 'var(--d1)', cursor: 'pointer', fontSize: '9.5px', letterSpacing: '.15em', textTransform: 'uppercase' }}>← Back</button>
           <div className="ph-title">{isGuest ? 'Guest Account' : (user?.name || 'User')}</div>
         </div>
       </div>
