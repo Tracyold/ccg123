@@ -71,7 +71,7 @@ export const adminCss = `
 .pill-I{background:rgba(181,64,64,.1);color:#c07070}
 .ra{display:flex;align-items:center;justify-content:flex-end;gap:6px;opacity:0;transition:opacity .15s}
 .tbl tbody tr:hover .ra{opacity:1}
-.ab{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border:1px solid var(--ln2);background:none;color:var(--d1);cursor:pointer;transition:all .15s;font-family:var(--sans)}
+.ab{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border:1px solid var(--ln2);background:none;color:var(--d1);cursor:pointer;transition:all .15s;font-family:var(--sans)}
 .ab:hover{border-color:var(--g);color:var(--gl)}
 .ab.pub{border-color:rgba(207,176,64,.25);color:var(--g)}.ab.pub:hover{background:var(--gbg)}
 .ab.rem:hover{border-color:var(--er);color:#c07070}
