@@ -103,6 +103,22 @@ export default function AccountPage() {
       const { data: wo } = await supabase.from('work_orders').select('*').eq('account_user_id', uid).order('created_at', { ascending: false });
       setWorkOrders(wo || []);
 
+      // Realtime work order updates
+      supabase.channel('user-wo-' + uid)
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'work_orders', filter: `account_user_id=eq.${uid}` },
+          (payload) => {
+            if (payload.eventType === 'INSERT') {
+              setWorkOrders(prev => [payload.new as any, ...prev]);
+            } else if (payload.eventType === 'UPDATE') {
+              setWorkOrders(prev => prev.map(w => w.work_order_id === (payload.new as any).work_order_id ? payload.new as any : w));
+            }
+          })
+        .subscribe();
+
+      // Admin info (for WO modal)
+      const { data: admin } = await supabase.from('admin_users').select('business_name, full_name, address, phone, contact_email').single();
+      setAdminInfo(admin);
+
       // Inquiries
       const { data: inq } = await supabase.from('account_inquiries').select('*').eq('account_user_id', uid).order('created_at', { ascending: false });
       setInquiries(inq || []);
