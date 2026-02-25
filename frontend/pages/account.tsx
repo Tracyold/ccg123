@@ -298,6 +298,32 @@ export default function AccountPage() {
     }
   };
 
+  // Chat file upload (account user)
+  const handleChatFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !chatThread || !session) return;
+    setChatUploading(true);
+    const path = `user/${session.user.id}/${Date.now()}_${file.name}`;
+    const { data: uploadData, error: uploadErr } = await supabase.storage.from('ChatUploads').upload(path, file, { contentType: file.type });
+    if (uploadErr) { console.error('Upload error:', uploadErr.message); setChatUploading(false); return; }
+    const uploadedUrl = uploadData?.path || path;
+    const uploadedType = file.type;
+    await supabase.from('chat_messages').insert({
+      chat_thread_id: chatThread.chat_thread_id,
+      actor: 'ACCOUNT', actor_id: session.user.id,
+      body: null, attachment_url: uploadedUrl, attachment_type: uploadedType,
+    });
+    await supabase.functions.invoke('send-admin-notification', {
+      body: { event_type: 'chat', thread_id: chatThread.chat_thread_id },
+    }).catch(() => {});
+    await supabase.from('chat_threads').update({ account_has_unread: false, admin_has_unread: true }).eq('chat_thread_id', chatThread.chat_thread_id);
+    setChatUploading(false);
+    if (chatFileRef.current) chatFileRef.current.value = '';
+  };
+
+  // Open WO detail
+  const openWODetail = (wo: any) => { setSelectedWO(wo); };
+
   if (loading) return <div style={{ background: '#050505', minHeight: '100vh' }} />;
 
   const NAV = [
