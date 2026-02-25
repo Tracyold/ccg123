@@ -4,5 +4,6 @@
   "/_document": "pages/_document.js",
   "/admin/login": "pages/admin/login.js",
   "/admin/users": "pages/admin/users.js",
+  "/login": "pages/login.js",
   "/admin/dashboard": "pages/admin/dashboard.js"
 }
