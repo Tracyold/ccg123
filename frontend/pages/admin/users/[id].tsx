@@ -262,7 +262,7 @@ export default function AdminUserDetail() {
             </div>
           </div>
 
-          <div style={{ flex: 1, overflow: 'auto', padding: '24px 32px' }}>
+          <div style={{ flex: 1, overflow: 'auto', padding: '28px 40px' }}>
             {/* DASHBOARD TAB */}
             {activeTab === 'dashboard' && user && (
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
