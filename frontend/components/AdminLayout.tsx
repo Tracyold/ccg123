@@ -40,9 +40,9 @@ export const adminCss = `
 .ph-right{display:flex;align-items:center;gap:12px}
 .ph-actions{display:flex;gap:8px;align-items:center}
 .err-bar{font-size:9.5px;color:var(--er);letter-spacing:.08em;padding:6px 12px;border:1px solid rgba(181,64,64,.25);background:rgba(181,64,64,.07)}
-.btn-add{display:flex;align-items:center;gap:7px;background:var(--gl);color:#000;border:none;padding:9px 17px;font-family:var(--sans);font-size:9.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .15s}
+.btn-add{display:flex;align-items:center;gap:8px;background:var(--gl);color:#000;border:none;padding:11px 20px;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .15s}
 .btn-add:hover:not(:disabled){background:#dcc056}.btn-add:disabled{opacity:.4;cursor:not-allowed}
-.btn-sel{background:transparent;color:var(--d1);border:1px solid var(--ln2);padding:9px 17px;font-family:var(--sans);font-size:9.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .15s}
+.btn-sel{background:transparent;color:var(--d1);border:1px solid var(--ln2);padding:11px 20px;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .15s}
 .btn-sel:hover{border-color:var(--g);color:var(--gl)}
 .btn-sel.on{border-color:rgba(207,176,64,.4);color:var(--gl);background:var(--gbg)}
 .tabs{display:flex;gap:26px;padding:0 32px;border-bottom:1px solid var(--ln);flex-shrink:0}
