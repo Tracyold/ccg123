@@ -119,12 +119,12 @@ export const adminCss = `
 .ff{display:flex;align-items:center;justify-content:space-between;padding:16px 30px;border-top:1px solid var(--ln);flex-shrink:0;background:var(--k1)}
 .ff-note{font-size:10.5px;color:var(--d2);letter-spacing:.07em}
 .ffa{display:flex;gap:7px}
-.bg{padding:8px 14px;font-family:var(--sans);font-size:9.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;border:1px solid var(--ln2);background:none;color:var(--d1);cursor:pointer;transition:all .15s}
+.bg{padding:10px 16px;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;border:1px solid var(--ln2);background:none;color:var(--d1);cursor:pointer;transition:all .15s}
 .bg:hover:not(:disabled){border-color:var(--g);color:var(--gl)}.bg:disabled{opacity:.4;cursor:not-allowed}
 .bg.arc:hover{border-color:var(--er);color:#c07070}
-.bn{padding:8px 14px;font-family:var(--sans);font-size:9.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;border:1px solid rgba(207,176,64,.28);background:var(--gbg);color:var(--gl);cursor:pointer;transition:all .15s}
+.bn{padding:10px 16px;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;border:1px solid rgba(207,176,64,.28);background:var(--gbg);color:var(--gl);cursor:pointer;transition:all .15s}
 .bn:hover{background:var(--gl);color:#000}
-.bp{padding:8px 18px;font-family:var(--sans);font-size:9.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;border:none;background:var(--gl);color:#000;cursor:pointer;transition:background .15s}
+.bp{padding:10px 20px;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;border:none;background:var(--gl);color:#000;cursor:pointer;transition:background .15s}
 .bp:hover:not(:disabled){background:#dcc056}.bp:disabled{opacity:.4;cursor:not-allowed}
 .photo-blk{background:var(--k2);border:1px solid var(--ln);padding:13px 15px;margin-bottom:12px}
 .photo-l{font-size:8.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--d1);margin-bottom:9px}
