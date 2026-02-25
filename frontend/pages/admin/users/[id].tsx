@@ -246,9 +246,9 @@ export default function AdminUserDetail() {
         {/* Top nav bar instead of sidebar */}
         <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100vh', overflow: 'hidden' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '12px 24px', borderBottom: '1px solid var(--ln)', background: 'var(--k1)', flexShrink: 0 }}>
-            <button onClick={() => router.push('/admin/users')} style={{ background: 'none', border: 'none', color: 'var(--d1)', cursor: 'pointer', fontSize: '9.5px', letterSpacing: '.15em', textTransform: 'uppercase', fontFamily: 'var(--sans)' }}>← Back</button>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: '14px', color: 'var(--wh)' }}>
-              <span style={{ fontSize: '9px', color: 'var(--d2)', textTransform: 'uppercase', letterSpacing: '.15em', marginRight: '8px' }}>User</span>
+            <button onClick={() => router.push('/admin/users')} className="hidden md:inline-block" style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.45)', cursor: 'pointer', fontSize: '11px', letterSpacing: '.18em', textTransform: 'uppercase', fontFamily: "'Montserrat', sans-serif", transition: 'color .15s' }} onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')} onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}>← USER LIST</button>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: '16px', color: 'var(--wh)' }}>
+              <span style={{ fontSize: '10px', color: 'var(--d2)', textTransform: 'uppercase', letterSpacing: '.15em', marginRight: '8px' }}>User</span>
               {isGuest ? 'Guest Account' : user?.name || 'User'}
             </div>
             <div style={{ display: 'flex', gap: '16px', marginLeft: '24px' }}>
