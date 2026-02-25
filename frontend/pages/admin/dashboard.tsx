@@ -172,7 +172,7 @@ export default function AdminDashboard() {
           {/* Right - Stats + Notifications */}
           <div>
             {/* Stats 2x2 */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '28px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '32px' }}>
               <div className="stat-card"><div className="stat-val">{itemsSold}</div><div className="stat-label">Items Sold</div></div>
               <div className="stat-card"><div className="stat-val">{formatMoney(shopRevenue)}</div><div className="stat-label">Shop Revenue</div></div>
               <div className="stat-card"><div className="stat-val">{woCompleted}</div><div className="stat-label">Work Orders Completed</div></div>
