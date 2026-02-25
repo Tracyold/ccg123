@@ -116,8 +116,8 @@ export const adminCss = `
 .uz p{font-size:9.5px;color:var(--d1);letter-spacing:.1em}
 .uz .ui{font-size:20px;opacity:.2;margin-bottom:5px}
 .ufn{font-size:9.5px;color:var(--g);margin-top:5px;word-break:break-all}
-.ff{display:flex;align-items:center;justify-content:space-between;padding:13px 26px;border-top:1px solid var(--ln);flex-shrink:0;background:var(--k1)}
-.ff-note{font-size:9.5px;color:var(--d2);letter-spacing:.07em}
+.ff{display:flex;align-items:center;justify-content:space-between;padding:16px 30px;border-top:1px solid var(--ln);flex-shrink:0;background:var(--k1)}
+.ff-note{font-size:10.5px;color:var(--d2);letter-spacing:.07em}
 .ffa{display:flex;gap:7px}
 .bg{padding:8px 14px;font-family:var(--sans);font-size:9.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;border:1px solid var(--ln2);background:none;color:var(--d1);cursor:pointer;transition:all .15s}
 .bg:hover:not(:disabled){border-color:var(--g);color:var(--gl)}.bg:disabled{opacity:.4;cursor:not-allowed}
