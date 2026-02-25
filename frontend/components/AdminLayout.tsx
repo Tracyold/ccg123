@@ -46,9 +46,9 @@ export const adminCss = `
 .btn-sel:hover{border-color:var(--g);color:var(--gl)}
 .btn-sel.on{border-color:rgba(207,176,64,.4);color:var(--gl);background:var(--gbg)}
 .tabs{display:flex;gap:28px;padding:0 40px;border-bottom:1px solid var(--ln);flex-shrink:0}
-.tab{padding:15px 0;font-size:12px;font-weight:400;letter-spacing:2.7px;text-transform:uppercase;color:var(--d1);cursor:pointer;border:none;background:none;border-bottom:1px solid transparent;position:relative;top:1px;transition:color .15s;font-family:var(--sans)}
+.tab{padding:15px 0;font-size:14px;font-weight:400;letter-spacing:2.7px;text-transform:uppercase;color:var(--d1);cursor:pointer;border:none;background:none;border-bottom:1px solid transparent;position:relative;top:1px;transition:color .15s;font-family:var(--sans)}
 .tab.on{color:var(--wh);border-bottom-color:var(--gl)}.tab:hover:not(.on){color:#aaa}
-.tab-n{margin-left:6px;font-size:10px;color:var(--d2)}.tab.on .tab-n{color:var(--g)}
+.tab-n{margin-left:6px;font-size:11px;color:var(--d2)}.tab.on .tab-n{color:var(--g)}
 .pb{flex:1;overflow-y:auto;padding:0 40px}
 .loading{display:flex;align-items:center;justify-content:center;padding:80px 0;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--d2)}
 .empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 0;color:var(--d2)}
