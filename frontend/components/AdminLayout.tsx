@@ -77,14 +77,14 @@ export const adminCss = `
 .ab.rem:hover{border-color:var(--er);color:#c07070}
 .ab.arc:hover{border-color:var(--er);color:#c07070}
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);z-index:100;display:flex;align-items:stretch}
-.qp{width:196px;flex-shrink:0;background:var(--k1);border-right:1px solid var(--ln);display:flex;flex-direction:column}
-.qh{padding:18px 16px 13px;font-size:8.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--d1);border-bottom:1px solid var(--ln)}
-.ql{flex:1;overflow-y:auto;padding:6px}
-.qi{padding:9px 11px;margin-bottom:2px;cursor:pointer;border-left:2px solid transparent;transition:all .12s}
+.qp{width:220px;flex-shrink:0;background:var(--k1);border-right:1px solid var(--ln);display:flex;flex-direction:column}
+.qh{padding:20px 18px 15px;font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--d1);border-bottom:1px solid var(--ln)}
+.ql{flex:1;overflow-y:auto;padding:8px}
+.qi{padding:14px 16px;margin-bottom:2px;cursor:pointer;border-left:2px solid transparent;transition:all .12s}
 .qi:hover{background:var(--k3)}.qi.cur{border-left-color:var(--gl);background:var(--k2)}
-.qi-t{font-size:11.5px;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.qi-id{font-size:8.5px;color:var(--d2);margin-top:2px;font-family:monospace;letter-spacing:0}
-.qi-s{font-size:7.5px;color:var(--g);margin-top:2px;letter-spacing:.1em;text-transform:uppercase}
+.qi-t{font-size:13px;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qi-id{font-size:9.5px;color:var(--d2);margin-top:3px;font-family:monospace;letter-spacing:0}
+.qi-s{font-size:8.5px;color:var(--g);margin-top:3px;letter-spacing:.1em;text-transform:uppercase}
 .qi-year{font-family:var(--serif);font-size:13px;color:var(--gl)}
 .qi-thumb{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--k3);margin-bottom:6px}
 .qi-thumb-empty{width:100%;aspect-ratio:1/1;background:var(--k3);display:flex;align-items:center;justify-content:center;font-size:16px;opacity:.15;margin-bottom:6px}
