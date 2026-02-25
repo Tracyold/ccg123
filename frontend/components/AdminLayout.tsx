@@ -106,8 +106,8 @@ export const adminCss = `
 .fg textarea{resize:vertical;min-height:80px;height:auto}
 .fr{display:grid;gap:14px;margin-bottom:14px}
 .fr1{grid-template-columns:1fr}.fr2{grid-template-columns:1fr 1fr}.fr3{grid-template-columns:1fr 1fr 1fr}
-.gia-blk{background:var(--k2);border:1px solid var(--ln);padding:13px 15px;margin-bottom:12px}
-.gia-l{font-size:8.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--d1);margin-bottom:9px}
+.gia-blk{background:var(--k2);border:1px solid var(--ln);padding:16px 18px;margin-bottom:14px}
+.gia-l{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--d1);margin-bottom:10px}
 .gia-mr{display:flex;gap:0;margin-bottom:9px}
 .gmb{padding:4px 11px;font-size:8.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;border:1px solid var(--ln);background:none;color:var(--d1);cursor:pointer;margin-right:-1px;transition:all .12s;font-family:var(--sans)}
 .gmb.on{background:var(--gbg);border-color:rgba(207,176,64,.35);color:var(--gl);z-index:1}
