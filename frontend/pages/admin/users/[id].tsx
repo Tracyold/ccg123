@@ -268,7 +268,7 @@ export default function AdminUserDetail() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                    <span style={{ fontFamily: 'var(--serif)', fontSize: '18px', color: 'var(--wh)' }}>Account Info</span>
+                    <span style={{ fontFamily: 'var(--serif)', fontSize: '20px', color: 'var(--wh)' }}>Account Info</span>
                     <button className="ab" onClick={() => { setEditUser({ ...user }); setShowEditUser(true); }}>Edit</button>
                   </div>
                   {[
