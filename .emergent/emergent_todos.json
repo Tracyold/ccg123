@@ -1,74 +1,26 @@
 [
   {
-    "content": "Phase 1 Step 1: Convert CRA to Next.js + TypeScript, set up env vars, backend passthrough",
-    "status": "completed"
+    "content": "Section 1: Sign-up flow on /login page",
+    "status": "in_progress"
   },
   {
-    "content": "Phase 1 Step 2: Shared utilities (formatMoney, fmtDate, fmtTime, Supabase clients)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 1 Step 3: Footer component",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2 Step 4: Landing Page (adapt TSX, fix hrefs, replace images)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2 Step 5: Portfolio Page (public)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2 Step 6: Shop/Product Page (public)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2 Step 7: Stripe Checkout endpoint (Next.js API route)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2 Step 8: Stripe Webhook (Next.js API route)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 3 Step 9: Account User Login (phone + OTP)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 3 Step 10: Admin Login (email + password)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 5 Step 17: Admin Shell (sidebar, auth guard, nav)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 5 Step 18: Admin Dashboard (profile, stats, notifications)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 5 Step 19: Admin Products Page (CRUD, queue, auto-save)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 5 Step 20: Admin Portfolio Page (CRUD, queue, sort, archive)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 5 Step 21: Admin User List (stub with guest banner)",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 4 Steps 11-16: Account User Dashboard (full)",
+    "content": "Section 2: Full user dashboard /account (profile, work orders, inquiries, invoices)",
     "status": "pending"
   },
   {
-    "content": "Phase 5 Steps 22-23: Individual User Admin View + Guest User View",
+    "content": "Section 3: User chat panel (realtime, send, attachments)",
     "status": "pending"
   },
   {
-    "content": "Phase 6 Steps 24-26: Final pass (routing, realtime, mobile)",
+    "content": "Section 4: Admin user list — wire notification bubbles",
+    "status": "pending"
+  },
+  {
+    "content": "Section 5: Admin user dashboard /admin/users/[id] — full wiring",
+    "status": "pending"
+  },
+  {
+    "content": "Section 6: Admin chat widget on user dashboard",
     "status": "pending"
   }
 ]
