@@ -96,10 +96,10 @@ export const adminCss = `
 .fhr{display:flex;align-items:center;gap:13px}
 .sf{font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--g);opacity:0;transition:opacity .4s}.sf.on{opacity:1}
 .xb{width:28px;height:28px;border:1px solid var(--ln2);background:none;color:var(--d1);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}.xb:hover{border-color:#c07070;color:#c07070}
-.fb{flex:1;overflow-y:auto;padding:22px 26px}
-.fg{display:flex;flex-direction:column;gap:4px}
-.fg label{font-size:8.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--d1)}
-.fg input,.fg textarea{background:var(--k2);border:1px solid var(--ln);border-top-color:var(--ln2);color:var(--tx);padding:8px 10px;font-family:var(--sans);font-size:12px;letter-spacing:.02em;outline:none;transition:border-color .15s;width:100%}
+.fb{flex:1;overflow-y:auto;padding:26px 30px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--d1)}
+.fg input,.fg textarea{background:var(--k2);border:1px solid var(--ln);border-top-color:var(--ln2);color:var(--tx);padding:10px 12px;font-family:var(--sans);font-size:13px;letter-spacing:.02em;outline:none;transition:border-color .15s;width:100%;height:38px}
 .fg input:focus,.fg textarea:focus{border-color:var(--g)}
 .fg input::placeholder,.fg textarea::placeholder{color:var(--d2)}
 .fg input[readonly]{opacity:.38;cursor:default;font-family:monospace;font-size:10px;letter-spacing:0}
