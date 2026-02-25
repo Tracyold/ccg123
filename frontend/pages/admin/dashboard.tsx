@@ -152,9 +152,9 @@ export default function AdminDashboard() {
 
             {/* Login email - read only */}
             <div style={{ marginBottom: '20px' }}>
-              <div style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '6px' }}>Login Email</div>
-              <span style={{ fontSize: '15px', color: 'var(--d2)' }}>{adminInfo?.email || '—'}</span>
-              <span style={{ fontSize: '9px', color: 'var(--d2)', marginLeft: '8px' }}>(read-only)</span>
+              <div style={{ fontSize: '12px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '6px' }}>Login Email</div>
+              <span style={{ fontSize: '16px', color: 'var(--d2)' }}>{adminInfo?.email || '—'}</span>
+              <span style={{ fontSize: '10px', color: 'var(--d2)', marginLeft: '8px' }}>(read-only)</span>
             </div>
 
             {hasDirty && (
