@@ -37,7 +37,7 @@ export const adminCss = `
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--k0)}
 .ph{display:flex;align-items:center;justify-content:space-between;padding:28px 40px;border-bottom:1px solid var(--ln);flex-shrink:0}
 .ph-title{font-family:var(--serif);font-size:26px;font-weight:300;color:var(--wh);letter-spacing:.05em}
-.ph-right{display:flex;align-items:center;gap:12px}
+.ph-right{display:flex;align-items:center;gap:14px}
 .ph-actions{display:flex;gap:8px;align-items:center}
 .err-bar{font-size:9.5px;color:var(--er);letter-spacing:.08em;padding:6px 12px;border:1px solid rgba(181,64,64,.25);background:rgba(181,64,64,.07)}
 .btn-add{display:flex;align-items:center;gap:8px;background:var(--gl);color:#000;border:none;padding:11px 20px;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .15s}

@@ -3,13 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/portfolio": "pages/portfolio.js",
   "/login": "pages/login.js",
-  "/admin": "pages/admin.js",
-  "/admin/login": "pages/admin/login.js",
-  "/admin/dashboard": "pages/admin/dashboard.js",
-  "/admin/products": "pages/admin/products.js",
-  "/admin/portfolio": "pages/admin/portfolio.js",
-  "/admin/users": "pages/admin/users.js",
   "/admin/users/[id]": "pages/admin/users/[id].js"
 }
