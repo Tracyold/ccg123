@@ -288,7 +288,7 @@ export default function AdminUserDetail() {
                     <span className={`pill ${user.status === 'ACTIVE' ? 'pill-A' : 'pill-I'}`}>{user.status}</span>
                   </div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', alignContent: 'start' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', alignContent: 'start' }}>
                   <div className="stat-card"><div className="stat-val">{woCount}</div><div className="stat-label">Work Orders</div></div>
                   <div className="stat-card"><div className="stat-val" style={{ color: 'rgba(45,212,191,1)', fontFamily: "'Courier New', monospace" }}>{formatMoney(invTotal)}</div><div className="stat-label">Total Invoiced</div></div>
                   <div className="stat-card"><div className="stat-val">{inqCount}</div><div className="stat-label">Inquiries</div></div>
