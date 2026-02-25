@@ -436,7 +436,7 @@ export default function AccountPage() {
                 {workOrders.length === 0 ? (
                   <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.2em' }}>No work orders</p>
                 ) : workOrders.map(wo => (
-                  <div key={wo.work_order_id} style={{ background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.06)', padding: '16px', marginBottom: '12px' }}>
+                  <div key={wo.work_order_id} style={{ background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.06)', padding: '16px', marginBottom: '12px', cursor: 'pointer' }} onClick={() => openWODetail(wo)}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                       <span style={{ fontFamily: "'Oranienbaum', serif", fontSize: '16px', color: '#FAFAFA' }}>{wo.title}</span>
                       <span style={{ fontSize: '8px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '3px 7px',
@@ -556,7 +556,13 @@ export default function AccountPage() {
                   background: m.actor === 'ACCOUNT' ? 'rgba(45,212,191,1)' : '#d4af37',
                   color: '#050505', fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', lineHeight: 1.5,
                 }}>
-                  {m.body}
+                  {m.body && <div>{m.body}</div>}
+                  {m.attachment_url && m.attachment_type?.startsWith('image/') && (
+                    <img src={m.attachment_url.startsWith('http') ? m.attachment_url : supabase.storage.from('ChatUploads').getPublicUrl(m.attachment_url).data.publicUrl} alt="attachment" style={{ maxWidth: '180px', maxHeight: '180px', objectFit: 'cover', marginTop: m.body ? '6px' : '0', borderRadius: '6px' }} />
+                  )}
+                  {m.attachment_url && m.attachment_type === 'application/pdf' && (
+                    <div style={{ marginTop: m.body ? '6px' : '0', fontSize: '12px' }}>📄 <a href={m.attachment_url.startsWith('http') ? m.attachment_url : supabase.storage.from('ChatUploads').getPublicUrl(m.attachment_url).data.publicUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#050505', textDecoration: 'underline' }}>Download PDF</a></div>
+                  )}
                 </div>
                 <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.38)', marginTop: '4px', fontFamily: "'Montserrat', sans-serif" }}>{fmtTime(m.created_at)}</span>
               </div>
@@ -564,6 +570,8 @@ export default function AccountPage() {
             <div ref={chatEndRef} />
           </div>
           <div className="acc-chat-input-bar">
+            <input type="file" ref={chatFileRef} accept=".jpg,.jpeg,.png,.tiff,.tif,.dng,.heic,.pdf" style={{ display: 'none' }} onChange={handleChatFile} />
+            <button onClick={() => chatFileRef.current?.click()} disabled={chatUploading} style={{ background: 'none', border: '1px solid rgba(255,255,255,0.10)', color: 'rgba(255,255,255,0.45)', padding: '10px', cursor: 'pointer', fontSize: '14px', flexShrink: 0 }} title="Attach file">{chatUploading ? '...' : '📎'}</button>
             <input value={chatInput} onChange={e => setChatInput(e.target.value)}
               placeholder="Type a message..." className="acc-chat-input"
               onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); } }} />
@@ -590,13 +598,22 @@ export default function AccountPage() {
                     maxWidth: '80%', padding: '10px 14px', borderRadius: '12px',
                     background: m.actor === 'ACCOUNT' ? 'rgba(45,212,191,1)' : '#d4af37',
                     color: '#050505', fontFamily: "'Comfortaa', sans-serif", fontSize: '13px',
-                  }}>{m.body}</div>
+                  }}>
+                    {m.body && <div>{m.body}</div>}
+                    {m.attachment_url && m.attachment_type?.startsWith('image/') && (
+                      <img src={m.attachment_url.startsWith('http') ? m.attachment_url : supabase.storage.from('ChatUploads').getPublicUrl(m.attachment_url).data.publicUrl} alt="attachment" style={{ maxWidth: '180px', maxHeight: '180px', objectFit: 'cover', marginTop: m.body ? '6px' : '0', borderRadius: '6px' }} />
+                    )}
+                    {m.attachment_url && m.attachment_type === 'application/pdf' && (
+                      <div style={{ marginTop: m.body ? '6px' : '0', fontSize: '12px' }}>📄 <a href={m.attachment_url.startsWith('http') ? m.attachment_url : supabase.storage.from('ChatUploads').getPublicUrl(m.attachment_url).data.publicUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#050505', textDecoration: 'underline' }}>Download PDF</a></div>
+                    )}
+                  </div>
                   <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.38)', marginTop: '4px' }}>{fmtTime(m.created_at)}</span>
                 </div>
               ))}
               <div ref={chatEndRef} />
             </div>
             <div className="acc-chat-input-bar">
+              <button onClick={() => chatFileRef.current?.click()} disabled={chatUploading} style={{ background: 'none', border: '1px solid rgba(255,255,255,0.10)', color: 'rgba(255,255,255,0.45)', padding: '10px', cursor: 'pointer', fontSize: '14px', flexShrink: 0 }}>{chatUploading ? '...' : '📎'}</button>
               <input value={chatInput} onChange={e => setChatInput(e.target.value)} placeholder="Type a message..." className="acc-chat-input"
                 onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); } }} />
               <button onClick={sendChat} disabled={chatSending || !chatInput.trim()} className="acc-chat-send">{chatSending ? '...' : '→'}</button>
@@ -604,6 +621,90 @@ export default function AccountPage() {
           </div>
         )}
       </div>
+
+      {/* Work Order Detail Modal */}
+      {selectedWO && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}
+          onClick={e => { if (e.target === e.currentTarget) setSelectedWO(null); }}>
+          <div style={{ background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.10)', padding: '32px', maxWidth: '560px', width: '100%', maxHeight: '90vh', overflowY: 'auto', borderRadius: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
+              <div>
+                <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '4px' }}>Work Order</div>
+                <div style={{ fontFamily: "'Oranienbaum', serif", fontSize: '22px', color: '#FAFAFA' }}>{selectedWO.title}</div>
+              </div>
+              <span style={{ fontSize: '9px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '4px 9px', background: STATUS_COLORS[selectedWO.status]?.bg, color: STATUS_COLORS[selectedWO.status]?.color }}>{selectedWO.status}</span>
+            </div>
+
+            {adminInfo && (
+              <div style={{ marginBottom: '20px', padding: '16px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '8px' }}>From</div>
+                <div style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.8 }}>
+                  <div style={{ color: '#d4af37', fontWeight: 600 }}>{adminInfo.business_name}</div>
+                  <div>{adminInfo.full_name}</div>
+                  <div>{adminInfo.address}</div>
+                  <div>{adminInfo.contact_email}</div>
+                  <div>{adminInfo.phone}</div>
+                </div>
+              </div>
+            )}
+
+            {profile && (
+              <div style={{ marginBottom: '20px', padding: '16px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '8px' }}>Client</div>
+                <div style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.8 }}>
+                  <div style={{ color: 'rgba(255,255,255,0.8)' }}>{profile.name}</div>
+                  <div>{profile.email}</div>
+                  {profile.phone && <div>{profile.phone}</div>}
+                  {profile.shipping_address && <div>{profile.shipping_address}</div>}
+                </div>
+              </div>
+            )}
+
+            <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', margin: '16px 0' }} />
+
+            {[
+              { label: 'Service Type', val: selectedWO.service_type },
+              { label: 'Gem Type', val: selectedWO.gem_type },
+              { label: 'Created', val: fmtDate(selectedWO.created_at) + ' · ' + fmtTime(selectedWO.created_at) },
+              { label: 'Accepted', val: selectedWO.accepted_at ? fmtDate(selectedWO.accepted_at) + ' · ' + fmtTime(selectedWO.accepted_at) : null },
+              { label: 'Completed', val: selectedWO.completed_at ? fmtDate(selectedWO.completed_at) + ' · ' + fmtTime(selectedWO.completed_at) : null },
+            ].filter(r => r.val).map(r => (
+              <div key={r.label} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>{r.label}</span>
+                <span style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.7)' }}>{r.val}</span>
+              </div>
+            ))}
+
+            <div style={{ marginTop: '16px' }}>
+              <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '6px' }}>Description</div>
+              <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '14px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>{selectedWO.description}</p>
+            </div>
+
+            {selectedWO.notes && (
+              <div style={{ marginTop: '16px' }}>
+                <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '6px' }}>Notes</div>
+                <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.7 }}>{selectedWO.notes}</p>
+              </div>
+            )}
+
+            {selectedWO.estimated_price && (
+              <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '16px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>Quoted Price</span>
+                <span style={{ fontFamily: "'Courier New', monospace", fontSize: '22px', color: 'rgba(45,212,191,1)' }}>{formatMoney(selectedWO.estimated_price)}</span>
+              </div>
+            )}
+
+            <div style={{ display: 'flex', gap: '8px', marginTop: '24px' }}>
+              {selectedWO.status === 'CREATED' && (
+                <button className="acc-btn-gold" style={{ width: 'auto', padding: '10px 20px' }} onClick={() => { acceptWO(selectedWO); setSelectedWO(null); }}>
+                  Accept Work Order
+                </button>
+              )}
+              <button className="acc-btn-ghost" onClick={() => setSelectedWO(null)} style={{ marginLeft: 'auto' }}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

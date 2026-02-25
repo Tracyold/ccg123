@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}"
+self.__REACT_LOADABLE_MANIFEST="{\"components/TopNav.tsx -> @supabase/supabase-js\":{\"id\":\"components/TopNav.tsx -> @supabase/supabase-js\",\"files\":[\"static/chunks/node_modules_supabase_supabase-js_dist_index_mjs.js\"]}}"

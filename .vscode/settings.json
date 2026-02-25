@@ -1,0 +1,5 @@
+{
+    "editor.copyWithSyntaxHighlighting": true,
+    "terminal.integrated.copyOnSelection": true,
+    "editor.emptySelectionClipboard": false
+}
