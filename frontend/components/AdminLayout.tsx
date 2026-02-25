@@ -65,7 +65,7 @@ export const adminCss = `
 .td-name{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--wh)}
 .td-sub{font-size:11px;color:var(--d1);letter-spacing:.07em;margin-top:2px}
 .td-price{font-family:var(--serif);font-size:16px;color:var(--gl)}
-.pill{display:inline-block;font-size:8px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:3px 7px}
+.pill{display:inline-block;font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:4px 9px}
 .pill-A{background:rgba(207,176,64,.09);color:var(--gl)}
 .pill-D{background:rgba(255,255,255,.04);color:var(--d1)}
 .pill-I{background:rgba(181,64,64,.1);color:#c07070}
