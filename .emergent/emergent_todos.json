@@ -1,26 +1,26 @@
 [
   {
     "content": "Section 1: Sign-up flow on /login page",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Section 2: Full user dashboard /account (profile, work orders, inquiries, invoices)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Section 3: User chat panel (realtime, send, attachments)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Section 4: Admin user list — wire notification bubbles",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Section 5: Admin user dashboard /admin/users/[id] — full wiring",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Section 6: Admin chat widget on user dashboard",
-    "status": "pending"
+    "status": "completed"
   }
 ]
