@@ -4,10 +4,5 @@
   "/_document": "pages/_document.js",
   "/admin/login": "pages/admin/login.js",
   "/login": "pages/login.js",
-  "/account": "pages/account.js",
-  "/": "pages/index.js",
-  "/admin": "pages/admin.js",
-  "/admin/dashboard": "pages/admin/dashboard.js",
-  "/admin/users": "pages/admin/users.js",
-  "/admin/users/[id]": "pages/admin/users/[id].js"
+  "/": "pages/index.js"
 }
