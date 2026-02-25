@@ -155,17 +155,17 @@ export const adminCss = `
 .bb:hover{border-color:var(--g);color:var(--gl)}
 .bb.pub{border-color:rgba(207,176,64,.25);color:var(--g)}.bb.pub:hover{background:var(--gbg)}
 .bb.arc:hover{border-color:var(--er);color:#c07070}
-.stat-card{background:var(--k1);border:1px solid var(--ln);padding:16px}
-.stat-val{font-family:var(--serif);font-size:22px;color:var(--gl);letter-spacing:.03em}
-.stat-label{font-size:8.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:4px}
-.notif-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--ln);cursor:pointer;transition:background .1s}
+.stat-card{background:var(--k1);border:1px solid var(--ln);padding:24px}
+.stat-val{font-family:var(--serif);font-size:28px;color:var(--gl);letter-spacing:.03em}
+.stat-label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:6px}
+.notif-row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--ln);cursor:pointer;transition:background .1s}
 .notif-row:hover{background:var(--k2)}
-.notif-dot{width:6px;height:6px;border-radius:50%;background:var(--gl);flex-shrink:0}
-.notif-icon{font-size:14px;opacity:.5;flex-shrink:0;width:20px;text-align:center}
+.notif-dot{width:7px;height:7px;border-radius:50%;background:var(--gl);flex-shrink:0}
+.notif-icon{font-size:16px;opacity:.5;flex-shrink:0;width:22px;text-align:center}
 .notif-body{flex:1;min-width:0}
-.notif-msg{font-size:11px;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.notif-meta{font-size:9px;color:var(--d1);margin-top:2px}
-.notif-time{font-size:9px;color:var(--d2);flex-shrink:0}
+.notif-msg{font-size:13px;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.notif-meta{font-size:10.5px;color:var(--d1);margin-top:3px}
+.notif-time{font-size:10px;color:var(--d2);flex-shrink:0}
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--ln2)}
 
 /* ── Mobile Top Bar + Hamburger ── */
