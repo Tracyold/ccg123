@@ -164,7 +164,7 @@ export default function AdminDashboard() {
               </div>
             )}
 
-            <p style={{ fontSize: '9.5px', color: 'rgba(255,255,255,0.35)', fontStyle: 'italic', marginTop: '20px' }}>
+            <p style={{ fontSize: '10.5px', color: 'rgba(255,255,255,0.35)', fontStyle: 'italic', marginTop: '24px' }}>
               This information appears on all work order and invoice PDFs generated for customers.
             </p>
           </div>
