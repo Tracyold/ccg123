@@ -1,23 +1,23 @@
 [
   {
     "content": "Phase 1 Step 1: Convert CRA to Next.js + TypeScript, set up env vars, backend passthrough",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Phase 1 Step 2: Shared utilities (formatMoney, fmtDate, fmtTime, Supabase clients)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Phase 1 Step 3: Footer component",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Phase 2 Step 4: Landing Page (adapt TSX, fix hrefs, replace images)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Phase 2 Step 5: Portfolio Page (public)",
-    "status": "pending"
+    "status": "in_progress"
   },
   {
     "content": "Phase 2 Step 6: Shop/Product Page (public)",
