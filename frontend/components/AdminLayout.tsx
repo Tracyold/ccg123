@@ -136,10 +136,10 @@ export const adminCss = `
 .card.selected{border-color:rgba(207,176,64,.5);box-shadow:0 0 0 1px rgba(207,176,64,.2)}
 .card-thumb{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:var(--k3)}
 .card-thumb-empty{width:100%;aspect-ratio:1/1;background:var(--k3);display:flex;align-items:center;justify-content:center;font-size:28px;opacity:.1}
-.card-meta{padding:9px 10px;border-top:1px solid var(--ln)}
-.card-year{font-family:var(--serif);font-size:14px;font-weight:400;color:var(--gl);letter-spacing:.04em;line-height:1.2}
-.card-year.empty{color:var(--d2);font-style:italic;font-size:11px}
-.card-caption{font-size:10px;color:var(--d2);letter-spacing:.04em;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-meta{padding:12px 14px;border-top:1px solid var(--ln)}
+.card-year{font-family:var(--serif);font-size:15px;font-weight:400;color:var(--gl);letter-spacing:.04em;line-height:1.2}
+.card-year.empty{color:var(--d2);font-style:italic;font-size:12px}
+.card-caption{font-size:11px;color:var(--d2);letter-spacing:.04em;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sort-badge{position:absolute;top:7px;left:7px;background:rgba(0,0,0,0.72);padding:3px 7px;font-size:10px;font-family:monospace;color:var(--d1);cursor:text;min-width:22px;text-align:center;transition:color .15s}
 .sort-badge:hover{color:var(--gl)}
 .sort-input{position:absolute;top:7px;left:7px;width:42px;background:rgba(0,0,0,0.92);border:1px solid var(--gl);color:var(--gl);font-size:10px;font-family:monospace;padding:2px 6px;outline:none;text-align:center}
