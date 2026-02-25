@@ -236,7 +236,7 @@ export default function AdminProductsPage() {
         {loading ? (
           <div className="loading">Loading Products...</div>
         ) : filtered[tab].length === 0 ? (
-          <div className="empty"><div className="empty-ic">\u25C8</div><div className="empty-tx">No {TAB_LABELS[tab].toLowerCase()} products</div></div>
+          <div className="empty"><div className="empty-ic">◈</div><div className="empty-tx">No {TAB_LABELS[tab].toLowerCase()} products</div></div>
         ) : (
           <table className="tbl">
             <thead><tr><th>Product</th><th>GIA</th><th>Weight</th><th>Status</th><th>Date</th><th>Total Price</th><th></th></tr></thead>
