@@ -132,18 +132,18 @@ export default function AdminDashboard() {
             <div style={{ fontSize: '11px', color: 'var(--d1)', marginBottom: '24px' }}>Used on work order and invoice PDFs</div>
 
             {adminInfo && fields.map(f => (
-              <div key={f.key} style={{ marginBottom: '14px' }}>
-                <div style={{ fontSize: '8.5px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '4px' }}>{f.label}</div>
+              <div key={f.key} style={{ marginBottom: '20px' }}>
+                <div style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '6px' }}>{f.label}</div>
                 {editing[f.key] ? (
                   <input
                     value={editValues[f.key] || ''}
                     onChange={e => setEditValues(p => ({ ...p, [f.key]: e.target.value }))}
-                    style={{ background: 'var(--k2)', border: '1px solid var(--g)', color: 'var(--tx)', padding: '8px 10px', fontFamily: 'var(--sans)', fontSize: '12px', width: '100%', outline: 'none' }}
+                    style={{ background: 'var(--k2)', border: '1px solid var(--g)', color: 'var(--tx)', padding: '10px 12px', fontFamily: 'var(--sans)', fontSize: '14px', width: '100%', outline: 'none', height: '38px' }}
                     autoFocus
                   />
                 ) : (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ fontSize: '13px', color: 'var(--tx)' }}>{adminInfo[f.key] || '—'}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ fontSize: '15px', color: 'var(--tx)' }}>{adminInfo[f.key] || '—'}</span>
                     <button onClick={() => startEdit(f.key)} style={{ background: 'none', border: 'none', color: 'var(--d2)', cursor: 'pointer', fontSize: '12px' }} title="Edit">✎</button>
                   </div>
                 )}
