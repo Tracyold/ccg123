@@ -124,8 +124,8 @@ export default function AdminDashboard() {
         <div className="ph-title">Dashboard</div>
         {flash && <span className="sf on">✓ Saved</span>}
       </div>
-      <div className="pb" style={{ padding: '28px 32px' }}>
-        <div className="dash-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
+      <div className="pb" style={{ padding: '32px 40px' }}>
+        <div className="dash-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }}>
           {/* Left - Business Info */}
           <div>
             <div style={{ fontFamily: 'var(--serif)', fontSize: '18px', color: 'var(--wh)', marginBottom: '4px' }}>Business Info</div>
