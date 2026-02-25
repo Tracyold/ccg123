@@ -1,50 +1,215 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import AdminLayout from '../../components/AdminLayout';
 import { supabase } from '../../lib/supabase';
+import { formatMoney, fmtDate, fmtTime, relativeTime } from '../../lib/utils';
 
 export default function AdminDashboard() {
-  const router = useRouter();
-  const [loading, setLoading] = useState(true);
   const [adminInfo, setAdminInfo] = useState<any>(null);
+  const [editing, setEditing] = useState<Record<string,boolean>>({});
+  const [editValues, setEditValues] = useState<Record<string,string>>({});
+  const [saving, setSaving] = useState(false);
+  const [flash, setFlash] = useState(false);
+
+  // Stats
+  const [itemsSold, setItemsSold] = useState(0);
+  const [shopRevenue, setShopRevenue] = useState(0);
+  const [woCompleted, setWoCompleted] = useState(0);
+  const [woRevenue, setWoRevenue] = useState(0);
+
+  // Notifications
+  const [notifications, setNotifications] = useState<any[]>([]);
 
   useEffect(() => {
-    async function check() {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) { router.replace('/admin/login'); return; }
-      const { data: adminCheck } = await supabase
-        .from('admin_users')
-        .select('*')
-        .eq('admin_user_id', session.user.id)
-        .single();
-      if (!adminCheck) {
-        await supabase.auth.signOut();
-        router.replace('/admin/login');
-        return;
-      }
-      setAdminInfo(adminCheck);
-      setLoading(false);
-    }
-    check();
-  }, [router]);
+    loadAll();
+  }, []);
 
-  if (loading) return <div style={{ background: '#060606', minHeight: '100vh' }} />;
+  async function loadAll() {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) return;
+
+    // Admin info
+    const { data: admin } = await supabase.from('admin_users').select('*').eq('admin_user_id', session.user.id).single();
+    if (admin) setAdminInfo(admin);
+
+    // Stats
+    const { data: invoices } = await supabase.from('invoices').select('total_amount');
+    if (invoices) {
+      setItemsSold(invoices.length);
+      setShopRevenue(invoices.reduce((s: number, i: any) => s + Number(i.total_amount || 0), 0));
+    }
+    const { data: wos } = await supabase.from('work_orders').select('estimated_price').eq('status', 'COMPLETED');
+    if (wos) {
+      setWoCompleted(wos.length);
+      setWoRevenue(wos.reduce((s: number, w: any) => s + Number(w.estimated_price || 0), 0));
+    }
+
+    // Notifications
+    const { data: notifs } = await supabase
+      .from('admin_notifications')
+      .select('*, account_users(name)')
+      .eq('read', false)
+      .order('created_at', { ascending: false });
+    setNotifications(notifs || []);
+
+    // Realtime subscription
+    supabase.channel('admin-notifs-dash')
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'admin_notifications' }, (payload) => {
+        setNotifications(prev => [payload.new as any, ...prev]);
+      })
+      .subscribe();
+  }
+
+  const startEdit = (field: string) => {
+    setEditing(p => ({ ...p, [field]: true }));
+    setEditValues(p => ({ ...p, [field]: adminInfo?.[field] || '' }));
+  };
+
+  const cancelEdit = (field: string) => {
+    setEditing(p => ({ ...p, [field]: false }));
+  };
+
+  const hasDirty = Object.keys(editing).some(k => editing[k]);
+
+  const saveAll = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) return;
+    setSaving(true);
+    const updates: Record<string,string> = {};
+    for (const [k, v] of Object.entries(editing)) {
+      if (v) updates[k] = editValues[k] || '';
+    }
+    await supabase.from('admin_users').update(updates).eq('admin_user_id', session.user.id);
+    setAdminInfo((prev: any) => ({ ...prev, ...updates }));
+    setEditing({});
+    setSaving(false);
+    setFlash(true);
+    setTimeout(() => setFlash(false), 2000);
+  };
+
+  const markAllRead = async () => {
+    await supabase.from('admin_notifications').update({ read: true }).eq('read', false);
+    setNotifications([]);
+  };
+
+  const markOneRead = async (id: string, userId: string | null, type: string) => {
+    await supabase.from('admin_notifications').update({ read: true }).eq('id', id);
+    setNotifications(prev => prev.filter(n => n.id !== id));
+    // Navigate to user
+    if (type === 'guest_inquiries') {
+      window.location.href = `/admin/users/${process.env.NEXT_PUBLIC_GUEST_ACCOUNT_USER_ID}`;
+    } else if (userId) {
+      window.location.href = `/admin/users/${userId}`;
+    }
+  };
+
+  const ICON_MAP: Record<string,string> = {
+    account_inquiries: '\u2709',
+    guest_inquiries: '\u2709',
+    service_requests: '\u25C8',
+    chat_messages: '\u25FB',
+    work_orders: '\u25C7',
+  };
+
+  const fields = [
+    { key: 'business_name', label: 'Business Name' },
+    { key: 'full_name', label: 'Full Name' },
+    { key: 'address', label: 'Address' },
+    { key: 'phone', label: 'Phone' },
+    { key: 'contact_email', label: 'Contact Email' },
+  ];
 
   return (
-    <div style={{ background: '#060606', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ textAlign: 'center' }}>
-        <h1 style={{ fontFamily: "'Oranienbaum', serif", fontSize: '36px', color: '#d4af37', marginBottom: '16px' }}>
-          Admin Dashboard
-        </h1>
-        <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '14px', color: 'rgba(255,255,255,0.55)' }}>
-          Welcome, {adminInfo?.full_name || adminInfo?.name || 'Admin'}.
-        </p>
-        <button
-          onClick={async () => { await supabase.auth.signOut(); router.push('/admin/login'); }}
-          style={{ marginTop: '24px', background: 'transparent', border: '1px solid rgba(214,180,70,0.5)', color: '#d4af37', fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', padding: '10px 20px', cursor: 'pointer' }}
-        >
-          Sign Out
-        </button>
+    <AdminLayout activeNav="dashboard">
+      <div className="ph">
+        <div className="ph-title">Dashboard</div>
+        {flash && <span className="sf on">\u2713 Saved</span>}
       </div>
-    </div>
+      <div className="pb" style={{ padding: '28px 32px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
+          {/* Left - Business Info */}
+          <div>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: '18px', color: 'var(--wh)', marginBottom: '4px' }}>Business Info</div>
+            <div style={{ fontSize: '10px', color: 'var(--d1)', marginBottom: '20px' }}>Used on work order and invoice PDFs</div>
+
+            {adminInfo && fields.map(f => (
+              <div key={f.key} style={{ marginBottom: '14px' }}>
+                <div style={{ fontSize: '8.5px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '4px' }}>{f.label}</div>
+                {editing[f.key] ? (
+                  <input
+                    value={editValues[f.key] || ''}
+                    onChange={e => setEditValues(p => ({ ...p, [f.key]: e.target.value }))}
+                    style={{ background: 'var(--k2)', border: '1px solid var(--g)', color: 'var(--tx)', padding: '8px 10px', fontFamily: 'var(--sans)', fontSize: '12px', width: '100%', outline: 'none' }}
+                    autoFocus
+                  />
+                ) : (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ fontSize: '13px', color: 'var(--tx)' }}>{adminInfo[f.key] || '\u2014'}</span>
+                    <button onClick={() => startEdit(f.key)} style={{ background: 'none', border: 'none', color: 'var(--d2)', cursor: 'pointer', fontSize: '12px' }} title="Edit">\u270E</button>
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {/* Login email - read only */}
+            <div style={{ marginBottom: '14px' }}>
+              <div style={{ fontSize: '8.5px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '4px' }}>Login Email</div>
+              <span style={{ fontSize: '13px', color: 'var(--d2)' }}>{adminInfo?.email || '\u2014'}</span>
+              <span style={{ fontSize: '8px', color: 'var(--d2)', marginLeft: '8px' }}>(read-only)</span>
+            </div>
+
+            {hasDirty && (
+              <div style={{ display: 'flex', gap: '8px', marginTop: '16px' }}>
+                <button className="bp" onClick={saveAll} disabled={saving}>{saving ? 'Saving...' : 'Save'}</button>
+                <button className="bg" onClick={() => setEditing({})}>Cancel</button>
+              </div>
+            )}
+
+            <p style={{ fontSize: '9.5px', color: 'rgba(255,255,255,0.35)', fontStyle: 'italic', marginTop: '20px' }}>
+              This information appears on all work order and invoice PDFs generated for customers.
+            </p>
+          </div>
+
+          {/* Right - Stats + Notifications */}
+          <div>
+            {/* Stats 2x2 */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '28px' }}>
+              <div className="stat-card"><div className="stat-val">{itemsSold}</div><div className="stat-label">Items Sold</div></div>
+              <div className="stat-card"><div className="stat-val">{formatMoney(shopRevenue)}</div><div className="stat-label">Shop Revenue</div></div>
+              <div className="stat-card"><div className="stat-val">{woCompleted}</div><div className="stat-label">Work Orders Completed</div></div>
+              <div className="stat-card"><div className="stat-val">{formatMoney(woRevenue)}</div><div className="stat-label">Work Order Revenue</div></div>
+            </div>
+
+            {/* Notifications */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontFamily: 'var(--serif)', fontSize: '16px', color: 'var(--wh)' }}>Notifications</span>
+                {notifications.length > 0 && (
+                  <span style={{ background: 'var(--gl)', color: '#000', fontSize: '8px', fontWeight: 700, padding: '2px 6px', borderRadius: '8px' }}>{notifications.length}</span>
+                )}
+              </div>
+              {notifications.length > 0 && (
+                <button onClick={markAllRead} style={{ background: 'none', border: 'none', color: 'var(--d1)', fontSize: '9px', letterSpacing: '.12em', textTransform: 'uppercase', cursor: 'pointer' }}>Mark all read</button>
+              )}
+            </div>
+
+            {notifications.length === 0 ? (
+              <div style={{ padding: '40px 0', textAlign: 'center', fontSize: '10px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)' }}>No new notifications</div>
+            ) : (
+              notifications.slice(0, 20).map(n => (
+                <div key={n.id} className="notif-row" onClick={() => markOneRead(n.id, n.user_id, n.type)}>
+                  <div className="notif-dot" />
+                  <div className="notif-icon">{ICON_MAP[n.type] || '\u25CB'}</div>
+                  <div className="notif-body">
+                    <div className="notif-msg">{n.message}</div>
+                    <div className="notif-meta">{n.account_users?.name || (n.type === 'guest_inquiries' ? 'Guest' : '\u2014')}</div>
+                  </div>
+                  <div className="notif-time">{relativeTime(n.created_at)}</div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+    </AdminLayout>
   );
 }
