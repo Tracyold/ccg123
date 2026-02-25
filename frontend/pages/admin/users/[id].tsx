@@ -237,7 +237,7 @@ export default function AdminUserDetail() {
     { id: 'invoices', label: 'Invoices' },
   ];
 
-  const inputStyle: React.CSSProperties = { background: 'var(--k2)', border: '1px solid var(--ln)', color: 'var(--tx)', padding: '10px 12px', fontFamily: 'var(--sans)', fontSize: '14px', width: '100%', outline: 'none', height: '38px' };
+  const inputStyle: React.CSSProperties = { background: 'var(--k2)', border: '1px solid var(--ln)', color: 'var(--tx)', padding: '10px 12px', fontFamily: 'var(--sans)', fontSize: '15px', width: '100%', outline: 'none', height: '39px' };
 
   return (
     <>
@@ -245,30 +245,30 @@ export default function AdminUserDetail() {
       <div className="shell">
         {/* Top nav bar instead of sidebar */}
         <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100vh', overflow: 'hidden' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '12px 24px', borderBottom: '1px solid var(--ln)', background: 'var(--k1)', flexShrink: 0 }}>
-            <button onClick={() => router.push('/admin/users')} className="hidden md:inline-block" style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.45)', cursor: 'pointer', fontSize: '11px', letterSpacing: '.18em', textTransform: 'uppercase', fontFamily: "'Montserrat', sans-serif", transition: 'color .15s' }} onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')} onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}>← USER LIST</button>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: '16px', color: 'var(--wh)' }}>
-              <span style={{ fontSize: '10px', color: 'var(--d2)', textTransform: 'uppercase', letterSpacing: '.15em', marginRight: '8px' }}>User</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '19px', padding: '13px 25px', borderBottom: '1px solid var(--ln)', background: 'var(--k1)', flexShrink: 0 }}>
+            <button onClick={() => router.push('/admin/users')} className="hidden md:inline-block" style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.45)', cursor: 'pointer', fontSize: '13px', letterSpacing: '.09em', textTransform: 'uppercase', fontFamily: "'Montserrat'", transition: 'color .15s' }} onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')} onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}>← USER LIST</button>
+            <div style={{ fontFamily: 'Montserrat', fontSize: '17px', texttransform: 'uppercase', color: 'rgba(45,212,191,1)' }}>
+              <span style={{ fontSize: '5px', color: 'var(--d2)', textTransform: 'uppercase', letterSpacing: '.15em', marginRight: '11px' }}></span>
               {isGuest ? 'Guest Account' : user?.name || 'User'}
             </div>
             <div style={{ display: 'flex', gap: '16px', marginLeft: '24px' }}>
               {TABS.map(t => (
                 <button key={t.id} onClick={() => setActiveTab(t.id)}
-                  style={{ padding: '14px 20px', fontFamily: 'var(--sans)', fontSize: '14px', letterSpacing: '.15em', textTransform: 'uppercase', background: 'none', border: 'none', borderBottom: activeTab === t.id ? '1px solid var(--gl)' : '1px solid transparent', color: activeTab === t.id ? 'var(--wh)' : 'var(--d1)', cursor: 'pointer', position: 'relative' }}>
+                  style={{ padding: '13px 17px', fontFamily: 'var(--sans)', fontSize: '13px', letterSpacing: '.15em', textTransform: 'uppercase', background: 'none', border: 'none', borderBottom: activeTab === t.id ? '.5px solid var(--gl)' : '1px solid transparent', color: activeTab === t.id ? 'var(--wh)' : 'var(--d1)', cursor: 'pointer', position: 'relative' }}>
                   {t.label}
-                  {t.dot && <span style={{ position: 'absolute', top: '4px', right: '-6px', width: '5px', height: '5px', borderRadius: '50%', background: 'var(--er)' }} />}
+                  {t.dot && <span style={{ position: 'absolute', top: '5px', right: '-7px', width: '7px', height: '7px', borderRadius: '20%', background: 'var(--er)' }} />}
                 </button>
               ))}
             </div>
           </div>
 
-          <div style={{ flex: 1, overflow: 'auto', padding: '28px 40px' }}>
+          <div style={{ flex: 1, overflow: 'auto', padding: '29px 41px' }}>
             {/* DASHBOARD TAB */}
             {activeTab === 'dashboard' && user && (
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '45px' }}>
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                    <span style={{ fontFamily: 'var(--serif)', fontSize: '20px', color: 'var(--wh)' }}>Account Info</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '19px' }}>
+                    <span style={{ fontFamily: 'var(--serif)', fontSize: '25px', color: 'var(--wh)' }}>Account Info</span>
                     <button className="ab" onClick={() => { setEditUser({ ...user }); setShowEditUser(true); }}>Edit</button>
                   </div>
                   {[
@@ -279,20 +279,20 @@ export default function AdminUserDetail() {
                     { label: 'Business', val: user.business_name || '—' },
                     { label: 'Member Since', val: fmtDate(user.created_at) },
                   ].map(f => (
-                    <div key={f.label} style={{ marginBottom: '14px' }}>
-                      <div style={{ fontSize: '12px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '4px' }}>{f.label}</div>
-                      <div style={{ fontSize: '16px', color: 'var(--tx)' }}>{f.val}</div>
+                    <div key={f.label} style={{ marginBottom: '15px' }}>
+                      <div style={{ fontSize: '13px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '7px' }}>{f.label}</div>
+                      <div style={{ fontSize: '17px', color: 'var(--tx)' }}>{f.val}</div>
                     </div>
                   ))}
-                  <div style={{ marginTop: '8px' }}>
+                  <div style={{ marginTop: '9px' }}>
                     <span className={`pill ${user.status === 'ACTIVE' ? 'pill-A' : 'pill-I'}`}>{user.status}</span>
                   </div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', alignContent: 'start' }}>
-                  <div className="stat-card"><div className="stat-val">{woCount}</div><div className="stat-label">Work Orders</div></div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '17px', alignContent: 'start' }}>
+                  <div className="stat-card"><div className="stat-val" style={{ color: 'rgba(45,212,191,1)', fontFamily: "'Courier New', monospace" }}>{woCount}</div><div className="stat-label">Work Orders</div></div>
                   <div className="stat-card"><div className="stat-val" style={{ color: 'rgba(45,212,191,1)', fontFamily: "'Courier New', monospace" }}>{formatMoney(invTotal)}</div><div className="stat-label">Total Invoiced</div></div>
-                  <div className="stat-card"><div className="stat-val">{inqCount}</div><div className="stat-label">Inquiries</div></div>
-                  <div className="stat-card"><div className="stat-val">{srCount}</div><div className="stat-label">Service Requests</div></div>
+                  <div className="stat-card"><div className="stat-val" style={{ color: 'rgba(45,212,191,1)', fontFamily: "'Courier New', monospace" }}>{inqCount}</div><div className="stat-label">Inquiries</div></div>
+                  <div className="stat-card"><div className="stat-val" style={{ color: 'rgba(45,212,191,1)', fontFamily: "'Courier New', monospace" }}>{srCount}</div><div className="stat-label">Service Requests</div></div>
                 </div>
               </div>
             )}
@@ -302,11 +302,11 @@ export default function AdminUserDetail() {
               inquiries.length === 0 ? <div className="empty"><div className="empty-tx">No inquiries</div></div> :
               inquiries.map(inq => (
                 <div key={inq.account_inquiry_id} onClick={() => markInqRead(inq)}
-                  style={{ background: 'var(--k1)', border: '1px solid var(--ln)', padding: '16px', marginBottom: '8px', cursor: 'pointer', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                  {!inq.is_read && <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gl)', marginTop: '6px', flexShrink: 0 }} />}
+                  style={{ background: 'var(--k1)', border: '1px solid var(--ln)', padding: '17px', marginBottom: '9px', cursor: 'pointer', display: 'flex', gap: '13px', alignItems: 'flex-start' }}>
+                  {!inq.is_read && <div style={{ width: '7px', height: '9px', borderRadius: '50%', background: 'var(--gl)', marginTop: '7px', flexShrink: 0 }} />}
                   <div>
-                    <p style={{ fontSize: '15px', color: 'var(--tx)', marginBottom: '4px' }}>{inq.description}</p>
-                    <span style={{ fontSize: '12px', color: 'var(--d1)' }}>{fmtDate(inq.created_at)} · {fmtTime(inq.created_at)}</span>
+                    <p style={{ fontSize: '19px', color: 'var(--tx)', marginBottom: '7px' }}>{inq.description}</p>
+                    <span style={{ fontSize: '17px', color: 'var(--d1)' }}>{fmtDate(inq.created_at)} · {fmtTime(inq.created_at)}</span>
                   </div>
                 </div>
               ))
@@ -317,12 +317,12 @@ export default function AdminUserDetail() {
               serviceRequests.length === 0 ? <div className="empty"><div className="empty-tx">No service requests</div></div> :
               serviceRequests.map(sr => (
                 <div key={sr.service_request_id} onClick={() => markSRRead(sr)}
-                  style={{ background: 'var(--k1)', border: '1px solid var(--ln)', padding: '16px', marginBottom: '8px', cursor: 'pointer', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                  {!sr.is_read && <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gl)', marginTop: '6px', flexShrink: 0 }} />}
+                  style={{ background: 'var(--k1)', border: '1px solid var(--ln)', padding: '17px', marginBottom: '9px', cursor: 'pointer', display: 'flex', gap: '11px', alignItems: 'flex-start' }}>
+                  {!sr.is_read && <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--gl)', marginTop: '7px', flexShrink: 0 }} />}
                   <div>
-                    <div style={{ fontSize: '13px', color: 'var(--gl)', marginBottom: '4px' }}>{sr.service_type}</div>
-                    <p style={{ fontSize: '15px', color: 'var(--tx)', marginBottom: '4px' }}>{sr.description}</p>
-                    <span style={{ fontSize: '12px', color: 'var(--d1)' }}>{fmtDate(sr.created_at)}</span>
+                    <div style={{ fontSize: '17px', color: 'var(--gl)', marginBottom: '7px' }}>{sr.service_type}</div>
+                    <p style={{ fontSize: '17px', color: 'var(--tx)', marginBottom: '7px' }}>{sr.description}</p>
+                    <span style={{ fontSize: '17px', color: 'var(--d1)' }}>{fmtDate(sr.created_at)}</span>
                   </div>
                 </div>
               ))
@@ -331,21 +331,21 @@ export default function AdminUserDetail() {
             {/* WORK ORDERS TAB */}
             {activeTab === 'workorders' && (
               <>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                  <span style={{ fontFamily: 'var(--serif)', fontSize: '20px', color: 'var(--wh)' }}>Work Orders</span>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '17px' }}>
+                  <span style={{ fontFamily: 'var(--serif)', fontSize: '24px', color: 'var(--wh)' }}>Work Orders</span>
                   {!isGuest && <button className="btn-add" onClick={() => setShowAddWO(true)}>+ Add Work Order</button>}
                 </div>
                 {workOrders.length === 0 ? <div className="empty"><div className="empty-tx">No work orders</div></div> :
                 workOrders.map(wo => (
-                  <div key={wo.work_order_id} style={{ background: 'var(--k1)', border: '1px solid var(--ln)', padding: '14px', marginBottom: '8px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                      <span style={{ fontFamily: 'var(--serif)', fontSize: '17px', color: 'var(--wh)' }}>{wo.title}</span>
-                      <span style={{ fontSize: '8px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', padding: '3px 7px', background: STATUS_COLORS[wo.status]?.bg, color: STATUS_COLORS[wo.status]?.color }}>{wo.status}</span>
+                  <div key={wo.work_order_id} style={{ background: 'var(--k1)', border: '1px solid var(--ln)', padding: '11px', marginBottom: '9px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '7px' }}>
+                      <span style={{ fontFamily: 'comfortaa', fontSize: '21px', color: 'var(--wh)' }}>{wo.title}</span>
+                      <span style={{ fontSize: '17px', fontWeight: 500, letterSpacing: '.3em', textTransform: 'uppercase', padding: '9px 11px', background: STATUS_COLORS[wo.status]?.bg, color: STATUS_COLORS[wo.status]?.color }}>{wo.status}</span>
                     </div>
-                    <p style={{ fontSize: '13px', color: 'var(--d1)', marginBottom: '6px' }}>{wo.description}</p>
-                    {wo.estimated_price && <div style={{ fontSize: '15px', color: 'var(--gl)', fontFamily: 'var(--serif)' }}>{formatMoney(wo.estimated_price)}</div>}
-                    <div style={{ fontSize: '12px', color: 'var(--d2)', marginTop: '8px' }}>{fmtDate(wo.created_at)}</div>
-                    <div style={{ display: 'flex', gap: '6px', marginTop: '10px' }}>
+                    <p style={{ fontSize: '19px', color: 'var(--d1)', marginBottom: '11px' }}>{wo.description}</p>
+                    {wo.estimated_price && <div style={{ fontSize: '19px', color: 'rgba(45,212,191,1)', fontFamily: 'courier new' }}>{formatMoney(wo.estimated_price)}</div>}
+                    <div style={{ fontSize: '15px', color: 'var(--d2)', marginTop: '11px' }}>{fmtDate(wo.created_at)}</div>
+                    <div style={{ display: 'flex', gap: '9px', marginTop: '11px' }}>
                       {wo.status === 'ACCEPTED' && <button className="ab pub" onClick={() => completeWO(wo)}>Complete</button>}
                       {(wo.status === 'CREATED' || wo.status === 'ACCEPTED') && <button className="ab rem" onClick={() => cancelWO(wo)}>Cancel</button>}
                     </div>
@@ -360,15 +360,15 @@ export default function AdminUserDetail() {
               invoices.map(inv => {
                 const item = inv.line_items?.[0];
                 return (
-                  <div key={inv.invoice_id} style={{ background: 'var(--k1)', border: '1px solid var(--ln)', padding: '14px', marginBottom: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div key={inv.invoice_id} style={{ background: 'var(--k1)', border: '1px solid var(--ln)', padding: '15px', marginBottom: '9px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div>
-                      <div style={{ fontFamily: 'var(--serif)', fontSize: '17px', color: 'var(--wh)' }}>{item?.title || 'Product'}</div>
-                      <div style={{ fontSize: '11px', color: 'var(--d2)', marginTop: '4px', fontFamily: 'monospace' }}>{inv.stripe_session_id?.slice(0, 20)}...</div>
-                      <div style={{ fontSize: '12px', color: 'var(--d1)', marginTop: '2px' }}>{fmtDate(inv.paid_at)}</div>
+                      <div style={{ fontFamily: 'var(--serif)', fontSize: '25px', color: 'var(--wh)' }}>{item?.title || 'Product'}</div>
+                      <div style={{ fontSize: '17px', color: 'var(--d2)', marginTop: '7px', fontFamily: 'monospace' }}>{inv.stripe_session_id?.slice(0, 20)}...</div>
+                      <div style={{ fontSize: '21px', color: 'var(--d1)', marginTop: '5px' }}>{fmtDate(inv.paid_at)}</div>
                     </div>
                     <div style={{ textAlign: 'right' }}>
                       <div style={{ fontFamily: 'var(--serif)', fontSize: '17px', color: 'var(--gl)' }}>{formatMoney(inv.total_amount)}</div>
-                      <span className="pill pill-A" style={{ marginTop: '4px' }}>PAID</span>
+                      <span className="pill pill-A" style={{ marginTop: '5px' }}>PAID</span>
                     </div>
                   </div>
                 );
@@ -378,35 +378,35 @@ export default function AdminUserDetail() {
 
           {/* Chat widget — fixed bottom bar */}
           {chatThread && !isGuest && (
-            <div style={{ position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '380px', zIndex: 100 }}>
+            <div style={{ position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '479px', zIndex: 100 }}>
               {!chatExpanded ? (
-                <div onClick={expandChat} style={{ height: '48px', background: 'var(--k1)', borderTop: '1px solid var(--ln)', border: '1px solid var(--ln)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px', cursor: 'pointer' }}>
-                  <span style={{ fontFamily: 'var(--sans)', fontSize: '11px', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--gl)' }}>Chat · {user?.name || 'User'}</span>
-                  <span style={{ color: 'var(--d1)', fontSize: '16px' }}>↑</span>
+                <div onClick={expandChat} style={{ height: '79px', background: 'var(--k1)', borderTop: '1px solid var(--ln)', border: '1px solid var(--ln)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 21px', cursor: 'pointer' }}>
+                  <span style={{ fontFamily: 'var(--sans)', fontSize: '15px', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--gl)' }}>Chat · {user?.name || 'User'}</span>
+                  <span style={{ color: 'var(--d1)', fontSize: '17px' }}>↑</span>
                 </div>
               ) : (
-                <div style={{ height: '520px', background: 'var(--k1)', borderTop: '1px solid var(--ln)', border: '1px solid var(--ln)', display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 20px', borderBottom: '1px solid var(--ln)', flexShrink: 0 }}>
-                    <span style={{ fontFamily: 'var(--sans)', fontSize: '11px', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--gl)' }}>Chat · {user?.name || 'User'}</span>
-                    <button onClick={() => setChatExpanded(false)} style={{ background: 'none', border: 'none', color: 'var(--d1)', cursor: 'pointer', fontSize: '16px' }}>↓</button>
+                <div style={{ height: '799px', background: 'var(--k1)', borderTop: '1px solid var(--ln)', border: '1px solid var(--ln)', display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '13px 21px', borderBottom: '1px solid var(--ln)', flexShrink: 0 }}>
+                    <span style={{ fontFamily: 'var(--sans)', fontSize: '17px', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--gl)' }}>Chat · {user?.name || 'User'}</span>
+                    <button onClick={() => setChatExpanded(false)} style={{ background: 'none', border: 'none', color: 'var(--d1)', cursor: 'pointer', fontSize: '19px' }}>↓</button>
                   </div>
-                  <div style={{ flex: 1, overflowY: 'auto', padding: '12px 20px' }}>
+                  <div style={{ flex: 1, overflowY: 'auto', padding: '13px 21px' }}>
                     {messages.map(m => (
-                      <div key={m.chat_message_id} style={{ display: 'flex', flexDirection: 'column', alignItems: m.actor === 'ADMIN' ? 'flex-end' : 'flex-start', marginBottom: '10px' }}>
-                        <div style={{ maxWidth: '70%', padding: '10px 14px', borderRadius: '10px', background: m.actor === 'ADMIN' ? '#d4af37' : 'rgba(45,212,191,1)', color: '#050505', fontFamily: "'Comfortaa', sans-serif", fontSize: '15px' }}>
+                      <div key={m.chat_message_id} style={{ display: 'flex', flexDirection: 'column', alignItems: m.actor === 'ADMIN' ? 'flex-end' : 'flex-start', marginBottom: '11px' }}>
+                        <div style={{ maxWidth: '70%', padding: '11px 15px', borderRadius: '13px', background: m.actor === 'ADMIN' ? '#d4af37' : 'rgba(45,212,191,1)', color: '#050505', fontFamily: "'Comfortaa', sans-serif", fontSize: '19px' }}>
                           {m.body}
                         </div>
-                        <span style={{ fontSize: '9px', color: 'var(--d2)', marginTop: '3px' }}>{fmtTime(m.created_at)}</span>
+                        <span style={{ fontSize: '15px', color: 'var(--d2)', marginTop: '5px' }}>{fmtTime(m.created_at)}</span>
                       </div>
                     ))}
                     <div ref={chatEndRef} />
                   </div>
-                  <div style={{ display: 'flex', gap: '8px', padding: '12px 20px', borderTop: '1px solid var(--ln)', flexShrink: 0 }}>
+                  <div style={{ display: 'flex', gap: '9px', padding: '13px 21px', borderTop: '.5px solid var(--ln)', flexShrink: 0 }}>
                     <input value={chatInput} onChange={e => setChatInput(e.target.value)} placeholder="Type a message..."
-                      style={{ flex: 1, background: 'var(--k2)', border: '1px solid var(--ln)', padding: '10px 12px', color: 'var(--tx)', fontFamily: 'var(--sans)', fontSize: '15px', outline: 'none', height: '44px' }}
+                      style={{ flex: 1, background: 'var(--k2)', border: '1px solid var(--ln)', padding: '11px 13px', color: 'var(--tx)', fontFamily: 'var(--sans)', fontSize: '21px', outline: 'none', height: '47px' }}
                       onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); } }} />
                     <button onClick={sendChat} disabled={chatSending || !chatInput.trim()}
-                      style={{ background: 'var(--gl)', border: 'none', color: '#000', padding: '10px 16px', cursor: 'pointer', fontWeight: 700, fontSize: '16px' }}>→</button>
+                      style={{ background: 'var(--gl)', border: 'none', color: '#000', padding: '11px 17px', cursor: 'pointer', fontWeight: 700, fontSize: '19px' }}>→</button>
                   </div>
                 </div>
               )}
@@ -418,8 +418,8 @@ export default function AdminUserDetail() {
       {/* Add Work Order Modal */}
       {showAddWO && (
         <div className="ov" onClick={e => { if (e.target === e.currentTarget) setShowAddWO(false); }}>
-          <div style={{ margin: 'auto', background: 'var(--k1)', border: '1px solid var(--ln)', padding: '28px', maxWidth: '480px', width: '90%' }}>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: '22px', color: 'var(--wh)', marginBottom: '20px' }}>New Work Order</div>
+          <div style={{ margin: 'auto', background: 'var(--k1)', border: '.5px solid var(--ln)', padding: '29px', maxWidth: '479px', width: '90%' }}>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: '23px', color: 'var(--wh)', marginBottom: '21px' }}>New Work Order</div>
             {[
               { label: 'Title *', key: 'title', placeholder: 'Work order title' },
               { label: 'Service Type', key: 'service_type', placeholder: 'e.g. Custom Cut' },
@@ -427,17 +427,17 @@ export default function AdminUserDetail() {
               { label: 'Estimated Price', key: 'estimated_price', placeholder: '0.00' },
               { label: 'Notes', key: 'notes', placeholder: 'Internal notes' },
             ].map(f => (
-              <div key={f.key} style={{ marginBottom: '12px' }}>
+              <div key={f.key} style={{ marginBottom: '13px' }}>
                 <label style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>{f.label}</label>
                 <input value={(woForm as any)[f.key]} onChange={e => setWoForm({ ...woForm, [f.key]: e.target.value })} placeholder={f.placeholder} style={inputStyle} />
               </div>
             ))}
-            <div style={{ marginBottom: '12px' }}>
-              <label style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Description *</label>
+            <div style={{ marginBottom: '13px' }}>
+              <label style={{ fontSize: '17px', fontWeight: 500, letterSpacing: '.3em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Description *</label>
               <textarea value={woForm.description} onChange={e => setWoForm({ ...woForm, description: e.target.value })} placeholder="Work order description"
                 style={{ ...inputStyle, minHeight: '80px', resize: 'vertical' }} />
             </div>
-            <div style={{ display: 'flex', gap: '8px' }}>
+            <div style={{ display: 'flex', gap: '9px' }}>
               <button className="bp" onClick={createWO} disabled={woSaving || !woForm.title || !woForm.description}>{woSaving ? 'Creating...' : 'Create'}</button>
               <button className="bg" onClick={() => setShowAddWO(false)}>Cancel</button>
             </div>
@@ -448,30 +448,30 @@ export default function AdminUserDetail() {
       {/* Edit User Modal */}
       {showEditUser && editUser && (
         <div className="ov" onClick={e => { if (e.target === e.currentTarget) setShowEditUser(false); }}>
-          <div style={{ margin: 'auto', background: 'var(--k1)', border: '1px solid var(--ln)', padding: '28px', maxWidth: '480px', width: '90%' }}>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: '22px', color: 'var(--wh)', marginBottom: '20px' }}>Edit User</div>
+          <div style={{ margin: 'auto', background: 'var(--k1)', border: '1px solid var(--ln)', padding: '29px', maxWidth: '480px', width: '90%' }}>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: '23px', color: 'var(--wh)', marginBottom: '21px' }}>Edit User</div>
             {[
               { label: 'Name', key: 'name' }, { label: 'Email', key: 'email' },
               { label: 'Phone', key: 'phone' }, { label: 'Business Name', key: 'business_name' },
             ].map(f => (
-              <div key={f.key} style={{ marginBottom: '12px' }}>
-                <label style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>{f.label}</label>
+              <div key={f.key} style={{ marginBottom: '13px' }}>
+                <label style={{ fontSize: '15px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>{f.label}</label>
                 <input value={editUser[f.key] || ''} onChange={e => setEditUser({ ...editUser, [f.key]: e.target.value })} style={inputStyle} />
               </div>
             ))}
-            <div style={{ marginBottom: '12px' }}>
-              <label style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Shipping Address</label>
+            <div style={{ marginBottom: '13px' }}>
+              <label style={{ fontSize: '15px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Shipping Address</label>
               <textarea value={editUser.shipping_address || ''} onChange={e => setEditUser({ ...editUser, shipping_address: e.target.value })} style={{ ...inputStyle, minHeight: '60px', resize: 'vertical' }} />
             </div>
-            <div style={{ marginBottom: '16px' }}>
-              <label style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Status</label>
+            <div style={{ marginBottom: '17px' }}>
+              <label style={{ fontSize: '15px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Status</label>
               <select value={editUser.status || 'ACTIVE'} onChange={e => setEditUser({ ...editUser, status: e.target.value })}
                 style={{ ...inputStyle, cursor: 'pointer' }}>
                 <option value="ACTIVE">ACTIVE</option>
                 <option value="SUSPENDED">SUSPENDED</option>
               </select>
             </div>
-            <div style={{ display: 'flex', gap: '8px' }}>
+            <div style={{ display: 'flex', gap: '9px' }}>
               <button className="bp" onClick={saveUser}>Save</button>
               <button className="bg" onClick={() => setShowEditUser(false)}>Cancel</button>
             </div>

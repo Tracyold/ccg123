@@ -73,7 +73,7 @@ export default function AdminUsersPage() {
     <AdminLayout activeNav="users">
       <div className="ph">
         <div className="ph-title">User List</div>
-        <div style={{ fontSize: '10px', color: 'var(--d1)' }}>{users.length} accounts</div>
+        <div style={{ fontSize: '17px', color: 'var(--d1)' }}>{users.length} accounts</div>
       </div>
       <div style={{ padding: '12px 32px', borderBottom: '1px solid var(--ln)' }}>
         <input value={search} onChange={e => setSearch(e.target.value)}
@@ -89,12 +89,12 @@ export default function AdminUsersPage() {
             onMouseEnter={e => (e.currentTarget.style.background = 'var(--k2)')}
             onMouseLeave={e => (e.currentTarget.style.background = 'var(--k1)')}>
             <div>
-              <div style={{ fontSize: '8.5px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '6px' }}>Guest Account</div>
-              <div style={{ fontFamily: 'var(--serif)', fontSize: '15px', color: 'var(--wh)' }}>{guestUser.name || 'Guest User'}</div>
+              <div style={{ fontSize: '13px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '6px' }}>Guest Account</div>
+              <div style={{ fontFamily: 'Comfortaa', fontSize: '15px', color: 'var(--wh)' }}>{guestUser.name || 'Guest User'}</div>
               <div style={{ fontSize: '9px', color: 'var(--d2)', fontStyle: 'italic', marginTop: '4px' }}>This account receives all non-logged-in inquiries and product invoices</div>
             </div>
             {guestUnread > 0 && (
-              <div style={{ background: '#cfb040', color: '#000', fontSize: '8.5px', fontWeight: 700, width: '18px', height: '18px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ background: '#cfb040', color: '#000', fontSize: '19px', fontWeight: 700, width: '18px', height: '18px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {guestUnread > 9 ? '9+' : guestUnread}
               </div>
             )}
@@ -122,15 +122,15 @@ export default function AdminUsersPage() {
                 return (
                   <tr key={u.account_user_id} onClick={() => router.push(`/admin/users/${u.account_user_id}`)}>
                     <td><div className="td-name">{u.name || '—'}</div></td>
-                    <td style={{ fontSize: 12, color: 'var(--d1)' }}>{u.email || '—'}</td>
-                    <td style={{ fontSize: 12 }}>{u.phone || '—'}</td>
-                    <td style={{ fontSize: 11, color: 'var(--d1)', maxWidth: 150, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{u.shipping_address || '—'}</td>
-                    <td style={{ fontSize: 11, color: 'var(--d1)' }}>{fmtDate(u.created_at)}</td>
-                    <td style={{ fontSize: 11, color: 'var(--d1)' }}>{fmtTime(u.created_at)}</td>
+                    <td style={{ fontSize: 17, color: 'var(--d1)' }}>{u.email || '—'}</td>
+                    <td style={{ fontSize: 15 }}>{u.phone || '—'}</td>
+                    <td style={{ fontSize: 13, color: 'var(--d1)', maxWidth: 150, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{u.shipping_address || '—'}</td>
+                    <td style={{ fontSize: 13, color: 'var(--d1)' }}>{fmtDate(u.created_at)}</td>
+                    <td style={{ fontSize: 13, color: 'var(--d1)' }}>{fmtTime(u.created_at)}</td>
                     <td><span className={`pill ${u.status === 'ACTIVE' ? 'pill-A' : 'pill-I'}`}>{u.status}</span></td>
                     <td>
                       {uCount > 0 && (
-                        <div style={{ background: '#cfb040', color: '#000', fontSize: '8.5px', fontWeight: 700, width: '18px', height: '18px', borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ background: '#cfb040', color: '#000', fontSize: '13px', fontWeight: 700, width: '18px', height: '18px', borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
                           {uCount > 9 ? '9+' : uCount}
                         </div>
                       )}

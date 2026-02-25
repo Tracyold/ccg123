@@ -153,7 +153,7 @@ export default function AdminProductsPage() {
   const [curIdx, setCurIdx] = useState(0);
 
   const filtered: Record<string, any[]> = {
-    active: products.filter(p => p.product_state === 'PUBLISHED' || p.product_state === 'ACTIVE'),
+    active: products.filter(p => p.product_state === 'ACTIVE'),
     drafts: products.filter(p => p.product_state === 'DRAFT'),
     inactive: products.filter(p => p.product_state === 'INACTIVE'),
   };
@@ -197,14 +197,14 @@ export default function AdminProductsPage() {
 
   async function publishAll() {
     setSaving(true);
-    for (const p of queue) { const { error: e } = await upsertProduct(p, 'PUBLISHED'); if (e) { setError(e.message); setSaving(false); return; } }
+    for (const p of queue) { const { error: e } = await upsertProduct(p, 'ACTIVE'); if (e) { setError(e.message); setSaving(false); return; } }
     // TODO: Call send-new-listing-notification edge function for each published product
     // for (const p of queue) { await supabase.functions.invoke('send-new-listing-notification', { body: { product_id: p.product_id } }); }
     await loadProducts(); setSaving(false); setShowForm(false); setTab('active');
   }
 
   async function publishOne(product: any) {
-    const { error: e } = await upsertProduct(product, 'PUBLISHED');
+    const { error: e } = await upsertProduct(product, 'ACTIVE');
     if (e) { setError(e.message); return; }
     // TODO: await supabase.functions.invoke('send-new-listing-notification', { body: { product_id: product.product_id } });
     await loadProducts();
