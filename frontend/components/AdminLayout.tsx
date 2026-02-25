@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactNode } from 'react';
+import { useState, useEffect, useRef, ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import { supabase } from '../lib/supabase';
 
