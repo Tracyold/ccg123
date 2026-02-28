@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 // ── TopNav — Cutting Corners Gems ────────────────────────────
 // Absolutely positioned so it overlays the hero section.
@@ -247,14 +248,14 @@ useEffect(() => {
 
       <nav className={`tnav${scrolled ? ' scrolled' : ''}`}>
         {/* Brand */}
-        <a href="/" className="tnav-brand">Cutting Corners Gems</a>
+        <Link href="/" className="tnav-brand">Cutting Corners Gems</Link>
 
         {/* Desktop links */}
         <div className="tnav-links">
           {NAV_LINKS.map(l => (
-            <a key={l.href} href={l.href} className="tnav-link">{l.label}</a>
+            <Link key={l.href} href={l.href} className="tnav-link">{l.label}</Link>
           ))}
-                    <a href={authHref} className="tnav-auth tnav-auth-desktop" onClick={handleAuthClick}>{authLabel}</a>
+                    <Link href={authHref} className="tnav-auth tnav-auth-desktop" onClick={handleAuthClick}>{authLabel}</Link>
 
         </div>
 
@@ -273,14 +274,14 @@ useEffect(() => {
       {/* Mobile drawer */}
       <div className={`tnav-drawer${drawerOpen ? ' open' : ''}`}>
         {NAV_LINKS.map(l => (
-          <a
+          <Link
             key={l.href}
             href={l.href}
             className="tnav-drawer-link"
             onClick={() => setDrawerOpen(false)}
           >
             {l.label}
-          </a>
+          </Link>
         ))}
         <a
           href={authHref}

@@ -70,7 +70,7 @@ function SortBadge({ value, onCommit }: { value: number; onCommit: (n: number) =
 function PhotoForm({ queue, currentIndex, onCurrentChange, onClose, onAddToQueue, onPublishAll, onSaveDrafts, onSwitchIndex, onArchiveCurrent, isEdit }: any) {
   const current = queue[currentIndex];
   const [flash, setFlash] = useState(false);
-  const timer = useRef<any>();
+  const timer = useRef<any>(null);
   const upd = (f: string, v: any) => onCurrentChange({ ...current, [f]: v });
 
   useEffect(() => {

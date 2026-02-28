@@ -70,7 +70,7 @@ function GIASection({ value, onChange }: { value: string; onChange: (f: string, 
 function ProductForm({ queue, currentIndex, onCurrentChange, onClose, onAddToQueue, onPublishAll, onSaveDrafts, onSwitchIndex, saving }: any) {
   const current = queue[currentIndex];
   const [flash, setFlash] = useState(false);
-  const timerRef = useRef<any>();
+  const timerRef = useRef<any>(null);
   const upd = (f: string, v: string) => onCurrentChange({ ...current, [f]: v });
 
   useEffect(() => {

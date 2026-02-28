@@ -224,6 +224,60 @@ function InvoicePreviewPopup({
   );
 }
 
+// ── Inquiry Sub-Forms ───────────────────────────────────────
+function InquiryContactForm({ onSubmit, onClose }: { onSubmit: (info: any) => void; onClose: () => void }) {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [err, setErr] = useState('');
+  return (
+    <>
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <div style={{ flex: 1 }}>
+          <label style={labelStyle}>First Name *</label>
+          <input style={inputStyle} placeholder="Jane" value={firstName} onChange={e => setFirstName(e.target.value)} />
+        </div>
+        <div style={{ flex: 1 }}>
+          <label style={labelStyle}>Last Name *</label>
+          <input style={inputStyle} placeholder="Smith" value={lastName} onChange={e => setLastName(e.target.value)} />
+        </div>
+      </div>
+      <label style={labelStyle}>Phone Number *</label>
+      <input style={inputStyle} type="tel" placeholder="+1 (555) 000-0000" value={phone} onChange={e => setPhone(e.target.value)} />
+      <label style={labelStyle}>Email Address *</label>
+      <input style={inputStyle} type="email" placeholder="jane@email.com" value={email} onChange={e => setEmail(e.target.value)} />
+      {err && <p style={{ fontSize: '11px', color: '#c07070', marginBottom: '10px' }}>{err}</p>}
+      <button style={goldBtnStyle} onClick={() => {
+        if (!firstName.trim() || !lastName.trim() || !phone.trim() || !email.trim()) { setErr('All fields are required.'); return; }
+        onSubmit({ firstName: firstName.trim(), lastName: lastName.trim(), email: email.trim(), phone: phone.trim() });
+      }}>Continue</button>
+      <button style={ghostBtnStyle} onClick={onClose}>Cancel</button>
+    </>
+  );
+}
+
+function InquiryDescForm({ onSubmit, onClose, submitting }: { onSubmit: (desc: string) => void; onClose: () => void; submitting: boolean }) {
+  const [desc, setDesc] = useState('');
+  return (
+    <>
+      <label style={labelStyle}>Your Message *</label>
+      <textarea
+        style={{ ...inputStyle, minHeight: '100px', resize: 'vertical' }}
+        placeholder="Tell us about your interest in this gem..."
+        value={desc}
+        onChange={e => setDesc(e.target.value)}
+      />
+      <button style={{ ...goldBtnStyle, opacity: submitting || !desc.trim() ? 0.5 : 1 }}
+        onClick={() => { if (desc.trim()) onSubmit(desc.trim()); }}
+        disabled={submitting || !desc.trim()}>
+        {submitting ? 'Sending...' : 'Submit Inquiry'}
+      </button>
+      <button style={ghostBtnStyle} onClick={onClose}>Cancel</button>
+    </>
+  );
+}
+
 // ── Main Page ───────────────────────────────────────────────
 export default function ShopPage() {
   const [session, setSession] = useState<any>(null);
@@ -234,13 +288,12 @@ export default function ShopPage() {
   // Guest info
   const [guestInfo, setGuestInfo] = useState<GuestInfo | null>(null);
   const [showGuestPopup, setShowGuestPopup] = useState(false);
-  const [pendingAction, setPendingAction] = useState<'inquiry' | 'buy' | null>(null);
+  const [pendingAction, setPendingAction] = useState<'buy' | null>(null);
 
   // Inquiry state
-  const [inquiryOpen, setInquiryOpen] = useState(false);
-  const [inquiryMessage, setInquiryMessage] = useState('');
+  const [inquiryStep, setInquiryStep] = useState<'collect-info' | 'describe' | 'success' | null>(null);
+  const [guestCollected, setGuestCollected] = useState<{firstName: string; lastName: string; email: string; phone: string} | null>(null);
   const [inquirySubmitting, setInquirySubmitting] = useState(false);
-  const [inquirySuccess, setInquirySuccess] = useState(false);
 
   // Invoice preview
   const [showInvoicePreview, setShowInvoicePreview] = useState(false);
@@ -248,10 +301,25 @@ export default function ShopPage() {
   const [accountUser, setAccountUser] = useState<any>(null);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
 
-  // Auth
+  // Auth — auto sign out if somehow logged in as guest on page load
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session: s } }) => setSession(s));
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
+    const guestId = process.env.NEXT_PUBLIC_GUEST_ACCOUNT_USER_ID;
+    supabase.auth.getSession().then(async ({ data: { session: s } }) => {
+      if (s && s.user.id === guestId) {
+        await supabase.auth.signOut();
+        setSession(null);
+      } else {
+        setSession(s);
+      }
+    });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_e, s) => {
+      if (s && s.user.id === guestId) {
+        await supabase.auth.signOut();
+        setSession(null);
+      } else {
+        setSession(s);
+      }
+    });
     return () => subscription.unsubscribe();
   }, []);
 
@@ -297,54 +365,68 @@ export default function ShopPage() {
   };
 
   // ── Inquiry Flow ────────────────────────────────────────
+  const guestId = process.env.NEXT_PUBLIC_GUEST_ACCOUNT_USER_ID;
+  const isRealUser = session && session.user.id !== guestId;
+
   const handleInquiryClick = () => {
-    if (!session && !guestInfo) {
-      setPendingAction('inquiry');
-      setShowGuestPopup(true);
-      return;
+    if (isRealUser) {
+      setInquiryStep('describe');
+    } else {
+      setInquiryStep('collect-info');
     }
-    setInquiryOpen(true);
   };
 
-  const submitInquiry = async () => {
-    if (!modalProduct || !inquiryMessage.trim()) return;
-    setInquirySubmitting(true);
+  const handleGuestInfoForInquiry = async (info: {firstName: string; lastName: string; email: string; phone: string}) => {
+    setGuestCollected(info);
+    setInquiryStep('describe');
+  };
 
+  const handleInquiryDescSubmit = async (desc: string) => {
+    if (!modalProduct) return;
+    setInquirySubmitting(true);
     try {
-      if (session) {
-        // Account user inquiry
+      if (isRealUser) {
         await supabase.from('account_inquiries').insert({
           account_user_id: session.user.id,
-          description: inquiryMessage,
+          description: desc,
+          product_id: modalProduct.product_id,
           photo_url: null,
         });
         await supabase.functions.invoke('send-admin-notification', {
           body: { event_type: 'account_inquiries', user_id: session.user.id },
-        });
-      } else if (guestInfo) {
-        // Guest inquiry
+        }).catch(() => {});
+      } else if (guestCollected) {
         await supabase.from('guest_inquiries').insert({
-          name: guestInfo.name,
-          email: guestInfo.email,
-          phone: guestInfo.phone,
-          shipping_address: guestInfo.address,
-          description: inquiryMessage,
+          name: guestCollected.firstName + ' ' + guestCollected.lastName,
+          email: guestCollected.email,
+          phone: guestCollected.phone,
+          shipping_address: 'Not provided',
+          description: desc,
+          product_id: modalProduct.product_id,
           photo_url: null,
         });
         await supabase.functions.invoke('send-admin-notification', {
-          body: { event_type: 'guest_inquiries', guest_name: guestInfo.name },
-        });
+          body: { event_type: 'guest_inquiries', guest_name: guestCollected.firstName + ' ' + guestCollected.lastName },
+        }).catch(() => {});
       }
-      setInquirySuccess(true);
-      setInquiryMessage('');
-      setTimeout(() => {
-        setInquirySuccess(false);
-        setInquiryOpen(false);
-      }, 2000);
+      setInquiryStep('success');
     } catch (e) {
       console.error('Inquiry error:', e);
     }
     setInquirySubmitting(false);
+  };
+
+  const handleInquiryOK = async () => {
+    
+    setInquiryStep(null);
+    setGuestCollected(null);
+    setModalProduct(null);
+  };
+
+  const closeInquiry = () => {
+    
+    setInquiryStep(null);
+    setGuestCollected(null);
   };
 
   // ── Purchase Flow ───────────────────────────────────────
@@ -427,7 +509,6 @@ export default function ShopPage() {
   const handleGuestInfoSubmit = (info: GuestInfo) => {
     setGuestInfo(info);
     setShowGuestPopup(false);
-    if (pendingAction === 'inquiry') setInquiryOpen(true);
     if (pendingAction === 'buy') {
       setPendingAction(null);
       // Trigger buy flow after setting guest info
@@ -525,14 +606,14 @@ export default function ShopPage() {
       </main>
 
       {/* Product Detail Modal */}
-      {modalProduct && !showInvoicePreview && !showGuestPopup && (
+      {modalProduct && !showInvoicePreview && !showGuestPopup && !inquiryStep && (
         <div
           style={popupOverlayStyle}
-          onClick={(e) => { if (e.target === e.currentTarget) { setModalProduct(null); setInquiryOpen(false); setInquirySuccess(false); } }}
+          onClick={(e) => { if (e.target === e.currentTarget) { setModalProduct(null); } }}
         >
           <div style={{ ...popupBoxStyle, maxWidth: '560px' }}>
             <button
-              onClick={() => { setModalProduct(null); setInquiryOpen(false); setInquirySuccess(false); }}
+              onClick={() => { setModalProduct(null); }}
               style={{ position: 'absolute', top: '12px', right: '12px', background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#FAFAFA', zIndex: 10 }}
             >
               <X size={18} />
@@ -596,59 +677,72 @@ export default function ShopPage() {
               </p>
             )}
 
-            {/* Inquiry section */}
-            {inquiryOpen ? (
-              <div style={{ marginBottom: '16px' }}>
-                {inquirySuccess ? (
-                  <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', color: 'rgba(45,212,191,1)', textAlign: 'center', padding: '16px 0' }}>
-                    Inquiry sent successfully!
-                  </p>
-                ) : (
-                  <>
-                    <label style={labelStyle}>Your Message</label>
-                    <textarea
-                      style={{ ...inputStyle, minHeight: '80px', resize: 'vertical' }}
-                      placeholder="Tell us about your interest in this gem..."
-                      value={inquiryMessage}
-                      onChange={e => setInquiryMessage(e.target.value)}
-                    />
-                    <div style={{ display: 'flex', gap: '8px' }}>
-                      <button
-                        style={{ ...goldBtnStyle, flex: 1 }}
-                        onClick={submitInquiry}
-                        disabled={inquirySubmitting || !inquiryMessage.trim()}
-                      >
-                        {inquirySubmitting ? 'Sending...' : 'Send Inquiry'}
-                      </button>
-                      <button
-                        style={{ ...ghostBtnStyle, flex: 0, padding: '14px 20px', marginTop: 0, border: '1px solid rgba(255,255,255,0.10)' }}
-                        onClick={() => setInquiryOpen(false)}
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </>
-                )}
-              </div>
-            ) : (
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <button
-                  style={{ ...goldBtnStyle, flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
-                  onClick={handleBuyClick}
-                >
-                  <ShoppingCart size={14} /> Buy Now
-                </button>
-                <button
-                  style={{ flex: 1, textAlign: 'center', fontFamily: "'Montserrat', sans-serif", fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', backgroundColor: 'transparent', color: 'rgba(255,255,255,0.65)', border: '1px solid rgba(255,255,255,0.15)', padding: '14px 24px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
-                  onClick={handleInquiryClick}
-                >
-                  <MessageSquare size={14} /> Inquire
-                </button>
-              </div>
-            )}
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <button
+                style={{ ...goldBtnStyle, flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+                onClick={handleBuyClick}
+              >
+                <ShoppingCart size={14} /> Buy Now
+              </button>
+              <button
+                style={{ flex: 1, textAlign: 'center', fontFamily: "'Montserrat', sans-serif", fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', backgroundColor: 'transparent', color: 'rgba(255,255,255,0.65)', border: '1px solid rgba(255,255,255,0.15)', padding: '14px 24px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+                onClick={handleInquiryClick}
+              >
+                <MessageSquare size={14} /> Inquire
+              </button>
+            </div>
           </div>
         </div>
       )}
+
+      {/* Inquiry Modal */}
+      {inquiryStep && modalProduct && (() => {
+        const displayName = guestCollected ? guestCollected.firstName + ' ' + guestCollected.lastName : accountUser?.name || '';
+        const displayEmail = guestCollected?.email || accountUser?.email || '';
+        const displayPhone = guestCollected?.phone || accountUser?.phone || '';
+
+        if (inquiryStep === 'collect-info') return (
+          <div style={popupOverlayStyle}>
+            <div style={popupBoxStyle}>
+              <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', color: 'rgba(255,255,255,0.52)', marginBottom: '6px' }}>Inquire About This Gem</p>
+              <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '12px', color: 'rgba(255,255,255,0.45)', marginBottom: '20px', lineHeight: 1.6 }}>Please share your contact details so we can follow up.</p>
+              <InquiryContactForm onSubmit={handleGuestInfoForInquiry} onClose={closeInquiry} />
+            </div>
+          </div>
+        );
+
+        if (inquiryStep === 'describe') return (
+          <div style={popupOverlayStyle}>
+            <div style={popupBoxStyle}>
+              <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', color: 'rgba(255,255,255,0.52)', marginBottom: '6px' }}>Inquiry — {modalProduct.title}</p>
+              <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '8px', padding: '14px 16px', marginBottom: '20px' }}>
+                <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.30)', marginBottom: '8px' }}>Your Details</div>
+                <div style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7 }}>
+                  {displayName && <div>{displayName}</div>}
+                  {displayEmail && <div>{displayEmail}</div>}
+                  {displayPhone && <div>{displayPhone}</div>}
+                </div>
+              </div>
+              <InquiryDescForm onSubmit={handleInquiryDescSubmit} onClose={closeInquiry} submitting={inquirySubmitting} />
+            </div>
+          </div>
+        );
+
+        if (inquiryStep === 'success') return (
+          <div style={popupOverlayStyle}>
+            <div style={{ ...popupBoxStyle, textAlign: 'center' }}>
+              <div style={{ fontSize: '32px', marginBottom: '16px' }}>✓</div>
+              <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', color: 'rgba(45,212,191,1)', marginBottom: '10px' }}>Inquiry Sent!</p>
+              <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.50)', lineHeight: 1.7, marginBottom: '28px' }}>
+                We've received your inquiry about <strong style={{ color: 'rgba(255,255,255,0.75)' }}>{modalProduct.title}</strong> and will be in touch soon.
+              </p>
+              <button style={goldBtnStyle} onClick={handleInquiryOK}>OK</button>
+            </div>
+          </div>
+        );
+
+        return null;
+      })()}
 
       {/* Guest Info Popup */}
       {showGuestPopup && (
