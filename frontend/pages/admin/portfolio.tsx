@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import AdminLayout from '../../components/AdminLayout';
+import AdminLayout from '../../components/admin/AdminLayout';
 import { supabase } from '../../lib/supabase';
 import { fmtDate, fmtTime } from '../../lib/utils';
 

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { X, Search, MessageSquare, ShoppingCart } from 'lucide-react';
-import TopNav from '../components/TopNav';
-import Footer from '../components/Footer';
+import TopNav from '../components/shared/TopNav';
+import Footer from '../components/shared/Footer';
 import { supabase } from '../lib/supabase';
 import { formatMoney } from '../lib/utils';
 

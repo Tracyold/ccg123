@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, ReactNode } from 'react';
 import { useRouter } from 'next/router';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../../lib/supabase';
 
 const NAV_ITEMS = [
   { id: 'dashboard', label: 'Dashboard', icon: '⬡', route: '/admin/dashboard' },

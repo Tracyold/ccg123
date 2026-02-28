@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { X } from 'lucide-react';
-import TopNav from '../components/TopNav';
-import Footer from '../components/Footer';
+import TopNav from '../components/shared/TopNav';
+import Footer from '../components/shared/Footer';
 import { supabase } from '../lib/supabase';
 
 interface PortfolioPhoto {

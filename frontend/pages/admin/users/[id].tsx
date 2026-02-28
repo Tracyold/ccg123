@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { supabase } from '../../../lib/supabase';
-import { adminCss } from '../../../components/AdminLayout';
+import { adminCss } from '../../../components/admin/AdminLayout';
 import { formatMoney, fmtDate, fmtTime } from '../../../lib/utils';
 
 const STATUS_COLORS: Record<string, { bg: string; color: string }> = {

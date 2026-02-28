@@ -8,8 +8,8 @@ import {
   Package,
   Layers,
 } from 'lucide-react';
-import TopNav from '../components/TopNav';
-import Footer from '../components/Footer';
+import TopNav from '../components/shared/TopNav';
+import Footer from '../components/shared/Footer';
 
 function GlobalStyles() {
   return (
