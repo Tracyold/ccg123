@@ -5,6 +5,7 @@ import { adminCss } from '../../../components/admin/AdminLayout';
 import { formatMoney, fmtDate, fmtTime } from '../../../lib/utils';
 import ChatWidget from '../../../components/admin/users/ChatWidget';
 import AddWorkOrderModal from '../../../components/admin/users/AddWorkOrderModal';
+import EditUserModal from '../../../components/admin/users/EditUserModal';
 
 const STATUS_COLORS: Record<string, { bg: string; color: string }> = {
   CREATED: { bg: 'rgba(184,154,42,0.08)', color: '#cfb040' },
@@ -45,7 +46,6 @@ export default function AdminUserDetail() {
 
   // Edit user
   const [showEditUser, setShowEditUser] = useState(false);
-  const [editUser, setEditUser] = useState<any>(null);
 
   // Stats
   const [woCount, setWoCount] = useState(0);
@@ -73,7 +73,7 @@ export default function AdminUserDetail() {
     async function loadAll() {
       const uid = id as string;
       const { data: u } = await supabase.from('account_users').select('*').eq('account_user_id', uid).single();
-      setUser(u); setEditUser(u ? { ...u } : null);
+      setUser(u);
 
       const { data: admin } = await supabase.from('admin_users').select('*').single();
       setAdminInfo(admin);
@@ -183,15 +183,6 @@ export default function AdminUserDetail() {
     setSelectedWO((prev: any) => prev ? { ...prev, status: 'CANCELLED', edit_history: log } : prev);
   };
 
-  // Save user edit
-  const saveUser = async () => {
-    if (!editUser || !id) return;
-    await supabase.from('account_users').update({
-      name: editUser.name, email: editUser.email, phone: editUser.phone,
-      shipping_address: editUser.shipping_address, business_name: editUser.business_name, status: editUser.status,
-    }).eq('account_user_id', id);
-    setUser({ ...editUser }); setShowEditUser(false);
-  };
 
   if (checking) return <div style={{ background: '#060606', height: '100vh' }} />;
 
@@ -240,7 +231,7 @@ export default function AdminUserDetail() {
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '19px' }}>
                     <span style={{ fontFamily: 'var(--serif)', fontSize: '25px', color: 'rgb(224, 187, 50)' }}>Account Info</span>
-                    <button className="ab" onClick={() => { setEditUser({ ...user }); setShowEditUser(true); }}>Edit</button>
+                    <button className="ab" onClick={() => setShowEditUser(true)}>Edit</button>
                   </div>
                   {[
                     { label: 'Name', val: user.name },
@@ -386,38 +377,7 @@ export default function AdminUserDetail() {
       <AddWorkOrderModal showAddWO={showAddWO} setShowAddWO={setShowAddWO} user={user} id={id as string} session={session} setWO={setWO} setWoCount={setWoCount} />
 
       {/* Edit User Modal */}
-      {showEditUser && editUser && (
-        <div className="ov" onClick={e => { if (e.target === e.currentTarget) setShowEditUser(false); }}>
-          <div style={{ margin: 'auto', background: 'var(--k1)', border: '1px solid var(--ln)', padding: '29px', maxWidth: '480px', width: '90%' }}>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: '23px', color: 'var(--wh)', marginBottom: '21px' }}>Edit User</div>
-            {[
-              { label: 'Name', key: 'name' }, { label: 'Email', key: 'email' },
-              { label: 'Phone', key: 'phone' }, { label: 'Business Name', key: 'business_name' },
-            ].map(f => (
-              <div key={f.key} style={{ marginBottom: '13px' }}>
-                <label style={{ fontSize: '15px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>{f.label}</label>
-                <input value={editUser[f.key] || ''} onChange={e => setEditUser({ ...editUser, [f.key]: e.target.value })} style={inputStyle} />
-              </div>
-            ))}
-            <div style={{ marginBottom: '13px' }}>
-              <label style={{ fontSize: '15px', fontWeight: 500, letterSpacing: '.3em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Shipping Address</label>
-              <textarea value={editUser.shipping_address || ''} onChange={e => setEditUser({ ...editUser, shipping_address: e.target.value })} style={{ ...inputStyle, minHeight: '60px', resize: 'vertical' }} />
-            </div>
-            <div style={{ marginBottom: '17px' }}>
-              <label style={{ fontSize: '15px', fontWeight: 500, letterSpacing: '.3em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Status</label>
-              <select value={editUser.status || 'ACTIVE'} onChange={e => setEditUser({ ...editUser, status: e.target.value })}
-                style={{ ...inputStyle, cursor: 'pointer' }}>
-                <option value="ACTIVE">ACTIVE</option>
-                <option value="SUSPENDED">SUSPENDED</option>
-              </select>
-            </div>
-            <div style={{ display: 'flex', gap: '9px' }}>
-              <button className="bp" onClick={saveUser}>Save</button>
-              <button className="bg" onClick={() => setShowEditUser(false)}>Cancel</button>
-            </div>
-          </div>
-        </div>
-      )}
+      <EditUserModal showEditUser={showEditUser} setShowEditUser={setShowEditUser} user={user} id={id as string} setUser={setUser} />
 
       {/* Inquiry Detail Modal */}
       {selectedInq && (
