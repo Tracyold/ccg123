@@ -3,16 +3,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { supabase } from '../lib/supabase';
 import { formatMoney, fmtDate, fmtTime } from '../lib/utils';
+import InvoiceList from '../components/account/InvoiceList';
+import WorkOrderList from '@/components/account/WorkOrderList';
+import InquiryList from '../components/account/InquiryList';
 
-const SERVICE_TYPES = [
-  'Custom Rough Cut',
-  'Re-Cut & Re-Polish — Starting Price: $249',
-  'Table Re-Polish — Starting Price: $119',
-  'Crown Re-Polish — Starting Price: $149',
-  'Pavilion Re-Polish — Starting Price: $149',
-  'Gemstone Material Cut Design — Starting Price: $99',
-  'Virtual Consultation — Free 30 Minute Minimum Consultation',
-];
+
 
 const STATUS_COLORS: Record<string, { bg: string; color: string }> = {
   CREATED: { bg: 'rgba(212,175,55,0.12)', color: '#d4af37' },
@@ -446,120 +441,38 @@ export default function AccountPage() {
               </div>
             )}
 
-            {/* WORK ORDERS TAB */}
             {activeTab === 'workorders' && (
-              <div style={{ padding: '28px' }}>
-                <h2 style={{ fontFamily: "'Oranienbaum', serif", fontSize: '24px', color: '#FAFAFA', marginBottom: '24px' }}>Work Orders</h2>
-                {workOrders.length === 0 ? (
-                  <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.2em' }}>No work orders</p>
-                ) : workOrders.map(wo => (
-                  <div key={wo.work_order_id} style={{ background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.06)', padding: '16px', marginBottom: '12px', cursor: 'pointer' }} onClick={() => openWODetail(wo)}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                      <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '16px', color: '#FAFAFA' }}>{wo.title}</span>
-                      <span style={{ fontSize: '8px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '3px 7px',
-                        background: STATUS_COLORS[wo.status]?.bg, color: STATUS_COLORS[wo.status]?.color }}>{wo.status}</span>
-                    </div>
-                    {wo.service_type && <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', marginBottom: '4px' }}>{wo.service_type}</div>}
-                    {wo.estimated_price && <div style={{ fontSize: '19px', color: 'rgb(48, 177, 98)', fontFamily: "'Courier New', monospace" }}>{formatMoney(wo.estimated_price)}</div>}
-                    <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.35)', marginTop: '8px' }}>{fmtDate(wo.created_at)}</div>
-                    {wo.status === 'CREATED' && (
-                      <button onClick={() => acceptWO(wo)} className="acc-btn-gold" style={{ marginTop: '12px', width: 'auto', padding: '8px 16px' }}>
-                        Accept Work Order
-                      </button>
-                    )}
-                  </div>
-                ))}
-              </div>
+              <WorkOrderList workOrders={workOrders} onSelect={openWODetail} onAccept={acceptWO} />
             )}
 
             {/* INQUIRIES TAB */}
             {activeTab === 'inquiries' && (
-              <div style={{ padding: '28px' }}>
-                <h2 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '24px', color: '#FAFAFA', marginBottom: '16px' }}>Inquiries</h2>
-                <div style={{ display: 'flex', gap: '20px', marginBottom: '20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-                  <button className={`acc-tab ${inquiryTab === 'inquiries' ? 'on' : ''}`} onClick={() => setInquiryTab('inquiries')}>Product Inquiries</button>
-                  <button className={`acc-tab ${inquiryTab === 'service' ? 'on' : ''}`} onClick={() => setInquiryTab('service')}>Service Requests</button>
-                </div>
-
-                {inquiryTab === 'inquiries' ? (
-                  inquiries.length === 0 ? <p className="acc-empty">No product inquiries</p> :
-                  inquiries.map(inq => (
-                    <div key={inq.account_inquiry_id} style={{ background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.06)', padding: '14px', marginBottom: '10px' }}>
-                      <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)', marginBottom: '6px' }}>{inq.description}</p>
-                      <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.35)' }}>{fmtDate(inq.created_at)}</span>
-                    </div>
-                  ))
-                ) : (
-                  <>
-                    <button className="acc-btn-gold" style={{ marginBottom: '16px', width: 'auto', padding: '10px 20px' }} onClick={openSRForm}>
-                      Submit Service Request
-                    </button>
-                    {srGateMsg && <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.55)', background: 'rgba(214,180,70,0.08)', padding: '12px', marginBottom: '16px', lineHeight: 1.6 }}>{srGateMsg}</p>}
-
-                    {showSRForm && (
-                      <div style={{ background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.06)', padding: '20px', marginBottom: '16px' }}>
-                        <label className="acc-label">Service Type *</label>
-                        <select value={srType} onChange={e => setSrType(e.target.value)}
-                          style={{ width: '100%', background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.10)', color: '#FAFAFA', padding: '10px', fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', marginBottom: '12px' }}>
-                          <option value="">Select service type</option>
-                          {SERVICE_TYPES.map(st => <option key={st} value={st}>{st}</option>)}
-                        </select>
-                        <label className="acc-label">Description *</label>
-                        <textarea value={srDesc} onChange={e => setSrDesc(e.target.value)} placeholder="Describe your request..."
-                          style={{ width: '100%', background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.10)', color: '#FAFAFA', padding: '10px', fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', minHeight: '96px', resize: 'vertical', marginBottom: '12px' }} />
-                        <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '12px', color: 'rgba(255,255,255,0.45)', fontStyle: 'italic', marginBottom: '16px', lineHeight: 1.6 }}>
-                          All prices are estimated starting prices. Some gems may be less, some may be more. No work order prices are set in stone until I am able to inspect the piece and the customer accepts the work order through the website.
-                        </p>
-                        <div style={{ display: 'flex', gap: '8px' }}>
-                          <button className="acc-btn-gold" onClick={submitSR} disabled={srSubmitting || !srType || !srDesc.trim()} style={{ width: 'auto', padding: '10px 20px' }}>
-                            {srSubmitting ? 'Submitting...' : 'Submit'}
-                          </button>
-                          <button className="acc-btn-ghost" onClick={() => setShowSRForm(false)}>Cancel</button>
-                        </div>
-                      </div>
-                    )}
-
-                    {serviceRequests.length === 0 ? <p className="acc-empty">No service requests</p> :
-                    serviceRequests.map(sr => (
-                      <div key={sr.service_request_id} style={{ background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.06)', padding: '14px', marginBottom: '10px' }}>
-                        <div style={{ fontSize: '11px', color: '#d4af37', marginBottom: '4px' }}>{sr.service_type}</div>
-                        <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)', marginBottom: '6px' }}>{sr.description}</p>
-                        <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.35)' }}>{fmtDate(sr.created_at)}</span>
-                      </div>
-                    ))}
-                  </>
-                )}
-              </div>
+              <InquiryList
+                inquiries={inquiries}
+                serviceRequests={serviceRequests}
+                inquiryTab={inquiryTab}
+                setInquiryTab={setInquiryTab}
+                showSRForm={showSRForm}
+                srType={srType}
+                srDesc={srDesc}
+                srSubmitting={srSubmitting}
+                srGateMsg={srGateMsg}
+                setSrType={setSrType}
+                setSrDesc={setSrDesc}
+                setShowSRForm={setShowSRForm}
+                onOpenSRForm={openSRForm}
+                onSubmitSR={submitSR}
+              />
             )}
 
-            {/* INVOICES TAB */}
-            {activeTab === 'invoices' && (
-              <div style={{ padding: '28px' }}>
-                <h2 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '24px', color: '#FAFAFA', marginBottom: '24px' }}>Invoices</h2>
-                {invoices.length === 0 ? <p className="acc-empty">No invoices</p> :
-                invoices.map(inv => {
-                  const item = inv.line_items?.[0];
-                  return (
-                    <div key={inv.invoice_id} style={{ background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.06)', padding: '16px', marginBottom: '12px' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div>
-                          <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '16px', color: '#FAFAFA' }}>{item?.title || 'Product'}</div>
-                          <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.35)', marginTop: '4px' }}>{fmtDate(inv.paid_at)}</div>
-                        </div>
-                        <div style={{ textAlign: 'right' }}>
-                          <div style={{ fontFamily: "'Courier New', monospace", fontSize: '17px', color: 'rgb(48, 177, 98)' }}>{formatMoney(inv.total_amount)}</div>
-                          <span style={{ fontSize: '8px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '2px 6px', background: 'rgba(45,212,191,0.08)', color: 'rgba(45,212,191,0.8)' }}>PAID</span>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
+
+                        {activeTab === 'invoices' && <InvoiceList invoices={invoices} />}
+
           </div>
         </div>
 
         {/* Right panel — Chat (desktop) */}
+
         <div className="acc-right">
           <div className="acc-chat-header">
             <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#d4af37' }}>Chat</span>
