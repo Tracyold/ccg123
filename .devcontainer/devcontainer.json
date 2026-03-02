@@ -1,0 +1,55 @@
+{
+  "name": "Cutting Corners Gems",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    }
+  },
+  "forwardPorts": [3000, 8001],
+  "portsAttributes": {
+    "3000": {
+      "label": "Frontend (Next.js)",
+      "onAutoForward": "openPreview"
+    },
+    "8001": {
+      "label": "Backend (API)",
+      "onAutoForward": "silent"
+    }
+  },
+  "secrets": {
+    "NEXT_PUBLIC_SUPABASE_URL": {
+      "description": "Supabase project URL (Project Settings → API)"
+    },
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": {
+      "description": "Supabase anon/public key (Project Settings → API)"
+    },
+    "SUPABASE_SERVICE_ROLE_KEY": {
+      "description": "Supabase service role key — server-side only (Project Settings → API)"
+    },
+    "STRIPE_SECRET_KEY": {
+      "description": "Stripe secret key (Developers → API keys)"
+    },
+    "STRIPE_WEBHOOK_SECRET": {
+      "description": "Stripe webhook signing secret (Developers → Webhooks)"
+    },
+    "NEXT_PUBLIC_GUEST_ACCOUNT_USER_ID": {
+      "description": "UUID of the guest account_users row (pinned in admin user list)"
+    }
+  },
+  "postCreateCommand": "cd frontend && yarn install && { [ -f .env.local ] || printf 'NEXT_PUBLIC_SUPABASE_URL=%s\\nNEXT_PUBLIC_SUPABASE_ANON_KEY=%s\\nSUPABASE_SERVICE_ROLE_KEY=%s\\nSTRIPE_SECRET_KEY=%s\\nSTRIPE_WEBHOOK_SECRET=%s\\nNEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-http://localhost:3000}\\nNEXT_PUBLIC_BACKEND_URL=${NEXT_PUBLIC_BACKEND_URL:-http://localhost:8001}\\nNEXT_PUBLIC_GUEST_ACCOUNT_USER_ID=%s\\n' \"$NEXT_PUBLIC_SUPABASE_URL\" \"$NEXT_PUBLIC_SUPABASE_ANON_KEY\" \"$SUPABASE_SERVICE_ROLE_KEY\" \"$STRIPE_SECRET_KEY\" \"$STRIPE_WEBHOOK_SECRET\" \"$NEXT_PUBLIC_GUEST_ACCOUNT_USER_ID\" > .env.local; }",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "ms-python.python"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  }
+}
