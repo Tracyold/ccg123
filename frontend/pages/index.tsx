@@ -505,7 +505,7 @@ export default function Home() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: 'url(/assets/yu1iknms_IMG_3821.jpeg)',
+              backgroundImage: 'url(/assets/Studio.jpeg)',
               opacity: 0.2,
             }}
           />
@@ -647,7 +647,7 @@ export default function Home() {
                   </span>
                 </div>
                 <img
-                  src="/assets/sqy5b97p_IMG_3573.jpeg"
+                  src="/assets/Chair.jpeg"
                   alt="Workshop"
                   className="w-full object-cover"
                 />
@@ -928,7 +928,7 @@ export default function Home() {
                   }}
                 >
                   <img
-                    src="/assets/c2cwyfwb_IMG_5555.jpeg"
+                    src="/assets/Cutter.jpeg"
                     alt="Michael Wall at work"
                     style={{
                       width: '100%',
