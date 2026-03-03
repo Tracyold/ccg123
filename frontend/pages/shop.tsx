@@ -4,39 +4,13 @@ import TopNav from '../components/shared/TopNav';
 import Footer from '../components/shared/Footer';
 import { supabase } from '../lib/supabase';
 import { formatMoney } from '../lib/utils';
+import { GuestInfoPopup } from '../components/guest/GuestInfoPopup';
+import { GuestInfo, Product, AdminInfo } from '../components/guest/shopTypes';
+import { InvoicePreviewPopup } from '../components/guest/InvoicePreviewPopup';
+import { InquiryContactForm, InquiryDescForm } from '../components/guest/InquiryContactForm';
+import ProductDetailModal from '../components/guest/ProductDetailModal';
+import InquiryModal from '../components/guest/InquiryModal';
 
-interface Product {
-  product_id: string;
-  title: string;
-  description: string | null;
-  total_price: number;
-  price_per_carat: number | null;
-  gem_type: string | null;
-  shape: string | null;
-  weight: number | null;
-  color: string | null;
-  origin: string | null;
-  treatment: string | null;
-  gia_report_number: string | null;
-  gia_report_pdf_url: string | null;
-  photo_url: string | null;
-  product_state: string;
-}
-
-interface GuestInfo {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-}
-
-interface AdminInfo {
-  business_name: string | null;
-  full_name: string | null;
-  address: string | null;
-  phone: string | null;
-  contact_email: string | null;
-}
 
 // ── Shared Styles ────────────────────────────────────────────
 const popupOverlayStyle: React.CSSProperties = {
@@ -93,190 +67,8 @@ const ghostBtnStyle: React.CSSProperties = {
   padding: '10px 0', marginTop: '8px',
 };
 
-// ── Guest Info Popup ────────────────────────────────────────
-function GuestInfoPopup({ onSubmit, onClose }: { onSubmit: (info: GuestInfo) => void; onClose: () => void }) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
-  const [err, setErr] = useState('');
-
-  function handleSubmit() {
-    if (!name.trim() || !email.trim() || !phone.trim() || !address.trim()) {
-      setErr('All fields are required.');
-      return;
-    }
-    onSubmit({ name: name.trim(), email: email.trim(), phone: phone.trim(), address: address.trim() });
-  }
-
-  return (
-    <div style={popupOverlayStyle}>
-      <div style={popupBoxStyle}>
-        <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', color: 'rgba(255,255,255,0.52)', marginBottom: '6px' }}>
-          Your Information
-        </p>
-        <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '12px', color: 'rgba(255,255,255,0.45)', marginBottom: '20px', lineHeight: 1.6 }}>
-          Please enter your details before continuing.
-        </p>
-
-        <label style={labelStyle}>Full Name *</label>
-        <input style={inputStyle} placeholder="Jane Smith" value={name} onChange={e => setName(e.target.value)} />
-
-        <label style={labelStyle}>Email Address *</label>
-        <input style={inputStyle} type="email" placeholder="jane@email.com" value={email} onChange={e => setEmail(e.target.value)} />
-
-        <label style={labelStyle}>Phone Number *</label>
-        <input style={inputStyle} type="tel" placeholder="+1 (555) 000-0000" value={phone} onChange={e => setPhone(e.target.value)} />
-
-        <label style={labelStyle}>Shipping Address *</label>
-        <input style={inputStyle} placeholder="123 Main St, City, State, ZIP" value={address} onChange={e => setAddress(e.target.value)} />
-
-        {err && <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '11px', color: '#c07070', marginBottom: '10px' }}>{err}</p>}
-
-        <button style={goldBtnStyle} onClick={handleSubmit}>Continue</button>
-        <button style={ghostBtnStyle} onClick={onClose}>Cancel</button>
-      </div>
-    </div>
-  );
-}
-
-// ── Invoice Preview Popup ───────────────────────────────────
-function InvoicePreviewPopup({
-  product, adminInfo, buyerInfo, onContinue, onCancel, loading
-}: {
-  product: Product;
-  adminInfo: AdminInfo | null;
-  buyerInfo: { name: string; email: string; phone: string; shippingAddress: string; businessName?: string | null };
-  onContinue: () => void;
-  onCancel: () => void;
-  loading: boolean;
-}) {
-  const specRows = [
-    { label: 'Title', value: product.title },
-    { label: 'Gem Type', value: product.gem_type },
-    { label: 'Shape', value: product.shape },
-    { label: 'Weight', value: product.weight ? `${product.weight} ct` : null },
-    { label: 'Color', value: product.color },
-    ...(product.origin ? [{ label: 'Origin', value: product.origin }] : []),
-    ...(product.treatment ? [{ label: 'Treatment', value: product.treatment }] : []),
-    ...(product.gia_report_number ? [{ label: 'GIA Report #', value: product.gia_report_number }] : []),
-    ...(product.price_per_carat ? [{ label: 'Price / ct', value: formatMoney(product.price_per_carat) }] : []),
-  ].filter(r => r.value);
-
-  const sectionLabel: React.CSSProperties = { fontFamily: "'Montserrat', sans-serif", fontSize: '9px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', color: 'rgba(255,255,255,0.30)', marginBottom: '10px', marginTop: '18px' };
-  const divider: React.CSSProperties = { height: '1px', backgroundColor: 'rgba(255,255,255,0.06)', margin: '16px 0' };
-
-  return (
-    <div style={popupOverlayStyle}>
-      <div style={{ ...popupBoxStyle, maxWidth: '520px' }}>
-        <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', color: 'rgba(255,255,255,0.52)', marginBottom: '18px' }}>
-          Invoice Preview
-        </p>
-
-        <p style={sectionLabel}>From</p>
-        {adminInfo && (
-          <div style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '12px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.8 }}>
-            <div style={{ color: '#d4af37', fontWeight: 700 }}>{adminInfo.business_name}</div>
-            <div>{adminInfo.full_name}</div>
-            <div>{adminInfo.address}</div>
-            <div>{adminInfo.contact_email}</div>
-            <div>{adminInfo.phone}</div>
-          </div>
-        )}
-
-        <div style={divider} />
-
-        <p style={sectionLabel}>Bill To</p>
-        <div style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '12px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.8 }}>
-          <div style={{ color: 'rgba(255,255,255,0.80)' }}>{buyerInfo.name}</div>
-          <div>{buyerInfo.email}</div>
-          <div>{buyerInfo.phone}</div>
-          <div>{buyerInfo.shippingAddress}</div>
-          {buyerInfo.businessName && <div>{buyerInfo.businessName}</div>}
-        </div>
-
-        <div style={divider} />
-
-        <p style={sectionLabel}>Product</p>
-        {specRows.map(({ label, value }) => (
-          <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
-            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.38)', flexShrink: 0 }}>{label}</span>
-            <span style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '12px', color: 'rgba(255,255,255,0.70)', textAlign: 'right' }}>{value}</span>
-          </div>
-        ))}
-
-        <div style={divider} />
-
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
-          <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.38)' }}>Total</span>
-          <span style={{ fontFamily: "'Courier New', monospace", fontSize: '20px', color: 'rgba(45,212,191,1)' }}>{formatMoney(product.total_price)}</span>
-        </div>
-        <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '11px', color: 'rgba(255,255,255,0.25)', marginBottom: '24px' }}>
-          Payment method: Card via Stripe
-        </p>
-
-        <button style={goldBtnStyle} onClick={onContinue} disabled={loading}>
-          {loading ? 'Redirecting...' : 'Continue to Payment'}
-        </button>
-        <button style={ghostBtnStyle} onClick={onCancel}>Cancel</button>
-      </div>
-    </div>
-  );
-}
-
 // ── Inquiry Sub-Forms ───────────────────────────────────────
-function InquiryContactForm({ onSubmit, onClose }: { onSubmit: (info: any) => void; onClose: () => void }) {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [err, setErr] = useState('');
-  return (
-    <>
-      <div style={{ display: 'flex', gap: '10px' }}>
-        <div style={{ flex: 1 }}>
-          <label style={labelStyle}>First Name *</label>
-          <input style={inputStyle} placeholder="Jane" value={firstName} onChange={e => setFirstName(e.target.value)} />
-        </div>
-        <div style={{ flex: 1 }}>
-          <label style={labelStyle}>Last Name *</label>
-          <input style={inputStyle} placeholder="Smith" value={lastName} onChange={e => setLastName(e.target.value)} />
-        </div>
-      </div>
-      <label style={labelStyle}>Phone Number *</label>
-      <input style={inputStyle} type="tel" placeholder="+1 (555) 000-0000" value={phone} onChange={e => setPhone(e.target.value)} />
-      <label style={labelStyle}>Email Address *</label>
-      <input style={inputStyle} type="email" placeholder="jane@email.com" value={email} onChange={e => setEmail(e.target.value)} />
-      {err && <p style={{ fontSize: '11px', color: '#c07070', marginBottom: '10px' }}>{err}</p>}
-      <button style={goldBtnStyle} onClick={() => {
-        if (!firstName.trim() || !lastName.trim() || !phone.trim() || !email.trim()) { setErr('All fields are required.'); return; }
-        onSubmit({ firstName: firstName.trim(), lastName: lastName.trim(), email: email.trim(), phone: phone.trim() });
-      }}>Continue</button>
-      <button style={ghostBtnStyle} onClick={onClose}>Cancel</button>
-    </>
-  );
-}
 
-function InquiryDescForm({ onSubmit, onClose, submitting }: { onSubmit: (desc: string) => void; onClose: () => void; submitting: boolean }) {
-  const [desc, setDesc] = useState('');
-  return (
-    <>
-      <label style={labelStyle}>Your Message *</label>
-      <textarea
-        style={{ ...inputStyle, minHeight: '100px', resize: 'vertical' }}
-        placeholder="Tell us about your interest in this gem..."
-        value={desc}
-        onChange={e => setDesc(e.target.value)}
-      />
-      <button style={{ ...goldBtnStyle, opacity: submitting || !desc.trim() ? 0.5 : 1 }}
-        onClick={() => { if (desc.trim()) onSubmit(desc.trim()); }}
-        disabled={submitting || !desc.trim()}>
-        {submitting ? 'Sending...' : 'Submit Inquiry'}
-      </button>
-      <button style={ghostBtnStyle} onClick={onClose}>Cancel</button>
-    </>
-  );
-}
 
 // ── Main Page ───────────────────────────────────────────────
 export default function ShopPage() {
@@ -607,142 +399,29 @@ export default function ShopPage() {
 
       {/* Product Detail Modal */}
       {modalProduct && !showInvoicePreview && !showGuestPopup && !inquiryStep && (
-        <div
-          style={popupOverlayStyle}
-          onClick={(e) => { if (e.target === e.currentTarget) { setModalProduct(null); } }}
-        >
-          <div style={{ ...popupBoxStyle, maxWidth: '560px' }}>
-            <button
-              onClick={() => { setModalProduct(null); }}
-              style={{ position: 'absolute', top: '12px', right: '12px', background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#FAFAFA', zIndex: 10 }}
-            >
-              <X size={18} />
-            </button>
-
-            {/* Product image */}
-            {modalProduct.photo_url && (
-              <div style={{ marginBottom: '20px', borderRadius: '12px', overflow: 'hidden', aspectRatio: '4/3' }}>
-                <img
-                  src={getPhotoUrl(modalProduct.photo_url)!}
-                  alt={modalProduct.title}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              </div>
-            )}
-
-            <h2 style={{ fontFamily: "'Oranienbaum', serif", fontSize: '24px', fontWeight: 400, color: '#FAFAFA', marginBottom: '8px' }}>
-              {modalProduct.title}
-            </h2>
-
-            <p style={{ fontFamily: "'Courier New', monospace", fontSize: '22px', color: 'rgba(45,212,191,1)', marginBottom: '20px' }}>
-              {formatMoney(modalProduct.total_price)}
-            </p>
-
-            {/* Specs */}
-            <div style={{ marginBottom: '20px' }}>
-              {[
-                { label: 'Gem Type', value: modalProduct.gem_type },
-                { label: 'Shape', value: modalProduct.shape },
-                { label: 'Weight', value: modalProduct.weight ? `${modalProduct.weight} ct` : null },
-                { label: 'Color', value: modalProduct.color },
-                { label: 'Origin', value: modalProduct.origin },
-                { label: 'Treatment', value: modalProduct.treatment },
-                { label: 'Price/ct', value: modalProduct.price_per_carat ? formatMoney(modalProduct.price_per_carat) : null },
-              ].filter(r => r.value).map(({ label, value }) => (
-                <div key={label} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                  <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.38)' }}>{label}</span>
-                  <span style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '12px', color: 'rgba(255,255,255,0.70)' }}>{value}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* GIA */}
-            {modalProduct.gia_report_number && (
-              <div style={{ marginBottom: '20px', padding: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.38)' }}>GIA Report</span>
-                <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.70)', margin: '4px 0 0' }}>
-                  #{modalProduct.gia_report_number}
-                  {modalProduct.gia_report_pdf_url && (
-                    <a href={modalProduct.gia_report_pdf_url} target="_blank" rel="noopener noreferrer" style={{ color: '#d4af37', marginLeft: '8px', fontSize: '11px' }}>
-                      View Report
-                    </a>
-                  )}
-                </p>
-              </div>
-            )}
-
-            {modalProduct.description && (
-              <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', lineHeight: 1.75, color: 'rgba(255,255,255,0.55)', marginBottom: '24px' }}>
-                {modalProduct.description}
-              </p>
-            )}
-
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <button
-                style={{ ...goldBtnStyle, flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
-                onClick={handleBuyClick}
-              >
-                <ShoppingCart size={14} /> Buy Now
-              </button>
-              <button
-                style={{ flex: 1, textAlign: 'center', fontFamily: "'Montserrat', sans-serif", fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', backgroundColor: 'transparent', color: 'rgba(255,255,255,0.65)', border: '1px solid rgba(255,255,255,0.15)', padding: '14px 24px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
-                onClick={handleInquiryClick}
-              >
-                <MessageSquare size={14} /> Inquire
-              </button>
-            </div>
-          </div>
-        </div>
+        <ProductDetailModal
+          product={modalProduct}
+          onClose={() => setModalProduct(null)}
+          onBuy={handleBuyClick}
+          onInquire={handleInquiryClick}
+          getPhotoUrl={getPhotoUrl}
+        />
       )}
 
       {/* Inquiry Modal */}
-      {inquiryStep && modalProduct && (() => {
-        const displayName = guestCollected ? guestCollected.firstName + ' ' + guestCollected.lastName : accountUser?.name || '';
-        const displayEmail = guestCollected?.email || accountUser?.email || '';
-        const displayPhone = guestCollected?.phone || accountUser?.phone || '';
-
-        if (inquiryStep === 'collect-info') return (
-          <div style={popupOverlayStyle}>
-            <div style={popupBoxStyle}>
-              <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', color: 'rgba(255,255,255,0.52)', marginBottom: '6px' }}>Inquire About This Gem</p>
-              <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '12px', color: 'rgba(255,255,255,0.45)', marginBottom: '20px', lineHeight: 1.6 }}>Please share your contact details so we can follow up.</p>
-              <InquiryContactForm onSubmit={handleGuestInfoForInquiry} onClose={closeInquiry} />
-            </div>
-          </div>
-        );
-
-        if (inquiryStep === 'describe') return (
-          <div style={popupOverlayStyle}>
-            <div style={popupBoxStyle}>
-              <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', color: 'rgba(255,255,255,0.52)', marginBottom: '6px' }}>Inquiry — {modalProduct.title}</p>
-              <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '8px', padding: '14px 16px', marginBottom: '20px' }}>
-                <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.30)', marginBottom: '8px' }}>Your Details</div>
-                <div style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7 }}>
-                  {displayName && <div>{displayName}</div>}
-                  {displayEmail && <div>{displayEmail}</div>}
-                  {displayPhone && <div>{displayPhone}</div>}
-                </div>
-              </div>
-              <InquiryDescForm onSubmit={handleInquiryDescSubmit} onClose={closeInquiry} submitting={inquirySubmitting} />
-            </div>
-          </div>
-        );
-
-        if (inquiryStep === 'success') return (
-          <div style={popupOverlayStyle}>
-            <div style={{ ...popupBoxStyle, textAlign: 'center' }}>
-              <div style={{ fontSize: '32px', marginBottom: '16px' }}>✓</div>
-              <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', color: 'rgba(45,212,191,1)', marginBottom: '10px' }}>Inquiry Sent!</p>
-              <p style={{ fontFamily: "'Comfortaa', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.50)', lineHeight: 1.7, marginBottom: '28px' }}>
-                We've received your inquiry about <strong style={{ color: 'rgba(255,255,255,0.75)' }}>{modalProduct.title}</strong> and will be in touch soon.
-              </p>
-              <button style={goldBtnStyle} onClick={handleInquiryOK}>OK</button>
-            </div>
-          </div>
-        );
-
-        return null;
-      })()}
+      {inquiryStep && modalProduct && (
+        <InquiryModal
+          inquiryStep={inquiryStep}
+          product={modalProduct}
+          guestCollected={guestCollected}
+          accountUser={accountUser}
+          submitting={inquirySubmitting}
+          onGuestInfoSubmit={handleGuestInfoForInquiry}
+          onClose={closeInquiry}
+          onDescSubmit={handleInquiryDescSubmit}
+          onOK={handleInquiryOK}
+        />
+      )}
 
       {/* Guest Info Popup */}
       {showGuestPopup && (
@@ -821,4 +500,19 @@ const shopCss = `
   border: 1px solid rgba(255,255,255,0.06);
   padding: 3px 8px;
 }
+.shop-card-img img {
+  filter: grayscale(100%) contrast(1.8) brightness(0.79);
+  transition: filter 550ms ease;
+}
+.shop-grid:has(.shop-card:hover) .shop-card:not(:hover) {
+  opacity: 0.45;
+  transition: opacity 401ms ease;
+}
+.shop-grid .shop-card {
+  transition: transform 220ms ease-out, opacity 401ms ease;
+}
+.shop-card:hover .shop-card-img img {
+  filter: grayscale(0%) contrast(0.9) brightness(1.0);
+}
+
 `;
