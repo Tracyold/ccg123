@@ -286,32 +286,32 @@ export default function Home() {
         >
           <div className="absolute inset-0 hero-glow" />
           <div
-            className="absolute inset-0 bg-cover"
+            className="absolute inset-1 bg-cover"
             style={{
-              backgroundImage: 'url(/assets/Studio.jpeg)',
-              backgroundPosition: '62% 55%',
-              opacity: 0.45,
+              backgroundImage: 'url(/assets/Studio.jpeg); opacity: 0.9',
+              backgroundPosition: '62% 40%',
+              opacity: '0.4',
             }}
           />
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 62% 55%, transparent 0%, rgba(5,5,5,0.55) 45%, rgba(5,5,5,0.85) 72%, rgba(5,5,5,0.98) 100%)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.20) 30%, rgba(5,5,5,0.20) 65%, rgba(5,5,5,0.98) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 50%, transparent 0%, rgba(5,5,5,0.55) 20%, rgba(5,5,5,0.85) 90%, rgba(5,5,5,0.98) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.20) 30%, rgba(5,5,5,0.20) 70%, rgba(5,5,5,0.98) 100%)' }} />
 
           <div className="container-custom relative z-10 text-center">
             <p
-              className="uppercase text-gray-400 mb-6 opacity-0 animate-fade-in transition-all duration-700"
+              className="uppercase text-gray-400 mb-6 opacity-0 animate-fade-in transition-all duration-1000 delay-500"
               style={{ fontSize: '14px', letterSpacing: '0.37em' }}
               data-scroll-reveal
             >
               Tempe, Arizona
             </p>
 
-            <h1 className="hero-title title-xl tracking-tight mb-6 opacity-0 animate-fade-in delay-300">
+            <h1 className="hero-title title-xl tracking-tight mb-9 opacity-10 animate-fade-in delay-1000 duration-2000" data-scroll-reveal style={{ animationDelay: '92000ms' }} >
               <span style={{ color: '#d4af37' }}>Cutting</span> Corners -- Not the{' '}
               <span style={{ color: '#d4af37' }}>Quality</span>
             </h1>
 
             <p
-              className="text-gray-400 max-w-3xl mx-auto mb-10 opacity-0 animate-drop-in"
+              className="text-gray-1000 tracking-tight max-w-3xl mx-auto mb-10 opacity-0 animate-drop-in delay-1000 duration-200"
               style={{ fontSize: '23px', lineHeight: 1.6 }}
             >
               Professional gemstone cutter focused on color, yield, and stone potential for jewelry
@@ -319,7 +319,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in delay-500">
+          <div className="absolute bottom-05 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in delay-800">
             <div className="w-px h-16 bg-gradient-to-b from-white/0 via-white/30 to-white/0" />
           </div>
 
@@ -353,12 +353,12 @@ export default function Home() {
         <section id="philosophy-section" className="section-spacing" data-reveal-group>
           <div className="container-custom">
             <p
-              className="uppercase text-gray-500 mb-4"
+              className="uppercase text-gray-500 mb-4 text-center"
               style={{ fontSize: '12px', letterSpacing: '0.20em' }}
             >
               Philosophy
             </p>
-            <h2 className="title-xl tracking-tight mb-12">My Four C&apos;s</h2>
+            <h2 className="title-xl tracking-tight mb-12 text-center">My Four C&apos;s</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
@@ -456,12 +456,12 @@ export default function Home() {
         <section className="section-spacing" data-reveal-group>
           <div className="container-custom">
             <p
-              className="uppercase text-gray-500 mb-4"
+              className="uppercase text-gray-500 mb-4 text-center"
               style={{ fontSize: '12px', letterSpacing: '0.20em' }}
             >
               About
             </p>
-            <h2 className="title-xl tracking-tight mb-16">The Cutter</h2>
+            <h2 className="title-xl tracking-tight mb-16 text-center">The Cutter</h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div
