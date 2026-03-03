@@ -505,7 +505,7 @@ export default function Home() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: 'url(/assets/Studio.jpeg)',
+              backgroundImage: 'url(/assets/Studio.jpeg)', backgroundAttachment: 'fixed',
               opacity: 0.90,
             }}
           />
