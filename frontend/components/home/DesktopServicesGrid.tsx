@@ -20,15 +20,23 @@ export default function DesktopServicesGrid() {
             const el = entry.target as HTMLElement;
             const delay = parseInt(el.dataset.delay || '0');
             setTimeout(() => {
-              el.style.transition = 'opacity 1100ms cubic-bezier(0.16, 1, 0.3, 1), transform 1100ms cubic-bezier(0.16, 1, 0.3, 1)';
+              el.style.transition = 'opacity 1100ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1100ms cubic-bezier(0.25, 0.46, 0.45, 0.94)';
               el.style.opacity = '1';
               el.style.transform = 'translateY(0)';
+              const icon = el.querySelector('[data-service-icon]') as HTMLElement | null;
+              if (icon) {
+                setTimeout(() => {
+                  icon.style.transition = 'opacity 900ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 900ms cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 520ms ease-out';
+                  icon.style.opacity = '1';
+                  icon.style.transform = 'translateY(0) scale(1)';
+                }, 400);
+              }
             }, delay);
             observer.unobserve(el);
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -160px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -60px 0px' }
     );
     cards.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -62,10 +70,13 @@ export default function DesktopServicesGrid() {
           }}
         >
           <div
+            data-service-icon
             style={{
               marginBottom: 'clamp(16px, 2vw, 32px)',
-              transition: 'transform 250ms ease-out, filter 520ms ease-out',
+              opacity: 0,
+              transform: 'translateY(24px) scale(0.85)',
               filter: 'drop-shadow(0 0 0 rgba(212,175,55,0))',
+              transition: 'transform 250ms ease-out, filter 520ms ease-out',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'scale(1.05)';

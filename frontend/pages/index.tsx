@@ -213,7 +213,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-fade-in {
-  animation: fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fade-in 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 @keyframes scrollPulse {
@@ -249,7 +249,7 @@ export default function Home() {
             const index = parseInt(el.dataset.revealIndex || '0');
             const delay = index * 100;
             setTimeout(() => {
-              el.style.transition = 'opacity 1100ms cubic-bezier(0.16, 1, 0.3, 1), transform 1100ms cubic-bezier(0.16, 1, 0.3, 1)';
+              el.style.transition = 'opacity 1100ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1100ms cubic-bezier(0.25, 0.46, 0.45, 0.94)';
               el.style.opacity = '1';
               el.style.transform = 'translateY(0)';
             }, delay);
@@ -257,7 +257,7 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -120px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -60px 0px' }
     );
 
     document.querySelectorAll('[data-scroll-reveal]').forEach((el) => observer.observe(el));
