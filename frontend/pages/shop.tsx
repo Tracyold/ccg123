@@ -366,7 +366,7 @@ export default function ShopPage() {
                       <img
                         src={getPhotoUrl(product.photo_url)!}
                         alt={product.title}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(0.985)', transformOrigin: 'center' }}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.0)', transformOrigin: 'center' }}
                       />
                     ) : (
                       <div style={{ width: '100%', height: '100%', background: '#111', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -447,7 +447,7 @@ export default function ShopPage() {
 const shopCss = `
 .shop-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
 }
 @media (max-width: 220px) {
@@ -499,18 +499,18 @@ const shopCss = `
   padding: 0px 8px;
 }
 .shop-card-img img {
-  filter: grayscale(100%) invert(30%) contrast(4.0) brightness(0.30);
-  transition: filter 2800ms cubic-bezier(0.05, 0.9, 0.1, 1);
+  filter: grayscale(100%) invert(100%) contrast(1.0) brightness(.90);
+  transition: filter 14ms cubic-bezier(1, .03, .09, 1);
 }
 .shop-grid:has(.shop-card:hover) .shop-card:not(:hover) {
   opacity: 0.25;
   transition: opacity 1200ms ease;
 }
 .shop-grid .shop-card {
-  transition: transform 10000ms ease-out, opacity 300000ms ease;
+  transition: transform 10000ms ease-out, opacity 30000ms ease;
 }
 .shop-card:hover .shop-card-img img {
-  filter: grayscale(0%) invert(0%) contrast(1.1) brightness(1.4);
+  filter: grayscale(0%) invert(0%) contrast(1.1) brightness(1.0);
   transition: filter 40ms ease-in;
 }
 .shop-card-img::after {
@@ -519,11 +519,11 @@ const shopCss = `
   inset: 0;
   background: rgba(255, 240, 180, 0.0);
   pointer-events: none;
-  z-index: 3;
-  transition: background 5000ms cubic-bezier(0.05, 0.9, 0.1, 1);
+  z-index: 1.5;
+  transition: background 500ms cubic-bezier(0.05, 0.9, 0.1, 1);
 }
 .shop-card:hover .shop-card-img::after {
-  background: rgba(255, 240, 180, 0.18);
-  transition: background 60ms ease-in;
+  background: rgba(0, 0, 0, 0.18);
+  transition: background 10ms ease-in;
 }
 `;
