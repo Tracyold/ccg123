@@ -5,6 +5,7 @@ import MobileIndustrySection from '../components/home/MobileIndustrySection';
 import MobileServicesCarousel from '../components/home/MobileServicesCarousel';
 import DesktopServicesGrid from '../components/home/DesktopServicesGrid';
 import PhilosophySection from '../components/home/PhilosophySection';
+import StudioSection from '../components/home/StudioSection';
 import TopNav from '../components/shared/TopNav';
 import Footer from '../components/shared/Footer';
 
@@ -258,7 +259,7 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.05, rootMargin: '0px 0px -60px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px 180px 0px' }
     );
 
     document.querySelectorAll('[data-scroll-reveal]').forEach((el) => observer.observe(el));
@@ -350,11 +351,14 @@ export default function Home() {
         {/* ── Mobile Industry Section ── */}
         <MobileIndustrySection />
 
+        {/* ── Studio Section ── */}
+        <StudioSection />
+
         {/* ── Philosophy Section ── */}
         <PhilosophySection />
 
         {/* ── Services Section ── */}
-        <section id="services-section" className="section-spacing" data-reveal-group>
+        <section id="services-section" data-reveal-group style={{ minHeight: "100svh", display: "flex", alignItems: "center", paddingTop: "6rem", paddingBottom: "6rem" }}>
           <div className="container-custom">
             <div
               id="services-sticky-header"
@@ -399,7 +403,7 @@ export default function Home() {
         </section>
 
         {/* ── About Section ("The Cutter") ── */}
-        <section className="section-spacing" data-reveal-group>
+        <section data-reveal-group style={{ minHeight: "100svh", display: "flex", alignItems: "center", paddingTop: "6rem", paddingBottom: "6rem" }}>
           <div className="container-custom">
             <p
               className="uppercase text-gray-500 mb-4 text-center"

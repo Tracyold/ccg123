@@ -10,87 +10,69 @@ const lines = [
 export default function PhilosophySection() {
 
   useEffect(() => {
-    const elements = document.querySelectorAll('[data-philosophy-reveal]');
-
-    elements.forEach((el) => {
-      const h = el as HTMLElement;
-      h.style.opacity = '0';
-      h.style.transform = 'translateY(40px)';
-    });
+    const words = document.querySelectorAll('[data-gold-word]');
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
           if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            const i = parseInt(el.dataset.philosophyIndex || '0');
-            const delay = i * 100;
-            el.style.transition = `opacity 700ms ease-out ${delay}ms, transform 700ms ease-out ${delay}ms`;
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
-            observer.unobserve(el);
+            el.style.color = '#d4af37';
+          } else {
+            el.style.color = '#FAFAFA';
           }
         });
       },
-      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.8, rootMargin: '0px 0px -20% 0px' }
     );
 
-    elements.forEach((el) => observer.observe(el));
+    words.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="philosophy-section" className="section-spacing">
-      <div className="container-custom">
+    <section
+      style={{
+        minHeight: '100svh',
+        display: 'flex',
+        alignItems: 'center',
+        padding: '6rem 0',
+      }}
+    >
+      <div className="container-custom" style={{ maxWidth: '720px' }}>
         <p
           className="uppercase text-gray-500 mb-4 text-center"
           style={{ fontSize: '12px', letterSpacing: '0.20em' }}
         >
           Philosophy
         </p>
-        <h2 className="title-xl tracking-tight mb-12 text-center">My Four C&apos;s</h2>
+        <h2 className="title-xl tracking-tight mb-16 text-center">My Four C&apos;s</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            {lines.map(({ gold, rest }, i) => (
-              <p
-                key={gold}
-                data-philosophy-reveal
-                data-philosophy-index={`${i}`}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+          {lines.map(({ gold, rest }) => (
+            <p
+              key={gold}
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(1.875rem, 4vw, 2.5rem)',
+                fontWeight: 400,
+                lineHeight: 1.25,
+                color: '#FAFAFA',
+              }}
+            >
+              <span
+                data-gold-word
                 style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(1.875rem, 4vw, 2.5rem)',
-                  fontWeight: 400,
-                  lineHeight: 1.25,
+                  color: '#FAFAFA',
+                  transition: 'color 600ms ease',
+                  whiteSpace: 'nowrap',
                 }}
               >
-                <span style={{ color: '#d4af37', whiteSpace: 'nowrap' }}>{gold}</span>
-                {rest}
-              </p>
-            ))}
-          </div>
-
-          <div
-            data-philosophy-reveal
-            data-philosophy-index="4"
-            className="relative group overflow-hidden rounded"
-          >
-            <div className="absolute inset-0 bg-black/60 group-hover:bg-black/0 transition-all duration-500 z-10" />
-            <div
-              className="absolute inset-0 z-20 pointer-events-none"
-              style={{ boxShadow: 'inset 0 0 60px 20px rgba(0,0,0,0.8)' }}
-            />
-            <div className="absolute inset-0 z-30 flex items-center justify-center transition-all duration-500 group-hover:opacity-0">
-              <span className="title-sm text-white" style={{ fontSize: '0.875rem' }}>
-                Studio
+                {gold}
               </span>
-            </div>
-            <img
-              src="/assets/Machine.jpeg"
-              alt="Workshop"
-              className="w-full object-cover"
-            />
-          </div>
+              {rest}
+            </p>
+          ))}
         </div>
       </div>
     </section>
