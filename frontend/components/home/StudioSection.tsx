@@ -61,12 +61,12 @@ export default function StudioSection() {
         photo.style.transform = `scale(${1.12 - eased * 0.06})`;
 
         const colorProgress = eased;
-        const r = Math.round(250 * (1 - colorProgress * 0.88));
-        const g = Math.round(250 * (1 - colorProgress * 0.72));
-        const b = 255;
+        const r = Math.round(250 * (1 - colorProgress * 0.02));
+        const g = Math.round(250 * (1 - colorProgress * 0.31));
+        const b = Math.round(255 * (1 - colorProgress));
         title.style.color = `rgb(${r}, ${g}, ${b})`;
         title.style.textShadow = colorProgress > 0.2
-          ? `0 0 ${colorProgress * 40}px rgba(100,140,255,${colorProgress * 0.7}), 0 0 ${colorProgress * 80}px rgba(100,140,255,${colorProgress * 0.35})`
+          ? `0 0 ${colorProgress * 40}px rgba(212,175,55,${colorProgress * 0.7}), 0 0 ${colorProgress * 80}px rgba(212,175,55,${colorProgress * 0.35})`
           : 'none';
 
         title.style.opacity = '1';
