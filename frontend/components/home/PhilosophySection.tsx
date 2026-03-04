@@ -18,17 +18,9 @@ export default function PhilosophySection() {
           const el = entry.target as HTMLElement;
           if (entry.isIntersecting) {
             el.style.color = 'rgb(30, 60, 180)';
-            el.style.textShadow = [
-              '0 0 40px rgba(40,80,200,0.25)',
-              '0 0 80px rgba(30,60,180,0.18)',
-              '0 0 120px rgba(20,50,160,0.12)',
-              '0 0 200px rgba(10,30,140,0.07)',
-            ].join(', ');
-            el.style.filter = 'drop-shadow(0 0 60px rgba(40,80,200,0.15))';
           } else {
             el.style.color = '#FAFAFA';
             el.style.textShadow = 'none';
-            el.style.filter = 'none';
           }
         });
       },

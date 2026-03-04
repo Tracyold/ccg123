@@ -58,21 +58,15 @@ function applyGold({ el, type }: GoldItem, t: number) {
   }
 
   if (type === 'name') {
-    if (t < 0.5) {
-      const g = clamp(t*2);
-      el.style.color = `rgb(${Math.round(lerp(250,212,g))},${Math.round(lerp(250,175,g))},${Math.round(lerp(250,55,g))})`;
-      el.style.textShadow = g > 0.08 ? [
-        `0 0 ${g*25}px rgba(212,175,55,${g*0.45})`,
-        `0 0 ${g*70}px rgba(212,175,55,${g*0.18})`,
-      ].join(', ') : 'none';
-    } else {
-      const b = clamp((t-0.5)*2);
-      el.style.color = `rgb(${Math.round(lerp(212,30,b))},${Math.round(lerp(175,60,b))},${Math.round(lerp(55,180,b))})`;
-      el.style.textShadow = b > 0.08 ? [
-        `0 0 ${b*35}px rgba(30,60,180,${b*0.45})`,
-        `0 0 ${b*90}px rgba(30,60,180,${b*0.18})`,
-      ].join(', ') : 'none';
-    }
+    el.style.color = t > 0.05
+      ? `rgb(${Math.round(lerp(250,212,t))},${Math.round(lerp(250,175,t))},${Math.round(lerp(250,55,t))})`
+      : '';
+    el.style.textShadow = t > 0.08 ? [
+      `0 0 ${t*6}px rgba(255,230,120,${t*0.9})`,
+      `0 0 ${t*25}px rgba(212,175,55,${t*0.7})`,
+      `0 0 ${t*70}px rgba(212,175,55,${t*0.35})`,
+      `0 0 ${t*140}px rgba(180,140,30,${t*0.15})`,
+    ].join(', ') : 'none';
   }
 }
 
