@@ -20,14 +20,9 @@ interface GoldItem { el: HTMLElement; type: string; t: number; t2: number; t3: n
 
 function applyGold({ el, type }: GoldItem, t: number, t2: number, t3: number) {
   if (type === 'hero-word') {
-    el.style.filter = t > 0.02 ? [
-      `brightness(${1 + t*0.35})`,
-      `drop-shadow(0 0 ${t*5}px rgba(212,175,55,${t*0.85}))`,
-      `drop-shadow(0 0 ${t2*14}px rgba(255,255,255,${t2*0.5}))`,
-      `drop-shadow(0 0 ${t2*30}px rgba(255,255,255,${t2*0.25}))`,
-      `drop-shadow(0 0 ${t3*20}px rgba(255,220,80,${t3*0.5}))`,
-      `drop-shadow(0 0 ${t3*50}px rgba(212,175,55,${t3*0.25}))`,
-    ].join(' ') : 'none';
+    el.style.filter = t > 0.02
+      ? `brightness(${1 + t*0.2}) drop-shadow(0 0 ${t*8}px rgba(212,175,55,${t*0.5})) drop-shadow(0 0 ${t2*20}px rgba(255,255,255,${t2*0.15}))`
+      : 'none';
   }
 
   if (type === 'hero-card') {
@@ -39,39 +34,24 @@ function applyGold({ el, type }: GoldItem, t: number, t2: number, t3: number) {
   }
 
   if (type === 'philo-title') {
-    el.style.filter = t > 0.05 ? [
-      `brightness(${1 + t*0.3})`,
-      `drop-shadow(0 0 ${t*6}px rgba(212,175,55,${t*0.8}))`,
-      `drop-shadow(0 0 ${t2*18}px rgba(255,255,255,${t2*0.5}))`,
-      `drop-shadow(0 0 ${t2*35}px rgba(255,255,255,${t2*0.25}))`,
-      `drop-shadow(0 0 ${t3*22}px rgba(255,220,80,${t3*0.5}))`,
-      `drop-shadow(0 0 ${t3*55}px rgba(212,175,55,${t3*0.25}))`,
-    ].join(' ') : 'none';
+    el.style.filter = t > 0.05
+      ? `brightness(${1 + t*0.18}) drop-shadow(0 0 ${t*8}px rgba(212,175,55,${t*0.45})) drop-shadow(0 0 ${t2*22}px rgba(255,255,255,${t2*0.12}))`
+      : 'none';
   }
 
   if (type === 'section-title') {
-    el.style.filter = t > 0.05 ? [
-      `brightness(${1 + t*0.25})`,
-      `drop-shadow(0 0 ${t*5}px rgba(212,175,55,${t*0.7}))`,
-      `drop-shadow(0 0 ${t2*15}px rgba(255,255,255,${t2*0.45}))`,
-      `drop-shadow(0 0 ${t2*30}px rgba(255,255,255,${t2*0.2}))`,
-      `drop-shadow(0 0 ${t3*18}px rgba(255,220,80,${t3*0.45}))`,
-      `drop-shadow(0 0 ${t3*45}px rgba(212,175,55,${t3*0.2}))`,
-    ].join(' ') : 'none';
+    el.style.filter = t > 0.05
+      ? `brightness(${1 + t*0.15}) drop-shadow(0 0 ${t*7}px rgba(212,175,55,${t*0.4})) drop-shadow(0 0 ${t2*18}px rgba(255,255,255,${t2*0.1}))`
+      : 'none';
   }
 
   if (type === 'name') {
     el.style.color = t > 0.05
       ? `rgb(${Math.round(lerp(250,212,t))},${Math.round(lerp(250,175,t))},${Math.round(lerp(250,55,t))})`
       : '';
-    el.style.filter = t > 0.08 ? [
-      `brightness(${1 + t*0.35})`,
-      `drop-shadow(0 0 ${t*6}px rgba(212,175,55,${t*0.85}))`,
-      `drop-shadow(0 0 ${t2*18}px rgba(255,255,255,${t2*0.5}))`,
-      `drop-shadow(0 0 ${t2*35}px rgba(255,255,255,${t2*0.25}))`,
-      `drop-shadow(0 0 ${t3*22}px rgba(255,220,80,${t3*0.5}))`,
-      `drop-shadow(0 0 ${t3*60}px rgba(212,175,55,${t3*0.25}))`,
-    ].join(' ') : 'none';
+    el.style.filter = t > 0.08
+      ? `brightness(${1 + t*0.2}) drop-shadow(0 0 ${t*8}px rgba(212,175,55,${t*0.5})) drop-shadow(0 0 ${t2*22}px rgba(255,255,255,${t2*0.15}))`
+      : 'none';
   }
 }
 
@@ -113,8 +93,8 @@ export default function GoldThread() {
         }
 
         item.t  = lerp(item.t,  target,    0.09);
-        item.t2 = lerp(item.t2, item.t,   0.07);
-        item.t3 = lerp(item.t3, item.t2,  0.055);
+        item.t2 = lerp(item.t2, item.t,   0.065);
+        item.t3 = item.t2;
         applyGold(item, easeInOut(clamp(item.t)), easeInOut(clamp(item.t2)), easeInOut(clamp(item.t3)));
       });
       rafId = requestAnimationFrame(tick);

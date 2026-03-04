@@ -10,20 +10,38 @@ const lines = [
 export default function PhilosophySection() {
 
   useEffect(() => {
-    const words = document.querySelectorAll('[data-gold-word]');
+    const words = Array.from(document.querySelectorAll('[data-gold-word]')) as HTMLElement[];
+    let rafId: number;
+    let mounted = true;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const el = entry.target as HTMLElement;
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+    const clamp = (v: number) => Math.max(0, Math.min(1, v));
 
-        });
-      },
-      { threshold: 0.8, rootMargin: '0px 0px -20% 0px' }
-    );
+    const vals = words.map(() => ({ t: 0 }));
 
-    words.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    const tick = () => {
+      if (!mounted) return;
+      words.forEach((el, i) => {
+        const rect = el.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const center = rect.top + rect.height / 2;
+        const dist = Math.abs(center - vh / 2) / (vh * 0.55);
+        const target = clamp(1 - dist);
+        vals[i].t = lerp(vals[i].t, target, 0.07);
+        const t = vals[i].t;
+        const r = Math.round(lerp(250, 212, t));
+        const g = Math.round(lerp(250, 175, t));
+        const b = Math.round(lerp(250, 55, t));
+        el.style.color = `rgb(${r},${g},${b})`;
+        el.style.filter = t > 0.05
+          ? `brightness(${1 + t * 0.2}) drop-shadow(0 0 ${t * 8}px rgba(212,175,55,${t * 0.5})) drop-shadow(0 0 ${t * 22}px rgba(255,255,255,${t * 0.15}))`
+          : 'none';
+      });
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => { mounted = false; cancelAnimationFrame(rafId); };
   }, []);
 
   return (
