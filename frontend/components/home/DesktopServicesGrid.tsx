@@ -127,6 +127,7 @@ export default function DesktopServicesGrid() {
             <service.Icon size={48} color="#d4af37" strokeWidth={1.5} />
           </div>
           <h3
+            data-gold="section-title"
             data-service-title
             style={{
               fontFamily: 'var(--font-display)',
