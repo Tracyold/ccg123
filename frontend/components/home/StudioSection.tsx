@@ -107,10 +107,21 @@ export default function StudioSection() {
   }, []);
 
   return (
+    <div style={{ position: 'relative' }}>
+      {/* Top seal */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '8px', background: '#050505', zIndex: 100 }} />
+      {/* Bottom seal */}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '8px', background: '#050505', zIndex: 100 }} />
+      {/* Left seal */}
+      <div style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: '8px', background: '#050505', zIndex: 100 }} />
+      {/* Right seal */}
+      <div style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: '8px', background: '#050505', zIndex: 100 }} />
+
     <div ref={sectionRef} style={{
       position: 'relative', height: '100svh',
       overflow: 'hidden', display: 'flex',
       alignItems: 'center', justifyContent: 'flex-start',
+      boxShadow: 'inset 0 0 0 8px #050505',
     }}>
       <div ref={photoRef} style={{
         position: 'absolute', inset: '-3%',
@@ -186,6 +197,7 @@ export default function StudioSection() {
           Every stone passes through a focused, single-cutter environment — no outsourcing, no shortcuts. Just precise handwork from rough to finished gem.
         </p>
       </div>
+    </div>
     </div>
   );
 }
