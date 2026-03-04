@@ -49,12 +49,12 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
 
   // completeWO — lines 198–206 of [id].tsx
   const completeWO = async (wo: any) => {
-    const log = appendLog(wo, 'COMPLETED by admin', 'admin');
+    const log = appendLog(wo, 'COMPLETE by admin', 'admin');
     const now = new Date().toISOString();
-    const { error } = await supabase.from('work_orders').update({ status: 'COMPLETED', completed_at: now, edit_history: log }).eq('work_order_id', wo.work_order_id);
+    const { error } = await supabase.from('work_orders').update({ status: 'COMPLETE', completed_at: now, edit_history: log }).eq('work_order_id', wo.work_order_id);
     if (error) { console.error('Complete WO error:', error.message); alert('Error: ' + error.message); return; }
-    setWO(prev => prev.map(w => w.work_order_id === wo.work_order_id ? { ...w, status: 'COMPLETED', completed_at: now, edit_history: log } : w));
-    setSelectedWO((prev: any) => prev ? { ...prev, status: 'COMPLETED', completed_at: now, edit_history: log } : prev);
+    setWO(prev => prev.map(w => w.work_order_id === wo.work_order_id ? { ...w, status: 'COMPLETE', completed_at: now, edit_history: log } : w));
+    setSelectedWO((prev: any) => prev ? { ...prev, status: 'COMPLETE', completed_at: now, edit_history: log } : prev);
   };
 
   // cancelWO — lines 208–217 of [id].tsx
@@ -193,7 +193,7 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
         )}
 
         {/* Payment section — only when COMPLETED */}
-        {selectedWO.status === 'COMPLETED' && (
+        {selectedWO.status === 'COMPLETE' && (
           <div style={{ marginTop: '16px', padding: '16px', background: 'var(--k0)', border: '.5px solid var(--ln)' }}>
             <div style={{ fontSize: '11px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '12px' }}>Payment</div>
             {selectedWO.paid_outside_site ? (

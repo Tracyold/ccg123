@@ -149,12 +149,13 @@ export default function AdminUserDetail() {
     return [...prev, { action, by, at: new Date().toISOString() }];
   };
   const completeWO = async (wo: any) => {
-    const log = appendLog(wo, 'COMPLETED by admin', 'admin');
+    console.log('completeWO fired, status:', wo.status, 'id:', wo.work_order_id);
+    const log = appendLog(wo, 'COMPLETE by admin', 'admin');
     const now = new Date().toISOString();
-    const { error } = await supabase.from('work_orders').update({ status: 'COMPLETED', completed_at: now, edit_history: log }).eq('work_order_id', wo.work_order_id);
+    const { error } = await supabase.from('work_orders').update({ status: 'COMPLETE', completed_at: now, edit_history: log }).eq('work_order_id', wo.work_order_id);
     if (error) { console.error('Complete WO error:', error.message); alert('Error: ' + error.message); return; }
-    setWO(prev => prev.map(w => w.work_order_id === wo.work_order_id ? { ...w, status: 'COMPLETED', completed_at: now, edit_history: log } : w));
-    setSelectedWO((prev: any) => prev ? { ...prev, status: 'COMPLETED', completed_at: now, edit_history: log } : prev);
+    setWO(prev => prev.map(w => w.work_order_id === wo.work_order_id ? { ...w, status: 'COMPLETE', completed_at: now, edit_history: log } : w));
+    setSelectedWO((prev: any) => prev ? { ...prev, status: 'COMPLETE', completed_at: now, edit_history: log } : prev);
   };
   const cancelWO = async (wo: any) => {
     const reason = prompt('Cancel reason:');
@@ -318,7 +319,7 @@ export default function AdminUserDetail() {
                     {wo.estimated_price && <div style={{ fontSize: '15px', color: 'rgba(45,212,191,1)', fontFamily: "'Courier New', monospace" }}>{formatMoney(wo.estimated_price)}</div>}
                     <div style={{ fontSize: '12px', color: 'var(--d2)', marginTop: '8px' }}>{fmtDate(wo.created_at)}</div>
                     <div style={{ display: 'flex', gap: '9px', marginTop: '11px' }} onClick={e => e.stopPropagation()}>
-                      {wo.status === 'ACCEPTED' && <button className="ab pub" onClick={() => completeWO(wo)}>Complete</button>}
+                      {(wo.status === 'ACCEPTED' || wo.status === 'CONFIRMED') && <button className="ab pub" onClick={() => completeWO(wo)}>Complete</button>}
                       {(wo.status === 'CREATED' || wo.status === 'ACCEPTED') && <button className="ab rem" onClick={() => cancelWO(wo)}>Cancel</button>}
                     </div>
                   </div>
