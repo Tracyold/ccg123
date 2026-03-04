@@ -111,7 +111,7 @@ export default function DesktopServicesGrid() {
             style={{
               marginBottom: 'clamp(16px, 2vw, 32px)',
               filter: 'drop-shadow(0 0 0 rgba(212,175,55,0))',
-              transition: 'filter 520ms ease-out, transform 250ms ease-out',
+              transition: 'filter 1200ms ease-out, transform 250ms ease-out',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'scale(1.05)';
