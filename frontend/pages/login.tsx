@@ -35,13 +35,18 @@ export default function LoginPage() {
   // Signup fields
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [address, setAddress] = useState('');
+  const [addr1, setAddr1] = useState('');
+  const [addr2, setAddr2] = useState('');
+  const [city, setCity] = useState('');
+  const [addrState, setAddrState] = useState('');
+  const [country, setCountry] = useState('');
+  const [zip, setZip] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const sendOtp = async () => {
     if (!phone.trim()) { setError('Phone number is required'); return; }
-    if (mode === 'signup' && (!name.trim() || !email.trim() || !address.trim())) {
+    if (mode === 'signup' && (!name.trim() || !email.trim() || !addr1.trim() || !city.trim() || !addrState.trim() || !zip.trim())) {
       setError('All fields are required for sign up'); return;
     }
     setLoading(true); setError('');
@@ -68,7 +73,7 @@ export default function LoginPage() {
         name: name.trim(),
         email: email.trim(),
         phone: phone.trim(),
-        shipping_address: address.trim(),
+        shipping_address: [addr1.trim(), addr2.trim(), city.trim(), addrState.trim(), zip.trim(), country.trim()].filter(Boolean).join(', '),
         status: 'ACTIVE',
       });
       if (insertErr && !insertErr.message.includes('duplicate')) {
@@ -127,15 +132,35 @@ export default function LoginPage() {
               </>
             )}
             <label style={labelStyle}>PHONE NUMBER</label>
-            <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+1 (555) 000-0000" style={inputStyle} onFocus={e => { if (!e.target.value) setPhone('+1 '); }}
-              onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
+            <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+1 (555) 000-0000" style={inputStyle} onFocus={e => { if (!e.target.value) setPhone('+1 '); e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
               onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
             {mode === 'signup' && (
               <>
                 <label style={labelStyle}>SHIPPING ADDRESS</label>
-                <input value={address} onChange={e => setAddress(e.target.value)} placeholder="123 Main St, City, State, ZIP" style={inputStyle}
-                  onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-                  onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
+                  <input value={addr1} onChange={e => setAddr1(e.target.value)} placeholder="Address Line 1" style={{ ...inputStyle, flex: 2, marginBottom: 0 }}
+                    onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                  <input value={addr2} onChange={e => setAddr2(e.target.value)} placeholder="Apt / Suite" style={{ ...inputStyle, flex: 1, marginBottom: 0 }}
+                    onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                </div>
+                <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
+                  <input value={city} onChange={e => setCity(e.target.value)} placeholder="City" style={{ ...inputStyle, flex: 2, marginBottom: 0 }}
+                    onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                  <input value={addrState} onChange={e => setAddrState(e.target.value)} placeholder="State" style={{ ...inputStyle, flex: 1, marginBottom: 0 }}
+                    onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                </div>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <input value={country} onChange={e => setCountry(e.target.value)} placeholder="Country" style={{ ...inputStyle, flex: 2, marginBottom: 0 }}
+                    onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                  <input value={zip} onChange={e => setZip(e.target.value)} placeholder="ZIP" style={{ ...inputStyle, flex: 1, marginBottom: 0 }}
+                    onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                </div>
               </>
             )}
             {error && <p style={errStyle}>{error}</p>}
