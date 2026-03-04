@@ -17,15 +17,15 @@ export default function PhilosophySection() {
         entries.forEach((entry) => {
           const el = entry.target as HTMLElement;
           if (entry.isIntersecting) {
-            el.style.color = 'rgb(100, 140, 255)';
+            el.style.color = 'rgb(60, 100, 220)';
             el.style.textShadow = [
-              '0 0 8px rgba(120,160,255,0.95)',
-              '0 0 20px rgba(100,140,255,0.85)',
-              '0 0 45px rgba(100,140,255,0.6)',
-              '0 0 90px rgba(80,120,255,0.35)',
-              '0 0 140px rgba(60,100,255,0.15)',
+              '0 0 8px rgba(60,100,220,0.95)',
+              '0 0 20px rgba(40,80,200,0.85)',
+              '0 0 45px rgba(30,60,180,0.6)',
+              '0 0 90px rgba(20,50,160,0.35)',
+              '0 0 140px rgba(10,30,140,0.15)',
             ].join(', ');
-            el.style.filter = 'drop-shadow(0 0 30px rgba(100,140,255,0.4))';
+            el.style.filter = 'drop-shadow(0 0 30px rgba(40,80,200,0.4))';
           } else {
             el.style.color = '#FAFAFA';
             el.style.textShadow = 'none';
@@ -74,7 +74,7 @@ export default function PhilosophySection() {
                 data-gold-word
                 style={{
                   color: '#FAFAFA',
-                  transition: 'color 600ms ease',
+                  transition: 'color 800ms ease, text-shadow 800ms ease, filter 800ms ease',
                   whiteSpace: 'nowrap',
                 }}
               >
