@@ -57,7 +57,7 @@ export default function StudioSection() {
         if (distFromCenter < 0.04 && eased > 0.92) lockScroll();
 
         photo.style.opacity = String(0.04 + eased * 0.72);
-        photo.style.filter = `blur(${(1 - eased) * 12}px) contrast(1.08)`;
+        photo.style.filter = `grayscale(${1 - eased}) blur(${(1 - eased) * 12}px) contrast(1.08)`;
         photo.style.transform = `scale(${1.12 - eased * 0.06})`;
 
 
@@ -111,7 +111,7 @@ export default function StudioSection() {
         position: 'absolute', inset: '-3%',
         backgroundImage: 'url(/assets/Studio.jpeg)',
         backgroundSize: 'cover', backgroundPosition: 'center',
-        opacity: 0.04, filter: 'blur(12px) contrast(1.08)',
+        opacity: 0.04, filter: 'grayscale(1) blur(12px) contrast(1.08)',
         transform: 'scale(1.12)', transformOrigin: 'center center',
         willChange: 'opacity, filter, transform',
         transition: 'opacity 220ms ease-out, filter 220ms ease-out, transform 700ms ease-out',

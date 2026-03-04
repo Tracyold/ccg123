@@ -295,6 +295,7 @@ export default function Home() {
               backgroundImage: 'url(/assets/Chair.jpeg)',
               backgroundPosition: '62% 40%',
               opacity: '0.4',
+              filter: 'grayscale(1)',
             }}
           />
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 50%, transparent 0%, rgba(5,5,5,0.55) 20%, rgba(5,5,5,0.85) 90%, rgba(5,5,5,0.98) 100%)' }} />
@@ -441,6 +442,7 @@ export default function Home() {
                       objectPosition: 'center top',
                       transform: 'scale(1.1)',
                       display: 'block',
+                      filter: 'grayscale(1)',
                     }}
                   />
                   <div
