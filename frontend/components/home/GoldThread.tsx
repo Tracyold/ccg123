@@ -109,11 +109,19 @@ export default function GoldThread() {
       rafId = requestAnimationFrame(tick);
     };
 
-    const timeout = setTimeout(() => { init(); rafId = requestAnimationFrame(tick); }, 150);
+    const timeout = setTimeout(() => { init(); rafId = requestAnimationFrame(tick); }, 800);
+
+    // Re-init on first scroll to catch late-mounted elements
+    let reinited = false;
+    const onFirstScroll = () => {
+      if (!reinited) { reinited = true; init(); }
+    };
+    window.addEventListener('scroll', onFirstScroll, { passive: true });
 
     return () => {
       mounted = false;
       clearTimeout(timeout);
+      window.removeEventListener('scroll', onFirstScroll);
       cancelAnimationFrame(rafId);
       items.forEach(({ el, type }) => {
         el.style.textShadow = '';

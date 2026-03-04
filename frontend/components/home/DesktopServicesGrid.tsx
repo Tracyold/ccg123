@@ -132,7 +132,6 @@ export default function DesktopServicesGrid() {
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(22px, 2.2vw, 36px)',
               fontWeight: 400,
-              color: '#FAFAFA',
               marginBottom: 'clamp(8px, 1vw, 20px)',
             }}
           >
