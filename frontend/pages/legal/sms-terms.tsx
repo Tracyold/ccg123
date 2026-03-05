@@ -44,7 +44,7 @@ export default function SmsTerms() {
 
           {/* Intro */}
           <div style={{ background: 'rgba(212,175,55,0.06)', border: '1px solid rgba(212,175,55,0.2)', padding: '20px 24px', marginBottom: '48px' }}>
-            <P>By providing a mobile phone number and enabling SMS notification toggles within your account dashboard, you consent to receive transactional SMS notifications related to your account activity. Notifications are optional and can be enabled or disabled individually at any time from your Account Dashboard → Notification Settings.</P>
+            <P>By providing a mobile phone number and enabling SMS notification toggles within your account dashboard, you consent to receive transactional SMS notifications related to your account activity. Notifications are optional and can be enabled or disabled individually at any time from your Account Dashboard.</P>
             <p style={{ fontSize: '17px', color: 'rgba(255,220,100,0.8)', margin: 0 }}>Cutting Corners Gems does not send unsolicited marketing or promotional SMS messages. All messages are operational in nature and correspond to account activity you have chosen to track.</p>
           </div>
 
@@ -53,8 +53,8 @@ export default function SmsTerms() {
             <P>Cutting Corners Gems operates three distinct SMS messaging programs, each corresponding to a specific notification category:</P>
             <div style={{ display: 'grid', gap: '12px', marginBottom: '8px' }}>
               {[
-                { label: 'Account Notifications', desc: 'Transactional alerts for work orders, invoices, service requests, tracking updates, and account activity.' },
-                { label: 'New Listing Alerts', desc: 'Optional marketing notifications sent when new gemstones are listed in the shop. Frequency varies by inventory.' },
+                { label: 'Account Notifications', desc: 'Transactional alerts for work orders, invoices, service requests, product inquiries and tracking updates.' },
+                { label: 'New Listing Alerts', desc: 'Optional marketing notifications sent when new gemstones are listed for sale, in the online shop. Frequency varies by inventory.' },
                 { label: 'Chat Message Alerts', desc: 'Two-way conversational notifications when new messages are sent or received through the account chat system.' },
               ].map(p => (
                 <div key={p.label} style={{ padding: '14px 18px', background: '#0A0A0A', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '6px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
@@ -68,22 +68,27 @@ export default function SmsTerms() {
             </div>
           </Block>
 
-          {/* Account Notifications */}
+          {/* WorkOrder Account Notifications IS Our WorkOrder Pipeline */}
           <Block title="Account Notifications (Transactional)">
             <P>These notifications are sent only for events you have explicitly opted into within your account dashboard. They include:</P>
             <ul style={{ fontSize: '15px',paddingLeft: '20px', marginBottom: '20px' }}>
-              <Li><strong style={{ color: 'rgba(255,255,255,0.8)', fontSize: '17px' }}>Work Order Updates</strong> — Creation, acceptance, item received, service completed, edits, and revisions.</Li>
-              <Li><strong style={{ color: 'rgba(255,255,255,0.8)', fontSize: '17px' }}>Invoice Notifications</strong> — When a new invoice is issued and available for payment.</Li>
+              <Li><strong style={{ color: 'rgba(255,255,255,0.8)', fontSize: '17px' }}>Work Order Updates</strong> — Creation, acceptance, confirmed, item received, service completed, completed payment and revisions.</Li>
+              <Li><strong style={{ color: 'rgba(255,255,255,0.8)', fontSize: '17px' }}>Invoice Notifications</strong> — When a new invoice is ready to be downloaded after a completed payment.</Li>
               <Li><strong style={{ color: 'rgba(255,255,255,0.8)', fontSize: '17px' }}>Tracking Updates</strong> — When an item has been dispatched with tracking information.</Li>
               <Li><strong style={{ color: 'rgba(255,255,255,0.8)', fontSize: '17px' }}>Service Request Confirmations</strong> — When a service request has been received.</Li>
               <Li><strong style={{ color: 'rgba(255,255,255,0.8)', fontSize: '17px' }}>Purchase Confirmations</strong> — When a shop purchase is completed.</Li>
             </ul>
             <P>Sample messages:</P>
-            <SampleMsg label="Work Order Created" msg="Cutting Corners Gems: A new work order has been created for your account and is ready for your review. Log in to accept. Reply STOP to opt out." />
-            <SampleMsg label="Service Completed" msg="Cutting Corners Gems: Your gemstone service is complete. Your invoice is now available in your account dashboard. Reply STOP to opt out." />
-            <SampleMsg label="Tracking Update" msg="Cutting Corners Gems: Your item has been shipped. Tracking: [tracking number]. Reply STOP to opt out." />
-
-            <div style={{ background: 'rgba(212,175,55,0.06)', border: '1px solid rgba(212,175,55,0.2)', padding: '16px 20px', marginTop: '16px' }}>
+            <SampleMsg label="Service Request Sent" msg="You have successfully sent a service request to Cutting Corners Gems [service_request_id]. You are receiving this message because you agreed to recieve work order notifications." />
+            <SampleMsg label="Work Order Created" msg="Cutting Corners Gems: workorder [work_order_id] was created for [work_order_gem_type] [work_order_service_type] and is ready for you to accept. Please Click the link to review its details and click accept before sending your gemstone! [link]. NOTE: You are receiving this message because you agreed to recieve SMS notifications during the duration of an OPEN workorder. You may opt out when the workorder is not OPEN." />
+            <SampleMsg label="Work Order Acceptance" msg="Cutting Corners Gems: You accepted Workorder [work_order_id] for [work_order_gem_type] [work_order_service_type]! NOTE: You are recieving this message because you agreed to recieve SMS notificationS while a workorder is OPEN. You may opt out when the workorder is not OPEN." />
+            <SampleMsg label="Work Order Confirmed - their label" msg="Cutting Corners Gems: Your workorder [work_order_id] for [work_order_gem_type] [work_order_service_type] acceptance is confirmed! Please send your gemstone to address on the workorder and provide tracking information using chat, email or text message." />
+            <SampleMsg label="Work Order Confirmed - our label" msg="Cutting Corners Gems: Your workorder [work_order_id] for [work_order_gem_type] [work_order_service_type] acceptance is confirmed. Please click the link to download your shipping label." />
+            <SampleMsg label="Item Recieved" msg="Cutting Corners Gems: Your [work_order_gem_type] for workorder [work_order_id] for [work_order_gem_type] [work_order_service_type] was recieve by Cutting Corners Gems" />
+            <SampleMsg label="Work Order Complete" msg="Cutting Corners Gems: Your workorder [work_order_id] for [work_order_gem_type] [work_order_service_type]  is complete! Please click the link to review your invoice, notes, photos and payment options." />
+            <SampleMsg label="Work Order Payment Completed" msg="Cutting Corners Gems: Workorder [work_order_id] for [work_order_gem_type] [work_order_service_type] payment is complete. Your item will be shipped to the address on the your workorder within 24 horus." />
+            <SampleMsg label="Your item Is On the Way" msg="Cutting Corners Gems: Your gemsone for workorder [work_order_id] for [work_order_gem_type] [work_order_service_type] has been shipped! Please click the link to view tracking information [link]. Please opt in to shipping notifications in your account dashboard to recieve shipping updates" />  
+                        <div style={{ background: 'rgba(212,175,55,0.06)', border: '1px solid rgba(212,175,55,0.2)', padding: '16px 20px', marginTop: '16px' }}>
               <p style={{ fontSize: '17px', color: 'rgba(255,220,100,0.85)', lineHeight: 1.75, margin: 0 }}>
                 <strong>Active Work Order Requirement:</strong> Work order notifications cannot be disabled while you have an open work order. Because your gemstone is in our possession during this time, we require the ability to reach you with status updates and required confirmations. This toggle becomes available to turn off once your work order is complete and your item has been returned.
               </p>
@@ -96,17 +101,16 @@ export default function SmsTerms() {
             <P><p style={{ fontSize: '17px' }}>If multiple gemstones are listed on the same day, you may receive one message per listing. Notifications are sent only when an item is first listed — not when it sells or is updated.</p></P>
             <P><p style={{ fontSize: '17px' }}>Sample messages:</p></P>
             <SampleMsg label="New Listing" msg="Cutting Corners Gems: A new gemstone has just been listed — [item name]. View it here: [link]. Reply STOP to opt out." />
-            <SampleMsg label="New Listing (Multiple)" msg="Cutting Corners Gems: New listing — [item name] is now available in the shop: [link]. Reply STOP to opt out." />
           </Block>
 
-          {/* Chat */}
+          {/* Inquiry & Chat Account Notifications */}
           <Block title="Chat Message Alerts (2-Way Messaging)">
             <P><p style={{ fontSize: '17px' }}>If enabled, you will receive an SMS notification when a new message is posted in your account's internal chat thread by the Cutting Corners Gems team.</p></P>
             <P><p style={{ fontSize: '17px' }}>Chat notifications support two-way messaging. You may reply directly to the SMS and your reply will be automatically added to your account's chat thread. Replies sent within the website chat interface may also generate an SMS notification to you.</p></P>
             <P><p style={{ fontSize: '17px' }}>The complete chat history remains accessible within your account dashboard. SMS serves as a notification and reply interface — the website is the primary record of all conversations.</p></P>
             <P><p style={{ fontSize: '17px' }}>Sample messages:</p></P>
-            <SampleMsg label="New Chat Message" msg="Cutting Corners Gems: You have a new message from our team. Reply here or log in to your account to respond. Reply STOP to opt out." />
-            <SampleMsg label="Chat Reply Confirmation" msg="Cutting Corners Gems: Your reply has been received and added to your account chat. Reply STOP to opt out." />
+            <SampleMsg label="New Chat Message" msg="Cutting Corners Gems: You have a new message from our team. Reply here or log in to your account to respond. To have resppond to chat messages direclty thrrough SMS please OPT-IN to DIRECT SMS CHAT NOTIFICATIONS. Reply STOP to opt out." />
+            <SampleMsg label="Product Inquiry Sent" msg="Cutting Corners Gems: You sent a an inquiry about [product_title], [product_gem_type], [product_gem_weight]. We will respond shortly!" />
           </Block>
 
           {/* Opt-in */}

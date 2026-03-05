@@ -70,7 +70,7 @@ export default function HomeTab({
               <button className="acc-btn-ghost" onClick={() => setEditProfile({ ...profile })}>Cancel</button>
             </div>
           )}
-          {profileFlash && <span style={{ color: '#d4af37', fontSize: '11px' }}>✓ Saved</span>}
+          {profileFlash && <span style={{ color: '#f9cd3e', fontSize: '11px' }}>✓ Saved</span>}
         </div>
       )}
 
@@ -85,7 +85,7 @@ export default function HomeTab({
 
       {/* SMS Preferences */}
       <div style={{ marginTop: '32px' }}>
-        <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.55)', marginBottom: '16px' }}>Notification Preferences</h3>
+        <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '17px', textTransform: 'uppercase', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.55)', marginBottom: '16px' }}>Notification Preferences</h3>
         {smToggles.map(t => (
           <div key={t.col} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
             <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)' }}>{t.label}</span>

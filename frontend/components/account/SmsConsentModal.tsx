@@ -10,8 +10,8 @@ interface ConsentModalProps {
 const CONSENT_COPY: Record<string, { title: string; body: string; requirement?: string }> = {
   opt_in_work_orders: {
     title: 'Work Order SMS Alerts',
-    body: 'By enabling this, you agree to receive SMS notifications from Cutting Corners Gems regarding your work order status, including acceptance, updates, and completion. Message & data rates may apply. Reply STOP at any time to opt out — however, see the note below.',
-    requirement: 'Important: If you have an open work order, this notification type is required. Because your gemstone is in our possession, we must be able to reach you with updates. This toggle will become available to turn off once your work order is complete and your item has been returned to you. Continuing confirms you understand this requirement.',
+    body: 'By enabling this, you agree to receive SMS notifications from Cutting Corners Gems regarding your work order status, including acceptance, updates, and completion, changes and updates. Message & data rates may apply. Reply STOP at any time to opt out — however, see the note below.',
+    requirement: 'Important: If you have an open work order, this notification type is required while the workorder is OPEN, because your gemstone is in our possession and we require live tracking records for each action taken during that that service . This toggle will become available to turn off once your work order when your gemstone is delivered to your hoe via shipping updates. By continuing you confirm you understand this requirement.',
   },
   opt_in_tracking: {
     title: 'Tracking Update Alerts',
@@ -41,20 +41,20 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
   return (
     <div style={{
       position: 'fixed', inset: 0, zIndex: 1000,
-      background: 'rgba(0,0,0,0.85)',
+      background: 'rgba(0, 0, 0, 0.78)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       padding: '24px',
     }}>
       <div style={{
         background: '#111',
-        border: '1px solid rgba(212,175,55,0.3)',
-        maxWidth: '480px', width: '100%',
+        border: '1px solid rgba(224,176,20,0.3)',
+        maxWidth: '681px', width: '100%',
         padding: '32px',
       }}>
-        <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '10px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: '8px' }}>
+        <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: '8px' }}>
           SMS Consent Required
         </p>
-        <h2 style={{ fontFamily: "'Oranienbaum', serif", fontSize: '22px', color: '#FAFAFA', marginBottom: '20px' }}>
+        <h2 style={{ fontFamily: "'Oranienbaum', serif", fontSize: '25px', color: '#FAFAFA', marginBottom: '22px' }}>
           {copy.title}
         </h2>
 
@@ -63,43 +63,43 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
         </p>
 
         {copy.requirement && (
-          <div style={{ background: 'rgba(212,175,55,0.08)', border: '1px solid rgba(212,175,55,0.25)', padding: '14px 16px', marginBottom: '20px' }}>
+          <div style={{ background: 'rgba(224, 176, 20, 0.08)', border: '1px solid rgba(224, 176, 20, 0.25)', padding: '15px 19px', marginBottom: '21px' }}>
             <p style={{ fontSize: '12px', lineHeight: 1.75, color: 'rgba(255,220,100,0.85)', margin: 0 }}>
               {copy.requirement}
             </p>
           </div>
         )}
 
-        <p style={{ fontSize: '11px', lineHeight: 1.65, color: 'rgba(255,255,255,0.35)', marginBottom: '20px' }}>
+        <p style={{ fontSize: '15px', lineHeight: 1.65, color: 'rgba(255,255,255,0.35)', marginBottom: '21px' }}>
           Cutting Corners Gems will never sell or share your phone number. You can manage your notification preferences at any time from your account dashboard. For help reply HELP. To stop all messages reply STOP.
         </p>
 
-        <div onClick={() => setChecked(c => !c)} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '24px', cursor: 'pointer' }}>
+        <div onClick={() => setChecked(c => !c)} style={{ display: 'flex', alignItems: 'flex-start', gap: '11px', marginBottom: '24px', cursor: 'pointer' }}>
           <div style={{
-            width: '18px', height: '18px', borderRadius: '3px', flexShrink: 0, marginTop: '1px',
-            border: '1px solid rgba(212,175,55,0.5)',
-            background: checked ? '#d4af37' : 'transparent',
+            width: '19px', height: '19px', borderRadius: '3px', flexShrink: 0, marginTop: '1px',
+            border: '1px solid rgba(224, 176, 20, 0.5)',
+            background: checked ? '#e5c55c' : 'transparent',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             transition: 'background 200ms',
           }}>
-            {checked && <span style={{ color: '#000', fontSize: '12px', fontWeight: 700 }}>✓</span>}
+            {checked && <span style={{ color: '#000000e9', fontSize: '15px', fontWeight: 700 }}>✓</span>}
           </div>
-          <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.65 }}>
+          <span style={{ fontSize: '15px', color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.65 }}>
             I agree to receive SMS notifications from Cutting Corners Gems. I understand I can opt out at any time by replying STOP, and that message & data rates may apply.
           </span>
         </div>
 
-        <div style={{ display: 'flex', gap: '12px' }}>
-          <button onClick={onCancel} style={{ flex: 1, padding: '12px', background: 'transparent', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.5)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>
+        <div style={{ display: 'flex', gap: '17px' }}>
+          <button onClick={onCancel} style={{ flex: 1, padding: '17px', background: 'transparent', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.5)', fontSize: '15px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>
             Cancel
           </button>
           <button
             onClick={() => { if (checked) onConfirm(); }}
             style={{
-              flex: 2, padding: '12px',
-              background: checked ? '#d4af37' : 'rgba(212,175,55,0.2)',
-              border: 'none', color: checked ? '#000' : 'rgba(255,255,255,0.3)',
-              fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase',
+              flex: 2, padding: '17px',
+              background: checked ? '#f8cd3f' : 'rgba(209, 164, 15, 0.2)',
+              border: 'none', color: checked ? '#000000e9' : 'rgba(255, 210, 11, 0.3)',
+              fontSize: '15px', letterSpacing: '0.15em', textTransform: 'uppercase',
               cursor: checked ? 'pointer' : 'not-allowed',
               transition: 'all 300ms',
             }}
