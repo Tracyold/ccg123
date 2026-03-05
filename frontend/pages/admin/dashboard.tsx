@@ -19,9 +19,30 @@ export default function AdminDashboard() {
   // Notifications
   const [notifications, setNotifications] = useState<any[]>([]);
 
+  // SMS config
+  const [smsConfig, setSmsConfig] = useState<any>(null);
+  const [smsPhone, setSmsPhone] = useState('');
+  const [smsSaving, setSmsSaving] = useState(false);
+  const [smsFlash, setSmsFlash] = useState(false);
+
   useEffect(() => {
     loadAll();
   }, []);
+
+  async function saveSmsToggle(field: string, value: boolean) {
+    if (!smsConfig) return;
+    await supabase.from('admin_notification_config').update({ [field]: value }).eq('id', smsConfig.id);
+    setSmsConfig((prev: any) => ({ ...prev, [field]: value }));
+  }
+
+  async function saveSmsPhone() {
+    if (!smsConfig) return;
+    setSmsSaving(true);
+    await supabase.from('admin_notification_config').update({ phone: smsPhone }).eq('id', smsConfig.id);
+    setSmsSaving(false);
+    setSmsFlash(true);
+    setTimeout(() => setSmsFlash(false), 2000);
+  }
 
   async function loadAll() {
     const { data: { session } } = await supabase.auth.getSession();
@@ -50,6 +71,14 @@ export default function AdminDashboard() {
       .eq('read', false)
       .order('created_at', { ascending: false });
     setNotifications(notifs || []);
+
+    // SMS config
+    const { data: smsData } = await supabase
+      .from('admin_notification_config')
+      .select('*')
+      .limit(1)
+      .single();
+    if (smsData) { setSmsConfig(smsData); setSmsPhone(smsData.phone || ''); }
 
     // Realtime subscription
     supabase.channel('admin-notifs-dash')
@@ -209,6 +238,54 @@ export default function AdminDashboard() {
             )}
           </div>
         </div>
+
+        {/* SMS Notification Settings */}
+        {smsConfig && (
+          <div style={{ marginTop: '40px', padding: '32px 40px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: '20px', color: 'var(--wh)', marginBottom: '4px' }}>SMS Notifications</div>
+            <div style={{ fontSize: '12px', color: 'var(--d1)', marginBottom: '24px' }}>Receive text alerts when events occur</div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
+              <input
+                value={smsPhone}
+                onChange={e => setSmsPhone(e.target.value)}
+                placeholder="+1 480 000 0000"
+                style={{ background: 'var(--c2)', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--wh)', padding: '8px 12px', fontSize: '13px', borderRadius: '6px', width: '220px' }}
+              />
+              <button onClick={saveSmsPhone} style={{ background: 'var(--gl)', color: '#000', border: 'none', padding: '8px 16px', fontSize: '11px', letterSpacing: '.12em', textTransform: 'uppercase', cursor: 'pointer', borderRadius: '4px' }}>
+                {smsSaving ? 'Saving...' : 'Save'}
+              </button>
+              {smsFlash && <span style={{ fontSize: '11px', color: 'var(--gl)' }}>✓ Saved</span>}
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px' }}>
+              {[
+                { key: 'notify_purchase', label: 'Shop Purchase' },
+                { key: 'notify_chat', label: 'New Chat Message' },
+                { key: 'notify_inquiry', label: 'New Inquiry' },
+                { key: 'notify_work_order', label: 'Work Order Update' },
+                { key: 'notify_service_request', label: 'Service Request' },
+              ].map(({ key, label }) => (
+                <div key={key} onClick={() => saveSmsToggle(key, !smsConfig[key])}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: 'var(--c2)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '8px', cursor: 'pointer' }}>
+                  <span style={{ fontSize: '12px', color: 'var(--wh)', letterSpacing: '.05em' }}>{label}</span>
+                  <div style={{
+                    width: '36px', height: '20px', borderRadius: '10px', position: 'relative',
+                    background: smsConfig[key] ? 'var(--gl)' : 'rgba(255,255,255,0.12)',
+                    transition: 'background 300ms ease',
+                  }}>
+                    <div style={{
+                      position: 'absolute', top: '3px',
+                      left: smsConfig[key] ? '19px' : '3px',
+                      width: '14px', height: '14px', borderRadius: '50%',
+                      background: '#fff', transition: 'left 300ms ease',
+                    }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </AdminLayout>
   );
