@@ -96,8 +96,9 @@ export default function Footer() {
         </div>
         <div className="ccg-footer-content">
           <div className="ccg-footer-links">
-            <a href="/legal" className="ccg-footer-link">legal</a>
-            <a href="/our-structure" className="ccg-footer-link">our structure</a>
+            <a href="legal/index" className="ccg-footer-link">legal</a>
+            <a href="legal/sms-terms" className="ccg-footer-link">sms disclosure</a>
+            <a href="legal/privacy-policy" className="ccg-footer-link">privacy policy</a>
             <a href="/shop" className="ccg-footer-link">shop</a>
             <a href="/portfolio" className="ccg-footer-link">portfolio</a>
             <a href="/login" className="ccg-footer-link">sign in / sign up</a>
