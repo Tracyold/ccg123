@@ -364,6 +364,7 @@ export default function AccountPage() {
             {/* HOME TAB */}
             {activeTab === 'home' && (
               <HomeTab
+                hasOpenWorkOrder={workOrders.some(w => w.status === 'ACCEPTED' || w.status === 'Created')}
                 editProfile={editProfile}
                 profile={profile}
                 profileSaving={profileSaving}
