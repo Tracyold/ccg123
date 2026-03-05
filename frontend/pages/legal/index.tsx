@@ -43,12 +43,12 @@ export default function LegalPage() {
           </div>
         </div>
 
-        <div style={{ maxWidth: '780px', margin: '0 auto', padding: '64px 40px' }}>
+        <div style={{ maxWidth: '1300px', margin: '0 auto', padding: '64px 40px' }}>
 
           {/* Header */}
-          <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.7)', marginBottom: '12px' }}>Cutting Corners Gems</p>
+          <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.7)', marginBottom: '12px' }}>Cutting Corners Gems</p>
           <h1 style={{ fontFamily: "'Oranienbaum', serif", fontSize: 'clamp(32px, 5vw, 52px)', color: '#FAFAFA', marginBottom: '16px', lineHeight: 1.15 }}>Legal & Policies</h1>
-          <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.35)', marginBottom: '64px' }}>Effective Date: March 4, 2026</p>
+          <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.35)', marginBottom: '64px' }}>Effective Date: March 4, 2026</p>
 
           <Section title="Why We Publish Our Policies">
             <P>Cutting Corners Gems believes that clear communication builds trust. Because gemstone cutting involves natural materials, shipping, and specialized services, we provide written policies so customers know exactly how our services operate before sending in their gemstones.</P>
