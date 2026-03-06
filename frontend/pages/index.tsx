@@ -292,7 +292,7 @@ export default function Home() {
           <div
             className="absolute inset-1 bg-cover"
             style={{
-              backgroundImage: 'url(/assets/Chair.jpeg)',
+              backgroundImage: 'url(/assets/handcut.jpeg)',
               backgroundPosition: '62% 40%',
               opacity: '0.4',
               filter: 'grayscale(1) sepia(0.4) hue-rotate(180deg) brightness(0.85)',
