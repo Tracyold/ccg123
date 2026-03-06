@@ -154,27 +154,10 @@ export default function PortfolioPage() {
                         )}
                       </div>
                     </div>
-                    {/* Labels below thumbnail */}
-                    <div style={{ padding: '10px 4px 0' }}>
+                    {/* Labels below thumbnail — desktop: year only */}
+                    <div className="portfolio-card-meta">
                       {photo.year && (
-                        <p style={{
-                          fontFamily: "'Cormorant', serif",
-                          fontSize: '13px',
-                          color: '#d4af37',
-                          margin: 0,
-                        }}>
-                          {photo.year}
-                        </p>
-                      )}
-                      {photo.caption && (
-                        <p style={{
-                          fontFamily: "'Montserrat', sans-serif",
-                          fontSize: '11px',
-                          color: 'rgba(255,255,255,0.45)',
-                          margin: '2px 0 0',
-                        }}>
-                          {photo.caption}
-                        </p>
+                        <p className="portfolio-card-year">{photo.year}</p>
                       )}
                     </div>
                   </div>
@@ -251,39 +234,71 @@ export default function PortfolioPage() {
 }
 
 const portfolioCss = `
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
+/* ── Desktop: 3-column grid ── */
+@media (min-width: 768px) {
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
 }
+/* ── Mobile: 2-column grid ── */
 @media (max-width: 767px) {
-  .portfolio-grid { gap: 14px; }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
   main > div { padding: 16px 16px 60px !important; }
 }
+
+/* ── Card ── */
 .portfolio-card {
-  transition: transform 220ms ease-out, box-shadow 220ms ease-out;
+  transition: transform 320ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.portfolio-card:hover, .portfolio-card.focused {
-  transform: translateY(-2px);
-}
-.portfolio-card:hover .portfolio-caption-overlay,
-.portfolio-card.focused .portfolio-caption-overlay {
-  opacity: 1;
-}
-.portfolio-card:hover .portfolio-thumb,
-.portfolio-card.focused .portfolio-thumb {
-  border-color: rgba(255,255,255,0.16);
-  box-shadow: 0 18px 48px rgba(0,0,0,0.65);
-}
+
+/* ── Thumbnail container ── */
 .portfolio-thumb {
   position: relative;
   aspect-ratio: 1 / 1;
   background: #0A0A0A;
-  border-radius: 14px;
+  border-radius: 1.7px;
   border: 1px solid rgba(255,255,255,0.06);
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.55);
-  transition: border-color 220ms ease-out, box-shadow 220ms ease-out;
+  transition: border-color 380ms ease, box-shadow 380ms ease;
+}
+
+/* ── Image: starts blurred, focuses on hover (camera lens effect) ── */
+.portfolio-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: blur(2.5px) brightness(0.72);
+  transform: scale(1.04);
+  transition:
+    filter 480ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 480ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    brightness 480ms ease;
+}
+.portfolio-card:hover .portfolio-thumb img,
+.portfolio-card.focused .portfolio-thumb img {
+  filter: blur(0px) brightness(1.08) contrast(1.04);
+  transform: scale(1.09);
+}
+
+/* ── Hover border + shadow lift ── */
+.portfolio-card:hover .portfolio-thumb,
+.portfolio-card.focused .portfolio-thumb {
+  border-color: rgba(212, 175, 55, 0.22);
+  box-shadow: 0 20px 52px rgba(0,0,0,0.70);
+}
+
+/* ── Caption overlay ── */
+.portfolio-card:hover .portfolio-caption-overlay,
+.portfolio-card.focused .portfolio-caption-overlay {
+  opacity: 1;
 }
 .portfolio-vignette {
   position: absolute;
@@ -305,6 +320,22 @@ const portfolioCss = `
 }
 .portfolio-caption-overlay.visible {
   opacity: 1;
+}
+.portfolio-card-meta {
+  padding: 8px 2px 0;
+}
+.portfolio-card-year {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: #d4af37;
+  margin: 0;
+  text-align: left;
+}
+@media (max-width: 767px) {
+  .portfolio-card-year { font-size: 10px; }
 }
 .portfolio-modal-overlay {
   position: fixed;
