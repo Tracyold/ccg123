@@ -161,7 +161,7 @@ export default function StudioSection() {
         position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none',
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E")`,
         backgroundRepeat: 'repeat', backgroundSize: '180px 180px',
-        opacity: 0.35, mixBlendMode: 'overlay',
+        opacity: 0.79, mixBlendMode: 'overlay',
       }} />
 
       <div className="container-custom" style={{
@@ -183,7 +183,7 @@ export default function StudioSection() {
         <p ref={descRef} style={{
           fontFamily: 'var(--font-body)',
           fontSize: 'clamp(13px, 1.3vw, 17px)',
-          lineHeight: 1.8, color: 'rgba(255,255,255,0.70)',
+          lineHeight: 1.8, color: 'rgba(255,255,255,0.7)'
         }}>
           Every stone passes through a focused, single-cutter environment — no outsourcing, no shortcuts. Just precise handwork from rough to finished gem.
         </p>
