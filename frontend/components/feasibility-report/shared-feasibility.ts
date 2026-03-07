@@ -32,11 +32,11 @@ export const precut = {
   conditionals: [
     'Color axis must be confirmed prior to orientation — stone shows potential color-change axis at 45° from table normal',
     'Girdle thickness should be maintained at minimum 0.3mm to preserve structural integrity',
-    'Critical angle for this material: 34.9° — pavilion angle adjustment required for optimal TIR',
+    'Critical angle for this material: 34.9° — pavilion angle adjustment required for correct light return',
   ],
   options: [
     { label: 'A — Minimal', desc: 'Repolish only. Remove surface abrasion and re-cut girdle edge chip. No change to cutting style. Estimated yield: 80-84%. Fastest turnaround.' },
-    { label: 'B — Corrective', desc: 'Recut to correct make. Improve symmetry, re-establish pavilion angles for TIR, repolish all facets. Estimated yield: 74-80%. Recommended.' },
+    { label: 'B — Corrective', desc: 'Recut to correct make. Improve symmetry, re-establish pavilion angles for correct light return, repolish all facets. Estimated yield: 74-80%. Recommended.' },
     { label: 'C — Full Recut', desc: 'New cut style. Optimize for color axis and critical angle. Oval or cushion recommended. Maximum color expression. Estimated yield: 72-76%. Longest lead time.' },
   ],
   summary: 'Stone presents well for recutting. No structural threats to the cutting process. Primary opportunity is in correcting make to improve optical performance and color expression. Option B recommended as balance of yield and performance improvement.',
@@ -48,7 +48,7 @@ export const postcut = {
   analyst: 'M. Reynolds',
   before: { weight: '4.82 ct', measurements: '9.4 x 7.1 x 5.8 mm', cut: 'Mixed Oval — Poor Make' },
   after: { weight: '3.94 ct', measurements: '8.6 x 6.8 x 4.9 mm', cut: 'Oval Brilliant — Corrective Recut' },
-  yield: { value: 81.7, category: 'High Retention' },
+  yield: { value: 55.3, category: 'High Retention' },
   objectives: [
     'Restore surface polish and remove abrasion',
     'Re-establish correct pavilion angles for total internal reflection',
@@ -58,7 +58,7 @@ export const postcut = {
   changeTable: [
     { feature: 'Surface abrasion (table + crown)', action: 'Full repolish — all crown facets', result: 'Resolved' },
     { feature: "Girdle chip, 7 o'clock", action: 'Recutting and girdle re-establishment', result: 'Resolved' },
-    { feature: 'Poor pavilion angle', action: 'Pavilion re-cut to 41.5°', result: 'TIR achieved' },
+    { feature: 'Poor pavilion angle', action: 'Pavilion re-cut to 41.5°', result: 'Resolved' },
     { feature: 'Symmetry deviation', action: 'Meet-point correction across all mains', result: 'Improved' },
     { feature: 'Needle inclusions', action: 'No action — below risk threshold', result: 'Retained — benign' },
   ],

@@ -8,7 +8,7 @@ function SeverityBadge({ level }: { level: string }) {
 }
 
 function ResultBadge({ result }: { result: string }) {
-  const isGood = ['Resolved', 'TIR achieved', 'Improved', 'Excellent'].includes(result);
+  const isGood = ['Resolved', 'Improved', 'Excellent'].includes(result);
   return <span style={{ display: 'inline-block', padding: '2px 8px', background: isGood ? 'rgba(100,200,120,0.1)' : 'rgba(180,180,180,0.08)', color: isGood ? 'rgba(100,200,120,0.9)' : 'rgba(180,180,180,0.6)', fontFamily: 'Montserrat, sans-serif', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase', borderRadius: '2px' }}>{result}</span>;
 }
 
@@ -34,8 +34,6 @@ export default function FeasibilityMobile() {
         .fm-option { padding: 14px; border: 1px solid rgba(30,60,120,0.7); margin-bottom: 8px; background: rgba(255,255,255,0.02); }
         .fm-option.rec { border-color: rgba(212,175,55,0.6); background: rgba(212,175,55,0.04); }
         .fm-disclaimer { margin-top: 24px; padding: 14px; border: 1px solid rgba(30,60,120,0.6); background: rgba(255,255,255,0.02); font-family: 'Montserrat', sans-serif; font-size: '9px'; color: rgba(255,255,255,0.5); line-height: 1.7; font-size: 13px; }
-        .fm-recovery { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; margin: 12px 0 6px; position: relative; }
-        .fm-recovery-fill { position: absolute; height: 100%; background: linear-gradient(to right, rgba(212,175,55,0.4), rgba(212,175,55,0.8)); border-radius: 3px; }
       `}</style>
 
       {/* Tab switcher */}
@@ -108,15 +106,6 @@ export default function FeasibilityMobile() {
             <thead><tr>{['Feature', 'Severity'].map(h => <th key={h} style={TH}>{h}</th>)}</tr></thead>
             <tbody>{precut.structuralTable.map((r, i) => <tr key={i}><td style={TC}>{r.feature}<br /><span style={{ color: 'rgba(100,160,220,0.85)', fontSize: '13px' }}>{r.location}</span></td><td style={TC}><SeverityBadge level={r.severity} /></td></tr>)}</tbody>
           </table>
-
-          <p style={SL}>Recovery Range</p>
-          <div className="fm-recovery">
-            <div className="fm-recovery-fill" style={{ left: `${precut.recovery.low}%`, width: `${precut.recovery.high - precut.recovery.low}%` }} />
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '15px', color: 'rgba(212,175,55,0.8)', fontWeight: 600 }}>{precut.recovery.low}%</span>
-            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '15px', color: 'rgba(212,175,55,0.8)', fontWeight: 600 }}>{precut.recovery.high}%</span>
-          </div>
 
           <p style={SL}>Cutting Approach Options</p>
           {precut.options.map((o, i) => (

@@ -7,7 +7,7 @@ function SeverityBadge({ level }: { level: string }) {
 }
 
 function ResultBadge({ result }: { result: string }) {
-  const isGood = ['Resolved', 'TIR achieved', 'Improved', 'Excellent'].includes(result);
+  const isGood = ['Resolved', 'Improved', 'Excellent'].includes(result);
   return <span style={{ display: 'inline-block', padding: '2px 8px', background: isGood ? 'rgba(100,200,120,0.1)' : 'rgba(180,180,180,0.08)', color: isGood ? 'rgba(100,200,120,0.9)' : 'rgba(180,180,180,0.6)', fontFamily: 'Montserrat, sans-serif', fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase', borderRadius: '2px' }}>{result}</span>;
 }
 
@@ -30,8 +30,6 @@ export default function FeasibilityDesktop() {
         .fd-plot { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); padding: 20px; position: relative; min-height: 140px; }
         .fd-plot-label { font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(100,160,220,0.85); position: absolute; top: 10px; left: 12px; }
         .fd-plot-shape { display: flex; align-items: center; justify-content: center; height: 100px; }
-        .fd-recovery { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; margin: 12px 0 6px; position: relative; }
-        .fd-recovery-fill { position: absolute; height: 100%; background: linear-gradient(to right, rgba(212,175,55,0.4), rgba(212,175,55,0.8)); border-radius: 3px; }
         .fd-option { padding: 16px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 8px; background: rgba(255,255,255,0.02); }
         .fd-option.rec { border-color: rgba(212,175,55,0.25); background: rgba(212,175,55,0.04); }
         .fd-disclaimer { margin-top: 32px; padding: 16px; border: 1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.02); font-family: 'Montserrat', sans-serif; font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
@@ -120,20 +118,6 @@ export default function FeasibilityDesktop() {
             <thead><tr>{['Feature', 'Location', 'Severity', 'View'].map(h => <th key={h} style={TH}>{h}</th>)}</tr></thead>
             <tbody>{precut.structuralTable.map((r, i) => <tr key={i}><td style={TC}>{r.feature}</td><td style={TC}>{r.location}</td><td style={TC}><SeverityBadge level={r.severity} /></td><td style={TC}>{r.view}</td></tr>)}</tbody>
           </table>
-
-          <p style={SL}>Estimated Recovery Range</p>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', color: 'rgba(255,255,255,0.8)' }}>Conservative</span>
-            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', color: 'rgba(255,255,255,0.8)' }}>Optimal</span>
-          </div>
-          <div className="fd-recovery">
-            <div className="fd-recovery-fill" style={{ left: `${precut.recovery.low}%`, width: `${precut.recovery.high - precut.recovery.low}%` }} />
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '17px', color: 'rgba(212,175,55,0.95)', fontWeight: 600 }}>{precut.recovery.low}%</span>
-            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '17px', color: 'rgba(212,175,55,0.95)', fontWeight: 600 }}>{precut.recovery.high}%</span>
-          </div>
-          <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', color: 'rgba(255,255,255,0.8)', lineHeight: 1.65 }}>{precut.recovery.basis}</p>
 
           <p style={SL}>Conditional Factors</p>
           {precut.conditionals.map((c, i) => (
