@@ -106,7 +106,7 @@ export default function MobileCompanyModel() {
           height: 0;
           border-left: 7px solid transparent;
           border-right: 7px solid transparent;
-          border-top: 10px solid rgba(100,160,220,0.85);
+          border-top: 10px solid rgba(212,175,55,0.85);
           margin-top: 2px;
         }
         @keyframes mob-pulse {
@@ -165,8 +165,8 @@ export default function MobileCompanyModel() {
                   <a href={(ch as any).link.href} style={{
                     display: 'inline-flex', alignItems: 'center', gap: '8px',
                     padding: '12px 20px',
-                    border: '1px solid rgba(100,160,220,0.35)',
-                    color: 'rgba(100,160,220,0.85)',
+                    border: '1px solid rgba(212,175,55,0.35)',
+                    color: 'rgba(212,175,55,0.85)',
                     fontFamily: 'Montserrat, sans-serif',
                     fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase',
                     textDecoration: 'none',
@@ -178,8 +178,8 @@ export default function MobileCompanyModel() {
                   <a href={(ch as any).link2.href} style={{
                     display: 'inline-flex', alignItems: 'center', gap: '8px',
                     padding: '12px 20px',
-                    border: '1px solid rgba(100,160,220,0.35)',
-                    color: 'rgba(100,160,220,0.85)',
+                    border: '1px solid rgba(212,175,55,0.35)',
+                    color: 'rgba(212,175,55,0.85)',
                     fontFamily: 'Montserrat, sans-serif',
                     fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase',
                     textDecoration: 'none',
