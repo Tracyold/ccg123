@@ -95,6 +95,7 @@ export default function SmsTerms() {
             </div>
           </Block>
 
+
           {/* Marketing */}
           <Block title="New Gemstone Listing Alerts (Marketing)">
             <P><p style={{ fontSize: '17px' }}>If enabled, you will receive one SMS notification each time a new gemstone is listed in the shop. Each message contains a direct link to that listing.</p></P>

@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
         <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '20px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.4)', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', cursor: 'pointer' }}>← Cutting Corners Gems</button>
           <div style={{ display: 'flex', gap: '24px' }}>
-            <button onClick={() => router.push('/legal')} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.35)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>Legal</button>
+            <button onClick={() => router.push('/legal/index')} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.35)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>Legal</button>
             <button onClick={() => router.push('/legal/sms-terms')} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.35)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>SMS Disclosure</button>
           </div>
         </div>
@@ -122,7 +122,7 @@ export default function PrivacyPolicy() {
           </Sec>
 
           <div style={{ marginTop: '48px', display: 'flex', gap: '24px', justifyContent: 'center' }}>
-            <button onClick={() => router.push('/legal')} style={{ background: 'none', border: 'none', color: 'rgba(212,175,55,0.6)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>Legal</button>
+            <button onClick={() => router.push('/legal/index')} style={{ background: 'none', border: 'none', color: 'rgba(212,175,55,0.6)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>Legal</button>
             <span style={{ color: 'rgba(255,255,255,0.15)' }}>|</span>
             <button onClick={() => router.push('/legal/sms-terms')} style={{ background: 'none', border: 'none', color: 'rgba(212,175,55,0.6)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>SMS Disclosure</button>
           </div>
