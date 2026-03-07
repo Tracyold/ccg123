@@ -14,7 +14,7 @@ function ResultBadge({ result }: { result: string }) {
 
 const SL = { fontFamily: 'Montserrat, sans-serif', fontSize: '13px', letterSpacing: '0.3em', textTransform: 'uppercase' as const, color: 'rgba(212,175,55,0.9)', marginBottom: '12px', marginTop: '28px', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.05)' };
 const FL = { fontFamily: 'Montserrat, sans-serif', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'rgba(100,160,220,0.9)', marginBottom: '3px' };
-const FV = { fontFamily: 'Montserrat, sans-serif', fontSize: '15px', color: 'rgba(255,255,255,0.95)', marginBottom: '16px' };
+const FV = { fontFamily: 'Montserrat, sans-serif', fontSize: '16px', color: 'rgba(255,255,255,0.95)', marginBottom: '16px' };
 const TH = { fontFamily: 'Montserrat, sans-serif', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: 'rgba(100,160,220,0.9)', padding: '8px 8px', borderBottom: '1px solid rgba(255,255,255,0.06)', textAlign: 'left' as const };
 const TC = { fontFamily: 'Montserrat, sans-serif', fontSize: '14px', color: 'rgba(255,255,255,0.85)', padding: '8px', borderBottom: '1px solid rgba(255,255,255,0.04)', verticalAlign: 'top' as const };
 

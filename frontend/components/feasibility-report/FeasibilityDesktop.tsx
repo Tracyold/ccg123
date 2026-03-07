@@ -11,11 +11,11 @@ function ResultBadge({ result }: { result: string }) {
   return <span style={{ display: 'inline-block', padding: '2px 8px', background: isGood ? 'rgba(100,200,120,0.1)' : 'rgba(180,180,180,0.08)', color: isGood ? 'rgba(100,200,120,0.9)' : 'rgba(180,180,180,0.6)', fontFamily: 'Montserrat, sans-serif', fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase', borderRadius: '2px' }}>{result}</span>;
 }
 
-const SL = { fontFamily: 'Montserrat, sans-serif', fontSize: '9px', letterSpacing: '0.3em', textTransform: 'uppercase' as const, color: 'rgba(212,175,55,0.55)', marginBottom: '12px', marginTop: '32px', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.05)' };
-const FL = { fontFamily: 'Montserrat, sans-serif', fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.3)', marginBottom: '3px' };
-const FV = { fontFamily: 'Montserrat, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.8)', marginBottom: '14px' };
-const TH = { fontFamily: 'Montserrat, sans-serif', fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.3)', padding: '8px 10px', borderBottom: '1px solid rgba(255,255,255,0.06)', textAlign: 'left' as const };
-const TC = { fontFamily: 'Montserrat, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.6)', padding: '10px', borderBottom: '1px solid rgba(255,255,255,0.04)', verticalAlign: 'top' as const };
+const SL = { fontFamily: 'Montserrat, sans-serif', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: 'rgba(212,175,55,0.9)', marginBottom: '12px', marginTop: '32px', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.05)' };
+const FL = { fontFamily: 'Montserrat, sans-serif', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'rgba(100,160,220,0.9)', marginBottom: '4px' };
+const FV = { fontFamily: 'Montserrat, sans-serif', fontSize: '15px', color: 'rgba(255,255,255,0.95)', marginBottom: '16px' };
+const TH = { fontFamily: 'Montserrat, sans-serif', fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'rgba(100,160,220,0.9)', padding: '8px 10px', borderBottom: '1px solid rgba(255,255,255,0.06)', textAlign: 'left' as const };
+const TC = { fontFamily: 'Montserrat, sans-serif', fontSize: '15px', color: 'rgba(255,255,255,0.9)', padding: '10px', borderBottom: '1px solid rgba(255,255,255,0.04)', verticalAlign: 'top' as const };
 
 const CARD: React.CSSProperties = { background: '#0D0D0D', border: '1px solid rgba(212,175,55,0.15)', padding: '48px', width: '100%' };
 
@@ -28,13 +28,13 @@ export default function FeasibilityDesktop() {
         .fd-gem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
         .fd-sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .fd-plot { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); padding: 20px; position: relative; min-height: 140px; }
-        .fd-plot-label { font-family: 'Montserrat', sans-serif; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.2); position: absolute; top: 10px; left: 12px; }
+        .fd-plot-label { font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(100,160,220,0.85); position: absolute; top: 10px; left: 12px; }
         .fd-plot-shape { display: flex; align-items: center; justify-content: center; height: 100px; }
         .fd-recovery { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; margin: 12px 0 6px; position: relative; }
         .fd-recovery-fill { position: absolute; height: 100%; background: linear-gradient(to right, rgba(212,175,55,0.4), rgba(212,175,55,0.8)); border-radius: 3px; }
         .fd-option { padding: 16px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 8px; background: rgba(255,255,255,0.02); }
         .fd-option.rec { border-color: rgba(212,175,55,0.25); background: rgba(212,175,55,0.04); }
-        .fd-disclaimer { margin-top: 32px; padding: 16px; border: 1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.02); font-family: 'Montserrat', sans-serif; font-size: 9px; color: rgba(255,255,255,0.2); line-height: 1.7; }
+        .fd-disclaimer { margin-top: 32px; padding: 16px; border: 1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.02); font-family: 'Montserrat', sans-serif; font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
       `}</style>
 
       <div className="fd-grid">
@@ -42,9 +42,9 @@ export default function FeasibilityDesktop() {
         <div style={CARD}>
           <div className="fd-header">
             <div>
-              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '8px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.6)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
+              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
               <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: '22px', color: '#FAFAFA', lineHeight: 1.1, marginBottom: '4px' }}>Pre-Cut Evaluation</p>
-              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.3)' }}>Report #{precut.id}</p>
+              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', color: 'rgba(255,255,255,0.7)' }}>Report #{precut.id}</p>
             </div>
             <div style={{ textAlign: 'right' }}>
               <p style={FL}>Date</p><p style={{ ...FV, marginBottom: '8px' }}>{precut.date}</p>
@@ -60,7 +60,7 @@ export default function FeasibilityDesktop() {
           </div>
 
           <p style={SL}>Current Condition Summary</p>
-          <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, marginBottom: '8px' }}>{precut.condition}</p>
+          <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '15px', color: 'rgba(255,255,255,0.9)', lineHeight: 1.75, marginBottom: '8px' }}>{precut.condition}</p>
 
           <p style={SL}>Symbol Legend</p>
           <div className="fd-sym-grid">
@@ -68,8 +68,8 @@ export default function FeasibilityDesktop() {
               <div key={s.symbol} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '6px' }}>
                 <span style={{ fontFamily: 'monospace', fontSize: '14px', color: 'rgba(212,175,55,0.7)', minWidth: '16px' }}>{s.symbol}</span>
                 <div>
-                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '8px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginBottom: '1px' }}>{s.type}</p>
-                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.55)' }}>{s.desc}</p>
+                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(100,160,220,0.9)', marginBottom: '1px' }}>{s.type}</p>
+                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '15px', color: 'rgba(255,255,255,0.9)' }}>{s.desc}</p>
                 </div>
               </div>
             ))}
@@ -123,23 +123,23 @@ export default function FeasibilityDesktop() {
 
           <p style={SL}>Estimated Recovery Range</p>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>Conservative</span>
-            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>Optimal</span>
+            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', color: 'rgba(255,255,255,0.8)' }}>Conservative</span>
+            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', color: 'rgba(255,255,255,0.8)' }}>Optimal</span>
           </div>
           <div className="fd-recovery">
             <div className="fd-recovery-fill" style={{ left: `${precut.recovery.low}%`, width: `${precut.recovery.high - precut.recovery.low}%` }} />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', color: 'rgba(212,175,55,0.8)', fontWeight: 600 }}>{precut.recovery.low}%</span>
-            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', color: 'rgba(212,175,55,0.8)', fontWeight: 600 }}>{precut.recovery.high}%</span>
+            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px', color: 'rgba(212,175,55,0.95)', fontWeight: 600 }}>{precut.recovery.low}%</span>
+            <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px', color: 'rgba(212,175,55,0.95)', fontWeight: 600 }}>{precut.recovery.high}%</span>
           </div>
-          <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.35)', lineHeight: 1.65 }}>{precut.recovery.basis}</p>
+          <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', color: 'rgba(255,255,255,0.8)', lineHeight: 1.65 }}>{precut.recovery.basis}</p>
 
           <p style={SL}>Conditional Factors</p>
           {precut.conditionals.map((c, i) => (
             <div key={i} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
-              <span style={{ color: 'rgba(212,175,55,0.5)', fontSize: '10px', marginTop: '2px', flexShrink: 0 }}>—</span>
-              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.7 }}>{c}</p>
+              <span style={{ color: 'rgba(212,175,55,0.9)', fontSize: '15px', marginTop: '2px', flexShrink: 0 }}>—</span>
+              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '15px', color: 'rgba(255,255,255,0.9)', lineHeight: 1.7 }}>{c}</p>
             </div>
           ))}
 
@@ -147,15 +147,15 @@ export default function FeasibilityDesktop() {
           {precut.options.map((o, i) => (
             <div key={i} className={`fd-option${i === 1 ? ' rec' : ''}`}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '10px', fontWeight: 600, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.1em' }}>{o.label}</p>
-                {i === 1 && <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '8px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.8)' }}>Recommended</span>}
+                <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '15px', fontWeight: 600, color: 'rgba(212,175,55,0.95)', letterSpacing: '0.1em' }}>{o.label}</p>
+                {i === 1 && <span style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.95)' }}>Recommended</span>}
               </div>
-              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.7 }}>{o.desc}</p>
+              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '15px', color: 'rgba(255,255,255,0.9)', lineHeight: 1.7 }}>{o.desc}</p>
             </div>
           ))}
 
           <p style={SL}>Summary Evaluation</p>
-          <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.75 }}>{precut.summary}</p>
+          <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '15px', color: 'rgba(255,255,255,0.9)', lineHeight: 1.75 }}>{precut.summary}</p>
           <div className="fd-disclaimer">This report is an analytical evaluation only and does not constitute a price quote, guarantee of outcome, or appraisal. All observations are based on visual and optical examination under standard conditions. CCG Cut Feasibility Reports are the proprietary product of Cutting Corners Gems.</div>
         </div>
 
@@ -163,9 +163,9 @@ export default function FeasibilityDesktop() {
         <div style={CARD}>
           <div className="fd-header">
             <div>
-              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '8px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.6)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
+              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
               <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: '22px', color: '#FAFAFA', lineHeight: 1.1, marginBottom: '4px' }}>Post-Cut Change Report</p>
-              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.3)' }}>Report #{postcut.id}</p>
+              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '14px', color: 'rgba(255,255,255,0.7)' }}>Report #{postcut.id}</p>
             </div>
             <div style={{ textAlign: 'right' }}>
               <p style={FL}>Date</p><p style={{ ...FV, marginBottom: '8px' }}>{postcut.date}</p>
@@ -196,8 +196,8 @@ export default function FeasibilityDesktop() {
           <p style={SL}>Primary Cutting Objectives</p>
           {postcut.objectives.map((o, i) => (
             <div key={i} style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}>
-              <span style={{ color: 'rgba(212,175,55,0.5)', fontSize: '10px', marginTop: '2px', flexShrink: 0 }}>—</span>
-              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.65 }}>{o}</p>
+              <span style={{ color: 'rgba(212,175,55,0.9)', fontSize: '15px', marginTop: '2px', flexShrink: 0 }}>—</span>
+              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '15px', color: 'rgba(255,255,255,0.9)', lineHeight: 1.65 }}>{o}</p>
             </div>
           ))}
 
