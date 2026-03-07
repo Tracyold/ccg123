@@ -14,87 +14,84 @@ export default function MobileCompanyModel() {
     <>
       <style>{`
         .mob-chapter {
-          padding: 56px 0;
+          min-height: 100svh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 100px 0 60px;
           border-bottom: 1px solid rgba(255,255,255,0.05);
-          scroll-margin-top: 80px;
+          scroll-margin-top: 0;
+          overflow: hidden;
+          position: relative;
         }
         .mob-chapter-label {
           font-family: 'Montserrat', sans-serif;
-          font-size: 10px;
+          font-size: 13px;
           letter-spacing: 0.3em;
           text-transform: uppercase;
-          color: rgba(212,175,55,0.6);
-          margin-bottom: 14px;
+          color: rgba(212,175,55,0.85);
+          margin-bottom: 18px;
         }
         .mob-chapter-heading {
           font-family: 'Oranienbaum', serif;
-          font-size: clamp(26px, 7vw, 36px);
+          font-size: clamp(32px, 9vw, 48px);
           color: #FAFAFA;
-          line-height: 1.15;
-          margin-bottom: 28px;
+          line-height: 1.1;
+          margin-bottom: 32px;
         }
         .mob-chapter-body p {
           font-family: 'Comfortaa', sans-serif;
-          font-size: 14px;
-          color: rgba(255,255,255,0.6);
+          font-size: clamp(16px, 4.5vw, 19px);
+          color: rgba(255,255,255,0.85);
           line-height: 1.9;
-          margin-bottom: 18px;
+          margin-bottom: 20px;
         }
         .mob-chapter-body p:first-child {
           font-family: 'Montserrat', sans-serif;
           font-weight: 600;
-          font-size: 14px;
+          font-size: clamp(16px, 4.5vw, 18px);
           color: rgba(100,160,220,0.9);
-          line-height: 1.75;
-        }
-        .mob-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          margin-top: 16px;
-          font-family: 'Montserrat', sans-serif;
-          font-size: 11px;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          color: rgba(100,160,220,0.9);
-          text-decoration: none;
-          border-bottom: 1px solid rgba(100,160,220,0.3);
-          padding-bottom: 2px;
+          line-height: 1.8;
         }
         .mob-stat {
           display: inline-block;
-          padding: 20px 24px;
+          padding: 24px 28px;
           border: 1px solid rgba(212,175,55,0.15);
           background: rgba(212,175,55,0.04);
-          margin: 8px 0 32px;
+          margin: 12px 0 36px;
         }
         .mob-stat-value {
           font-family: 'Oranienbaum', serif;
-          font-size: 40px;
-          color: rgba(212,175,55,0.8);
+          font-size: 52px;
+          color: rgba(212,175,55,0.95);
           line-height: 1;
-          margin-bottom: 4px;
+          margin-bottom: 6px;
         }
         .mob-stat-label {
           font-family: 'Montserrat', sans-serif;
-          font-size: 9px;
+          font-size: 13px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.35);
+          color: rgba(255,255,255,0.75);
         }
         .mob-scroll-btn {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 52px;
-          height: 52px;
+          width: 60px;
+          height: 60px;
           border-radius: 50%;
           border: 1px solid rgba(100,160,220,0.4);
           background: transparent;
           cursor: pointer;
-          margin-top: 40px;
+          margin-top: auto;
+          padding-top: 32px;
           transition: background 200ms, border-color 200ms;
           animation: mob-pulse 2s ease-in-out infinite;
+          flex-shrink: 0;
+          position: absolute;
+          bottom: 40px;
+          left: 0;
         }
         .mob-scroll-btn:hover {
           background: rgba(100,160,220,0.1);
@@ -104,45 +101,51 @@ export default function MobileCompanyModel() {
         .mob-scroll-arrow {
           width: 0;
           height: 0;
-          border-left: 7px solid transparent;
-          border-right: 7px solid transparent;
-          border-top: 10px solid rgba(212,175,55,0.85);
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-top: 12px solid rgba(212,175,55,0.85);
           margin-top: 2px;
         }
         @keyframes mob-pulse {
           0%, 100% { box-shadow: 0 0 0 0 rgba(100,160,220,0.3); }
-          50% { box-shadow: 0 0 0 8px rgba(100,160,220,0); }
+          50% { box-shadow: 0 0 0 10px rgba(100,160,220,0); }
         }
         .mob-cta {
-          padding: 64px 0;
+          min-height: 100svh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
           text-align: center;
+          padding: 80px 0;
           border-top: 1px solid rgba(255,255,255,0.05);
-          scroll-margin-top: 80px;
+          scroll-margin-top: 0;
         }
         .mob-cta-heading {
           font-family: 'Oranienbaum', serif;
-          font-size: clamp(20px, 5vw, 28px);
+          font-size: clamp(26px, 7vw, 36px);
           color: #FAFAFA;
-          margin-bottom: 14px;
+          margin-bottom: 18px;
           line-height: 1.2;
         }
         .mob-cta-sub {
           font-family: 'Comfortaa', sans-serif;
-          font-size: 13px;
-          color: rgba(255,255,255,0.4);
-          margin-bottom: 28px;
-          line-height: 1.8;
+          font-size: clamp(16px, 4.5vw, 19px);
+          color: rgba(255,255,255,0.8);
+          margin-bottom: 36px;
+          line-height: 1.85;
+          max-width: 360px;
         }
         .mob-cta-btn {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          padding: 14px 28px;
+          padding: 16px 32px;
           border: 1px solid rgba(212,175,55,0.4);
           background: transparent;
           color: rgba(212,175,55,0.9);
           font-family: 'Montserrat', sans-serif;
-          font-size: 11px;
+          font-size: 15px;
           letter-spacing: 0.15em;
           text-transform: uppercase;
           text-decoration: none;
@@ -154,21 +157,24 @@ export default function MobileCompanyModel() {
       <div>
         {chapters.map((ch) => (
           <div key={ch.id} id={`mob-chapter-${ch.id}`} className="mob-chapter">
+
             <p className="mob-chapter-label">{ch.label}</p>
             <h2 className="mob-chapter-heading">{ch.heading}</h2>
+
             <div className="mob-chapter-body">
               {ch.body.map((para, i) => <p key={i}>{para}</p>)}
             </div>
+
             {((ch as any).link || (ch as any).link2) && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '20px 0' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '24px 0 0' }}>
                 {(ch as any).link && (
                   <a href={(ch as any).link.href} style={{
                     display: 'inline-flex', alignItems: 'center', gap: '8px',
-                    padding: '12px 20px',
+                    padding: '14px 22px',
                     border: '1px solid rgba(212,175,55,0.35)',
                     color: 'rgba(212,175,55,0.85)',
                     fontFamily: 'Montserrat, sans-serif',
-                    fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase',
+                    fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase',
                     textDecoration: 'none',
                   }}>
                     {(ch as any).link.label} →
@@ -177,11 +183,11 @@ export default function MobileCompanyModel() {
                 {(ch as any).link2 && (
                   <a href={(ch as any).link2.href} style={{
                     display: 'inline-flex', alignItems: 'center', gap: '8px',
-                    padding: '12px 20px',
+                    padding: '14px 22px',
                     border: '1px solid rgba(212,175,55,0.35)',
                     color: 'rgba(212,175,55,0.85)',
                     fontFamily: 'Montserrat, sans-serif',
-                    fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase',
+                    fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase',
                     textDecoration: 'none',
                   }}>
                     {(ch as any).link2.label} →
@@ -189,12 +195,14 @@ export default function MobileCompanyModel() {
                 )}
               </div>
             )}
+
             {ch.stat && (
               <div className="mob-stat">
                 <div className="mob-stat-value">{ch.stat.value}</div>
                 <div className="mob-stat-label">{ch.stat.label}</div>
               </div>
             )}
+
             <button
               className="mob-scroll-btn"
               onClick={() => scrollToNext(ch.id)}
@@ -202,6 +210,7 @@ export default function MobileCompanyModel() {
             >
               <div className="mob-scroll-arrow" />
             </button>
+
           </div>
         ))}
 
