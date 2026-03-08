@@ -1,158 +1,80 @@
+import { useState, useEffect, useRef } from 'react';
 import { paths } from './shared-estimates';
 
+const CARD_COLORS = [
+  { bg: '#0d1117', accent: 'rgba(100,160,220,0.9)' },
+  { bg: '#111827', accent: 'rgba(212,175,55,0.9)' },
+  { bg: '#0a0e1a', accent: 'rgba(100,200,140,0.9)' },
+  { bg: '#1a1a2e', accent: 'rgba(220,100,100,0.9)' },
+];
+
 export default function MobileEstimates() {
-  const scrollToNext = (currentN: string) => {
-    const currentIndex = paths.findIndex(p => p.n === currentN);
-    const nextId = currentIndex < paths.length - 1
-      ? `mob-est-${paths[currentIndex + 1].n}`
-      : 'mob-est-footer';
-    const el = document.getElementById(nextId);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  const [active, setActive] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting && e.intersectionRatio > 0.5) {
+            const idx = cardRefs.current.findIndex(r => r === e.target);
+            if (idx >= 0) setActive(idx);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    cardRefs.current.forEach(r => r && observer.observe(r));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
       <style>{`
-        .mest-card {
-          min-height: 100svh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          padding: 100px 0 100px;
-          background: #1a2438;
-          border-bottom: 1px solid rgba(255,255,255,0.08);
-          box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
-          scroll-margin-top: 0;
-          overflow: hidden;
-          position: relative;
-        }
-        .mest-num {
-          font-family: 'Oranienbaum', serif;
-          font-size: clamp(80px, 22vw, 120px);
-          line-height: 1;
-          color: rgba(100,160,220,0.35);
-          margin-bottom: 16px;
-          display: block;
-        }
-        .mest-tag {
-          display: inline-block;
-          padding: 5px 14px;
-          background: rgba(212,175,55,0.12);
-          border: 1px solid #d4af37;
-          font-family: 'Comfortaa', sans-serif;
-          font-size: 17px;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: rgba(212,175,55,0.9);
-          margin-bottom: 16px;
-        }
-        .mest-title {
-          font-family: 'Oranienbaum', serif;
-          font-size: clamp(32px, 9vw, 48px);
-          color: #FAFAFA;
-          margin-bottom: 20px;
-          line-height: 1.1;
-        }
-        .mest-warning {
-          padding: 16px 18px;
-          background: rgba(212,175,55,0.06);
-          border-left: 2px solid #d4af37;
-          font-family: 'Comfortaa', sans-serif;
-          font-size: clamp(17px, 4vw, 19px);
-          color: rgba(255,220,100,0.95);
-          line-height: 1.75;
-          margin-bottom: 20px;
-        }
-        .mest-body {
-          font-family: 'Comfortaa', sans-serif;
-          font-size: clamp(17px, 4.5vw, 19px);
-          color: rgba(255,255,255,0.85);
-          line-height: 1.9;
-          margin-bottom: 24px;
-        }
-        .mest-details {
-          list-style: none;
-          padding: 0;
-          margin: 0 0 32px;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-        .mest-details li {
-          display: flex;
-          gap: 12px;
-          align-items: flex-start;
-          font-family: 'Comfortaa', sans-serif;
-          font-size: clamp(17px, 4vw, 19px);
-          color: rgba(255,255,255,0.8);
-          line-height: 1.65;
-        }
-        .mest-details li::before {
-          content: '';
-          width: 5px;
-          height: 5px;
-          border-radius: 50%;
-          background: rgba(212,175,55,0.5);
-          flex-shrink: 0;
-          margin-top: 8px;
-        }
-        .mest-cta-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 14px 26px;
-          border: 1px solid #d4af37;
-          background: transparent;
-          color: rgba(212,175,55,0.85);
-          font-family: 'Comfortaa', sans-serif;
-          font-size: 17px;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          text-decoration: none;
-          transition: background 200ms;
-          margin-bottom: 0;
-        }
-          50% { box-shadow: 0 0 0 10px rgba(100,160,220,0); }
-        }
-        .mest-footer {
-          min-height: 40svh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 60px 0;
-          border-top: 1px solid rgba(255,255,255,0.05);
-          scroll-margin-top: 0;
-        }
-        .mest-footer-text {
-          font-family: 'Comfortaa', sans-serif;
-          font-size: clamp(17px, 4vw, 19px);
-          color: rgba(255,255,255,0.75);
-          line-height: 1.9;
-          text-align: center;
-          max-width: 340px;
-        }
+        .mest-wrap { height: 100svh; overflow-y: scroll; scroll-snap-type: y mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        .mest-wrap::-webkit-scrollbar { display: none; }
+        .mest-card { height: 100svh; scroll-snap-align: start; scroll-snap-stop: always; display: flex; flex-direction: column; justify-content: center; padding: 80px 32px; position: relative; overflow: hidden; }
+        .mest-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.03) 0%, transparent 70%); pointer-events: none; }
+        .mest-num { font-family: 'Oranienbaum', serif; font-size: clamp(96px, 25vw, 140px); line-height: 1; margin-bottom: 8px; display: block; opacity: 0.07; position: absolute; top: 24px; right: 24px; color: #fff; }
+        .mest-tag { display: inline-block; padding: 5px 14px; border: 1px solid #d4af37; font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #d4af37; margin-bottom: 20px; width: fit-content; }
+        .mest-title { font-family: 'Oranienbaum', serif; font-size: clamp(33px, 9vw, 48px); color: #FAFAFA; margin-bottom: 20px; line-height: 1.1; }
+        .mest-warning { padding: 14px 16px; border-left: 3px solid #d4af37; font-family: 'Comfortaa', sans-serif; font-size: 13px; color: rgba(255,220,100,0.95); line-height: 1.75; margin-bottom: 20px; background: rgba(212,175,55,0.05); }
+        .mest-body { font-family: 'Comfortaa', sans-serif; font-size: clamp(15px, 4vw, 17px); color: rgba(255,255,255,0.85); line-height: 1.9; margin-bottom: 28px; }
+        .mest-details { list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-direction: column; gap: 10px; }
+        .mest-details li { display: flex; gap: 12px; align-items: flex-start; font-family: 'Comfortaa', sans-serif; font-size: clamp(13px, 3.5vw, 15px); color: rgba(255,255,255,0.75); line-height: 1.65; }
+        .mest-cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 15px 28px; background: #d4af37; color: #050505; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; width: fit-content; }
+        .mest-dots { position: fixed; right: 16px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 100; }
+        .mest-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.25); transition: background 300ms, transform 300ms; cursor: pointer; border: none; padding: 0; }
+        .mest-dot.active { background: #d4af37; transform: scale(1.4); }
+        .mest-swipe-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+        .mest-arrow-anim { animation: bounce 1.5s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
       `}</style>
 
-      <div>
-        {paths.map((p) => (
-          <div key={p.n} id={`mob-est-${p.n}`} className="mest-card">
+      <div className="mest-dots">
+        {paths.map((_, i) => (
+          <button key={i} className={`mest-dot${active === i ? ' active' : ''}`} onClick={() => cardRefs.current[i]?.scrollIntoView({ behavior: 'smooth' })} />
+        ))}
+      </div>
+
+      <div className="mest-wrap" ref={containerRef}>
+        {paths.map((p, i) => (
+          <div key={p.n} id={`mob-est-${p.n}`} className="mest-card" ref={el => { cardRefs.current[i] = el; }} style={{ background: CARD_COLORS[i].bg }}>
             <span className="mest-num">{p.n}</span>
             {p.tag && <div className="mest-tag">{p.tag}</div>}
             <h2 className="mest-title">{p.title}</h2>
             {p.warning && <div className="mest-warning">{p.warning}</div>}
             <p className="mest-body">{p.body}</p>
             <ul className="mest-details">
-              {p.details.map((d, i) => <li key={i}>{d}</li>)}
+              {p.details.map((d, j) => <li key={j}><span style={{ color: CARD_COLORS[i].accent, flexShrink: 0 }}>—</span>{d}</li>)}
             </ul>
             <a href={p.cta.href} className="mest-cta-btn">{p.cta.label} →</a>
+            {i < paths.length - 1 && (
+              <div className="mest-swipe-hint"><span className="mest-arrow-anim">↓</span><span>Swipe</span></div>
+            )}
           </div>
         ))}
-
-        <div id="mob-est-footer" className="mest-footer">
-          <p className="mest-footer-text">
-            Not sure where to start? All estimates are non-binding. We recommend an Online Estimate if you have photos, or an In-Person Estimate if you are ready to move forward.
-          </p>
-        </div>
       </div>
     </>
   );
