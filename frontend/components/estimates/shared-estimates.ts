@@ -3,8 +3,7 @@ export const paths = [
     n: '01',
     title: 'Instant Estimate',
     tag: null,
-    warning: 'Instant estimates are based solely on information you provide and are always higher than personal estimates. For a more accurate number, we recommend an Online or In-Person estimate.',
-    body: 'Answer a short series of questions about your gemstone and receive an estimate immediately. Questions are presented one at a time for easy navigation. No account required.',
+    body: 'Instant Estimate uses guided questions to organize a process that cannot truly be standardized. It provides rough pricing ranges based on your responses, but these are not quotes for service. Its purpose is to help identify the path that best fits your situation and guide you toward the next step..',
     cta: { label: 'Get an Instant Estimate', href: '/estimate/instant' },
     details: [
       'Based on your multiple choice answers',
