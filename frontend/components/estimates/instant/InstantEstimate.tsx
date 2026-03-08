@@ -225,7 +225,8 @@ export default function InstantEstimate() {
   const curTypeLabel = DAMAGE_OPTS.find(d => d.id === curType)?.label || '';
 
   const highBase = st.svcRecs.length ? Math.max(...st.svcRecs.map(r => BASE_PRICE[r] || 50)) : 50;
-  const totalHigh = highBase + st.wMk + st.priceMk;
+  const totalLow = highBase + st.wMk + st.priceMk;
+  const totalHigh = totalLow + 100;
 
   // ── Option Button ────────────────────────────────────────────────
   function Opt({ label, active, onClick, isMulti = false }: { label: string; active: boolean; onClick: () => void; isMulti?: boolean }) {
@@ -525,7 +526,7 @@ export default function InstantEstimate() {
               {!hasInPerson && (
                 <div className="price-box">
                   <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: 8 }}>Estimate Range</p>
-                  <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 56, color: '#d4af37', lineHeight: 1 }}>${totalHigh}</p>
+                  <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 56, color: '#d4af37', lineHeight: 1 }}>${totalLow} – ${totalHigh}</p>
                   <p className="price-note">This is an estimate — not a quote. An estimate is an informed guess based on your answers and is not binding. A quote is a firm price offered by the cutter after personally reviewing your stone. All prices shown here are subject to change once your gemstone is examined.</p>
                   {st.svcRecs.length > 0 && (
                     <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
