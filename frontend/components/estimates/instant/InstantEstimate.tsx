@@ -70,12 +70,12 @@ export default function InstantEstimate() {
 
   function handleCondition(v: string) {
     if (v === 'rough') {
-      go({ condition: v, onlineTriggerCount: st.onlineTriggerCount + 1, priceMk: st.priceMk + 250, svcRecs: [...st.svcRecs, 'Rough Cut Transformation'], phase: 'weight' });
+      go({ condition: v, onlineTriggerCount: st.onlineTriggerCount + 1, svcRecs: [...st.svcRecs, 'Rough Cut Transformation'], phase: 'weight' });
     } else if (v === 'cut') {
-      go({ condition: v, priceMk: st.priceMk + 100, phase: 'intent' });
+      go({ condition: v, phase: 'intent' });
     } else {
       // cut_damaged — go straight to weight
-      go({ condition: v, priceMk: st.priceMk + 100, phase: 'weight' });
+      go({ condition: v, phase: 'weight' });
     }
   }
 
