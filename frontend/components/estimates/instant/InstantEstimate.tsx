@@ -81,7 +81,7 @@ export default function InstantEstimate() {
 
   function handleIntent(v: string) {
     if (v === 'measurement') {
-      go({ intent: v, feasibilityTriggerCount: st.feasibilityTriggerCount + 1, priceMk: st.priceMk + 50, phase: 'weight' });
+      go({ intent: v, feasibilityTriggerCount: st.feasibilityTriggerCount + 1, phase: 'weight' });
     } else if (v === 'brighten') {
       go({ intent: v, phase: 'darkness' });
     } else if (v === 'surface_clean') {
@@ -124,7 +124,6 @@ export default function InstantEstimate() {
       // no_reason or dont_like — add $50
       go({
         intentWhy: v,
-        priceMk: st.priceMk + 50,
         feasibilityTriggerCount: st.feasibilityTriggerCount + 1,
         phase: 'service',
       });
@@ -138,7 +137,6 @@ export default function InstantEstimate() {
     } else {
       go({
         darkness: v,
-        priceMk: st.priceMk + 50,
         svcRecs: [...st.svcRecs, 'Recut & repolish'],
         feasibilityTriggerCount: st.feasibilityTriggerCount + 1,
         phase: 'weight',
@@ -486,9 +484,16 @@ export default function InstantEstimate() {
               <div style={{ marginBottom: 32 }}>
                 {([
                   ['Condition', CONDITION_OPTS.find(c => c.id === st.condition)?.label],
-                  ['Intent', INTENT_OPTS.find(i => i.id === st.intent)?.label],
-                  ['Weight', st.weight], ['Species', st.species],
-                  ['Color', st.color], ['Transparency', st.transparency], ['Shape', st.shape],
+                  ['Service Intent', INTENT_OPTS.find(i => i.id === st.intent)?.label],
+                  ['Desired Shape', st.intentShape || undefined],
+                  ['Reason', (() => { const all = [...WHY_RECUT_OPTS, ...WHY_SHAPE_OPTS]; return all.find(w => w.id === st.intentWhy)?.label; })()],
+                  ['Darkness Rating', st.darkness || undefined],
+                  ['Weight', st.weight || undefined],
+                  ['Species', st.species || undefined],
+                  ['Color', st.color || undefined],
+                  ['Transparency', st.transparency || undefined],
+                  ['Shape', st.shape || undefined],
+                  ['Damage Types', st.dmgTypes.length > 0 ? st.dmgTypes.map(d => DAMAGE_OPTS.find(o => o.id === d)?.label).filter(Boolean).join(', ') : undefined],
                 ] as [string, string | undefined][]).filter(([, v]) => v).map(([l, v]) => (
                   <div key={l} className="res-row">
                     <span className="res-lbl">{l}</span>
