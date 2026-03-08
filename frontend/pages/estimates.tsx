@@ -39,7 +39,7 @@ export default function EstimatesPage() {
               <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.8, maxWidth: '480px', margin: '0 auto 40px' }}>
                 Answer seven quick questions about your stone and the service you need. No account required.
               </p>
-              <a href="/estimate/instant"
+              <a href="/get-estimate/instant"
                 style={{ display: 'inline-block', padding: '19px 56px', background: '#d4af37', color: '#050505', fontFamily: 'Montserrat, sans-serif', fontSize: '11px', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', textDecoration: 'none', transition: 'opacity 150ms' }}
                 onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
                 onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
