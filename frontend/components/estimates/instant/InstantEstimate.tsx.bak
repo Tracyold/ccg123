@@ -25,9 +25,8 @@ interface St {
   species: string; transparency: string; shape: string;
   dmgTypes: string[]; dmgIdx: number; nodeId: string;
   priceMk: number; flags: string[]; onlineRecs: string[]; svcRecs: string[];
-  svcCmp: string;
-  onlineTriggerCount: number;
-  feasibilityTriggerCount: number;
+  svcCmp: string; forceOnline: boolean; forceOnlineMsg: string;
+  forceFeasibility: boolean;
 }
 
 const INIT: St = {
@@ -37,9 +36,8 @@ const INIT: St = {
   weight: '', wMk: 0, species: '', transparency: '', shape: '',
   dmgTypes: [], dmgIdx: 0, nodeId: 'start',
   priceMk: 0, flags: [], onlineRecs: [], svcRecs: [],
-  svcCmp: '',
-  onlineTriggerCount: 0,
-  feasibilityTriggerCount: 0,
+  svcCmp: '', forceOnline: false, forceOnlineMsg: '',
+  forceFeasibility: false,
 };
 
 // ─── Component ───────────────────────────────────────────────────
@@ -70,7 +68,7 @@ export default function InstantEstimate() {
 
   function handleCondition(v: string) {
     if (v === 'rough') {
-      go({ condition: v, onlineTriggerCount: st.onlineTriggerCount + 1, phase: 'weight' });
+      go({ condition: v, phase: 'result', forceOnline: true, forceOnlineMsg: 'Rough stones are covered under our Rough to Reveal service. An online estimate is recommended to get started.' });
     } else if (v === 'cut') {
       go({ condition: v, phase: 'intent' });
     } else {
@@ -81,7 +79,7 @@ export default function InstantEstimate() {
 
   function handleIntent(v: string) {
     if (v === 'measurement') {
-      go({ intent: v, feasibilityTriggerCount: st.feasibilityTriggerCount + 1, phase: 'weight' });
+      go({ intent: v, phase: 'result', forceFeasibility: true });
     } else if (v === 'brighten') {
       go({ intent: v, phase: 'darkness' });
     } else if (v === 'surface_clean') {
@@ -99,7 +97,7 @@ export default function InstantEstimate() {
   function handleIntentWeight(v: string) {
     const w = WEIGHT_OPTS.find(x => x.label === v)!;
     if (w.online) {
-      go({ weight: v, wMk: 0, onlineTriggerCount: st.onlineTriggerCount + 1, phase: 'intent_species' });
+      go({ weight: v, phase: 'result', forceOnline: true, forceOnlineMsg: 'Stones in this weight range require an online estimate with photos for accurate evaluation.' });
     } else {
       go({ weight: v, wMk: w.mk, phase: 'intent_species' });
     }
@@ -107,7 +105,7 @@ export default function InstantEstimate() {
 
   function handleIntentSpecies(v: string) {
     if (v === 'Other') {
-      go({ species: v, onlineTriggerCount: st.onlineTriggerCount + 1, phase: 'intent_color' });
+      go({ species: v, phase: 'result', forceOnline: true, forceOnlineMsg: 'We recommend an online estimate for species not listed here so we can identify your stone properly.' });
     } else {
       go({ species: v, phase: 'intent_color' });
     }
@@ -123,14 +121,17 @@ export default function InstantEstimate() {
       // Use shape already captured in intentShape, skip shape step, go to damage
       go({ intentWhy: v, shape: st.intentShape, phase: 'damage_select' });
     } else if (v === 'jewelry_fit') {
-      go({ intentWhy: v, feasibilityTriggerCount: st.feasibilityTriggerCount + 1, shape: st.intentShape, phase: 'damage_select' });
+      go({ intentWhy: v, phase: 'result', forceFeasibility: true });
     } else {
-      // no_reason or dont_like — add $50
+      // no_reason or dont_like — add $50, recommend online + feasibility
       go({
         intentWhy: v,
         priceMk: st.priceMk + 50,
-        feasibilityTriggerCount: !isRecut ? st.feasibilityTriggerCount + 1 : st.feasibilityTriggerCount,
-        phase: 'service',
+        onlineRecs: [...st.onlineRecs, isRecut
+          ? 'No specific reason for recut — online estimate recommended for more accuracy.'
+          : 'Shape change without specific damage — online estimate and feasibility report recommended.'],
+        forceFeasibility: !isRecut,
+        phase: 'result',
       });
     }
   }
@@ -138,14 +139,15 @@ export default function InstantEstimate() {
   function handleDarkness(v: string) {
     const n = parseInt(v);
     if (n <= 5) {
-      go({ darkness: v, onlineTriggerCount: st.onlineTriggerCount + 1, phase: 'weight' });
+      go({ darkness: v, phase: 'result', forceOnline: true, forceOnlineMsg: 'A stone at this darkness level requires an online estimate with photos to evaluate brightening options.' });
     } else {
       go({
         darkness: v,
         priceMk: st.priceMk + 50,
         svcRecs: [...st.svcRecs, 'Recut & repolish'],
-        feasibilityTriggerCount: st.feasibilityTriggerCount + 1,
-        phase: 'weight',
+        onlineRecs: [...st.onlineRecs, 'Feasibility report recommended for brightening cases.'],
+        forceFeasibility: true,
+        phase: 'result',
       });
     }
   }
@@ -153,24 +155,23 @@ export default function InstantEstimate() {
   function handleWeight(v: string) {
     const w = WEIGHT_OPTS.find(x => x.label === v)!;
     if (w.online) {
-      go({ weight: v, wMk: 0, onlineTriggerCount: st.onlineTriggerCount + 1, phase: 'species' });
+      go({ weight: v, phase: 'result', forceOnline: true, forceOnlineMsg: 'Stones in this weight range require an online estimate with photos for accurate evaluation.' });
     } else {
       go({ weight: v, wMk: w.mk, phase: 'species' });
     }
   }
 
   function handleSpecies(v: string) {
-    const nextPhase = st.condition === 'rough' || st.intent === 'measurement' ? 'service' : 'transparency';
     if (v === 'Other') {
-      go({ species: v, onlineTriggerCount: st.onlineTriggerCount + 1, phase: nextPhase });
+      go({ species: v, phase: 'result', forceOnline: true, forceOnlineMsg: 'We recommend an online estimate for species not listed here so we can identify your stone properly.' });
     } else {
-      go({ species: v, phase: nextPhase });
+      go({ species: v, phase: 'transparency' });
     }
   }
 
   function handleTransparency(v: string) {
     if (v !== 'Transparent') {
-      go({ transparency: v, onlineTriggerCount: st.onlineTriggerCount + 1, phase: 'shape' });
+      go({ transparency: v, phase: 'result', forceOnline: true, forceOnlineMsg: `${v} stones are not standard candidates for these cutting services. We recommend an online estimate.` });
     } else {
       go({ transparency: v, phase: 'shape' });
     }
@@ -258,7 +259,7 @@ export default function InstantEstimate() {
         .eq-q { font-family: 'Oranienbaum', serif; font-size: clamp(27px, 4.5vw, 40px); color: #FAFAFA; line-height: 1.2; margin-bottom: 40px; }
         .eq-sub { font-family: 'Montserrat', sans-serif; font-size: 15px; color: rgba(255,255,255,0.75); margin-bottom: 20px; letter-spacing: 0.05em; }
         .eq-opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 40px; }
-        .eq-opt { padding: 17px 22px; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.85); font-family: 'Montserrat', sans-serif; font-size: 15px; text-align: left; cursor: pointer; transition: all 150ms; letter-spacing: 0.02em; width: 100%; }
+        .eq-opt { padding: 17px 22px; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.85); font-family: 'Montserrat', sans-serif; font-size: 19px; text-align: left; cursor: pointer; transition: all 150ms; letter-spacing: 0.02em; width: 100%; }
         .eq-opt:hover { border-color: rgba(212,175,55,0.4); color: #FAFAFA; background: rgba(212,175,55,0.04); }
         .eq-opt.sel { border-color: rgba(212,175,55,0.9); color: #FAFAFA; background: rgba(212,175,55,0.08); }
         .eq-acts { display: flex; gap: 12px; }
@@ -450,113 +451,108 @@ export default function InstantEstimate() {
           </>)}
 
           {/* RESULT */}
-          {st.phase === 'result' && (() => {
-            const hasOnline = st.onlineTriggerCount > 0;
-            const hasFeasibility = st.feasibilityTriggerCount > 0 || st.flags.length === 1;
-            const hasInPerson = st.flags.length >= 2;
-            const totalTriggers = st.onlineTriggerCount + st.feasibilityTriggerCount + (st.flags.length > 0 ? 1 : 0);
-            const showPrice = !hasOnline && !hasFeasibility && !hasInPerson;
+          {st.phase === 'result' && (<>
+            <p className="eq-step">Estimate Summary</p>
+            <h1 className="eq-q" style={{ marginBottom: 32 }}>
+              {st.forceOnline        ? 'We need a bit more to go on.'
+               : st.forceFeasibility ? 'A closer look is needed.'
+               : st.flags.length >= 2 ? 'In-person evaluation recommended.'
+               : st.flags.length === 1 ? 'One concern flagged.'
+               : 'Here is your estimate.'}
+            </h1>
 
-            const headline = hasOnline
-              ? 'An online estimate is recommended.'
-              : hasInPerson
-              ? 'An in-person evaluation is recommended.'
-              : hasFeasibility
-              ? 'A closer look is needed first.'
-              : 'Here is your estimate.';
-
-            return (<>
-              <p className="eq-step">Estimate Summary</p>
-              <h1 className="eq-q" style={{ marginBottom: 32 }}>{headline}</h1>
-
-              {/* Trigger tally */}
-              {totalTriggers > 0 && (
-                <div style={{ marginBottom: 28, padding: '16px 20px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.02)' }}>
-                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.65)', lineHeight: 1.8 }}>
-                    {totalTriggers === 1
-                      ? '1 of your answers pointed toward a different path.'
-                      : `${totalTriggers} of your answers pointed toward a different path.`}
-                  </p>
+            {/* Stone summary */}
+            <div style={{ marginBottom: 32 }}>
+              {([
+                ['Condition', CONDITION_OPTS.find(c => c.id === st.condition)?.label],
+                ['Intent', INTENT_OPTS.find(i => i.id === st.intent)?.label],
+                ['Weight', st.weight], ['Species', st.species],
+                ['Color', st.color], ['Transparency', st.transparency], ['Shape', st.shape],
+              ] as [string, string | undefined][]).filter(([, v]) => v).map(([l, v]) => (
+                <div key={l} className="res-row">
+                  <span className="res-lbl">{l}</span>
+                  <span className="res-val">{v}</span>
                 </div>
-              )}
+              ))}
+            </div>
 
-              {/* Stone summary */}
-              <div style={{ marginBottom: 32 }}>
-                {([
-                  ['Condition', CONDITION_OPTS.find(c => c.id === st.condition)?.label],
-                  ['Intent', INTENT_OPTS.find(i => i.id === st.intent)?.label],
-                  ['Weight', st.weight], ['Species', st.species],
-                  ['Color', st.color], ['Transparency', st.transparency], ['Shape', st.shape],
-                ] as [string, string | undefined][]).filter(([, v]) => v).map(([l, v]) => (
-                  <div key={l} className="res-row">
-                    <span className="res-lbl">{l}</span>
-                    <span className="res-val">{v}</span>
+            {/* Force online */}
+            {st.forceOnline && (
+              <div style={{ padding: '20px 24px', border: '1px solid rgba(100,160,220,0.25)', background: 'rgba(100,160,220,0.04)', marginBottom: 28 }}>
+                <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(100,160,220,0.95)', lineHeight: 1.8 }}>{st.forceOnlineMsg}</p>
+                <a href="/estimates" style={{ display: 'inline-block', marginTop: 16, padding: '11px 24px', background: 'rgba(100,160,220,0.1)', border: '1px solid rgba(100,160,220,0.3)', color: 'rgba(100,160,220,0.95)', fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>View Online Estimate Options →</a>
+              </div>
+            )}
+
+            {/* Force feasibility */}
+            {!st.forceOnline && st.forceFeasibility && (
+              <div className="feas-box">
+                <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: 8 }}>Recommended Next Step</p>
+                <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 27, color: '#d4af37', marginBottom: 12 }}>Feasibility Report — $30</p>
+                <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 1.85 }}>
+                  A feasibility report will determine what is possible for your stone before any service is quoted. If services are rendered after the report, the $30 fee is waived and the report is included when your gemstone is returned.
+                </p>
+              </div>
+            )}
+
+            {/* Flags */}
+            {!st.forceOnline && st.flags.length > 0 && (
+              <div style={{ marginBottom: 28 }}>
+                <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(220,80,80,0.9)', marginBottom: 12 }}>Structural Concerns</p>
+                {st.flags.map((f, i) => <div key={i} className="flag-item">{f}</div>)}
+                <div style={{ marginTop: 16, padding: '20px 24px', border: '1px solid rgba(220,80,80,0.15)', background: 'rgba(220,80,80,0.03)' }}>
+                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 1.85, marginBottom: 12 }}>
+                    {st.flags.length >= 2
+                      ? 'Multiple structural concerns were identified. An in-person evaluation is needed before any estimate can be provided.'
+                      : 'One structural concern was identified. A feasibility report is recommended before proceeding with any service.'}
+                  </p>
+                  <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 27, color: '#d4af37' }}>
+                    {st.flags.length >= 2 ? 'In-Person Evaluation — $10' : 'Feasibility Report — $30'}
+                  </p>
+                  {st.flags.length === 1 && (
+                    <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.75)', marginTop: 12, lineHeight: 1.85 }}>
+                      If services are rendered after the report, the $30 fee is waived. The report is included with your returned gemstone.
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Online recommendations */}
+            {!st.forceOnline && st.onlineRecs.length > 0 && (
+              <div style={{ marginBottom: 28 }}>
+                <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(100,160,220,0.9)', marginBottom: 12 }}>Recommendations</p>
+                {st.onlineRecs.map((r, i) => <div key={i} className="online-item">{r}</div>)}
+              </div>
+            )}
+
+            {/* Price estimate — no flags, no force */}
+            {!st.forceOnline && !st.forceFeasibility && st.flags.length === 0 && (
+              <div className="price-box">
+                <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: 8 }}>Estimate Range</p>
+                <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 56, color: '#d4af37', lineHeight: 1 }}>${totalHigh}</p>
+                <p className="price-note">This is an estimate — not a quote. An estimate is an informed guess based on your answers and is not binding. A quote is a firm price offered by the cutter after personally reviewing your stone. All prices shown here are subject to change once your gemstone is examined.</p>
+                {st.svcRecs.length > 0 && (
+                  <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                    <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', marginBottom: 8 }}>Recommended Service</p>
+                    {st.svcRecs.map((r, i) => <p key={i} style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 17, color: 'rgba(255,255,255,0.95)', marginBottom: 4 }}>{r}</p>)}
                   </div>
-                ))}
+                )}
+                {st.svcCmp && st.svcCmp !== 'Not sure' && st.svcRecs.length > 0 && !st.svcRecs.includes(st.svcCmp) && (
+                  <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                    <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 1.85 }}>
+                      You were hoping for <strong style={{ color: 'rgba(255,255,255,0.95)' }}>{st.svcCmp}</strong>. Based on your answers, <strong style={{ color: 'rgba(212,175,55,0.95)' }}>{st.svcRecs[0]}</strong> may be more appropriate.
+                    </p>
+                  </div>
+                )}
               </div>
+            )}
 
-              {/* Online estimate recommendation */}
-              {hasOnline && (
-                <div style={{ padding: '20px 24px', border: '1px solid rgba(100,160,220,0.25)', background: 'rgba(100,160,220,0.04)', marginBottom: 28 }}>
-                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(100,160,220,0.9)', marginBottom: 8 }}>Recommended Next Step</p>
-                  <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 27, color: 'rgba(100,160,220,0.95)', marginBottom: 12 }}>Online Estimate — $3</p>
-                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 1.85, marginBottom: 16 }}>
-                    Based on your answers, we recommend starting with an online estimate. This lets our cutter review your stone through photos before committing to a service.
-                  </p>
-                  <a href="/estimates" style={{ display: 'inline-block', padding: '11px 24px', background: 'rgba(100,160,220,0.1)', border: '1px solid rgba(100,160,220,0.3)', color: 'rgba(100,160,220,0.95)', fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>View Online Estimate Options →</a>
-                </div>
-              )}
-
-              {/* In-person evaluation */}
-              {!hasOnline && hasInPerson && (
-                <div style={{ padding: '20px 24px', border: '1px solid rgba(220,80,80,0.2)', background: 'rgba(220,80,80,0.03)', marginBottom: 28 }}>
-                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(220,80,80,0.9)', marginBottom: 8 }}>Recommended Next Step</p>
-                  <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 27, color: '#d4af37', marginBottom: 12 }}>In-Person Evaluation — $10</p>
-                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 1.85 }}>
-                    Your stone has characteristics that require hands-on evaluation before any estimate can be made. The $10 fee is credited toward any service you proceed with.
-                  </p>
-                </div>
-              )}
-
-              {/* Feasibility report */}
-              {!hasOnline && !hasInPerson && hasFeasibility && (
-                <div className="feas-box">
-                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: 8 }}>Recommended Next Step</p>
-                  <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 27, color: '#d4af37', marginBottom: 12 }}>Feasibility Report — $30</p>
-                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 1.85 }}>
-                    A feasibility report will determine what is possible for your stone before any service is quoted. If services are rendered after the report, the $30 fee is waived and the report is included when your gemstone is returned.
-                  </p>
-                </div>
-              )}
-
-              {/* Price estimate — no triggers, no flags */}
-              {showPrice && (
-                <div className="price-box">
-                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: 8 }}>Estimate Range</p>
-                  <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 56, color: '#d4af37', lineHeight: 1 }}>${totalHigh}</p>
-                  <p className="price-note">This is an estimate — not a quote. An estimate is an informed guess based on your answers and is not binding. A quote is a firm price offered by the cutter after personally reviewing your stone. All prices shown here are subject to change once your gemstone is examined.</p>
-                  {st.svcRecs.length > 0 && (
-                    <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                      <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', marginBottom: 8 }}>Recommended Service</p>
-                      {st.svcRecs.map((r, i) => <p key={i} style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 17, color: 'rgba(255,255,255,0.95)', marginBottom: 4 }}>{r}</p>)}
-                    </div>
-                  )}
-                  {st.svcCmp && st.svcCmp !== 'Not sure' && st.svcRecs.length > 0 && !st.svcRecs.includes(st.svcCmp) && (
-                    <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                      <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 1.85 }}>
-                        You were hoping for <strong style={{ color: 'rgba(255,255,255,0.95)' }}>{st.svcCmp}</strong>. Based on your answers, <strong style={{ color: 'rgba(212,175,55,0.95)' }}>{st.svcRecs[0]}</strong> may be more appropriate.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <button className="eq-next" onClick={() => { setSt(INIT); setSel(''); setMulti([]); }}>Start Over</button>
-                <a href="/estimates" style={{ display: 'flex', alignItems: 'center', padding: '15px 22px', background: 'none', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.75)', fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>All Estimates</a>
-              </div>
-            </>);
-          })()}
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <button className="eq-next" onClick={() => { setSt(INIT); setSel(''); setMulti([]); }}>Start Over</button>
+              <a href="/estimates" style={{ display: 'flex', alignItems: 'center', padding: '15px 22px', background: 'none', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.75)', fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>All Estimates</a>
+            </div>
+          </>)}
 
         </div>
       </div>
