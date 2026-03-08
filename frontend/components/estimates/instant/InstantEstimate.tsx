@@ -521,8 +521,8 @@ export default function InstantEstimate() {
                 </div>
               )}
 
-              {/* Price estimate — no triggers, no flags */}
-              {showPrice && (
+              {/* Price estimate — always show unless in-person evaluation required */}
+              {!hasInPerson && (
                 <div className="price-box">
                   <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: 8 }}>Estimate Range</p>
                   <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 56, color: '#d4af37', lineHeight: 1 }}>${totalHigh}</p>
