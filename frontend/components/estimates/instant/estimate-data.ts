@@ -21,7 +21,7 @@ export const BASE_PRICE: Record<string, number> = {
   'Crown recut & repolish': 100,
   'Pavilion recut & repolish': 100,
   'Full recut & repolish': 150,
-  'Rough to Reveal': 250,
+  'Rough Cut Transformation': 250,
 };
 
 // ─── Estimate Tier Prices ────────────────────────────────────────
@@ -86,7 +86,7 @@ export const SERVICE_OPTS = [
   'Crown recut & repolish',
   'Pavilion recut & repolish',
   'Full recut & repolish',
-  'Rough to Reveal',
+  'Rough Cut Transformation',
   'Not sure',
 ];
 
