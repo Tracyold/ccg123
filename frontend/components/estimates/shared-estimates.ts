@@ -47,7 +47,7 @@ export const paths = [
   },
   {
     n: '04',
-    title: 'CCG Cut Feasibility Report',
+    title: 'CCG Feasibility Report',
     tag: null,
     warning: null,
     body: 'A professional structural evaluation of your gemstone — objective, documented, and detailed. Reports never include an estimate, but once complete, an estimate will be provided separately on the work order. Available as a standalone product or bundled with any cutting service.',
