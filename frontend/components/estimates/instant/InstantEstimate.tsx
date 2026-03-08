@@ -491,7 +491,7 @@ export default function InstantEstimate() {
               {hasOnline && (
                 <div style={{ padding: '20px 24px', border: '1px solid rgba(100,160,220,0.25)', background: 'rgba(100,160,220,0.04)', marginBottom: 28 }}>
                   <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(100,160,220,0.9)', marginBottom: 8 }}>Recommended Next Step</p>
-                  <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 27, color: 'rgba(100,160,220,0.95)', marginBottom: 12 }}>Online Estimate — $3</p>
+                  <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 27, marginBottom: 12 }}>Online Estimate — <span style={{ color: 'rgba(80,200,100,0.95)' }}>$</span><span style={{ color: '#d4af37' }}>3</span></p>
                   <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 1.85, marginBottom: 16 }}>
                     Based on your answers, we recommend starting with an online estimate. This lets our cutter review your stone through photos before committing to a service.
                   </p>
