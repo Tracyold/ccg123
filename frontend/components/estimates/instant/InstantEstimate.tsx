@@ -520,15 +520,24 @@ export default function InstantEstimate() {
                 </div>
               )}
 
-              {/* Feasibility report */}
-              {!hasOnline && !hasInPerson && hasFeasibility && (
-                <div className="feas-box">
-                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: 8 }}>Recommended Next Step</p>
-                  <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 27, color: '#d4af37', marginBottom: 12 }}>Feasibility Report — $30</p>
-                  <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 1.85 }}>
-                    A feasibility report will determine what is possible for your stone before any service is quoted. If services are rendered after the report, the $30 fee is waived and the report is included when your gemstone is returned.
-                  </p>
-                </div>
+              {/* Feasibility report + in-person alternative */}
+              {!hasOnline && (hasFeasibility || hasInPerson) && (
+                <>
+                  <div className="feas-box" style={{ marginBottom: 16 }}>
+                    <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: 8 }}>Recommended Next Step</p>
+                    <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 27, color: '#d4af37', marginBottom: 12 }}>Feasibility Report — $30</p>
+                    <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 1.85 }}>
+                      A feasibility report will determine what is possible for your stone before any service is quoted. If services are rendered after the report, the $30 fee is waived and the report is included when your gemstone is returned.
+                    </p>
+                  </div>
+                  <div style={{ padding: '20px 24px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.02)', marginBottom: 28 }}>
+                    <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', marginBottom: 8 }}>Alternative Option</p>
+                    <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: 27, color: 'rgba(255,255,255,0.9)', marginBottom: 12 }}>In-Person Evaluation — $10</p>
+                    <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.75)', lineHeight: 1.85 }}>
+                      Your stone has characteristics that require hands-on evaluation before any estimate can be made. The $10 fee is credited toward any service you proceed with.
+                    </p>
+                  </div>
+                </>
               )}
 
               {/* Price estimate — always show unless 2+ structural flags */}
