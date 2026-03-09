@@ -95,7 +95,7 @@ const css = `
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 36px;
+  width: auto;
   height: 36px;
   background: none;
   border: 0.5px solid rgba(255,255,255,0.15);
@@ -174,12 +174,46 @@ const css = `
 @media (min-width: 768px) {
   .tnav-drawer { display: none !important; }
 }
+.tnav-theme {
+  background: none;
+  border: 0.5px solid rgba(255,255,255,0.15);
+  color: #EEEEEE;
+  width: auto;
+  height: 36px;
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 200ms;
+  position: relative;
+  z-index: 201;
+}
+.tnav-theme:hover { border-color: #FFD369; }
 `;
 
 export default function TopNav() {
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [authed, setAuthed] = useState(false);
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('ccg-theme') as 'dark' | 'light' | null;
+    if (saved) { setTheme(saved); document.documentElement.setAttribute('data-theme', saved === 'light' ? 'light' : ''); }
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    document.documentElement.setAttribute('data-theme', next === 'light' ? 'light' : '');
+    localStorage.setItem('ccg-theme', next);
+  };
+
 
   // Scroll detection
   useEffect(() => {
@@ -261,6 +295,9 @@ useEffect(() => {
         </div>
 
         {/* Mobile burger */}
+        <button className="tnav-theme" onClick={toggleTheme} aria-label="Toggle theme">
+          {theme === 'dark' ? '● Dark' : '○ Light'}
+        </button>
         <button
           className={`tnav-burger${drawerOpen ? ' open' : ''}`}
           onClick={() => setDrawerOpen(p => !p)}
