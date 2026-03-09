@@ -142,7 +142,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-primary {
   background-color: transparent;
-  color: #000000;
+  color: var(--bg);
   padding: 0.75rem 2rem;
   font-family: var(--font-ui);
   font-weight: 600;
@@ -295,18 +295,18 @@ export default function Home() {
             <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.35em', textTransform: 'uppercase', color: '#FFD369', marginBottom: '24px' }}>
               Tempe, Arizona
             </p>
-            <h1 style={{ fontFamily: 'Oranienbaum, serif', fontSize: 'clamp(48px, 12vw, 96px)', color: '#EEEEEE', lineHeight: 1.05, marginBottom: '28px', fontWeight: 400 }}>
+            <h1 style={{ fontFamily: 'Oranienbaum, serif', fontSize: 'clamp(48px, 12vw, 96px)', color: 'var(--text)', lineHeight: 1.05, marginBottom: '28px', fontWeight: 400 }}>
               <span style={{ color: '#FFD369' }}>Cutting</span> Corners —{' '}
               Not the <span style={{ color: '#FFD369' }}>Quality</span>
             </h1>
-            <p style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: 'clamp(17px, 2.5vw, 21px)', color: '#EEEEEE', lineHeight: 1.7, marginBottom: '40px', maxWidth: '560px', margin: '0 auto 40px' }}>
+            <p style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: 'clamp(17px, 2.5vw, 21px)', color: 'var(--text)', lineHeight: 1.7, marginBottom: '40px', maxWidth: '560px', margin: '0 auto 40px' }}>
               Professional gemstone cutter focused on color, yield, and stone potential for jewelry professionals nationwide.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="/get-estimate/instant" style={{ display: 'inline-block', padding: '17px 40px', background: '#FFD369', color: '#222831', fontFamily: 'Montserrat, sans-serif', fontSize: '11px', fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
                 Get an Estimate
               </a>
-              <a href="/shop" style={{ display: 'inline-block', padding: '17px 40px', background: 'none', border: '1px solid rgba(255,255,255,0.4)', color: '#EEEEEE', fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
+              <a href="/shop" style={{ display: 'inline-block', padding: '17px 40px', background: 'none', border: '1px solid rgba(255,255,255,0.4)', color: 'var(--text)', fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
                 View Shop
               </a>
             </div>
@@ -314,9 +314,9 @@ export default function Home() {
 
           {/* Stat card — desktop only */}
           <div className="hidden md:flex" style={{ position: 'absolute', bottom: '32px', right: '32px', flexDirection: 'column', justifyContent: 'center', width: '11rem', height: '11rem', background: 'rgba(34,40,49,0.9)', border: '1px solid rgba(255,211,105,0.3)', padding: '1.5rem' }}>
-            <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: '8px' }}>Industry for</p>
+            <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '8px' }}>Industry for</p>
             <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: '36px', color: '#FFD369', lineHeight: 1 }}>13 Yrs</p>
-            <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.5)', marginTop: '6px' }}>Cutting for Seven</p>
+            <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', color: 'var(--text-muted)', marginTop: '6px' }}>Cutting for Seven</p>
           </div>
 
           {/* Scroll indicator */}
@@ -349,7 +349,7 @@ export default function Home() {
                 style={{
                   fontSize: '13px',
                   letterSpacing: '0.20em',
-                  color: 'rgba(255,255,255,0.52)',
+                  color: 'var(--text-muted)',
                 }}
               >
                 What I Do
@@ -361,7 +361,7 @@ export default function Home() {
                   fontSize: 'clamp(28px, 3.5vw, 56px)',
                   letterSpacing: '-0.01em',
                   marginBottom: '0px',
-                  color: 'rgba(255,255,255,0.35)',
+                  color: 'var(--text-muted)',
                 }}
               >
                 Services
@@ -385,7 +385,7 @@ export default function Home() {
             >
               About
             </p>
-            <h2 data-gold="section-title" className="title-xl tracking-tight mb-16 text-center" style={{ color: 'rgba(255,255,255,0.35)' }}>The Cutter</h2>
+            <h2 data-gold="section-title" className="title-xl tracking-tight mb-16 text-center" style={{ color: 'var(--text-muted)' }}>The Cutter</h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div
@@ -443,7 +443,7 @@ export default function Home() {
                     fontFamily: 'var(--font-body)',
                     fontSize: '17px',
                     lineHeight: 1.75,
-                    color: 'rgba(255,255,255,0.68)',
+                    color: 'var(--text)',
                     maxWidth: '520px',
                     marginBottom: '24px',
                     animationDelay: '200ms',
@@ -461,7 +461,7 @@ export default function Home() {
                     fontFamily: 'var(--font-body)',
                     fontSize: '17px',
                     lineHeight: 1.75,
-                    color: 'rgba(255,255,255,0.68)',
+                    color: 'var(--text)',
                     maxWidth: '520px',
                     marginBottom: '32px',
                     animationDelay: '231ms',
@@ -512,7 +512,7 @@ export default function Home() {
                 fontFamily: 'var(--font-body)',
                 fontSize: '23px',
                 lineHeight: 1.75,
-                color: 'rgba(255,255,255,0.70)',
+                color: 'var(--text)',
                 maxWidth: '600px',
                 animationDelay: '200ms',
               }}
