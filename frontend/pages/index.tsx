@@ -272,78 +272,44 @@ export default function Home() {
         <TopNav />
 
         {/* ── Hero Section ── */}
-        <section
-          style={{
-            minHeight: '100svh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            textAlign: 'center',
-            position: 'relative',
-            overflow: 'hidden',
-          }}
-        >
-          <div className="absolute inset-0 hero-glow" />
-          <div
-            className="absolute inset-1 bg-cover"
-            style={{
-              backgroundImage: 'url(/assets/handcut.jpeg)',
-              backgroundPosition: '62% 40%',
-              opacity: '0.4',
-              filter: 'grayscale(1) sepia(0.4) hue-rotate(180deg) brightness(0.85)',
-            }}
-          />
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 50%, transparent 0%, rgba(5,5,5,0.55) 20%, rgba(5,5,5,0.85) 90%, rgba(5,5,5,0.98) 100%)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.20) 30%, rgba(5,5,5,0.20) 70%, rgba(5,5,5,0.98) 100%)' }} />
+        <section style={{ minHeight: '100svh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+          {/* Background image */}
+          <div className="absolute inset-0" style={{ backgroundImage: 'url(/assets/handcut.jpeg)', backgroundSize: 'cover', backgroundPosition: '62% 40%', opacity: 0.35, filter: 'grayscale(1) sepia(0.4) hue-rotate(180deg) brightness(0.85)' }} />
+          {/* Dark vignette overlay */}
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.75) 60%, rgba(0,0,0,0.95) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.95) 100%)' }} />
 
-          <div className="container-custom relative z-10 text-center">
-            <p
-              className="uppercase mb-6 opacity-0 animate-fade-in transition-all duration-1000 delay-500"
-              style={{ color: 'rgba(255,255,255,0.25)', fontSize: '14px', letterSpacing: '0.37em' }}
-              data-scroll-reveal
-            >
+          <div style={{ position: 'relative', zIndex: 10, padding: '0 24px', maxWidth: '800px', margin: '0 auto' }}>
+            <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.35em', textTransform: 'uppercase', color: '#FFD369', marginBottom: '24px' }}>
               Tempe, Arizona
             </p>
-
-            <h1 className="hero-title title-xl tracking-tight mb-9 opacity-10 animate-fade-in delay-1000 duration-2000" data-scroll-reveal style={{ animationDelay: '92000ms' }} >
-              <span data-gold="hero-word" style={{ color: '#e8d99a', transition: 'color 800ms ease, filter 800ms ease' }}>Cutting</span> Corners -- Not the{' '}
-              <span data-gold="hero-word" style={{ color: '#e8d99a', transition: 'color 800ms ease, filter 800ms ease' }}>Quality</span>
+            <h1 style={{ fontFamily: 'Oranienbaum, serif', fontSize: 'clamp(48px, 12vw, 96px)', color: '#EEEEEE', lineHeight: 1.05, marginBottom: '28px', fontWeight: 400 }}>
+              <span style={{ color: '#FFD369' }}>Cutting</span> Corners —{' '}
+              Not the <span style={{ color: '#FFD369' }}>Quality</span>
             </h1>
-
-            <p
-              className="text-gray-1000 tracking-tight max-w-3xl mx-auto mb-10 opacity-0 animate-drop-in delay-1000 duration-200"
-              style={{ fontSize: '23px', lineHeight: 1.6 }}
-            >
-              Professional gemstone cutter focused on color, yield, and stone potential for jewelry
-              professionals nationwide.
+            <p style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: 'clamp(17px, 2.5vw, 21px)', color: '#EEEEEE', lineHeight: 1.7, marginBottom: '40px', maxWidth: '560px', margin: '0 auto 40px' }}>
+              Professional gemstone cutter focused on color, yield, and stone potential for jewelry professionals nationwide.
             </p>
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="/get-estimate/instant" style={{ display: 'inline-block', padding: '17px 40px', background: '#FFD369', color: '#222831', fontFamily: 'Montserrat, sans-serif', fontSize: '11px', fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
+                Get an Estimate
+              </a>
+              <a href="/shop" style={{ display: 'inline-block', padding: '17px 40px', background: 'none', border: '1px solid rgba(255,255,255,0.4)', color: '#EEEEEE', fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
+                View Shop
+              </a>
+            </div>
           </div>
 
-          <div className="absolute bottom-05 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in delay-800">
-            <div className="w-px h-16 bg-gradient-to-b from-white/0 via-white/30 to-white/0" />
+          {/* Stat card — desktop only */}
+          <div className="hidden md:flex" style={{ position: 'absolute', bottom: '32px', right: '32px', flexDirection: 'column', justifyContent: 'center', width: '11rem', height: '11rem', background: 'rgba(34,40,49,0.9)', border: '1px solid rgba(255,211,105,0.3)', padding: '1.5rem' }}>
+            <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: '8px' }}>Industry for</p>
+            <p style={{ fontFamily: 'Oranienbaum, serif', fontSize: '36px', color: '#FFD369', lineHeight: 1 }}>13 Yrs</p>
+            <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.5)', marginTop: '6px' }}>Cutting for Seven</p>
           </div>
 
-          {/* Desktop stat card */}
-          <div
-            data-gold="hero-card"
-            className="absolute bottom-8 right-8 hidden md:flex flex-col justify-center"
-            style={{
-              width: '12rem',
-              height: '12rem',
-              backgroundColor: 'var(--bg)',
-              border: '1px solid rgba(255,255,255,0.10)',
-              padding: '1.5rem',
-            }}
-          >
-            <p className="spec-text text-gray-500 mb-1" style={{ fontSize: '11px' }}>
-              Industry for
-            </p>
-            <p className="title-sm text-white" style={{ fontSize: '1.875rem' }}>
-              13 Years
-            </p>
-            <p className="text-gray-500" style={{ fontSize: '0.875rem' }}>
-              Cutting for Seven
-            </p>
+          {/* Scroll indicator */}
+          <div style={{ position: 'absolute', bottom: '32px', left: '50%', transform: 'translateX(-50%)' }} className="hidden md:block">
+            <div style={{ width: '1px', height: '48px', background: 'linear-gradient(to bottom, transparent, rgba(255,211,105,0.6))' }} />
           </div>
         </section>
 
