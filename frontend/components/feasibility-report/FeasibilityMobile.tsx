@@ -13,9 +13,9 @@ function ResultBadge({ result }: { result: string }) {
 }
 
 const SL = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: 'rgba(212,175,55,0.9)', marginBottom: '14px', marginTop: '28px', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.07)' };
-const FL = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'rgba(100,160,220,0.9)', marginBottom: '4px' };
+const FL = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--accent)', marginBottom: '4px' };
 const FV = { fontFamily: 'var(--font-body)', fontSize: '17px', color: 'var(--text)', marginBottom: '17px' };
-const TH = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: 'rgba(100,160,220,0.9)', padding: '9px 8px', borderBottom: '1px solid rgba(255,255,255,0.07)', textAlign: 'left' as const };
+const TH = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: 'var(--accent)', padding: '9px 8px', borderBottom: '1px solid rgba(255,255,255,0.07)', textAlign: 'left' as const };
 const TC = { fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', padding: '9px 8px', borderBottom: '1px solid rgba(30,60,120,0.4)', verticalAlign: 'top' as const };
 const BODY = { fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', lineHeight: 1.8 };
 
@@ -26,11 +26,11 @@ export default function FeasibilityMobile() {
     <>
       <style>{`
         .fm-tabs { display: flex; gap: 2px; margin-bottom: 28px; }
-        .fm-tab { flex: 1; padding: 15px 0; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 15px; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid var(--border); background: transparent; color: rgba(255,255,255,0.75); cursor: pointer; transition: all 200ms; }
+        .fm-tab { flex: 1; padding: 15px 0; text-align: center; font-family: var(--font-ui); font-size: 15px; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid var(--border); background: transparent; color: rgba(255,255,255,0.75); cursor: pointer; transition: all 200ms; }
         .fm-tab.active { border-color: #d4af37; color: rgba(212,175,55,0.9); background: rgba(212,175,55,0.04); }
         .fm-card { background: var(--bg-deep); border: 1px solid var(--border); padding: 28px 22px; }
         .fm-plot { background: rgba(0,0,0,0.4); border: 1px solid var(--border); padding: 18px; position: relative; min-height: 160px; margin-bottom: 8px; }
-        .fm-plot-label { font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(100,160,220,0.85); margin-bottom: 10px; display: block; }
+        .fm-plot-label { font-family: var(--font-ui); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block; }
         .fm-plot-shape { display: flex; align-items: center; justify-content: center; }
         .fm-option { padding: 15px; border: 1px solid var(--border); margin-bottom: 9px; background: var(--bg-card); }
         .fm-option.rec { border-color: #d4af37; background: rgba(212,175,55,0.04); }
@@ -76,9 +76,9 @@ export default function FeasibilityMobile() {
           <p style={SL}>3 — Symbol Legend</p>
           {precut.symbolLegend.map(s => (
             <div key={s.symbol} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', marginBottom: '10px' }}>
-              <span style={{ fontFamily: 'monospace', fontSize: '17px', color: 'rgba(212,175,55,0.85)', minWidth: '21px' }}>{s.symbol}</span>
+              <span style={{ fontFamily: 'monospace', fontSize: '17px', color: 'var(--gold)', minWidth: '21px' }}>{s.symbol}</span>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)' }}>
-                <span style={{ color: 'rgba(100,160,220,0.9)', marginRight: '8px', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{s.type}</span>
+                <span style={{ color: 'var(--accent)', marginRight: '8px', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{s.type}</span>
                 {s.desc}
               </p>
             </div>
@@ -327,7 +327,7 @@ export default function FeasibilityMobile() {
             ['Client Approval Recorded', postcut.documentation.clientApproval],
           ].map(([l, v]) => (
             <div key={l} style={{ display: 'flex', justifyContent: 'space-between', padding: '11px 0', borderBottom: '1px solid rgba(30,60,120,0.4)' }}>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'rgba(100,160,220,0.9)' }}>{l}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--accent)' }}>{l}</p>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', fontWeight: 600, color: v === 'Yes' ? 'rgba(100,200,120,0.9)' : 'rgba(220,80,80,0.9)' }}>{v}</p>
             </div>
           ))}

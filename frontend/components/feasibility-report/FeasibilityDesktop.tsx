@@ -12,9 +12,9 @@ function ResultBadge({ result }: { result: string }) {
 }
 
 const SL = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: 'rgba(212,175,55,0.9)', marginBottom: '12px', marginTop: '32px', paddingBottom: '8px', borderBottom: '1px solid var(--border)' };
-const FL = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'rgba(100,160,220,0.9)', marginBottom: '4px' };
+const FL = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--accent)', marginBottom: '4px' };
 const FV = { fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', marginBottom: '17px' };
-const TH = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'rgba(100,160,220,0.9)', padding: '8px 10px', borderBottom: '1px solid var(--border)', textAlign: 'left' as const };
+const TH = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--accent)', padding: '8px 10px', borderBottom: '1px solid var(--border)', textAlign: 'left' as const };
 const TC = { fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', padding: '10px', borderBottom: '1px solid var(--border)', verticalAlign: 'top' as const };
 
 const CARD: React.CSSProperties = { background: 'var(--bg-deep)', border: '1px solid var(--gold)', padding: '48px', width: '100%' };
@@ -28,7 +28,7 @@ export default function FeasibilityDesktop() {
         .fd-gem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
         .fd-sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .fd-plot { background: rgba(0,0,0,0.4); border: 1px solid var(--border); padding: 20px; position: relative; min-height: 140px; }
-        .fd-plot-label { font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(100,160,220,0.85); position: absolute; top: 10px; left: 12px; }
+        .fd-plot-label { font-family: var(--font-ui); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); position: absolute; top: 10px; left: 12px; }
         .fd-plot-shape { display: flex; align-items: center; justify-content: center; height: 100px; }
         .fd-option { padding: 16px; border: 1px solid var(--border); margin-bottom: 8px; background: var(--bg-card); }
         .fd-option.rec { border-color: #d4af37; background: rgba(212,175,55,0.04); }
@@ -64,9 +64,9 @@ export default function FeasibilityDesktop() {
           <div className="fd-sym-grid">
             {precut.symbolLegend.map(s => (
               <div key={s.symbol} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '6px' }}>
-                <span style={{ fontFamily: 'monospace', fontSize: '14px', color: 'rgba(212,175,55,0.7)', minWidth: '17px' }}>{s.symbol}</span>
+                <span style={{ fontFamily: 'monospace', fontSize: '14px', color: 'var(--gold)', minWidth: '17px' }}>{s.symbol}</span>
                 <div>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(100,160,220,0.9)', marginBottom: '1px' }}>{s.type}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '1px' }}>{s.type}</p>
                   <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)' }}>{s.desc}</p>
                 </div>
               </div>
@@ -227,7 +227,7 @@ export default function FeasibilityDesktop() {
           <p style={SL}>Documentation Record</p>
           {[['Before Photos', postcut.documentation.beforePhotos], ['After Photos', postcut.documentation.afterPhotos], ['Plot Maps', postcut.documentation.plotMaps], ['Client Approval', postcut.documentation.clientApproval]].map(([l, v]) => (
             <div key={l} style={{ display: 'flex', justifyContent: 'space-between', padding: '9px 0', borderBottom: '1px solid var(--border)' }}>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'rgba(100,160,220,0.9)' }}>{l}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--accent)' }}>{l}</p>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 600, color: v === 'Yes' ? 'rgba(100,200,120,0.9)' : 'rgba(220,80,80,0.9)' }}>{v}</p>
             </div>
           ))}
