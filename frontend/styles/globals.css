@@ -226,3 +226,8 @@ button, input, textarea, select { border-radius: 0 !important; }
 
 .hover-lift { transition: transform 0.3s ease; }
 .hover-lift:hover { transform: translateY(-6px); }
+
+/* Full-screen fixed containers that need theme background */
+.themed-fullscreen {
+  background: var(--bg-gradient);
+}
