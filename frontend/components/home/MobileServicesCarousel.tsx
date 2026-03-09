@@ -176,7 +176,7 @@ export default function MobileServicesCarousel() {
         className="pointer-events-none"
         style={{
           height: '80px',
-          background: 'linear-gradient(to bottom, rgba(5,5,5,1) 0%, rgba(5,5,5,0) 100%)',
+          background: 'linear-gradient(to bottom, var(--bg) 0%, transparent 100%)',
           position: 'absolute',
           left: 0, right: 0,
           zIndex: 10,
@@ -186,7 +186,7 @@ export default function MobileServicesCarousel() {
         className="pointer-events-none"
         style={{
           height: '80px',
-          background: 'linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0) 100%)',
+          background: 'linear-gradient(to top, var(--bg) 0%, transparent 100%)',
           position: 'absolute',
           left: 0, right: 0, bottom: 0,
           zIndex: 10,
@@ -259,7 +259,7 @@ export default function MobileServicesCarousel() {
                 fontFamily: 'var(--font-body)',
                 fontSize: '16px',
                 lineHeight: 1.7,
-                color: 'rgba(255,255,255,0.70)',
+                color: 'var(--text)',
                 textAlign: 'left',
               }}
             >
@@ -292,7 +292,7 @@ export default function MobileServicesCarousel() {
             fontSize: '10px',
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.35)',
+            color: 'var(--text-muted)',
           }}
         >
           Scroll

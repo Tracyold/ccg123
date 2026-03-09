@@ -143,7 +143,7 @@ export default function DesktopServicesGrid() {
               fontFamily: 'var(--font-body)',
               fontSize: 'clamp(12px, 1.1vw, 16px)',
               lineHeight: 1.75,
-              color: 'rgba(255,255,255,0.65)',
+              color: 'var(--text-muted)',
               flex: 1,
             }}
           >
