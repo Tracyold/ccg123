@@ -49,5 +49,8 @@ export default function EstimatesPage() {
           </div>
         </section>
       </main>
+      <div className="hidden-mobile"><Footer /></div>
     </>
+  );
+}
 
