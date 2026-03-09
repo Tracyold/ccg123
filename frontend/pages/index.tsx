@@ -287,7 +287,7 @@ export default function Home() {
           {/* Machine scene — lamp off (light mode) / lamp on (dark mode) */}
           <div className="machine-scene absolute inset-0">
             <img src="https://ik.imagekit.io/postvibe/light-off.png?updatedAt=1773060290554" className="machine-img machine-light" alt="" />
-            <img src="https://ik.imagekit.io/postvibe/light-on.png?updatedAt=1773060307263" className="machine-img machine-dark" alt="" />
+            <img src="https://ik.imagekit.io/postvibe/Light-on-2.png?updatedAt=1773061160726" className="machine-img machine-dark" alt="" />
           </div>
           {/* Dark vignette overlay */}
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 40%, transparent 20%, var(--bg) 80%, var(--bg) 100%)' }} />
