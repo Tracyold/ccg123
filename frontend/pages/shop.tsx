@@ -496,7 +496,7 @@ const shopCss = `
   z-index: 2;
 }
 .shop-tag {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 0.13em;
@@ -556,7 +556,7 @@ const shopCss = `
     border-radius: 8px;
   }
   .shop-card-title {
-    font-family: 'Comfortaa', sans-serif;
+    font-family: var(--font-body);
     font-weight: 600;
     font-size: 11px;
     text-transform: uppercase;

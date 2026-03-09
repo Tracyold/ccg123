@@ -31,7 +31,7 @@ const css = `
   border-bottom: 0.5px solid transparent;
 }
 .tnav.scrolled {
-  background: rgba(41, 40, 40, 0.92);
+  background: rgba(34,40,49,0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(19px);
   border-bottom-color: rgba(255, 255, 255, 0.73);
@@ -53,7 +53,7 @@ const css = `
   gap: 32px;
 }
 .tnav-link {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: var(--font-body);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.22em;
@@ -74,7 +74,7 @@ const css = `
 .tnav-link:hover { color: var(--text); }
 .tnav-link:hover::after { right: 0; }
 .tnav-auth {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: var(--font-body);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.22em;
@@ -107,7 +107,7 @@ const css = `
 .tnav-burger .bar {
   width: 100%;
   height: 1px;
-  background: rgba(255,255,255,0.75);
+  background: var(--text-muted);
   border-radius: 1.7px;
   transition: all 280ms ease;
   transform-origin: center;
@@ -118,7 +118,7 @@ const css = `
 .tnav-drawer {
   position: fixed;
   top: 56px; left: 0; right: 0;
-  background: rgba(55, 58, 57, 0.94);
+  background: rgba(34,40,49,0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 0.5px solid rgba(255,255,255,0.07);
@@ -138,7 +138,7 @@ const css = `
   pointer-events: auto;
 }
 .tnav-drawer-link {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: var(--font-body);
   font-size: 25px;
   font-weight: 500;
   letter-spacing: 0.24em;
@@ -152,7 +152,7 @@ const css = `
 .tnav-drawer-link:hover { color: #f8e42f; }
 .tnav-drawer-link:last-child { border-bottom: none; }
 .tnav-drawer-auth {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: var(--font-body);
   font-size: 27px;
   font-weight: 500;
   letter-spacing: 0.24em;

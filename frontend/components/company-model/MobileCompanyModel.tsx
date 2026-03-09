@@ -25,7 +25,7 @@ export default function MobileCompanyModel() {
           position: relative;
         }
         .mob-chapter-label {
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 13px;
           letter-spacing: 0.3em;
           text-transform: uppercase;
@@ -40,14 +40,14 @@ export default function MobileCompanyModel() {
           margin-bottom: 32px;
         }
         .mob-chapter-body p {
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: clamp(16px, 4.5vw, 19px);
           color: rgba(var(--text-rgb, 238,238,238),0.85);
           line-height: 1.9;
           margin-bottom: 20px;
         }
         .mob-chapter-body p:first-child {
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-weight: 600;
           font-size: clamp(16px, 4.5vw, 18px);
           color: rgba(100,160,220,0.9);
@@ -68,7 +68,7 @@ export default function MobileCompanyModel() {
           margin-bottom: 6px;
         }
         .mob-stat-label {
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 13px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
@@ -95,7 +95,7 @@ export default function MobileCompanyModel() {
           line-height: 1.2;
         }
         .mob-cta-sub {
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: clamp(16px, 4.5vw, 19px);
           color: var(--text);
           margin-bottom: 36px;
@@ -110,7 +110,7 @@ export default function MobileCompanyModel() {
           border: 1px solid #d4af37;
           background: transparent;
           color: rgba(212,175,55,0.9);
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 15px;
           letter-spacing: 0.15em;
           text-transform: uppercase;

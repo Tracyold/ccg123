@@ -30,9 +30,9 @@ export default function FeasibilityDesktop() {
         .fd-plot { background: rgba(0,0,0,0.4); border: 1px solid var(--border); padding: 20px; position: relative; min-height: 140px; }
         .fd-plot-label { font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(100,160,220,0.85); position: absolute; top: 10px; left: 12px; }
         .fd-plot-shape { display: flex; align-items: center; justify-content: center; height: 100px; }
-        .fd-option { padding: 16px; border: 1px solid var(--border); margin-bottom: 8px; background: rgba(255,255,255,0.02); }
+        .fd-option { padding: 16px; border: 1px solid var(--border); margin-bottom: 8px; background: var(--bg-card); }
         .fd-option.rec { border-color: #d4af37; background: rgba(212,175,55,0.04); }
-        .fd-disclaimer { margin-top: 32px; padding: 16px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); font-family: 'Comfortaa', sans-serif; font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+        .fd-disclaimer { margin-top: 32px; padding: 16px; border: 1px solid var(--border); background: var(--bg-card); font-family: var(--font-body); font-size: 13px; color: var(--text-muted); line-height: 1.7; }
       `}</style>
 
       <div className="fd-grid">

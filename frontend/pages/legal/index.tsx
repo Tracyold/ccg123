@@ -155,7 +155,7 @@ export default function LegalUnified() {
           display: block; width: 100%; text-align: left;
           padding: 7px 14px; border: none; border-radius: 3px;
           background: none; cursor: pointer;
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 12px; letter-spacing: 0.05em;
           text-transform: uppercase;
           color: var(--text);
@@ -165,7 +165,7 @@ export default function LegalUnified() {
         .toc-btn:hover { color: var(--text-muted); background: transparent; }
         .toc-btn.active { color: var(--accent); background: rgba(255,211,105,0.08); border-left-color: var(--accent); padding-left: 12px; }
         .toc-group-label {
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 9px; letter-spacing: 0.3em;
           text-transform: uppercase;
           color: var(--text-muted);
@@ -174,7 +174,7 @@ export default function LegalUnified() {
         .mobile-tab {
           flex-shrink: 0; padding: 11px 14px;
           background: none; border: none; border-bottom: 2px solid transparent;
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 10px; letter-spacing: 0.1em;
           text-transform: uppercase; white-space: nowrap;
           cursor: pointer; color: var(--text);

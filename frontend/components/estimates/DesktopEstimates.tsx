@@ -62,7 +62,7 @@ export default function DesktopEstimates() {
           padding: 4px 12px;
           background: rgba(212,175,55,0.12);
           border: 1px solid #d4af37;
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 17px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
@@ -80,14 +80,14 @@ export default function DesktopEstimates() {
           padding: 14px 18px;
           background: rgba(212,175,55,0.06);
           border-left: 2px solid #d4af37;
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 17px;
           color: rgba(255,220,100,0.95);
           line-height: 1.7;
           margin-bottom: 20px;
         }
         .dest-body {
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 19px;
           color: #e8dcc8;
           line-height: 1.85;
@@ -105,7 +105,7 @@ export default function DesktopEstimates() {
           display: flex;
           gap: 10px;
           align-items: flex-start;
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 17px;
           color: #d4c9b0;
           line-height: 1.6;
@@ -127,7 +127,7 @@ export default function DesktopEstimates() {
           border: 1px solid #d4af37;
           background: transparent;
           color: rgba(212,175,55,0.85);
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 17px;
           letter-spacing: 0.15em;
           text-transform: uppercase;

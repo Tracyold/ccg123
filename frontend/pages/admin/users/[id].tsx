@@ -167,7 +167,7 @@ export default function AdminUserDetail() {
     setSelectedWO((prev: any) => prev ? { ...prev, status: 'CANCELLED', edit_history: log } : prev);
   };
 
-  if (checking) return <div style={{ background: '#060606', height: '100vh' }} />;
+  if (checking) return <div style={{ background: 'var(--bg-deep)', height: '100vh' }} />;
 
   const isGuest = id === process.env.NEXT_PUBLIC_GUEST_ACCOUNT_USER_ID;
   const unreadInq = inquiries.some(i => !i.is_read);

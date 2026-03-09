@@ -197,7 +197,7 @@ export const adminCss = `
 
   .mob-dropdown{
     position:fixed;top:52px;left:0;right:0;z-index:89;
-    background:rgba(8,8,8,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    background:var(--bg-deep);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
     border-bottom:1px solid var(--border);
     flex-direction:column;
     transform:translateY(-8px);opacity:0;pointer-events:none;
@@ -311,7 +311,7 @@ export default function AdminLayout({ children, activeNav }: AdminLayoutProps) {
     router.push(route);
   };
 
-  if (checking) return <div style={{ background: '#060606', height: '100vh' }} />;
+  if (checking) return <div style={{ background: 'var(--bg-deep)', height: '100vh' }} />;
 
   return (
     <>

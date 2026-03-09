@@ -168,7 +168,7 @@ export default function StudioSection() {
         position: 'relative', zIndex: 10,
         maxWidth: '380px', marginLeft: '4vw', marginRight: 'auto',
         padding: '32px 36px',
-        background: 'rgba(5,5,5,0.25)',
+        background: 'rgba(0,0,0,0.25)',
         backdropFilter: 'blur(6px)',
         borderRadius: '12px', textAlign: 'left',
       }}>

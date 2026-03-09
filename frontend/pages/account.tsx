@@ -513,12 +513,12 @@ const accountCss = `
 .acc-chat-header { padding: 16px 20px; border-bottom: 1px solid var(--border); }
 .acc-chat-messages { flex: 1; overflow-y: auto; padding: 16px 20px; }
 .acc-chat-input-bar { display: flex; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--border); }
-.acc-chat-input { flex: 1; background: var(--border); border: 1px solid var(--border); padding: 10px 12px; color: var(--text); font-family: 'Comfortaa', sans-serif; font-size: 13px; outline: none; }
+.acc-chat-input { flex: 1; background: var(--border); border: 1px solid var(--border); padding: 10px 12px; color: var(--text); font-family: var(--font-body); font-size: 13px; outline: none; }
 .acc-chat-input:focus { border-color: rgba(214,180,70,0.55); }
 .acc-chat-send { background: #d4af37; border: none; color: #050505; padding: 10px 16px; font-size: 14px; cursor: pointer; font-weight: 700; }
 .acc-chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
 .acc-label { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 5px; }
-.acc-input { width: 100%; background: var(--border); border: 1px solid var(--border); padding: 10px 12px; color: var(--text); font-family: 'Comfortaa', sans-serif; font-size: 13px; outline: none; }
+.acc-input { width: 100%; background: var(--border); border: 1px solid var(--border); padding: 10px 12px; color: var(--text); font-family: var(--font-body); font-size: 13px; outline: none; }
 .acc-input:focus { border-color: rgba(214,180,70,0.55); }
 .acc-btn-gold { background: #d4af37; color: #050505; border: none; padding: 12px 20px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; width: 100%; }
 .acc-btn-gold:disabled { opacity: 0.4; cursor: not-allowed; }

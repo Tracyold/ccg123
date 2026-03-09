@@ -7,7 +7,7 @@ const footerCss = `
   padding: 40px 48px;
 }
 .ccg-footer-tagline {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: var(--font-body);
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -24,7 +24,7 @@ const footerCss = `
   flex-direction: column;
 }
 .ccg-footer-link {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   letter-spacing: 0.04em;
   color: rgba(255,255,255,0.40);
@@ -41,14 +41,14 @@ const footerCss = `
   flex-direction: column;
 }
 .ccg-footer-contact-name {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   letter-spacing: 0.04em;
-  color: rgba(255,255,255,0.55);
+  color: var(--text-muted);
   line-height: 2.0;
 }
 .ccg-footer-contact-link {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
   letter-spacing: 0.04em;
   color: rgba(255, 255, 255, 0.81);
@@ -61,7 +61,7 @@ const footerCss = `
   font-size: 12.5px;
 }
 .ccg-footer-welcome {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: var(--font-body);
   font-size: 11px;
   color: rgba(255, 255, 255, 0.67);
   font-style: italic;

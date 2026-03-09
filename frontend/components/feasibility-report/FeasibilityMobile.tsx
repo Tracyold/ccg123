@@ -26,15 +26,15 @@ export default function FeasibilityMobile() {
     <>
       <style>{`
         .fm-tabs { display: flex; gap: 2px; margin-bottom: 28px; }
-        .fm-tab { flex: 1; padding: 15px 0; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 15px; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid rgba(30,60,120,0.7); background: transparent; color: rgba(255,255,255,0.75); cursor: pointer; transition: all 200ms; }
+        .fm-tab { flex: 1; padding: 15px 0; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 15px; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid var(--border); background: transparent; color: rgba(255,255,255,0.75); cursor: pointer; transition: all 200ms; }
         .fm-tab.active { border-color: #d4af37; color: rgba(212,175,55,0.9); background: rgba(212,175,55,0.04); }
-        .fm-card { background: #0D0D0D; border: 1px solid rgba(30,60,120,0.8); padding: 28px 22px; }
-        .fm-plot { background: rgba(0,0,0,0.4); border: 1px solid rgba(30,60,120,0.8); padding: 18px; position: relative; min-height: 160px; margin-bottom: 8px; }
+        .fm-card { background: var(--bg-deep); border: 1px solid var(--border); padding: 28px 22px; }
+        .fm-plot { background: rgba(0,0,0,0.4); border: 1px solid var(--border); padding: 18px; position: relative; min-height: 160px; margin-bottom: 8px; }
         .fm-plot-label { font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(100,160,220,0.85); margin-bottom: 10px; display: block; }
         .fm-plot-shape { display: flex; align-items: center; justify-content: center; }
-        .fm-option { padding: 15px; border: 1px solid rgba(30,60,120,0.7); margin-bottom: 9px; background: rgba(255,255,255,0.02); }
+        .fm-option { padding: 15px; border: 1px solid var(--border); margin-bottom: 9px; background: var(--bg-card); }
         .fm-option.rec { border-color: #d4af37; background: rgba(212,175,55,0.04); }
-        .fm-disclaimer { margin-top: 25px; padding: 15px; border: 1px solid rgba(30,60,120,0.6); background: rgba(255,255,255,0.02); font-family: 'Comfortaa', sans-serif; font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.75; }
+        .fm-disclaimer { margin-top: 25px; padding: 15px; border: 1px solid var(--border); background: var(--bg-card); font-family: var(--font-body); font-size: 13px; color: var(--text-muted); line-height: 1.75; }
       `}</style>
 
       <div className="fm-tabs">

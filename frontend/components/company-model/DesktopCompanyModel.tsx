@@ -43,7 +43,7 @@ export default function DesktopCompanyModel() {
           border: none;
           border-left: 2px solid transparent;
           padding: 10px 16px;
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 11px;
           letter-spacing: 0.12em;
           text-transform: uppercase;
@@ -64,7 +64,7 @@ export default function DesktopCompanyModel() {
         }
         .dtop-chapter:last-of-type { border-bottom: none; }
         .dtop-chapter-label {
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 10px;
           letter-spacing: 0.3em;
           text-transform: uppercase;
@@ -79,7 +79,7 @@ export default function DesktopCompanyModel() {
           margin-bottom: 32px;
         }
         .dtop-chapter-body p {
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: clamp(14px, 1.4vw, 16px);
           color: rgba(255,255,255,0.65);
           line-height: 1.9;
@@ -88,7 +88,7 @@ export default function DesktopCompanyModel() {
         .dtop-chapter-body p:first-child {
           font-size: clamp(14px, 1.4vw, 16px);
           color: rgba(100,160,220,0.9);
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-weight: 600;
           line-height: 1.75;
         }
@@ -107,7 +107,7 @@ export default function DesktopCompanyModel() {
           margin-bottom: 6px;
         }
         .dtop-stat-label {
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 10px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
@@ -118,7 +118,7 @@ export default function DesktopCompanyModel() {
           align-items: center;
           gap: 8px;
           margin-top: 20px;
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 11px;
           letter-spacing: 0.15em;
           text-transform: uppercase;
@@ -140,7 +140,7 @@ export default function DesktopCompanyModel() {
           margin-bottom: 16px;
         }
         .dtop-cta-sub {
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 14px;
           color: rgba(255,255,255,0.45);
           margin-bottom: 36px;
@@ -154,7 +154,7 @@ export default function DesktopCompanyModel() {
           border: 1px solid #d4af37;
           background: transparent;
           color: rgba(212,175,55,0.9);
-          font-family: 'Comfortaa', sans-serif;
+          font-family: var(--font-body);
           font-size: 12px;
           letter-spacing: 0.18em;
           text-transform: uppercase;

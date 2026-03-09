@@ -283,7 +283,7 @@ const portfolioCss = `
   padding: 8px 2px 0;
 }
 .portfolio-card-year {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 18px;
   text-transform: uppercase;
