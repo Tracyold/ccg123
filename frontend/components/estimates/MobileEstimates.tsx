@@ -32,7 +32,7 @@ export default function MobileEstimates() {
   return (
     <>
       <style>{`
-        .mest-wrap { background: var(--bg-gradient); background-attachment: fixed; height: 100svh; overflow-y: scroll; scroll-snap-type: y mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        .mest-wrap { height: 100svh; overflow-y: scroll; scroll-snap-type: y mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
         .mest-wrap::-webkit-scrollbar { display: none; }
         .mest-card { height: 100svh; scroll-snap-align: start; scroll-snap-stop: always; display: flex; flex-direction: column; justify-content: center; padding: 80px 32px; position: relative; overflow: hidden; }
         .mest-card::before { content: ''; position: absolute; inset: 0; pointer-events: none; }
