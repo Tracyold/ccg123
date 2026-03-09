@@ -334,7 +334,7 @@ export default function ShopPage() {
     <>
       <style dangerouslySetInnerHTML={{ __html: shopCss }} />
       <TopNav />
-      <main style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 35%, #141414 60%, #0d0d0d 100%)', minHeight: '100vh', paddingTop: '56px' }}>
+      <main style={{ background: 'var(--bg-gradient)', minHeight: '100vh', paddingTop: '56px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 48px 80px' }}>
           <p style={{
             fontFamily: 'var(--font-body)',
