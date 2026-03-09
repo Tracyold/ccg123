@@ -5,14 +5,14 @@
 @tailwind utilities;
 
 :root {
-  --bg:           #222831;
+  --bg:           #14171d;
   --bg-card:      #393E46;
   --bg-deep:      #1a1f27;
   --accent:       #FFD369;
   --text:         #EEEEEE;
   --text-muted:   #aaaaaa;
   --border:       #393E46;
-  --gold:         #d4af37;
+  --gold:         #fccb28;
   --font-display: 'Oranienbaum', Georgia, serif;
   --font-ui:      'Montserrat', sans-serif;
   --font-body:    'Comfortaa', sans-serif;
@@ -22,14 +22,14 @@
 
 :root[data-theme="light"] {
   --bg:           #EEEEEE;
-  --bg-card:      #ffffff;
-  --bg-deep:      #e0dbd0;
+  --bg-card:      #ccc3c3;
+  --bg-deep:      #cfcac0;
   --accent:       #FFD369;
   --text:         #222831;
   --text-muted:   #555555;
   --border:       #cccccc;
-  --gold:         #d4af37;
-  --bg-gradient:  linear-gradient(135deg, #e8e4dc 0%, #EEEEEE 35%, #f0ede8 60%, #e8e4dc 100%);
+  --gold:         #eecf1d;
+  --bg-gradient:  linear-gradient(135deg, #e8e4dc 0%, #EEEEEE 35%, #f0ede8 60%, #2c2d2f 100%);
 }
 
 html, body {
@@ -48,6 +48,8 @@ html, body {
 }
 
 * { box-sizing: border-box; }
+
+#__next { background: transparent; min-height: 100vh; }
 
 button, input, textarea, select { border-radius: 0 !important; }
 
