@@ -13,7 +13,7 @@
   --text-muted: #aaaaaa;
   --border:     #393E46;
   --gold:       #d4af37;
-  --bg-gradient: linear-gradient(135deg, #e8e4dc 0%, #EEEEEE 35%, #f0ede8 60%, #e8e4dc 100%);
+  --bg-gradient: linear-gradient(135deg, #222831 0%, #2d3340 35%, #393E46 60%, #222831 100%);
 }
 
 :root[data-theme="light"] {
