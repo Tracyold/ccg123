@@ -282,7 +282,7 @@ export default function Home() {
         {/* ── Hero Section ── */}
         <section style={{ minHeight: '100svh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
           {/* Background image */}
-          <div className="absolute inset-0" style={{ backgroundImage: 'url(/assets/handcut.jpeg)', backgroundSize: 'cover', backgroundPosition: '62% 40%', opacity: 0.35, filter: 'grayscale(1) sepia(0.4) hue-rotate(180deg) brightness(0.85)' }} />
+          <div className="absolute inset-0" style={{ backgroundImage: 'url(/assets/handcut.jpeg)', backgroundSize: 'cover', backgroundPosition: '62% 40%', opacity: 0.35, filter: 'grayscale(1) sepia(0.3) brightness(0.9)' }} />
           {/* Dark vignette overlay */}
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.75) 60%, rgba(0,0,0,0.95) 100%)' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.95) 100%)' }} />
@@ -407,7 +407,7 @@ export default function Home() {
                       objectPosition: 'center top',
                       transform: 'scale(1.1)',
                       display: 'block',
-                      filter: 'grayscale(1) sepia(0.4) hue-rotate(180deg) brightness(0.65)',
+                      filter: 'grayscale(1) sepia(0.3) brightness(0.75)',
                     }}
                   />
                   <div
