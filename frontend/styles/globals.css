@@ -25,7 +25,7 @@
   --font-ui:         'Montserrat', sans-serif;
   --font-body:       'Comfortaa', sans-serif;
   --font-mono:       'Courier New', monospace;
-  --bg-gradient:     linear-gradient(135deg, #1c1f24 15%, #101112 30%, #252525 45%, #1c2129 65%);
+  --bg-gradient:     linear-gradient(187deg, #1c1f24 15%, #101112 30%, #252525 45%, #1c2129 65%);
 }
 
 :root[data-theme="dark"] {
@@ -35,9 +35,9 @@
   --bg-card-rgba:    rgba(29, 29, 29, 1);
   --bg-deep:         #16181e;
   --bg-deep-rgba:    rgba(22, 24, 30, 1);
-  --accent:          #FFD369;
-  --accent-rgba:     rgba(255, 211, 105, 1);
-  --text:            #EEEEEE;
+  --accent:          #808093f7;
+  --accent-rgba:     rgba(114, 114, 138, 0.921);
+  --text:            #f7c032f7;
   --text-rgba:       rgba(238, 238, 238, 1);
   --text-muted:      #05043a;
   --text-muted-rgba: rgba(5, 4, 58, 1);
@@ -49,7 +49,7 @@
   --font-ui:         'Montserrat', sans-serif;
   --font-body:       'Comfortaa', sans-serif;
   --font-mono:       'Courier New', monospace;
-  --bg-gradient:     linear-gradient(135deg, #13141a 15%, #191b1f 31%, #272940 47%, #0a0d35 65%);
+  --bg-gradient:     linear-gradient(187deg, #1e1e20 15%, #161617 31%, #1a1a1c 47%, #2a292f 65%);
 }
 
 :root[data-theme="light"] {
@@ -61,7 +61,7 @@
   --bg-deep-rgba:    rgba(208, 195, 169, 1);
   --accent:          #aa8c47;
   --accent-rgba:     rgba(170, 140, 71, 1);
-  --text:            #0b0c0e;
+  --text:            #141415;
   --text-rgba:       rgba(11, 12, 14, 1);
   --text-muted:      #555555;
   --text-muted-rgba: rgba(85, 85, 85, 1);
@@ -233,13 +233,25 @@ button, input, textarea, select { border-radius: 0 !important; }
   font-family: var(--font-ui);
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   border: 1px solid var(--border);
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   text-decoration: none;
   cursor: pointer;
+}
+
+.btn-gold {
+  background: var(--gold-rgba);
+  border: 1px solid var(--gold-rgba);
+  color: var(--bg-rgba);
+}
+
+.btn-gold:hover {
+  background-color: transparent;
+  border: 2px solid var(--gold-rgba);
+  color: var(--bg-rgba);
 }
 
 .btn-secondary:hover {

@@ -24,7 +24,7 @@ function GlobalStyles() {
 html, body, #__next {
   font-family: var(--font-body);
   background: var(--bg-gradient);
-  color: var(--text);
+  color: var(--text-rgba);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
@@ -136,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-6px);
 }
 
-.btn-primary {
+.btn-gold {
   background-color: transparent;
   color: var(--bg);
   padding: 0.75rem 2rem;
@@ -158,7 +158,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: transparent;
 }
 
-.btn-secondary {
+.btn-primary {
   background: transparent;
   color: var(--text);
   padding: 0.75rem 2rem;
@@ -166,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-size: 0.875rem;
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid var(--border);
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
@@ -292,7 +292,7 @@ export default function Home() {
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, var(--bg) 0%, transparent 30%, transparent 70%, var(--bg) 100%)' }} />
 
           <div style={{ position: 'relative', zIndex: 10, padding: '0 24px', maxWidth: '800px', margin: '0 auto' }}>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '24px' }}>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '24px' }}>
               Tempe, Arizona
             </p>
             <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(48px, 12vw, 96px)', color: 'var(--text)', lineHeight: 1.05, marginBottom: '28px', fontWeight: 400 }}>
@@ -361,7 +361,7 @@ export default function Home() {
                   fontSize: 'clamp(28px, 3.5vw, 56px)',
                   letterSpacing: '-0.01em',
                   marginBottom: '0px',
-                  color: 'var(--text-muted)',
+                  color: 'var(--text-muted-rgba)',
                 }}
               >
                 Services
@@ -381,7 +381,7 @@ export default function Home() {
           <div className="container-custom">
             <p
               className="uppercase text-gray-500 mb-4 text-center"
-              style={{ fontSize: '12px', letterSpacing: '0.20em' }}
+              style={{ fontSize: '15px', letterSpacing: '0.20em' }}
             >
               About
             </p>
@@ -398,7 +398,7 @@ export default function Home() {
                     aspectRatio: '1 / 1',
                     overflow: 'hidden',
                     position: 'relative',
-                    borderRadius: '18px',
+                    borderRadius: '13px',
                   }}
                 >
                   <img
@@ -411,14 +411,14 @@ export default function Home() {
                       objectPosition: 'center top',
                       transform: 'scale(1.1)',
                       display: 'block',
-                      filter: 'grayscale(1) sepia(0.3) brightness(0.75)',
+                      filter: 'grayscale(1) sepia(0.3) brightness(0.95)',
                     }}
                   />
                   <div
                     style={{
                       position: 'absolute',
                       inset: 0,
-                      boxShadow: 'inset 0 0 30px 15px rgba(0,0,0,0.7)',
+                      boxShadow: 'inset 0 0 27px 15px var(--border-rgba)',
                       zIndex: 10,
                       pointerEvents: 'none',
                     }}
@@ -429,7 +429,7 @@ export default function Home() {
               <div>
                 <h2
                   data-gold="name"
-                  className="page-title title-xl name-title mb-6 opacity-0 transition-all duration-700"
+                  className="page-title title-xl name-title mb-6 opacity-5 transition-all duration-700"
                   data-scroll-reveal
                   style={{ animationDelay: '100ms' }}
                 >
@@ -441,9 +441,9 @@ export default function Home() {
                   data-scroll-reveal
                   style={{
                     fontFamily: 'var(--font-body)',
-                    fontSize: '17px',
+                    fontSize: '19px',
                     lineHeight: 1.75,
-                    color: 'var(--text)',
+                    color: 'var(--text-rgba)',
                     maxWidth: '520px',
                     marginBottom: '24px',
                     animationDelay: '200ms',
@@ -461,7 +461,7 @@ export default function Home() {
                     fontFamily: 'var(--font-body)',
                     fontSize: '17px',
                     lineHeight: 1.75,
-                    color: 'var(--text)',
+                    color: 'var(--text-rgba)',
                     maxWidth: '520px',
                     marginBottom: '32px',
                     animationDelay: '231ms',
@@ -509,8 +509,8 @@ export default function Home() {
               className="mx-auto mb-12 opacity-0 transition-all duration-700"
               data-scroll-reveal
               style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: '23px',
+                fontFamily: 'var(--font-ui)',
+                fontSize: '21px',
                 lineHeight: 1.75,
                 color: 'var(--text)',
                 maxWidth: '600px',
@@ -527,14 +527,14 @@ export default function Home() {
               className="btn-primary opacity-0 transition-all duration-700"
               data-scroll-reveal
               style={{
-                borderRadius: '999px',
-                padding: '16px 40px',
-                fontSize: '14px',
+                borderRadius: '11.7px',
+                padding: '17px 39px',
+                fontSize: '17px',
                 animationDelay: '300ms',
               }}
             >
               Browse Shop
-              <ArrowRight size={16} />
+              <ArrowRight size={17} />
             </a>
           </div>
         </section>
