@@ -28,6 +28,10 @@ module.exports = {
         gold: '#d4af37',
         'gold-alt': '#cfb040',
         teal: 'rgba(45, 212, 191, 1)',
+        charcoal: '#222831',
+        slate: '#393E46',
+        amber: '#FFD369',
+        cream: '#EEEEEE',
       },
       keyframes: {
         'gold-glow': {
