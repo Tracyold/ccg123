@@ -10,7 +10,7 @@ import InquiryDetailModal from '../../../components/admin/users/InquiryDetailMod
 import WorkOrderDetailModal from '../../../components/admin/users/WorkOrderDetailModal';
 
 const STATUS_COLORS: Record<string, { bg: string; color: string }> = {
-  CREATED: { bg: 'rgba(184,154,42,0.08)', color: '#cfb040' },
+  CREATED: { bg: 'rgba(184,154,42,0.08)', color: 'var(--gold)' },
   ACCEPTED: { bg: 'rgba(90,150,90,0.1)', color: '#7ec87e' },
   COMPLETED: { bg: 'rgba(80,120,200,0.1)', color: '#88aadd' },
   CONFIRMED: { bg: 'rgba(120,80,200,0.12)', color: '#b388ff' },
@@ -234,10 +234,10 @@ export default function AdminUserDetail() {
                   </div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '17px', alignContent: 'start' }}>
-                  <div className="stat-card"><div className="stat-val" style={{ color: 'rgba(45,212,191,1)', fontFamily: "'Courier New', monospace" }}>{woCount}</div><div className="stat-label">Work Orders</div></div>
-                  <div className="stat-card"><div className="stat-val" style={{ color: 'rgba(45,212,191,1)', fontFamily: "'Courier New', monospace" }}>{formatMoney(invTotal)}</div><div className="stat-label">Total Invoiced</div></div>
-                  <div className="stat-card"><div className="stat-val" style={{ color: 'rgba(45,212,191,1)', fontFamily: "'Courier New', monospace" }}>{inqCount}</div><div className="stat-label">Inquiries</div></div>
-                  <div className="stat-card"><div className="stat-val" style={{ color: 'rgba(45,212,191,1)', fontFamily: "'Courier New', monospace" }}>{srCount}</div><div className="stat-label">Service Requests</div></div>
+                  <div className="stat-card"><div className="stat-val" style={{ color: 'rgba(45,212,191,1)', fontFamily: 'var(--font-mono)' }}>{woCount}</div><div className="stat-label">Work Orders</div></div>
+                  <div className="stat-card"><div className="stat-val" style={{ color: 'rgba(45,212,191,1)', fontFamily: 'var(--font-mono)' }}>{formatMoney(invTotal)}</div><div className="stat-label">Total Invoiced</div></div>
+                  <div className="stat-card"><div className="stat-val" style={{ color: 'rgba(45,212,191,1)', fontFamily: 'var(--font-mono)' }}>{inqCount}</div><div className="stat-label">Inquiries</div></div>
+                  <div className="stat-card"><div className="stat-val" style={{ color: 'rgba(45,212,191,1)', fontFamily: 'var(--font-mono)' }}>{srCount}</div><div className="stat-label">Service Requests</div></div>
                 </div>
               </div>
             )}
@@ -256,7 +256,7 @@ export default function AdminUserDetail() {
                             <div>
                               <div style={{ fontSize: '15px', color: 'var(--wh)', marginBottom: '3px' }}>{inq.name}</div>
                               <div style={{ fontSize: '13px', color: 'var(--d1)' }}>{inq.email}</div>
-                              <div style={{ fontSize: '13px', color: '#377da2' }}>{inq.phone}</div>
+                              <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{inq.phone}</div>
                             </div>
                             {!inq.is_read && <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--gl)', marginTop: '4px' }} />}
                           </div>
@@ -316,7 +316,7 @@ export default function AdminUserDetail() {
                       <span style={{ fontSize: '9px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', padding: '4px 9px', background: STATUS_COLORS[wo.status]?.bg, color: STATUS_COLORS[wo.status]?.color }}>{wo.status}</span>
                     </div>
                     <p style={{ fontSize: '13px', color: 'var(--d1)', marginBottom: '6px' }}>{wo.description}</p>
-                    {wo.estimated_price && <div style={{ fontSize: '15px', color: 'rgba(45,212,191,1)', fontFamily: "'Courier New', monospace" }}>{formatMoney(wo.estimated_price)}</div>}
+                    {wo.estimated_price && <div style={{ fontSize: '15px', color: 'rgba(45,212,191,1)', fontFamily: 'var(--font-mono)' }}>{formatMoney(wo.estimated_price)}</div>}
                     <div style={{ fontSize: '12px', color: 'var(--d2)', marginTop: '8px' }}>{fmtDate(wo.created_at)}</div>
                     <div style={{ display: 'flex', gap: '9px', marginTop: '11px' }} onClick={e => e.stopPropagation()}>
                       {(wo.status === 'ACCEPTED' || wo.status === 'CONFIRMED') && <button className="ab pub" onClick={() => completeWO(wo)}>Complete</button>}

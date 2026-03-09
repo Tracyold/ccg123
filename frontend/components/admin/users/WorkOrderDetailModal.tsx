@@ -4,7 +4,7 @@ import { formatMoney, fmtDate, fmtTime } from '../../../lib/utils';
 
 // STATUS_COLORS — lines 7–13 of [id].tsx
 const STATUS_COLORS: Record<string, { bg: string; color: string }> = {
-  CREATED:   { bg: 'rgba(184,154,42,0.08)',   color: '#cfb040' },
+  CREATED:   { bg: 'rgba(184,154,42,0.08)',   color: 'var(--gold)' },
   ACCEPTED:  { bg: 'rgba(90,150,90,0.1)',      color: '#7ec87e' },
   COMPLETED: { bg: 'rgba(80,120,200,0.1)',     color: '#88aadd' },
   CONFIRMED: { bg: 'rgba(120,80,200,0.12)',    color: '#b388ff' },
@@ -89,9 +89,9 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
           <div style={{ marginBottom: '16px', padding: '18px', background: 'var(--k0)', border: '.5px solid var(--ln)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
               <div style={{ fontSize: '11px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)' }}>Admin Address</div>
-              <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: '#ffd700' }}>← CLIENT SENDS ITEM HERE</div>
+              <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>← CLIENT SENDS ITEM HERE</div>
             </div>
-            <div style={{ fontSize: '15px', color: 'rgba(255,255,255,0.72)', lineHeight: 2 }}>
+            <div style={{ fontSize: '15px', color: 'var(--text)', lineHeight: 2 }}>
               <div style={{ color: 'var(--gl)', fontWeight: 600, fontSize: '16px' }}>{adminInfo.business_name}</div>
               <div>{adminInfo.full_name}</div>
               <div style={{ fontWeight: 600, color: 'rgba(var(--text-rgb, 238,238,238),0.85)' }}>{adminInfo.address}</div>
@@ -107,7 +107,7 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
               <div style={{ fontSize: '11px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)' }}>Client Return Address</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: '#ffd700' }}>RETURN ITEM HERE →</div>
+                <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>RETURN ITEM HERE →</div>
                 <button onClick={() => { setEditingWOAddr(true); setWoClientAddrEdit(selectedWO.wo_shipping_address || user.shipping_address || ''); setWoAdminAddrEdit(adminInfo?.address || ''); }}
                   style={{ fontSize: '10px', letterSpacing: '.15em', textTransform: 'uppercase', background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '3px 8px', cursor: 'pointer' }}>
                   Edit
@@ -141,13 +141,13 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
                 </div>
               </div>
             ) : (
-              <div style={{ fontSize: '15px', color: 'rgba(255,255,255,0.72)', lineHeight: 2 }}>
+              <div style={{ fontSize: '15px', color: 'var(--text)', lineHeight: 2 }}>
                 <div style={{ color: 'rgba(66,200,194,0.9)', fontSize: '16px' }}>{user.name}</div>
                 <div>{user.email}</div>
                 {user.phone && <div>{user.phone}</div>}
                 <div style={{ fontWeight: 600, color: 'rgba(var(--text-rgb, 238,238,238),0.85)' }}>{selectedWO.wo_shipping_address || user.shipping_address || 'No address on file'}</div>
                 {selectedWO.wo_shipping_address && selectedWO.wo_shipping_address !== user.shipping_address && (
-                  <div style={{ fontSize: '11px', color: '#ffd700', marginTop: '4px', fontStyle: 'italic' }}>* Custom address for this work order only</div>
+                  <div style={{ fontSize: '11px', color: 'var(--accent)', marginTop: '4px', fontStyle: 'italic' }}>* Custom address for this work order only</div>
                 )}
               </div>
             )}
@@ -169,13 +169,13 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
         ].filter(r => r.val).map(r => (
           <div key={r.label} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
             <span style={{ fontSize: '12px', letterSpacing: '.17em', textTransform: 'uppercase', color: 'var(--d2)' }}>{r.label}</span>
-            <span style={{ fontSize: '15px', color: 'rgba(255,255,255,0.72)' }}>{r.val}</span>
+            <span style={{ fontSize: '15px', color: 'var(--text)' }}>{r.val}</span>
           </div>
         ))}
 
         <div style={{ marginTop: '16px' }}>
           <div style={{ fontSize: '11px', letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '8px' }}>Description</div>
-          <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.72)', lineHeight: 1.8 }}>{selectedWO.description}</p>
+          <p style={{ fontSize: '15px', color: 'var(--text)', lineHeight: 1.8 }}>{selectedWO.description}</p>
         </div>
 
         {selectedWO.notes && (
@@ -188,7 +188,7 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
         {selectedWO.estimated_price && (
           <div style={{ marginTop: '19px', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '14px', background: 'var(--k0)', border: '1px solid var(--ln)' }}>
             <span style={{ fontSize: '11px', letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--d2)' }}>Quoted Price</span>
-            <span style={{ fontFamily: "'Courier New', monospace", fontSize: '22px', color: 'rgb(34, 158, 114)' }}>{formatMoney(selectedWO.estimated_price)}</span>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '22px', color: 'rgb(34, 158, 114)' }}>{formatMoney(selectedWO.estimated_price)}</span>
           </div>
         )}
 

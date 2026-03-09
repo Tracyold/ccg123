@@ -281,7 +281,7 @@ export default function AdminDashboard() {
                     width: '32px', height: '18px', borderRadius: '9px', position: 'relative', flexShrink: 0, cursor: 'pointer',
                     background: p.active ? 'var(--gl)' : 'rgba(255,255,255,0.12)', transition: 'background 300ms',
                   }}>
-                    <div style={{ position: 'absolute', top: '2px', left: p.active ? '16px' : '2px', width: '14px', height: '14px', borderRadius: '50%', background: '#fff', transition: 'left 300ms' }} />
+                    <div style={{ position: 'absolute', top: '2px', left: p.active ? '16px' : '2px', width: '14px', height: '14px', borderRadius: '50%', background: 'var(--text)', transition: 'left 300ms' }} />
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontSize: '13px', color: 'var(--wh)', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -337,7 +337,7 @@ export default function AdminDashboard() {
                       position: 'absolute', top: '3px',
                       left: smsConfig[key] ? '19px' : '3px',
                       width: '14px', height: '14px', borderRadius: '50%',
-                      background: '#fff', transition: 'left 300ms ease',
+                      background: 'var(--text)', transition: 'left 300ms ease',
                     }} />
                   </div>
                 </div>

@@ -16,7 +16,7 @@ const Block = ({ title, children }: { title: string; children: React.ReactNode }
 const SampleMsg = ({ label, msg }: { label: string; msg: string }) => (
   <div style={{ padding: '12px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '6px', marginBottom: '10px' }}>
     <p style={{ fontSize: '19px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', margin: '0 0 6px 0' }}>{label}</p>
-    <p style={{ fontSize: '17px', color: 'var(--text)', margin: 0, fontFamily: "'Courier New', monospace", lineHeight: 1.6 }}>{msg}</p>
+    <p style={{ fontSize: '17px', color: 'var(--text)', margin: 0, fontFamily: 'var(--font-mono)', lineHeight: 1.6 }}>{msg}</p>
   </div>
 );
 
@@ -89,7 +89,7 @@ export default function SmsTerms() {
             <SampleMsg label="Work Order Payment Completed" msg="Cutting Corners Gems: Workorder [work_order_id] for [work_order_gem_type] [work_order_service_type] payment is complete. Your item will be shipped to the address on the your workorder within 24 horus." />
             <SampleMsg label="Your item Is On the Way" msg="Cutting Corners Gems: Your gemsone for workorder [work_order_id] for [work_order_gem_type] [work_order_service_type] has been shipped! Please click the link to view tracking information [link]. Please opt in to shipping notifications in your account dashboard to recieve shipping updates" />  
                         <div style={{ background: '#d4af37', border: '1px solid #d4af37', padding: '16px 20px', marginTop: '16px' }}>
-              <p style={{ fontSize: '17px', color: 'rgba(255,220,100,0.85)', lineHeight: 1.75, margin: 0 }}>
+              <p style={{ fontSize: '17px', color: 'var(--accent)', lineHeight: 1.75, margin: 0 }}>
                 <strong>Active Work Order Requirement:</strong> Work order notifications cannot be disabled while you have an open work order. Because your gemstone is in our possession during this time, we require the ability to reach you with status updates and required confirmations. This toggle becomes available to turn off once your work order is complete and your item has been returned.
               </p>
             </div>

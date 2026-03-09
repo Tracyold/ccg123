@@ -19,7 +19,7 @@ export default function InvoiceList({ invoices }: Props) {
                 <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '4px' }}>{fmtDate(inv.paid_at)}</div>
               </div>
               <div style={{ textAlign: 'right' }}>
-                <div style={{ fontFamily: "'Courier New', monospace", fontSize: '17px', color: 'rgb(48, 177, 98)' }}>{formatMoney(inv.total_amount)}</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '17px', color: 'rgb(48, 177, 98)' }}>{formatMoney(inv.total_amount)}</div>
                 <span style={{ fontSize: '8px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '2px 6px', background: 'rgba(45,212,191,0.08)', color: 'rgba(45,212,191,0.8)' }}>PAID</span>
               </div>
             </div>

@@ -28,7 +28,7 @@ export default function InquiryDetailModal({ selectedInq, setSelectedInq, select
             {selectedInq.name || user?.name || 'Inquiry'}
           </div>
           {selectedInq.email && <div style={{ fontSize: '13px', color: 'var(--d1)', marginTop: '3px' }}>{selectedInq.email}</div>}
-          {selectedInq.phone && <div style={{ fontSize: '13px', color: '#377da2', marginTop: '2px' }}>{selectedInq.phone}</div>}
+          {selectedInq.phone && <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '2px' }}>{selectedInq.phone}</div>}
         </div>
 
         <div style={{ height: '1px', background: 'var(--ln)', margin: '16px 0' }} />
@@ -55,7 +55,7 @@ export default function InquiryDetailModal({ selectedInq, setSelectedInq, select
               </div>
             )}
             <div style={{ fontFamily: 'var(--serif)', fontSize: '20px', color: 'var(--wh)', marginBottom: '4px' }}>{selectedInqProduct.title}</div>
-            <div style={{ fontFamily: "'Courier New', monospace", fontSize: '18px', color: 'rgba(45,212,191,1)', marginBottom: '14px' }}>{selectedInqProduct.total_price ? '$' + Number(selectedInqProduct.total_price).toLocaleString() : ''}</div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '18px', color: 'rgba(45,212,191,1)', marginBottom: '14px' }}>{selectedInqProduct.total_price ? '$' + Number(selectedInqProduct.total_price).toLocaleString() : ''}</div>
             {[
               { label: 'Product ID', val: selectedInqProduct.product_id },
               { label: 'Gem Type', val: selectedInqProduct.gem_type },

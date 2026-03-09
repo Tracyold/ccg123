@@ -70,16 +70,16 @@ export default function HomeTab({
               <button className="acc-btn-ghost" onClick={() => setEditProfile({ ...profile })}>Cancel</button>
             </div>
           )}
-          {profileFlash && <span style={{ color: '#f9cd3e', fontSize: '11px' }}>✓ Saved</span>}
+          {profileFlash && <span style={{ color: 'var(--accent)', fontSize: '11px' }}>✓ Saved</span>}
         </div>
       )}
 
       {/* Purchase stats */}
       <div style={{ marginTop: '32px', padding: '20px', background: 'var(--bg)', border: '1px solid var(--border)' }}>
-        <span style={{ fontFamily: "'Courier New', monospace", fontSize: '19px', color: 'rgb(48, 177, 98)' }}>{invoiceCount}</span>
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '19px', color: 'rgb(48, 177, 98)' }}>{invoiceCount}</span>
         <span style={{ fontSize: '17px', color: 'var(--text-muted)', marginLeft: '8px' }}>items purchased</span>
         <span style={{ margin: '0 12px', color: 'var(--border)' }}>|</span>
-        <span style={{ fontFamily: "'Courier New', monospace", fontSize: '18px', color: 'rgb(48, 177, 98)' }}>{invoiceTotal}</span>
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '18px', color: 'rgb(48, 177, 98)' }}>{invoiceTotal}</span>
         <span style={{ fontSize: '12px', color: 'var(--text-muted)', marginLeft: '8px' }}>total spent</span>
       </div>
 
@@ -103,7 +103,7 @@ export default function HomeTab({
               }}
             >
               <div style={{
-                width: '16px', height: '16px', borderRadius: '50%', background: '#fff', position: 'absolute', top: '3px',
+                width: '16px', height: '16px', borderRadius: '50%', background: 'var(--text)', position: 'absolute', top: '3px',
                 left: smsPrefs?.[t.col] ? '21px' : '3px', transition: 'left 200ms',
               }} />
             </button>

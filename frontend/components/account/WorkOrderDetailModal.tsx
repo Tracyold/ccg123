@@ -51,7 +51,7 @@ export default function WorkOrderDetailModal({
           <div style={{ marginBottom: '16px', padding: '17px', background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <div style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Send To</div>
-              <div style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#ffd700' }}>← SEND TO THIS ADDRESS</div>
+              <div style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>← SEND TO THIS ADDRESS</div>
             </div>
             <div style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text-muted)', lineHeight: 2 }}>
               <div style={{ color: 'var(--gold)', fontWeight: 600, fontSize: '16px' }}>{adminInfo.business_name}</div>
@@ -69,7 +69,7 @@ export default function WorkOrderDetailModal({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <div style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Return To</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#ffd700' }}>RETURN TO THIS ADDRESS →</div>
+                <div style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>RETURN TO THIS ADDRESS →</div>
                 {selectedWO.status === 'CREATED' && (
                   <button onClick={() => { setTempAddress(selectedWO.wo_shipping_address || profile.shipping_address || ''); setShowAddressEdit(true); }}
                     style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase', background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '4px 8px', cursor: 'pointer' }}>
@@ -84,7 +84,7 @@ export default function WorkOrderDetailModal({
               {profile.phone && <div>{profile.phone}</div>}
               <div style={{ color: 'var(--text)' }}>{selectedWO.wo_shipping_address || profile.shipping_address || 'No address on file'}</div>
               {selectedWO.wo_shipping_address && selectedWO.wo_shipping_address !== profile.shipping_address && (
-                <div style={{ fontSize: '10px', color: '#ffd700', marginTop: '4px', fontStyle: 'italic' }}>* Custom address for this work order only</div>
+                <div style={{ fontSize: '10px', color: 'var(--accent)', marginTop: '4px', fontStyle: 'italic' }}>* Custom address for this work order only</div>
               )}
             </div>
           </div>
@@ -95,7 +95,7 @@ export default function WorkOrderDetailModal({
           <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', padding: '16px', marginBottom: '16px', borderRadius: '4px' }}>
             {!addressConfirmed ? (
               <>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#ffd700', marginBottom: '8px' }}>Update Return Address</p>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '8px' }}>Update Return Address</p>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.6 }}>
                   This change applies to this work order only and does not update your profile. By confirming, you agree this is the address we will ship your item to upon completion.
                 </p>
@@ -140,7 +140,7 @@ export default function WorkOrderDetailModal({
         ].filter(r => r.val).map(r => (
           <div key={r.label} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
             <span style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{r.label}</span>
-            <span style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'rgba(255,255,255,0.72)' }}>{r.val}</span>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)' }}>{r.val}</span>
           </div>
         ))}
 
@@ -159,7 +159,7 @@ export default function WorkOrderDetailModal({
         {selectedWO.estimated_price && (
           <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '16px', background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
             <span style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Quoted Price</span>
-            <span style={{ fontFamily: "'Courier New', monospace", fontSize: '22px', color: 'rgba(45,212,191,1)' }}>{formatMoney(selectedWO.estimated_price)}</span>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '22px', color: 'rgba(45,212,191,1)' }}>{formatMoney(selectedWO.estimated_price)}</span>
           </div>
         )}
 

@@ -28,7 +28,7 @@ export default function WorkOrderList({ workOrders, onSelect, onAccept }: Props)
               background: STATUS_COLORS[wo.status]?.bg, color: STATUS_COLORS[wo.status]?.color }}>{wo.status}</span>
           </div>
           {wo.service_type && <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginBottom: '4px' }}>{wo.service_type}</div>}
-          {wo.estimated_price && <div style={{ fontSize: '19px', color: 'rgb(48, 177, 98)', fontFamily: "'Courier New', monospace" }}>{formatMoney(wo.estimated_price)}</div>}
+          {wo.estimated_price && <div style={{ fontSize: '19px', color: 'rgb(48, 177, 98)', fontFamily: 'var(--font-mono)' }}>{formatMoney(wo.estimated_price)}</div>}
           <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '8px' }}>{fmtDate(wo.created_at)}</div>
           {wo.status === 'CREATED' && (
             <button onClick={e => { e.stopPropagation(); onAccept(wo); }} className="acc-btn-gold" style={{ marginTop: '12px', width: 'auto', padding: '8px 16px' }}>

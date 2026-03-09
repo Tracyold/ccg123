@@ -40,7 +40,7 @@ export default function ProductDetailModal({ product: modalProduct, onClose, onB
               {modalProduct.title}
             </h2>
 
-            <p style={{ fontFamily: "'Courier New', monospace", fontSize: '22px', color: 'rgba(45,212,191,1)', marginBottom: '20px' }}>
+            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '22px', color: 'rgba(45,212,191,1)', marginBottom: '20px' }}>
               {formatMoney(modalProduct.total_price)}
             </p>
 

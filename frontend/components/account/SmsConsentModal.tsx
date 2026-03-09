@@ -41,7 +41,7 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
   return (
     <div style={{
       position: 'fixed', inset: 0, zIndex: 1000,
-      background: 'rgba(0, 0, 0, 0.78)',
+      background: 'rgba(0,0,0,0.78)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       padding: '24px',
     }}>
@@ -64,7 +64,7 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
 
         {copy.requirement && (
           <div style={{ background: 'rgba(224, 176, 20, 0.08)', border: '1px solid rgba(224, 176, 20, 0.25)', padding: '15px 19px', marginBottom: '21px' }}>
-            <p style={{ fontSize: '12px', lineHeight: 1.75, color: 'rgba(255,220,100,0.85)', margin: 0 }}>
+            <p style={{ fontSize: '12px', lineHeight: 1.75, color: 'var(--accent)', margin: 0 }}>
               {copy.requirement}
             </p>
           </div>
@@ -82,9 +82,9 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             transition: 'background 200ms',
           }}>
-            {checked && <span style={{ color: '#000000e9', fontSize: '15px', fontWeight: 700 }}>✓</span>}
+            {checked && <span style={{ color: 'var(--bg)', fontSize: '15px', fontWeight: 700 }}>✓</span>}
           </div>
-          <span style={{ fontSize: '15px', color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.65 }}>
+          <span style={{ fontSize: '15px', color: 'var(--text)', lineHeight: 1.65 }}>
             I agree to receive SMS notifications from Cutting Corners Gems. I understand I can opt out at any time by replying STOP, and that message & data rates may apply.
           </span>
         </div>
