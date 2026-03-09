@@ -9,13 +9,13 @@ export default function EstimatesPage() {
       <main>
         <section style={{ padding: '140px 0 80px', background: 'transparent' }}>
           <div className="container-custom" style={{ maxWidth: '1160px', width: '100%', margin: '0 auto' }}>
-            <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', marginBottom: '16px', textAlign: 'center' }}>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '16px', textAlign: 'center' }}>
               Get Started
             </p>
-            <h1 style={{ fontFamily: 'Oranienbaum, serif', fontSize: 'clamp(32px, 5vw, 64px)', color: 'var(--text)', textAlign: 'center', marginBottom: '20px', lineHeight: 1.1 }}>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 5vw, 64px)', color: 'var(--text)', textAlign: 'center', marginBottom: '20px', lineHeight: 1.1 }}>
               Choose Your Estimate Path
             </h1>
-            <p style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: 'clamp(14px, 1.5vw, 17px)', color: 'rgba(255,255,255,0.75)', textAlign: 'center', maxWidth: '560px', margin: '0 auto 64px', lineHeight: 1.8 }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(14px, 1.5vw, 17px)', color: 'var(--text)', textAlign: 'center', maxWidth: '560px', margin: '0 auto 64px', lineHeight: 1.8 }}>
               Every path yields a different estimate. Start wherever feels right — you can always go deeper.
             </p>
 
@@ -27,19 +27,19 @@ export default function EstimatesPage() {
             </div>
 
             <div style={{ marginTop: '64px', textAlign: 'center' }}>
-              <p style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.9, maxWidth: '560px', margin: '0 auto' }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text)', lineHeight: 1.9, maxWidth: '560px', margin: '0 auto' }}>
                 Not sure which path is right for you? All estimates are non-binding. We recommend starting with an Online Estimate if you have photos, or an In-Person Estimate if you are ready to move forward.
               </p>
             </div>
 
             <div style={{ marginTop: '80px', padding: '64px 24px', borderTop: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
-              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', color: '#d4af37', marginBottom: '20px' }}>Ready to start?</p>
-              <h2 style={{ fontFamily: 'Oranienbaum, serif', fontSize: 'clamp(27px, 5vw, 48px)', color: 'var(--text)', lineHeight: 1.2, marginBottom: '24px' }}>Get an instant estimate now.</h2>
-              <p style={{ fontFamily: 'Comfortaa, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8, maxWidth: '480px', margin: '0 auto 40px' }}>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', color: '#d4af37', marginBottom: '20px' }}>Ready to start?</p>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(27px, 5vw, 48px)', color: 'var(--text)', lineHeight: 1.2, marginBottom: '24px' }}>Get an instant estimate now.</h2>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text)', lineHeight: 1.8, maxWidth: '480px', margin: '0 auto 40px' }}>
                 Answer seven quick questions about your stone and the service you need. No account required.
               </p>
               <a href="/get-estimate/instant"
-                style={{ display: 'inline-block', padding: '19px 56px', background: '#d4af37', color: 'var(--bg)', fontFamily: 'Montserrat, sans-serif', fontSize: '11px', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', textDecoration: 'none', transition: 'opacity 150ms' }}
+                style={{ display: 'inline-block', padding: '19px 56px', background: '#d4af37', color: 'var(--bg)', fontFamily: 'var(--font-ui)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', textDecoration: 'none', transition: 'opacity 150ms' }}
                 onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
                 onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
                 Start Instant Estimate
