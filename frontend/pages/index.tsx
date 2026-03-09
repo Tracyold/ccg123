@@ -114,7 +114,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gem-card {
-  background-color: var(--bg);
+  background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.5s ease;
   overflow: hidden;
@@ -141,7 +141,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-  background-color: #ffffff;
+  background-color: transparent;
   color: #000000;
   padding: 0.75rem 2rem;
   font-family: var(--font-ui);
@@ -159,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary:hover {
-  background-color: #e5e5e5;
+  background-color: transparent;
 }
 
 .btn-secondary {
@@ -180,7 +180,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-secondary:hover {
   border-color: rgba(255, 255, 255, 1);
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: transparent;
 }
 
 @media (max-width: 767px) {
@@ -491,7 +491,7 @@ export default function Home() {
         {/* ── CTA Section ── */}
         <section
           className="section-spacing relative overflow-hidden"
-          style={{ backgroundColor: 'var(--bg)' }}
+          style={{ backgroundColor: 'transparent' }}
         >
           <div className="absolute inset-0 hero-glow pointer-events-none" style={{ opacity: 0.5 }} />
 
