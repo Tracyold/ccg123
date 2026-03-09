@@ -326,13 +326,36 @@ button, input, textarea, select { border-radius: 0 !important; }
   transition: none;
   filter: brightness(1.05) contrast(1.05);
 }
-:root[data-theme="dark"] .machine-light {
-  opacity: 0;
-}
+:root[data-theme="dark"] .machine-light { opacity: 0; }
 :root[data-theme="dark"] .machine-dark {
   opacity: 0.55;
   animation: bulbPulse 4s ease-in-out infinite;
 }
+
+.machine-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+}
+
+@keyframes lampOn {
+  0%   { opacity: 1;   backdrop-filter: blur(0.4px); background: rgba(0,0,0,0.35); }
+  30%  { opacity: 1;   backdrop-filter: blur(0.4px); background: rgba(0,0,0,0.2); }
+  65%  { opacity: 0.4; backdrop-filter: blur(0px);   background: rgba(0,0,0,0.08); }
+  100% { opacity: 0;   backdrop-filter: blur(0px);   background: transparent; }
+}
+
+@keyframes lampOff {
+  0%   { opacity: 1;   backdrop-filter: blur(0.4px); background: rgba(255,255,255,0.25); }
+  30%  { opacity: 1;   backdrop-filter: blur(0.4px); background: rgba(255,255,255,0.12); }
+  65%  { opacity: 0.4; backdrop-filter: blur(0px);   background: rgba(255,255,255,0.04); }
+  100% { opacity: 0;   backdrop-filter: blur(0px);   background: transparent; }
+}
+
+.lamp-transitioning-on  .machine-overlay { animation: lampOn  64ms ease-out forwards; }
+.lamp-transitioning-off .machine-overlay { animation: lampOff 64ms ease-out forwards; }
 @keyframes bulbPulse {
   0%, 100% { filter: brightness(1.05) contrast(1.05); }
   50%       { filter: brightness(1.12) contrast(1.08); }

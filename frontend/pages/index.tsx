@@ -288,12 +288,13 @@ export default function Home() {
           <div className="machine-scene absolute inset-0">
             <img src="https://ik.imagekit.io/postvibe/light-off.png?updatedAt=1773060290554" className="machine-img machine-light" alt="" />
             <img src="https://ik.imagekit.io/postvibe/Light-on-2.png?updatedAt=1773061160726" className="machine-img machine-dark" alt="" />
+            <div className="machine-overlay" />
           </div>
           {/* Dark vignette overlay */}
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 40%, transparent 20%, var(--bg) 80%, var(--bg) 100%)' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, var(--bg) 0%, transparent 20%, transparent 80%, var(--bg) 100%)' }} />
 
-          <div style={{ position: 'relative', zIndex: 10, padding: '0 24px', maxWidth: '800px', margin: '0 auto' }}>
+          <div style={{ position: 'relative', zIndex: 10, padding: '48px 40px', maxWidth: '800px', margin: '0 auto', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', background: 'rgba(var(--bg-rgb, 23,24,25), 0.45)', border: '1px solid rgba(var(--border-rgb, 184,185,187), 0.15)', boxShadow: '0 8px 32px rgba(0,0,0,0.3)' }}>
             <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '24px' }}>
               Tempe, Arizona
             </p>
