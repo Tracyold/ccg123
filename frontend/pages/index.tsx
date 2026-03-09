@@ -23,7 +23,7 @@ function GlobalStyles() {
 
 html, body, #__next {
   font-family: var(--font-body);
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 35%, #141414 60%, #0d0d0d 100%);
+  background: linear-gradient(135deg, #222831 0%, #2d3340 35%, #393E46 60%, #222831 100%);
   color: var(--text);
   margin: 0;
   padding: 0;
@@ -163,7 +163,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-secondary {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 35%, #141414 60%, #0d0d0d 100%);
+  background: linear-gradient(135deg, #222831 0%, #2d3340 35%, #393E46 60%, #222831 100%);
   color: var(--text);
   padding: 0.75rem 2rem;
   font-family: var(--font-ui);
