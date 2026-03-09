@@ -18,7 +18,7 @@ export const adminCss = `
   --ln:rgba(255,255,255,0.06);--ln2:rgba(255,255,255,0.11);
   --g:#b89a2a;--gl:#cfb040;--gbg:rgba(184,154,42,0.07);
   --tx:#ddd;--d1:#777;--d2:#444;--wh:#f0f0f0;--er:#b54040;
-  --serif:'Cormorant',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+  --serif:'Oranienbaum',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
 }
 .shell{display:flex;height:100vh;background:var(--k0);font-family:var(--sans);color:var(--tx);overflow:hidden}
 .sb{width:220px;flex-shrink:0;background:var(--k1);border-right:1px solid var(--ln);display:flex;flex-direction:column}
