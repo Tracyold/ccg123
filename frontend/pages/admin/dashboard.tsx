@@ -269,7 +269,7 @@ export default function AdminDashboard() {
 
         {/* SMS Notification Settings */}
         {smsConfig && (
-          <div style={{ marginTop: '40px', padding: '32px 40px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <div style={{ marginTop: '40px', padding: '32px 40px', borderTop: '1px solid var(--border)' }}>
             <div style={{ fontFamily: 'var(--serif)', fontSize: '20px', color: 'var(--wh)', marginBottom: '4px' }}>SMS Notifications</div>
             <div style={{ fontSize: '12px', color: 'var(--d1)', marginBottom: '24px' }}>Receive text alerts when events occur</div>
 

@@ -4,7 +4,7 @@ import { precut, postcut } from './shared-feasibility';
 function SeverityBadge({ level }: { level: string }) {
   const colors: Record<string, string> = { Minor: 'rgba(100,200,120,0.15)', Moderate: 'rgba(220,160,60,0.15)', Significant: 'rgba(220,100,60,0.15)', Critical: 'rgba(220,80,80,0.15)' };
   const text: Record<string, string> = { Minor: 'rgba(100,200,120,0.9)', Moderate: 'rgba(220,160,60,0.9)', Significant: 'rgba(220,100,60,0.9)', Critical: 'rgba(220,80,80,0.9)' };
-  return <span style={{ display: 'inline-block', padding: '3px 10px', background: colors[level] || 'rgba(255,255,255,0.05)', color: text[level] || 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', borderRadius: '2px' }}>{level}</span>;
+  return <span style={{ display: 'inline-block', padding: '3px 10px', background: colors[level] || 'var(--border)', color: text[level] || 'var(--text-muted)', fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', borderRadius: '2px' }}>{level}</span>;
 }
 
 function ResultBadge({ result }: { result: string }) {
@@ -47,7 +47,7 @@ export default function FeasibilityMobile() {
           {/* Header */}
           <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
           <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(21px, 6vw, 27px)', color: 'var(--text)', lineHeight: 1.1, marginBottom: '6px' }}>Pre-Cut Evaluation</p>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'rgba(255,255,255,0.6)', marginBottom: '20px' }}>Report #{precut.id} · {precut.date} · {precut.analyst}</p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>Report #{precut.id} · {precut.date} · {precut.analyst}</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 16px', marginBottom: '8px' }}>
             <div><p style={FL}>Client</p><p style={FV}>{precut.clientName}</p></div>
             <div><p style={FL}>Stone ID</p><p style={FV}>{precut.stoneId}</p></div>
@@ -92,16 +92,16 @@ export default function FeasibilityMobile() {
               <svg viewBox="0 0 100 100" width="100%" height="180">
                 <ellipse cx="50" cy="50" rx="44" ry="36" fill="none" stroke="rgba(212,175,55,0.7)" strokeWidth="1.5" />
                 <ellipse cx="50" cy="50" rx="20" ry="14" fill="none" stroke="rgba(212,175,55,0.4)" strokeWidth="1" />
-                <line x1="50" y1="14" x2="50" y2="86" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5" />
-                <line x1="6" y1="50" x2="94" y2="50" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5" />
+                <line x1="50" y1="14" x2="50" y2="86" stroke="var(--border)" strokeWidth="0.5" />
+                <line x1="6" y1="50" x2="94" y2="50" stroke="var(--border)" strokeWidth="0.5" />
                 <text x="72" y="28" fontSize="9" fill="rgba(100,160,220,0.95)" fontFamily="monospace">○</text>
                 <text x="18" y="55" fontSize="9" fill="rgba(212,175,55,0.95)" fontFamily="monospace">~</text>
                 <text x="50" y="90" fontSize="9" fill="rgba(212,175,55,0.95)" fontFamily="monospace">△</text>
                 <text x="50" y="18" fontSize="9" fill="rgba(212,175,55,0.95)" fontFamily="monospace">~</text>
-                <text x="47" y="9" fontSize="6" fill="rgba(255,255,255,0.4)" fontFamily="monospace">12</text>
-                <text x="87" y="52" fontSize="6" fill="rgba(255,255,255,0.4)" fontFamily="monospace">3</text>
-                <text x="47" y="98" fontSize="6" fill="rgba(255,255,255,0.4)" fontFamily="monospace">6</text>
-                <text x="1" y="52" fontSize="6" fill="rgba(255,255,255,0.4)" fontFamily="monospace">9</text>
+                <text x="47" y="9" fontSize="6" fill="var(--text-muted)" fontFamily="monospace">12</text>
+                <text x="87" y="52" fontSize="6" fill="var(--text-muted)" fontFamily="monospace">3</text>
+                <text x="47" y="98" fontSize="6" fill="var(--text-muted)" fontFamily="monospace">6</text>
+                <text x="1" y="52" fontSize="6" fill="var(--text-muted)" fontFamily="monospace">9</text>
               </svg>
             </div>
           </div>
@@ -113,14 +113,14 @@ export default function FeasibilityMobile() {
               <svg viewBox="0 0 100 100" width="100%" height="180">
                 <ellipse cx="50" cy="50" rx="44" ry="36" fill="none" stroke="rgba(212,175,55,0.7)" strokeWidth="1.5" />
                 <ellipse cx="50" cy="50" rx="10" ry="8" fill="none" stroke="rgba(212,175,55,0.4)" strokeWidth="1" />
-                <line x1="50" y1="14" x2="50" y2="86" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5" />
-                <line x1="6" y1="50" x2="94" y2="50" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5" />
+                <line x1="50" y1="14" x2="50" y2="86" stroke="var(--border)" strokeWidth="0.5" />
+                <line x1="6" y1="50" x2="94" y2="50" stroke="var(--border)" strokeWidth="0.5" />
                 <text x="44" y="48" fontSize="9" fill="rgba(100,160,220,0.95)" fontFamily="monospace">○○</text>
                 <text x="60" y="65" fontSize="9" fill="rgba(150,150,150,0.9)" fontFamily="monospace">≈</text>
-                <text x="47" y="9" fontSize="6" fill="rgba(255,255,255,0.4)" fontFamily="monospace">12</text>
-                <text x="87" y="52" fontSize="6" fill="rgba(255,255,255,0.4)" fontFamily="monospace">3</text>
-                <text x="47" y="98" fontSize="6" fill="rgba(255,255,255,0.4)" fontFamily="monospace">6</text>
-                <text x="1" y="52" fontSize="6" fill="rgba(255,255,255,0.4)" fontFamily="monospace">9</text>
+                <text x="47" y="9" fontSize="6" fill="var(--text-muted)" fontFamily="monospace">12</text>
+                <text x="87" y="52" fontSize="6" fill="var(--text-muted)" fontFamily="monospace">3</text>
+                <text x="47" y="98" fontSize="6" fill="var(--text-muted)" fontFamily="monospace">6</text>
+                <text x="1" y="52" fontSize="6" fill="var(--text-muted)" fontFamily="monospace">9</text>
               </svg>
             </div>
           </div>
@@ -133,7 +133,7 @@ export default function FeasibilityMobile() {
               <svg viewBox="0 0 200 80" width="100%" height="80">
                 <path d="M 20 20 Q 100 10 180 20 L 190 25 L 100 70 L 10 25 Z" fill="none" stroke="rgba(212,175,55,0.6)" strokeWidth="1.5" />
                 <line x1="20" y1="25" x2="180" y2="25" stroke="rgba(212,175,55,0.3)" strokeWidth="0.75" strokeDasharray="4,3" />
-                <text x="85" y="19" fontSize="8" fill="rgba(255,255,255,0.4)" fontFamily="monospace">TABLE</text>
+                <text x="85" y="19" fontSize="8" fill="var(--text-muted)" fontFamily="monospace">TABLE</text>
                 <text x="2" y="28" fontSize="7" fill="rgba(255,255,255,0.3)" fontFamily="monospace">GIRDLE</text>
                 <text x="90" y="68" fontSize="7" fill="rgba(255,255,255,0.3)" fontFamily="monospace">CULET</text>
               </svg>
@@ -164,7 +164,7 @@ export default function FeasibilityMobile() {
 
           {/* 9. Conditional Factors */}
           <p style={SL}>9 — Conditional Factors</p>
-          <p style={{ ...BODY, marginBottom: '13px', color: 'rgba(255,255,255,0.6)' }}>High yield outcomes are more probable IF:</p>
+          <p style={{ ...BODY, marginBottom: '13px', color: 'var(--text-muted)' }}>High yield outcomes are more probable IF:</p>
           {precut.conditionals.map((c, i) => (
             <div key={i} style={{ display: 'flex', gap: '11px', marginBottom: '11px' }}>
               <span style={{ color: 'var(--gold)', fontSize: '15px', flexShrink: 0 }}>—</span>
@@ -204,7 +204,7 @@ export default function FeasibilityMobile() {
           {/* Header */}
           <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
           <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(21px, 6vw, 27px)', color: 'var(--text)', lineHeight: 1.1, marginBottom: '6px' }}>Post-Cut Change Report</p>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'rgba(255,255,255,0.6)', marginBottom: '20px' }}>Report #{postcut.id} · {postcut.date} · {postcut.analyst}</p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>Report #{postcut.id} · {postcut.date} · {postcut.analyst}</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 16px', marginBottom: '8px' }}>
             <div><p style={FL}>Client</p><p style={FV}>{postcut.clientName}</p></div>
             <div><p style={FL}>Original Report</p><p style={FV}>#{postcut.originalReportId}</p></div>
@@ -273,10 +273,10 @@ export default function FeasibilityMobile() {
                 <ellipse cx="50" cy="50" rx="44" ry="36" fill="none" stroke="#d4af37" strokeWidth="1.5" />
                 <ellipse cx="50" cy="50" rx="20" ry="14" fill="none" stroke="#d4af37" strokeWidth="1" />
                 <text x="72" y="28" fontSize="9" fill="rgba(100,160,220,0.6)" fontFamily="monospace">○</text>
-                <text x="47" y="9" fontSize="6" fill="rgba(255,255,255,0.4)" fontFamily="monospace">12</text>
-                <text x="87" y="52" fontSize="6" fill="rgba(255,255,255,0.4)" fontFamily="monospace">3</text>
-                <text x="47" y="98" fontSize="6" fill="rgba(255,255,255,0.4)" fontFamily="monospace">6</text>
-                <text x="1" y="52" fontSize="6" fill="rgba(255,255,255,0.4)" fontFamily="monospace">9</text>
+                <text x="47" y="9" fontSize="6" fill="var(--text-muted)" fontFamily="monospace">12</text>
+                <text x="87" y="52" fontSize="6" fill="var(--text-muted)" fontFamily="monospace">3</text>
+                <text x="47" y="98" fontSize="6" fill="var(--text-muted)" fontFamily="monospace">6</text>
+                <text x="1" y="52" fontSize="6" fill="var(--text-muted)" fontFamily="monospace">9</text>
               </svg>
             </div>
           </div>

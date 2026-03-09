@@ -15,7 +15,7 @@ export const adminCss = `
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --k0:#060606;--k1:#0d0d0d;--k2:#131313;--k3:#191919;--k4:#202020;
-  --ln:rgba(255,255,255,0.06);--ln2:rgba(255,255,255,0.11);
+  --ln:var(--border);--ln2:rgba(255,255,255,0.11);
   --g:#b89a2a;--gl:#cfb040;--gbg:rgba(184,154,42,0.07);
   --tx:#ddd;--d1:#777;--d2:#444;--wh:#f0f0f0;--er:#b54040;
   --serif:'Oranienbaum',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
@@ -181,16 +181,16 @@ export const adminCss = `
     display:flex;align-items:center;justify-content:space-between;
     position:fixed;top:0;left:0;right:0;z-index:90;
     height:52px;padding:0 16px;
-    background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,0.06)
+    background:#0a0a0a;border-bottom:1px solid var(--border)
   }
   .mob-brand{font-family:var(--serif);font-size:15px;color:#d4af37;letter-spacing:.05em}
   .mob-burger{
     display:flex;flex-direction:column;justify-content:center;gap:5px;
     width:28px;height:28px;background:none;cursor:pointer;padding:5px;
-    border:0.5px solid rgba(255,255,255,0.15);transition:border-color .2s
+    border:0.5px solid var(--border);transition:border-color .2s
   }
   .mob-burger:hover{border-color:#d4af37}
-  .mob-burger .mb{width:100%;height:1px;background:rgba(255,255,255,0.7);transition:all .25s ease;transform-origin:center}
+  .mob-burger .mb{width:100%;height:1px;background:var(--text);transition:all .25s ease;transform-origin:center}
   .mob-burger.open .mb:nth-child(1){transform:translateY(6px) rotate(45deg)}
   .mob-burger.open .mb:nth-child(2){opacity:0;transform:scaleX(0)}
   .mob-burger.open .mb:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
@@ -198,7 +198,7 @@ export const adminCss = `
   .mob-dropdown{
     position:fixed;top:52px;left:0;right:0;z-index:89;
     background:rgba(8,8,8,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-    border-bottom:1px solid rgba(255,255,255,0.06);
+    border-bottom:1px solid var(--border);
     flex-direction:column;
     transform:translateY(-8px);opacity:0;pointer-events:none;
     transition:opacity .22s ease,transform .22s ease
@@ -210,7 +210,7 @@ export const adminCss = `
     letter-spacing:.22em;text-transform:uppercase;
     color:rgba(255,255,255,0.55);text-decoration:none;
     padding:15px 20px;
-    border-bottom:1px solid rgba(255,255,255,0.05);
+    border-bottom:1px solid var(--border);
     transition:color .15s;cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;
     width:100%;text-align:left
   }
@@ -223,7 +223,7 @@ export const adminCss = `
     letter-spacing:.18em;text-transform:uppercase;
     color:var(--d2);background:none;border:none;
     padding:14px 20px;cursor:pointer;transition:color .15s;
-    border-top:1px solid rgba(255,255,255,0.05)
+    border-top:1px solid var(--border)
   }
   .mob-dropdown-signout:hover{color:var(--er)}
 

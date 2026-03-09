@@ -183,7 +183,7 @@ export default function StudioSection() {
         <p ref={descRef} style={{
           fontFamily: 'var(--font-body)',
           fontSize: 'clamp(13px, 1.3vw, 17px)',
-          lineHeight: 1.8, color: 'rgba(255,255,255,0.7)'
+          lineHeight: 1.8, color: 'var(--text)'
         }}>
           Every stone passes through a focused, single-cutter environment — no outsourcing, no shortcuts. Just precise handwork from rough to finished gem.
         </p>

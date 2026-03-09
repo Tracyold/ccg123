@@ -37,7 +37,7 @@ export default function MobileIndustrySection() {
       className="md:hidden text-center px-4 flex flex-col items-center justify-center"
       style={{
         background: 'transparent',
-        borderTop: '1px solid rgba(255,255,255,0.10)',
+        borderTop: '1px solid var(--border)',
         minHeight: '100svh',
         paddingTop: '40px',
         paddingBottom: '40px',

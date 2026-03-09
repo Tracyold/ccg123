@@ -109,7 +109,7 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: '#ffd700' }}>RETURN ITEM HERE →</div>
                 <button onClick={() => { setEditingWOAddr(true); setWoClientAddrEdit(selectedWO.wo_shipping_address || user.shipping_address || ''); setWoAdminAddrEdit(adminInfo?.address || ''); }}
-                  style={{ fontSize: '10px', letterSpacing: '.15em', textTransform: 'uppercase', background: 'none', border: '1px solid rgba(255,255,255,0.15)', color: 'var(--text-muted)', padding: '3px 8px', cursor: 'pointer' }}>
+                  style={{ fontSize: '10px', letterSpacing: '.15em', textTransform: 'uppercase', background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '3px 8px', cursor: 'pointer' }}>
                   Edit
                 </button>
               </div>
@@ -249,7 +249,7 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
           <div style={{ marginTop: '28px', borderTop: '1px solid var(--ln)', paddingTop: '16px' }}>
             <div style={{ fontSize: '10px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '10px' }}>Activity Log</div>
             {[...selectedWO.edit_history].reverse().map((entry: any, i: number) => (
-              <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.04)', gap: '12px' }}>
+              <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '8px 0', borderBottom: '1px solid var(--border)', gap: '12px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                   <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', padding: '2px 6px', background: entry.by === 'admin' ? '#d4af37' : 'rgba(45,212,191,0.1)', color: entry.by === 'admin' ? '#cfb040' : 'rgba(45,212,191,0.9)' }}>{entry.by}</span>
                   <span style={{ fontSize: '13px', color: 'var(--tx)' }}>{entry.action}</span>

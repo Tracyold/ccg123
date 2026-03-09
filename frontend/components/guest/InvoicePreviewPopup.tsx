@@ -24,7 +24,7 @@ export function InvoicePreviewPopup({
   ].filter(r => r.value);
 
   const sectionLabel: React.CSSProperties = { fontFamily: 'var(--font-ui)', fontSize: '9px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', color: 'var(--text-muted)', marginBottom: '10px', marginTop: '18px' };
-  const divider: React.CSSProperties = { height: '1px', backgroundColor: 'rgba(255,255,255,0.06)', margin: '16px 0' };
+  const divider: React.CSSProperties = { height: '1px', backgroundColor: 'var(--border)', margin: '16px 0' };
 
   return (
     <div style={popupOverlayStyle}>
@@ -60,7 +60,7 @@ export function InvoicePreviewPopup({
         <p style={sectionLabel}>Product</p>
         {specRows.map(({ label, value }) => (
           <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
-            <span style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.38)', flexShrink: 0 }}>{label}</span>
+            <span style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'var(--text-muted)', flexShrink: 0 }}>{label}</span>
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--text)', textAlign: 'right' }}>{value}</span>
           </div>
         ))}
@@ -68,7 +68,7 @@ export function InvoicePreviewPopup({
         <div style={divider} />
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
-          <span style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.38)' }}>Total</span>
+          <span style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'var(--text-muted)' }}>Total</span>
           <span style={{ fontFamily: "'Courier New', monospace", fontSize: '20px', color: 'rgba(45,212,191,1)' }}>{formatMoney(product.total_price)}</span>
         </div>
         <p style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '24px' }}>

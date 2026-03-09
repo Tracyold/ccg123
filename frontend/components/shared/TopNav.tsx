@@ -58,7 +58,7 @@ const css = `
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
+  color: var(--text-muted);
   text-decoration: none;
   transition: color 200ms ease;
   position: relative;
@@ -98,7 +98,7 @@ const css = `
   width: auto;
   height: 36px;
   background: none;
-  border: 0.5px solid rgba(255,255,255,0.15);
+  border: 0.5px solid var(--border);
   cursor: pointer;
   padding: 8px;
   transition: border-color 200ms ease;
@@ -146,7 +146,7 @@ const css = `
   color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   padding: 17px 0;
-  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+  border-bottom: 0.5px solid var(--border);
   transition: color 180ms ease;
 }
 .tnav-drawer-link:hover { color: #f8e42f; }
@@ -176,7 +176,7 @@ const css = `
 }
 .tnav-theme {
   background: none;
-  border: 0.5px solid rgba(255,255,255,0.15);
+  border: 0.5px solid var(--border);
   color: #EEEEEE;
   width: auto;
   height: 36px;

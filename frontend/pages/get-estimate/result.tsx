@@ -14,7 +14,7 @@ export default function EstimateResult() {
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(27px, 5vw, 42px)', color: 'var(--text)', lineHeight: 1.2, marginBottom: '40px' }}>We have what we need.</h1>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '48px' }}>
             {[['Weight', weight], ['Color', color], ['Shape', shape], ['Damage', damage], ['Species', species], ['Transparency', transparency], ['Service', service]].map(([l, v]) => v ? (
-              <div key={l as string} style={{ display: 'flex', justifyContent: 'space-between', padding: '13px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+              <div key={l as string} style={{ display: 'flex', justifyContent: 'space-between', padding: '13px 0', borderBottom: '1px solid var(--border)' }}>
                 <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(100,160,220,0.9)' }}>{l}</p>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)' }}>{v}</p>
               </div>

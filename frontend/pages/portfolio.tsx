@@ -311,7 +311,7 @@ const portfolioCss = `
 }
 .portfolio-modal {
   background: var(--bg);
-  border: 1px solid rgba(255,255,255,0.10);
+  border: 1px solid var(--border);
   border-radius: 18px;
   box-shadow: 0 28px 90px rgba(0,0,0,0.70);
   max-width: 680px;
@@ -331,7 +331,7 @@ const portfolioCss = `
   right: 12px;
   z-index: 10;
   background: rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid var(--border);
   border-radius: 50%;
   width: 36px;
   height: 36px;

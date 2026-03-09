@@ -35,7 +35,7 @@ export default function InquiryList({
   return (
     <div style={{ padding: '28px' }}>
       <h2 style={{ fontFamily: 'var(--font-body)', fontSize: '24px', color: 'var(--text)', marginBottom: '16px' }}>Inquiries</h2>
-      <div style={{ display: 'flex', gap: '20px', marginBottom: '20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      <div style={{ display: 'flex', gap: '20px', marginBottom: '20px', borderBottom: '1px solid var(--border)' }}>
         <button className={`acc-tab ${inquiryTab === 'inquiries' ? 'on' : ''}`} onClick={() => setInquiryTab('inquiries')}>Product Inquiries</button>
         <button className={`acc-tab ${inquiryTab === 'service' ? 'on' : ''}`} onClick={() => setInquiryTab('service')}>Service Requests</button>
       </div>

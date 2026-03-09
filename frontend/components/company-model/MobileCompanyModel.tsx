@@ -19,7 +19,7 @@ export default function MobileCompanyModel() {
           flex-direction: column;
           justify-content: center;
           padding: 100px 0 60px;
-          border-bottom: 1px solid rgba(255,255,255,0.05);
+          border-bottom: 1px solid var(--border);
           scroll-margin-top: 0;
           overflow: hidden;
           position: relative;
@@ -84,7 +84,7 @@ export default function MobileCompanyModel() {
           justify-content: center;
           text-align: center;
           padding: 80px 0;
-          border-top: 1px solid rgba(255,255,255,0.05);
+          border-top: 1px solid var(--border);
           scroll-margin-top: 0;
         }
         .mob-cta-heading {
@@ -97,7 +97,7 @@ export default function MobileCompanyModel() {
         .mob-cta-sub {
           font-family: 'Comfortaa', sans-serif;
           font-size: clamp(16px, 4.5vw, 19px);
-          color: rgba(255,255,255,0.8);
+          color: var(--text);
           margin-bottom: 36px;
           line-height: 1.85;
           max-width: 360px;

@@ -475,7 +475,7 @@ export default function AccountPage() {
             <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: '28px' }}>
               This will permanently delete your account. Any open work orders or invoices will remain on file. This cannot be undone.
             </p>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: '8px' }}>Type DELETE to confirm</p>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '8px' }}>Type DELETE to confirm</p>
             <input
               type="text"
               value={deleteConfirmText}
@@ -504,25 +504,25 @@ export default function AccountPage() {
 const accountCss = `
 .acc-shell { display: flex; height: 100vh; background: transparent; overflow: hidden; }
 .acc-left { flex: 1; display: flex; min-height: 0; min-width: 0; }
-.acc-nav { width: 180px; flex-shrink: 0; background: var(--bg); border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; padding: 20px 0; overflow-y: auto; }
+.acc-nav { width: 180px; flex-shrink: 0; background: var(--bg); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 20px 0; overflow-y: auto; }
 .acc-nav-item { display: block; width: 100%; text-align: left; padding: 10px 20px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.20em; text-transform: uppercase; color: rgba(255,255,255,0.45); background: none; border: none; border-left: 2px solid transparent; cursor: pointer; transition: color 0.15s; }
 .acc-nav-item.on { color: #d4af37; border-left-color: #d4af37; }
 .acc-nav-item:hover:not(.on) { color: rgba(255,255,255,0.75); }
 .acc-content { flex: 1; overflow-y: auto; min-height: 0; min-width: 0; }
 .acc-right { width: 35%; min-width: 300px; max-width: 420px; border-left: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; background: var(--bg); }
-.acc-chat-header { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.acc-chat-header { padding: 16px 20px; border-bottom: 1px solid var(--border); }
 .acc-chat-messages { flex: 1; overflow-y: auto; padding: 16px 20px; }
-.acc-chat-input-bar { display: flex; gap: 8px; padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.06); }
-.acc-chat-input { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10); padding: 10px 12px; color: var(--text); font-family: 'Comfortaa', sans-serif; font-size: 13px; outline: none; }
+.acc-chat-input-bar { display: flex; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--border); }
+.acc-chat-input { flex: 1; background: var(--border); border: 1px solid var(--border); padding: 10px 12px; color: var(--text); font-family: 'Comfortaa', sans-serif; font-size: 13px; outline: none; }
 .acc-chat-input:focus { border-color: rgba(214,180,70,0.55); }
 .acc-chat-send { background: #d4af37; border: none; color: #050505; padding: 10px 16px; font-size: 14px; cursor: pointer; font-weight: 700; }
 .acc-chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
-.acc-label { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.38); display: block; margin-bottom: 5px; }
-.acc-input { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10); padding: 10px 12px; color: var(--text); font-family: 'Comfortaa', sans-serif; font-size: 13px; outline: none; }
+.acc-label { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 5px; }
+.acc-input { width: 100%; background: var(--border); border: 1px solid var(--border); padding: 10px 12px; color: var(--text); font-family: 'Comfortaa', sans-serif; font-size: 13px; outline: none; }
 .acc-input:focus { border-color: rgba(214,180,70,0.55); }
 .acc-btn-gold { background: #d4af37; color: #050505; border: none; padding: 12px 20px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; width: 100%; }
 .acc-btn-gold:disabled { opacity: 0.4; cursor: not-allowed; }
-.acc-btn-ghost { background: none; border: 1px solid rgba(255,255,255,0.10); color: rgba(255,255,255,0.45); padding: 10px 16px; font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; }
+.acc-btn-ghost { background: none; border: 1px solid var(--border); color: rgba(255,255,255,0.45); padding: 10px 16px; font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; }
 .acc-tab { padding: 10px 0; font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); background: none; border: none; border-bottom: 1px solid transparent; cursor: pointer; }
 .acc-tab.on { color: var(--text); border-bottom-color: #d4af37; }
 .acc-empty { font-size: 11px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.2em; }
@@ -533,7 +533,7 @@ const accountCss = `
   .acc-right { display: none; }
   .acc-chat-mobile-bar { display: block; }
   .acc-chat-mobile-drawer { display: flex; }
-  .acc-nav { width: 100%; flex-direction: row; overflow-x: auto; padding: 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .acc-nav { width: 100%; flex-direction: row; overflow-x: auto; padding: 0; border-right: none; border-bottom: 1px solid var(--border); }
   .acc-nav-item { border-left: none; border-bottom: 2px solid transparent; white-space: nowrap; padding: 12px 16px; }
   .acc-nav-item.on { border-bottom-color: #d4af37; }
   .acc-left { flex-direction: column; }

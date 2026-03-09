@@ -51,7 +51,7 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
         maxWidth: '681px', width: '100%',
         padding: '32px',
       }}>
-        <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: '8px' }}>
+        <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '8px' }}>
           SMS Consent Required
         </p>
         <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '25px', color: 'var(--text)', marginBottom: '22px' }}>
@@ -90,7 +90,7 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
         </div>
 
         <div style={{ display: 'flex', gap: '17px' }}>
-          <button onClick={onCancel} style={{ flex: 1, padding: '17px', background: 'transparent', border: '1px solid rgba(255,255,255,0.15)', color: 'var(--text-muted)', fontSize: '15px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>
+          <button onClick={onCancel} style={{ flex: 1, padding: '17px', background: 'transparent', border: '1px solid var(--border)', color: 'var(--text-muted)', fontSize: '15px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>
             Cancel
           </button>
           <button

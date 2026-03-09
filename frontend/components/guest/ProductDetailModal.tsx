@@ -20,7 +20,7 @@ export default function ProductDetailModal({ product: modalProduct, onClose, onB
           <div style={{ ...popupBoxStyle, maxWidth: '560px' }}>
             <button
               onClick={() => { onClose(); }}
-              style={{ position: 'absolute', top: '12px', right: '12px', background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--text)', zIndex: 10 }}
+              style={{ position: 'absolute', top: '12px', right: '12px', background: 'rgba(0,0,0,0.5)', border: '1px solid var(--border)', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--text)', zIndex: 10 }}
             >
               <X size={18} />
             </button>
@@ -56,7 +56,7 @@ export default function ProductDetailModal({ product: modalProduct, onClose, onB
                 { label: 'Price/ct', value: modalProduct.price_per_carat ? formatMoney(modalProduct.price_per_carat) : null },
               ].filter(r => r.value).map(({ label, value }) => (
                 <div key={label} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                  <span style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.38)' }}>{label}</span>
+                  <span style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'var(--text-muted)' }}>{label}</span>
                   <span style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--text)' }}>{value}</span>
                 </div>
               ))}
@@ -64,8 +64,8 @@ export default function ProductDetailModal({ product: modalProduct, onClose, onB
 
             {/* GIA */}
             {modalProduct.gia_report_number && (
-              <div style={{ marginBottom: '20px', padding: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border)' }}>
-                <span style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.38)' }}>GIA Report</span>
+              <div style={{ marginBottom: '20px', padding: '12px', background: 'var(--border)', border: '1px solid var(--border)' }}>
+                <span style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'var(--text-muted)' }}>GIA Report</span>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text)', margin: '4px 0 0' }}>
                   #{modalProduct.gia_report_number}
                   {modalProduct.gia_report_pdf_url && (
@@ -91,7 +91,7 @@ export default function ProductDetailModal({ product: modalProduct, onClose, onB
                 <ShoppingCart size={14} /> Buy Now
               </button>
               <button
-                style={{ flex: 1, textAlign: 'center', fontFamily: 'var(--font-ui)', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', backgroundColor: 'transparent', color: 'var(--text-muted)', border: '1px solid rgba(255,255,255,0.15)', padding: '14px 24px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+                style={{ flex: 1, textAlign: 'center', fontFamily: 'var(--font-ui)', fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', backgroundColor: 'transparent', color: 'var(--text-muted)', border: '1px solid var(--border)', padding: '14px 24px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
                 onClick={handleInquiryClick}
               >
                 <MessageSquare size={14} /> Inquire

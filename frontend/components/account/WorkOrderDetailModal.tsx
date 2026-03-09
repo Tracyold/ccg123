@@ -4,7 +4,7 @@ import { formatMoney, fmtDate, fmtTime } from '../../lib/utils';
 const STATUS_COLORS: Record<string, { bg: string; color: string }> = {
   CREATED: { bg: 'rgba(212,175,55,0.12)', color: 'var(--gold)' },
   ACCEPTED: { bg: 'rgba(45,212,191,0.12)', color: 'rgba(45,212,191,1)' },
-  COMPLETED: { bg: 'rgba(255,255,255,0.06)', color: 'var(--text-muted)' },
+  COMPLETED: { bg: 'var(--border)', color: 'var(--text-muted)' },
   CONFIRMED: { bg: 'rgba(120,80,200,0.12)', color: '#b388ff' },
   CANCELLED: { bg: 'rgba(181,64,64,0.1)', color: '#c07070' },
 };
@@ -72,7 +72,7 @@ export default function WorkOrderDetailModal({
                 <div style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#ffd700' }}>RETURN TO THIS ADDRESS →</div>
                 {selectedWO.status === 'CREATED' && (
                   <button onClick={() => { setTempAddress(selectedWO.wo_shipping_address || profile.shipping_address || ''); setShowAddressEdit(true); }}
-                    style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase', background: 'none', border: '1px solid rgba(255,255,255,0.15)', color: 'var(--text-muted)', padding: '4px 8px', cursor: 'pointer' }}>
+                    style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase', background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '4px 8px', cursor: 'pointer' }}>
                     Edit
                   </button>
                 )}
@@ -115,7 +115,7 @@ export default function WorkOrderDetailModal({
                     Confirm Address
                   </button>
                   <button onClick={() => setShowAddressEdit(false)}
-                    style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', background: 'none', border: '1px solid var(--border)', color: 'rgba(255,255,255,0.4)', padding: '10px 16px', cursor: 'pointer' }}>
+                    style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '10px 16px', cursor: 'pointer' }}>
                     Cancel
                   </button>
                 </div>
@@ -126,7 +126,7 @@ export default function WorkOrderDetailModal({
           </div>
         )}
 
-        <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', margin: '16px 0' }} />
+        <div style={{ height: '1px', background: 'var(--border)', margin: '16px 0' }} />
 
         {/* WO details */}
         {[
@@ -200,10 +200,10 @@ export default function WorkOrderDetailModal({
 
         {/* Activity Log */}
         {selectedWO.edit_history && selectedWO.edit_history.length > 0 && (
-          <div style={{ marginTop: '28px', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '16px' }}>
+          <div style={{ marginTop: '28px', borderTop: '1px solid var(--border)', paddingTop: '16px' }}>
             <div style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px' }}>Activity Log</div>
             {[...selectedWO.edit_history].reverse().map((entry: any, i: number) => (
-              <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.04)', gap: '12px' }}>
+              <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '8px 0', borderBottom: '1px solid var(--border)', gap: '12px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                   <span style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '2px 6px', background: entry.by === 'admin' ? '#d4af37' : 'rgba(45,212,191,0.1)', color: entry.by === 'admin' ? '#d4af37' : 'rgba(45,212,191,0.9)' }}>{entry.by}</span>
                   <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)' }}>{entry.action}</span>

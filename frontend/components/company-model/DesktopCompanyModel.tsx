@@ -60,7 +60,7 @@ export default function DesktopCompanyModel() {
         .dtop-chapter {
           scroll-margin-top: 100px;
           padding: 80px 0;
-          border-bottom: 1px solid rgba(255,255,255,0.05);
+          border-bottom: 1px solid var(--border);
         }
         .dtop-chapter:last-of-type { border-bottom: none; }
         .dtop-chapter-label {
@@ -131,7 +131,7 @@ export default function DesktopCompanyModel() {
           margin-top: 80px;
           text-align: center;
           padding: 64px 0 80px;
-          border-top: 1px solid rgba(255,255,255,0.05);
+          border-top: 1px solid var(--border);
         }
         .dtop-cta-heading {
           font-family: 'Oranienbaum', serif;

@@ -62,7 +62,7 @@ export const inputFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaEl
   e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)';
 };
 export const inputBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-  e.target.style.borderColor = 'rgba(255,255,255,0.10)';
+  e.target.style.borderColor = 'var(--border)';
   e.target.style.boxShadow = 'none';
 };
 
@@ -71,7 +71,7 @@ export const labelStyle: React.CSSProperties = {
   fontSize: '9px', fontWeight: 600,
   textTransform: 'uppercase',
   letterSpacing: '0.18em',
-  color: 'rgba(255,255,255,0.38)',
+  color: 'var(--text-muted)',
   display: 'block', marginBottom: '5px',
 };
 export const goldBtnStyle: React.CSSProperties = {
@@ -95,7 +95,7 @@ export const ghostBtnStyle: React.CSSProperties = {
   textTransform: 'uppercase',
   letterSpacing: '0.18em',
   backgroundColor: 'transparent',
-  color: 'rgba(255,255,255,0.38)',
+  color: 'var(--text-muted)',
   border: 'none', cursor: 'pointer',
   padding: '12px 0', marginTop: '12px',
 };

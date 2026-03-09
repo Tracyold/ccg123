@@ -42,7 +42,7 @@ const labelStyle: React.CSSProperties = {
   fontSize: '9px', fontWeight: 600,
   textTransform: 'uppercase',
   letterSpacing: '0.18em',
-  color: 'rgba(255,255,255,0.38)',
+  color: 'var(--text-muted)',
   display: 'block', marginBottom: '5px',
 };
 const goldBtnStyle: React.CSSProperties = {
@@ -62,7 +62,7 @@ const ghostBtnStyle: React.CSSProperties = {
   textTransform: 'uppercase',
   letterSpacing: '0.18em',
   backgroundColor: 'transparent',
-  color: 'rgba(255,255,255,0.38)',
+  color: 'var(--text-muted)',
   border: 'none', cursor: 'pointer',
   padding: '10px 0', marginTop: '8px',
 };
@@ -502,7 +502,7 @@ const shopCss = `
   letter-spacing: 0.13em;
   color: rgba(228, 182, 44, 0.82);
   background: rgba(34, 32, 32, 0.84);
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
   padding: 0px 8px;
 }
 .shop-card-img img {

@@ -27,8 +27,8 @@ export default function SmsTerms() {
       <Head><title>SMS Disclosure — Cutting Corners Gems</title></Head>
       <div style={{ background: 'transparent', minHeight: '100vh', color: 'var(--text)' }}>
 
-        <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '20px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-          <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.4)', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', cursor: 'pointer' }}>← Cutting Corners Gems</button>
+        <div style={{ borderBottom: '1px solid var(--border)', padding: '20px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+          <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', cursor: 'pointer' }}>← Cutting Corners Gems</button>
           <div style={{ display: 'flex', gap: '24px' }}>
             <button onClick={() => router.push('/legal')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>Legal</button>
             <button onClick={() => router.push('/legal/privacy-policy')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>Privacy Policy</button>
@@ -72,11 +72,11 @@ export default function SmsTerms() {
           <Block title="Account Notifications (Transactional)">
             <P>These notifications are sent only for events you have explicitly opted into within your account dashboard. They include:</P>
             <ul style={{ fontSize: '15px',paddingLeft: '20px', marginBottom: '20px' }}>
-              <Li><strong style={{ color: 'rgba(255,255,255,0.8)', fontSize: '17px' }}>Work Order Updates</strong> — Creation, acceptance, confirmed, item received, service completed, completed payment and revisions.</Li>
-              <Li><strong style={{ color: 'rgba(255,255,255,0.8)', fontSize: '17px' }}>Invoice Notifications</strong> — When a new invoice is ready to be downloaded after a completed payment.</Li>
-              <Li><strong style={{ color: 'rgba(255,255,255,0.8)', fontSize: '17px' }}>Tracking Updates</strong> — When an item has been dispatched with tracking information.</Li>
-              <Li><strong style={{ color: 'rgba(255,255,255,0.8)', fontSize: '17px' }}>Service Request Confirmations</strong> — When a service request has been received.</Li>
-              <Li><strong style={{ color: 'rgba(255,255,255,0.8)', fontSize: '17px' }}>Purchase Confirmations</strong> — When a shop purchase is completed.</Li>
+              <Li><strong style={{ color: 'var(--text)', fontSize: '17px' }}>Work Order Updates</strong> — Creation, acceptance, confirmed, item received, service completed, completed payment and revisions.</Li>
+              <Li><strong style={{ color: 'var(--text)', fontSize: '17px' }}>Invoice Notifications</strong> — When a new invoice is ready to be downloaded after a completed payment.</Li>
+              <Li><strong style={{ color: 'var(--text)', fontSize: '17px' }}>Tracking Updates</strong> — When an item has been dispatched with tracking information.</Li>
+              <Li><strong style={{ color: 'var(--text)', fontSize: '17px' }}>Service Request Confirmations</strong> — When a service request has been received.</Li>
+              <Li><strong style={{ color: 'var(--text)', fontSize: '17px' }}>Purchase Confirmations</strong> — When a shop purchase is completed.</Li>
             </ul>
             <P>Sample messages:</P>
             <SampleMsg label="Service Request Sent" msg="You have successfully sent a service request to Cutting Corners Gems [service_request_id]. You are receiving this message because you agreed to recieve work order notifications." />
@@ -154,7 +154,7 @@ export default function SmsTerms() {
           {/* Contact */}
           <div style={{ marginTop: '32px', padding: '24px', border: '1px solid #d4af37', background: '#d4af37' }}>
             <p style={{ fontFamily: 'var(--font-ui)', fontSize: '15px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '12px' }}>Contact</p>
-            <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.6)', lineHeight: 2, margin: 0 }}>
+            <p style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 2, margin: 0 }}>
               Cutting Corners Gems<br />
               850 S River Dr #2117, Tempe, Arizona 85281<br />
               Website Admin: Tracy Young — admin@cuttingcornersgems.com<br />
@@ -164,7 +164,7 @@ export default function SmsTerms() {
 
           <div style={{ marginTop: '48px', display: 'flex', gap: '24px', justifyContent: 'center' }}>
             <button onClick={() => router.push('/legal')} style={{ background: 'none', border: 'none', color: 'var(--gold)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>Legal</button>
-            <span style={{ color: 'rgba(255,255,255,0.15)' }}>|</span>
+            <span style={{ color: 'var(--border)' }}>|</span>
             <button onClick={() => router.push('/legal/privacy-policy')} style={{ background: 'none', border: 'none', color: 'var(--gold)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>Privacy Policy</button>
           </div>
 

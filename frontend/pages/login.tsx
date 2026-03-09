@@ -18,7 +18,7 @@ const btnStyle: React.CSSProperties = {
   boxShadow: '0 0 14px rgba(214,180,70,0.35)',
 };
 const ghostBtn: React.CSSProperties = {
-  width: '100%', background: 'none', border: 'none', color: 'rgba(255,255,255,0.38)',
+  width: '100%', background: 'none', border: 'none', color: 'var(--text-muted)',
   fontFamily: 'var(--font-ui)', fontSize: '10px', textTransform: 'uppercase',
   letterSpacing: '0.18em', padding: '12px 0', marginTop: '8px', cursor: 'pointer',
 };
@@ -109,7 +109,7 @@ export default function LoginPage() {
   return (
     <div style={{ background: 'transparent', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
       <div style={{ background: '#111111', border: '0.5px solid rgba(214,180,70,0.55)', padding: '40px', maxWidth: '480px', width: '100%', position: 'relative' }}>
-        <button onClick={() => router.push('/')} style={{ position: 'absolute', top: '16px', right: '16px', background: 'none', border: 'none', color: 'rgba(255,255,255,0.4)', fontSize: '20px', cursor: 'pointer', lineHeight: 1, padding: '4px' }}>✕</button>
+        <button onClick={() => router.push('/')} style={{ position: 'absolute', top: '16px', right: '16px', background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '20px', cursor: 'pointer', lineHeight: 1, padding: '4px' }}>✕</button>
         <p style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '12px' }}>
           CUTTING CORNERS GEMS
         </p>
@@ -124,34 +124,34 @@ export default function LoginPage() {
                 <label style={labelStyle}>FULL NAME</label>
                 <input value={name} onChange={e => setName(e.target.value)} placeholder="Jane Smith" style={inputStyle}
                   onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-                  onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                  onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }} />
                 <label style={labelStyle}>EMAIL</label>
                 <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="jane@email.com" style={inputStyle}
                   onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-                  onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                  onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }} />
               </>
             )}
             <label style={labelStyle}>PHONE NUMBER</label>
             <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+1 (555) 000-0000" style={inputStyle} onFocus={e => { if (!e.target.value) setPhone('+1 '); e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-              onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+              onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }} />
             {mode === 'signup' && (
               <>
                 <label style={labelStyle}>SHIPPING ADDRESS</label>
                 <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
                   <input value={addr1} onChange={e => setAddr1(e.target.value)} placeholder="Address Line 1" style={{ ...inputStyle, flex: 2, marginBottom: 0 }}
                     onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-                    onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                    onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }} />
                   <input value={addr2} onChange={e => setAddr2(e.target.value)} placeholder="Apt / Suite" style={{ ...inputStyle, flex: 1, marginBottom: 0 }}
                     onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-                    onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                    onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }} />
                 </div>
                 <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
                   <input value={city} onChange={e => setCity(e.target.value)} placeholder="City" style={{ ...inputStyle, flex: 2, marginBottom: 0 }}
                     onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-                    onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                    onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }} />
                   <input value={addrState} onChange={e => setAddrState(e.target.value)} placeholder="State" style={{ ...inputStyle, flex: 1, marginBottom: 0 }}
                     onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-                    onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                    onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }} />
                 </div>
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <select value={country} onChange={e => setCountry(e.target.value)} style={{ ...inputStyle, flex: 2, marginBottom: 0 }}>
@@ -273,7 +273,7 @@ export default function LoginPage() {
                   </select>
                   <input value={zip} onChange={e => setZip(e.target.value)} placeholder="ZIP" style={{ ...inputStyle, flex: 1, marginBottom: 0 }}
                     onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-                    onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+                    onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }} />
                 </div>
               </>
             )}
@@ -293,7 +293,7 @@ export default function LoginPage() {
             <input type="text" value={otp} onChange={e => setOtp(e.target.value)} placeholder="000000"
               style={{ ...inputStyle, fontSize: '18px', textAlign: 'center', letterSpacing: '0.3em' }}
               onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-              onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }} />
+              onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }} />
             {error && <p style={errStyle}>{error}</p>}
             <button onClick={verifyOtp} disabled={loading} style={btnStyle}>
               {loading ? '...' : 'VERIFY'}

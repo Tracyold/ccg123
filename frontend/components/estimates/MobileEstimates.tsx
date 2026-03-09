@@ -35,7 +35,7 @@ export default function MobileEstimates() {
         .mest-wrap { height: 100svh; overflow-y: scroll; scroll-snap-type: y mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
         .mest-wrap::-webkit-scrollbar { display: none; }
         .mest-card { height: 100svh; scroll-snap-align: start; scroll-snap-stop: always; display: flex; flex-direction: column; justify-content: center; padding: 80px 32px; position: relative; overflow: hidden; }
-        .mest-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.03) 0%, transparent 70%); pointer-events: none; }
+        .mest-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, var(--border) 0%, transparent 70%); pointer-events: none; }
         .mest-num { font-family: 'Oranienbaum', serif; font-size: clamp(96px, 25vw, 140px); line-height: 1; margin-bottom: 8px; display: block; opacity: 0.07; position: absolute; top: 24px; right: 24px; color: #fff; }
         .mest-tag { display: inline-block; padding: 5px 14px; border: 1px solid #d4af37; font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #d4af37; margin-bottom: 20px; width: fit-content; }
         .mest-title { font-family: 'Oranienbaum', serif; font-size: clamp(33px, 9vw, 48px); color: var(--text); margin-bottom: 20px; line-height: 1.1; }

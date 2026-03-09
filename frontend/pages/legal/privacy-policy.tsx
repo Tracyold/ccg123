@@ -21,8 +21,8 @@ export default function PrivacyPolicy() {
       <Head><title>Privacy Policy — Cutting Corners Gems</title></Head>
       <div style={{ background: 'transparent', minHeight: '100vh', color: 'var(--text)' }}>
 
-        <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '20px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.4)', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', cursor: 'pointer' }}>← Cutting Corners Gems</button>
+        <div style={{ borderBottom: '1px solid var(--border)', padding: '20px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', cursor: 'pointer' }}>← Cutting Corners Gems</button>
           <div style={{ display: 'flex', gap: '24px' }}>
             <button onClick={() => router.push('/legal/index')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>Legal</button>
             <button onClick={() => router.push('/legal/sms-terms')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>SMS Disclosure</button>
@@ -46,11 +46,11 @@ export default function PrivacyPolicy() {
           </Sec>
 
           <Sec n="2" title="Information You May Provide">
-            <P><strong style={{ color: 'rgba(255,255,255,0.8)', fontWeight: 600 }}>Account Information</strong> — Name, email address, phone number, account login credentials, and notification settings.</P>
-            <P><strong style={{ color: 'rgba(255,255,255,0.8)', fontWeight: 600 }}>Shipping Information</strong> — Shipping address for returning serviced gemstones or delivering purchases. Used solely for sending completed work orders or purchased gemstones.</P>
-            <P><strong style={{ color: 'rgba(255,255,255,0.8)', fontWeight: 600 }}>Service & Transaction Information</strong> — Work order submissions, service instructions, invoice records, payment status, and transaction references.</P>
-            <P><strong style={{ color: 'rgba(255,255,255,0.8)', fontWeight: 600 }}>Communication Information</strong> — Messages sent through internal chat, customer service inquiries, and work order communications.</P>
-            <P><strong style={{ color: 'rgba(255,255,255,0.8)', fontWeight: 600 }}>Technical & Usage Information</strong> — Limited data such as IP address, device type, browser information, and access timestamps used for system security and functionality.</P>
+            <P><strong style={{ color: 'var(--text)', fontWeight: 600 }}>Account Information</strong> — Name, email address, phone number, account login credentials, and notification settings.</P>
+            <P><strong style={{ color: 'var(--text)', fontWeight: 600 }}>Shipping Information</strong> — Shipping address for returning serviced gemstones or delivering purchases. Used solely for sending completed work orders or purchased gemstones.</P>
+            <P><strong style={{ color: 'var(--text)', fontWeight: 600 }}>Service & Transaction Information</strong> — Work order submissions, service instructions, invoice records, payment status, and transaction references.</P>
+            <P><strong style={{ color: 'var(--text)', fontWeight: 600 }}>Communication Information</strong> — Messages sent through internal chat, customer service inquiries, and work order communications.</P>
+            <P><strong style={{ color: 'var(--text)', fontWeight: 600 }}>Technical & Usage Information</strong> — Limited data such as IP address, device type, browser information, and access timestamps used for system security and functionality.</P>
           </Sec>
 
           <Sec n="3" title="How Your Information Is Used">
@@ -112,7 +112,7 @@ export default function PrivacyPolicy() {
 
           <Sec n="15" title="Contact Information">
             <div style={{ padding: '24px', border: '1px solid #d4af37', background: '#d4af37' }}>
-              <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.6)', lineHeight: 2, margin: 0 }}>
+              <p style={{ fontSize: '13px', color: 'var(--text-muted)', lineHeight: 2, margin: 0 }}>
                 Cutting Corners Gems<br />
                 850 S River Dr #2117, Tempe, Arizona 85281<br />
                 Website Admin: Tracy Young — admin@cuttingcornersgems.com<br />
@@ -123,7 +123,7 @@ export default function PrivacyPolicy() {
 
           <div style={{ marginTop: '48px', display: 'flex', gap: '24px', justifyContent: 'center' }}>
             <button onClick={() => router.push('/legal/index')} style={{ background: 'none', border: 'none', color: 'var(--gold)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>Legal</button>
-            <span style={{ color: 'rgba(255,255,255,0.15)' }}>|</span>
+            <span style={{ color: 'var(--border)' }}>|</span>
             <button onClick={() => router.push('/legal/sms-terms')} style={{ background: 'none', border: 'none', color: 'var(--gold)', fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>SMS Disclosure</button>
           </div>
 

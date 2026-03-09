@@ -306,7 +306,7 @@ export default function Home() {
               <a href="/get-estimate/instant" style={{ display: 'inline-block', padding: '17px 40px', background: 'var(--accent)', color: 'var(--bg)', fontFamily: 'var(--font-ui)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
                 Get an Estimate
               </a>
-              <a href="/shop" style={{ display: 'inline-block', padding: '17px 40px', background: 'none', border: '1px solid rgba(255,255,255,0.4)', color: 'var(--text)', fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
+              <a href="/shop" style={{ display: 'inline-block', padding: '17px 40px', background: 'none', border: '1px solid var(--text-muted)', color: 'var(--text)', fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
                 View Shop
               </a>
             </div>

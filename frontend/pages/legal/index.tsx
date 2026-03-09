@@ -193,7 +193,7 @@ export default function LegalUnified() {
         <div style={{
           position: 'sticky', top: 0, zIndex: 100,
           background: 'rgba(5,5,5,0.96)', backdropFilter: 'blur(10px)',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
+          borderBottom: '1px solid var(--border)',
           padding: '16px 32px',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
@@ -208,7 +208,7 @@ export default function LegalUnified() {
         {/* ── Mobile TOC bar ── */}
         <div className="mobile-toc-bar" style={{
           position: 'sticky', top: '53px', zIndex: 90,
-          background: 'rgba(8,8,8,0.97)', borderBottom: '1px solid rgba(255,255,255,0.05)',
+          background: 'var(--bg-deep)', borderBottom: '1px solid var(--border)',
           display: 'flex', overflowX: 'auto', padding: '0 16px',
           scrollbarWidth: 'none',
         }}>
@@ -227,7 +227,7 @@ export default function LegalUnified() {
             position: 'sticky', top: '53px',
             height: 'calc(100vh - 53px)', overflowY: 'auto',
             padding: '36px 0 40px',
-            borderRight: '1px solid rgba(255,255,255,0.05)',
+            borderRight: '1px solid var(--border)',
           }}>
             <div className="toc-group-label">Legal</div>
             {TOC_ITEMS.filter(t => t.group === 'legal').map(t => (
@@ -241,7 +241,7 @@ export default function LegalUnified() {
             {TOC_ITEMS.filter(t => t.group === 'sms').map(t => (
               <button key={t.id} className={`toc-btn${activeId === t.id ? ' active' : ''}`} onClick={() => scrollTo(t.id)}>{t.label}</button>
             ))}
-            <div style={{ margin: '32px 14px 0', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+            <div style={{ margin: '32px 14px 0', paddingTop: '20px', borderTop: '1px solid var(--border)' }}>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '9px', color: 'var(--text-muted)', lineHeight: 1.9 }}>
                 Effective<br />March 4, 2026
               </p>
@@ -254,7 +254,7 @@ export default function LegalUnified() {
             {/* Hero */}
             <p style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '12px' }}>Cutting Corners Gems</p>
             <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(34px, 5vw, 56px)', color: 'var(--text)', marginBottom: '20px', lineHeight: 1.1 }}>Legal, Privacy<br />&amp; SMS Disclosure</h1>
-            <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '64px' }}>
+            <p style={{ fontSize: '13px', color: 'var(--text)', marginBottom: '64px' }}>
               Effective Date: March 4, 2026 · Program: Cutting Corners Gems — User Opt-In/Out Account Notifications
             </p>
 
@@ -387,7 +387,7 @@ export default function LegalUnified() {
             ════════════════════════════════════════════════════ */}
             <div id="sms-top" className="anchor">
               <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(24px, 3vw, 34px)', color: 'var(--text)', marginBottom: '24px' }}>SMS Notification Terms &amp; Disclosure</h2>
-              <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.7)', marginBottom: '28px' }}>Program Name: Cutting Corners Gems — User Opt-In/Out Account Notifications</p>
+              <p style={{ fontSize: '12px', color: 'var(--text)', marginBottom: '28px' }}>Program Name: Cutting Corners Gems — User Opt-In/Out Account Notifications</p>
               <GoldNote>
                 By providing a mobile phone number and enabling SMS notification toggles within your account dashboard, you consent to receive transactional SMS notifications related to your account activity. Notifications are optional and can be enabled or disabled individually at any time from your Account Dashboard. Cutting Corners Gems does not send unsolicited marketing or promotional SMS messages.
               </GoldNote>

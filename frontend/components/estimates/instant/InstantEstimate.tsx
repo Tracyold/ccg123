@@ -243,27 +243,27 @@ export default function InstantEstimate() {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         .eq-wrap { min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 120px 24px 60px; background: transparent; }
         .eq-inner { width: 100%; max-width: 600px; }
-        .eq-bar { width: 100%; height: 1px; background: rgba(255,255,255,0.06); margin-bottom: 48px; position: relative; }
+        .eq-bar { width: 100%; height: 1px; background: var(--border); margin-bottom: 48px; position: relative; }
         .eq-fill { position: absolute; top: 0; left: 0; height: 100%; background: rgba(212,175,55,0.6); transition: width 300ms ease; }
         .eq-step { font-family: 'Montserrat', sans-serif; font-size: 15px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(212,175,55,0.9); margin-bottom: 20px; }
         .eq-q { font-family: 'Oranienbaum', serif; font-size: clamp(27px, 4.5vw, 40px); color: var(--text); line-height: 1.2; margin-bottom: 40px; }
         .eq-sub { font-family: 'Montserrat', sans-serif; font-size: 15px; color: rgba(255,255,255,0.75); margin-bottom: 20px; letter-spacing: 0.05em; }
         .eq-opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 40px; }
-        .eq-opt { padding: 17px 22px; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(var(--text-rgb, 238,238,238),0.85); font-family: 'Montserrat', sans-serif; font-size: 19px; text-align: left; cursor: pointer; transition: all 150ms; letter-spacing: 0.02em; width: 100%; }
+        .eq-opt { padding: 17px 22px; border: 1px solid var(--border); background: transparent; color: rgba(var(--text-rgb, 238,238,238),0.85); font-family: 'Montserrat', sans-serif; font-size: 19px; text-align: left; cursor: pointer; transition: all 150ms; letter-spacing: 0.02em; width: 100%; }
         .eq-opt:hover { border-color: #d4af37; color: var(--text); background: rgba(212,175,55,0.04); }
         .eq-opt.sel { border-color: #d4af37; color: var(--text); background: rgba(212,175,55,0.08); }
         .eq-acts { display: flex; gap: 12px; }
         .eq-next { padding: 15px 36px; background: #d4af37; border: none; color: #050505; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; cursor: pointer; }
         .eq-next:disabled { opacity: 0.25; cursor: not-allowed; }
         .eq-back { padding: 15px 22px; background: none; border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.75); font-family: 'Montserrat', sans-serif; font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; }
-        .res-row { display: flex; justify-content: space-between; align-items: baseline; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .res-row { display: flex; justify-content: space-between; align-items: baseline; padding: 13px 0; border-bottom: 1px solid var(--border); }
         .res-lbl { font-family: 'Montserrat', sans-serif; font-size: 15px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
         .res-val { font-family: 'Comfortaa', sans-serif; font-size: 17px; color: var(--text); }
         .flag-item { padding: 12px 16px; border-left: 2px solid rgba(220,80,80,0.7); margin-bottom: 8px; background: rgba(220,80,80,0.06); font-family: 'Comfortaa', sans-serif; font-size: 15px; color: rgba(220,80,80,0.95); line-height: 1.6; }
         .online-item { padding: 12px 16px; border-left: 2px solid rgba(100,160,220,0.7); margin-bottom: 8px; background: rgba(100,160,220,0.06); font-family: 'Comfortaa', sans-serif; font-size: 15px; color: rgba(100,160,220,0.95); line-height: 1.6; }
         .price-box { padding: 28px; border: 1px solid #d4af37; background: rgba(212,175,55,0.03); margin-bottom: 24px; }
         .price-note { font-family: 'Montserrat', sans-serif; font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.85; margin-top: 12px; }
-        .eq-close { position: fixed; top: 18px; right: 18px; width: 40px; height: 40px; background: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); font-size: 19px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100; transition: border-color 150ms, color 150ms; }
+        .eq-close { position: fixed; top: 18px; right: 18px; width: 40px; height: 40px; background: none; border: 1px solid var(--border); color: var(--text-muted); font-size: 19px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100; transition: border-color 150ms, color 150ms; }
         .eq-close:hover { border-color: #d4af37; color: #d4af37; }
         .feas-box { padding: 20px 24px; border: 1px solid #d4af37; background: rgba(212,175,55,0.03); margin-bottom: 24px; }
       `}</style>
@@ -528,7 +528,7 @@ export default function InstantEstimate() {
                     </p>
                   </div>
                   <div style={{ padding: '20px 24px', border: '1px solid var(--border)', background: 'var(--bg-card)', marginBottom: 28 }}>
-                    <p style={{ fontFamily: 'var(--font-ui)', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', marginBottom: 8 }}>Alternative Option</p>
+                    <p style={{ fontFamily: 'var(--font-ui)', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 }}>Alternative Option</p>
                     <p style={{ fontFamily: 'var(--font-display)', fontSize: 27, color: 'var(--text)', marginBottom: 12 }}>In-Person Evaluation — $10</p>
                     <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'var(--text)', lineHeight: 1.85 }}>
                       Your stone has characteristics that require hands-on evaluation before any estimate can be made. The $10 fee is credited toward any service you proceed with.
@@ -544,13 +544,13 @@ export default function InstantEstimate() {
                   <p style={{ fontFamily: 'var(--font-display)', fontSize: 56, color: 'var(--gold)', lineHeight: 1 }}>${totalLow} – ${totalHigh}</p>
                   <p className="price-note">{st.flags.length > 0 ? 'This estimate assumes the structural concerns identified do not compromise the stone. If the feasibility report reveals deeper damage, this number will change — potentially significantly. This is an estimate only, not a quote.' : 'This is an estimate — not a quote. An estimate is an informed guess based on your answers and is not binding. A quote is a firm price offered by the cutter after personally reviewing your stone. All prices shown here are subject to change once your gemstone is examined.'}</p>
                   {st.svcRecs.length > 0 && (
-                    <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                    <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--border)' }}>
                       <p style={{ fontFamily: 'var(--font-ui)', fontSize: 15, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: 8 }}>Recommended Service</p>
                       {st.svcRecs.map((r, i) => <p key={i} style={{ fontFamily: 'var(--font-body)', fontSize: 17, color: 'var(--text)', marginBottom: 4 }}>{r}</p>)}
                     </div>
                   )}
                   {st.svcCmp && st.svcCmp !== 'Not sure' && st.svcRecs.length > 0 && !st.svcRecs.includes(st.svcCmp) && (
-                    <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                    <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid var(--border)' }}>
                       <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'rgba(var(--text-rgb, 238,238,238),0.85)', lineHeight: 1.85 }}>
                         You were hoping for <strong style={{ color: 'var(--text)' }}>{st.svcCmp}</strong>. Based on your answers, <strong style={{ color: 'var(--gold)' }}>{st.svcRecs[0]}</strong> may be more appropriate.
                       </p>

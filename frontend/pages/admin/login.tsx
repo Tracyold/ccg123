@@ -107,7 +107,7 @@ export default function AdminLoginPage() {
             onChange={e => setEmail(e.target.value)}
             style={{ width: '100%', background: 'var(--bg)', border: '1px solid var(--border)', height: '40px', padding: '0 10px', color: 'var(--gold)', fontFamily: 'var(--font-body)', fontSize: '14px', marginBottom: '16px', outline: 'none', transition: 'border 200ms ease, box-shadow 200ms ease' }}
             onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-            onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }}
+            onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }}
             onKeyDown={e => { if (e.key === 'Enter') handleLogin(); }}
           />
 
@@ -121,7 +121,7 @@ export default function AdminLoginPage() {
               onChange={e => setPassword(e.target.value)}
               style={{ width: '100%', background: 'var(--bg)', border: '1px solid var(--border)', height: '40px', padding: '0 40px 0 10px', color: 'var(--gold)', fontFamily: 'var(--font-body)', fontSize: '14px', outline: 'none', transition: 'border 200ms ease, box-shadow 200ms ease' }}
               onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-              onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.10)'; e.target.style.boxShadow = 'none'; }}
+              onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }}
               onKeyDown={e => { if (e.key === 'Enter') handleLogin(); }}
             />
             <button

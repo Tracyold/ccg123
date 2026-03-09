@@ -32,7 +32,7 @@ export default function InquiryModal({ inquiryStep, product: modalProduct, guest
     <div style={popupOverlayStyle}>
       <div style={popupBoxStyle}>
         <p style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', color: 'var(--text-muted)', marginBottom: '6px' }}>Inquiry — {modalProduct.title}</p>
-        <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '8px', padding: '14px 16px', marginBottom: '20px' }}>
+        <div style={{ background: 'var(--border)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '8px', padding: '14px 16px', marginBottom: '20px' }}>
           <div style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.18em', color: 'var(--text-muted)', marginBottom: '8px' }}>Your Details</div>
           <div style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.7 }}>
             {displayName && <div>{displayName}</div>}

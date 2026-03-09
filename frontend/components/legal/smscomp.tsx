@@ -56,7 +56,7 @@ export default function SmsPreview({ examples }: Props) {
             borderRadius: "44px",
             padding: "12px",
             border: "2px solid #2e2e2e",
-            boxShadow: "0 0 0 1px #111, 0 2px 6px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.04), 0 20px 60px rgba(0,0,0,0.6)",
+            boxShadow: "0 0 0 1px #111, 0 2px 6px rgba(0,0,0,0.4), inset 0 0 0 1px var(--border), 0 20px 60px rgba(0,0,0,0.6)",
             position: "relative",
           }}>
             {/* side buttons */}
@@ -104,12 +104,12 @@ export default function SmsPreview({ examples }: Props) {
               </div>
 
               {/* messages header */}
-              <div style={{ padding: "4px 16px 10px", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+              <div style={{ padding: "4px 16px 10px", textAlign: "center", borderBottom: "1px solid var(--border)" }}>
                 <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "linear-gradient(135deg, #2c6bed, #1a4fb0)", margin: "0 auto 6px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <span style={{ fontSize: "16px" }}>💎</span>
                 </div>
                 <p style={{ fontFamily: "-apple-system, sans-serif", fontSize: "13px", fontWeight: 600, color: "#fff", margin: 0 }}>Cutting Corners Gems</p>
-                <p style={{ fontFamily: "-apple-system, sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.4)", margin: "2px 0 0" }}>Business Messages</p>
+                <p style={{ fontFamily: "-apple-system, sans-serif", fontSize: "11px", color: "var(--text-muted)", margin: "2px 0 0" }}>Business Messages</p>
               </div>
 
               {/* messag

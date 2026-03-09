@@ -45,7 +45,7 @@ export default function ChatPanel({
                   <div style={{ marginTop: m.body ? '7px' : '0', fontSize: '15.9px' }}>📄 <a href={m.attachment_url.startsWith('http') ? m.attachment_url : supabase.storage.from('ChatUploads').getPublicUrl(m.attachment_url).data.publicUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--bg)', textDecoration: 'underline' }}>Download PDF</a></div>
                 )}
               </div>
-              <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.38)', marginTop: '3px', fontFamily: 'var(--font-body)' }}>{fmtTime(m.created_at)}</span>
+              <span style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '3px', fontFamily: 'var(--font-body)' }}>{fmtTime(m.created_at)}</span>
             </div>
           ))}
           <div ref={chatEndRef} />
@@ -88,7 +88,7 @@ export default function ChatPanel({
                     <div style={{ marginTop: m.body ? '6px' : '0', fontSize: '12px' }}>📄 <a href={m.attachment_url.startsWith('http') ? m.attachment_url : supabase.storage.from('ChatUploads').getPublicUrl(m.attachment_url).data.publicUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--bg)', textDecoration: 'underline' }}>Download PDF</a></div>
                   )}
                 </div>
-                <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.38)', marginTop: '4px' }}>{fmtTime(m.created_at)}</span>
+                <span style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '4px' }}>{fmtTime(m.created_at)}</span>
               </div>
             ))}
             <div ref={chatEndRef} />

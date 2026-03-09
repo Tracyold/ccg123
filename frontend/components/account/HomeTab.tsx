@@ -78,7 +78,7 @@ export default function HomeTab({
       <div style={{ marginTop: '32px', padding: '20px', background: 'var(--bg)', border: '1px solid var(--border)' }}>
         <span style={{ fontFamily: "'Courier New', monospace", fontSize: '19px', color: 'rgb(48, 177, 98)' }}>{invoiceCount}</span>
         <span style={{ fontSize: '17px', color: 'var(--text-muted)', marginLeft: '8px' }}>items purchased</span>
-        <span style={{ margin: '0 12px', color: 'rgba(255,255,255,0.15)' }}>|</span>
+        <span style={{ margin: '0 12px', color: 'var(--border)' }}>|</span>
         <span style={{ fontFamily: "'Courier New', monospace", fontSize: '18px', color: 'rgb(48, 177, 98)' }}>{invoiceTotal}</span>
         <span style={{ fontSize: '12px', color: 'var(--text-muted)', marginLeft: '8px' }}>total spent</span>
       </div>
@@ -87,7 +87,7 @@ export default function HomeTab({
       <div style={{ marginTop: '32px' }}>
         <h3 style={{ fontFamily: 'var(--font-ui)', fontSize: '17px', textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--text-muted)', marginBottom: '16px' }}>Notification Preferences</h3>
         {smToggles.map(t => (
-          <div key={t.col} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+          <div key={t.col} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid var(--border)' }}>
             <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{t.label}</span>
             <button
               onClick={() => {
