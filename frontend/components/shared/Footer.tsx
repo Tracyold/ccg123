@@ -11,7 +11,7 @@ const footerCss = `
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.86);
+  color: var(--text);
   margin-bottom: 28px;
 }
 .ccg-footer-content {
@@ -27,7 +27,7 @@ const footerCss = `
   font-family: var(--font-body);
   font-size: 12px;
   letter-spacing: 0.04em;
-  color: rgba(255,255,255,0.40);
+  color: var(--text-muted);
   text-decoration: none;
   line-height: 2.0;
   transition: color 180ms ease, font-size 150ms ease;
@@ -51,7 +51,7 @@ const footerCss = `
   font-family: var(--font-body);
   font-size: 15px;
   letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.81);
+  color: var(--text);
   text-decoration: none;
   line-height: 2.0;
   transition: color 180ms ease, font-size 150ms ease;
@@ -63,7 +63,7 @@ const footerCss = `
 .ccg-footer-welcome {
   font-family: var(--font-body);
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.67);
+  color: var(--text-muted);
   font-style: italic;
   line-height: 2.0;
 }
