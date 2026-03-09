@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import TopNav from '../components/shared/TopNav';
 import { supabase } from '../lib/supabase';
 import { useRouter } from 'next/router';
 
@@ -107,6 +108,8 @@ export default function LoginPage() {
   };
 
   return (
+    <>
+    <TopNav />
     <div style={{ background: 'transparent', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
       <div style={{ background: 'var(--bg-card)', border: '0.5px solid rgba(214,180,70,0.55)', padding: '40px', maxWidth: '480px', width: '100%', position: 'relative' }}>
         <button onClick={() => router.push('/')} style={{ position: 'absolute', top: '16px', right: '16px', background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '20px', cursor: 'pointer', lineHeight: 1, padding: '4px' }}>✕</button>
@@ -303,5 +306,6 @@ export default function LoginPage() {
         )}
       </div>
     </div>
+    </>
   );
 }
