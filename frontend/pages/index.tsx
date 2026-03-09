@@ -230,7 +230,7 @@ export default function Home() {
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       const progress = Math.min(scrollY / maxScroll, 1);
       const angle = 135 + progress * 45;
-      document.body.style.background = `linear-gradient(${angle}deg, #222831 0%, #2d3340 35%, #393E46 60%, #222831 100%)`;
+      document.body.style.backgroundImage = `linear-gradient(${angle}deg, #222831 0%, #2d3340 35%, #393E46 60%, #222831 100%)`;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -299,7 +299,7 @@ export default function Home() {
               Professional gemstone cutter focused on color, yield, and stone potential for jewelry professionals nationwide.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="/get-estimate/instant" style={{ display: 'inline-block', padding: '17px 40px', background: 'var(--accent)', color: '#222831', fontFamily: 'Montserrat, sans-serif', fontSize: '11px', fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
+              <a href="/get-estimate/instant" style={{ display: 'inline-block', padding: '17px 40px', background: 'var(--accent)', color: 'var(--bg)', fontFamily: 'Montserrat, sans-serif', fontSize: '11px', fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
                 Get an Estimate
               </a>
               <a href="/shop" style={{ display: 'inline-block', padding: '17px 40px', background: 'none', border: '1px solid rgba(255,255,255,0.4)', color: 'var(--text)', fontFamily: 'Montserrat, sans-serif', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
