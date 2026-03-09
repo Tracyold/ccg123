@@ -40,7 +40,7 @@ export const popupOverlayStyle: React.CSSProperties = {
   padding: '20px',
 };
 export const popupBoxStyle: React.CSSProperties = {
-  backgroundColor: '#0A0A0A',
+  backgroundColor: 'var(--bg)',
   border: '1px solid var(--border)',
   borderRadius: '16px',
   width: '100%', maxWidth: '480px', maxHeight: '90vh',
@@ -51,7 +51,7 @@ export const inputStyle: React.CSSProperties = {
   background: 'var(--bg-card)',
   border: '1px solid var(--border)',
   padding: '10px 12px',
-  color: '#FAFAFA',
+  color: 'var(--text)',
   fontFamily: 'var(--font-body)',
   fontSize: '13px',
   outline: 'none',
