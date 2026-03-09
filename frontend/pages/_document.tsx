@@ -12,6 +12,12 @@ export default function Document() {
         />
       </Head>
       <body>
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            var t = localStorage.getItem('ccg-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+          })();
+        `}} />
         <Main />
         <NextScript />
       </body>
