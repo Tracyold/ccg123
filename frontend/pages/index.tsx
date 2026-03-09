@@ -279,14 +279,16 @@ export default function Home() {
 
   return (
     <>
-      <GlobalStyles />
       <main>
         <TopNav />
 
         {/* ── Hero Section ── */}
         <section style={{ minHeight: '100svh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-          {/* Background image */}
-          <div className="absolute inset-0" style={{ backgroundImage: 'url(/assets/handcut.jpeg)', backgroundSize: 'cover', backgroundPosition: '62% 40%', opacity: 0.35, filter: 'grayscale(1) sepia(0.3) brightness(0.9)' }} />
+          {/* Machine scene — lamp off (light mode) / lamp on (dark mode) */}
+          <div className="machine-scene absolute inset-0">
+            <img src="https://ik.imagekit.io/postvibe/light-off.png?updatedAt=1773060290554" className="machine-img machine-light" alt="" />
+            <img src="https://ik.imagekit.io/postvibe/light-on.png?updatedAt=1773060307263" className="machine-img machine-dark" alt="" />
+          </div>
           {/* Dark vignette overlay */}
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 40%, transparent 0%, var(--bg) 60%, var(--bg) 100%)' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, var(--bg) 0%, transparent 30%, transparent 70%, var(--bg) 100%)' }} />
