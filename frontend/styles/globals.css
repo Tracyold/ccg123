@@ -5,14 +5,14 @@
 @tailwind utilities;
 
 :root {
-  --bg:          #222831;
-  --bg-card:     #393E46;
-  --bg-deep:     #1a1f27;
-  --accent:      #FFD369;
-  --text:        #EEEEEE;
-  --text-muted:  #aaaaaa;
-  --border:      #393E46;
-  --gold:        #d4af37;
+  --bg:           #222831;
+  --bg-card:      #393E46;
+  --bg-deep:      #1a1f27;
+  --accent:       #FFD369;
+  --text:         #EEEEEE;
+  --text-muted:   #aaaaaa;
+  --border:       #393E46;
+  --gold:         #d4af37;
   --font-display: 'Oranienbaum', Georgia, serif;
   --font-ui:      'Montserrat', sans-serif;
   --font-body:    'Comfortaa', sans-serif;
@@ -21,14 +21,14 @@
 }
 
 :root[data-theme="light"] {
-  --bg:          #EEEEEE;
-  --bg-card:     #ffffff;
-  --bg-deep:     #e0dbd0;
-  --accent:      #FFD369;
-  --text:        #222831;
-  --text-muted:  #555555;
-  --border:      #cccccc;
-  --gold:        #d4af37;
+  --bg:           #EEEEEE;
+  --bg-card:      #ffffff;
+  --bg-deep:      #e0dbd0;
+  --accent:       #FFD369;
+  --text:         #222831;
+  --text-muted:   #555555;
+  --border:       #cccccc;
+  --gold:         #d4af37;
   --bg-gradient:  linear-gradient(135deg, #e8e4dc 0%, #EEEEEE 35%, #f0ede8 60%, #e8e4dc 100%);
 }
 
@@ -76,9 +76,130 @@ button, input, textarea, select { border-radius: 0 !important; }
   animation: fade-in 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.15); }
+}
+
 .hidden-mobile  { display: block; }
 .hidden-desktop { display: none; }
 @media (max-width: 860px) {
   .hidden-mobile  { display: none !important; }
   .hidden-desktop { display: block !important; }
 }
+
+/* Responsive text sizes */
+@media (max-width: 767px) {
+  .hero-title         { font-size: 2.4rem !important; }
+  .page-title.title-xl { font-size: 2rem !important; }
+  .name-title         { font-size: 2rem !important; }
+  .section-spacing    { padding-top: 4rem; padding-bottom: 4rem; }
+  .container-custom   { padding-left: 1rem; padding-right: 1rem; }
+  #services-section   { padding-top: 0 !important; }
+}
+
+.container-custom {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .container-custom { padding-left: 3rem; padding-right: 3rem; }
+}
+
+.section-spacing { padding-top: 6rem; padding-bottom: 6rem; }
+@media (min-width: 768px) {
+  .section-spacing { padding-top: 8rem; padding-bottom: 8rem; }
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+
+.title-xl {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+
+.title-sm {
+  font-family: var(--font-ui);
+  font-weight: 500;
+}
+
+.name-title {
+  font-size: 7rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.spec-text {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.page-title { font-family: var(--font-display); }
+
+.gem-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: all 0.5s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.gem-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 30px rgba(255,211,105,0.08);
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--bg);
+  padding: 0.75rem 2rem;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text);
+  padding: 0.75rem 2rem;
+  font-family: var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.875rem;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: var(--text);
+  background-color: transparent;
+}
+
+.hover-lift { transition: transform 0.3s ease; }
+.hover-lift:hover { transform: translateY(-6px); }
