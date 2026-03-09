@@ -47,11 +47,11 @@ export default function DesktopCompanyModel() {
           font-size: 11px;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.3);
+          color: var(--text-muted);
           cursor: pointer;
           transition: color 250ms, border-color 250ms;
         }
-        .dtop-nav-btn:hover { color: rgba(255,255,255,0.65); }
+        .dtop-nav-btn:hover { color: var(--text-muted); }
         .dtop-nav-btn.active {
           color: #d4af37;
           border-left-color: #d4af37;
@@ -68,7 +68,7 @@ export default function DesktopCompanyModel() {
           font-size: 10px;
           letter-spacing: 0.3em;
           text-transform: uppercase;
-          color: rgba(212,175,55,0.6);
+          color: var(--gold);
           margin-bottom: 20px;
         }
         .dtop-chapter-heading {
@@ -81,13 +81,13 @@ export default function DesktopCompanyModel() {
         .dtop-chapter-body p {
           font-family: var(--font-body);
           font-size: clamp(14px, 1.4vw, 16px);
-          color: rgba(255,255,255,0.65);
+          color: var(--text-muted);
           line-height: 1.9;
           margin-bottom: 20px;
         }
         .dtop-chapter-body p:first-child {
           font-size: clamp(14px, 1.4vw, 16px);
-          color: rgba(100,160,220,0.9);
+          color: var(--accent);
           font-family: var(--font-body);
           font-weight: 600;
           line-height: 1.75;
@@ -102,7 +102,7 @@ export default function DesktopCompanyModel() {
         .dtop-stat-value {
           font-family: 'Oranienbaum', serif;
           font-size: 48px;
-          color: rgba(212,175,55,0.8);
+          color: var(--gold);
           line-height: 1;
           margin-bottom: 6px;
         }
@@ -111,7 +111,7 @@ export default function DesktopCompanyModel() {
           font-size: 10px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.35);
+          color: var(--text-muted);
         }
         .dtop-link {
           display: inline-flex;
@@ -122,7 +122,7 @@ export default function DesktopCompanyModel() {
           font-size: 11px;
           letter-spacing: 0.15em;
           text-transform: uppercase;
-          color: rgba(100,160,220,0.9);
+          color: var(--accent);
           text-decoration: none;
           border-bottom: 1px solid rgba(100,160,220,0.3);
           padding-bottom: 2px;
@@ -142,7 +142,7 @@ export default function DesktopCompanyModel() {
         .dtop-cta-sub {
           font-family: var(--font-body);
           font-size: 14px;
-          color: rgba(255,255,255,0.45);
+          color: var(--text-muted);
           margin-bottom: 36px;
           line-height: 1.8;
         }
@@ -153,7 +153,7 @@ export default function DesktopCompanyModel() {
           padding: 15px 36px;
           border: 1px solid #d4af37;
           background: transparent;
-          color: rgba(212,175,55,0.9);
+          color: var(--gold);
           font-family: var(--font-body);
           font-size: 12px;
           letter-spacing: 0.18em;
@@ -199,7 +199,7 @@ export default function DesktopCompanyModel() {
                       display: 'inline-flex', alignItems: 'center', gap: '8px',
                       padding: '16px 28px',
                       border: '1px solid rgba(80,200,120,0.7)',
-                      color: 'rgba(80,200,120,1)',
+                      color: 'var(--accent)',
                       fontFamily: 'var(--font-body)',
                       fontSize: '14px', letterSpacing: '0.12em', textTransform: 'uppercase',
                       textDecoration: 'none',
@@ -215,7 +215,7 @@ export default function DesktopCompanyModel() {
                       display: 'inline-flex', alignItems: 'center', gap: '8px',
                       padding: '16px 28px',
                       border: '1px solid rgba(80,200,120,0.7)',
-                      color: 'rgba(80,200,120,1)',
+                      color: 'var(--accent)',
                       fontFamily: 'var(--font-body)',
                       fontSize: '14px', letterSpacing: '0.12em', textTransform: 'uppercase',
                       textDecoration: 'none',

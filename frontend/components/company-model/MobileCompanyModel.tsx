@@ -29,7 +29,7 @@ export default function MobileCompanyModel() {
           font-size: 13px;
           letter-spacing: 0.3em;
           text-transform: uppercase;
-          color: rgba(212,175,55,0.85);
+          color: var(--gold);
           margin-bottom: 18px;
         }
         .mob-chapter-heading {
@@ -50,7 +50,7 @@ export default function MobileCompanyModel() {
           font-family: var(--font-body);
           font-weight: 600;
           font-size: clamp(16px, 4.5vw, 18px);
-          color: rgba(100,160,220,0.9);
+          color: var(--accent);
           line-height: 1.8;
         }
         .mob-stat {
@@ -63,7 +63,7 @@ export default function MobileCompanyModel() {
         .mob-stat-value {
           font-family: 'Oranienbaum', serif;
           font-size: 52px;
-          color: rgba(212,175,55,0.95);
+          color: var(--gold);
           line-height: 1;
           margin-bottom: 6px;
         }
@@ -72,7 +72,7 @@ export default function MobileCompanyModel() {
           font-size: 13px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.75);
+          color: var(--text);
         }
           50% { box-shadow: 0 0 0 10px rgba(100,160,220,0); }
         }
@@ -109,7 +109,7 @@ export default function MobileCompanyModel() {
           padding: 16px 32px;
           border: 1px solid #d4af37;
           background: transparent;
-          color: rgba(212,175,55,0.9);
+          color: var(--gold);
           font-family: var(--font-body);
           font-size: 15px;
           letter-spacing: 0.15em;
@@ -138,7 +138,7 @@ export default function MobileCompanyModel() {
                     display: 'inline-flex', alignItems: 'center', gap: '8px',
                     padding: '16px 28px',
                     border: '1px solid rgba(80,200,120,0.7)',
-                    color: 'rgba(80,200,120,1)',
+                    color: 'var(--accent)',
                     fontFamily: 'var(--font-body)',
                     fontSize: '14px', letterSpacing: '0.12em', textTransform: 'uppercase',
                     textDecoration: 'none',
@@ -151,7 +151,7 @@ export default function MobileCompanyModel() {
                     display: 'inline-flex', alignItems: 'center', gap: '8px',
                     padding: '16px 28px',
                     border: '1px solid rgba(80,200,120,0.7)',
-                    color: 'rgba(80,200,120,1)',
+                    color: 'var(--accent)',
                     fontFamily: 'var(--font-body)',
                     fontSize: '14px', letterSpacing: '0.12em', textTransform: 'uppercase',
                     textDecoration: 'none',
