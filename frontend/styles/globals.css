@@ -5,14 +5,14 @@
 @tailwind utilities;
 
 :root {
-  --bg:           #222831;
+  --bg:           #1b1e21;
   --bg-card:      #393E46;
-  --bg-deep:      #1a1f27;
+  --bg-deep:      #202225;
   --accent:       #FFD369;
   --text:         #EEEEEE;
   --text-muted:   #aaaaaa;
   --border:       #393E46;
-  --gold:         #d4af37;
+  --gold:         #f4c730;
   --font-display: 'Oranienbaum', Georgia, serif;
   --font-ui:      'Montserrat', sans-serif;
   --font-body:    'Comfortaa', sans-serif;
@@ -22,19 +22,19 @@
 
 
 :root[data-theme="dark"] {
-  --bg:           #14171d;
-  --bg-card:      #393E46;
-  --bg-deep:      #1a1f27;
+  --bg:           #212327;
+  --bg-card:      #3d3f43;
+  --bg-deep:      #282b35;
   --accent:       #FFD369;
   --text:         #EEEEEE;
   --text-muted:   #aaaaaa;
-  --border:       #393E46;
+  --border:       #080808;
   --gold:         #fccb28;
   --font-display: 'Oranienbaum', Georgia, serif;
   --font-ui:      'Montserrat', sans-serif;
   --font-body:    'Comfortaa', sans-serif;
   --font-mono:    'Courier New', monospace;
-  --bg-gradient:  linear-gradient(135deg, #222831 0%, #272c33 35%, #2e3239 60%, #222831 100%);
+  --bg-gradient:  linear-gradient(135deg, #202122 0%, #313336 35%, #626364 60%, #17191b 100%);
 }
 
 :root[data-theme="light"] {
