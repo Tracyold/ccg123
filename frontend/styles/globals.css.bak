@@ -1,63 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Oranienbaum&family=Montserrat:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Cormorant:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oranienbaum&family=Montserrat:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg:              #171819;
+  --bg-rgba:         rgba(23, 24, 25, 1);
+  --bg-card:         #15171a;
+  --bg-card-rgba:    rgba(21, 23, 26, 1);
+  --bg-deep:         #202225;
+  --bg-deep-rgba:    rgba(32, 34, 37, 1);
+  --accent:          #FFD369;
+  --accent-rgba:     rgba(255, 211, 105, 1);
+  --text:            #EEEEEE;
+  --text-rgba:       rgba(238, 238, 238, 1);
+  --text-muted:      #aaaaaa;
+  --text-muted-rgba: rgba(170, 170, 170, 1);
+  --border:          #111215;
+  --border-rgba:     rgba(17, 18, 21, 1);
+  --gold:            #f1bf1c;
+  --gold-rgba:       rgba(241, 191, 28, 1);
+  --font-display:    'Oranienbaum', Georgia, serif;
+  --font-ui:         'Montserrat', sans-serif;
+  --font-body:       'Comfortaa', sans-serif;
+  --font-mono:       'Courier New', monospace;
+  --bg-gradient:     linear-gradient(187deg, #1c1f24 15%, #101112 30%, #252525 45%, #1c2129 65%);
+}
 
+:root[data-theme="dark"] {
+  --bg:              #13161c;
+  --bg-rgba:         rgba(19, 22, 28, 1);
+  --bg-card:         #1d1d1d;
+  --bg-card-rgba:    rgba(29, 29, 29, 1);
+  --bg-deep:         #16181e;
+  --bg-deep-rgba:    rgba(22, 24, 30, 1);
+  --accent:          #808093f7;
+  --accent-rgba:     rgba(114, 114, 138, 0.921);
+  --text:            #f7c032f7;
+  --text-rgba:       rgba(238, 238, 238, 1);
+  --text-muted:      #05043a;
+  --text-muted-rgba: rgba(5, 4, 58, 1);
+  --border:          #b8b9bb;
+  --border-rgba:     rgba(184, 185, 187, 1);
+  --gold:            #fccb28;
+  --gold-rgba:       rgba(252, 203, 40, 1);
+  --font-display:    'Oranienbaum', Georgia, serif;
+  --font-ui:         'Montserrat', sans-serif;
+  --font-body:       'Comfortaa', sans-serif;
+  --font-mono:       'Courier New', monospace;
+  --bg-gradient:     linear-gradient(187deg, #1e1e20 15%, #161617 31%, #1a1a1c 47%, #2a292f 65%);
+}
 
-/* Global reset for CCG dark theme */
+:root[data-theme="light"] {
+  --bg:              #EEEEEE;
+  --bg-rgba:         rgba(238, 238, 238, 1);
+  --bg-card:         #f3f0de;
+  --bg-card-rgba:    rgba(243, 240, 222, 1);
+  --bg-deep:         #d0c3a9;
+  --bg-deep-rgba:    rgba(208, 195, 169, 1);
+  --accent:          #aa8c47;
+  --accent-rgba:     rgba(170, 140, 71, 1);
+  --text:            #141415;
+  --text-rgba:       rgba(11, 12, 14, 1);
+  --text-muted:      #555555;
+  --text-muted-rgba: rgba(85, 85, 85, 1);
+  --border:          #cccccc;
+  --border-rgba:     rgba(204, 204, 204, 1);
+  --gold:            #eec11d;
+  --gold-rgba:       rgba(238, 193, 29, 1);
+  --font-display:    'Oranienbaum', Georgia, serif;
+  --font-ui:         'Montserrat', sans-serif;
+  --font-body:       'Comfortaa', sans-serif;
+  --font-mono:       'Courier New', monospace;
+  --bg-gradient:     linear-gradient(135deg, #e8e4dc 15%, #EEEEEE 35%, #f0ede8 47%, #e8e4dc 67%);
+}
+
 html, body {
   overscroll-behavior: none;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #0a0e1a 0%, #0d1117 40%, #111827 70%, #0a0f1e 100%);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
   min-height: 100vh;
-  color: #FAFAFA;
-  font-family: 'Comfortaa', sans-serif;
+  color: var(--text);
+  font-family: var(--font-body);
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.9), 0 0 1px rgba(0,0,0,1);
-  -webkit-text-stroke: 0.3px rgba(20,40,80,0.8);
+  transition: background 400ms ease, color 400ms ease;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-/* Sharp corners throughout — brand rule */
-button, input, textarea, select {
-  border-radius: 0 !important;
-}
+#__next { background: transparent; min-height: 100vh; }
 
-/* Scrollbar styling for dark theme */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #0A0A0A;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.12);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.2);
-}
+button, input, textarea, select { border-radius: 0 !important; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--border); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 @keyframes dropIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  65% {
-    opacity: 1;
-    transform: translateY(8px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0%   { opacity: 0; transform: translateY(-40px); }
+  65%  { opacity: 1; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .animate-drop-in {
@@ -65,9 +113,156 @@ button, input, textarea, select {
   animation-delay: 900ms;
 }
 
-.hidden-mobile { display: block; }
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.15); }
+}
+
+.hidden-mobile  { display: block; }
 .hidden-desktop { display: none; }
 @media (max-width: 860px) {
-  .hidden-mobile { display: none !important; }
+  .hidden-mobile  { display: none !important; }
   .hidden-desktop { display: block !important; }
+}
+
+/* Responsive text sizes */
+@media (max-width: 767px) {
+  .hero-title         { font-size: 2.4rem !important; }
+  .page-title.title-xl { font-size: 2rem !important; }
+  .name-title         { font-size: 2rem !important; }
+  .section-spacing    { padding-top: 4rem; padding-bottom: 4rem; }
+  .container-custom   { padding-left: 1rem; padding-right: 1rem; }
+  #services-section   { padding-top: 0 !important; }
+}
+
+.container-custom {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .container-custom { padding-left: 3rem; padding-right: 3rem; }
+}
+
+.section-spacing { padding-top: 6rem; padding-bottom: 6rem; }
+@media (min-width: 768px) {
+  .section-spacing { padding-top: 8rem; padding-bottom: 8rem; }
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+
+.title-xl {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+
+.title-sm {
+  font-family: var(--font-ui);
+  font-weight: 500;
+}
+
+.name-title {
+  font-size: 7rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.spec-text {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.page-title { font-family: var(--font-display); }
+
+.gem-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: all 0.5s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.gem-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 30px rgba(255,211,105,0.08);
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--bg);
+  padding: 0.75rem 2rem;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text);
+  padding: 0.75rem 2rem;
+  font-family: var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.95rem;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-gold {
+  background: var(--gold-rgba);
+  border: 1px solid var(--gold-rgba);
+  color: var(--bg-rgba);
+}
+
+.btn-gold:hover {
+  background-color: transparent;
+  border: 2px solid var(--gold-rgba);
+  color: var(--bg-rgba);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text);
+  background-color: transparent;
+}
+
+.hover-lift { transition: transform 0.3s ease; }
+.hover-lift:hover { transform: translateY(-6px); }
+
+/* Full-screen fixed containers that need theme background */
+.themed-fullscreen {
+  background: var(--bg-gradient);
 }

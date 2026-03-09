@@ -266,3 +266,42 @@ button, input, textarea, select { border-radius: 0 !important; }
 .themed-fullscreen {
   background: var(--bg-gradient);
 }
+
+/* ── Machine scene lamp effect ── */
+.machine-scene { position: absolute; inset: 0; overflow: hidden; }
+.machine-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.machine-light {
+  opacity: 0.4;
+  transition: opacity 400ms ease 200ms;
+}
+.machine-dark {
+  opacity: 0;
+  transition: opacity 400ms ease 0ms;
+  filter: brightness(1.05) contrast(1.05);
+}
+
+/* Dark mode — bulb glows first, machine illuminates after */
+:root[data-theme="dark"] .machine-light {
+  opacity: 0;
+  transition: opacity 400ms ease 0ms;
+}
+:root[data-theme="dark"] .machine-dark {
+  opacity: 0.55;
+  transition: opacity 400ms ease 200ms;
+}
+
+/* Bulb pulse in dark mode */
+@keyframes bulbPulse {
+  0%, 100% { filter: brightness(1.05) contrast(1.05); }
+  50%       { filter: brightness(1.12) contrast(1.08); }
+}
+:root[data-theme="dark"] .machine-dark {
+  animation: bulbPulse 4s ease-in-out infinite;
+}
