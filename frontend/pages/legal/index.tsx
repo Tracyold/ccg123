@@ -5,10 +5,10 @@ import SmsPreview from '../../components/legal/smscomp';
 
 // ─── Shared text primitives ───────────────────────────────────────────────────
 const P = ({ children }: { children: React.ReactNode }) => (
-  <p style={{ fontSize: '16px', lineHeight: 1.9, color: 'rgba(var(--text-rgb, 238,238,238),0.85)', marginBottom: '16px' }}>{children}</p>
+  <p style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text)', marginBottom: '16px' }}>{children}</p>
 );
 const Li = ({ children }: { children: React.ReactNode }) => (
-  <li style={{ fontSize: '16px', lineHeight: 1.9, color: 'rgba(var(--text-rgb, 238,238,238),0.85)', marginBottom: '8px' }}>{children}</li>
+  <li style={{ fontSize: '16px', lineHeight: 1.9, color: 'var(--text)', marginBottom: '8px' }}>{children}</li>
 );
 const Num = ({ n, title, children }: { n: string; title: string; children: React.ReactNode }) => (
   <div style={{ marginBottom: '28px' }}>
@@ -158,17 +158,17 @@ export default function LegalUnified() {
           font-family: 'Comfortaa', sans-serif;
           font-size: 12px; letter-spacing: 0.05em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.75);
+          color: var(--text);
           transition: color 180ms, background 180ms;
           border-left: 2px solid transparent;
         }
-        .toc-btn:hover { color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.03); }
-        .toc-btn.active { color: #6fa3d8; background: rgba(59,130,200,0.1); border-left-color: #4a8ec2; padding-left: 12px; }
+        .toc-btn:hover { color: var(--text-muted); background: transparent; }
+        .toc-btn.active { color: var(--accent); background: rgba(255,211,105,0.08); border-left-color: var(--accent); padding-left: 12px; }
         .toc-group-label {
           font-family: 'Comfortaa', sans-serif;
           font-size: 9px; letter-spacing: 0.3em;
           text-transform: uppercase;
-          color: rgba(100,160,220,0.5);
+          color: var(--text-muted);
           padding: 14px 14px 6px;
         }
         .mobile-tab {
@@ -177,10 +177,10 @@ export default function LegalUnified() {
           font-family: 'Comfortaa', sans-serif;
           font-size: 10px; letter-spacing: 0.1em;
           text-transform: uppercase; white-space: nowrap;
-          cursor: pointer; color: rgba(255,255,255,0.75);
+          cursor: pointer; color: var(--text);
           transition: color 180ms, border-color 180ms;
         }
-        .mobile-tab.active { color: #6fa3d8; border-bottom-color: #4a8ec2; }
+        .mobile-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
         .phone-thread::-webkit-scrollbar { display: none; }
         .anchor { scroll-margin-top: 120px; }
         @media (min-width: 901px) { .mobile-toc-bar { display: none !important; } }
@@ -416,7 +416,7 @@ export default function LegalUnified() {
             <GoldNote>
               <strong>Active Work Order Requirement:</strong> Work order notifications cannot be disabled while you have an open work order. Because your gemstone is in our possession during this time, we require the ability to reach you with status updates and required confirmations. This toggle becomes available to turn off once your work order is complete and your item has been returned.
             </GoldNote>
-            <p style={{ marginTop: '8px', fontSize: '14px', color: 'rgba(var(--text-rgb, 238,238,238),0.85)' }}>Sample messages:</p>
+            <p style={{ marginTop: '8px', fontSize: '14px', color: 'var(--text)' }}>Sample messages:</p>
             <SmsPreview examples={acctNotificationExamples} />
 
             <SectionHeading id="listing-alerts">New Gemstone Listing Alerts (Marketing)</SectionHeading>
@@ -447,7 +447,7 @@ export default function LegalUnified() {
             {/* ── Contact block ── */}
             <div style={{ marginTop: '64px', padding: '28px', border: '1px solid #d4af37', background: '#d4af37', borderRadius: '2px' }}>
               <p style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Contact</p>
-              <p style={{ fontSize: '13px', color: 'rgba(var(--text-rgb, 238,238,238),0.85)', lineHeight: 2.1, margin: 0 }}>
+              <p style={{ fontSize: '13px', color: 'var(--text)', lineHeight: 2.1, margin: 0 }}>
                 Cutting Corners Gems<br />
                 850 S River Dr #2117, Tempe, Arizona 85281<br />
                 Website Admin: Tracy Young — admin@cuttingcornersgems.com<br />
