@@ -230,7 +230,11 @@ export default function Home() {
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       const progress = Math.min(scrollY / maxScroll, 1);
       const angle = 135 + progress * 45;
-      document.body.style.backgroundImage = `linear-gradient(${angle}deg, #222831 0%, #2d3340 35%, #393E46 60%, #222831 100%)`;
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      const c1 = isLight ? '#e8e4dc' : '#222831';
+      const c2 = isLight ? '#EEEEEE' : '#2d3340';
+      const c3 = isLight ? '#f0ede8' : '#393E46';
+      document.body.style.backgroundImage = `linear-gradient(${angle}deg, ${c1} 0%, ${c2} 35%, ${c3} 60%, ${c1} 100%)`;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
