@@ -341,11 +341,6 @@ export default function Home() {
 
         {/* ── Hero Section ── */}
         <section style={{ minHeight: '100svh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-          {/* Machine scene — lamp effect */}
-          <div className="machine-scene absolute inset-0">
-            <img src="https://ik.imagekit.io/postvibe/light.png?updatedAt=1773123809463"  className="machine-img ml-off" alt="" />
-            <img src="https://ik.imagekit.io/postvibe/dark.png?updatedAt=1773123787069" className="machine-img ml-on"  alt="" />
-          </div>
           {/* Dark vignette overlay */}
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 40%, transparent 20%, var(--bg) 80%, var(--bg) 100%)' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, var(--bg) 0%, transparent 20%, transparent 80%, var(--bg) 100%)' }} />
