@@ -224,7 +224,18 @@ h1, h2, h3, h4, h5, h6 {
 
 
 function MachineShowcase() {
-  const [lampOn, setLampOn] = React.useState(false);
+  const [lampOn, setLampOn] = React.useState(() => {
+    if (typeof window !== 'undefined') return document.documentElement.getAttribute('data-theme') !== 'dark';
+    return true;
+  });
+
+  React.useEffect(() => {
+    const obs = new MutationObserver(() => {
+      setLampOn(document.documentElement.getAttribute('data-theme') !== 'dark');
+    });
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => obs.disconnect();
+  }, []);
   return (
     <section style={{ padding: '80px 0 40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={{ position: 'relative', width: '100%', maxWidth: '700px', margin: '0 auto', padding: '0 24px' }}>
@@ -272,7 +283,11 @@ function MachineShowcase() {
               {lampOn ? 'On' : 'Off'}
             </span>
             <button
-              onClick={() => setLampOn(p => !p)}
+              onClick={() => {
+              const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+              document.documentElement.setAttribute('data-theme', next);
+              localStorage.setItem('ccg-theme', next);
+            }}
               aria-label="Toggle lamp"
               style={{
                 width: '52px', height: '28px', borderRadius: '14px',
