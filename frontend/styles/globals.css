@@ -330,34 +330,34 @@ button, input, textarea, select { border-radius: 0 !important; }
 }
 
 @keyframes bulbAppear {
-  0%  { opacity: 0.75; filter: brightness(1.35) contrast(1.25) saturate(1.8) hue-rotate(-0.0deg); }
-  3%  { opacity: 0.6833; filter: brightness(1.318) contrast(1.228) saturate(1.727) hue-rotate(-1.7deg); }
-  7%  { opacity: 0.621; filter: brightness(1.288) contrast(1.207) saturate(1.66) hue-rotate(-3.4deg); }
-  10%  { opacity: 0.563; filter: brightness(1.261) contrast(1.188) saturate(1.597) hue-rotate(-4.9deg); }
-  13%  { opacity: 0.5092; filter: brightness(1.235) contrast(1.17) saturate(1.538) hue-rotate(-6.3deg); }
-  17%  { opacity: 0.4593; filter: brightness(1.211) contrast(1.153) saturate(1.484) hue-rotate(-7.6deg); }
-  20%  { opacity: 0.4133; filter: brightness(1.189) contrast(1.138) saturate(1.434) hue-rotate(-8.8deg); }
-  23%  { opacity: 0.3709; filter: brightness(1.169) contrast(1.124) saturate(1.388) hue-rotate(-9.9deg); }
-  27%  { opacity: 0.3321; filter: brightness(1.15) contrast(1.111) saturate(1.346) hue-rotate(-10.9deg); }
-  30%  { opacity: 0.2967; filter: brightness(1.133) contrast(1.099) saturate(1.307) hue-rotate(-11.8deg); }
-  33%  { opacity: 0.2644; filter: brightness(1.118) contrast(1.088) saturate(1.272) hue-rotate(-12.7deg); }
-  37%  { opacity: 0.2353; filter: brightness(1.104) contrast(1.078) saturate(1.241) hue-rotate(-13.4deg); }
-  40%  { opacity: 0.209; filter: brightness(1.091) contrast(1.07) saturate(1.212) hue-rotate(-14.1deg); }
-  43%  { opacity: 0.1856; filter: brightness(1.08) contrast(1.062) saturate(1.186) hue-rotate(-14.7deg); }
-  47%  { opacity: 0.1647; filter: brightness(1.07) contrast(1.055) saturate(1.164) hue-rotate(-15.3deg); }
-  50%  { opacity: 0.1462; filter: brightness(1.061) contrast(1.049) saturate(1.144) hue-rotate(-15.8deg); }
-  53%  { opacity: 0.1301; filter: brightness(1.054) contrast(1.043) saturate(1.126) hue-rotate(-16.2deg); }
-  57%  { opacity: 0.1161; filter: brightness(1.047) contrast(1.039) saturate(1.111) hue-rotate(-16.5deg); }
-  60%  { opacity: 0.1042; filter: brightness(1.041) contrast(1.035) saturate(1.098) hue-rotate(-16.8deg); }
-  63%  { opacity: 0.094; filter: brightness(1.036) contrast(1.031) saturate(1.087) hue-rotate(-17.1deg); }
-  67%  { opacity: 0.0856; filter: brightness(1.032) contrast(1.029) saturate(1.078) hue-rotate(-17.3deg); }
-  70%  { opacity: 0.0786; filter: brightness(1.029) contrast(1.026) saturate(1.07) hue-rotate(-17.5deg); }
-  73%  { opacity: 0.0731; filter: brightness(1.026) contrast(1.024) saturate(1.064) hue-rotate(-17.7deg); }
-  77%  { opacity: 0.0688; filter: brightness(1.024) contrast(1.023) saturate(1.06) hue-rotate(-17.8deg); }
-  80%  { opacity: 0.0655; filter: brightness(1.023) contrast(1.022) saturate(1.056) hue-rotate(-17.9deg); }
-  83%  { opacity: 0.0632; filter: brightness(1.022) contrast(1.021) saturate(1.053) hue-rotate(-17.9deg); }
-  87%  { opacity: 0.0616; filter: brightness(1.021) contrast(1.021) saturate(1.052) hue-rotate(-18.0deg); }
-  100% { opacity: 0.09; filter: brightness(1.021) contrast(1.021) saturate(1.052) hue-rotate(-18.0deg); }
+  0%  { opacity: 0.8002; filter: brightness(1.35) contrast(1.25) saturate(1.8) hue-rotate(-0.0deg); }
+  3%  { opacity: 0.047; filter: brightness(1.318) contrast(1.228) saturate(1.727) hue-rotate(-1.7deg); }
+  7%  { opacity: 0.7672; filter: brightness(1.288) contrast(1.207) saturate(1.66) hue-rotate(-3.4deg); }
+  10%  { opacity: 0.7471; filter: brightness(1.261) contrast(1.188) saturate(1.597) hue-rotate(-4.9deg); }
+  13%  { opacity: 0.5562; filter: brightness(1.235) contrast(1.17) saturate(1.538) hue-rotate(-6.3deg); }
+  17%  { opacity: 0.5348; filter: brightness(1.211) contrast(1.153) saturate(1.484) hue-rotate(-7.6deg); }
+  20%  { opacity: 0.4927; filter: brightness(1.189) contrast(1.138) saturate(1.434) hue-rotate(-8.8deg); }
+  23%  { opacity: 0.4617; filter: brightness(1.169) contrast(1.124) saturate(1.388) hue-rotate(-9.9deg); }
+  27%  { opacity: 0.4167; filter: brightness(1.15) contrast(1.111) saturate(1.346) hue-rotate(-10.9deg); }
+  30%  { opacity: 0.3949; filter: brightness(1.133) contrast(1.099) saturate(1.307) hue-rotate(-11.8deg); }
+  33%  { opacity: 0.3522; filter: brightness(1.118) contrast(1.088) saturate(1.272) hue-rotate(-12.7deg); }
+  37%  { opacity: 0.3456; filter: brightness(1.104) contrast(1.078) saturate(1.241) hue-rotate(-13.4deg); }
+  40%  { opacity: 0.3333; filter: brightness(1.091) contrast(1.07) saturate(1.212) hue-rotate(-14.1deg); }
+  43%  { opacity: 0.3265; filter: brightness(1.08) contrast(1.062) saturate(1.186) hue-rotate(-14.7deg); }
+  47%  { opacity: 0.3159; filter: brightness(1.07) contrast(1.055) saturate(1.164) hue-rotate(-15.3deg); }
+  50%  { opacity: 0.3049; filter: brightness(1.061) contrast(1.049) saturate(1.144) hue-rotate(-15.8deg); }
+  53%  { opacity: 0.2828; filter: brightness(1.054) contrast(1.043) saturate(1.126) hue-rotate(-16.2deg); }
+  57%  { opacity: 0.2739; filter: brightness(1.047) contrast(1.039) saturate(1.111) hue-rotate(-16.5deg); }
+  60%  { opacity: 0.265; filter: brightness(1.041) contrast(1.035) saturate(1.098) hue-rotate(-16.8deg); }
+  63%  { opacity: 0.2512; filter: brightness(1.036) contrast(1.031) saturate(1.087) hue-rotate(-17.1deg); }
+  67%  { opacity: 0.2423; filter: brightness(1.032) contrast(1.029) saturate(1.078) hue-rotate(-17.3deg); }
+  70%  { opacity: 0.2334; filter: brightness(1.029) contrast(1.026) saturate(1.07) hue-rotate(-17.5deg); }
+  73%  { opacity: 0.2229; filter: brightness(1.026) contrast(1.024) saturate(1.064) hue-rotate(-17.7deg); }
+  77%  { opacity: 0.2108; filter: brightness(1.024) contrast(1.023) saturate(1.06) hue-rotate(-17.8deg); }
+  80%  { opacity: 0.2049; filter: brightness(1.023) contrast(1.022) saturate(1.056) hue-rotate(-17.9deg); }
+  83%  { opacity: 0.1906; filter: brightness(1.022) contrast(1.021) saturate(1.053) hue-rotate(-17.9deg); }
+  87%  { opacity: 0.1838; filter: brightness(1.021) contrast(1.021) saturate(1.052) hue-rotate(-18.0deg); }
+  100% { opacity: 0.1739; filter: brightness(1.021) contrast(1.021) saturate(1.052) hue-rotate(-18.0deg); }
 }
 
 @keyframes bulbPulse {
