@@ -255,13 +255,13 @@ function MachineShowcase() {
 
         {/* Name plate */}
         <div style={{ textAlign: 'center', marginTop: '8px', zIndex: 1, position: 'relative' }}>
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '6px' }}>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: lampOn ? 'var(--text-muted)' : 'transparent', marginBottom: '6px', transition: 'color 600ms ease' }}>
             Est. 1982 · Faceting Equipment
           </p>
-          <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: 400, color: 'var(--text)', letterSpacing: '0.04em', margin: '0 0 4px' }}>
+          <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: 400, color: lampOn ? 'var(--text)' : 'transparent', letterSpacing: '0.04em', margin: '0 0 4px', transition: 'color 600ms ease' }}>
             GemMaster Facet-ette
           </h3>
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 28px' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: lampOn ? 'var(--text-muted)' : 'transparent', margin: '0 0 28px', transition: 'color 600ms ease' }}>
             Variable Speed · Precision Angle · Water Feed
           </p>
 
