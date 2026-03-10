@@ -317,7 +317,7 @@ button, input, textarea, select { border-radius: 0 !important; }
   object-position: center;
 }
 .machine-light {
-  opacity: 0.4;
+  opacity: 0.6;
   object-position: center 48%;
   transition: opacity 2800ms cubic-bezier(0.05, 0.9, 0.1, 1);
 }
@@ -331,7 +331,7 @@ button, input, textarea, select { border-radius: 0 !important; }
   transition: opacity 40ms ease-in;
 }
 :root[data-theme="dark"] .machine-dark {
-  opacity: 0.55;
+  opacity: 0.6;
   transition: opacity 2800ms cubic-bezier(0.05, 0.9, 0.1, 1);
   animation: bulbPulse 4s ease-in-out infinite;
 }
