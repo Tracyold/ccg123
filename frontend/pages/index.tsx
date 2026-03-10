@@ -284,13 +284,10 @@ export default function Home() {
 
         {/* ── Hero Section ── */}
         <section style={{ minHeight: '100svh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-          {/* Machine scene — multi-layer lamp effect */}
+          {/* Machine scene — lamp effect */}
           <div className="machine-scene absolute inset-0">
-            <img src="https://ik.imagekit.io/postvibe/light-off.png?updatedAt=1773060290554"   className="machine-img ml-base" alt="" />
-            <img src="https://ik.imagekit.io/postvibe/light-off.png?updatedAt=1773060290554"   className="machine-img ml-mid"  alt="" />
-            <img src="https://ik.imagekit.io/postvibe/Light-on-2.png?updatedAt=1773061160726"  className="machine-img ml-glow ml-glow-1" alt="" />
-            <img src="https://ik.imagekit.io/postvibe/Light-on-2.png?updatedAt=1773061160726"  className="machine-img ml-glow ml-glow-2" alt="" />
-            <div className="machine-overlay" />
+            <img src="https://ik.imagekit.io/postvibe/light-off.png?updatedAt=1773060290554"  className="machine-img ml-off" alt="" />
+            <img src="https://ik.imagekit.io/postvibe/Light-on-2.png?updatedAt=1773061160726" className="machine-img ml-on"  alt="" />
           </div>
           {/* Dark vignette overlay */}
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 40%, transparent 20%, var(--bg) 80%, var(--bg) 100%)' }} />
