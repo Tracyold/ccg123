@@ -267,46 +267,13 @@ button, input, textarea, select { border-radius: 0 !important; }
   background: var(--bg-gradient);
 }
 
-/* ── Machine scene lamp effect ── */
-.machine-scene { position: absolute; inset: 0; overflow: hidden; }
-.machine-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-.machine-light {
-  opacity: 0.4;
-  transition: opacity 400ms ease 200ms;
-}
-.machine-dark {
-  opacity: 0;
-  transition: opacity 400ms ease 0ms;
-  filter: brightness(1.05) contrast(1.05);
-}
 
-/* Dark mode — bulb glows first, machine illuminates after */
-:root[data-theme="dark"] .machine-light {
-  opacity: 0;
-  transition: opacity 400ms ease 0ms;
-}
-:root[data-theme="dark"] .machine-dark {
-  opacity: 0.55;
-  transition: opacity 400ms ease 200ms;
-}
-
-/* Bulb pulse in dark mode */
 @keyframes bulbPulse {
   0%, 100% { filter: brightness(1.05) contrast(1.05); }
   50%       { filter: brightness(1.12) contrast(1.08); }
 }
-:root[data-theme="dark"] .machine-dark {
-  animation: bulbPulse 4s ease-in-out infinite;
-}
 
-/* ── Machine scene lamp effect ── */
+/* ── Machine scene — multi-layer lamp ── */
 .machine-scene { position: absolute; inset: 0; overflow: hidden; }
 .machine-img {
   position: absolute;
@@ -314,28 +281,62 @@ button, input, textarea, select { border-radius: 0 !important; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
 }
-.machine-light {
-  opacity: 0.6;
+
+/* Light mode — bright layered room */
+.ml-base {
   object-position: center 48%;
+  opacity: 0.65;
   transition: opacity 2800ms cubic-bezier(0.05, 0.9, 0.1, 1);
 }
-.machine-dark {
-  opacity: 0;
-  filter: brightness(1.05) contrast(1.05);
-  transition: opacity 40ms ease-in;
+.ml-mid {
+  object-position: center 48%;
+  opacity: 0.30;
+  transition: opacity 2800ms cubic-bezier(0.05, 0.9, 0.1, 1);
 }
-:root[data-theme="dark"] .machine-light {
-  opacity: 0;
-  transition: opacity 40ms ease-in;
+.ml-glow {
+  opacity: 0.20;
+  transition: opacity 2800ms cubic-bezier(0.05, 0.9, 0.1, 1);
+  filter: brightness(1.1);
 }
-:root[data-theme="dark"] .machine-dark {
-  opacity: 0.6;
+
+/* Dark mode — light-off layers disappear, glow layer fades in slowly */
+:root[data-theme="dark"] .ml-base {
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+:root[data-theme="dark"] .ml-mid {
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+:root[data-theme="dark"] .ml-glow {
+  opacity: 0.55;
   transition: opacity 2800ms cubic-bezier(0.05, 0.9, 0.1, 1);
   animation: bulbPulse 4s ease-in-out infinite;
 }
 
+/* Pulse when toggling dark */
+@keyframes bulbPulse {
+  0%, 100% { filter: brightness(1.05) contrast(1.05); }
+  50%       { filter: brightness(1.15) contrast(1.08); }
+}
+
+/* Bulb turning off — flash then fade */
+@keyframes bulbOff {
+  0%   { opacity: 0.75; filter: brightness(1.4); }
+  15%  { opacity: 0.60; filter: brightness(1.2); }
+  100% { opacity: 0.55; filter: brightness(1.05) contrast(1.05); }
+}
+@keyframes bulbOn {
+  0%   { opacity: 0.30; filter: brightness(0.8); }
+  20%  { opacity: 0.50; filter: brightness(1.3); }
+  100% { opacity: 0.20; filter: brightness(1.1); }
+}
+
+.lamp-transitioning-on  .ml-glow { animation: bulbOn  600ms ease-out forwards; }
+.lamp-transitioning-off .ml-glow { animation: bulbOff 600ms ease-out forwards; }
+
+/* Overlay flash */
 .machine-overlay {
   position: absolute;
   inset: 0;
@@ -343,24 +344,9 @@ button, input, textarea, select { border-radius: 0 !important; }
   opacity: 0;
   z-index: 2;
 }
-
-@keyframes lampOn {
-  0%   { opacity: 1;   backdrop-filter: blur(0.4px); background: rgba(0,0,0,0.35); }
-  30%  { opacity: 1;   backdrop-filter: blur(0.4px); background: rgba(0,0,0,0.2); }
-  65%  { opacity: 0.4; backdrop-filter: blur(0px);   background: rgba(0,0,0,0.08); }
-  100% { opacity: 0;   backdrop-filter: blur(0px);   background: transparent; }
+@keyframes lampFlash {
+  0%   { opacity: 0.5; background: rgba(255,240,180,0.15); }
+  40%  { opacity: 0.2; background: rgba(255,240,180,0.05); }
+  100% { opacity: 0;   background: transparent; }
 }
-
-@keyframes lampOff {
-  0%   { opacity: 1;   backdrop-filter: blur(0.4px); background: rgba(255,255,255,0.25); }
-  30%  { opacity: 1;   backdrop-filter: blur(0.4px); background: rgba(255,255,255,0.12); }
-  65%  { opacity: 0.4; backdrop-filter: blur(0px);   background: rgba(255,255,255,0.04); }
-  100% { opacity: 0;   backdrop-filter: blur(0px);   background: transparent; }
-}
-
-.lamp-transitioning-on  .machine-overlay { animation: lampOn  64ms ease-out forwards; }
-.lamp-transitioning-off .machine-overlay { animation: lampOff 64ms ease-out forwards; }
-@keyframes bulbPulse {
-  0%, 100% { filter: brightness(1.05) contrast(1.05); }
-  50%       { filter: brightness(1.12) contrast(1.08); }
-}
+.lamp-transitioning-on .machine-overlay  { animation: lampFlash 500ms ease-out forwards; }

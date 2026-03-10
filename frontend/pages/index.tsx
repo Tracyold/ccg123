@@ -284,10 +284,11 @@ export default function Home() {
 
         {/* ── Hero Section ── */}
         <section style={{ minHeight: '100svh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-          {/* Machine scene — lamp off (light mode) / lamp on (dark mode) */}
+          {/* Machine scene — multi-layer lamp effect */}
           <div className="machine-scene absolute inset-0">
-            <img src="https://ik.imagekit.io/postvibe/light-off.png?updatedAt=1773060290554" className="machine-img machine-light" alt="" />
-            <img src="https://ik.imagekit.io/postvibe/Light-on-2.png?updatedAt=1773061160726" className="machine-img machine-dark" alt="" />
+            <img src="https://ik.imagekit.io/postvibe/light-off.png?updatedAt=1773060290554"   className="machine-img ml-base" alt="" />
+            <img src="https://ik.imagekit.io/postvibe/light-off.png?updatedAt=1773060290554"   className="machine-img ml-mid"  alt="" />
+            <img src="https://ik.imagekit.io/postvibe/Light-on-2.png?updatedAt=1773061160726"  className="machine-img ml-glow" alt="" />
             <div className="machine-overlay" />
           </div>
           {/* Dark vignette overlay */}
