@@ -311,12 +311,37 @@ button, input, textarea, select { border-radius: 0 !important; }
 }
 
 @keyframes bulbAppear {
-  0%   { opacity: 0.75; filter: brightness(1.35) contrast(1.25) saturate(1.7) sepia(0.35); }
-  12%  { opacity: 0.70; filter: brightness(1.28) contrast(1.20) saturate(1.6) sepia(0.30); }
-  30%  { opacity: 0.55; filter: brightness(1.20) contrast(1.15) saturate(1.4) sepia(0.22); }
-  55%  { opacity: 0.30; filter: brightness(1.12) contrast(1.10) saturate(1.3) sepia(0.15); }
-  80%  { opacity: 0.12; filter: brightness(1.06) contrast(1.05) saturate(1.1) sepia(0.08); }
-  100% { opacity: 0.06; filter: brightness(1.02) contrast(1.02) saturate(1.05) sepia(0.04); }
+  0%  { opacity: 0.75; filter: brightness(1.35) contrast(1.25) saturate(1.7) sepia(0.35); }
+  3%  { opacity: 0.6833; filter: brightness(1.318) contrast(1.228) saturate(1.637) sepia(0.32); }
+  7%  { opacity: 0.621; filter: brightness(1.288) contrast(1.207) saturate(1.578) sepia(0.292); }
+  10%  { opacity: 0.563; filter: brightness(1.261) contrast(1.188) saturate(1.524) sepia(0.266); }
+  13%  { opacity: 0.5092; filter: brightness(1.235) contrast(1.17) saturate(1.473) sepia(0.242); }
+  17%  { opacity: 0.4593; filter: brightness(1.211) contrast(1.153) saturate(1.426) sepia(0.219); }
+  20%  { opacity: 0.4133; filter: brightness(1.189) contrast(1.138) saturate(1.383) sepia(0.199); }
+  23%  { opacity: 0.3709; filter: brightness(1.169) contrast(1.124) saturate(1.343) sepia(0.18); }
+  27%  { opacity: 0.3321; filter: brightness(1.15) contrast(1.111) saturate(1.306) sepia(0.162); }
+  30%  { opacity: 0.2967; filter: brightness(1.133) contrast(1.099) saturate(1.273) sepia(0.146); }
+  33%  { opacity: 0.2644; filter: brightness(1.118) contrast(1.088) saturate(1.243) sepia(0.132); }
+  37%  { opacity: 0.2353; filter: brightness(1.104) contrast(1.078) saturate(1.215) sepia(0.119); }
+  40%  { opacity: 0.209; filter: brightness(1.091) contrast(1.07) saturate(1.19) sepia(0.107); }
+  43%  { opacity: 0.1856; filter: brightness(1.08) contrast(1.062) saturate(1.168) sepia(0.096); }
+  47%  { opacity: 0.1647; filter: brightness(1.07) contrast(1.055) saturate(1.149) sepia(0.087); }
+  50%  { opacity: 0.1462; filter: brightness(1.061) contrast(1.049) saturate(1.131) sepia(0.079); }
+  53%  { opacity: 0.1301; filter: brightness(1.054) contrast(1.043) saturate(1.116) sepia(0.072); }
+  57%  { opacity: 0.1161; filter: brightness(1.047) contrast(1.039) saturate(1.103) sepia(0.065); }
+  60%  { opacity: 0.1042; filter: brightness(1.041) contrast(1.035) saturate(1.092) sepia(0.06); }
+  63%  { opacity: 0.094; filter: brightness(1.036) contrast(1.031) saturate(1.082) sepia(0.055); }
+  67%  { opacity: 0.0856; filter: brightness(1.032) contrast(1.029) saturate(1.074) sepia(0.051); }
+  70%  { opacity: 0.0786; filter: brightness(1.029) contrast(1.026) saturate(1.068) sepia(0.048); }
+  73%  { opacity: 0.0731; filter: brightness(1.026) contrast(1.024) saturate(1.062) sepia(0.046); }
+  77%  { opacity: 0.0688; filter: brightness(1.024) contrast(1.023) saturate(1.058) sepia(0.044); }
+  80%  { opacity: 0.0655; filter: brightness(1.023) contrast(1.022) saturate(1.055) sepia(0.042); }
+  83%  { opacity: 0.0632; filter: brightness(1.022) contrast(1.021) saturate(1.053) sepia(0.041); }
+  87%  { opacity: 0.0616; filter: brightness(1.021) contrast(1.021) saturate(1.052) sepia(0.041); }
+  90%  { opacity: 0.0607; filter: brightness(1.02) contrast(1.02) saturate(1.051) sepia(0.04); }
+  93%  { opacity: 0.0602; filter: brightness(1.02) contrast(1.02) saturate(1.05) sepia(0.04); }
+  97%  { opacity: 0.06; filter: brightness(1.02) contrast(1.02) saturate(1.05) sepia(0.04); }
+  100%  { opacity: 0.06; filter: brightness(1.02) contrast(1.02) saturate(1.05) sepia(0.04); }
 }
 
 @keyframes bulbPulse {
