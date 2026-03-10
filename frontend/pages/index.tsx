@@ -250,7 +250,7 @@ function MachineShowcase() {
         }} />
 
         {/* Machine images */}
-        <div style={{ position: 'relative', width: '100%', height: '480px', zIndex: 1 }}>
+        <div className="machine-showcase-img-wrap">
           <img src="https://ik.imagekit.io/postvibe/off.png?updatedAt=1773160807663"
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', mixBlendMode: 'multiply', opacity: dark ? 0 : 1, transition: 'opacity 150ms ease' }} alt="" />
           <img src="https://ik.imagekit.io/postvibe/off.png?updatedAt=1773160807663"
