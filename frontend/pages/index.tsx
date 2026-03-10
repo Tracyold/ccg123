@@ -222,6 +222,56 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
+function MachineShowcase() {
+  const [lampOn, setLampOn] = React.useState(false);
+  return (
+    <section style={{ padding: '80px 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ position: 'relative', width: '100%', maxWidth: '700px', margin: '0 auto' }}>
+        {/* Machine images */}
+        <div style={{ position: 'relative', width: '100%', height: '480px' }}>
+          <img
+            src="https://ik.imagekit.io/postvibe/off.png?updatedAt=1773160807663"
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', mixBlendMode: 'multiply', opacity: lampOn ? 0 : 1, transition: 'opacity 150ms ease' }}
+            alt="Faceting machine lamp off"
+          />
+          <img
+            src="https://ik.imagekit.io/postvibe/on..png?updatedAt=1773160821219"
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', mixBlendMode: 'multiply', opacity: lampOn ? 1 : 0, transition: 'opacity 2800ms cubic-bezier(0.05, 0.9, 0.1, 1)' }}
+            alt="Faceting machine lamp on"
+          />
+        </div>
+
+        {/* Light switch */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', marginTop: '32px' }}>
+          <span style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+            {lampOn ? 'Lamp On' : 'Lamp Off'}
+          </span>
+          <button
+            onClick={() => setLampOn(p => !p)}
+            aria-label="Toggle lamp"
+            style={{
+              width: '52px', height: '28px', borderRadius: '14px',
+              background: lampOn ? 'var(--gold)' : 'var(--border)',
+              border: 'none', cursor: 'pointer', position: 'relative',
+              transition: 'background 300ms ease'
+            }}
+          >
+            <span style={{
+              position: 'absolute', top: '4px',
+              left: lampOn ? '28px' : '4px',
+              width: '20px', height: '20px', borderRadius: '50%',
+              background: 'var(--bg-card)',
+              transition: 'left 300ms ease',
+              display: 'block'
+            }} />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
 
   useEffect(() => {
@@ -331,7 +381,11 @@ export default function Home() {
 
 
 
-        {/* ── Services Section ── */}
+
+        {/* ── Machine Showcase Section ── */}
+        <MachineShowcase />
+
+        {/* ── Services Section ── */
         <section id="services-section" data-reveal-group style={{ minHeight: "100svh", display: "flex", alignItems: "center", paddingTop: "6rem", paddingBottom: "6rem" }}>
           <div className="container-custom">
             <div
