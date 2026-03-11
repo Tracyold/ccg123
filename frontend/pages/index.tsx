@@ -239,16 +239,6 @@ function MachineShowcase() {
     <section style={{ padding: '80px 0 40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={{ position: 'relative', width: '100%', maxWidth: '700px', margin: '0 auto', padding: '0 24px' }}>
 
-        {/* Warm glow */}
-        <div style={{
-          position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
-          width: '500px', height: '300px',
-          background: 'radial-gradient(ellipse at 50% 30%, rgba(252,203,40,0.07) 0%, transparent 60%)',
-          opacity: dark ? 1 : 0,
-          transition: 'opacity 2800ms cubic-bezier(0.05, 0.9, 0.1, 1)',
-          pointerEvents: 'none', zIndex: 0
-        }} />
-
         {/* Machine images */}
         <div className="machine-showcase-img-wrap">
           <img src="https://ik.imagekit.io/postvibe/off.png"
