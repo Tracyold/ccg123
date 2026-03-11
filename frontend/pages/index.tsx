@@ -237,7 +237,7 @@ function MachineShowcase() {
 
   return (
     <section style={{ padding: '80px 0 40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <div style={{ position: 'relative', width: '100%', maxWidth: '1000px', margin: '0 auto', padding: '0 24px' }}>
+      <div style={{ position: 'relative', width: '100%', maxWidth: '1400px', margin: '0 auto', padding: '0 24px' }}>
 
         {/* Machine images */}
         <div className="machine-showcase-img-wrap">
