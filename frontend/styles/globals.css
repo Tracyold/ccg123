@@ -362,9 +362,8 @@ button, input, textarea, select { border-radius: 0 !important; }
 .svc-slot__img-wrap {
   position: relative;
   width: 100%;
-  border: 1px solid var(--border);
   overflow: hidden;
-  background: var(--bg-card);
+  background: transparent;
 }
 .svc-slot--normal .svc-slot__img-wrap { height: 280px; }
 .svc-slot--large  .svc-slot__img-wrap { height: 400px; }

@@ -30,7 +30,7 @@ function ServiceSlot({ darkSrc, lightSrc, href, label, dark, size = 'normal' }: 
         <img
           src={lightSrc}
           className="svc-slot__img"
-          style={{ opacity: dark ? 0 : 1, transition: 'opacity 150ms ease' }}
+          style={{ opacity: dark ? 0 : 1, transition: 'opacity 150ms ease', mixBlendMode: 'multiply' }}
           alt=""
         />
         <img
