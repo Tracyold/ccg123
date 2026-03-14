@@ -367,6 +367,7 @@ button, input, textarea, select { border-radius: 0 !important; }
 }
 .svc-slot--normal .svc-slot__img-wrap { height: 280px; }
 .svc-slot--large  .svc-slot__img-wrap { height: 400px; }
+.svc-slot__label { display: none; }
 .svc-slot__img {
   position: absolute;
   inset: 0;

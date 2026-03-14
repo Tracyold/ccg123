@@ -26,7 +26,7 @@ interface SlotProps {
 function ServiceSlot({ darkSrc, lightSrc, href, label, dark, size = 'normal' }: SlotProps) {
   return (
     <Link href={href} className={`svc-slot svc-slot--${size}`}>
-      <div className="svc-slot__img-wrap">
+      <div className="svc-slot__img-wrap" style={{ border: "none", background: "transparent" }}>
         <img
           src={lightSrc}
           className="svc-slot__img"
