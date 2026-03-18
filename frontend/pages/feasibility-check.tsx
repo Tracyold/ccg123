@@ -236,6 +236,7 @@ export default function FeasibilityCheckPage() {
           width: 100%; max-width: 520px;
           margin: 0 auto;
           padding: 0 20px 80px;
+          padding-top: 0;
           text-align: left;
           animation: accordionDown 500ms cubic-bezier(0.16,1,0.3,1) 200ms both;
         }
