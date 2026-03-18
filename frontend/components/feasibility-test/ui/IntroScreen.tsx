@@ -26,9 +26,9 @@ export default function IntroScreen({
         <button
           onClick={onSkip}
           style={{
-            position: 'absolute',
-            top: 'clamp(18px, 3vh, 26px)',
-            right: 'clamp(18px, 3vw, 30px)',
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
             background: 'transparent',
             border: '1px solid var(--border)',
             color: 'var(--text-muted)',
