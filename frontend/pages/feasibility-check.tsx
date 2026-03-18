@@ -309,10 +309,10 @@ export default function FeasibilityCheckPage() {
 
       <div className="full-screen">
 
-        <p className={`tool-title \${inWizard ? 'wizard-size' : 'intro-size'}`}>
+        <p className={`tool-title ${inWizard ? 'wizard-size' : 'intro-size'}`}>
           The Cut Feasibility Wizard
         </p>
-        <div className={`tool-rule \${inWizard ? 'wizard-rule' : 'intro-rule'}`} />
+        <div className={`tool-rule ${inWizard ? 'wizard-rule' : 'intro-rule'}`} />
 
         {!inWizard && (
           <IntroScreen
