@@ -135,7 +135,7 @@ export default function FeasibilityCheckPage() {
             margin-bottom: 48px !important;
           }
           .wiz-stage {
-            padding-top: 60px !important;
+            margin-top: 60px !important;
           }
         }
         @keyframes flyInUp {
