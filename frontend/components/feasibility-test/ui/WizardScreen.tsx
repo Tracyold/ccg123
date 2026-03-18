@@ -319,9 +319,10 @@ export default function WizardScreen({
             )}
             <button type="button" onClick={handleStartOver} style={{
               background: 'none', border: 'none', cursor: 'pointer',
-              fontFamily: 'var(--font-body)', fontSize: 11,
+              fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 500,
+              letterSpacing: '0.15em', textTransform: 'uppercase',
               color: 'var(--text-muted)', opacity: 0.55, padding: 0,
-              textDecoration: 'underline', textUnderlineOffset: 3,
+              textDecoration: 'none',
               transition: 'opacity 180ms ease',
             }}>
               start over
