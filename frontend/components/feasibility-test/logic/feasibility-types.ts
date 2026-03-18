@@ -13,7 +13,7 @@ export type StepKind =
   | { type: 'limiting-group';    group: string }
   | { type: 'structural-group';  group: string }
   | { type: 'correctable-row';   rowId: 'external' | 'light' | 'geometry' | 'structural' }
-  | { type: 'category-complete'; phase: number; title: string; message: string; nextTitle: string; nextDescription: string; isLastBeforeResults?: boolean }
+  | { type: 'category-complete'; phase: number; title: string; sectionName?: string; description?: string; message: string; nextTitle: string; nextDescription: string; isLastBeforeResults?: boolean }
   | { type: 'results' }
 
 export interface StoneInfo {

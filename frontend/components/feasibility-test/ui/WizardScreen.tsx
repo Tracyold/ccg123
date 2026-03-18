@@ -5,6 +5,7 @@ import type { CorrectableSelections, ScoreBreakdown } from '../logic/calculator'
 import CheckItem from './CheckItem'
 import CorrectableRowComponent from './CorrectableRow'
 import ResultsDisplay from './ResultsDisplay'
+import SectionIntroCard from './SectionIntroCard'
 import type { StepKind, StoneInfo } from '../logic/feasibility-types'
 import { PHASES } from '../logic/feasibility-types'
 import { autoSelectAll } from '../logic/autoSelect'
@@ -159,52 +160,13 @@ export default function WizardScreen({
         </div>
       )}
 
-      {/* ── Category complete ── */}
+      {/* -- Category complete -- */}
       {currentStep.type === 'category-complete' && (
-        <div key={`cc-${stepIndex}`} style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          textAlign: 'center',
-          gap: 20,
-          paddingTop: 40,
-          animation: 'wizFlyIn 300ms cubic-bezier(0.16,1,0.3,1) both',
-        }}>
-          <div style={{ fontSize: 28, color: 'var(--text-muted)', opacity: 0.2 }}>✦</div>
-          <p style={{
-            fontFamily: 'var(--font-display)',
-            fontStyle: 'italic',
-            fontSize: 'clamp(24px, 4vw, 34px)',
-            fontWeight: 400,
-            color: 'var(--text)',
-            margin: 0,
-            lineHeight: 1.3,
-          }}>
-            {currentStep.title}
-          </p>
-          <button
-            type="button"
-            onClick={handleNext}
-            style={{
-              marginTop: 12,
-              background: 'transparent',
-              color: 'var(--accent)',
-              border: '0.5px solid rgba(255,211,105,0.4)',
-              padding: '13px 40px',
-              fontFamily: 'var(--font-body)',
-              fontSize: 11,
-              fontWeight: 500,
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              cursor: 'pointer',
-              borderRadius: 4,
-              transition: 'all 200ms ease',
-              boxShadow: '0 2px 16px rgba(0,0,0,0.18), 0 0 16px rgba(255,211,105,0.03)',
-            }}
-          >
-            {currentStep.isLastBeforeResults ? 'Begin Final Section' : 'Continue'}
-          </button>
-        </div>
+        <SectionIntroCard
+          step={currentStep}
+          stepIndex={stepIndex}
+          onContinue={handleNext}
+        />
       )}
 
       {/* ── Stone info ── */}

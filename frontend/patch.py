@@ -1,84 +1,84 @@
 #!/usr/bin/env python3
 
-# ── 1. feasibility-types.ts — add 'welcome' to IntroPhase ────
+# ── 1. feasibility-types.ts ───────────────────────────────────
 path = 'components/feasibility-test/logic/feasibility-types.ts'
 with open(path) as f:
     content = f.read()
 
 content = content.replace(
-    "export type IntroPhase =\n  | 'line1' | 'line1exit'",
-    "export type IntroPhase =\n  | 'welcome'\n  | 'line1' | 'line1exit'"
+    "  | { type: 'category-complete'; phase: number; title: string; message: string; nextTitle: string; nextDescription: string; isLastBeforeResults?: boolean }",
+    "  | { type: 'category-complete'; phase: number; title: string; sectionName?: string; description?: string; message: string; nextTitle: string; nextDescription: string; isLastBeforeResults?: boolean }"
 )
 
 with open(path, 'w') as f:
     f.write(content)
-print("feasibility-types done.")
+print("1. feasibility-types.ts done.")
 
-# ── 2. feasibility-check.tsx ──────────────────────────────────
-path = 'pages/feasibility-check.tsx'
-with open(path) as f:
+# ── 2. feasibility-check.tsx — update step data ───────────────
+path2 = 'pages/feasibility-check.tsx'
+with open(path2) as f:
     content = f.read()
 
-# Start with 'welcome' instead of 'line1'
 content = content.replace(
-    "const [introPhase, setIntroPhase] = useState<IntroPhase>('line1')",
-    "const [introPhase, setIntroPhase] = useState<IntroPhase>('welcome')"
+    "s.push({ type: 'category-complete', phase: 1, title: 'Stone details saved.', message: \"Now let's look at what your stone does well.\", nextTitle: 'Positive Characteristics', nextDescription: 'Select everything that currently applies — even if it feels obvious.' })",
+    "s.push({ type: 'category-complete', phase: 1, title: 'Category 1', sectionName: 'Positive Characteristics', description: 'Only select the characteristics that your stone currently exhibits — not what it used to exhibit or what it could exhibit. What it does exhibit now. Select ALL that apply, even if it seems redundant.', message: '', nextTitle: 'Positive Characteristics', nextDescription: '' })"
 )
 
-# Add welcome timing — after 2s slide to line1
 content = content.replace(
-    "    if (introPhase === 'line1')     { const t = setTimeout(() => setIntroPhase('line1exit'), 3500); return () => clearTimeout(t) }",
-    "    if (introPhase === 'welcome')   { const t = setTimeout(() => setIntroPhase('line1'),     2000); return () => clearTimeout(t) }\n    if (introPhase === 'line1')     { const t = setTimeout(() => setIntroPhase('line1exit'), 3500); return () => clearTimeout(t) }"
+    "s.push({ type: 'category-complete', phase: 2, title: 'Positives recorded.', message: 'Now we look at what may be holding the stone back.', nextTitle: 'Limiting Characteristics', nextDescription: 'Select everything that currently applies — being accurate here is just as important as the positives.' })",
+    "s.push({ type: 'category-complete', phase: 2, title: 'Category 2', sectionName: 'Limiting Characteristics', description: 'Select ALL characteristics that currently limit your stone. These are factors that reduce value or complicate cutting. Accurate limiting selections are just as important as the positive ones.', message: '', nextTitle: 'Limiting Characteristics', nextDescription: '' })"
 )
 
-# Add welcome CSS class — title centered vertically
 content = content.replace(
-    "        .tool-title.intro-size {\n          font-size: clamp(36px, 8vw, 64px);\n          padding: clamp(80px,14vh,140px) 24px 0;\n          margin: 0 0 16px;\n        }",
-    "        .tool-title.welcome-size {\n          font-size: clamp(36px, 8vw, 64px);\n          padding: 0 24px;\n          margin: 0;\n          position: absolute;\n          top: 50%;\n          left: 50%;\n          transform: translate(-50%, -50%);\n          width: 100%;\n          transition: none;\n          animation: titleFadeIn 800ms cubic-bezier(0.16,1,0.3,1) both;\n        }\n        .tool-title.intro-size {\n          font-size: clamp(36px, 8vw, 64px);\n          padding: clamp(80px,14vh,140px) 24px 0;\n          margin: 0 0 16px;\n        }"
+    "s.push({ type: 'category-complete', phase: 3, title: 'Limitations noted.', message: 'One more section before the final step.', nextTitle: 'Structural Condition', nextDescription: 'This section looks at physical damage and internal features that affect whether the stone can safely be worked on.' })",
+    "s.push({ type: 'category-complete', phase: 3, title: 'Category 3', sectionName: 'Structural Condition', description: 'This section addresses physical damage and internal features. Select anything that currently applies. These factors directly affect whether the stone can safely be worked on.', message: '', nextTitle: 'Structural Condition', nextDescription: '' })"
 )
 
-# Make full-screen relative so absolute title works
-content = content.replace(
-    ".full-screen {\n          position: fixed; inset: 0; z-index: 100;\n          background: var(--bg);\n          display: flex; flex-direction: column;\n          overflow-y: auto; -webkit-overflow-scrolling: touch;\n        }",
-    ".full-screen {\n          position: fixed; inset: 0; z-index: 100;\n          background: var(--bg);\n          display: flex; flex-direction: column;\n          overflow-y: auto; -webkit-overflow-scrolling: touch;\n          position: relative;\n        }"
-)
-
-# Apply welcome-size class when in welcome phase
-content = content.replace(
-    "<p className={`tool-title ${inWizard ? 'wizard-size' : 'intro-size'}`}>",
-    "<p className={`tool-title ${inWizard ? 'wizard-size' : introPhase === 'welcome' ? 'welcome-size' : 'intro-size'}`}>"
-)
-
-# Hide rule and center-stage during welcome
-content = content.replace(
-    "<div className={`tool-rule ${inWizard ? 'wizard-rule' : 'intro-rule'}`} />",
-    "{introPhase !== 'welcome' && <div className={`tool-rule ${inWizard ? 'wizard-rule' : 'intro-rule'}`} />}"
-)
-
-# Show center-stage only after welcome
-content = content.replace(
-    "        {/* Intro phase */}\n        {!inWizard && (",
-    "        {/* Intro phase */}\n        {!inWizard && introPhase !== 'welcome' && ("
-)
-
-# Handle start over — go back to welcome
-content = content.replace(
-    "setResults(null); setIntroPhase('begin'); scrollTop()",
-    "setResults(null); setIntroPhase('welcome'); scrollTop()"
-)
-
-# Skip during welcome goes to disc1
-content = content.replace(
-    "onSkip={() => setIntroPhase('disc1')}",
-    "onSkip={() => introPhase === 'welcome' ? setIntroPhase('disc1') : setIntroPhase('disc1')}"
-)
-
-# Title text — add Welcome to intro only
-content = content.replace(
-    "          The Cut Feasibility Wizard\n        </p>",
-    "          {introPhase === 'welcome' ? 'Welcome to the Cut Feasibility Wizard' : 'The Cut Feasibility Wizard'}\n        </p>"
-)
-
-with open(path, 'w') as f:
+with open(path2, 'w') as f:
     f.write(content)
-print("feasibility-check done.")
+print("2. feasibility-check.tsx done.")
+
+# ── 3. WizardScreen.tsx — import + replace block ──────────────
+path3 = 'components/feasibility-test/ui/WizardScreen.tsx'
+with open(path3) as f:
+    content = f.read()
+
+# Add import
+if 'SectionIntroCard' not in content:
+    content = content.replace(
+        "import ResultsDisplay from './ResultsDisplay'",
+        "import ResultsDisplay from './ResultsDisplay'\nimport SectionIntroCard from './SectionIntroCard'"
+    )
+    print("3a. Import added.")
+else:
+    print("3a. Import already present.")
+
+# Find and replace the category-complete block
+# Find the start marker
+start_marker = "      {/* -- Category complete -- */}"
+alt_marker = "      {/* ── Category complete ── */}"
+
+new_block = """      {/* -- Category complete -- */}
+      {currentStep.type === 'category-complete' && (
+        <SectionIntroCard
+          step={currentStep}
+          stepIndex={stepIndex}
+          onContinue={handleNext}
+        />
+      )}"""
+
+# Try to find and replace the whole block
+import re
+pattern = r"\s*\{/\*[^*]*Category complete[^*]*\*/\}.*?currentStep\.type === 'category-complete' &&.*?\}\s*\}\s*\)"
+match = re.search(pattern, content, re.DOTALL)
+if match:
+    content = content[:match.start()] + '\n' + new_block + '\n' + content[match.end():]
+    print("3b. Category complete block replaced.")
+else:
+    print("3b. WARNING: Could not find category-complete block automatically.")
+    print("    You will need to manually replace it in WizardScreen.tsx.")
+
+with open(path3, 'w') as f:
+    f.write(content)
+print("3. WizardScreen.tsx done.")
+
