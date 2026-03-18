@@ -1,4 +1,5 @@
 export type IntroPhase =
+  | 'welcome'
   | 'line1' | 'line1exit'
   | 'line2' | 'line2exit'
   | 'line3' | 'line3exit'
