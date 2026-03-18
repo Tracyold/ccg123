@@ -320,7 +320,7 @@ export default function WizardScreen({
             <button type="button" onClick={handleStartOver} style={{
               background: 'none', border: 'none', cursor: 'pointer',
               fontFamily: 'var(--font-body)', fontSize: 11,
-              color: 'var(--text-muted)', opacity: 0.3, padding: 0,
+              color: 'var(--text-muted)', opacity: 0.55, padding: 0,
               textDecoration: 'underline', textUnderlineOffset: 3,
               transition: 'opacity 180ms ease',
             }}>
