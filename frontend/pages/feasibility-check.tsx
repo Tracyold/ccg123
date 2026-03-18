@@ -295,12 +295,13 @@ export default function FeasibilityCheckPage() {
         .wiz-input:focus { border-color: var(--accent); }
 
         .wiz-btn-primary { text-transform: uppercase; letter-spacing: 0.12em;
-          flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+          flex: 0; display: flex; align-items: center; justify-content: center; gap: 8px;
           background: var(--bg-deep); color: var(--accent); border: 0.5px solid rgba(255,211,105,0.5);
-          padding: 10px 18px;
+          padding: 14px 32px;
           font-family: var(--font-body);
           font-size: 13px;
           font-weight: 700;
+          min-width: 120px;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
           box-shadow: 0 4px 16px rgba(255,211,105,0.18);
         }
@@ -309,13 +310,14 @@ export default function FeasibilityCheckPage() {
         .wiz-btn-primary:active:not(:disabled) { background: rgba(255,211,105,0.2); }
 
         .wiz-btn-secondary { text-transform: uppercase; letter-spacing: 0.12em;
-          flex: 1; display: flex; align-items: center; justify-content: center;
+          flex: 0; display: flex; align-items: center; justify-content: center;
           background: transparent; color: var(--text-muted);
           border: '0.5px solid var(--border);
-          padding: 10px 18px;
+          padding: 14px 32px;
           font-family: var(--font-body);
           font-size: 13px;
           font-weight: 500;
+          min-width: 120px;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
         }
         .wiz-btn-secondary:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); color: var(--text); }
