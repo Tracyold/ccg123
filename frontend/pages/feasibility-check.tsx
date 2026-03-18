@@ -69,9 +69,7 @@ export default function FeasibilityCheckPage() {
     if (introPhase === 'line1')     { const t = setTimeout(() => setIntroPhase('line1exit'), 3500); return () => clearTimeout(t) }
     if (introPhase === 'line1exit') { const t = setTimeout(() => setIntroPhase('line2'),     700);  return () => clearTimeout(t) }
     if (introPhase === 'line2')     { const t = setTimeout(() => setIntroPhase('line2exit'), 3500); return () => clearTimeout(t) }
-    if (introPhase === 'line2exit') { const t = setTimeout(() => setIntroPhase('line3'),     700);  return () => clearTimeout(t) }
-    if (introPhase === 'line3')     { const t = setTimeout(() => setIntroPhase('line3exit'), 3500); return () => clearTimeout(t) }
-    if (introPhase === 'line3exit') { const t = setTimeout(() => setIntroPhase('disc1'),     700);  return () => clearTimeout(t) }
+    if (introPhase === 'line2exit') { const t = setTimeout(() => setIntroPhase('disc1'),     700);  return () => clearTimeout(t) }
     if (introPhase === 'disc1exit') { const t = setTimeout(() => setIntroPhase('disc2'),     700);  return () => clearTimeout(t) }
     if (introPhase === 'disc2exit') { const t = setTimeout(() => setIntroPhase('begin'),     700);  return () => clearTimeout(t) }
   }, [introPhase])

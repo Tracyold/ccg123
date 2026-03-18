@@ -48,17 +48,12 @@ export default function IntroScreen({
       {/* Info lines */}
       {(introPhase === 'line1' || introPhase === 'line1exit') && (
         <p key={introPhase} className={`intro-line${introPhase === 'line1exit' ? ' fly-out' : ' fly-in'}`}>
-          This guide is an immersive journey into stone evaluation from a gemstone cutter&#39;s perspective.
+          This is an educational tool to calculate the cut feasibility of a stone and its potential yield based on industry standards.
         </p>
       )}
       {(introPhase === 'line2' || introPhase === 'line2exit') && (
         <p key={introPhase} className={`intro-line${introPhase === 'line2exit' ? ' fly-out' : ' fly-in'}`}>
-          It is designed with you in mind to bridge the gap between cutter and client communication.
-        </p>
-      )}
-      {(introPhase === 'line3' || introPhase === 'line3exit') && (
-        <p key={introPhase} className={`intro-line${introPhase === 'line3exit' ? ' fly-out' : ' fly-in'}`}>
-          For clarity, each selection includes educational context accessed by clicking the information icon.
+          It is designed to improve communication between cutter and client.
         </p>
       )}
 
