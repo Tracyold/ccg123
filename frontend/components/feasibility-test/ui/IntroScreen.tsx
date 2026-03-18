@@ -53,7 +53,7 @@ export default function IntroScreen({
       )}
       {(introPhase === 'line2' || introPhase === 'line2exit') && (
         <p key={introPhase} className={`intro-line${introPhase === 'line2exit' ? ' fly-out' : ' fly-in'}`}>
-          It is designed to assist cutters and clients determine the appropriate service for a faceted gemstone.
+          It is designed to assist both cutters and clients in and outside the jewelry industry.
         </p>
       )}
 
