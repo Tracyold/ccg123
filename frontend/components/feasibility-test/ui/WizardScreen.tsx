@@ -146,10 +146,6 @@ export default function WizardScreen({
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
             <div>
-              <span style={labelStyle}>{PHASES[currentPhase] ?? ''}</span>
-              {label && currentStep.type !== 'stone-info' && currentStep.type !== 'correctable-row' && (
-                <span style={sublabelStyle}>↳ {label}</span>
-              )}
             </div>
             {phaseSteps.length > 1 && phaseIndex >= 0 && (
               <span style={{ ...labelStyle, opacity: 0.4 }}>
@@ -204,11 +200,7 @@ export default function WizardScreen({
         <p style={{
           fontFamily: 'var(--font-body)',
           fontWeight: 700,
-          fontSize: 'clamp(15px, 2vw, 17px)',
-          color: 'var(--accent)',
-          margin: '0 0 20px',
         }}>
-          Select ALL that CURRENTLY apply
         </p>
 
           {positiveGroups[currentStep.group]?.map(item => (
@@ -223,11 +215,7 @@ export default function WizardScreen({
         <p style={{
           fontFamily: 'var(--font-body)',
           fontWeight: 700,
-          fontSize: 'clamp(15px, 2vw, 17px)',
-          color: 'var(--accent)',
-          margin: '0 0 20px',
         }}>
-          Select ALL that CURRENTLY apply
         </p>
 
           {limitingGroups[currentStep.group]?.map(item => (
@@ -242,11 +230,7 @@ export default function WizardScreen({
         <p style={{
           fontFamily: 'var(--font-body)',
           fontWeight: 700,
-          fontSize: 'clamp(15px, 2vw, 17px)',
-          color: 'var(--accent)',
-          margin: '0 0 20px',
         }}>
-          Select ALL that CURRENTLY apply
         </p>
 
           {structuralGroup[currentStep.group]?.map(item => (
