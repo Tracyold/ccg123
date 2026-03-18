@@ -109,7 +109,19 @@ export default function FeasibilityCheckPage() {
       <style>{`
         
         @media (max-width: 480px) {
-          .tool-title.intro-size { font-size: 28px !important; padding-top: 60px !important; }
+          .tool-title.welcome-size {
+          font-size: clamp(28px, 6vw, 56px);
+          padding: 0 24px;
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+          text-align: center;
+          animation: titleFadeIn 800ms cubic-bezier(0.16,1,0.3,1) both;
+        }
+        .tool-title.intro-size { font-size: 28px !important; padding-top: 60px !important; }
           .intro-line { font-size: 17px !important; }
         }
 
@@ -164,6 +176,18 @@ export default function FeasibilityCheckPage() {
           transition: font-size 700ms cubic-bezier(0.16,1,0.3,1),
                       padding  700ms cubic-bezier(0.16,1,0.3,1),
                       margin   700ms cubic-bezier(0.16,1,0.3,1);
+        }
+        .tool-title.welcome-size {
+          font-size: clamp(28px, 6vw, 56px);
+          padding: 0 24px;
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+          text-align: center;
+          animation: titleFadeIn 800ms cubic-bezier(0.16,1,0.3,1) both;
         }
         .tool-title.intro-size {
           font-size: clamp(53px, 8vw, 73px);
