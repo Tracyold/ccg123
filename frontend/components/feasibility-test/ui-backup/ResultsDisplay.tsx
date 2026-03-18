@@ -50,7 +50,7 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
         .results-wrap {
           display: flex; flex-direction: column;
           gap: clamp(18px, 3vw, 26px);
-          padding: clamp(19px, 2.2vw, 21px) 0;
+          padding: clamp(16px, 4vw, 32px) 0;
           width: 100%;
         }
 
@@ -61,7 +61,7 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
         }
         .stone-eyebrow {
           font-family: var(--font-ui);
-          font-size: clamp(19px, 2.2vw, 21px);
+          font-size: clamp(11px, 1.4vw, 12px);
           letter-spacing: 0.28em; text-transform: uppercase;
           color: var(--accent); margin: 0 0 16px;
         }
@@ -71,24 +71,24 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
         @media (max-width: 400px) { .stone-grid { grid-template-columns: 1fr; } }
         .stone-field-label {
           font-family: var(--font-ui);
-          font-size: clamp(19px, 2.2vw, 21px);
+          font-size: clamp(10px, 1.2vw, 11px);
           letter-spacing: 0.2em; text-transform: uppercase;
           color: var(--text-muted); margin: 0 0 4px;
         }
         .stone-field-value {
           font-family: var(--font-body);
-          font-size: clamp(19px, 2.2vw, 21px);
+          font-size: clamp(16px, 2vw, 17px);
           color: var(--text); margin: 0;
         }
 
         /* Disclaimer */
         .disclaimer {
           border-left: 2px solid rgba(255,255,255,0.1);
-          padding: clamp(19px, 2.2vw, 21px) clamp(19px, 2.2vw, 21px);
+          padding: clamp(14px, 2vw, 20px) clamp(16px, 2.5vw, 22px);
         }
         .disclaimer p {
           font-family: var(--font-body);
-          font-size: clamp(19px, 2.2vw, 21px);
+          font-size: clamp(15px, 1.8vw, 17px);
           line-height: 1.8; color: var(--text-muted); margin: 0 0 14px;
         }
         .disclaimer p:last-child { margin: 0; }
@@ -96,14 +96,14 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
         /* Buttons */
         .results-actions {
           display: flex; flex-direction: column;
-          gap: clamp(19px, 2.2vw, 21px); width: 100%;
+          gap: clamp(10px, 1.5vw, 14px); width: 100%;
         }
         .btn-export {
           width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
           background: transparent; color: var(--accent);
           border: 1px solid rgba(255,211,105,0.35);
-          padding: clamp(19px, 2.2vw, 21px) 20px;
-          font-family: var(--font-ui); font-size: clamp(19px, 2.2vw, 21px);
+          padding: clamp(16px, 2.5vw, 20px) 20px;
+          font-family: var(--font-ui); font-size: clamp(13px, 1.6vw, 15px);
           font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
         }
@@ -112,7 +112,7 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
           width: 100%; display: flex; align-items: center; justify-content: center;
           background: var(--accent); color: var(--bg); border: none;
           padding: clamp(18px, 2.5vw, 22px) 20px;
-          font-family: var(--font-ui); font-size: clamp(19px, 2.2vw, 21px);
+          font-family: var(--font-ui); font-size: clamp(13px, 1.6vw, 15px);
           font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
           box-shadow: 0 4px 16px rgba(255,211,105,0.18);
@@ -122,8 +122,8 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
           width: 100%; display: flex; align-items: center; justify-content: center;
           background: transparent; color: var(--text-muted);
           border: 1px solid var(--border);
-          padding: clamp(19px, 2.2vw, 21px) 20px;
-          font-family: var(--font-ui); font-size: clamp(19px, 2.2vw, 21px);
+          padding: clamp(16px, 2.5vw, 20px) 20px;
+          font-family: var(--font-ui); font-size: clamp(13px, 1.6vw, 15px);
           font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
         }

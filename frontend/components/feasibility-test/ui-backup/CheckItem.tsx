@@ -14,33 +14,44 @@ export default function CheckItem({ item, checked, onChange }: CheckItemProps) {
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 14,
-        padding: checked ? '20px 20px' : '16px 18px',
-        background: checked ? 'rgba(255,211,105,0.08)' : 'var(--bg-card)',
-        border: `1.5px solid ${checked ? 'rgba(255,211,105,0.4)' : 'transparent'}`,
-        borderRadius: 14,
+        gap: 16,
+        padding: checked ? '22px 24px' : '18px 20px',
+        background: checked ? 'rgba(255, 211, 105, 0.1)' : 'var(--bg-card)',
+        border: checked ? '1.5px solid rgba(255, 211, 105, 0.45)' : '1.5px solid transparent',
+        borderRadius: 16,
         cursor: 'pointer',
         marginBottom: 10,
-        boxShadow: checked ? '0 4px 20px rgba(255,211,105,0.08)' : '0 1px 6px rgba(0,0,0,0.12)',
+        boxShadow: checked
+          ? '0 4px 20px rgba(255,211,105,0.08)'
+          : '0 2px 12px rgba(0,0,0,0.12)',
         transform: checked ? 'scale(1.02)' : 'scale(1)',
-        transition: 'all 220ms cubic-bezier(0.34,1.56,0.64,1)',
+        transition: 'all 240ms cubic-bezier(0.34,1.56,0.64,1)',
         userSelect: 'none',
         WebkitTapHighlightColor: 'transparent',
-        minHeight: 58,
+        minHeight: 60,
       }}
     >
       {/* Circle indicator */}
       <div style={{
         flexShrink: 0,
-        width: 20, height: 20,
+        width: 20,
+        height: 20,
         borderRadius: '50%',
         border: `1.5px solid ${checked ? 'rgba(255,211,105,0.6)' : 'var(--border)'}`,
-        background: checked ? 'rgba(255,211,105,0.18)' : 'transparent',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        transition: 'all 220ms ease',
+        background: checked ? 'rgba(255,211,105,0.2)' : 'transparent',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        transition: 'all 240ms ease',
       }}>
         {checked && (
-          <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--accent)' }} />
+          <div style={{
+            width: 8,
+            height: 8,
+            borderRadius: '50%',
+            background: 'var(--accent)',
+            opacity: 0.9,
+          }} />
         )}
       </div>
 
@@ -48,12 +59,12 @@ export default function CheckItem({ item, checked, onChange }: CheckItemProps) {
       <span style={{
         flex: 1,
         fontFamily: 'var(--font-ui)',
-        fontSize: 'clamp(19px, 2.2vw, 21px)',
+        fontSize: 15,
         fontWeight: checked ? 600 : 400,
-        letterSpacing: '0.06em',
+        letterSpacing: '0.08em',
         textTransform: 'uppercase',
         color: checked ? 'var(--text)' : 'var(--text-muted)',
-        transition: 'color 220ms ease',
+        transition: 'all 240ms ease',
         lineHeight: 1.4,
       }}>
         {item.label}
@@ -61,7 +72,7 @@ export default function CheckItem({ item, checked, onChange }: CheckItemProps) {
 
       {/* Info icon */}
       {item.info && (
-        <div style={{ opacity: 0.4, flexShrink: 0 }}>
+        <div style={{ opacity: 0.5, transition: 'opacity 200ms ease' }}>
           <InfoDrawer item={item} />
         </div>
       )}

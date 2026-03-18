@@ -10,20 +10,19 @@ export default function InfoDrawer({ item }: { item: QuestionItem }) {
       <button
         type="button"
         onClick={e => { e.stopPropagation(); setOpen(!open) }}
-        aria-expanded={open}
         aria-label={`More info about ${item.label}`}
         style={{
-          width: 20, height: 20,
+          width: 24, height: 24,
           border: `1px solid ${open ? 'var(--accent)' : 'var(--border)'}`,
           background: open ? 'var(--accent)' : 'transparent',
           color: open ? 'var(--bg)' : 'var(--text-muted)',
-          fontSize: 11, fontWeight: 700,
+          fontSize: 17, fontWeight: 700,
           fontFamily: 'var(--font-ui)',
           cursor: 'pointer',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'all 200ms ease',
+          borderRadius: '50%',
           flexShrink: 0,
-          borderRadius: 0,
         }}
       >
         i
@@ -34,25 +33,38 @@ export default function InfoDrawer({ item }: { item: QuestionItem }) {
           marginTop: 10,
           background: 'var(--bg-deep)',
           border: '1px solid var(--border)',
-          padding: '14px 16px',
-          display: 'flex', flexDirection: 'column', gap: 12,
+          borderRadius: 10,
+          padding: '16px 18px',
+          display: 'flex', flexDirection: 'column', gap: 14,
         }}>
           {item.info.whatItMeans && (
             <div>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 5 }}>What it means</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>{item.info.whatItMeans}</p>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: 17, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 6px' }}>
+                What it means
+              </p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(19px, 2.2vw, 21px)', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>
+                {item.info.whatItMeans}
+              </p>
             </div>
           )}
           {item.info.howToAssess && (
             <div>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 5 }}>How to assess it</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>{item.info.howToAssess}</p>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: 17, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 6px' }}>
+                How to assess it
+              </p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(19px, 2.2vw, 21px)', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>
+                {item.info.howToAssess}
+              </p>
             </div>
           )}
           {item.info.whyWeAsk && (
             <div>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 5 }}>Why we ask</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>{item.info.whyWeAsk}</p>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: 17, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 6px' }}>
+                Why we ask
+              </p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(19px, 2.2vw, 21px)', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>
+                {item.info.whyWeAsk}
+              </p>
             </div>
           )}
         </div>

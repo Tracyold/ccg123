@@ -6,56 +6,34 @@ export default function EstimateDisplay({ input }: { input: EstimateInput }) {
 
   return (
     <div style={{
-      background: 'var(--bg-deep)',
       border: '1px solid var(--border)',
-      padding: '20px 24px',
+      padding: 'clamp(16px, 3vw, 22px)',
     }}>
       <p style={{
         fontFamily: 'var(--font-ui)',
-        fontSize: 9,
-        letterSpacing: '0.25em',
+        fontSize: '17px',
+        letterSpacing: '0.22em',
         textTransform: 'uppercase',
         color: 'var(--text-muted)',
-        marginBottom: 10,
         margin: '0 0 10px',
       }}>
         Estimate
       </p>
-
-      {result.available && result.range ? (
-        <div>
-          <p style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 32,
-            fontWeight: 400,
-            color: 'var(--text)',
-            margin: '0 0 4px',
-          }}>
-            ${result.range.low.toLocaleString()} – ${result.range.high.toLocaleString()}
-          </p>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-muted)', margin: 0 }}>
-            {result.label}
-          </p>
-        </div>
-      ) : (
-        <p style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: 12,
-          fontWeight: 500,
-          letterSpacing: '0.05em',
-          color: 'var(--text)',
-          margin: '0 0 8px',
-        }}>
-          {result.label}
-        </p>
-      )}
-
       <p style={{
         fontFamily: 'var(--font-body)',
-        fontSize: 12,
+        fontSize: '19px',
+        color: 'var(--text)',
+        margin: '0 0 8px',
+        fontWeight: 500,
+      }}>
+        {result.label}
+      </p>
+      <p style={{
+        fontFamily: 'var(--font-body)',
+        fontSize: '19px',
         color: 'var(--text-muted)',
         lineHeight: 1.7,
-        margin: '10px 0 0',
+        margin: 0,
       }}>
         {result.note}
       </p>
