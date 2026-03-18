@@ -297,9 +297,9 @@ export default function FeasibilityCheckPage() {
         .wiz-btn-primary { text-transform: uppercase; letter-spacing: 0.12em;
           flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
           background: var(--bg-deep); color: var(--accent); border: 0.5px solid rgba(255,211,105,0.5);
-          padding: clamp(18px, 2.5vw, 22px) 20px;
+          padding: 10px 18px;
           font-family: var(--font-body);
-          font-size: clamp(19px, 2.2vw, 21px);
+          font-size: 13px;
           font-weight: 700;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
           box-shadow: 0 4px 16px rgba(255,211,105,0.18);
@@ -312,9 +312,9 @@ export default function FeasibilityCheckPage() {
           flex: 1; display: flex; align-items: center; justify-content: center;
           background: transparent; color: var(--text-muted);
           border: '0.5px solid var(--border);
-          padding: clamp(18px, 2.5vw, 22px) 20px;
+          padding: 10px 18px;
           font-family: var(--font-body);
-          font-size: clamp(19px, 2.2vw, 21px);
+          font-size: 13px;
           font-weight: 500;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
         }
