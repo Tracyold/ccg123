@@ -123,6 +123,21 @@ export default function FeasibilityCheckPage() {
           .intro-line { font-size: 17px !important; }
         }
 
+
+        @media (min-width: 768px) {
+          .full-screen {
+            justify-content: center;
+          }
+          .tool-title.wizard-size {
+            padding-top: 40px !important;
+          }
+          .tool-title.intro-size {
+            padding-top: 40px !important;
+          }
+          .tool-rule.intro-rule {
+            margin-bottom: 48px !important;
+          }
+        }
         @keyframes flyInUp {
           from { opacity: 0; transform: translateY(70px); }
           to   { opacity: 1; transform: translateY(0); }
