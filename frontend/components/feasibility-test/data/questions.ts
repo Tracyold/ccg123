@@ -65,5 +65,5 @@ export const correctableOptions: { value: CorrectableOption; label: string }[] =
   { value: 'repair',          label: 'Repair Corrects'  },
   { value: 'cutting',         label: 'Cutting Corrects' },
   { value: 'not_correctable', label: 'Not Correctable'  },
-  { value: 'not_worth_it',    label: 'Nothing to Correct'     },
+  { value: 'not_worth_it',    label: 'No Issues' },
 ]
