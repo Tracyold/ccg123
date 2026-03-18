@@ -161,13 +161,12 @@ export default function WizardScreen({
       {/* ── Category complete ── */}
       {currentStep.type === 'category-complete' && (
         <div key={`cc-${stepIndex}`} style={{
-          flex: 1,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center',
           textAlign: 'center',
           gap: 20,
+          paddingTop: 40,
           animation: 'wizFlyIn 300ms cubic-bezier(0.16,1,0.3,1) both',
         }}>
           <div style={{ fontSize: 28, color: 'var(--text-muted)', opacity: 0.2 }}>✦</div>
