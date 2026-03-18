@@ -238,6 +238,17 @@ export default function WizardScreen({
       {/* ── Positive ── */}
       {currentStep.type === 'positive-group' && (
         <div key={`pg-${stepIndex}`} style={{ animation: 'wizFlyIn 300ms cubic-bezier(0.16,1,0.3,1) both' }}>
+        <p style={{
+          fontFamily: 'var(--font-display)',
+          fontStyle: 'italic',
+          fontSize: 'clamp(15px, 2vw, 17px)',
+          color: 'var(--text-muted)',
+          margin: '0 0 20px',
+          opacity: 0.7,
+        }}>
+          Select ALL that CURRENTLY apply
+        </p>
+
           {positiveGroups[currentStep.group]?.map(item => (
             <CheckItem key={item.id} item={item} checked={positiveChecked.has(item.id)} onChange={toggleChecked(setPositiveChecked)} />
           ))}
@@ -247,6 +258,17 @@ export default function WizardScreen({
       {/* ── Limiting ── */}
       {currentStep.type === 'limiting-group' && (
         <div key={`lg-${stepIndex}`} style={{ animation: 'wizFlyIn 300ms cubic-bezier(0.16,1,0.3,1) both' }}>
+        <p style={{
+          fontFamily: 'var(--font-display)',
+          fontStyle: 'italic',
+          fontSize: 'clamp(15px, 2vw, 17px)',
+          color: 'var(--text-muted)',
+          margin: '0 0 20px',
+          opacity: 0.7,
+        }}>
+          Select ALL that CURRENTLY apply
+        </p>
+
           {limitingGroups[currentStep.group]?.map(item => (
             <CheckItem key={item.id} item={item} checked={limitingChecked.has(item.id)} onChange={toggleChecked(setLimitingChecked)} />
           ))}
@@ -256,6 +278,17 @@ export default function WizardScreen({
       {/* ── Structural ── */}
       {currentStep.type === 'structural-group' && (
         <div key={`sg-${stepIndex}`} style={{ animation: 'wizFlyIn 300ms cubic-bezier(0.16,1,0.3,1) both' }}>
+        <p style={{
+          fontFamily: 'var(--font-display)',
+          fontStyle: 'italic',
+          fontSize: 'clamp(15px, 2vw, 17px)',
+          color: 'var(--text-muted)',
+          margin: '0 0 20px',
+          opacity: 0.7,
+        }}>
+          Select ALL that CURRENTLY apply
+        </p>
+
           {structuralGroup[currentStep.group]?.map(item => (
             <CheckItem key={item.id} item={item} checked={structuralChecked.has(item.id)} onChange={toggleChecked(setStructuralChecked)} />
           ))}
