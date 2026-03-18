@@ -158,7 +158,6 @@ export default function FeasibilityCheckPage() {
           background: var(--bg);
           display: flex; flex-direction: column;
           overflow-y: auto; -webkit-overflow-scrolling: touch;
-          position: relative;
         }
         .full-screen::-webkit-scrollbar { width: 3px; }
         .full-screen::-webkit-scrollbar-thumb { background: var(--border); }
