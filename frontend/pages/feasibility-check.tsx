@@ -106,6 +106,12 @@ export default function FeasibilityCheckPage() {
       <TopNav />
 
       <style>{`
+        
+        @media (max-width: 480px) {
+          .tool-title.intro-size { font-size: 28px !important; padding-top: 60px !important; }
+          .intro-line { font-size: 17px !important; }
+        }
+
         @keyframes flyInUp {
           from { opacity: 0; transform: translateY(70px); }
           to   { opacity: 1; transform: translateY(0); }
