@@ -207,7 +207,7 @@ export default function FeasibilityCheckPage() {
         }
         .tool-title.wizard-size {
           font-size: clamp(28px, 4.5vw, 34px);
-          padding: clamp(58px, 8vh, 82px) 24px 0;
+          padding: clamp(25px, 4vh, 40px) 24px 0;
           margin: 0 0 8px;
         }
         .tool-rule {
