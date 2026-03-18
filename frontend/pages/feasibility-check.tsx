@@ -148,7 +148,6 @@ export default function FeasibilityCheckPage() {
           font-family: var(--font-display);
           font-weight: 400;
           color: var(--text);
-          letter-spacing: 0.04em;
           text-align: center;
           flex-shrink: 0;
           animation: titleFadeIn 1000ms cubic-bezier(0.16,1,0.3,1) 200ms both;
@@ -221,10 +220,8 @@ export default function FeasibilityCheckPage() {
         .disc-card.fly-in  { animation: flyInUp  900ms cubic-bezier(0.16,1,0.3,1) forwards; }
         .disc-card.fly-out { animation: flyOutUp 650ms cubic-bezier(0.4,0,1,1)    forwards; }
         .disc-label {
-          font-family: var(--font-ui);
+          font-family: var(--font-body);
           font-size: clamp(19px, 2.2vw, 21px);
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
           color: var(--accent);
           margin: 0 0 16px;
         }
@@ -248,41 +245,41 @@ export default function FeasibilityCheckPage() {
         }
         .disc-checkbox.on { background: var(--accent); border-color: var(--accent); }
         .disc-check-label {
-          font-family: var(--font-ui);
+          font-family: var(--font-body);
           font-size: clamp(19px, 3vw, 27px);
           font-weight: 500;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
           color: var(--text-muted);
           line-height: 1.5;
           margin: 0;
         }
-        .disc-btn {
+        .disc-btn { text-transform: uppercase; letter-spacing: 0.12em;
           width: 100%;
           display: flex; align-items: center; justify-content: center; gap: 10px;
-          background: var(--accent); color: var(--bg); border: none;
+          background: transparent; color: var(--accent); border: 1.5px solid rgba(255,211,105,0.5);
           padding: 18px 24px;
-          font-family: var(--font-ui);
+          font-family: var(--font-body);
           font-size: clamp(19px, 2.2vw, 21px);
-          font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+          font-weight: 700;
           transition: all 220ms ease; opacity: 0.28; cursor: not-allowed;
         }
-        .disc-btn.on { opacity: 1; cursor: pointer; box-shadow: 0 4px 24px rgba(255,211,105,0.18); }
-        .disc-btn.on:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,211,105,0.28); }
+        .disc-btn.on { opacity: 1; cursor: pointer; box-shadow: 0 0 20px rgba(255,211,105,0.2); }
+        .disc-btn.on:hover { background: rgba(255,211,105,0.08); box-shadow: 0 0 28px rgba(255,211,105,0.28); }
+        .disc-btn.on:active { background: rgba(255,211,105,0.2); }
 
         /* Begin button */
-        .begin-btn {
+        .begin-btn { text-transform: uppercase; letter-spacing: 0.08em;
           display: inline-flex; align-items: center; gap: 14px;
-          background: var(--accent); color: var(--bg); border: none;
+          background: transparent; color: var(--accent); border: 1.5px solid rgba(255,211,105,0.5);
           padding: clamp(20px, 3vw, 26px) clamp(50px, 8vw, 74px);
           font-family: var(--font-display);
           font-size: clamp(28px, 4.5vw, 34px);
-          font-weight: 400; letter-spacing: 0.08em;
+          font-weight: 400;
           cursor: pointer; transition: all 300ms ease;
-          box-shadow: 0 4px 40px rgba(255,211,105,0.22);
+          box-shadow: 0 0 24px rgba(255,211,105,0.2);
           animation: flyInUp 900ms cubic-bezier(0.16,1,0.3,1) forwards;
         }
-        .begin-btn:hover { transform: translateY(-4px); box-shadow: 0 12px 48px rgba(255,211,105,0.32); }
+        .begin-btn:hover { background: rgba(255,211,105,0.08); box-shadow: 0 0 36px rgba(255,211,105,0.3); transform: translateY(-2px); }
+        .begin-btn:active { background: rgba(255,211,105,0.2); }
 
         /* Wizard UI */
         .wiz-input {
@@ -296,30 +293,32 @@ export default function FeasibilityCheckPage() {
         .wiz-input::placeholder { color: var(--text-muted); opacity: 0.4; }
         .wiz-input:focus { border-color: var(--accent); }
 
-        .wiz-btn-primary {
+        .wiz-btn-primary { text-transform: uppercase; letter-spacing: 0.12em;
           flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
-          background: var(--accent); color: var(--bg); border: none;
+          background: transparent; color: var(--accent); border: 1.5px solid rgba(255,211,105,0.5);
           padding: clamp(18px, 2.5vw, 22px) 20px;
-          font-family: var(--font-ui);
+          font-family: var(--font-body);
           font-size: clamp(19px, 2.2vw, 21px);
-          font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+          font-weight: 700;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
           box-shadow: 0 4px 16px rgba(255,211,105,0.18);
         }
-        .wiz-btn-primary:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,211,105,0.28); }
+        .wiz-btn-primary:hover:not(:disabled) { background: rgba(255,211,105,0.08); box-shadow: 0 0 24px rgba(255,211,105,0.25); }
         .wiz-btn-primary:disabled { opacity: 0.25; cursor: not-allowed; }
+        .wiz-btn-primary:active:not(:disabled) { background: rgba(255,211,105,0.2); }
 
-        .wiz-btn-secondary {
+        .wiz-btn-secondary { text-transform: uppercase; letter-spacing: 0.12em;
           flex: 1; display: flex; align-items: center; justify-content: center;
           background: transparent; color: var(--text-muted);
           border: 1px solid var(--border);
           padding: clamp(18px, 2.5vw, 22px) 20px;
-          font-family: var(--font-ui);
+          font-family: var(--font-body);
           font-size: clamp(19px, 2.2vw, 21px);
-          font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+          font-weight: 500;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
         }
-        .wiz-btn-secondary:hover { border-color: var(--text-muted); color: var(--text); }
+        .wiz-btn-secondary:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); color: var(--text); }
+        .wiz-btn-secondary:active { background: rgba(255,255,255,0.2); }
       `}</style>
 
       <div className="full-screen">

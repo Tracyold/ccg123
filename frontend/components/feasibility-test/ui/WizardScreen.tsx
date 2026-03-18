@@ -28,7 +28,6 @@ const T = {
     fontWeight: 400,
     color: 'var(--text)',
     lineHeight: 1.2,
-    letterSpacing: '0.01em',
     margin: 0,
   } as React.CSSProperties,
   body: {
@@ -39,11 +38,9 @@ const T = {
     margin: 0,
   } as React.CSSProperties,
   label: {
-    fontFamily: 'var(--font-ui)',
+    fontFamily: 'var(--font-body)',
     fontSize: 'clamp(19px, 2.2vw, 21px)',
     fontWeight: 600,
-    letterSpacing: '0.22em',
-    textTransform: 'uppercase' as const,
     color: 'var(--accent)',
     margin: 0,
   } as React.CSSProperties,
@@ -156,7 +153,7 @@ export default function WizardScreen({
             })}
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={T.label}>{PHASES[currentPhase] ?? ''}</span>
+            <span style={{ ...T.label, textTransform: "uppercase", letterSpacing: "0.18em", fontSize: '11px' }}>{PHASES[currentPhase] ?? ''}</span>
             {phaseSteps.length > 1 && phaseIndex >= 0 && (
               <span style={{ ...T.body, fontSize: 'clamp(19px, 2.2vw, 21px)' }}>
                 {phaseIndex + 1} / {phaseSteps.length}
@@ -169,7 +166,7 @@ export default function WizardScreen({
       {/* ── Step header ── */}
       {!isResults && !isComplete && label && (
         <div className="wiz-slide" key={`hdr-${stepIndex}`} style={{ marginBottom: 24 }}>
-          <p style={{ ...T.large, marginBottom: 12 }}>{label}</p>
+          <p style={{ ...T.body, fontSize: 'clamp(24px,4vw,28px)', color: 'var(--text)', fontWeight: 600, marginBottom: 12 }}>{label}</p>
           {instruction && (
             <p style={{ ...T.body, paddingBottom: 20, borderBottom: '1px solid var(--border)' }}>
               {instruction}
@@ -183,7 +180,7 @@ export default function WizardScreen({
         <div className="wiz-complete" key={`cc-${stepIndex}`}>
           <div style={{ textAlign: 'center', padding: '24px 0 32px' }}>
             <div style={{ fontSize: 36, marginBottom: 20, color: 'var(--text-muted)', opacity: 0.4 }}>✦</div>
-            <p style={{ ...T.large, fontSize: 'clamp(28px, 4.5vw, 34px)', marginBottom: 12 }}>
+            <p style={{ ...T.body, fontSize: 'clamp(24px,4vw,28px)', color: 'var(--text)', fontWeight: 600, marginBottom: 12 }}>
               {currentStep.title}
             </p>
             <p style={{
@@ -202,7 +199,7 @@ export default function WizardScreen({
             marginBottom: 28,
           }}>
             <p style={{ ...T.label, marginBottom: 10 }}>Up Next</p>
-            <p style={{ ...T.large, fontSize: 'clamp(20px,3vw,24px)', marginBottom: 10 }}>
+            <p style={{ ...T.body, fontSize: 'clamp(20px,3vw,24px)', color: 'var(--text)', fontWeight: 600, marginBottom: 10 }}>
               {currentStep.nextTitle}
             </p>
             <p style={T.body}>{currentStep.nextDescription}</p>

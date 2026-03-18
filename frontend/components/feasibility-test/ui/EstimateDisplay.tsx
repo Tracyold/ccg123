@@ -10,10 +10,8 @@ export default function EstimateDisplay({ input }: { input: EstimateInput }) {
       padding: 'clamp(16px, 3vw, 22px)',
     }}>
       <p style={{
-        fontFamily: 'var(--font-ui)',
+        fontFamily: 'var(--font-body)',
         fontSize: '17px',
-        letterSpacing: '0.22em',
-        textTransform: 'uppercase',
         color: 'var(--text-muted)',
         margin: '0 0 10px',
       }}>

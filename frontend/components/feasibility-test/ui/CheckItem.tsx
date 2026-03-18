@@ -47,11 +47,9 @@ export default function CheckItem({ item, checked, onChange }: CheckItemProps) {
       {/* Label */}
       <span style={{
         flex: 1,
-        fontFamily: 'var(--font-ui)',
+        fontFamily: 'var(--font-body)',
         fontSize: 'clamp(19px, 2.2vw, 21px)',
         fontWeight: checked ? 600 : 400,
-        letterSpacing: '0.06em',
-        textTransform: 'uppercase',
         color: checked ? 'var(--text)' : 'var(--text-muted)',
         transition: 'color 220ms ease',
         lineHeight: 1.4,

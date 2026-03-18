@@ -33,19 +33,16 @@ export default function CorrectableRow({ label, required, rowId, selected, onCha
       {/* Row label */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
         <span style={{
-          fontFamily: 'var(--font-ui)',
+          fontFamily: 'var(--font-body)',
           fontSize: 'clamp(19px, 2.2vw, 21px)',
           fontWeight: 600,
-          letterSpacing: '0.22em',
-          textTransform: 'uppercase',
           color: 'var(--text-muted)',
         }}>
           {label}
         </span>
         {required && (
           <span style={{
-            fontFamily: 'var(--font-ui)', fontSize: 17,
-            letterSpacing: '0.15em', textTransform: 'uppercase',
+            fontFamily: 'var(--font-body)', fontSize: 17,
             color: 'var(--accent)', border: '1px solid var(--accent)',
             borderRadius: 4, padding: '2px 7px',
           }}>
@@ -60,13 +57,13 @@ export default function CorrectableRow({ label, required, rowId, selected, onCha
           background: 'var(--bg-deep)', border: '1px solid var(--border)',
           borderRadius: 10, padding: '12px 16px', marginBottom: 14,
         }}>
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: 17, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 10px' }}>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 17, color: 'var(--accent)', margin: '0 0 10px' }}>
             Relevant Selections
           </p>
           {selectedItems.map(id => (
             <div key={id} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
               <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--accent)', opacity: 0.5, flexShrink: 0 }} />
-              <span style={{ fontFamily: 'var(--font-ui)', fontSize: 'clamp(19px, 2.2vw, 21px)', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(19px, 2.2vw, 21px)', color: 'var(--text-muted)' }}>
                 {LABEL_MAP[id] ?? id}
               </span>
             </div>
@@ -84,11 +81,9 @@ export default function CorrectableRow({ label, required, rowId, selected, onCha
               type="button"
               onClick={() => onChange(opt.value)}
               style={{
-                fontFamily: 'var(--font-ui)',
+                fontFamily: 'var(--font-body)',
                 fontSize: 'clamp(19px, 2.2vw, 21px)',
                 fontWeight: isSelected ? 600 : 400,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
                 padding: isSelected ? '20px 12px' : '16px 12px',
                 background: isSelected ? 'rgba(255,211,105,0.08)' : 'var(--bg-card)',
                 color: isSelected ? 'var(--text)' : 'var(--text-muted)',

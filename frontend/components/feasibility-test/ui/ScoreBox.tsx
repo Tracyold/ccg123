@@ -32,10 +32,8 @@ export default function ScoreBox({ results }: ScoreBoxProps) {
 
       {/* Eyebrow */}
       <p style={{
-        fontFamily: 'var(--font-ui)',
+        fontFamily: 'var(--font-body)',
         fontSize: 'clamp(19px, 2.2vw, 21px)',
-        letterSpacing: '0.28em',
-        textTransform: 'uppercase',
         color: 'var(--text-muted)',
         margin: 0,
       }}>
@@ -76,10 +74,8 @@ export default function ScoreBox({ results }: ScoreBoxProps) {
 
       {/* Recommended service */}
       <p style={{
-        fontFamily: 'var(--font-ui)',
+        fontFamily: 'var(--font-body)',
         fontSize: 'clamp(19px, 2.2vw, 21px)',
-        letterSpacing: '0.22em',
-        textTransform: 'uppercase',
         color: 'var(--text-muted)',
         margin: 0,
       }}>

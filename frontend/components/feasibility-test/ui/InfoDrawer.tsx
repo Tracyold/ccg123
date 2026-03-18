@@ -17,7 +17,7 @@ export default function InfoDrawer({ item }: { item: QuestionItem }) {
           background: open ? 'var(--accent)' : 'transparent',
           color: open ? 'var(--bg)' : 'var(--text-muted)',
           fontSize: 17, fontWeight: 700,
-          fontFamily: 'var(--font-ui)',
+          fontFamily: 'var(--font-body)',
           cursor: 'pointer',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'all 200ms ease',
@@ -39,7 +39,7 @@ export default function InfoDrawer({ item }: { item: QuestionItem }) {
         }}>
           {item.info.whatItMeans && (
             <div>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: 17, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 6px' }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 17, color: 'var(--accent)', margin: '0 0 6px' }}>
                 What it means
               </p>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(19px, 2.2vw, 21px)', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>
@@ -49,7 +49,7 @@ export default function InfoDrawer({ item }: { item: QuestionItem }) {
           )}
           {item.info.howToAssess && (
             <div>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: 17, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 6px' }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 17, color: 'var(--accent)', margin: '0 0 6px' }}>
                 How to assess it
               </p>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(19px, 2.2vw, 21px)', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>
@@ -59,7 +59,7 @@ export default function InfoDrawer({ item }: { item: QuestionItem }) {
           )}
           {item.info.whyWeAsk && (
             <div>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: 17, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 6px' }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 17, color: 'var(--accent)', margin: '0 0 6px' }}>
                 Why we ask
               </p>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(19px, 2.2vw, 21px)', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>

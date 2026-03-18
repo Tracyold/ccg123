@@ -60,9 +60,8 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
           padding: clamp(18px, 3vw, 26px);
         }
         .stone-eyebrow {
-          font-family: var(--font-ui);
+          font-family: var(--font-body);
           font-size: clamp(19px, 2.2vw, 21px);
-          letter-spacing: 0.28em; text-transform: uppercase;
           color: var(--accent); margin: 0 0 16px;
         }
         .stone-grid {
@@ -70,9 +69,8 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
         }
         @media (max-width: 400px) { .stone-grid { grid-template-columns: 1fr; } }
         .stone-field-label {
-          font-family: var(--font-ui);
+          font-family: var(--font-body);
           font-size: clamp(19px, 2.2vw, 21px);
-          letter-spacing: 0.2em; text-transform: uppercase;
           color: var(--text-muted); margin: 0 0 4px;
         }
         .stone-field-value {
@@ -98,33 +96,33 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
           display: flex; flex-direction: column;
           gap: clamp(19px, 2.2vw, 21px); width: 100%;
         }
-        .btn-export {
+        .btn-export { text-transform: uppercase; letter-spacing: 0.1em;
           width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
           background: transparent; color: var(--accent);
           border: 1px solid rgba(255,211,105,0.35);
           padding: clamp(19px, 2.2vw, 21px) 20px;
-          font-family: var(--font-ui); font-size: clamp(19px, 2.2vw, 21px);
-          font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+          font-family: var(--font-body); font-size: clamp(19px, 2.2vw, 21px);
+          font-weight: 600;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
         }
         .btn-export:hover { background: rgba(255,211,105,0.06); border-color: rgba(255,211,105,0.6); }
-        .btn-quote {
+        .btn-quote { text-transform: uppercase; letter-spacing: 0.1em;
           width: 100%; display: flex; align-items: center; justify-content: center;
           background: var(--accent); color: var(--bg); border: none;
           padding: clamp(18px, 2.5vw, 22px) 20px;
-          font-family: var(--font-ui); font-size: clamp(19px, 2.2vw, 21px);
-          font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+          font-family: var(--font-body); font-size: clamp(19px, 2.2vw, 21px);
+          font-weight: 700;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
           box-shadow: 0 4px 16px rgba(255,211,105,0.18);
         }
         .btn-quote:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,211,105,0.28); }
-        .btn-restart {
+        .btn-restart { text-transform: uppercase; letter-spacing: 0.1em;
           width: 100%; display: flex; align-items: center; justify-content: center;
           background: transparent; color: var(--text-muted);
           border: 1px solid var(--border);
           padding: clamp(19px, 2.2vw, 21px) 20px;
-          font-family: var(--font-ui); font-size: clamp(19px, 2.2vw, 21px);
-          font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+          font-family: var(--font-body); font-size: clamp(19px, 2.2vw, 21px);
+          font-weight: 500;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
         }
         .btn-restart:hover { border-color: var(--text-muted); color: var(--text); }

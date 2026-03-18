@@ -13,48 +13,66 @@ files = [
     'components/feasibility-test/ui/IntroScreen.tsx',
 ]
 
-# Replace ALL clamp() font sizes with clean values
-# Rule: min never below 17, sensible max
-REPLACEMENTS = [
-    # tiny labels → 17px minimum
-    (r'clamp\(9px[^)]+\)',    'clamp(17px, 2vw, 17px)'),
-    (r'clamp\(10px[^)]+\)',   'clamp(17px, 2vw, 17px)'),
-    (r'clamp\(11px[^)]+\)',   'clamp(17px, 2vw, 17px)'),
-    (r'clamp\(12px[^)]+\)',   'clamp(17px, 2vw, 17px)'),
-    (r'clamp\(13px[^)]+\)',   'clamp(17px, 2vw, 19px)'),
-    (r'clamp\(14px[^)]+\)',   'clamp(17px, 2vw, 19px)'),
-    (r'clamp\(15px[^)]+\)',   'clamp(17px, 2vw, 19px)'),
-    (r'clamp\(16px[^)]+\)',   'clamp(17px, 2vw, 19px)'),
-    # body text → 19px
-    (r'clamp\(17px[^)]+\)',   'clamp(19px, 2.2vw, 21px)'),
-    # section titles keep larger
-    (r'clamp\(24px[^)]+\)',   'clamp(26px, 4vw, 30px)'),
-    (r'clamp\(26px[^)]+\)',   'clamp(28px, 4.5vw, 34px)'),
-]
-
-# Also fix raw font-size: Npx where N < 17
-def fix_raw_px(m):
-    n = int(m.group(1))
-    if n < 17:
-        return f'font-size: 17px'
-    return m.group(0)
-
-def fix_fontsize_num(m):
-    n = int(m.group(1))
-    if n < 17:
-        return 'fontSize: 17,'
-    return m.group(0)
-
 for path in files:
     if not os.path.exists(path):
         print(f'skipped: {path}')
         continue
     with open(path) as f:
         content = f.read()
-    for pattern, replacement in REPLACEMENTS:
-        content = re.sub(pattern, replacement, content)
-    content = re.sub(r'font-size:\s*(\d+)px', fix_raw_px, content)
-    content = re.sub(r'fontSize:\s*(\d+),', fix_fontsize_num, content)
+
+    # Remove textTransform uppercase and letterSpacing everywhere
+    content = re.sub(r",?\s*textTransform:\s*'uppercase'(\s*as\s*const)?", '', content)
+    content = re.sub(r",?\s*textTransform:\s*\"uppercase\"", '', content)
+    content = re.sub(r",?\s*letterSpacing:\s*'[^']+'", '', content)
+    content = re.sub(r",?\s*letterSpacing:\s*\"[^\"]+\"", '', content)
+    content = re.sub(r",?\s*text-transform:\s*uppercase;?", '', content)
+    content = re.sub(r",?\s*letter-spacing:\s*[^;]+;?", '', content)
+
+    # Change fontFamily from font-ui to font-body everywhere except title
+    # Keep font-display for titles, use font-body for everything else
+    content = content.replace("var(--font-ui)", "var(--font-body)")
+
+    # Now restore uppercase + tracking ONLY for:
+    # 1. Phase bar label (PHASES[currentPhase])
+    # 2. Buttons (.wiz-btn-primary, .wiz-btn-secondary, .disc-btn, .begin-btn, .btn-*)
+    # 3. .tool-title stays as display font
+
+    # Restore button text-transform in CSS classes
+    content = content.replace(
+        '.wiz-btn-primary {',
+        '.wiz-btn-primary { text-transform: uppercase; letter-spacing: 0.12em;'
+    )
+    content = content.replace(
+        '.wiz-btn-secondary {',
+        '.wiz-btn-secondary { text-transform: uppercase; letter-spacing: 0.12em;'
+    )
+    content = content.replace(
+        '.disc-btn {',
+        '.disc-btn { text-transform: uppercase; letter-spacing: 0.12em;'
+    )
+    content = content.replace(
+        '.begin-btn {',
+        '.begin-btn { text-transform: uppercase; letter-spacing: 0.08em;'
+    )
+    content = content.replace(
+        '.btn-export {',
+        '.btn-export { text-transform: uppercase; letter-spacing: 0.1em;'
+    )
+    content = content.replace(
+        '.btn-quote {',
+        '.btn-quote { text-transform: uppercase; letter-spacing: 0.1em;'
+    )
+    content = content.replace(
+        '.btn-restart {',
+        '.btn-restart { text-transform: uppercase; letter-spacing: 0.1em;'
+    )
+
+    # Restore uppercase for phase label span only
+    content = content.replace(
+        '<span style={T.label}>{PHASES[currentPhase]',
+        '<span style={{ ...T.label, textTransform: "uppercase", letterSpacing: "0.18em" }}>{PHASES[currentPhase]'
+    )
+
     with open(path, 'w') as f:
         f.write(content)
     print(f'fixed: {path}')
