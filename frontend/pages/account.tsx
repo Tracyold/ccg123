@@ -6,6 +6,7 @@ import InvoiceList from '../components/account/InvoiceList';
 import WorkOrderList from '@/components/account/WorkOrderList';
 import InquiryList from '../components/account/InquiryList';
 import HomeTab from '../components/account/HomeTab';
+import WizardResultsTab from '../components/account/WizardResultsTab';
 import WorkOrderDetailModal from '../components/account/WorkOrderDetailModal';
 import ChatPanel from '../components/account/ChatPanel';
 
@@ -37,6 +38,7 @@ export default function AccountPage() {
   const [inquiries, setInquiries] = useState<any[]>([]);
   const [serviceRequests, setServiceRequests] = useState<any[]>([]);
   const [inquiryTab, setInquiryTab] = useState<'inquiries' | 'service'>('inquiries');
+  const [wizardPrefill, setWizardPrefill] = useState<any>(null);
   const [showSRForm, setShowSRForm] = useState(false);
   const [srType, setSrType] = useState('');
   const [srDesc, setSrDesc] = useState('');
@@ -237,6 +239,16 @@ export default function AccountPage() {
   };
 
   // Service request gate check
+  const handleWizardServiceRequest = (result: any) => {
+    setWizardPrefill(result)
+    setActiveTab('inquiries')
+    setInquiryTab('service')
+    setShowSRForm(true)
+    setSrType(result.recommendation ?? '')
+    const stone = [result.stone_variety, result.stone_species].filter(Boolean).join(' ')
+    setSrDesc('Stone: ' + stone + '\nWizard Score: ' + Math.round(result.feasibility_percent) + '%\nRecommendation: ' + result.recommendation + '\nWeight Loss Estimate: ' + result.weight_loss)
+  }
+
   const openSRForm = async () => {
     const { data: prefs } = await supabase.from('user_sms_preferences').select('opt_in_work_orders').eq('user_id', session.user.id).single();
     const { data: p } = await supabase.from('account_users').select('phone').eq('account_user_id', session.user.id).single();
@@ -257,11 +269,12 @@ export default function AccountPage() {
       service_type: srType,
       description: srDesc,
       photo_url: null,
+      wizard_result_id: wizardPrefill?.id ?? null,
     });
     await supabase.functions.invoke('send-admin-notification', {
       body: { event_type: 'service_requests', user_id: session.user.id },
     });
-    setSrSubmitting(false); setShowSRForm(false); setSrType(''); setSrDesc('');
+    setSrSubmitting(false); setShowSRForm(false); setSrType(''); setSrDesc(''); setWizardPrefill(null);
     // Reload
     const { data: sr } = await supabase.from('service_requests').select('*').eq('account_user_id', session.user.id).order('created_at', { ascending: false });
     setServiceRequests(sr || []);
@@ -352,6 +365,7 @@ export default function AccountPage() {
     { id: 'home', label: 'Home' },
     { id: 'workorders', label: 'Work Orders' },
     { id: 'inquiries', label: 'Inquiries' },
+    { id: 'wizard', label: 'Wizard Results' },
     { id: 'invoices', label: 'Invoices' },
   ];
 
@@ -431,6 +445,7 @@ export default function AccountPage() {
 
 
                         {activeTab === 'invoices' && <InvoiceList invoices={invoices} />}
+                {activeTab === 'wizard' && <WizardResultsTab onCreateServiceRequest={handleWizardServiceRequest} />}
 
           </div>
         </div>

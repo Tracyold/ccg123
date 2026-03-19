@@ -87,7 +87,7 @@ export default function AdminUserDetail() {
         setInqCount((gInq?.length || 0) + (inq?.length || 0));
       }
 
-      const { data: sr } = await supabase.from('service_requests').select('*').eq('account_user_id', uid).order('created_at', { ascending: false });
+      const { data: sr } = await supabase.from('service_requests').select('*, wizard_results(*)').eq('account_user_id', uid).order('created_at', { ascending: false });
       setSR(sr || []); setSrCount(sr?.length || 0);
 
       const { data: wo } = await supabase.from('work_orders').select('*').eq('account_user_id', uid).order('created_at', { ascending: false });
@@ -292,10 +292,24 @@ export default function AdminUserDetail() {
                 <div key={sr.service_request_id} onClick={() => markSRRead(sr)}
                   style={{ background: 'var(--k1)', border: '1px solid var(--ln)', padding: '17px', marginBottom: '9px', cursor: 'pointer', display: 'flex', gap: '11px', alignItems: 'flex-start' }}>
                   {!sr.is_read && <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--gl)', marginTop: '7px', flexShrink: 0 }} />}
-                  <div>
+                  <div style={{ flex: 1 }}>
                     <div style={{ fontSize: '17px', color: 'var(--gl)', marginBottom: '7px' }}>{sr.service_type}</div>
                     <p style={{ fontSize: '17px', color: 'var(--tx)', marginBottom: '7px' }}>{sr.description}</p>
                     <span style={{ fontSize: '17px', color: 'var(--d1)' }}>{fmtDate(sr.created_at)}</span>
+                    {sr.wizard_results && (
+                      <div style={{ marginTop: '12px', padding: '12px', background: 'rgba(255,211,105,0.04)', border: '0.5px solid rgba(255,211,105,0.2)', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gl)', marginBottom: '8px' }}>Linked Wizard Result</div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                          <div><div style={{ fontSize: '10px', color: 'var(--d1)', marginBottom: '2px' }}>Stone</div><div style={{ fontSize: '13px', color: 'var(--tx)' }}>{[sr.wizard_results.stone_variety, sr.wizard_results.stone_species].filter(Boolean).join(' ') || '—'}</div></div>
+                          <div><div style={{ fontSize: '10px', color: 'var(--d1)', marginBottom: '2px' }}>Score</div><div style={{ fontSize: '13px', color: 'var(--gl)', fontWeight: 600 }}>{Math.round(sr.wizard_results.feasibility_percent)}%</div></div>
+                          <div><div style={{ fontSize: '10px', color: 'var(--d1)', marginBottom: '2px' }}>Recommendation</div><div style={{ fontSize: '13px', color: 'var(--tx)' }}>{sr.wizard_results.recommendation}</div></div>
+                          <div><div style={{ fontSize: '10px', color: 'var(--d1)', marginBottom: '2px' }}>Weight Loss</div><div style={{ fontSize: '13px', color: 'var(--tx)' }}>{sr.wizard_results.weight_loss}</div></div>
+                        </div>
+                        {sr.wizard_results.disclaimer1_confirmed_at && (
+                          <div style={{ marginTop: '8px', fontSize: '10px', color: 'var(--d1)', fontStyle: 'italic' }}>Terms confirmed: {new Date(sr.wizard_results.disclaimer1_confirmed_at).toLocaleString()}</div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))
