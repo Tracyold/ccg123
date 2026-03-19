@@ -372,7 +372,7 @@ export default function Home() {
         <MachineShowcase />
 
         {/* ── Services Section ── */}
-        <ServicesShowcase />
+        {/* <ServicesShowcase /> */}
 
         {/* ── About Section ("The Cutter") ── */}
         <section data-reveal-group style={{ minHeight: "100svh", display: "flex", alignItems: "center", paddingTop: "6rem", paddingBottom: "6rem" }}>
