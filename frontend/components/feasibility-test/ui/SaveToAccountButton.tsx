@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { saveWizardResult } from '../../../lib/wizardResultsService'
 import type { WizardResultPayload } from '../../../lib/wizardResultsService'
 
@@ -7,11 +7,34 @@ interface SaveToAccountButtonProps {
   isLoggedIn: boolean
 }
 
+const PENDING_KEY = 'ccg_pending_wizard_save'
+
 export default function SaveToAccountButton({ payload, isLoggedIn }: SaveToAccountButtonProps) {
   const [status, setStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
 
+  // On mount — if user just logged in and there's a pending save, auto-trigger it
+  useEffect(() => {
+    if (!isLoggedIn) return
+    const pending = sessionStorage.getItem(PENDING_KEY)
+    if (!pending) return
+    sessionStorage.removeItem(PENDING_KEY)
+    setStatus('saving')
+    try {
+      const pendingPayload: WizardResultPayload = JSON.parse(pending)
+      saveWizardResult(pendingPayload).then(result => {
+        setStatus(result ? 'saved' : 'error')
+        if (!result) setTimeout(() => setStatus('idle'), 3000)
+      })
+    } catch {
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 3000)
+    }
+  }, [isLoggedIn])
+
   const handleSave = async () => {
     if (!isLoggedIn) {
+      // Store payload so we can auto-save after login
+      sessionStorage.setItem(PENDING_KEY, JSON.stringify(payload))
       window.open('/login', '_blank')
       return
     }
