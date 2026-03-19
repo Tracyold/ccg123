@@ -320,7 +320,7 @@ export default function Home() {
   return (
     <>
       <main>
-        <div className="bg-blueprint-overlay" aria-hidden="true" />
+        <div className="bg-blueprint-overlay" aria-hidden="true"><img src="/assets/hand.webp" alt="" /></div>
         <TopNav />
 
         {/* ── Hero Section ── */}
