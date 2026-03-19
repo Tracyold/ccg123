@@ -6,7 +6,6 @@ import MobileServicesCarousel from '../components/home/MobileServicesCarousel';
 import DesktopServicesGrid from '../components/home/DesktopServicesGrid';
 import TopNav from '../components/shared/TopNav';
 import Footer from '../components/shared/Footer';
-import 
 
 function GlobalStyles() {
   return (
