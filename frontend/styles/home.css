@@ -26,7 +26,7 @@
 :root[data-theme="light"] .bg-blueprint-overlay img {
   opacity: 0.05;
   mix-blend-mode: luminositylighten;
-  filter: invert(1) contrast(2) grayscale(1) blur(var(--blur-amount, 1px));
+  filter: invert(1) contrast(2) grayscale(1) blur(var(--blur-amount, 3px));
 }
 
 /* Scroll animations */
