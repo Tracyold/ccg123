@@ -13,20 +13,20 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.06;
+  opacity: 0.02;
   mix-blend-mode: luminositymultiply;
-  filter: grayscale(1) contrast(1.6) blur(var(--blur-amount, 0px));
+  filter: grayscale(1) contrast(2) blur(var(--blur-amount, 0px));
   transition: filter 200ms ease;
 }
 :root[data-theme="dark"] .bg-blueprint-overlay img {
-  opacity: 0.055;
+  opacity: 0.02;
   mix-blend-mode: multiplyluminosity;
-  filter: contrast(1.8) grayscale(1) blur(var(--blur-amount, 12px));
+  filter: contrast(1.8) grayscale(1) blur(var(--blur-amount, 0px));
 }
 :root[data-theme="light"] .bg-blueprint-overlay img {
-  opacity: 0.07;
-  mix-blend-mode: luminosity;
-  filter: invert(1) contrast(1.9) grayscale(1) blur(var(--blur-amount, 1px));
+  opacity: 0.05;
+  mix-blend-mode: luminositylighten;
+  filter: invert(1) contrast(2) grayscale(1) blur(var(--blur-amount, 1px));
 }
 
 /* Scroll animations */
