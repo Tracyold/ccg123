@@ -1,6 +1,6 @@
 import ScoreBox from './ScoreBox'
 import SaveToAccountButton from './SaveToAccountButton'
-import { supabase } from '../../../lib/supabaseClient'
+import { supabase } from '../../../lib/supabase'
 import type { ScoreBreakdown } from '../logic/calculator'
 
 interface StoneInfo {
