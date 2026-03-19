@@ -1,0 +1,152 @@
+/* ── home.css — Index page specific styles ── */
+
+/* Background blueprint image overlay */
+.bg-blueprint-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bg-blueprint-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.06;
+  mix-blend-mode: luminosity;
+  filter: grayscale(1) contrast(1.6) blur(var(--blur-amount, 0px));
+  transition: filter 200ms ease;
+}
+:root[data-theme="dark"] .bg-blueprint-overlay img {
+  opacity: 0.055;
+  mix-blend-mode: luminosity;
+  filter: contrast(1.8) grayscale(1) blur(var(--blur-amount, 0px));
+}
+:root[data-theme="light"] .bg-blueprint-overlay img {
+  opacity: 0.07;
+  mix-blend-mode: multiply;
+  filter: contrast(1.9) grayscale(1) blur(var(--blur-amount, 0px));
+}
+
+/* Scroll animations */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.15); }
+}
+
+/* Machine animations */
+@keyframes bulbPulse {
+  0%, 100% { filter: brightness(1.05) contrast(1.05); }
+  50%       { filter: brightness(1.12) contrast(1.08); }
+}
+
+/* Machine feature section */
+.machine-feature {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 480px;
+  position: relative;
+  overflow: hidden;
+}
+.machine-feature-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: opacity 400ms ease;
+}
+.mf-light { opacity: 1; mix-blend-mode: multiply; }
+.mf-dark  { opacity: 0; mix-blend-mode: screen; }
+:root[data-theme="dark"] .mf-light { opacity: 0; }
+:root[data-theme="dark"] .mf-dark  { opacity: 1; }
+
+/* Machine showcase edge fade */
+.machine-showcase-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  z-index: 1;
+  -webkit-mask-image: radial-gradient(ellipse 80% 85% at 50% 55%, black 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 85% at 50% 55%, black 55%, transparent 100%);
+}
+
+/* Services Showcase */
+.svc-showcase { padding: 6rem 0; }
+.svc-showcase__eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 12px;
+}
+.svc-showcase__title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 400;
+  color: var(--text);
+  text-align: center;
+  margin: 0;
+}
+.svc-showcase__divider {
+  width: 60px;
+  height: 1px;
+  background: var(--accent);
+  margin: 20px auto 56px;
+}
+.svc-showcase__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 32px;
+  align-items: end;
+}
+.svc-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  gap: 20px;
+  cursor: pointer;
+  transition: transform 300ms ease;
+}
+.svc-slot:hover { transform: translateY(-6px); }
+.svc-slot__img-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+.svc-slot--normal .svc-slot__img-wrap { height: 280px; }
+.svc-slot--large  .svc-slot__img-wrap { height: 400px; }
+.svc-slot__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.svc-slot__label {
+  display: none;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0;
+  transition: color 300ms ease;
+}
+.svc-slot:hover .svc-slot__label { color: var(--accent); }
+
+@media (max-width: 860px) {
+  .svc-showcase__grid { grid-template-columns: 1fr; gap: 24px; }
+  .svc-slot--normal .svc-slot__img-wrap { height: 220px; }
+  .svc-slot--large  .svc-slot__img-wrap { height: 300px; }
+  .svc-slot--large { order: -1; }
+}
