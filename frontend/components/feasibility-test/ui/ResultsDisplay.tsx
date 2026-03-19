@@ -25,9 +25,15 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
+    // Check immediately
     supabase.auth.getUser().then(({ data }) => {
       setIsLoggedIn(!!data.user && data.user.email !== process.env.NEXT_PUBLIC_GUEST_ACCOUNT_EMAIL)
     })
+    // Also listen for auth changes (e.g. user logs in on another tab)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsLoggedIn(!!session?.user && session.user.email !== process.env.NEXT_PUBLIC_GUEST_ACCOUNT_EMAIL)
+    })
+    return () => subscription.unsubscribe()
   }, [])
 
   const savePayload = {
