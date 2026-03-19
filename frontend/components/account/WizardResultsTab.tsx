@@ -16,9 +16,9 @@ interface WizardResultsTabProps {
 }
 
 export default function WizardResultsTab({ onCreateServiceRequest }: WizardResultsTabProps) {
-  const [results, setResults]       = useState<WizardResult[]>([])
-  const [loading, setLoading]       = useState(true)
-  const [selected, setSelected]     = useState<WizardResult | null>(null)
+  const [results, setResults]   = useState<WizardResult[]>([])
+  const [loading, setLoading]   = useState(true)
+  const [selected, setSelected] = useState<WizardResult | null>(null)
 
   useEffect(() => {
     getUserWizardResults().then(data => {
@@ -35,52 +35,56 @@ export default function WizardResultsTab({ onCreateServiceRequest }: WizardResul
     }
   }
 
-  if (loading) {
-    return (
-      <div style={{ padding: '40px 0', textAlign: 'center' }}>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text-muted)' }}>Loading...</p>
-      </div>
-    )
-  }
+  if (loading) return (
+    <div style={{ padding: '40px 28px', textAlign: 'center' }}>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text-muted)' }}>Loading...</p>
+    </div>
+  )
 
-  if (results.length === 0) {
-    return (
-      <div style={{ padding: '48px 0', textAlign: 'center' }}>
-        <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 'clamp(18px, 3vw, 24px)', color: 'var(--text-muted)', margin: '0 0 12px' }}>
-          No saved results yet.
-        </p>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text-muted)', opacity: 0.6, margin: 0 }}>
-          Complete the Cut Feasibility Wizard and save your results to see them here.
-        </p>
-        <a
-          href="/feasibility-check"
-          style={{
-            display: 'inline-block', marginTop: 24,
-            fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 600,
-            letterSpacing: '0.18em', textTransform: 'uppercase',
-            color: 'var(--accent)', textDecoration: 'none',
-            border: '0.5px solid rgba(255,211,105,0.4)',
-            padding: '12px 28px', borderRadius: 3,
-          }}
-        >
-          Open Wizard →
-        </a>
-      </div>
-    )
-  }
+  if (results.length === 0) return (
+    <div style={{ padding: '48px 28px', textAlign: 'center' }}>
+      <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 'clamp(18px, 3vw, 24px)', color: 'var(--text-muted)', margin: '0 0 12px' }}>
+        No saved results yet.
+      </p>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-muted)', opacity: 0.6, margin: '0 0 24px' }}>
+        Complete the Cut Feasibility Wizard and save your results to see them here.
+      </p>
+      <a
+        href="/feasibility-check"
+        style={{
+          display: 'inline-block',
+          fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 600,
+          letterSpacing: '0.18em', textTransform: 'uppercase',
+          color: 'var(--accent)', textDecoration: 'none',
+          border: '0.5px solid rgba(255,211,105,0.4)',
+          padding: '12px 28px', borderRadius: 3,
+        }}
+      >
+        Open Wizard →
+      </a>
+    </div>
+  )
 
   return (
     <>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+      <div style={{ padding: '28px' }}>
+        <h2 style={{ fontFamily: 'var(--font-body)', fontSize: 24, color: 'var(--text)', marginBottom: 8 }}>
+          Wizard Results
+        </h2>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-muted)', marginBottom: 24 }}>
+          Save your cut feasibility results and create service requests directly from your results.
+        </p>
+
         {/* Header row */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr 80px 60px 80px 60px',
-          gap: 12, padding: '10px 16px',
+          gridTemplateColumns: '1fr 1fr 70px 110px 60px',
+          gap: 12, padding: '8px 0',
           borderBottom: '0.5px solid var(--border)',
+          marginBottom: 4,
         }}>
-          {['Date', 'Stone', 'Score', 'Result', ''].map(h => (
-            <p key={h} style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0, opacity: 0.6 }}>
+          {['Date', 'Stone', 'Score', '', ''].map((h, i) => (
+            <p key={i} style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0, opacity: 0.5 }}>
               {h}
             </p>
           ))}
@@ -89,7 +93,7 @@ export default function WizardResultsTab({ onCreateServiceRequest }: WizardResul
         {/* Result rows */}
         {results.map(r => {
           const color = bandColor[r.band] ?? '#e7e5e4'
-          const date = new Date(r.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+          const date  = new Date(r.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
           const stone = [r.stone_variety, r.stone_species].filter(Boolean).join(' ') || 'Unnamed stone'
 
           return (
@@ -97,32 +101,31 @@ export default function WizardResultsTab({ onCreateServiceRequest }: WizardResul
               key={r.id}
               style={{
                 display: 'grid',
-                gridTemplateColumns: '1fr 1fr 80px 60px 80px 60px',
-                gap: 12, padding: '14px 16px',
+                gridTemplateColumns: '1fr 1fr 70px 110px 60px',
+                gap: 12, padding: '14px 0',
                 borderBottom: '0.5px solid var(--border)',
+                alignItems: 'center',
                 transition: 'background 180ms ease',
-                cursor: 'default',
               }}
               onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
               onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
             >
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-muted)', margin: 0, alignSelf: 'center' }}>{date}</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text)', margin: 0, alignSelf: 'center' }}>{stone}</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, fontWeight: 600, color, margin: 0, alignSelf: 'center' }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-muted)', margin: 0 }}>{date}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text)', margin: 0 }}>{stone}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, fontWeight: 600, color, margin: 0 }}>
                 {Math.round(r.feasibility_percent)}%
-              </p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--text-muted)', margin: 0, alignSelf: 'center', lineHeight: 1.3 }}>
-                {r.recommendation.split(' ').slice(0, 2).join(' ')}
               </p>
               <button
                 type="button"
                 onClick={() => onCreateServiceRequest(r)}
                 style={{
-                  background: 'transparent', border: '0.5px solid rgba(255,211,105,0.4)',
-                  color: 'var(--accent)', padding: '6px 10px',
+                  background: 'transparent',
+                  border: '0.5px solid rgba(255,211,105,0.4)',
+                  color: 'var(--accent)',
+                  padding: '7px 10px',
                   fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600,
                   letterSpacing: '0.12em', textTransform: 'uppercase',
-                  cursor: 'pointer', borderRadius: 2, alignSelf: 'center',
+                  cursor: 'pointer', borderRadius: 2,
                   transition: 'all 180ms ease', whiteSpace: 'nowrap',
                 }}
               >
@@ -132,11 +135,13 @@ export default function WizardResultsTab({ onCreateServiceRequest }: WizardResul
                 type="button"
                 onClick={() => setSelected(r)}
                 style={{
-                  background: 'transparent', border: '0.5px solid var(--border)',
-                  color: 'var(--accent)', padding: '6px 12px',
-                  fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 500,
+                  background: 'transparent',
+                  border: '0.5px solid var(--border)',
+                  color: 'var(--text-muted)',
+                  padding: '7px 10px',
+                  fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 500,
                   letterSpacing: '0.12em', textTransform: 'uppercase',
-                  cursor: 'pointer', borderRadius: 2, alignSelf: 'center',
+                  cursor: 'pointer', borderRadius: 2,
                   transition: 'all 180ms ease',
                 }}
               >
@@ -157,4 +162,3 @@ export default function WizardResultsTab({ onCreateServiceRequest }: WizardResul
     </>
   )
 }
-

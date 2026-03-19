@@ -1,11 +1,11 @@
 import type { IntroPhase } from '../logic/feasibility-types'
 
 interface IntroScreenProps {
-  introPhase:    IntroPhase
-  check1:        boolean
-  check2:        boolean
-  setCheck1:     (v: boolean) => void
-  setCheck2:     (v: boolean) => void
+  introPhase:     IntroPhase
+  check1:         boolean
+  check2:         boolean
+  setCheck1:      (v: boolean) => void
+  setCheck2:      (v: boolean) => void
   onConfirmDisc1: (timestamp: string) => void
   onConfirmDisc2: (timestamp: string) => void
   onBegin:        () => void
@@ -127,3 +127,4 @@ export default function IntroScreen({
     </div>
   )
 }
+

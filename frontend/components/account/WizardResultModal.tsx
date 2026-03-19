@@ -17,10 +17,6 @@ const bandColor: Record<string, string> = {
 export default function WizardResultModal({ result, onClose, onDelete }: WizardResultModalProps) {
   const color = bandColor[result.band] ?? '#e7e5e4'
 
-  const handlePrint = () => {
-    window.print()
-  }
-
   const stoneFields = [
     { label: 'Species',     value: result.stone_species    },
     { label: 'Variety',     value: result.stone_variety    },
@@ -39,12 +35,12 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
       <style>{`
         @media print {
           body > * { display: none !important; }
-          .wiz-result-modal-print { display: block !important; position: fixed; inset: 0; background: white; color: black; padding: 40px; z-index: 99999; }
+          .wiz-modal-print { display: flex !important; position: fixed; inset: 0; background: #0c0a09; color: #e7e5e4; padding: 40px; z-index: 99999; flex-direction: column; gap: 24px; }
+          * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         }
-        .wiz-result-modal-print { display: none; }
+        .wiz-modal-print { display: none; }
       `}</style>
 
-      {/* Backdrop */}
       <div
         onClick={onClose}
         style={{
@@ -55,7 +51,6 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
           padding: 20,
         }}
       >
-        {/* Modal */}
         <div
           onClick={e => e.stopPropagation()}
           style={{
@@ -78,13 +73,20 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
                 {date}
               </p>
             </div>
-            <button onClick={onClose} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: 20, lineHeight: 1, padding: 4 }}>✕</button>
+            <button
+              onClick={onClose}
+              style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: 20, lineHeight: 1, padding: 4 }}
+            >
+              ✕
+            </button>
           </div>
 
           {/* Stone info */}
           {stoneFields.length > 0 && (
             <div style={{ border: '0.5px solid var(--border)', padding: '16px 20px' }}>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 12px' }}>Stone Information</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 12px' }}>
+                Stone Information
+              </p>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 20px' }}>
                 {stoneFields.map(f => (
                   <div key={f.label}>
@@ -97,8 +99,15 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
           )}
 
           {/* Score */}
-          <div style={{ border: `0.5px solid ${color}`, padding: '24px', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 12, boxShadow: `0 0 24px ${color}18` }}>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0 }}>Feasibility Score</p>
+          <div style={{
+            border: `0.5px solid ${color}`,
+            padding: '24px', textAlign: 'center',
+            display: 'flex', flexDirection: 'column', gap: 12,
+            boxShadow: `0 0 24px ${color}18`,
+          }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0 }}>
+              Feasibility Score
+            </p>
             <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(56px, 14vw, 96px)', fontWeight: 400, color, margin: 0, lineHeight: 1 }}>
               {Math.round(result.feasibility_percent)}
             </p>
@@ -106,8 +115,12 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
               <div style={{ height: '100%', width: `${result.feasibility_percent}%`, background: color }} />
             </div>
             <div style={{ width: 32, height: 0.5, background: color, margin: '0 auto', opacity: 0.5 }} />
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0 }}>Recommended Service</p>
-            <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(20px, 4vw, 28px)', color: 'var(--text)', margin: 0 }}>{result.recommendation}</p>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0 }}>
+              Recommended Service
+            </p>
+            <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(20px, 4vw, 28px)', color: 'var(--text)', margin: 0 }}>
+              {result.recommendation}
+            </p>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text-muted)', margin: 0 }}>
               Estimated material loss: <span style={{ color: 'var(--text)', fontWeight: 500 }}>{result.weight_loss}</span>
             </p>
@@ -117,7 +130,7 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
           <div style={{ display: 'flex', gap: 10, flexDirection: 'column' }}>
             <button
               type="button"
-              onClick={handlePrint}
+              onClick={() => window.print()}
               style={{
                 width: '100%', background: 'transparent', color: 'var(--accent)',
                 border: '0.5px solid rgba(255,211,105,0.4)', padding: '13px 20px',
@@ -147,4 +160,3 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
     </>
   )
 }
-

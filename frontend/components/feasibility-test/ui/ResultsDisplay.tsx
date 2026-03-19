@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import ScoreBox from './ScoreBox'
 import SaveToAccountButton from './SaveToAccountButton'
 import { supabase } from '../../../lib/supabase'
@@ -73,9 +73,8 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
           width: 100%;
         }
 
-        /* Stone info */
         .stone-block {
-          border: '0.5px solid var(--border);
+          border: 0.5px solid var(--border);
           padding: clamp(18px, 3vw, 26px);
         }
         .stone-eyebrow {
@@ -98,7 +97,6 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
           color: var(--text); margin: 0;
         }
 
-        /* Disclaimer */
         .disclaimer {
           border-left: 0.5px solid rgba(255,255,255,0.1);
           padding: clamp(19px, 2.2vw, 21px) clamp(19px, 2.2vw, 21px);
@@ -110,7 +108,6 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
         }
         .disclaimer p:last-child { margin: 0; }
 
-        /* Buttons */
         .results-actions {
           display: flex; flex-direction: column;
           gap: clamp(19px, 2.2vw, 21px); width: 100%;
@@ -118,7 +115,7 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
         .btn-export { text-transform: uppercase; letter-spacing: 0.1em;
           width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
           background: transparent; color: var(--accent);
-          border: '0.5px solid rgba(255,211,105,0.35);
+          border: 0.5px solid rgba(255,211,105,0.35);
           padding: clamp(19px, 2.2vw, 21px) 20px;
           font-family: var(--font-body); font-size: clamp(19px, 2.2vw, 21px);
           font-weight: 600;
@@ -138,7 +135,7 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
         .btn-restart { text-transform: uppercase; letter-spacing: 0.1em;
           width: 100%; display: flex; align-items: center; justify-content: center;
           background: transparent; color: var(--text-muted);
-          border: '0.5px solid var(--border);
+          border: 0.5px solid var(--border);
           padding: clamp(19px, 2.2vw, 21px) 20px;
           font-family: var(--font-body); font-size: clamp(19px, 2.2vw, 21px);
           font-weight: 500;
@@ -149,7 +146,6 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
 
       <div className="results-wrap ccg-results">
 
-        {/* Stone info */}
         {stoneFields.length > 0 && (
           <div className="stone-block">
             <p className="stone-eyebrow">Stone Information</p>
@@ -164,10 +160,8 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
           </div>
         )}
 
-        {/* Score box — color lives here */}
         <ScoreBox results={results} />
 
-        {/* Disclaimer */}
         <div className="disclaimer">
           <p>
             All results should be followed by an in-person evaluation by a qualified gemstone cutter —
@@ -179,7 +173,6 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
           </p>
         </div>
 
-        {/* Buttons */}
         <div className="results-actions ccg-no-print">
           <SaveToAccountButton payload={savePayload} isLoggedIn={isLoggedIn} />
           <button type="button" onClick={handleExport} className="btn-export">
@@ -196,4 +189,3 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, onStartOv
     </>
   )
 }
-

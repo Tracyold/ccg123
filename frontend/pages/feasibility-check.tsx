@@ -48,6 +48,14 @@ function phaseOfStep(step: StepKind): number {
   }
 }
 
+function getOrCreateSessionId(): string {
+  const existing = sessionStorage.getItem('wiz_session')
+  if (existing) return existing
+  const id = Math.random().toString(36).slice(2)
+  sessionStorage.setItem('wiz_session', id)
+  return id
+}
+
 export default function FeasibilityCheckPage() {
 
   const [introPhase, setIntroPhase] = useState<IntroPhase>('line1')
@@ -84,17 +92,13 @@ export default function FeasibilityCheckPage() {
     if (nextStep?.type === 'results') {
       const r = calculateAll(positiveChecked, limitingChecked, structuralChecked, correctableSelections)
       setResults(r)
-      const sessionId = sessionStorage.getItem('wiz_session') ?? (() => {
-        const id = Math.random().toString(36).slice(2)
-        sessionStorage.setItem('wiz_session', id)
-        return id
-      })()
+      const sessionId = getOrCreateSessionId()
       trackWizardAnalytics({
         stoneInfo,
         positiveSelections:    Array.from(positiveChecked),
         limitingSelections:    Array.from(limitingChecked),
         structuralSelections:  Array.from(structuralChecked),
-        correctableSelections: correctableSelections as Record<string, string | null>,
+        correctableSelections: correctableSelections as unknown as Record<string, string | null>,
         results: r,
         disclaimer1ConfirmedAt: disc1ConfirmedAt,
         disclaimer2ConfirmedAt: disc2ConfirmedAt,
@@ -104,14 +108,29 @@ export default function FeasibilityCheckPage() {
     scrollTop()
   }
 
-  const handleBack    = () => { setStepIndex(i => Math.max(i - 1, 0)); scrollTop() }
+  const handleBack = () => { setStepIndex(i => Math.max(i - 1, 0)); scrollTop() }
 
   const handleStartOver = () => {
+    if (stepIndex > 0) {
+      const sessionId = getOrCreateSessionId()
+      trackWizardAnalytics({
+        stoneInfo,
+        positiveSelections:    Array.from(positiveChecked),
+        limitingSelections:    Array.from(limitingChecked),
+        structuralSelections:  Array.from(structuralChecked),
+        correctableSelections: correctableSelections as unknown as Record<string, string | null>,
+        results: results ?? { feasibilityPercent: 0, band: '0-17', recommendation: 'Abandoned', weightLoss: 'N/A', netScore: 0, maxPossible: 205, positiveScore: 0, limitingScore: 0, structuralScore: 0, correctableScore: 0 },
+        disclaimer1ConfirmedAt: disc1ConfirmedAt,
+        disclaimer2ConfirmedAt: disc2ConfirmedAt,
+      }, sessionId, false, STEPS[stepIndex]?.type ?? 'unknown')
+    }
     setStepIndex(0)
     setStoneInfo({ species: '', variety: '', weightCt: '', dimensions: '', cut: '' })
     setPositiveChecked(new Set()); setLimitingChecked(new Set()); setStructuralChecked(new Set())
     setCorrectableSelections({ external: null, light: null, geometry: null, structural: null })
-    setResults(null); setIntroPhase('begin'); scrollTop()
+    setResults(null); setDisc1ConfirmedAt(null); setDisc2ConfirmedAt(null)
+    sessionStorage.removeItem('wiz_session')
+    setIntroPhase('begin'); scrollTop()
   }
 
   const inWizard = introPhase === 'wizard'
@@ -121,13 +140,13 @@ export default function FeasibilityCheckPage() {
       <TopNav />
 
       <style>{`
-        /* ── Mobile overrides ── */
+        /* Mobile overrides */
         @media (max-width: 480px) {
           .tool-title.intro-size { font-size: 28px !important; padding-top: 60px !important; }
           .intro-line { font-size: 17px !important; }
         }
 
-        /* ── Desktop centering ── */
+        /* Desktop centering */
         @media (min-width: 768px) {
           .full-screen { justify-content: center; }
           .tool-title.intro-size { padding-top: 40px !important; }
@@ -135,7 +154,6 @@ export default function FeasibilityCheckPage() {
           .wiz-stage { flex: 0 1 auto !important; margin-top: 40px; margin-bottom: 40px; }
         }
 
-        /* ── Keyframes ── */
         @keyframes flyInUp {
           from { opacity: 0; transform: translateY(70px); }
           to   { opacity: 1; transform: translateY(0); }
@@ -162,7 +180,6 @@ export default function FeasibilityCheckPage() {
           100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* ── Layout ── */
         .full-screen {
           position: fixed; inset: 0; z-index: 100;
           background: var(--bg);
@@ -172,7 +189,6 @@ export default function FeasibilityCheckPage() {
         .full-screen::-webkit-scrollbar { width: 3px; }
         .full-screen::-webkit-scrollbar-thumb { background: var(--border); }
 
-        /* Title */
         .tool-title {
           font-family: var(--font-display);
           font-weight: 400; color: var(--text); text-align: center;
@@ -201,7 +217,6 @@ export default function FeasibilityCheckPage() {
         .tool-rule.intro-rule { margin: 0 auto clamp(40px, 8vh, 70px); }
         .tool-rule.wizard-rule { margin: 0 auto 24px; }
 
-        /* Center stage (intro) */
         .center-stage {
           flex: 1;
           display: flex; flex-direction: column;
@@ -210,7 +225,6 @@ export default function FeasibilityCheckPage() {
           text-align: center; position: relative;
         }
 
-        /* Wizard stage */
         .wiz-stage {
           flex: 1;
           width: 100%; max-width: 520px;
@@ -220,7 +234,6 @@ export default function FeasibilityCheckPage() {
           animation: accordionDown 500ms cubic-bezier(0.16,1,0.3,1) 200ms both;
         }
 
-        /* Intro lines */
         .intro-line {
           font-family: var(--font-display);
           font-style: italic;
@@ -233,7 +246,6 @@ export default function FeasibilityCheckPage() {
         .wiz-slide    { animation: flyInUp    240ms cubic-bezier(0.16,1,0.3,1) both; }
         .wiz-complete { animation: completePop 300ms cubic-bezier(0.16,1,0.3,1) both; }
 
-        /* Disclaimer cards */
         .disc-card {
           width: 100%; max-width: 560px;
           background: var(--bg-card); border: 0.5px solid var(--border);
@@ -274,7 +286,6 @@ export default function FeasibilityCheckPage() {
         .disc-btn.on:hover { background: rgba(255,211,105,0.08); box-shadow: 0 0 28px rgba(255,211,105,0.28); }
         .disc-btn.on:active { background: rgba(255,211,105,0.2); }
 
-        /* Begin button */
         .begin-btn {
           display: inline-flex; align-items: center; gap: 14px;
           background: var(--bg-deep); color: var(--accent); border: 0.5px solid rgba(255,211,105,0.5);
@@ -288,7 +299,6 @@ export default function FeasibilityCheckPage() {
         .begin-btn:hover { background: rgba(255,211,105,0.08); box-shadow: 0 0 36px rgba(255,211,105,0.25); transform: translateY(-2px); }
         .begin-btn:active { background: rgba(255,211,105,0.2); }
 
-        /* Wizard inputs and buttons */
         .wiz-input {
           width: 100%; background: transparent; border: none;
           border-bottom: 0.5px solid var(--border);
@@ -373,3 +383,4 @@ export default function FeasibilityCheckPage() {
     </>
   )
 }
+
