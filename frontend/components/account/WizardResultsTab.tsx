@@ -11,7 +11,11 @@ const bandColor: Record<string, string> = {
   '0-17':   '#f87171',
 }
 
-export default function WizardResultsTab() {
+interface WizardResultsTabProps {
+  onCreateServiceRequest: (result: WizardResult) => void
+}
+
+export default function WizardResultsTab({ onCreateServiceRequest }: WizardResultsTabProps) {
   const [results, setResults]       = useState<WizardResult[]>([])
   const [loading, setLoading]       = useState(true)
   const [selected, setSelected]     = useState<WizardResult | null>(null)
@@ -71,7 +75,7 @@ export default function WizardResultsTab() {
         {/* Header row */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr 80px 60px 60px',
+          gridTemplateColumns: '1fr 1fr 80px 60px 80px 60px',
           gap: 12, padding: '10px 16px',
           borderBottom: '0.5px solid var(--border)',
         }}>
@@ -93,7 +97,7 @@ export default function WizardResultsTab() {
               key={r.id}
               style={{
                 display: 'grid',
-                gridTemplateColumns: '1fr 1fr 80px 60px 60px',
+                gridTemplateColumns: '1fr 1fr 80px 60px 80px 60px',
                 gap: 12, padding: '14px 16px',
                 borderBottom: '0.5px solid var(--border)',
                 transition: 'background 180ms ease',
@@ -110,6 +114,20 @@ export default function WizardResultsTab() {
               <p style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--text-muted)', margin: 0, alignSelf: 'center', lineHeight: 1.3 }}>
                 {r.recommendation.split(' ').slice(0, 2).join(' ')}
               </p>
+              <button
+                type="button"
+                onClick={() => onCreateServiceRequest(r)}
+                style={{
+                  background: 'transparent', border: '0.5px solid rgba(255,211,105,0.4)',
+                  color: 'var(--accent)', padding: '6px 10px',
+                  fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600,
+                  letterSpacing: '0.12em', textTransform: 'uppercase',
+                  cursor: 'pointer', borderRadius: 2, alignSelf: 'center',
+                  transition: 'all 180ms ease', whiteSpace: 'nowrap',
+                }}
+              >
+                + Request
+              </button>
               <button
                 type="button"
                 onClick={() => setSelected(r)}
