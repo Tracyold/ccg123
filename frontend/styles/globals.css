@@ -1,8 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Oranienbaum&family=Montserrat:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
 @font-face {
   font-family: 'Freight Display';
-  src: url('/fonts/freightdispbook-webfont.ttf') format('truetype');
+  src: url('public/fonts/freightdispbook-webfont.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Freight Display Heavy';
+  src: url('public/fonts/freightdispbook-webfont.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Freight Display';
+  src: url('public/fonts/freightdispbook-webfont.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -10,31 +25,46 @@
 
 @font-face {
   font-family: 'Proxima Nova';
-  src: url('/fonts/ProximaNova-Regular.ttf') format('truetype');
+  src: url('public/fonts/ProximaNova-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Proxima Nova';
-  src: url('/fonts/ProximaNova-Semibold.ttf') format('truetype');
+  font-family: 'Proxima Nova Semi Bold';
+  src: url('public/fonts/ProximaNova-Semibold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Proxima Nova';
-  src: url('/fonts/ProximaNova-Bold.ttf') format('truetype');
+  font-family: 'Proxima Nova Bold';
+  src: url('public/fonts/ProximaNova-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Proxima Nova';
-  src: url('/fonts/ProximaNova-Light.ttf') format('truetype');
+  font-family: 'Proxima Nova Light';
+  src: url('public/fonts/ProximaNova-Light.ttf') format('truetype');
+  font-weight: 250;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Freight Display Italic';
+  src: url('public/fonts/Freight-Disp-Bold-Italic.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins Light';
+  src: url('public/fonts/Poppins-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -61,11 +91,14 @@
   --border-rgba:     rgba(17, 18, 21, 1);
   --gold:            #f1bf1c;
   --gold-rgba:       rgba(241, 191, 28, 1);
-  --font-display: 'Freight Display', Georgia, serif;
-  --font-ui: 'Proxima Nova', -apple-system, sans-serif;
-  --font-body: 'Proxima Nova', -apple-system, sans-serif;
+  --font-display:    'Freight Display Heavy', -apple-system,Georgia, serif;
+  --font-subdisplay: 'Freight Display Italic', -apple-system, Georgia, serif;
+  --font-ui:         'Proxima Nova', -apple-system, sans-serif;
+  --font-title:      'Proxima Nova Semi Bold', -apple-system, Georgia, serif;
+  --font-body:       'Proxima Nova Light', -apple-system, sans-serif;
   --font-mono:       'Courier New', monospace;
   --bg-gradient:     linear-gradient(187deg, #10141f 15%, #181e2c 31%, #131b2a 47%, #1f2635 65%, #16181e 85%);
+  --blur-amount:     0px;
 }
 
 :root[data-theme="dark"] {
@@ -85,9 +118,11 @@
   --border-rgba:     rgba(184, 185, 187, 1);
   --gold:            #f2dc93;
   --gold-rgba:       rgba(252, 203, 40, 1);
-  --font-display: 'Freight Display', Georgia, serif;
-  --font-ui: 'Proxima Nova Regular', -apple-system, sans-serif;
-  --font-body: 'Proxima Nova Thin', -apple-system, sans-serif;
+  --font-display:    'Freight Display Heavy', -apple-system,Georgia, serif;
+  --font-subdisplay: 'Freight Display Italic', -apple-system, Georgia, serif;
+  --font-ui:         'Proxima Nova', -apple-system, sans-serif;
+  --font-title:      'Proxima Nova Semi Bold', -apple-system,Georgia, serif;
+  --font-body:       'Proxima Nova Light', -apple-system, sans-serif;
   --font-mono:       'Courier New', monospace;
   --bg-gradient:     linear-gradient(187deg, #10141f 15%, #181e2c 31%, #131b2a 47%, #1f2635 65%, #16181e 85%);
 }
@@ -109,9 +144,11 @@
   --border-rgba:     rgba(204, 204, 204, 1);
   --gold:            #eec11d;
   --gold-rgba:       rgba(238, 193, 29, 1);
-  --font-display: 'Freight Display', Georgia, serif;
-  --font-ui: 'Proxima Nova', -apple-system, sans-serif;
-  --font-body: 'Proxima Nova', -apple-system, sans-serif;
+  --font-display:    'Freight Display', -apple-system,Georgia, serif;
+  --font-subdisplay: 'Freight Display Italic', -apple-system, Georgia, serif;
+  --font-ui:         'Proxima Nova', -apple-system, sans-serif;
+  --font-title:      'Proxima Nova Semi Bold', -apple-system,Georgia, serif;
+  --font-body:       'Proxima Nova Light', -apple-system, sans-serif;
   --font-mono:       'Courier New', monospace;
   --bg-gradient:     linear-gradient(135deg, #e8e4dc 15%, #EEEEEE 35%, #f0ede8 47%, #e8e4dc 67%);
 }
@@ -452,13 +489,13 @@ button, input, textarea, select { border-radius: 0 !important; }
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.02;
+  opacity: 0.01;
   mix-blend-mode: multiplyluminosity;
   mix-blend-mode: multiply;
-  filter: grayscale(1) contrast(3);
+  filter: grayscale(1) contrast(2) blur(var(--blur-amount, 40px));
 }
 :root[data-theme="dark"] .bg-blueprint-overlay img {
-  opacity: 0.02;
+  opacity: 0.01;
   mix-blend-mode: hard-lightmultiply;
   mix-blend-mode: multiply;
   filter: contrast(1.8) grayscale(1);
