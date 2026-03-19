@@ -320,6 +320,7 @@ export default function Home() {
   return (
     <>
       <div className="page-bg-image" aria-hidden="true" />
+    <div className="page-bg-image" aria-hidden="true" />
     <main>
         <TopNav />
 
