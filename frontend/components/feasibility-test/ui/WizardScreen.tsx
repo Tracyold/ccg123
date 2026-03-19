@@ -270,7 +270,7 @@ export default function WizardScreen({
             positiveSelections={Array.from(positiveChecked)}
             limitingSelections={Array.from(limitingChecked)}
             structuralSelections={Array.from(structuralChecked)}
-            correctableSelections={correctableSelections as Record<string, string | null>}
+            correctableSelections={correctableSelections as unknown as Record<string, string | null>}
             onStartOver={handleStartOver}
             onRequestQuote={handleRequestQuote}
           />
