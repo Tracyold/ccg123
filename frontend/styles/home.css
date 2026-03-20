@@ -18,20 +18,20 @@
   object-fit: cover;
   object-position: center;
   opacity: 0.02;
-  filter: grayscale(1) invert(1) contrast(1.8) blur(var(--blur-amount, 1px));
+  filter: grayscale(1) invert(1) contrast(1.8);
   transition: none;
 }
 
 /* Dark theme — dark areas of image show as subtle dark texture */
 :root[data-theme="dark"] .bg-blueprint-overlay img {
   opacity: 0.02;
-  filter: grayscale(1) invert(1) contrast(2) blur(var(--blur-amount, 1px));
+  filter: grayscale(1) invert(1) contrast(2);
 }
 
 /* Light theme — same effect but slightly more visible on light bg */
 :root[data-theme="light"] .bg-blueprint-overlay img {
   opacity: 0.04;
-  filter: grayscale(1) invert(0) contrast(1.9) blur(var(--blur-amount, 1px));
+  filter: grayscale(1) invert(0) contrast(1.9);
 }
 
 
