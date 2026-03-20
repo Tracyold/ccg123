@@ -144,7 +144,7 @@ export default function Home() {
                       objectPosition: 'center top',
                       transform: 'scale(1.1)',
                       display: 'block',
-                      filter: 'grayscale(1) sepia(0.4) hue-rotate(180deg) contrast(1.4) brightness(.5);',
+                      filter: 'grayscale(1) sepia(0.4) contrast(1.4) brightness(.5);'
                     }}
                   />
                   <div
@@ -153,7 +153,7 @@ export default function Home() {
                       inset: 0,
                       boxShadow: 'inset 0 0 27px 15px var(--border)',
                       zIndex: 10,
-                      pointerEvents: 'none',
+                      pointerEvents: 'none'
                     }}
                   />
                 </div>
@@ -163,7 +163,6 @@ export default function Home() {
                 <h2
                   data-gold="name"
                   className="page-title title-xl name-title mb-6"
-                  data-scroll-reveal
                   style={{ animationDelay: '100ms' }}
                 >
                   Michael Wall
@@ -171,7 +170,6 @@ export default function Home() {
 
                 <p
                  
-                  data-scroll-reveal
                   style={{
                     fontFamily: 'var(--font-body)',
                     fontSize: '19px',
@@ -189,7 +187,6 @@ export default function Home() {
 
                 <p
                  
-                  data-scroll-reveal
                   style={{
                     fontFamily: 'var(--font-body)',
                     fontSize: '17px',
