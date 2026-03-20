@@ -407,7 +407,7 @@ export default function Home() {
                       objectPosition: 'center top',
                       transform: 'scale(1.1)',
                       display: 'block',
-                      filter: 'filter: grayscale(1) sepia(0.4) hue-rotate(180deg) contrast(1.4) brightness(.5);',
+                      filter: 'filter(1) grayscale(1) sepia(0.4) hue-rotate(180deg) contrast(1.4) brightness(.5);',
                     }}
                   />
                   <div
