@@ -115,6 +115,13 @@
 }
 
 /* ── Base Resets ── */
+html {
+  background: #0f131d;
+}
+:root[data-theme="light"] html {
+  background: #e8e4dc;
+}
+
 html, body {
   overscroll-behavior: none;
   margin: 0;
