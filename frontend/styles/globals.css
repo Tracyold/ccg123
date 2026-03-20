@@ -120,6 +120,7 @@ html, body {
   margin: 0;
   padding: 0;
   background: transparent;
+  background-color: var(--bg-gradient);
   min-height: 100vh;
   color: var(--text);
   font-family: var(--font-body);
