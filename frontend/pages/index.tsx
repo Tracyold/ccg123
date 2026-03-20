@@ -141,7 +141,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div
-                className="opacity-0 transition-all duration-700"
+                className="transition-all duration-700"
                 data-scroll-reveal
                 style={{ animationDelay: '100ms' }}
               >
@@ -181,7 +181,7 @@ export default function Home() {
               <div>
                 <h2
                   data-gold="name"
-                  className="page-title title-xl name-title mb-6 opacity-0 transition-all duration-700"
+                  className="page-title title-xl name-title mb-6 transition-all duration-700"
                   data-scroll-reveal
                   style={{ animationDelay: '100ms' }}
                 >
@@ -189,7 +189,7 @@ export default function Home() {
                 </h2>
 
                 <p
-                  className="opacity-0 transition-all duration-700"
+                  className="transition-all duration-700"
                   data-scroll-reveal
                   style={{
                     fontFamily: 'var(--font-body)',
@@ -207,7 +207,7 @@ export default function Home() {
                 </p>
 
                 <p
-                  className="opacity-0 transition-all duration-700"
+                  className="transition-all duration-700"
                   data-scroll-reveal
                   style={{
                     fontFamily: 'var(--font-body)',
@@ -250,7 +250,7 @@ export default function Home() {
           <div className="container-custom relative z-10 text-center" style={{ maxWidth: '880px' }}>
             <h2
               data-gold="section-title"
-              className="page-title title-xl mb-8 opacity-0 transition-all duration-700"
+              className="page-title title-xl mb-8 transition-all duration-700"
               data-scroll-reveal
               style={{ animationDelay: '30ms' }}
             >
@@ -258,7 +258,7 @@ export default function Home() {
             </h2>
 
             <p
-              className="mx-auto mb-12 opacity-0 transition-all duration-700"
+              className="mx-auto mb-12 transition-all duration-700"
               data-scroll-reveal
               style={{
                 fontFamily: 'var(--font-ui)',
@@ -276,7 +276,7 @@ export default function Home() {
             {/* FIX: /booking → /shop */}
             <a
               href="/shop"
-              className="btn-primary opacity-0 transition-all duration-700"
+              className="btn-primary transition-all duration-700"
               data-scroll-reveal
               style={{
                 borderRadius: '999px',
