@@ -398,7 +398,7 @@ export default function Home() {
                   }}
                 >
                   <img
-                    src="/assets/Cutter.jpeg"
+                    src="/assets/Loupe.jpeg"
                     alt="Michael Wall at work"
                     style={{
                       width: '100%',
