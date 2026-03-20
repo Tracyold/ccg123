@@ -124,7 +124,7 @@ html, body {
   overscroll-behavior: none;
   margin: 0;
   padding: 0;
-  background: var(--bg-radial);
+  background: var(--bg-gradient);
   background-attachment: fixed;
   min-height: 100vh;
   color: var(--text);
