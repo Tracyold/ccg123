@@ -92,6 +92,7 @@
   --border-rgba:     rgba(184, 185, 187, 1);
   --gold:            #f2dc93;
   --gold-rgba:       rgba(242, 220, 147, 1);
+  --scroll-angle:    187deg;
   --bg-gradient:     linear-gradient(var(--scroll-angle, 187deg), #0f131d 0%, #10141f 15%, #111520 28%, #0f1320 40%, #111622 52%, #0e1320 64%, #101420 76%, #0f131d 88%, #111521 100%);
 }
 
@@ -123,7 +124,7 @@ html, body {
   overscroll-behavior: none;
   margin: 0;
   padding: 0;
-  background: var(--bg-gradient);
+  background: var(--bg-radial);
   background-attachment: fixed;
   min-height: 100vh;
   color: var(--text);
