@@ -7,6 +7,8 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 /* Base — applies to both themes */
@@ -20,12 +22,53 @@
   transition: none;
 }
 
+/* Dark theme — dark areas of image show as subtle dark texture */
+:root[data-theme="dark"] .bg-blueprint-overlay img {
+  opacity: 0.02;
+  filter: grayscale(1) invert(1) contrast(2);
+}
+
 /* Light theme — same effect but slightly more visible on light bg */
 :root[data-theme="light"] .bg-blueprint-overlay img {
   opacity: 0.04;
   filter: grayscale(1) invert(0) contrast(1.9);
 }
 
+
+/* Scroll animations */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.15); }
+}
+
+/* Machine animations */
+@keyframes bulbPulse {
+  0%, 100% { filter: brightness(1.05) contrast(1.05); }
+  50%       { filter: brightness(1.12) contrast(1.08); }
+}
+
+/* Machine feature section */
+.machine-feature {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 480px;
+  position: relative;
+  overflow: hidden;
+}
+.machine-feature-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition-delay: 400ms ease;
+}
+.mf-light { opacity: 1; mix-blend-mode: luminosity; }
+.mf-dark  { opacity: 0; mix-blend-mode: multiply; }
+:root[data-theme="dark"] .mf-light { opacity: 0; }
+:root[data-theme="dark"] .mf-dark  { opacity: 1; }
 
 /* Machine showcase edge fade */
 .machine-showcase-img-wrap {
