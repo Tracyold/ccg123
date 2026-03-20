@@ -133,6 +133,8 @@ html, body {
   transition: color 400ms ease;
 }
 
+}
+
 * { box-sizing: border-box; }
 #__next { background: transparent; min-height: 100vh; }
 button, input, textarea, select { border-radius: 0 !important; }
