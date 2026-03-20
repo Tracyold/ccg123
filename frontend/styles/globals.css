@@ -119,8 +119,7 @@ html, body {
   overscroll-behavior: none;
   margin: 0;
   padding: 0;
-  background: var(--bg-gradient);
-  background-attachment: fixed;
+  background: transparent;
   min-height: 100vh;
   color: var(--text);
   font-family: var(--font-body);
