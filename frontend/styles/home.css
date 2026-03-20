@@ -18,7 +18,7 @@
   opacity: 0.02;
   mix-blend-mode: luminosity;
   filter: grayscale(1) invert(1) contrast(1.8) blur(var(--blur-amount, 1px));
-  transition: filter 300ms ease-out;
+  transition: none;
 }
 
 /* Dark theme — dark areas of image show as subtle dark texture */
