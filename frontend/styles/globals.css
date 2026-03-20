@@ -60,7 +60,7 @@
 @tailwind utilities;
 
 /* ── Non-color variables only ── */
-:root html {
+:root {
   --font-display:    'Freight Display Heavy', Georgia, serif;
   --font-subdisplay: 'Freight Display Italic', Georgia, serif;
   --font-ui:         'Proxima Nova', -apple-system, sans-serif;
@@ -72,7 +72,7 @@
 }
 
 /* ── Dark Theme ── */
-:root[data-theme="dark"] html {
+:root[data-theme="dark"] {
   --bg:              #16181e;
   --bg-rgba:         rgba(19, 22, 28, 1);
   --bg-card:         #181e2c;
@@ -93,7 +93,7 @@
 }
 
 /* ── Light Theme ── */
-:root[data-theme="light"] html {
+:root[data-theme="light"] {
   --bg:              #EEEEEE;
   --bg-rgba:         rgba(238, 238, 238, 1);
   --bg-card:         #f3f0de;
