@@ -73,6 +73,8 @@
 }
 
 /* ── Dark Theme ── */
+:root[data-theme="dark"] html,
+:root[data-theme="dark"] body,
 :root[data-theme="dark"] {
   --bg:              #16181e;
   --bg-rgba:         rgba(19, 22, 28, 1);
@@ -95,6 +97,8 @@
 }
 
 /* ── Light Theme ── */
+:root[data-theme="light"] html,
+:root[data-theme="light"] body,
 :root[data-theme="light"] {
   --bg:              #EEEEEE;
   --bg-rgba:         rgba(238, 238, 238, 1);
@@ -121,7 +125,7 @@ html, body {
   overscroll-behavior: none;
   margin: 0;
   padding: 0;
-  background: var(--bg-radial);
+  background: var(--bg-radial, #16181e);
   background-attachment: fixed;
   min-height: 100vh;
   color: var(--text);
