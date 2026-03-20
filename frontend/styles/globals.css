@@ -115,15 +115,11 @@
 }
 
 /* ── Base Resets ── */
-html {
-  background: #0f131d;
-}
 html, body {
   overscroll-behavior: none;
   margin: 0;
   padding: 0;
   background: transparent;
-  background-color: #0f131d;
   min-height: 100vh;
   color: var(--text);
   font-family: var(--font-body);
