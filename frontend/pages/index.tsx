@@ -65,6 +65,8 @@ export default function Home() {
           const progress = Math.min(scrollY / maxScroll, 1);
           const angle = 187 + progress * 45;
           document.documentElement.style.setProperty('--scroll-angle', `${angle}deg`);
+          const blur = 1 + Math.min(progress * 12, 12);
+          document.documentElement.style.setProperty('--blur-amount', `${blur}px`);
           ticking = false;
         });
       }
