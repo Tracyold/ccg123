@@ -85,6 +85,7 @@
   --font-mono:       'Courier New', monospace;
   --font-pop:        'Poppins Light', -apple-system, sans-serif;
   --bg-gradient:     linear-gradient(145deg, #16181e 15%, #14171e 31%, #262f43 47%, #19202e 65%, #0f131d 85%);
+    --radial:        radial-gradient(145deg, #16181e 15%, #14171e 31%, #262f43 47%, #19202e 65%, #0f131d 85%);
   --blur-amount:     1px;
 }
 
@@ -113,6 +114,7 @@
   --font-mono:       'Courier New', monospace;
   --font-pop:        'Poppins Light', -apple-system, sans-serif;
   --bg-gradient:     linear-gradient(145deg, #16181e 15%, #14171e 31%, #262f43 47%, #19202e 65%, #0f131d 85%);
+    --radial:        radial-gradient(145deg, #16181e 15%, #14171e 31%, #262f43 47%, #19202e 65%, #0f131d 85%);
   --blur-amount:     1px;
 }
 
@@ -141,6 +143,8 @@
   --font-mono:       'Courier New', monospace;
   --font-pop:        'Poppins Light', -apple-system, sans-serif;
   --bg-gradient:     linear-gradient(129deg, #e8e4dc 15%, #EEEEEE 35%, #f0ede8 47%, #e8e4dc 67%);
+    --radial:        radial-gradient(187deg, #e8e4dc 15%, #EEEEEE 35%, #f0ede8 47%, #e8e4dc 67%);
+
 }
 
 /* ── Base Resets ── */

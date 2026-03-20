@@ -13,16 +13,18 @@ function GlobalStyles() {
       dangerouslySetInnerHTML={{
         __html: `
 :root {
-  --font-display: 'Oranienbaum', Georgia, serif;
-  --font-subtitle: 'Montserrat', sans-serif;
-  --font-body: 'Comfortaa', sans-serif;
-  --font-ui: 'Montserrat', sans-serif;
-  --font-mono: 'Courier New', monospace;
+  --font-display:    'Freight Display Heavy', Georgia, serif;
+  --font-subdisplay: 'Freight Display Italic', Georgia, serif;
+  --font-ui:         'Proxima Nova', -apple-system, sans-serif;
+  --font-title:      'Proxima Nova Semi Bold', -apple-system, sans-serif;
+  --font-body:       'Proxima Nova Light', -apple-system, sans-serif;
+  --font-mono:       'Courier New', monospace;
+  --font-pop:        'Poppins Light', -apple-system, sans-serif;
 }
 
 html, body, #__next {
   font-family: var(--font-body);
-  background: var(--bg-gradient);
+  background: var(--bg-gradient--radial);
   color: var(--text-rgba);
   margin: 0;
   padding: 0;
@@ -30,7 +32,7 @@ html, body, #__next {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-subtitle);
+  font-family: var(--font-subdisplay);
 }
 
 .hero-glow {
@@ -61,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .title-sm {
-  font-family: var(--font-subtitle);
+  font-family: var(--font-subdisplay);
   font-weight: 500;
 }
 
@@ -78,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .page-title {
-  font-family: var(--font-display);
+  font-family: var(--font-pop);
 }
 
 .container-custom {
