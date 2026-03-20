@@ -29,7 +29,7 @@ function MachineShowcase() {
         {/* Machine images */}
         <div className="machine-showcase-img-wrap">
           <img src="https://ik.imagekit.io/postvibe/IMG_4384.png"
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center bottom', mixBlendMode: 'multiply', opacity: dark ? 0 : 1, transition: 'opacity 150ms ease' }} alt="" />
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center bottom', mixBlendMode: 'multiply', opacity: dark ? 0 : 1, transition: 'opacity 150ms fade' }} alt="" />
           <img src="https://ik.imagekit.io/postvibe/IMG_4383.png"
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', mixBlendMode: 'multiply', opacity: dark ? 1 : 0, transition: 'opacity 2800ms cubic-bezier(0.05, 0.9, 0.1, 1)' }} alt="" />
         </div>
@@ -58,21 +58,21 @@ export default function Home() {
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
+        ticking = true;
         requestAnimationFrame(() => {
           const scrollY = window.scrollY;
           const maxScroll = document.body.scrollHeight - window.innerHeight;
           const progress = Math.min(scrollY / maxScroll, 1);
           const angle = 187 + progress * 45;
           document.documentElement.style.setProperty('--scroll-angle', `${angle}deg`);
-          ticking = true;
+          ticking = false;
         });
-        ticking = true;
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   return (
     <>
       <div className="bg-blueprint-overlay" aria-hidden="true"><img src="/assets/hand.webp" alt="" /></div>
