@@ -83,6 +83,7 @@
   --font-title:      'Proxima Nova Semi Bold', -apple-system, sans-serif;
   --font-body:       'Proxima Nova Light', -apple-system, sans-serif;
   --font-mono:       'Courier New', monospace;
+  --font-pop:        'Poppins Light', -apple-system, sans-serif;
   --bg-gradient:     linear-gradient(187deg, #10141f 15%, #181e2c 31%, #131b2a 47%, #1f2635 65%, #16181e 85%);
   --blur-amount:     0px;
 }
@@ -110,6 +111,7 @@
   --font-title:      'Proxima Nova Semi Bold', -apple-system, sans-serif;
   --font-body:       'Proxima Nova Light', -apple-system, sans-serif;
   --font-mono:       'Courier New', monospace;
+  --font-pop:        'Poppins Light', -apple-system, sans-serif;
   --bg-gradient:     linear-gradient(187deg, #10141f 15%, #181e2c 31%, #131b2a 47%, #1f2635 65%, #16181e 85%);
 }
 
@@ -136,6 +138,7 @@
   --font-title:      'Proxima Nova Semi Bold', -apple-system, sans-serif;
   --font-body:       'Proxima Nova Light', -apple-system, sans-serif;
   --font-mono:       'Courier New', monospace;
+  --font-pop:        'Poppins Light', -apple-system, sans-serif;
   --bg-gradient:     linear-gradient(135deg, #e8e4dc 15%, #EEEEEE 35%, #f0ede8 47%, #e8e4dc 67%);
 }
 

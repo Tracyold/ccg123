@@ -14,22 +14,22 @@
   object-fit: cover;
   object-position: center;
   opacity: 0.02;
-  mix-blend-mode: luminositymultiply;
+  mix-blend-mode: hard-light;
   filter: grayscale(1) contrast(2) blur(var(--blur-amount, 9px));
-    transition: filter 129ms ease;
+    transition: 100ms ease-in-out;
 }
 :root[data-theme="dark"] .bg-blueprint-overlay img {
   opacity: 0.02;
-  mix-blend-mode: multiplyluminosity;
+  mix-blend-mode: hard-light;
   filter: contrast(1.8) grayscale(1) blur(var(--blur-amount, 9px));
-    transition: filter 129ms ease;
+    transition: 100ms ease-in-out;
 
 }
 :root[data-theme="light"] .bg-blueprint-overlay img {
   opacity: 0.05;
-  mix-blend-mode: luminositylighten;
+  mix-blend-mode: luminosity;
   filter: invert(1) contrast(2) grayscale(1) blur(var(--blur-amount, 9px));
-    transition: filter 129ms ease;
+    transition: 100ms ease-in-out;
 
 }
 
@@ -61,12 +61,12 @@
   height: 100%;
   object-fit: contain;
   object-position: center;
-  transition: opacity 400ms ease;
+  transition-delay: 400ms ease;
 }
-.mf-light { opacity: 1; mix-blend-mode: multiply; }
-.mf-dark  { opacity: 0; mix-blend-mode: screen; }
+.mf-light { opacity: 1; mix-blend-mode: luminosity; }
+.mf-dark  { opacity: 0; mix-blend-mode: hard-light; }
 :root[data-theme="dark"] .mf-light { opacity: 0; }
-:root[data-theme="dark"] .mf-dark  { opacity: 1; }
+:root[data-theme="dark"] .mf-dark  { opacity: 0; }
 
 /* Machine showcase edge fade */
 .machine-showcase-img-wrap {
