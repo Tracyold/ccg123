@@ -135,7 +135,7 @@ export default function Home() {
           </div>
 
           {/* Stat card — desktop only */}
-          <div className="hidden md:flex" style={{ position: 'absolute', bottom: '32px', right: '32px', flexDirection: 'column', justifyContent: 'center', width: '11rem', height: '11rem', background: 'var(--bg-deep)', border: '1px solid rgba(255,211,105,0.3)', padding: '1.5rem' }}>
+          <div className="hidden md:flex" style={{ position: 'absolute', bottom: '32px', right: '32px', flexDirection: 'column', justifyContent: 'center', width: '11rem', height: '11rem', background: 'var(--bg-deep)', border: 'var(--border)', padding: '1.5rem' }}>
             <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '8px' }}>Industry for</p>
             <p style={{ fontFamily: 'var(--font-display)', fontSize: '36px', color: 'var(--accent)', lineHeight: 1 }}>13 Yrs</p>
             <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', color: 'var(--text-muted)', marginTop: '6px' }}>Cutting for Seven</p>
@@ -193,7 +193,7 @@ export default function Home() {
                       objectPosition: 'center top',
                       transform: 'scale(1.1)',
                       display: 'block',
-                      filter: 'filter(1) grayscale(1) sepia(0.4) hue-rotate(180deg) contrast(1.4) brightness(.5);',
+                      filter: 'grayscale(1) sepia(0.4) hue-rotate(180deg) contrast(1.4) brightness(.5);',
                     }}
                   />
                   <div

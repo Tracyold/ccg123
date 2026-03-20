@@ -16,7 +16,7 @@
   object-fit: cover;
   object-position: center;
   opacity: 0.02;
-  mix-blend-mode: luminosity;
+  mix-blend-mode: muultiply;
   filter: grayscale(1) invert(1) contrast(1.8) blur(var(--blur-amount, 1px));
   transition: none;
 }
@@ -24,7 +24,7 @@
 /* Dark theme — dark areas of image show as subtle dark texture */
 :root[data-theme="dark"] .bg-blueprint-overlay img {
   opacity: 0.02;
-  mix-blend-mode: luminosity;
+  mix-blend-mode: multiply;
   filter: grayscale(1) invert(1) contrast(2) blur(var(--blur-amount, 1px));
 }
 
@@ -67,9 +67,9 @@
   transition-delay: 400ms ease;
 }
 .mf-light { opacity: 1; mix-blend-mode: luminosity; }
-.mf-dark  { opacity: 0; mix-blend-mode: hard-light; }
+.mf-dark  { opacity: 0; mix-blend-mode: multiply; }
 :root[data-theme="dark"] .mf-light { opacity: 0; }
-:root[data-theme="dark"] .mf-dark  { opacity: 0; }
+:root[data-theme="dark"] .mf-dark  { opacity: 1; }
 
 /* Machine showcase edge fade */
 .machine-showcase-img-wrap {
