@@ -133,7 +133,7 @@ html, body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background 600ms cubic-bezier(0.4, 0, 0.2, 1), color 400ms ease;
+  transition: color 400ms ease;
 }
 
 * { box-sizing: border-box; }
