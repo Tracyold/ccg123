@@ -69,6 +69,7 @@
   --font-mono:       'Courier New', monospace;
   --font-pop:        'Poppins Light', -apple-system, sans-serif;
   --blur-amount:     1px;
+  --scroll-angle:    187deg;
 }
 
 /* ── Dark Theme ── */
