@@ -217,7 +217,7 @@ button, input, textarea, select { border-radius: 0 !important; }
   background-color: var(--bg-card);
   border: 1px solid var(--border);
   transition: all 0.5s ease;
-  overflow: hidden;
+  overflow: none;
   position: relative;
 }
 .gem-card:hover {
