@@ -92,8 +92,7 @@
   --border-rgba:     rgba(184, 185, 187, 1);
   --gold:            #f2dc93;
   --gold-rgba:       rgba(242, 220, 147, 1);
-  --scroll-angle:    187deg;
-  --bg-gradient:     linear-gradient(var(--scroll-angle, 187deg), #0f131d 0%, #10141f 15%, #111520 28%, #0f1320 40%, #111622 52%, #0e1320 64%, #101420 76%, #0f131d 88%, #111521 100%);
+  --bg-gradient:     linear-gradient(var(--scroll-angle), #0f131d 0%, #10141f 15%, #111520 28%, #0f1320 40%, #111622 52%, #0e1320 64%, #101420 76%, #0f131d 88%, #111521 100%);
 }
 
 /* ── Light Theme ── */
@@ -116,7 +115,7 @@
   --border-rgba:     rgba(204, 204, 204, 1);
   --gold:            #ddb24e;
   --gold-rgba:       rgba(221, 178, 78, 1);
-  --bg-gradient:     linear-gradient(129deg, #e8e4dc 15%, #eeeeee 35%, #f0ede8 47%, #c7c7c7 67%);
+  --bg-gradient:     linear-gradient(var(--scroll-angle), #e8e4dc 15%, #eeeeee 35%, #f0ede8 47%, #c7c7c7 67%);
 }
 
 /* ── Base Resets ── */
