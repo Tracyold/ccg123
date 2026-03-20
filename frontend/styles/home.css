@@ -19,7 +19,7 @@
   object-position: center;
   opacity: 0.02;
   filter: grayscale(1) invert(1) contrast(1.8);
-  transition: ;
+  transition: ease 500ms;
 }
 
 /* Dark theme — dark areas of image show as subtle dark texture */
