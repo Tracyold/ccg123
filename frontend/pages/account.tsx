@@ -564,4 +564,3 @@ const accountCss = `
   .acc-left { flex-direction: column; }
 }
 `;
-};
