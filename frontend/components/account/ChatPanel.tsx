@@ -102,7 +102,7 @@ export default function ChatPanel({
     const observer = new ResizeObserver(entries => {
       for (const entry of entries) {
         const w = entry.contentRect.width;
-        const size = Math.max(19, Math.min(83, w / 8));
+        const size = Math.max(19, Math.min(83, w / 28));
         el.style.fontSize = size + 'px';
       }
     });
