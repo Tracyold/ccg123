@@ -534,7 +534,7 @@ const accountCss = `
 .acc-nav-item.on { color: #d4af37; border-left-color: #d4af37; }
 .acc-nav-item:hover:not(.on) { color: var(--text); }
 .acc-content { flex: 1; overflow-y: auto; min-height: 0; min-width: 0; }
-.acc-right { width: 35%; min-width: 300px; max-width: 420px; border-left: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; background: var(--bg); }
+.acc-right { width: 100%; height: 100%; border-left: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; background: var(--bg); }
 .acc-chat-header { padding: 16px 20px; border-bottom: 1px solid var(--border); }
 .acc-chat-messages { flex: 1; overflow-y: auto; padding: 16px 20px; }
 .acc-chat-input-bar { display: flex; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--border); }
