@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
 import { useRouter } from 'next/router';
 import { supabase } from '../lib/supabase';
 import InvoiceList from '../components/account/InvoiceList';
@@ -375,7 +376,9 @@ export default function AccountPage() {
       <style dangerouslySetInnerHTML={{ __html: accountCss }} />
       <div className="acc-shell">
         {/* Left panel */}
-        <div className="acc-left">
+        <ResizablePanelGroup orientation="horizontal" className="hidden-mobile" style={{ height: '100vh' }}>
+        <ResizablePanel defaultSize={65} minSize={40}>
+        <div className="acc-left" style={{ height: '100%' }}>
           {/* Nav */}
           <div className="acc-nav">
             {NAV.map(n => (
