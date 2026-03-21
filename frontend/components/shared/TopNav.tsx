@@ -1,3 +1,4 @@
+import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
@@ -199,18 +200,10 @@ export default function TopNav() {
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [authed, setAuthed] = useState(false);
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-
-  useEffect(() => {
-    const saved = localStorage.getItem('ccg-theme') as 'dark' | 'light' | null;
-    const t = saved || 'dark'; setTheme(t as 'dark' | 'light'); document.documentElement.setAttribute('data-theme', t);
-  }, []);
+  const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    const next = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('ccg-theme', next);
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
 
