@@ -348,8 +348,11 @@ export default function AccountPage() {
 const accountCss = `
 .acc-shell {
   display: flex;
-  height: calc(100dvh - 60px);
-  margin-top: 60px;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: transparent;
   overflow: hidden;
 }
