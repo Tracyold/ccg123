@@ -125,7 +125,7 @@ export default function LoginPage() {
             {mode === 'signup' && (
               <>
                 <label style={labelStyle}>FULL NAME</label>
-                <input value={name} onChange={e => setName(e.target.value)} placeholder="Jane Smith" style={inputStyle}
+                <input value={name} onChange={e => setName(e.target.value)} placeholder="Jane Smith" autoFocus style={inputStyle}
                   onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
                   onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }} />
                 <label style={labelStyle}>EMAIL</label>
@@ -135,7 +135,7 @@ export default function LoginPage() {
               </>
             )}
             <label style={labelStyle}>PHONE NUMBER</label>
-            <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+1 (555) 000-0000" style={inputStyle} onFocus={e => { if (!e.target.value) setPhone('+1 '); e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
+            <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+1 (555) 000-0000" autoFocus={mode === 'login'} onKeyDown={e => { if (e.key === 'Enter') sendOtp(); }} style={inputStyle} onFocus={e => { if (!e.target.value) setPhone('+1 '); e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
               onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }} />
             {mode === 'signup' && (
               <>
@@ -293,7 +293,7 @@ export default function LoginPage() {
             <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '16px' }}>
               Enter the code sent to {phone}
             </p>
-            <input type="text" value={otp} onChange={e => setOtp(e.target.value)} placeholder="000000"
+            <input type="text" value={otp} onChange={e => setOtp(e.target.value)} placeholder="000000" autoFocus onKeyDown={e => { if (e.key === 'Enter') verifyOtp(); }}
               style={{ ...inputStyle, fontSize: '18px', textAlign: 'center', letterSpacing: '0.3em' }}
               onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
               onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }} />
