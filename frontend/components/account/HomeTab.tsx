@@ -89,7 +89,7 @@ export default function HomeTab({
       {/* SMS Preferences */}
       <div style={{ marginTop: '32px' }}>
         <h3 style={{ fontFamily: 'var(--font-ui)', fontSize: '17px', textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--text-muted)', marginBottom: '16px' }}>Notification Preferences</h3>
-        <FieldGroup style={{ width: '100%', gap: '8px', display: 'flex', flexDirection: 'column' }}>
+        <FieldGroup className="w-full">
           {smToggles.map(t => {
             const descriptions: Record<string, string> = {
               opt_in_work_orders:  'Status updates while your stone is with us',
