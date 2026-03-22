@@ -535,7 +535,7 @@ export default function AccountPage() {
 const accountCss = `
 .acc-shell { display: flex; height: calc(100vh - 60px); margin-top: 60px; background: transparent; overflow: hidden; }
 .acc-left { flex: 1; display: flex; min-height: 0; min-width: 0; }
-.acc-nav { width: 180px; flex-shrink: 0; background: var(--bg); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 20px 0; overflow: hidden; }
+.acc-nav { width: 180px; flex-shrink: 0; background: var(--bg); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 0; overflow: hidden; min-height: 0; }
 .acc-nav-item { display: block; width: 100%; text-align: left; padding: 10px 20px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.20em; text-transform: uppercase; color: rgba(255,255,255,0.45); background: none; border: none; border-left: 2px solid transparent; cursor: pointer; transition: color 0.15s; }
 .acc-nav-item.on { color: #d4af37; border-left-color: #d4af37; }
 .acc-nav-item:hover:not(.on) { color: var(--text); }
