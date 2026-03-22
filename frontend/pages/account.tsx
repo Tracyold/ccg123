@@ -256,6 +256,9 @@ export default function AccountPage() {
         <Link href="/portfolio" className="acc-nav-item" style={{ textDecoration: 'none' }}>See Portfolio</Link>
         <button className="acc-nav-item" style={{ color: 'var(--er, #b54040)' }} onClick={async () => { await supabase.auth.signOut(); router.push('/'); }}>Sign Out</button>
         <button className="acc-nav-item" style={{ color: 'var(--text-muted)', fontSize: '11px' }} onClick={() => { setShowDeleteModal(true); setDeleteConfirmText(''); setDeleteError(''); }}>Delete Account</button>
+        <div style={{ padding: '12px 20px', borderTop: '1px solid var(--border)', marginTop: '8px' }}>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', opacity: 0.5, lineHeight: 1.6 }}>© 2025 Cutting Corners Gems</p>
+        </div>
       </div>
     </>
   );
