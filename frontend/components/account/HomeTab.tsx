@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import { formatMoney } from '../../lib/utils';
 import SmsConsentModal from './SmsConsentModal';
-import { Switch } from '@/components/ui/switch';
-import { Field, FieldContent, FieldDescription, FieldGroup, FieldLabel, FieldTitle } from '@/components/ui/field';
-
 
 const smToggles = [
-  { label: 'Work Order Updates', col: 'opt_in_work_orders' },
-  { label: 'Tracking Updates', col: 'opt_in_tracking' },
-  { label: 'Chat Message Alerts', col: 'opt_in_chat' },
-  { label: 'Purchase Confirmations', col: 'opt_in_purchases' },
-  { label: 'New Gem Listings', col: 'opt_in_new_listings' },
+  { label: 'Work Order Updates', col: 'opt_in_work_orders', description: 'Status updates while your stone is with us' },
+  { label: 'Tracking Updates', col: 'opt_in_tracking', description: 'Shipping and delivery notifications' },
+  { label: 'Chat Message Alerts', col: 'opt_in_chat', description: 'Alerts when you have a new message' },
+  { label: 'Purchase Confirmations', col: 'opt_in_purchases', description: 'Confirmations when a purchase completes' },
+  { label: 'New Gem Listings', col: 'opt_in_new_listings', description: 'Notify me when new gems are listed' },
 ];
 
 interface Props {
@@ -26,6 +23,41 @@ interface Props {
   setEditProfile: (v: any) => void;
   saveProfile: () => void;
   toggleSms: (col: string, val: boolean) => void;
+}
+
+function PillToggle({ checked, onChange }: { checked: boolean; onChange: (v: boolean) => void }) {
+  return (
+    <button
+      role="switch"
+      aria-checked={checked}
+      onClick={() => onChange(!checked)}
+      style={{
+        width: '52px',
+        height: '28px',
+        borderRadius: '999px',
+        border: 'none',
+        cursor: 'pointer',
+        position: 'relative',
+        flexShrink: 0,
+        background: checked ? 'var(--accent)' : 'var(--border)',
+        transition: 'background 220ms ease',
+        outline: 'none',
+      }}
+    >
+      <span style={{
+        position: 'absolute',
+        top: '3px',
+        left: checked ? '27px' : '3px',
+        width: '22px',
+        height: '22px',
+        borderRadius: '50%',
+        background: '#fff',
+        boxShadow: '0 1px 4px rgba(0,0,0,0.3)',
+        transition: 'left 220ms ease',
+        display: 'block',
+      }} />
+    </button>
+  );
 }
 
 export default function HomeTab({
@@ -49,7 +81,8 @@ export default function HomeTab({
         />
       )}
 
-      <h2 style={{ fontFamily: "'comfortaa', serif", fontSize: '24px', color: 'var(--text)', marginBottom: '24px' }}>Profile</h2>
+      <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '24px', fontWeight: 400 }}>Profile</h2>
+
       {editProfile && (
         <div style={{ display: 'grid', gap: '12px', maxWidth: '500px' }}>
           {[
@@ -61,8 +94,12 @@ export default function HomeTab({
           ].map(f => (
             <div key={f.key}>
               <label className="acc-label">{f.label}</label>
-              <input className="acc-input" value={editProfile[f.key] || ''} placeholder={f.placeholder}
-                onChange={e => setEditProfile({ ...editProfile, [f.key]: e.target.value })} />
+              <input
+                className="acc-input"
+                value={editProfile[f.key] || ''}
+                placeholder={f.placeholder}
+                onChange={e => setEditProfile({ ...editProfile, [f.key]: e.target.value })}
+              />
             </div>
           ))}
           {hasProfileChanges && (
@@ -88,39 +125,83 @@ export default function HomeTab({
 
       {/* SMS Preferences */}
       <div style={{ marginTop: '32px' }}>
-        <h3 style={{ fontFamily: 'var(--font-ui)', fontSize: '17px', textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--text-muted)', marginBottom: '16px' }}>Notification Preferences</h3>
-        <FieldGroup className="w-full">
+        <h3 style={{
+          fontFamily: 'var(--font-ui)',
+          fontSize: '11px',
+          textTransform: 'uppercase',
+          letterSpacing: '0.2em',
+          color: 'var(--text-muted)',
+          marginBottom: '16px',
+        }}>
+          Notification Preferences
+        </h3>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '10px',
+        }}>
           {smToggles.map(t => {
-            const descriptions: Record<string, string> = {
-              opt_in_work_orders:  'Status updates while your stone is with us',
-              opt_in_tracking:     'Shipping and delivery notifications',
-              opt_in_chat:         'Alerts when you have a new message',
-              opt_in_purchases:    'Confirmations when a purchase completes',
-              opt_in_new_listings: 'Notify me when new gems are listed',
-            };
+            const isOn = !!smsPrefs?.[t.col];
             return (
-              <FieldLabel key={t.col} htmlFor={t.col}>
-                <Field orientation="horizontal">
-                  <FieldContent>
-                    <FieldTitle>{t.label}</FieldTitle>
-                    <FieldDescription>{descriptions[t.col]}</FieldDescription>
-                  </FieldContent>
-                  <Switch
-                    id={t.col}
-                    checked={!!smsPrefs?.[t.col]}
-                    onCheckedChange={(checked) => {
-                      if (!checked) {
+              <div
+                key={t.col}
+                onClick={() => {
+                  if (isOn) {
+                    toggleSms(t.col, false);
+                  } else {
+                    setPendingToggle(t);
+                  }
+                }}
+                style={{
+                  background: 'var(--bg-deep)',
+                  border: `1px solid ${isOn ? 'var(--accent)' : 'var(--border)'}`,
+                  borderRadius: '4px',
+                  padding: '16px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '10px',
+                  transition: 'border-color 220ms ease, background 220ms ease',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+                  <span style={{
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: isOn ? 'var(--accent)' : 'var(--text)',
+                    transition: 'color 220ms ease',
+                  }}>
+                    {t.label}
+                  </span>
+                  <PillToggle
+                    checked={isOn}
+                    onChange={(v) => {
+                      if (!v) {
                         toggleSms(t.col, false);
                       } else {
                         setPendingToggle(t);
                       }
                     }}
                   />
-                </Field>
-              </FieldLabel>
+                </div>
+                <p style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '12px',
+                  color: 'var(--text-muted)',
+                  lineHeight: 1.55,
+                  margin: 0,
+                }}>
+                  {t.description}
+                </p>
+              </div>
             );
           })}
-        </FieldGroup>
+        </div>
+
         <p style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '12px', lineHeight: 1.65 }}>
           SMS alerts are sent to your phone number on file. Message & data rates may apply. Reply STOP to any message to opt out. For help reply HELP.
         </p>
