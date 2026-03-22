@@ -153,8 +153,8 @@
   transition: all 220ms ease; opacity: 0.28; cursor: not-allowed;
 }
 .disc-btn.on { opacity: 1; cursor: pointer; box-shadow: 0 0 20px rgba(255,211,105,0.2); }
-.disc-btn.on:hover { background: rgba(255,211,105,0.08); box-shadow: 0 0 28px rgba(255,211,105,0.28); }
-.disc-btn.on:active { background: rgba(255,211,105,0.2); }
+.disc-btn.on:hover { background: var(--bg-button-hover); box-shadow: 0 0 28px rgba(255,211,105,0.28); }
+.disc-btn.on:active { background: var(--bg-button); }
 
 /* Begin button */
 .begin-btn {
