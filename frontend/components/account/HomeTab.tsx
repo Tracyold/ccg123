@@ -50,7 +50,7 @@ function PillToggle({ checked, onChange }: { checked: boolean; onChange: (v: boo
         left: checked ? '27px' : '3px',
         width: '22px',
         height: '22px',
-        borderRadius: '50%',
+        borderRadius: '999px',
         background: '#fff',
         boxShadow: '0 1px 4px rgba(0,0,0,0.3)',
         transition: 'left 220ms ease',
@@ -156,7 +156,7 @@ export default function HomeTab({
                 style={{
                   background: 'var(--bg-deep)',
                   border: `1px solid ${isOn ? 'var(--accent)' : 'var(--border)'}`,
-                  borderRadius: '12px',
+                  borderRadius: '999px',
                   padding: '16px',
                   cursor: 'pointer',
                   display: 'flex',
