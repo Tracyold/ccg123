@@ -170,6 +170,7 @@ export default function HomeTab({
                     fontFamily: 'var(--font-ui)',
                     fontSize: '11px',
                     fontWeight: 600,
+                    borderRadius: '30px',
                     letterSpacing: '0.08em',
                     textTransform: 'uppercase',
                     color: isOn ? 'var(--accent)' : 'var(--text)',
