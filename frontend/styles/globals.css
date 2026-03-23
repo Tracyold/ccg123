@@ -68,7 +68,7 @@
 
 /* ── Non-color variables only ── */
 :root {
-  --font-display:    'Qt Display' Georgia, serif;
+  --font-display:    'Qt Display', Georgia, serif;
   --font-subdisplay: 'Qt Display Thin', Arial, serif;
   --font-ui:         'Fira Sans Book', Georgia, sans-serif;
   --font-title:      'Fira Sans Eight', Arial, sans-serif;
