@@ -149,19 +149,19 @@ function SelectionReference({ positiveChecked, limitingChecked, structuralChecke
         Your Selections
       </p>
       {checked.length === 0 && (
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-muted)', opacity: 0.5, margin: 0, fontStyle: 'italic' }}>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'var(--text-muted)', opacity: 0.5, margin: 0, fontStyle: 'italic' }}>
           No items selected in previous sections.
         </p>
       )}
       {Object.entries(grouped).map(([section, labels]) => (
         <div key={section} style={{ marginBottom: 14 }}>
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: 8, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 8px' }}>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 8px' }}>
             {section}
           </p>
           {labels.map(label => (
             <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 5 }}>
               <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--accent)', opacity: 0.6, flexShrink: 0 }} />
-              <span style={{ fontFamily: 'var(--font-ui)', fontSize: 11, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text)', lineHeight: 1.4 }}>
+              <span style={{ fontFamily: 'var(--font-ui)', fontSize: 13, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text)', lineHeight: 1.4 }}>
                 {label}
               </span>
             </div>
@@ -259,13 +259,13 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
 
         .wiz-input {
           width: 100%;
-          background: var(--bg-card);
+          background: var(--bg);
           border: 1px solid var(--border);
           color: var(--text);
           font-family: var(--font-body);
-          font-size: 16px;
+          font-size: 17px;
           padding: 15px 18px;
-          border-radius: 10px;
+          border-radius: 32px;
           transition: border-color 200ms ease;
           outline: none;
         }
@@ -275,9 +275,9 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
         .wiz-btn-primary {
           flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
           background: var(--accent); color: var(--bg); border: none;
-          padding: 18px 20px; font-family: var(--font-ui); font-size: 12px;
+          padding: 18px 20px; font-family: var(--font-ui); font-size: 13px;
           font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
-          cursor: pointer; border-radius: 14px; transition: all 220ms ease;
+          cursor: pointer; border-radius: 32px; transition: all 220ms ease;
           box-shadow: 0 4px 16px rgba(255,211,105,0.18);
         }
         .wiz-btn-primary:hover:not(:disabled) {
@@ -290,9 +290,9 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
           flex: 1; display: flex; align-items: center; justify-content: center;
           background: transparent; color: var(--text-muted);
           border: 1px solid var(--border); padding: 18px 20px;
-          font-family: var(--font-ui); font-size: 12px; font-weight: 500;
+          font-family: var(--font-ui); font-size: 13px; font-weight: 500;
           letter-spacing: 0.15em; text-transform: uppercase;
-          cursor: pointer; border-radius: 14px; transition: all 220ms ease;
+          cursor: pointer; border-radius: 32px; transition: all 220ms ease;
         }
         .wiz-btn-secondary:hover { border-color: var(--text-muted); color: var(--text); }
 
@@ -345,11 +345,11 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
               })}
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontFamily: 'var(--font-ui)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+              <span style={{ fontFamily: 'var(--font-ui)', fontSize: 13, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)' }}>
                 {PHASES[currentPhase] ?? 'Results'}
               </span>
               {phaseSteps.length > 1 && phaseIndex >= 0 && (
-                <span style={{ fontFamily: 'var(--font-ui)', fontSize: 10, color: 'var(--text-muted)' }}>
+                <span style={{ fontFamily: 'var(--font-ui)', fontSize: 13, color: 'var(--text-muted)' }}>
                   {phaseIndex + 1} / {phaseSteps.length}
                 </span>
               )}
@@ -386,10 +386,10 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
                   {currentStep.message}
                 </p>
               </div>
-              <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderLeft: '3px solid var(--accent)', padding: '22px 24px', marginBottom: 32 }}>
+              <div style={{ background: 'var(--bg)', border: '1px solid var(--border)', borderLeft: '3px solid var(--accent)', padding: '22px 24px', marginBottom: 32 }}>
                 <p style={{ fontFamily: 'var(--font-ui)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 10px' }}>Up Next</p>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--text)', margin: '0 0 10px' }}>{currentStep.nextTitle}</p>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>{currentStep.nextDescription}</p>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: 17, color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>{currentStep.nextDescription}</p>
               </div>
               <button type="button" onClick={handleNext} className="wiz-btn-primary" style={{ width: '100%' }}>
                 {currentStep.isLastBeforeResults ? 'Begin Final Section' : 'Continue'}
@@ -408,7 +408,7 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
                 { key: 'cut',        label: 'Current Cut / Shape', placeholder: 'e.g. Oval Mixed Cut' },
               ].map(field => (
                 <div key={field.key}>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-ui)', fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 }}>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-ui)', fontSize: 13, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 }}>
                     {field.label}
                   </label>
                   <input type="text" className="wiz-input" value={stoneInfo[field.key as keyof StoneInfo]} onChange={e => setStoneInfo(prev => ({ ...prev, [field.key]: e.target.value }))} placeholder={field.placeholder} />
@@ -458,7 +458,7 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
                 structuralChecked={structuralChecked}
               />
               {!canProceed && (
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--accent)', opacity: 0.8, marginTop: 12 }}>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: 17, color: 'var(--accent)', opacity: 0.8, marginTop: 12 }}>
                   Please make a selection to continue.
                 </p>
               )}

@@ -48,7 +48,7 @@ const css = `
   white-space: nowrap;
   transition: color 200ms ease;
 }
-.tnav-brand:hover { color: #f7c728; }
+.tnav-brand:hover { color: var(--bg-button-hover) }
 .tnav-links {
   display: flex;
   align-items: center;
@@ -60,7 +60,7 @@ const css = `
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--button);
+  color: var(--text);
   text-decoration: none;
   transition: color 200ms ease;
   position: relative;
@@ -70,7 +70,7 @@ const css = `
   position: absolute;
   bottom: -3px; left: 0; right: 100%;
   height: 0.5px;
-  background: #d4af37;
+  background: var(--bg-button-hover);
   transition: right 220ms ease;
 }
 .tnav-link:hover { color: var(--text); }
@@ -81,9 +81,9 @@ const css = `
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #d4af37;
+  color: var(--text);
   text-decoration: none;
-  border: 0.5px solid #d4af37;
+  border: 0.5px solid var(--primary);
   padding: 6px 14px;
   transition: all 200ms ease;
 }
@@ -151,7 +151,7 @@ const css = `
   border-bottom: 0.5px solid var(--border);
   transition: color 180ms ease;
 }
-.tnav-drawer-link:hover { color: var(--button-hover); }
+.tnav-drawer-link:hover { color: var(--bg-button-hover); }
 .tnav-drawer-link:last-child { border-bottom: none; }
 .tnav-drawer-auth {
   font-family: var(--font-body);
@@ -159,13 +159,13 @@ const css = `
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #ffe48c;
+  color: var(--text);
   text-decoration: none;
   padding: 18px 0 4px;
   margin-top: 4px;
   transition: color 180ms ease;
 }
-.tnav-drawer-auth:hover { color: #e5c84a; }
+.tnav-drawer-auth:hover { color: var(--bg-button-hover) }
 
 @media (max-width: 767px) {
   .tnav-links { display: none; }
@@ -179,13 +179,13 @@ const css = `
 .tnav-theme {
   background: none;
   border: 0.5px solid var(--border);
-  color: #EEEEEE;
+  color: var(--bg);
   width: auto;
   height: 36px;
   cursor: pointer;
   font-size: 11px;
   letter-spacing: 0.15em;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-ui);
   white-space: nowrap;
   padding: 0 10px;
   display: flex;
@@ -195,7 +195,7 @@ const css = `
   position: relative;
   z-index: 201;
 }
-.tnav-theme:hover { border-color: #FFD369; }
+.tnav-theme:hover { border-color: var(--muted-foreground) }
 `;
 
 export default function TopNav() {
