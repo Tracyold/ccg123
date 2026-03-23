@@ -1,5 +1,28 @@
 {
     "editor.copyWithSyntaxHighlighting": true,
     "terminal.integrated.copyOnSelection": true,
-    "editor.emptySelectionClipboard": false
+    "editor.emptySelectionClipboard": false,
+    "chat.agent.enabled": false,
+    "debug.javascript.autoAttachFilter": "onlyWithFlag",
+    "chat.restoreLastPanelSession": true,
+    "accessibility.verbosity.panelChat": false,
+    "chat.detectParticipant.enabled": false,
+    "notebook.variablesView": true,
+    "interactiveWindow.promptToSaveOnClose": true,
+    "workbench.editor.autoLockGroups": {
+        "workbench.input.interactive": true,
+        "mainThreadWebview-markdown.preview": true,
+        "notebookOutputEditor": true,
+        "default": true,
+        "workbench.editorinputs.searchEditorInput": true
+    },
+    "workbench.editor.centeredLayoutFixedWidth": true,
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "workbench.editor.enablePreviewFromCodeNavigation": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.showTabIndex": false,
+    "workbench.editor.splitInGroupLayout": "horizontal",
+    "workbench.editor.splitOnDragAndDrop": false,
+    "workbench.editor.splitSizing": "distribute",
+    "workbench.editor.useModal": "some"
 }
