@@ -67,16 +67,18 @@ export default function Home() {
 
 
           <div style={{ position: 'relative', zIndex: 10, padding: '0 24px', maxWidth: '600px', margin: '0 auto' }}>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '24px' }}>
+            <p style={{ fontFamily: 'var(--font-subdisplay)', fontSize: '15px', letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '24px' }}>
               Tempe, Arizona
             </p>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(31px, 12vw, 71px)', color: 'var(--text)', lineHeight: 1.05, marginBottom: '28px', fontWeight: 400 }}>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(31px, 13vw, 71px)', color: 'var(--text)', lineHeight: 1.05, marginBottom: '28px', fontWeight: 400 }}>
               <span style={{ color: 'var(--accent)' }}>Cutting</span> Corners —{' '}
               Not the <span style={{ color: 'var(--accent)' }}>Quality</span>
             </h1>
-            <p style={{ fontFamily: 'var(--font-title)', fontSize: 'clamp(17px, 2.5vw, 21px)', color: 'var(--text)', lineHeight: 1.7, marginBottom: '40px', maxWidth: '560px', margin: '0 auto 40px' }}>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: 'clamp(17px, 2.5vw, 21px)', color: 'var(--text)', lineHeight: 1.7, marginBottom: '40px', maxWidth: '560px', margin: '0 auto 40px' }}>
               Professional gemstone cutter focused on color, yield, and stone potential for jewelry professionals nationwide.
             </p>
+             <p style={{ fontFamily: 'var(--font-sig)', fontSize: 'clamp(17px, 2.5vw, 21px)', color: 'var(--text)', lineHeight: 1.7, marginBottom: '40px', maxWidth: '560px', margin: '0 auto 40px' }}>
+              Michael Wall</p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="/get-estimate/instant" style={{ display: 'inline-block', padding: '17px 40px', background: 'var(--accent)', color: 'var(--bg)', fontFamily: 'var(--font-ui)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
                 Get an Estimate
