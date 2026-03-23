@@ -69,11 +69,17 @@
   --font-subdisplay: 'Qt Display Thin', Arial, serif;
   --font-ui:         'Fira Sans Book', Georgia, sans-serif;
   --font-title:      'Fira Sans Eight', Arial, sans-serif;
-  --font-body:       'Akshar', Arial, sans-serif;
+  --font-body:       'Akshar', Arial, sans-serif; 
   --font-mono:       'Fira Mono', Arial, monospace;
   --font-sig:        'Authentic', georgia, sans-serif;
   --blur-amount:     1px;
   --scroll-angle:    187deg;
+}
+
+body {
+  font-family: var(--font-body);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
 /* ── Dark Theme ── */
