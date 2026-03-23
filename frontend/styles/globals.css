@@ -17,43 +17,43 @@
   font-display: swap;
 }
 @font-face {
-  font-family: 'Fontspring';
-  src: url('/fonts/Fontspring-DEMO-horanta-extralight-Exfontdb91.otf') format('opentype');
+  font-family: 'Akshar';
+  src: url('/fonts/Akshar-Regular-Exfont86dd.ttf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Proxima Nova';
-  src: url('/fonts/ProximaNova-Regular.ttf') format('truetype');
+  font-family: 'Fira Mono';
+  src: url('/fonts/FiraMono-Regular.otf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Proxima Nova Semi Bold';
-  src: url('/fonts/ProximaNova-Semibold.ttf') format('truetype');
+  font-family: 'Fira Sans Book';
+  src: url('/fonts/FiraSans-Book.otf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Proxima Nova Bold';
-  src: url('/fonts/ProximaNova-Bold.ttf') format('truetype');
+  font-family: 'CM Sans Italic';
+  src: url('/fonts/NewCMSans10-BoldOblique.otf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Proxima Nova Light';
-  src: url('/fonts/ProximaNova-Light.ttf') format('truetype');
+  font-family: 'Fira Sans Eight';
+  src: url('/fonts/FiraSans-Eight.otf') format('truetype');
   font-weight: 250;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Poppins Light';
-  src: url('/fonts/Poppins-Light.ttf') format('truetype');
+  font-family: 'Authentic';
+  src: url('/fonts/AUTHENTICSans-Condensed-60.otf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -67,11 +67,11 @@
 :root {
   --font-display:    'Qt Display', Georgia, serif;
   --font-subdisplay: 'Qt Display Thin', Arial, serif;
-  --font-ui:         'Proxima Nova', Georgia, sans-serif;
-  --font-title:      'Proxima Nova Semi Bold', Arial, sans-serif;
-  --font-body:       'Fontspring', Arial, sans-serif;
-  --font-mono:       'Courier New', Arial, monospace;
-  --font-pop:        'Poppins Light', georgia, sans-serif;
+  --font-ui:         'Fira Sans Book', Georgia, sans-serif;
+  --font-title:      'Fira Sans Eight', Arial, sans-serif;
+  --font-body:       'Akshar', Arial, sans-serif;
+  --font-mono:       'Fira Mono', Arial, monospace;
+  --font-sig:        'Authentic', georgia, sans-serif;
   --blur-amount:     1px;
   --scroll-angle:    187deg;
 }
