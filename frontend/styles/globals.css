@@ -110,7 +110,7 @@
   --bg:              #ebebeb;
   --bg-card:         #a1978a;
   --bg-deep:         #d6d7dc;
-  --bg-button:       #4eddb7a5;
+  --bg-button:       #21222339;
   --bg-button-hover: #ddb24e41;
   --accent:          #575450;
   --text:            #1a1a22;
@@ -124,7 +124,7 @@
   --muted-foreground: #666680;
   --input:           #d0d2de;
   --ring:            #d4af37;
-  --bg-gradient:     linear-gradient(187deg, #ebebeb 0%, #eceff7 15%, #ebeff8 28%, #ecf0f8 40%, #e2e3e4 52%, #ecf0f8 64%, #e4e6ec 76%, #edf0f8 88%, #d6d7dc 100%);
+  --bg-gradient:     linear-gradient(187deg, #ebebeb 0%, #eceff7 15%, #ebeff8 28%, #ecf0f8 40%, #eef1f4 52%, #ecf0f8 64%, #e4e6ec 76%, #edf0f8 88%, #d6d7dc 100%);
 }
 
 
