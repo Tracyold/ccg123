@@ -88,7 +88,7 @@
   --bg-card:         #aeaeae;
   --bg-deep:         #2d2d2d;
   --bg-button:       #ebebebae;
-  --bg-button-hover: #286d5aa5;
+  --bg-button-hover: #0c0c0ca5;
   --accent:          #dcd4657b;
   --muted:           #343537;
   --text:            #ebebeb; 
@@ -101,7 +101,7 @@
   --muted:           #202023;
   --muted-foreground: #aaaaaa;
   --input:           #e5e5e5;
-  --ring:            #c0bcae;
+  --ring:            #dce576;
   --bg-gradient:     linear-gradient(138deg, #212223 3%, #1e1f21 16%, #202021 37%, #242425 58%, #202021 79%, #212223 100%, #171818 35%, #212223 40%, #171818 45%);
 }
 
@@ -111,14 +111,14 @@
   --bg-card:         #bbbbbb;
   --bg-deep:         #adadad;
   --bg-button:       #212223b4;
-  --bg-button-hover: rgb(219, 219, 212);
+  --bg-button-hover: #dededee0;
   --button-text:     #575450;
-  --accent:          #575450;
+  --accent:          #79c1c9;
   --text:            #1a1a22;
   --border:          #afafaf;
-  --gold:            #cfdd4eff;
+  --gold:            #4ed6dd;
   --background:      #f5f5f8;
-  --foreground:      #1a1a22;
+  --foreground:      #595959;
   --primary:         #356766;
   --primary-foreground: #171719;
   --muted:           #d3d3d3;
