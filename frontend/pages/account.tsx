@@ -316,7 +316,7 @@ export default function AccountPage() {
 
       <div className="acc-shell">
         {/* ── Desktop: Resizable ── */}
-        <ResizablePanelGroup orientation="horizontal" style={{ flex: 1, height: '100%' }}>
+        <ResizablePanelGroup  style={{ flex: 1, height: '100%' }}>
           <ResizablePanel defaultSize={65} minSize={40}>
             <div className="acc-left">
               <div className="acc-nav">{navContent}</div>

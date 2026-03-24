@@ -17,13 +17,7 @@ module.exports = {
       '2xl': '1536px',
     },
     extend: {
-      fontFamily: {
-        oranienbaum: ['Oranienbaum', 'serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
-        comfortaa: ['Comfortaa', 'sans-serif'],
-        cormorant: ['Cormorant', 'serif'],
-        dmsans: ['DM Sans', 'sans-serif'],
-      },
+    
       colors: {
         gold: '#d4af37',
         'gold-alt': '#cfb040',
