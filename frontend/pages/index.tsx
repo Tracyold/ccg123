@@ -89,8 +89,8 @@ export default function Home() {
               Tempe, Arizona
             </p>
             <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(49px, 68vw, 71px)', color: 'var(--text)', lineHeight: 1.05, marginBottom: '28px', fontWeight: 200 }}>
-              <span style={{ color: 'var(--accent)' }}>Cutting</span> Corners —{' '}
-              Not the <span style={{ color: 'var(--accent)' }}>Quality</span>
+              <span style={{ color: 'var(--gold)' }}>Cutting</span> Corners —{' '}
+              Not the <span style={{ color: 'var(--gold)' }}>Quality</span>
             </h1>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(17px, 2.5vw, 21px)', color: 'var(--text)', lineHeight: 1.7, marginBottom: '40px', maxWidth: '560px', margin: '0 auto 40px' }}>
               Professional gemstone cutter focused on color, yield, and stone potential for jewelry professionals nationwide.
