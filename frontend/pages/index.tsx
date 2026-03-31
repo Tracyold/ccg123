@@ -138,7 +138,7 @@ export default function Home() {
             >
               About
             </p>
-            <h2 data-gold="section-title" className="title-xl tracking-tight mb-16 text-center" style={{ color: 'var(--accent)' }}>The Cutter</h2>
+            <h2 data-gold="section-title" className="title-sm tracking-tight mb-16 text-center" style={{ color: 'var(--accent)' }}>The Cutter</h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div
