@@ -10,7 +10,7 @@ import { InvoicePreviewPopup } from '../components/guest/InvoicePreviewPopup';
 import { InquiryContactForm, InquiryDescForm } from '../components/guest/InquiryContactForm';
 import ProductDetailModal from '../components/guest/ProductDetailModal';
 import InquiryModal from '../components/guest/InquiryModal';
-import '../styles/shopCardEffect.css';
+
 
 
 // ── Shared Styles ────────────────────────────────────────────
