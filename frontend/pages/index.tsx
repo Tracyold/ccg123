@@ -36,13 +36,13 @@ function MachineShowcase() {
 
         {/* Nameplate */}
         <div style={{ textAlign: 'center', marginTop: '8px', zIndex: 1, position: 'relative' }}>
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '6px' }}>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '6px' }}>
             
           </p>
           <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: 400, color: 'var(--text)', letterSpacing: '0.04em', margin: '0 0 4px' }}>
             Fac-ette GemMaster II
           </h3>
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 28px' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 28px' }}>
            
           </p>
         </div>
@@ -99,7 +99,7 @@ export default function Home() {
               <a href="/get-estimate/instant" style={{ display: 'inline-block', padding: '17px 40px', background: 'var(--accent)', color: 'var(--bg)', fontFamily: 'var(--font-ui)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
                 Get an Estimate
               </a>
-              <a href="/shop" style={{ display: 'inline-block', padding: '17px 40px', background: 'none', border: '1px solid var(--text-muted)', color: 'var(--text)', fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
+              <a href="/shop" style={{ display: 'inline-block', padding: '17px 40px', background: 'none', border: '1px solid var(--accent)', color: 'var(--text)', fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
                 View Shop
               </a>
             </div>
@@ -107,9 +107,9 @@ export default function Home() {
 
           {/* Stat card — desktop only */}
           <div className="hidden md:flex" style={{ position: 'absolute', bottom: '32px', right: '32px', flexDirection: 'column', justifyContent: 'center', width: '11rem', height: '11rem', background: 'var(--bg-deep)', border: 'var(--border)', padding: '1.5rem' }}>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '8px' }}>Industry for</p>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '8px' }}>Industry for</p>
             <p style={{ fontFamily: 'var(--font-display)', fontSize: '36px', color: 'var(--accent)', lineHeight: 1 }}>13 Yrs</p>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: '6px' }}>Cutting for Seven</p>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)', marginTop: '6px' }}>Cutting for Seven</p>
           </div>
 
           {/* Scroll indicator */}
@@ -138,7 +138,7 @@ export default function Home() {
             >
               About
             </p>
-            <h2 data-gold="section-title" className="title-xl tracking-tight mb-16 text-center" style={{ color: 'var(--text-muted)' }}>The Cutter</h2>
+            <h2 data-gold="section-title" className="title-xl tracking-tight mb-16 text-center" style={{ color: 'var(--accent)' }}>The Cutter</h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div

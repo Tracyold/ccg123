@@ -110,7 +110,7 @@
   --muted-foreground: #aaaaaa;
   --input:           #e5e5e5;
   --ring:            #dce576;
-  --bg-gradient:     linear-gradient(138deg, #212223 3%, #1e1f21 16%, #202021 37%, #242425 58%, #202021 79%, #212223 100%, #171818 35%, #212223 40%, #171818 45%);
+  --bg-gradient:     linear-gradient(var(--scroll-angle), #212223 3%, #1e1f21 16%, #202021 37%, #242425 58%, #202021 79%, #212223 100%, #171818 35%, #212223 40%, #171818 45%);
 }
 
 /* ── Light Theme ── */
@@ -133,7 +133,7 @@
   --muted-foreground: #bababa;
   --input:           #404141;
   --ring:            #212223af;
-  --bg-gradient:     linear-gradient(187deg, #ebebeb 0%, #eceff7 15%, #ebeff8 28%, #ecf0f8 40%, #eef1f4 52%, #ecf0f8 64%, #e4e6ec 76%, #edf0f8 88%, #d6d7dc 100%);
+  --bg-gradient:     linear-gradient(--scroll-angle, #ebebeb 0%, #eceff7 15%, #ebeff8 28%, #ecf0f8 40%, #eef1f4 52%, #ecf0f8 64%, #e4e6ec 76%, #edf0f8 88%, #d6d7dc 100%);
 }
 
 
