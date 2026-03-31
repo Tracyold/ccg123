@@ -250,14 +250,14 @@ button, input, textarea, select { border-radius: 0 !important; }
 
 .btn-primary {
   background-color: var(--gold);
-  color: var(--text);
+  color: var(--bg);
   padding: 0.75rem 3rem;
   font-family: var(--font-ui);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.17em;
-  font-size: 0.875rem;
-  transition: all 0.6s ease;
+  font-size: 0.975rem;
+  transition: all 0.06s ease;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -278,7 +278,7 @@ button, input, textarea, select { border-radius: 0 !important; }
   letter-spacing: 0.15em;
   font-size: 0.95rem;
   border: 1px solid var(--border);
-  transition: all 0.3s ease;
+  transition: all 0.09s ease;
   display: inline-flex;
   align-items: center;
   text-decoration: none;
