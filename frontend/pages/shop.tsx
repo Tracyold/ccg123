@@ -10,6 +10,7 @@ import { InvoicePreviewPopup } from '../components/guest/InvoicePreviewPopup';
 import { InquiryContactForm, InquiryDescForm } from '../components/guest/InquiryContactForm';
 import ProductDetailModal from '../components/guest/ProductDetailModal';
 import InquiryModal from '../components/guest/InquiryModal';
+import '../styles/shopCardEffect.css';
 
 
 // ── Shared Styles ────────────────────────────────────────────
@@ -505,47 +506,6 @@ const shopCss = `
   border: 1px solid var(--border);
   padding: 0px 8px;
 }
-.shop-card-img img {
-  filter: grayscale(100%) invert(90%) contrast(1.3) brightness(0.90);
-  transition: filter 200ms cubic-bezier(0.05, 0.9, 0.1, 1);
-}
-.shop-grid .shop-card {
-  opacity: 2;
-  transition: transform 100ms ease-out, opacity 10ms ease;
-}
-.shop-grid:has(.shop-card:hover) .shop-card:not(:hover) {
-  opacity: 0.20;
-}
-.shop-card:hover .shop-card-img img {
-  filter: grayscale(0%) invert(0%) contrast(1.1) brightness(1.0);
-  transition: filter 40ms ease-in;
-}
-.shop-card-img::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  pointer-events: none;
-  z-index: 3;
-  transition: background 2800ms cubic-bezier(0.05, 0.9, 0.1, 1);
-}
-.shop-card:hover .shop-card-img::before {
-  background: rgba(0, 0, 0, 0.0);
-  transition: background 40ms ease-in;
-}
-.shop-card-img::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 240, 180, 0.0);
-  pointer-events: none;
-  z-index: 4;
-  transition: background 2800ms cubic-bezier(0.05, 0.9, 0.1, 1);
-}
-.shop-card:hover .shop-card-img::after {
-  background: rgba(255, 240, 180, 0.08);
-  transition: background 40ms ease-in;
-}
 @media (max-width: 767px) {
   .shop-grid {
     grid-template-columns: 1fr 1fr;
@@ -573,15 +533,6 @@ const shopCss = `
   .shop-card-mobile-title { display: block; }
   .shop-card-img img {
     transition: filter 80ms ease-in;
-  }
-  .shop-card.tapped .shop-card-img img {
-    filter: grayscale(0%) invert(0%) contrast(1.0) brightness(1.0);
-  }
-  .shop-card.tapped .shop-card-img::before {
-    background: rgba(0, 0, 0, 0.0);
-  }
-  .shop-card.tapped .shop-card-img::after {
-    background: rgba(255, 240, 180, 0.08);
   }
 }
 `;
