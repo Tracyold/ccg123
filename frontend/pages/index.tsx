@@ -92,7 +92,7 @@ export default function Home() {
               <span style={{ color: 'var(--gold)' }}>Cutting</span> Corners —{' '}
               Not the <span style={{ color: 'var(--gold)' }}>Quality</span>
             </h1>
-            <p style={{ fontFamily: 'var(--font-eight)', fontSize: 'clamp(17px, 2.5vw, 21px)', color: 'var(--text)', lineHeight: 1.7, marginBottom: '40px', maxWidth: '560px', margin: '0 auto 40px' }}>
+            <p style={{ fontFamily: 'var(--font-title)', fontSize: 'clamp(17px, 2.5vw, 21px)', color: 'var(--text)', lineHeight: 1.7, marginBottom: '40px', maxWidth: '560px', margin: '0 auto 40px' }}>
               Professional gemstone cutter focused on color, yield, and stone potential for jewelry professionals nationwide.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
