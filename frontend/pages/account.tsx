@@ -10,6 +10,7 @@ import HomeTab from '../components/account/HomeTab';
 import WizardResultsTab from '../components/account/WizardResultsTab';
 import WorkOrderDetailModal from '../components/account/WorkOrderDetailModal';
 import ChatPanel from '../components/account/ChatPanel';
+import MobileDashboard from '../components/account/MobileDashboard';
 import TopNav from '../components/shared/TopNav';
 
 export default function AccountPage() {
@@ -52,6 +53,8 @@ export default function AccountPage() {
   const [tempAddress, setTempAddress] = useState('');
   const [addressConfirmed, setAddressConfirmed] = useState(false);
   const [adminInfo, setAdminInfo] = useState<any>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [latestWizardResult, setLatestWizardResult] = useState<any>(null);
 
   // Auth
   useEffect(() => {
@@ -70,6 +73,13 @@ export default function AccountPage() {
     });
     return () => subscription.unsubscribe();
   }, [router]);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   // Load all data
   useEffect(() => {
@@ -133,6 +143,8 @@ export default function AccountPage() {
               });
             }).subscribe();
       }
+      const { data: wiz } = await supabase.from('wizard_results').select('*').order('created_at', { ascending: false }).limit(1).single();
+      if (wiz) setLatestWizardResult(wiz);
       setLoading(false);
     }
     loadAll();
@@ -315,24 +327,47 @@ export default function AccountPage() {
       <TopNav />
 
       <div className="acc-shell">
-        {/* ── Desktop: Resizable ── */}
-        <ResizablePanelGroup  style={{ flex: 1, height: '100%' }}>
-          <ResizablePanel defaultSize={65} minSize={40}>
-            <div className="acc-left">
-              <div className="acc-nav">{navContent}</div>
-              {tabContent}
+        {isMobile ? (
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflowY: 'auto', position: 'relative' }}>
+            <div className="acc-nav" style={{ position: 'sticky', top: 0, zIndex: 10 }}>{navContent}</div>
+            <div className="acc-content">
+              {activeTab === 'home' ? (
+                <MobileDashboard
+                  profile={profile} workOrders={workOrders} messages={messages}
+                  chatThread={chatThread} invoices={invoices} invoiceTotal={invoiceTotal}
+                  smsPrefs={smsPrefs}
+                  hasOpenWorkOrder={workOrders.some(w => w.status === 'ACCEPTED' || w.status === 'Created')}
+                  latestWizardResult={latestWizardResult} onTabChange={setActiveTab}
+                  openChatDrawer={openChatDrawer} toggleSms={toggleSms}
+                />
+              ) : (tabContent)}
             </div>
-          </ResizablePanel>
-          <ResizableHandle withHandle />
-          <ResizablePanel defaultSize={35} minSize={20}>
             <ChatPanel
               messages={messages} chatInput={chatInput} chatSending={chatSending}
               chatUploading={chatUploading} chatOpen={chatOpen} chatEndRef={chatEndRef}
               chatFileRef={chatFileRef} setChatInput={setChatInput} setChatOpen={setChatOpen}
               openChatDrawer={openChatDrawer} sendChat={sendChat} handleChatFile={handleChatFile}
             />
-          </ResizablePanel>
-        </ResizablePanelGroup>
+          </div>
+        ) : (
+          <ResizablePanelGroup style={{ flex: 1, height: '100%' }}>
+            <ResizablePanel defaultSize={65} minSize={40}>
+              <div className="acc-left">
+                <div className="acc-nav">{navContent}</div>
+                {tabContent}
+              </div>
+            </ResizablePanel>
+            <ResizableHandle withHandle />
+            <ResizablePanel defaultSize={35} minSize={20}>
+              <ChatPanel
+                messages={messages} chatInput={chatInput} chatSending={chatSending}
+                chatUploading={chatUploading} chatOpen={chatOpen} chatEndRef={chatEndRef}
+                chatFileRef={chatFileRef} setChatInput={setChatInput} setChatOpen={setChatOpen}
+                openChatDrawer={openChatDrawer} sendChat={sendChat} handleChatFile={handleChatFile}
+              />
+            </ResizablePanel>
+          </ResizablePanelGroup>
+        )}
       </div>
 
       <WorkOrderDetailModal
@@ -446,5 +481,7 @@ const accountCss = `
   .acc-nav-item { border-left: none; border-bottom: 2px solid transparent; white-space: nowrap; padding: 12px 16px; }
   .acc-nav-item.on { border-bottom-color: var(--bg-deep); }
   .acc-left { flex-direction: column; }
+  .chat-bar-mobile { display: flex !important; }
+  .chat-content-mobile { display: flex !important; }
 }
 `;

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
 import { fmtTime } from '../../lib/utils';
 
@@ -35,24 +35,14 @@ function fmtDate(iso: string) {
 
 function DateDivider({ label }: { label: string }) {
   return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: '0.6em',
-      margin: '0.8em 0',
-    }}>
-      <div style={{ flex: 1, height: '1px', background: 'var(--bg-deep)' }} />
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6em', margin: '0.8em 0' }}>
+      <div style={{ flex: 1, height: '0.5px', background: 'var(--border)' }} />
       <span style={{
-        fontFamily: 'var(--font-ui)',
-        fontSize: '0.62em',
-        letterSpacing: '0.12em',
-        textTransform: 'uppercase',
-        color: 'var(--text)',
-        whiteSpace: 'nowrap',
-      }}>
-        {label}
-      </span>
-      <div style={{ flex: 1, height: '1px', background: 'var(--bg-deep)' }} />
+        fontFamily: 'var(--font-ui)', fontSize: '0.62em',
+        letterSpacing: '0.12em', textTransform: 'uppercase',
+        color: 'var(--text-muted)', whiteSpace: 'nowrap',
+      }}>{label}</span>
+      <div style={{ flex: 1, height: '0.5px', background: 'var(--border)' }} />
     </div>
   );
 }
@@ -61,23 +51,22 @@ function MessageBubble({ m }: { m: any }) {
   const isMe = m.actor === 'ACCOUNT';
   return (
     <div style={{
-      display: 'flex',
-      flexDirection: 'column',
+      display: 'flex', flexDirection: 'column',
       alignItems: isMe ? 'flex-end' : 'flex-start',
-      marginBottom: '0.9em',
+      marginBottom: '0.75em',
     }}>
       <div style={{
         maxWidth: '78%',
-        padding: '0.65em 1em',
-        borderRadius: isMe ? '1.2em 1.2em 0.25em 1.2em' : '1.2em 1.2em 1.2em 0.25em',
+        padding: '0.6em 0.9em',
+        borderRadius: isMe ? '1.1em 1.1em 0.2em 1.1em' : '1.1em 1.1em 1.1em 0.2em',
+        /* desaturated bubble colors — not abrasive */
         background: isMe
-          ? 'var(--chat-bubble-me, var(--accent))'
-          : 'var(--chat-bubble-them, var(--primary))',
-        color: 'var(--chat-bubble-text, var(--text))',
+          ? 'var(--chat-bubble-me, rgba(80,110,135,0.65))'
+          : 'var(--chat-bubble-them, rgba(120,110,75,0.5))',
+        color: 'var(--text)',
         fontFamily: 'var(--font-ui)',
-        fontSize: '1em',
-        lineHeight: 1.65,
-        boxShadow: '0 1px 4px rgba(0,0,0,0.18)',
+        fontSize: '0.95em',
+        lineHeight: 1.55,
         wordBreak: 'break-word',
       }}>
         {m.body && <div>{m.body}</div>}
@@ -86,38 +75,24 @@ function MessageBubble({ m }: { m: any }) {
             src={getAttachmentUrl(m.attachment_url)}
             alt="attachment"
             style={{
-              maxWidth: '100%',
-              maxHeight: '12em',
-              objectFit: 'cover',
-              marginTop: m.body ? '0.4em' : '0',
-              borderRadius: '0.6em',
-              display: 'block',
+              maxWidth: '100%', maxHeight: '12em', objectFit: 'cover',
+              marginTop: m.body ? '0.4em' : 0, borderRadius: '0.6em', display: 'block',
             }}
           />
         )}
         {m.attachment_url && m.attachment_type === 'application/pdf' && (
-          <div style={{ marginTop: m.body ? '0.4em' : '0', fontSize: '0.88em' }}>
-            📄 <a
-              href={getAttachmentUrl(m.attachment_url)}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: 'inherit', textDecoration: 'underline' }}
-            >
-              Download PDF
-            </a>
+          <div style={{ marginTop: m.body ? '0.4em' : 0, fontSize: '0.88em' }}>
+            📄 <a href={getAttachmentUrl(m.attachment_url)} target="_blank" rel="noopener noreferrer"
+              style={{ color: 'inherit', textDecoration: 'underline' }}>Download PDF</a>
           </div>
         )}
       </div>
       <span style={{
-        fontSize: '0.68em',
-        color: 'var(--muted)',
-        marginTop: '0.25em',
-        fontFamily: 'var(--font-body)',
-        paddingLeft: isMe ? '0' : '0.4em',
-        paddingRight: isMe ? '0.4em' : '0',
-      }}>
-        {fmtTime(m.created_at)}
-      </span>
+        fontSize: '0.65em', color: 'var(--text-muted)', marginTop: '0.2em',
+        fontFamily: 'var(--font-ui)',
+        paddingLeft: isMe ? 0 : '0.4em',
+        paddingRight: isMe ? '0.4em' : 0,
+      }}>{fmtTime(m.created_at)}</span>
     </div>
   );
 }
@@ -128,43 +103,53 @@ export default function ChatPanel({
   setChatInput, setChatOpen, openChatDrawer, sendChat, handleChatFile,
 }: Props) {
   const chatRef = useRef<HTMLDivElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [animating, setAnimating] = useState(false);
+  const BAR_H = 52;
 
-  // Scale font with panel width
+  /* Scale desktop font with panel width */
   useEffect(() => {
     const el = chatRef.current;
     if (!el) return;
     const observer = new ResizeObserver(entries => {
       for (const entry of entries) {
         const w = entry.contentRect.width;
-        const size = Math.max(19, Math.min(83, w / 28));
-        el.style.fontSize = size + 'px';
+        el.style.fontSize = Math.max(14, Math.min(18, w / 28)) + 'px';
       }
     });
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
-  // Auto-scroll to bottom when messages change
+  /* Auto-scroll */
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Also scroll on drawer open
   useEffect(() => {
-    if (chatOpen) {
-      setTimeout(() => chatEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
-    }
+    if (chatOpen) setTimeout(() => chatEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 120);
   }, [chatOpen]);
 
+  /* Handle open with animation state */
+  const handleOpen = () => {
+    setAnimating(true);
+    openChatDrawer();
+    setTimeout(() => setAnimating(false), 420);
+  };
+
+  const handleClose = () => {
+    setAnimating(true);
+    setTimeout(() => { setChatOpen(false); setAnimating(false); }, 400);
+  };
+
+  /* ── Input bar (shared) ── */
   const inputBar = (
     <div style={{
-      display: 'flex',
-      gap: '0.5em',
-      padding: '0.7em 0.9em',
-      borderTop: '1px solid var(--border)',
+      display: 'flex', gap: '0.5em',
+      padding: '10px 14px',
+      borderTop: '0.5px solid var(--border)',
       background: 'var(--bg-card)',
       alignItems: 'center',
+      flexShrink: 0,
     }}>
       <input
         type="file"
@@ -173,88 +158,80 @@ export default function ChatPanel({
         style={{ display: 'none' }}
         onChange={handleChatFile}
       />
+      {/* Photo upload button */}
       <button
         onClick={() => chatFileRef.current?.click()}
         disabled={chatUploading}
-        title="Attach file"
+        title="Attach photo"
         style={{
-          background: 'var(--bg)',
-          border: '1px solid var(--border)',
-          color: 'var(--muted)',
-          width: '2.2em', height: '2.2em',
-          borderRadius: '50%',
-          cursor: 'pointer',
-          fontSize: '1em',
+          background: 'transparent',
+          border: '0.5px solid var(--border)',
+          color: 'var(--text-muted)',
+          width: 36, height: 36,
+          borderRadius: 0,
+          cursor: 'pointer', fontSize: 16,
           flexShrink: 0,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'border-color 150ms ease',
         }}
-      >
-        {chatUploading ? '…' : '📎'}
-      </button>
+      >{chatUploading ? '…' : '⊕'}</button>
+
+      {/* Text input */}
       <input
-        className="acc-chat-input"
         value={chatInput}
         onChange={e => setChatInput(e.target.value)}
-        placeholder="Type a message..."
+        placeholder="Message..."
         style={{
           flex: 1,
-          background: 'var(--bg-card)',
-          border: '1px solid var(--border)',
-          borderRadius: '1.4em',
-          padding: '0.5em 0.9em',
+          background: 'var(--bg)',
+          border: '0.5px solid var(--border)',
+          borderRadius: 6,
+          padding: '9px 13px',
           color: 'var(--text)',
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.9em',
+          fontFamily: 'var(--font-ui)',
+          fontSize: 15,
           outline: 'none',
           transition: 'border-color 150ms ease',
         }}
+        onFocus={e => { e.currentTarget.style.borderColor = 'var(--gold)' }}
+        onBlur={e => { e.currentTarget.style.borderColor = 'var(--border)' }}
         onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); } }}
       />
+
+      {/* Send button */}
       <button
         onClick={sendChat}
         disabled={chatSending || !chatInput.trim()}
         style={{
-          background: chatInput.trim() ? 'var(--bg-button)' : 'var(--border)',
+          background: chatInput.trim() ? 'var(--gold)' : 'var(--border)',
           border: 'none',
-          borderRadius: '50%',
-          width: '2.2em', height: '2.2em',
-          color: chatInput.trim() ? '#050505' : 'var(--muted)',
-          fontWeight: 700,
-          cursor: chatSending || !chatInput.trim() ? 'not-allowed' : 'pointer',
-          fontSize: '1em',
-          flexShrink: 0,
+          borderRadius: 0,
+          width: 36, height: 36,
+          color: chatInput.trim() ? 'var(--bg)' : 'var(--text-muted)',
+          fontWeight: 700, cursor: chatSending || !chatInput.trim() ? 'not-allowed' : 'pointer',
+          fontSize: 16, flexShrink: 0,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'background 150ms ease',
         }}
-      >
-        {chatSending ? '…' : '↑'}
-      </button>
+      >{chatSending ? '…' : '↑'}</button>
     </div>
   );
 
+  /* ── Message list ── */
   const messageList = (endRef: React.RefObject<HTMLDivElement>) => {
     let lastDate = '';
     return (
       <div style={{
-        flex: 1,
-        overflowY: 'auto',
-        padding: '1em 0.9em',
-        display: 'flex',
-        flexDirection: 'column',
+        flex: 1, overflowY: 'auto',
+        padding: '12px 14px',
+        display: 'flex', flexDirection: 'column',
       }}>
         {messages.length === 0 && (
           <p style={{
-            fontFamily: 'var(--font-body)',
-            fontStyle: 'italic',
-            fontSize: '0.85em',
-            color: 'var(--muted)',
-            textAlign: 'center',
-            margin: 'auto',
-            opacity: 0.6,
-          }}>
-            No messages yet. Say hello!
-          </p>
+            fontFamily: 'var(--font-ui)', fontStyle: 'italic',
+            fontSize: 14, color: 'var(--text-muted)',
+            textAlign: 'center', margin: 'auto', opacity: 0.6,
+          }}>No messages yet — say hello!</p>
         )}
         {messages.map(m => {
           const msgDate = fmtDate(m.created_at);
@@ -274,100 +251,84 @@ export default function ChatPanel({
 
   return (
     <>
-      {/* ── Desktop chat panel ── */}
-      <div
-        ref={chatRef}
-        className="acc-right"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          ['--chat-bubble-me' as any]: 'rgba(45,212,191,0.88)',
-          ['--chat-bubble-them' as any]: 'var(--gold)',
-          ['--chat-bubble-text' as any]: '#0a0a0a',
-        }}
-      >
-        <div style={{
-          padding: '0.9em 1em',
-          borderBottom: '1px solid var(--border)',
-          flexShrink: 0,
-        }}>
+      {/* ── Desktop chat panel (right resizable pane) ── */}
+      <div ref={chatRef} className="acc-right" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ padding: '14px 16px', borderBottom: '0.5px solid var(--border)', flexShrink: 0 }}>
           <span style={{
-            fontFamily: 'var(--font-ui)',
-            fontSize: '0.7em',
-            textTransform: 'uppercase',
-            letterSpacing: '0.18em',
-            color: 'var(--gold)',
-          }}>
-            Chat
-          </span>
+            fontFamily: 'var(--font-ui)', fontSize: 11,
+            textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--gold)',
+          }}>Chat</span>
           <p style={{
-            fontFamily: 'var(--font-body)',
-            fontStyle: 'italic',
-            fontSize: '0.8em',
-            color: 'var(--muted)',
-            margin: '0.3em 0 0',
-          }}>
-            We're here to help — don't hesitate to reach out
-          </p>
+            fontFamily: 'var(--font-ui)', fontStyle: 'italic',
+            fontSize: 12, color: 'var(--text-muted)', margin: '4px 0 0',
+          }}>We're here to help</p>
         </div>
         {messageList(chatEndRef)}
         {inputBar}
       </div>
 
-      {/* ── Mobile chat bar ── */}
-      <div
-        className={`acc-chat-mobile-bar ${chatOpen ? 'hidden' : ''}`}
-        onClick={openChatDrawer}
-      >
-        Chat with Admin
-      </div>
-
-      {/* ── Mobile chat drawer ── */}
-      {chatOpen && (
-        <div className="acc-chat-mobile-drawer" style={{
-          background: 'var(--bg)',
-          display: 'flex',
-          flexDirection: 'column',
-          ['--chat-bubble-me' as any]: 'rgba(45,212,191,0.88)',
-          ['--chat-bubble-them' as any]: 'var(--gold)',
-          ['--chat-bubble-text' as any]: '#0a0a0a',
-        }}>
-          <div style={{
-            display: 'flex',
+      {/* ── Mobile: gold chat bar + lift animation ── */}
+      <>
+        {/* The bar — lifts from bottom to top when open */}
+        <div
+          onClick={chatOpen ? undefined : handleOpen}
+          style={{
+            display: 'none', /* shown via CSS on mobile */
+            position: 'fixed',
+            left: 0, right: 0,
+            height: BAR_H,
+            background: 'var(--gold)',
+            zIndex: 150,
+            cursor: chatOpen ? 'default' : 'pointer',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: '0.9em 1em',
-            borderBottom: '1px solid var(--border)',
-            flexShrink: 0,
-          }}>
-            <span style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '11px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.3em',
-              color: 'var(--gold)',
-            }}>
-              Chat
-            </span>
+            padding: '0 18px',
+            transition: 'top 400ms cubic-bezier(0.16,1,0.3,1)',
+            top: chatOpen ? 0 : `calc(100vh - ${BAR_H}px)`,
+          }}
+          className="chat-bar-mobile"
+        >
+          <span style={{
+            fontFamily: 'var(--font-ui)',
+            fontSize: 12, fontWeight: 700,
+            letterSpacing: '0.22em', textTransform: 'uppercase',
+            color: 'var(--bg)',
+          }}>Chat</span>
+
+          {chatOpen && (
             <button
-              onClick={() => setChatOpen(false)}
+              onClick={handleClose}
               style={{
-                background: 'none',
-                border: 'none',
-                color: 'var(--text)',
-                cursor: 'pointer',
-                fontSize: '19px',
-                lineHeight: 1,
+                background: 'transparent',
+                border: '0.5px solid rgba(0,0,0,0.2)',
+                color: 'var(--bg)',
+                width: 30, height: 30,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer', fontSize: 14, fontWeight: 700,
+                borderRadius: 0,
               }}
-            >
-              ↓
-            </button>
-          </div>
+            >✕</button>
+          )}
+        </div>
+
+        {/* Chat content — slides up behind the bar */}
+        <div
+          className="chat-content-mobile"
+          style={{
+            display: 'none', /* shown via CSS on mobile */
+            position: 'fixed',
+            top: BAR_H, left: 0, right: 0, bottom: 0,
+            background: 'var(--bg)',
+            flexDirection: 'column',
+            zIndex: 149,
+            transition: 'transform 400ms cubic-bezier(0.16,1,0.3,1)',
+            transform: chatOpen ? 'translateY(0)' : 'translateY(100%)',
+          }}
+        >
           {messageList(chatEndRef)}
           {inputBar}
         </div>
-      )}
+      </>
     </>
   );
 }

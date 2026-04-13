@@ -16,7 +16,7 @@
         "default": true,
         "workbench.editorinputs.searchEditorInput": true
     },
-    "workbench.editor.centeredLayoutFixedWidth": true,
+    "workbench.editor.centeredLayoutFixedWidth": false,
     "workbench.editor.enablePreviewFromQuickOpen": true,
     "workbench.editor.enablePreviewFromCodeNavigation": true,
     "workbench.editor.highlightModifiedTabs": true,
