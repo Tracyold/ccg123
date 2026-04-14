@@ -10,17 +10,11 @@ import HomeTab from '../components/account/HomeTab';
 import WizardResultsTab from '../components/account/WizardResultsTab';
 import WorkOrderDetailModal from '../components/account/WorkOrderDetailModal';
 import ChatPanel from '../components/account/ChatPanel';
+import MobileDashboard from '../components/account/MobileDashboard';
 import TopNav from '../components/shared/TopNav';
-
-// ── Mobile orchestrator ────────────────────────────────────────────────────
-import MobileAccount from '../components/account/mobile/MobileAccount';
-import { useIsMobile } from '../components/account/shared/hooks/useIsMobile';
 
 export default function AccountPage() {
   const router = useRouter();
-  const { isMobile } = useIsMobile();
-
-  // ── Desktop-only state ────────────────────────────────────────────────
   const [session, setSession] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('home');
@@ -59,11 +53,11 @@ export default function AccountPage() {
   const [tempAddress, setTempAddress] = useState('');
   const [addressConfirmed, setAddressConfirmed] = useState(false);
   const [adminInfo, setAdminInfo] = useState<any>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const [latestWizardResult, setLatestWizardResult] = useState<any>(null);
 
-  // ── Desktop-only auth + data ──────────────────────────────────────────
+  // Auth
   useEffect(() => {
-    if (isMobile) return; // mobile handles its own auth via MobileAccount
     const guestId = process.env.NEXT_PUBLIC_GUEST_ACCOUNT_USER_ID;
     supabase.auth.getSession().then(async ({ data: { session: s } }) => {
       if (!s) { router.replace('/login'); return; }
@@ -78,10 +72,18 @@ export default function AccountPage() {
       else setSession(s);
     });
     return () => subscription.unsubscribe();
-  }, [router, isMobile]);
+  }, [router]);
 
   useEffect(() => {
-    if (isMobile || !session) return;
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  // Load all data
+  useEffect(() => {
+    if (!session) return;
     const uid = session.user.id;
     let woChannel: any = null;
     let chatChannel: any = null;
@@ -151,7 +153,7 @@ export default function AccountPage() {
       if (woChannel) supabase.removeChannel(woChannel);
       if (chatChannel) supabase.removeChannel(chatChannel);
     };
-  }, [session, isMobile]);
+  }, [session]);
 
   const deleteAccount = async () => {
     if (deleteConfirmText !== 'DELETE') { setDeleteError('Type DELETE to confirm.'); return; }
@@ -261,27 +263,16 @@ export default function AccountPage() {
     if (chatFileRef.current) chatFileRef.current.value = '';
   };
 
-  const openWODetail = (wo: any) => setSelectedWO(wo);
+  const openWODetail = (wo: any) => { setSelectedWO(wo); };
 
-  // ── Mobile — render MobileAccount only ────────────────────────────────
-  if (isMobile) {
-    return (
-      <>
-        <TopNav />
-        <MobileAccount />
-      </>
-    );
-  }
-
-  // ── Desktop loading guard ─────────────────────────────────────────────
   if (loading) return <div style={{ background: 'var(--bg-deep)', minHeight: '100vh' }} />;
 
   const NAV = [
-    { id: 'home',       label: 'Home'          },
-    { id: 'workorders', label: 'Work Orders'   },
-    { id: 'inquiries',  label: 'Inquiries'     },
-    { id: 'wizard',     label: 'Wizard Results'},
-    { id: 'invoices',   label: 'Invoices'      },
+    { id: 'home', label: 'Home' },
+    { id: 'workorders', label: 'Work Orders' },
+    { id: 'inquiries', label: 'Inquiries' },
+    { id: 'wizard', label: 'Wizard Results' },
+    { id: 'invoices', label: 'Invoices' },
   ];
 
   const navContent = (
@@ -336,23 +327,47 @@ export default function AccountPage() {
       <TopNav />
 
       <div className="acc-shell">
-        <ResizablePanelGroup style={{ flex: 1, height: '100%' }}>
-          <ResizablePanel defaultSize={65} minSize={40}>
-            <div className="acc-left">
-              <div className="acc-nav">{navContent}</div>
-              {tabContent}
+        {isMobile ? (
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflowY: 'auto', position: 'relative' }}>
+            <div className="acc-nav" style={{ position: 'sticky', top: 0, zIndex: 10 }}>{navContent}</div>
+            <div className="acc-content">
+              {activeTab === 'home' ? (
+                <MobileDashboard
+                  profile={profile} workOrders={workOrders} messages={messages}
+                  chatThread={chatThread} invoices={invoices} invoiceTotal={invoiceTotal}
+                  smsPrefs={smsPrefs}
+                  hasOpenWorkOrder={workOrders.some(w => w.status === 'ACCEPTED' || w.status === 'Created')}
+                  latestWizardResult={latestWizardResult} onTabChange={setActiveTab}
+                  openChatDrawer={openChatDrawer} toggleSms={toggleSms}
+                />
+              ) : (tabContent)}
             </div>
-          </ResizablePanel>
-          <ResizableHandle withHandle />
-          <ResizablePanel defaultSize={35} minSize={20}>
             <ChatPanel
               messages={messages} chatInput={chatInput} chatSending={chatSending}
               chatUploading={chatUploading} chatOpen={chatOpen} chatEndRef={chatEndRef}
               chatFileRef={chatFileRef} setChatInput={setChatInput} setChatOpen={setChatOpen}
               openChatDrawer={openChatDrawer} sendChat={sendChat} handleChatFile={handleChatFile}
             />
-          </ResizablePanel>
-        </ResizablePanelGroup>
+          </div>
+        ) : (
+          <ResizablePanelGroup style={{ flex: 1, height: '100%' }}>
+            <ResizablePanel defaultSize={65} minSize={40}>
+              <div className="acc-left">
+                <div className="acc-nav">{navContent}</div>
+                {tabContent}
+              </div>
+            </ResizablePanel>
+            <ResizableHandle withHandle />
+            <ResizablePanel defaultSize={35} minSize={20}>
+              <ChatPanel
+                messages={messages} chatInput={chatInput} chatSending={chatSending}
+                chatUploading={chatUploading} chatOpen={chatOpen} chatEndRef={chatEndRef}
+                chatFileRef={chatFileRef} setChatInput={setChatInput} setChatOpen={setChatOpen}
+                openChatDrawer={openChatDrawer} sendChat={sendChat} handleChatFile={handleChatFile}
+              />
+            </ResizablePanel>
+          </ResizablePanelGroup>
+        )}
       </div>
 
       <WorkOrderDetailModal
@@ -364,7 +379,7 @@ export default function AccountPage() {
 
       {showDeleteModal && (
         <div style={{ position: 'fixed', inset: 0, background: 'var(--bg-deep)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
-          <div style={{ background: 'var(--bg-deep)', border: '1px solid var(--bg-button)', padding: '40px', maxWidth: '440px', width: '100%' }}>
+          <div style={{ background: 'var(--bg-deep)', border: '1px solid var(--bg-button', padding: '40px', maxWidth: '440px', width: '100%' }}>
             <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(180,60,60,0.8)', marginBottom: '16px' }}>Permanent Action</p>
             <p style={{ fontFamily: 'var(--font-display)', fontSize: '25px', color: 'var(--text)', marginBottom: '16px', lineHeight: 1.2 }}>Delete Account</p>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: '28px' }}>This will permanently delete your account. Any open work orders or invoices will remain on file. This cannot be undone.</p>
@@ -422,7 +437,7 @@ const accountCss = `
   width: 100%;
   text-align: left;
   padding: 10px 20px;
-  font-family: var(--font-ui);
+  font-family: 'var(--font-ui', sans-serif;
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.20em;
@@ -438,14 +453,35 @@ const accountCss = `
 .acc-nav-item:hover:not(.on) { color: var(--text); }
 .acc-content { flex: 1; overflow-y: auto; min-height: 0; min-width: 0; max-height: 100%; }
 .acc-right { width: 100%; height: 100%; border-left: 1px solid var(--border); display: flex; flex-direction: column; background: var(--bg-deep); overflow: hidden; }
-.acc-label { font-family: var(--font-ui); font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 5px; }
+.acc-chat-header { padding: 16px 20px; border-bottom: 1px solid var(--border); background: var(--bg); }
+.acc-chat-messages { flex: 1; overflow-y: auto; padding: 16px 20px; min-height: 0; }
+.acc-chat-input-bar { display: flex; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--border); }
+.acc-chat-input { flex: 1; background: var(--border); border: 1px solid var(--border); padding: 10px 12px; color: var(--text); font-family: var(--font-body); font-size: 13px; outline: none; }
+.acc-chat-input:focus { border-color: var(--gold); }
+.acc-chat-send { background: var(--bg-deep); border: none; color: #050505; padding: 10px 16px; font-size: 15px; cursor: pointer; font-weight: 700; }
+.acc-chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+.acc-label { font-family: 'var(--font-ui', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 5px; }
 .acc-input { width: 100%; background: var(--border); border: 1px solid var(--border); padding: 10px 12px; color: var(--text); font-family: var(--font-body); font-size: 13px; outline: none; }
 .acc-input:focus { border-color: var(--gold); }
-.acc-btn-gold { background: var(--gold); color: #050505; border: none; padding: 12px 20px; font-family: var(--font-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; width: 100%; }
+.acc-btn-gold { background: var(--gold); color: #050505; border: none; padding: 12px 20px; font-family: 'var(--font-ui', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; width: 100%; }
 .acc-btn-gold:disabled { opacity: 0.4; cursor: not-allowed; }
-.acc-btn-ghost { background: var(--bg); border: 1px solid var(--border); color: var(--accent); padding: 10px 16px; font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; }
-.acc-tab { padding: 10px 0; font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); background: none; border: none; border-bottom: 1px solid transparent; cursor: pointer; }
+.acc-btn-ghost { background: var(--bg); border: 1px solid var(--border); color: var(--accent); padding: 10px 16px; font-family: 'var(--font-ui', sans-serif; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; }
+.acc-tab { padding: 10px 0; font-family: 'var(--font-ui', sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); background: none; border: none; border-bottom: 1px solid transparent; cursor: pointer; }
 .acc-tab.on { color: var(--text); border-bottom-color: var(--bg-deep); }
 .acc-empty { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.2em; }
+.acc-chat-mobile-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-deep); color: var(--text); text-align: center; padding: 15px; font-family: 'var(--font-ui)', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; z-index: 50; }
+.acc-chat-mobile-bar.hidden { display: none !important; }
+.acc-chat-mobile-drawer { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 100; flex-direction: column; }
 .pill-toggle { border-radius: 860px !important; }
+@media (max-width: 767px) {
+  .acc-right { display: none; }
+  .acc-chat-mobile-bar { display: block; }
+  .acc-chat-mobile-drawer { display: flex; }
+  .acc-nav { width: 100%; flex-direction: row; overflow-x: auto; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+  .acc-nav-item { border-left: none; border-bottom: 2px solid transparent; white-space: nowrap; padding: 12px 16px; }
+  .acc-nav-item.on { border-bottom-color: var(--bg-deep); }
+  .acc-left { flex-direction: column; }
+  .chat-bar-mobile { display: flex !important; }
+  .chat-content-mobile { display: flex !important; }
+}
 `;

@@ -65,14 +65,9 @@ export default function MobileAccount() {
 
   const {
     activePanel,
-    activeDrawer,
     openPanel,
     closePanel,
-    openDrawer,
-    closeDrawer,
-    closeAll,
     isPanelOpen,
-    isDrawerOpen,
   } = usePanel()
 
   // ── Mobile-only state ──
@@ -157,6 +152,8 @@ export default function MobileAccount() {
       <MobileResults
         isOpen={isPanelOpen('results')}
         onClose={closePanel}
+        session={session}
+        setServiceRequests={setServiceRequests}
         onServiceRequestCreated={() => openPanel('servicerequests')}
       />
 
@@ -211,6 +208,7 @@ export default function MobileAccount() {
         isOpen={!!shopItem}
         onClose={() => setShopItem(null)}
         item={shopItem?.item ?? null}
+        session={session}
       />
 
       {/* ── SMS Modal ── */}

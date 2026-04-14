@@ -39,7 +39,20 @@ export function useAccountData(session: any) {
         supabase.from('invoices').select('invoice_id, total_amount').eq('account_user_id', uid),
         supabase.from('work_orders').select('*').eq('account_user_id', uid).order('created_at', { ascending: false }),
         supabase.from('admin_users').select('business_name, full_name, address, phone, contact_email').single(),
-        supabase.from('account_inquiries').select('*').eq('account_user_id', uid).order('created_at', { ascending: false }),
+        // ── Join products so inquiry cards show product name, weight, shape, price ──
+        supabase
+          .from('account_inquiries')
+          .select(`
+            *,
+            products (
+              title,
+              weight,
+              shape,
+              total_price
+            )
+          `)
+          .eq('account_user_id', uid)
+          .order('created_at', { ascending: false }),
         supabase.from('service_requests').select('*').eq('account_user_id', uid).order('created_at', { ascending: false }),
         supabase.from('invoices').select('*').eq('account_user_id', uid).order('paid_at', { ascending: false }),
         supabase.from('chat_threads').select('*').eq('account_user_id', uid).single(),
@@ -65,6 +78,37 @@ export function useAccountData(session: any) {
             else if (payload.eventType === 'UPDATE') setWorkOrders(prev => prev.map(w =>
               w.work_order_id === (payload.new as any).work_order_id ? payload.new as any : w));
           }).subscribe();
+
+      // ── Realtime inquiries — new submissions + admin replies ──
+      const inqChannel = supabase.channel('user-inq-' + uid)
+        .on('postgres_changes', {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'account_inquiries',
+          filter: `account_user_id=eq.${uid}`,
+        }, async () => {
+          // Re-fetch with product join so new inquiry has full product info
+          const { data: fresh } = await supabase
+            .from('account_inquiries')
+            .select(`*, products(title, weight, shape, total_price)`)
+            .eq('account_user_id', uid)
+            .order('created_at', { ascending: false });
+          if (fresh) setInquiries(fresh);
+        })
+        .on('postgres_changes', {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'account_inquiries',
+          filter: `account_user_id=eq.${uid}`,
+        }, (payload) => {
+          // Admin replied — update that inquiry in place with reply + status
+          setInquiries(prev => prev.map(inq =>
+            inq.account_inquiry_id === (payload.new as any).account_inquiry_id
+              ? { ...inq, ...payload.new }
+              : inq
+          ));
+        })
+        .subscribe();
 
       if (thread) {
         const { data: msgs } = await supabase.from('chat_messages').select('*')
@@ -95,6 +139,7 @@ export function useAccountData(session: any) {
     return () => {
       if (woChannel) supabase.removeChannel(woChannel);
       if (chatChannel) supabase.removeChannel(chatChannel);
+      supabase.removeChannel(supabase.channel('user-inq-' + uid));
     };
   }, [session]);
 
@@ -104,7 +149,7 @@ export function useAccountData(session: any) {
     invoices, setInvoices,
     invoiceCount, invoiceTotal,
     workOrders, setWorkOrders,
-    inquiries,
+    inquiries, setInquiries,
     serviceRequests, setServiceRequests,
     adminInfo,
     chatThread,
