@@ -1,23 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
-import { useDashboard, getBandColor } from '../shared/1Dashboard'
+import { useDashboard, BAND_COLORS, getBandColor } from '../shared/1Dashboard'
+import { SMS_TOGGLES } from '../shared/1HomeView'
 import { formatMoney } from '../../../lib/utils'
 import { supabase } from '../../../lib/supabase'
+import { getPhotoUrl } from '../shared/utils/photoUrl'
 import type { PanelName } from '../shared/hooks/usePanel'
 
-// ── Band colors matching account.html ─────────────────────────────────────
-const BAND_COLORS: Record<string, string> = {
-  '80-100': '#38bdf8',
-  '60-79':  '#4ec994',
-  '40-59':  '#a3e635',
-  '18-39':  '#67e8f9',
-  '0-17':   '#f87171',
-}
-function bandColor(band: string): string { return BAND_COLORS[band] ?? '#67e8f9' }
+// ── Types ──────────────────────────────────────────────────────────────────
 
-// ── SMS toggles ────────────────────────────────────────────────────────────
-const SMS_COLS = ['opt_in_work_orders','opt_in_chat','opt_in_tracking','opt_in_new_listings','opt_in_purchases']
-
-// ── Product type ───────────────────────────────────────────────────────────
 interface Product {
   product_id:    string
   title:         string
@@ -26,13 +16,8 @@ interface Product {
   product_state: string
 }
 
-function getPhotoUrl(url: string | null): string | null {
-  if (!url) return null
-  if (url.startsWith('http')) return url
-  return supabase.storage.from('products').getPublicUrl(url).data.publicUrl
-}
-
 // ── Props ──────────────────────────────────────────────────────────────────
+
 interface Props {
   profile:             any
   workOrders:          any[]
@@ -49,18 +34,22 @@ interface Props {
 }
 
 // ── Component ──────────────────────────────────────────────────────────────
+
 export default function MobileDashboard({
   profile, workOrders, messages, chatThread,
   invoices, invoiceTotal, smsPrefs, serviceRequests,
   latestWizardResult, onOpenPanel, onOpenSms, onOpenShopItem,
 }: Props) {
 
-  const dash = useDashboard({ profile, workOrders, messages, chatThread, invoices, invoiceTotal, smsPrefs, latestWizardResult })
+  const dash = useDashboard({
+    profile, workOrders, messages, chatThread,
+    invoices, invoiceTotal, smsPrefs, latestWizardResult,
+  })
 
-  const [products,    setProducts]    = useState<Product[]>([])
-  const [recentWiz,   setRecentWiz]   = useState<any[]>([])
-  const [hearted,     setHearted]     = useState<Set<string>>(new Set())
-  const [tappedShop,  setTappedShop]  = useState<string | null>(null)
+  const [products,   setProducts]   = useState<Product[]>([])
+  const [recentWiz,  setRecentWiz]  = useState<any[]>([])
+  const [hearted,    setHearted]    = useState<Set<string>>(new Set())
+  const [tappedShop, setTappedShop] = useState<string | null>(null)
 
   const feedRef     = useRef<HTMLDivElement>(null)
   const sentinelRef = useRef<HTMLDivElement>(null)
@@ -68,16 +57,16 @@ export default function MobileDashboard({
 
   // ── Fetch products ──
   useEffect(() => {
-    supabase.from('products').select('*').eq('product_state','available')
-      .order('created_at',{ascending:false})
-      .then(({data}) => { if (data) setProducts(data) })
+    supabase.from('products').select('*').eq('product_state', 'available')
+      .order('created_at', { ascending: false })
+      .then(({ data }) => { if (data) setProducts(data) })
   }, [])
 
   // ── Fetch last 3 wizard results for dashboard tile ──
   useEffect(() => {
     supabase.from('wizard_results').select('*')
-      .order('created_at',{ascending:false}).limit(3)
-      .then(({data}) => { if (data) setRecentWiz(data) })
+      .order('created_at', { ascending: false }).limit(3)
+      .then(({ data }) => { if (data) setRecentWiz(data) })
   }, [])
 
   // ── Infinite scroll ──
@@ -107,8 +96,12 @@ export default function MobileDashboard({
 
   // ── Shop thumb two-tap ──
   const tapShopThumb = (product: Product) => {
-    if (tappedShop === product.product_id) { onOpenShopItem(0, product); setTappedShop(null) }
-    else setTappedShop(product.product_id)
+    if (tappedShop === product.product_id) {
+      onOpenShopItem(0, product)
+      setTappedShop(null)
+    } else {
+      setTappedShop(product.product_id)
+    }
   }
 
   const C = dash.colors
@@ -261,7 +254,7 @@ export default function MobileDashboard({
             ) : (
               recentWiz.map(r => {
                 const pct    = Math.round(r.feasibility_percent ?? 0)
-                const color  = bandColor(r.band ?? '')
+                const color  = getBandColor(r.band ?? '')
                 const circ   = 88
                 const offset = circ * (1 - pct / 100)
                 const stone  = [r.stone_variety, r.stone_species].filter(Boolean).join(' ') || 'Unknown stone'
@@ -317,8 +310,8 @@ export default function MobileDashboard({
                 </div>
               </div>
               <div className="sms-dots" style={{ marginTop: 6 }}>
-                {SMS_COLS.map(col => (
-                  <div key={col} className={`sms-dot ${smsPrefs?.[col] ? 'on' : ''}`} />
+                {SMS_TOGGLES.map(t => (
+                  <div key={t.col} className={`sms-dot ${smsPrefs?.[t.col] ? 'on' : ''}`} />
                 ))}
               </div>
               <div className="t-arrow">→</div>
@@ -394,6 +387,7 @@ export default function MobileDashboard({
 }
 
 // ── ShopThumb ──────────────────────────────────────────────────────────────
+
 function ShopThumb({ product, tapped, hearted, onTap, onHeart }: {
   product: Product; tapped: boolean; hearted: boolean
   onTap: () => void; onHeart: (e: React.MouseEvent) => void

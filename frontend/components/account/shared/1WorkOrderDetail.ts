@@ -1,7 +1,7 @@
 import { supabase } from '../../../lib/supabase'
 import { formatMoney, fmtDate, fmtTime } from '../../../lib/utils'
 
-// ── Types ────────────────────────────────────────────────────────────
+// ── Types ────────────────────────────────────────────────────────────────
 
 export interface WorkOrderDetailModalProps {
   selectedWO:          any
@@ -27,9 +27,36 @@ export interface ActivityEntry {
   action: string
   by:     string
   at:     string
+  detail?: string
 }
 
-// ── Derived Data Helpers ─────────────────────────────────────────────
+// ── Status helpers ────────────────────────────────────────────────────────
+
+export function statusClass(s: string): string {
+  const map: Record<string, string> = {
+    'CREATED':     'wo-s-created',
+    'ACCEPTED':    'wo-s-accepted',
+    'IN PROGRESS': 'wo-s-progress',
+    'COMPLETED':   'wo-s-completed',
+    'CONFIRMED':   'wo-s-accepted',
+    'CANCELLED':   'wo-s-cancelled',
+  }
+  return map[s] ?? 'wo-s-created'
+}
+
+export function orderStatusStyle(s: string): { background: string; color: string } {
+  const map: Record<string, { background: string; color: string }> = {
+    'CREATED':     { background: 'rgba(207,221,78,0.12)',  color: 'var(--gold)'        },
+    'ACCEPTED':    { background: 'rgba(45,212,191,0.12)',  color: '#2dd4bf'            },
+    'IN PROGRESS': { background: 'rgba(106,176,245,0.12)', color: 'var(--tile-orders)' },
+    'COMPLETED':   { background: 'rgba(100,100,100,0.12)', color: 'var(--text-muted)'  },
+    'CONFIRMED':   { background: 'rgba(120,80,200,0.12)',  color: '#a78bfa'            },
+    'CANCELLED':   { background: 'rgba(248,113,113,0.12)', color: '#f87171'            },
+  }
+  return map[s] ?? map['CREATED']
+}
+
+// ── Derived Data Helpers ──────────────────────────────────────────────────
 
 export function getDetailRows(wo: any): DetailRow[] {
   return [
@@ -56,7 +83,7 @@ export function getActivityLog(wo: any): ActivityEntry[] {
   return [...wo.edit_history].reverse()
 }
 
-// ── Action Handlers ──────────────────────────────────────────────────
+// ── Action Handlers ───────────────────────────────────────────────────────
 
 export function handleCloseModal(
   setSelectedWO:       (fn: any) => void,

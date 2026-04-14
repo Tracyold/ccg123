@@ -1,43 +1,16 @@
 import { useState, useRef } from 'react'
-import { formatMoney, fmtDate } from '../../../lib/utils'
-
-// ── Types ──────────────────────────────────────────────────────────────────
-interface LineItem {
-  product_id:         string
-  title:              string
-  gem_type:           string
-  shape:              string
-  weight:             number
-  color:              string
-  origin:             string
-  treatment:          string
-  description:        string
-  price_per_carat:    number
-  total_price:        number
-  gia_report_number:  string | null
-  gia_report_pdf_url: string | null
-  photo_url:          string | null
-}
-
-interface AccountSnapshot {
-  name:            string
-  email:           string
-  phone:           string
-  shippingAddress: string
-  businessName:    string | null
-}
-
-interface Invoice {
-  invoice_id:               string
-  stripe_session_id:        string
-  total_amount:             number
-  line_items:               LineItem[]
-  account_snapshot:         AccountSnapshot
-  invoice_state:            string
-  paid_at:                  string
-}
+import {
+  type Invoice,
+  getInvoiceNumber,
+  getInvoiceLineItem,
+  getInvoicePhoto,
+  formatInvoiceAmount,
+  formatInvoiceDate,
+} from '../shared/1InvoiceList'
+import { getPhotoUrl } from '../shared/utils/photoUrl'
 
 // ── Props ──────────────────────────────────────────────────────────────────
+
 interface Props {
   isOpen:   boolean
   onClose:  () => void
@@ -45,6 +18,7 @@ interface Props {
 }
 
 // ── Component ──────────────────────────────────────────────────────────────
+
 export default function MobileInvoices({ isOpen, onClose, invoices }: Props) {
   const [tapped,     setTapped]     = useState<string | null>(null)
   const [selected,   setSelected]   = useState<Invoice | null>(null)
@@ -87,7 +61,7 @@ export default function MobileInvoices({ isOpen, onClose, invoices }: Props) {
     dragRef.current.dragging = false
   }
 
-  const openDrawer = (inv: Invoice) => { setSelected(inv); setDrawerOpen(true); showSlideTip() }
+  const openDrawer  = (inv: Invoice) => { setSelected(inv); setDrawerOpen(true); showSlideTip() }
   const closeDrawer = () => { setDrawerOpen(false); setTapped(null) }
 
   // ── Two-tap ──
@@ -202,8 +176,8 @@ export default function MobileInvoices({ isOpen, onClose, invoices }: Props) {
           ) : (
             <div className="inv-grid">
               {filtered.map(inv => {
-                const item     = inv.line_items?.[0]
-                const photoUrl = item?.photo_url ?? null
+                const item     = getInvoiceLineItem(inv)
+                const photoUrl = getPhotoUrl(getInvoicePhoto(inv))
                 const isTapped = tapped === inv.invoice_id
                 return (
                   <div key={inv.invoice_id} className={`inv-thumb ${isTapped ? 'tapped' : ''}`} onClick={() => tapThumb(inv)}>
@@ -213,8 +187,8 @@ export default function MobileInvoices({ isOpen, onClose, invoices }: Props) {
                         : '💎'}
                     </div>
                     <div className="inv-overlay">
-                      <div className="inv-price">{formatMoney(inv.total_amount)}</div>
-                      <div className="inv-date">Paid {fmtDate(inv.paid_at)}</div>
+                      <div className="inv-price">{formatInvoiceAmount(inv.total_amount)}</div>
+                      <div className="inv-date">Paid {formatInvoiceDate(inv.paid_at)}</div>
                       <div className="inv-tap-hint">Tap again to view</div>
                     </div>
                   </div>
@@ -238,10 +212,11 @@ export default function MobileInvoices({ isOpen, onClose, invoices }: Props) {
             <button className="inv-drawer-close" onClick={closeDrawer}>✕</button>
           </div>
           {selected && (() => {
-            const item     = selected.line_items?.[0]
+            const item     = getInvoiceLineItem(selected)
             const buyer    = selected.account_snapshot
-            const invNum   = selected.stripe_session_id?.slice(-6).toUpperCase() ?? '------'
-            const paidDate = fmtDate(selected.paid_at)
+            const invNum   = getInvoiceNumber(selected)
+            const paidDate = formatInvoiceDate(selected.paid_at)
+            const photoUrl = getPhotoUrl(getInvoicePhoto(selected))
             return (
               <div className="inv-pdf">
                 <div className="pdf-stamp">
@@ -258,14 +233,14 @@ export default function MobileInvoices({ isOpen, onClose, invoices }: Props) {
                   <div className="pdf-label">Bill To</div>
                   <div className="pdf-name">{buyer?.name || 'Customer'}</div>
                   <div className="pdf-addr">
-                    {buyer?.email && <div>{buyer.email}</div>}
-                    {buyer?.phone && <div>{buyer.phone}</div>}
+                    {buyer?.email           && <div>{buyer.email}</div>}
+                    {buyer?.phone           && <div>{buyer.phone}</div>}
                     {buyer?.shippingAddress && <div>{buyer.shippingAddress}</div>}
-                    {buyer?.businessName && <div>{buyer.businessName}</div>}
+                    {buyer?.businessName    && <div>{buyer.businessName}</div>}
                   </div>
                 </div>
-                {item?.photo_url && (
-                  <img src={item.photo_url} alt={item.title}
+                {photoUrl && (
+                  <img src={photoUrl} alt={item?.title}
                     style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', marginBottom: 16, display: 'block' }} />
                 )}
                 <table className="pdf-items">
@@ -286,7 +261,7 @@ export default function MobileInvoices({ isOpen, onClose, invoices }: Props) {
                             )}
                           </td>
                           <td>1</td>
-                          <td>{formatMoney(item.total_price)}</td>
+                          <td>{formatInvoiceAmount(item.total_price)}</td>
                         </tr>
                         <tr>
                           <td>Stone handling &amp; shipping</td>
@@ -299,7 +274,7 @@ export default function MobileInvoices({ isOpen, onClose, invoices }: Props) {
                 </table>
                 <div className="pdf-total-row">
                   <div className="pdf-total-lbl">Total Paid</div>
-                  <div className="pdf-total-amt">{formatMoney(selected.total_amount)}</div>
+                  <div className="pdf-total-amt">{formatInvoiceAmount(selected.total_amount)}</div>
                 </div>
                 <div className="pdf-footer">
                   <div className="pdf-footer-txt">Thank you for your business.<br />Cutting Corners Gems · cuttingcornersgems.com</div>
