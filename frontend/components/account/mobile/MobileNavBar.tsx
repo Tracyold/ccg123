@@ -14,8 +14,7 @@ export default function MobileNavBar() {
   return (
     <>
       <style>{`
-        .nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--bg-deep);border-bottom:0.5px solid var(--bdr2);position:relative}
-        .nav-logo{font-family:var(--font-display);font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);opacity:0.8}
+        .nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--bg-deep);border-bottom:0.5px solid var(--bdr2)}        .nav-logo{font-family:var(--font-display);font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);opacity:0.8}
         .nav-logo em{color:var(--gold);font-style:normal}
         .nav-right{display:flex;align-items:center;gap:8px}
         .icon-btn{background:transparent;border:0.5px solid var(--bdr2);color:var(--text-muted);width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;transition:all 180ms ease}
