@@ -12,10 +12,7 @@ interface Props {
 // ── Component ──────────────────────────────────────────────────────────────
 
 export default function MobileMenuBarBottom({
-  activePanel,
-  chatUnread,
-  onOpenPanel,
-  onOpenMenu,
+  activePanel, chatUnread, onOpenPanel, onOpenMenu,
 }: Props) {
   return (
     <>
@@ -32,10 +29,7 @@ export default function MobileMenuBarBottom({
       <div className="tab-bar">
 
         {/* Menu */}
-        <div
-          className={`tab ${activePanel === 'menu' ? 'active' : ''}`}
-          onClick={onOpenMenu}
-        >
+        <div className={`tab ${activePanel === 'menu' ? 'active' : ''}`} onClick={onOpenMenu}>
           <div className="tab-icon">☰</div>
           <div className="tab-lbl">Menu</div>
         </div>
@@ -47,27 +41,27 @@ export default function MobileMenuBarBottom({
           style={{ position: 'relative' }}
         >
           {chatUnread && <div className="tab-dot" />}
-          <div className="tab-icon" style={{ color: activePanel === 'chat' || chatUnread ? 'var(--gold)' : undefined, opacity: chatUnread ? 1 : undefined }}>✉</div>
-          <div className="tab-lbl" style={{ color: activePanel === 'chat' || chatUnread ? 'var(--gold)' : undefined }}>Chat</div>
+          <div
+            className="tab-icon"
+            style={{ color: activePanel === 'chat' || chatUnread ? 'var(--gold)' : undefined, opacity: chatUnread ? 1 : undefined }}
+          >✉</div>
+          <div
+            className="tab-lbl"
+            style={{ color: activePanel === 'chat' || chatUnread ? 'var(--gold)' : undefined }}
+          >Chat</div>
         </div>
 
         {/* Invoices */}
-        <div
-          className={`tab ${activePanel === 'invoices' ? 'active' : ''}`}
-          onClick={() => onOpenPanel('invoices')}
-        >
+        <div className={`tab ${activePanel === 'invoices' ? 'active' : ''}`} onClick={() => onOpenPanel('invoices')}>
           <div className="tab-icon">◈</div>
           <div className="tab-lbl">Invoices</div>
         </div>
 
-        {/* Theme toggle */}
-        <div
-          className="tab"
-          onClick={() => {
-            const root = document.documentElement
-            root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark'
-          }}
-        >
+        {/* Theme */}
+        <div className="tab" onClick={() => {
+          const root = document.documentElement
+          root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark'
+        }}>
           <div className="tab-icon">◐</div>
           <div className="tab-lbl">Theme</div>
         </div>

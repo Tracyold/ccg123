@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { supabase } from '../../../lib/supabase'
 import {
   groupMessagesByDate,
   getAttachmentUrl,
@@ -12,17 +11,17 @@ import {
 // ── Props ──────────────────────────────────────────────────────────────────
 
 interface Props {
-  isOpen:          boolean
-  onClose:         () => void
-  messages:        ChatMessage[]
-  chatInput:       string
-  chatSending:     boolean
-  chatUploading:   boolean
-  chatEndRef:      React.RefObject<HTMLDivElement>
-  chatFileRef:     React.RefObject<HTMLInputElement>
-  setChatInput:    (v: string) => void
-  sendChat:        () => void
-  handleChatFile:  (e: React.ChangeEvent<HTMLInputElement>) => void
+  isOpen:         boolean
+  onClose:        () => void
+  messages:       ChatMessage[]
+  chatInput:      string
+  chatSending:    boolean
+  chatUploading:  boolean
+  chatEndRef:     React.RefObject<HTMLDivElement>
+  chatFileRef:    React.RefObject<HTMLInputElement>
+  setChatInput:   (v: string) => void
+  sendChat:       () => void
+  handleChatFile: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 // ── Component ──────────────────────────────────────────────────────────────
@@ -35,20 +34,18 @@ export default function MobileChatPanel({
 }: Props) {
 
   const { handleKeyDown, triggerFileInput, ACCEPTED_FILE_TYPES } = useChatView({
-    chatOpen:      isOpen,
+    chatOpen:       isOpen,
     chatEndRef,
     chatFileRef,
     messages,
-    setChatOpen:   () => {},
-    openChatDrawer:() => {},
+    setChatOpen:    () => {},
+    openChatDrawer: () => {},
     sendChat,
   })
 
   // Auto-scroll when panel opens
   useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => chatEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 420)
-    }
+    if (isOpen) setTimeout(() => chatEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 420)
   }, [isOpen])
 
   // Auto-scroll on new messages
@@ -101,13 +98,11 @@ export default function MobileChatPanel({
           {messages.length === 0 && (
             <p className="chat-empty">No messages yet — say hello!</p>
           )}
-
           {grouped.map(({ dateLabel, showDivider, message: m }) => {
             const isMe = m.actor === 'ACCOUNT'
             const time = new Date(m.created_at).toLocaleTimeString('en-US', {
               hour: 'numeric', minute: '2-digit', hour12: true,
             })
-
             return (
               <div key={m.chat_message_id}>
                 {showDivider && (
@@ -139,7 +134,6 @@ export default function MobileChatPanel({
               </div>
             )
           })}
-
           <div ref={chatEndRef} />
         </div>
 
@@ -152,12 +146,7 @@ export default function MobileChatPanel({
             style={{ display: 'none' }}
             onChange={handleChatFile}
           />
-          <button
-            className="chat-attach"
-            onClick={triggerFileInput}
-            disabled={chatUploading}
-            title="Attach file"
-          >
+          <button className="chat-attach" onClick={triggerFileInput} disabled={chatUploading} title="Attach file">
             {chatUploading ? '…' : '⊕'}
           </button>
           <input
@@ -167,11 +156,7 @@ export default function MobileChatPanel({
             onKeyDown={handleKeyDown}
             placeholder="Message..."
           />
-          <button
-            className="chat-send"
-            onClick={sendChat}
-            disabled={chatSending || !chatInput.trim()}
-          >
+          <button className="chat-send" onClick={sendChat} disabled={chatSending || !chatInput.trim()}>
             {chatSending ? '…' : '↑'}
           </button>
         </div>

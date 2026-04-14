@@ -12,22 +12,23 @@ import { useDeleteAccount }  from '../shared/hooks/useDeleteAccount'
 import { usePanel }          from '../shared/hooks/usePanel'
 
 // ── Mobile components ──────────────────────────────────────────────────────
-import MobileNavBar           from '../mobile/MobileNavBar'
-import MobileMenuBarBottom    from '../mobile/MobileMenuBarBottom'
-import MobileHamburgerMenu    from '../mobile/MobileHamburgerMenu'
-import MobileDashboard        from '../mobile/MobileDashboard'
-import MobileChatPanel        from '../mobile/MobileChatPanel'
-import MobileWorkOrders       from '../mobile/MobileWorkOrders'
-import MobileInvoices         from '../mobile/MobileInvoices'
-import MobileWizardTab        from '../mobile/MobileWizardTab'
-import MobileResults          from '../mobile/MobileResults'
-import MobileServiceRequests  from '../mobile/MobileServiceRequests'
-import MobileInquiries        from '../mobile/MobileInquiries'
-import MobileProfile          from './MobileProfile'
-import MobileShopDrawer       from '../mobile/MobileShopDrawer'
-import MobileSMSModal         from '../mobile/MobileSMSModal'
+import MobileNavBar          from './MobileNavBar'
+import MobileMenuBarBottom   from './MobileMenuBarBottom'
+import MobileHamburgerMenu   from './MobileHamburgerMenu'
+import MobileDashboard       from './MobileDashboard'
+import MobileChatPanel       from './MobileChatPanel'
+import MobileWorkOrders      from './MobileWorkOrders'
+import MobileInvoices        from './MobileInvoices'
+import MobileWizardTab       from './MobileWizardTab'
+import MobileResults         from './MobileResults'
+import MobileServiceRequests from './MobileServiceRequests'
+import MobileInquiries       from './MobileInquiries'
+import MobileProfile         from './MobileProfile'
+import MobileShopDrawer      from './MobileShopDrawer'
+import MobileSMSModal        from './MobileSMSModal'
 
-// -- TYPES ------------------
+// ── Types ──────────────────────────────────────────────────────────────────
+
 interface SelectedShopItem {
   idx:  number
   item: any
@@ -96,6 +97,7 @@ export default function MobileAccount() {
         invoices={invoices}
         invoiceTotal={invoiceTotal}
         smsPrefs={smsPrefs}
+        serviceRequests={serviceRequests}
         latestWizardResult={latestWizardResult}
         onOpenPanel={openPanel}
         onOpenSms={() => setSmsModalOpen(true)}

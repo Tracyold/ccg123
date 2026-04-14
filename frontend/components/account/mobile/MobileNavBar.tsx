@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 
 export default function MobileNavBar() {
@@ -15,7 +14,7 @@ export default function MobileNavBar() {
   return (
     <>
       <style>{`
-        .nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--bg-deep);border-bottom:0.5px solid var(--bdr2)}
+        .nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--bg-deep);border-bottom:0.5px solid var(--bdr2);position:relative}
         .nav-logo{font-family:var(--font-display);font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);opacity:0.8}
         .nav-logo em{color:var(--gold);font-style:normal}
         .nav-right{display:flex;align-items:center;gap:8px}
@@ -27,6 +26,8 @@ export default function MobileNavBar() {
         .site-menu-item{display:block;padding:18px 22px;font-family:var(--font-body);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;border-bottom:0.5px solid var(--bdr2);cursor:pointer;transition:color 160ms ease;background:none;border-left:none;border-right:none;border-top:none;width:100%;text-align:left}
         .site-menu-item:last-child{border-bottom:none}
         .site-menu-item:hover{color:var(--text)}
+        .site-menu-item.auth{color:#f87171}
+        .site-menu-item.auth:hover{color:#f87171}
       `}</style>
 
       <nav className="nav">
@@ -43,7 +44,7 @@ export default function MobileNavBar() {
         <a className="site-menu-item" href="/">Home</a>
         <a className="site-menu-item" href="/shop">Shop</a>
         <a className="site-menu-item" href="/portfolio">Portfolio</a>
-        <a className="site-menu-item" href="/login">Sign In / Sign Out</a>
+        <a className="site-menu-item auth" href="/login">Sign In / Sign Out</a>
       </div>
     </>
   )

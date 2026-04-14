@@ -1,15 +1,11 @@
 import type { PanelName } from '../shared/hooks/usePanel'
 
-// ── Props ──────────────────────────────────────────────────────────────────
-
 interface Props {
   isOpen:      boolean
   onClose:     () => void
   onNavigate:  (name: PanelName) => void
   activePanel: PanelName | null
 }
-
-// ── Nav items ──────────────────────────────────────────────────────────────
 
 const MENU_ITEMS: { label: string; panel: PanelName; color: string }[] = [
   { label: 'Dashboard',        panel: 'dashboard',       color: 'var(--gold)'         },
@@ -22,18 +18,8 @@ const MENU_ITEMS: { label: string; panel: PanelName; color: string }[] = [
   { label: 'Profile',          panel: 'profile',         color: '#888'                },
 ]
 
-// ── Component ──────────────────────────────────────────────────────────────
-
-export default function MobileHamburgerMenu({
-  isOpen,
-  onClose,
-  onNavigate,
-  activePanel,
-}: Props) {
-  const handleNav = (panel: PanelName) => {
-    onNavigate(panel)
-    onClose()
-  }
+export default function MobileHamburgerMenu({ isOpen, onClose, onNavigate, activePanel }: Props) {
+  const handleNav = (panel: PanelName) => { onNavigate(panel); onClose() }
 
   return (
     <>
@@ -56,30 +42,20 @@ export default function MobileHamburgerMenu({
         .menu-item-arrow{font-size:12px;color:var(--text-muted);opacity:0.35}
       `}</style>
 
-      {/* Overlay */}
-      <div
-        className={`menu-overlay ${isOpen ? 'open' : ''}`}
-        onClick={onClose}
-      />
+      <div className={`menu-overlay ${isOpen ? 'open' : ''}`} onClick={onClose} />
 
-      {/* Drawer */}
       <div className={`menu-drawer ${isOpen ? 'open' : ''}`}>
         <div className="menu-drawer-handle" />
         <div className="menu-drawer-head">
           <span className="menu-drawer-title">Navigate</span>
           <button className="menu-drawer-close" onClick={onClose}>✕</button>
         </div>
-
         <div className="menu-items">
           {MENU_ITEMS.map(item => (
-            <div
-              key={item.panel}
-              className="menu-item"
-              onClick={() => handleNav(item.panel)}
-            >
+            <div key={item.panel} className="menu-item" onClick={() => handleNav(item.panel)}>
               <div
                 className="menu-item-dot"
-                style={{ background: activePanel === item.panel ? item.color : 'var(--bdr2)' }}
+                style={{ background: activePanel === item.panel ? item.color : 'var(--accent)' }}
               />
               <span className="menu-item-label">{item.label}</span>
               <span className="menu-item-arrow">→</span>
