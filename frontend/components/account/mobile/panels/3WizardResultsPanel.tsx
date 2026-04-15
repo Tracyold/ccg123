@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import WizardResultDrawer3 from '../drawers/3WizardResultDrawer';
 
 // components/account/mobile/panels/3WizardResultsPanel.tsx
@@ -183,6 +182,14 @@ export default function WizardResultsPanel3({
                   >
                     Delete
                   </button>
+                  <WizardResultDrawer3
+                        open={selectedResult !== null}
+                        result={selectedResult}
+                        onClose={() => setSelectedResult(null)}
+                        onCreateServiceRequest={onCreateServiceRequest}
+                       
+                  ></WizardResultDrawer3>
+
                 </div>
               </div>
             );

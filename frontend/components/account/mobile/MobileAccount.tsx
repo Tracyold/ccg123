@@ -13,7 +13,7 @@
 // The welcome block at the top of the feed and the data wiring
 // are all done here. Tiles, panels, and drawers just receive what they need.
 
-import './MobileShell.css';
+
 import { useState } from 'react';
 
 // ── UI components ──
