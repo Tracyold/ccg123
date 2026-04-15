@@ -130,7 +130,7 @@ export default function MobileSMSModal({
       <style>{`
         .sms-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:300;opacity:0;pointer-events:none;transition:opacity 240ms ease}
         .sms-overlay.open{opacity:1;pointer-events:all}
-        .sms-modal{position:fixed;bottom:0;left:0;right:0;max-width:430px;margin:0 auto;background:var(--bg-deep);border-top:0.5px solid var(--bdr2);border-radius:10px 10px 0 0;z-index:301;transform:translateY(100%);transition:transform 360ms cubic-bezier(0.16,1,0.3,1);padding-bottom:32px;max-height:85vh;overflow-y:auto}
+        .sms-modal{position:fixed;bottom:0;left:0;right:0;max-width:100%;margin:0 auto;background:var(--bg-deep);border-top:0.5px solid var(--bdr2);border-radius:10px 10px 0 0;z-index:301;transform:translateY(100%);transition:transform 360ms cubic-bezier(0.16,1,0.3,1);padding-bottom:32px;max-height:85vh;overflow-y:auto}
         .sms-modal.open{transform:translateY(0)}
         .sms-handle{width:36px;height:4px;border-radius:2px;background:var(--bdr2);margin:12px auto 0}
         .sms-mhead{display:flex;align-items:center;justify-content:space-between;padding:16px 20px 12px;border-bottom:0.5px solid var(--bdr2)}

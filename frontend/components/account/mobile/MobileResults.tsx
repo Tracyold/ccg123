@@ -213,7 +213,7 @@ export default function MobileResults({
         .res-date{font-family:var(--font-mono);font-size:9px;letter-spacing:0.14em;color:var(--text-muted);margin-top:20px;opacity:0.6}
         .sr-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:600;opacity:0;pointer-events:none;transition:opacity 260ms ease}
         .sr-overlay.open{opacity:1;pointer-events:all}
-        .sr-modal{position:fixed;bottom:0;left:0;right:0;max-width:430px;margin:0 auto;background:var(--bg-deep);border-top:0.5px solid var(--bdr2);border-radius:12px 12px 0 0;z-index:601;transform:translateY(100%);transition:transform 380ms cubic-bezier(0.16,1,0.3,1);max-height:90vh;display:flex;flex-direction:column}
+        .sr-modal{position:fixed;bottom:0;left:0;right:0;max-width:100%;margin:0 auto;background:var(--bg-deep);border-top:0.5px solid var(--bdr2);border-radius:12px 12px 0 0;z-index:601;transform:translateY(100%);transition:transform 380ms cubic-bezier(0.16,1,0.3,1);max-height:90vh;display:flex;flex-direction:column}
         .sr-modal.open{transform:translateY(0)}
         .sr-modal-handle{width:36px;height:4px;border-radius:2px;background:var(--bdr2);margin:12px auto 0;flex-shrink:0}
         .sr-modal-head{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px;border-bottom:0.5px solid var(--bdr2);flex-shrink:0}
