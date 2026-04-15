@@ -115,7 +115,7 @@ export default function MobileDashboard({
         .feed{padding:23px 15px 121px;display:flex;flex-direction:column;gap:0}
         .welcome{padding:0 2px 22px;border-bottom:0.5px solid var(--bdr2);margin-bottom:23px}
         .welcome-name{font-family:var(--font-sig);font-size:33px;font-style:italic;color:var(--text);line-height:1.15;margin-bottom:5px}
-        .welcome-meta{font-family:var(--font-mono);font-size:15px;letter-spacing:0.26em;text-transform:uppercase;color:var(--text-muted)}
+        .welcome-meta{font-family:var(--font-mono);font-size:19px;letter-spacing:0.26em;text-transform:uppercase;color:var(--text-muted)}
         .welcome-meta span{color:var(--gold)}
         .tile{background:var(--bg-card);border:0.5px solid var(--bdr2);padding:19px 17px;cursor:pointer;position:relative;overflow:hidden;transition:border-color 280ms ease,transform 200ms ease;display:flex;flex-direction:column;min-height:140px;-webkit-tap-highlight-color:transparent}
         .tile::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:rgba(255,255,255,0.15);opacity:0;transition:opacity 300ms ease}
