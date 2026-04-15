@@ -58,7 +58,7 @@ export default function MobileChatPanel({
   return (
     <>
       <style>{`
-        .chat-body{position:fixed;left:0;right:0;max-width:430px;margin:0 auto;top:0;bottom:62px;z-index:105;background:var(--bg);display:flex;flex-direction:column;transform:translateY(100%);transition:transform 420ms cubic-bezier(0.16,1,0.3,1)}
+        .chat-body{position:fixed;left:0;right:0;max-width:100%;margin:0 auto;top:0;bottom:62px;z-index:105;background:var(--bg);display:flex;flex-direction:column;transform:translateY(100%);transition:transform 420ms cubic-bezier(0.16,1,0.3,1)}
         .chat-body.open{transform:translateY(0)}
         .chat-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--gold);flex-shrink:0}
         .chat-header-lbl{font-family:var(--font-ui);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--bg-deep)}
