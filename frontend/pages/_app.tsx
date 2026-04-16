@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1.2, maximum-scale=5.0, minimum-scale=0.5 viewport-fit=contain, viewport-height=90%"
+          content="width=device-width, initial-scale=1.5, maximum-scale=5.0, minimum-scale=0.5 viewport-fit=contain, viewport-height=90%"
         />
       </Head>
       <ThemeProvider attribute={["data-theme", "class"]} defaultTheme="dark" enableSystem={false}>
