@@ -43,7 +43,7 @@ export default function MenuDrawer3({ open, onClose, onNavigate }: MenuDrawerPro
             <div className="menu-item">
               <div className="menu-item-dot" style={{ background: 'var(--tile-feasib)' }} />
               <span className="menu-item-label" style={{ color: 'var(--tile-feasib)' }}>
-                Run Wizard
+              Wizard
               </span>
               <span className="menu-item-arrow">→</span>
             </div>
