@@ -4,9 +4,9 @@ export default function Document() {
   return (
     <Html lang="en" data-theme="dark">
       <Head>
+        {/* FIX: This one line makes the page fill the phone screen correctly.
+            viewport-fit=cover handles the iPhone notch and home bar. */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
       <body>
         <script dangerouslySetInnerHTML={{ __html: `
