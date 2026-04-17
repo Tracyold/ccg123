@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import TopNav from '../components/shared/TopNav';
 import { supabase } from '../lib/supabase';
 import { useRouter } from 'next/router';
@@ -46,6 +46,17 @@ export default function LoginPage() {
   const [zip, setZip] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const phoneInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (step === 'form') {
+      // Small delay to ensure the DOM is ready and keyboard can pop up on mobile
+      const timer = setTimeout(() => {
+        phoneInputRef.current?.focus();
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [step, mode]);
 
   const fullPhone = `${countryCode}${phone.replace(/\D/g, '')}`;
 
@@ -166,6 +177,7 @@ export default function LoginPage() {
                 onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }} 
               />
               <input 
+                ref={phoneInputRef}
                 type="tel" 
                 name="tel"
                 autoComplete="tel-national"
