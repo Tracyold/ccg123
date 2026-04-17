@@ -1,5 +1,5 @@
 // components/account/mobile/ui/3MenuDrawer.tsx
-import { useSwipeDownToClose } from '../shared/hooks/useSwipeDownToClose';
+import { useSwipeDownToClose } from '../../shared/hooks/useSwipeDownToClose';
 
 type PanelName = 'chat' | 'orders' | 'invoices' | 'servicereq'
   | 'inquiries' | 'wizard' | 'profile' | null;
