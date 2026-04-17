@@ -25,6 +25,7 @@ import TabBar3        from './ui/3TabBar';
 import MenuDrawer3    from './ui/3MenuDrawer';
 import SmsConsent3    from './ui/3SmsConsentModal';
 import ShopFeed3      from './ui/3ShopFeed';
+import ShopItemDrawer3 from './drawers/3ShopItemDrawer';
 
 // ── Tiles ──
 import MessagesTile3        from './tiles/3MessagesTile';
@@ -103,7 +104,7 @@ type PanelName =
   | 'inquiries' | 'wizard' | 'profile' | null;
 
 // Drawer names -- which right-slide drawer is open
-type DrawerName = 'workorder' | 'invoice' | 'servicereq' | null;
+type DrawerName = 'workorder' | 'invoice' | 'servicereq' | 'shopitem' | null;
 
 export default function MobileAccount(props: MobileAccountProps) {
 
@@ -315,7 +316,7 @@ export default function MobileAccount(props: MobileAccountProps) {
 
         {/* ── Shop feed ── */}
         {/* Divider + 2-column grid of shop items */}
-        <ShopFeed3 />
+        <ShopFeed3 onItemClick={(item) => openDrawer('shopitem', item)} />
 
       </div>{/* end feed */}
 
@@ -457,6 +458,13 @@ export default function MobileAccount(props: MobileAccountProps) {
       <ServiceRequestDrawer3
         open={activeDrawer === 'servicereq'}
         sr={drawerData}
+        onClose={closeDrawer}
+      />
+
+      <ShopItemDrawer3
+        open={activeDrawer === 'shopitem'}
+        item={drawerData}
+        session={props.session}
         onClose={closeDrawer}
       />
 

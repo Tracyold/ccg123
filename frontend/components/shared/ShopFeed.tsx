@@ -6,21 +6,28 @@ interface SharedShopFeedProps {
   sectionLabel?: string;
   savedLabel?: string;
   emptyLabel?: string;
+  onItemClick?: (item: ShopProduct) => void;
 }
 
 function ShopTile({
   item,
   isFav,
   onFav,
+  onClick,
 }: {
   item: ShopProduct;
   isFav: boolean;
   onFav: (id: string) => void;
+  onClick?: (item: ShopProduct) => void;
 }) {
   const [tapped, setTapped] = useState(false);
   const [animating, setAnimating] = useState(false);
 
   const handleTap = () => {
+    if (onClick) {
+      onClick(item);
+      return;
+    }
     if (!tapped) {
       setTapped(true);
       return;
@@ -115,6 +122,7 @@ export default function SharedShopFeed({
   sectionLabel = 'Shop',
   savedLabel = 'Saved Items',
   emptyLabel = 'No shop items available right now.',
+  onItemClick,
 }: SharedShopFeedProps) {
   const [items,     setItems]     = useState<ShopProduct[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
@@ -221,6 +229,7 @@ export default function SharedShopFeed({
                 item={item}
                 isFav={true}
                 onFav={toggleFav}
+                onClick={onItemClick}
               />
             ))}
           </div>
@@ -270,6 +279,7 @@ export default function SharedShopFeed({
                 item={item}
                 isFav={favorites.includes(item.product_id)}
                 onFav={toggleFav}
+                onClick={onItemClick}
               />
             ))}
           </div>

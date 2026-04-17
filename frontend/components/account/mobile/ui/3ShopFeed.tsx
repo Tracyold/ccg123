@@ -4,6 +4,16 @@
 
 import SharedShopFeed from '../../../shared/ShopFeed';
 
-export default function ShopFeed3() {
-  return <SharedShopFeed sectionLabel="Shop" savedLabel="Saved Items" />;
+interface ShopFeed3Props {
+  onItemClick?: (item: any) => void;
+}
+
+export default function ShopFeed3({ onItemClick }: ShopFeed3Props) {
+  return (
+    <SharedShopFeed 
+      sectionLabel="Shop" 
+      savedLabel="Saved Items" 
+      onItemClick={onItemClick}
+    />
+  );
 }
