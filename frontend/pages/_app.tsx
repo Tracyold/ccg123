@@ -15,16 +15,14 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1.5, maximum-scale=5.0, minimum-scale=0.5 viewport-fit=contain, viewport-height=90%"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover"
         />
       </Head>
       <ThemeProvider attribute={["data-theme", "class"]} defaultTheme="dark" enableSystem={false}>
         <div style={{ position: 'fixed', inset: 0, zIndex: -1, background: 'var(--bg-gradient)' }} />
-        <div style={{ position: 'relative', minHeight: '100dvh', overflowY: 'auto', overflowX: 'hidden' }}>
-          <Component {...pageProps} />
-          <Analytics />
-          <SpeedInsights />
-        </div>
+        <Component {...pageProps} />
+        <Analytics />
+        <SpeedInsights />
       </ThemeProvider>
     </>
   );
