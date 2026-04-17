@@ -201,9 +201,21 @@ export default function ServiceRequestPanel3({
     if (!confirm('Are you sure you want to delete this service request?')) return;
     setLocalSRs(prev => prev.filter(s => s.service_request_id !== id));
     try {
-      const { error } = await supabase.from('service_requests').delete().eq('service_request_id', id);
-      if (error) { alert('Failed to delete. Please try again.'); setLocalSRs(serviceRequests); }
-    } catch (err) { setLocalSRs(serviceRequests); }
+      // Soft delete: update is_archived to true instead of deleting the row
+      const { error } = await supabase
+        .from('service_requests')
+        .update({ is_archived: true })
+        .eq('service_request_id', id);
+        
+      if (error) { 
+        console.error('Archive error:', error);
+        alert('Failed to delete. Please try again.'); 
+        setLocalSRs(serviceRequests); 
+      }
+    } catch (err) { 
+      console.error('Archive exception:', err);
+      setLocalSRs(serviceRequests); 
+    }
   };
 
   return (

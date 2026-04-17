@@ -134,8 +134,8 @@ export default function AccountPage() {
         supabase.from('invoices').select('invoice_id, total_amount').eq('account_user_id', uid),
         supabase.from('work_orders').select('*').eq('account_user_id', uid).order('created_at', { ascending: false }),
         supabase.from('admin_users').select('business_name, full_name, address, phone, contact_email').single(),
-        supabase.from('account_inquiries').select('*').eq('account_user_id', uid).order('created_at', { ascending: false }),
-        supabase.from('service_requests').select('*').eq('account_user_id', uid).order('created_at', { ascending: false }),
+	        supabase.from('account_inquiries').select('*').eq('account_user_id', uid).eq('is_archived', false).order('created_at', { ascending: false }),
+	        supabase.from('service_requests').select('*').eq('account_user_id', uid).eq('is_archived', false).order('created_at', { ascending: false }),
         supabase.from('invoices').select('*').eq('account_user_id', uid).order('paid_at', { ascending: false }),
         supabase.from('chat_threads').select('*').eq('account_user_id', uid).single(),
       ]);

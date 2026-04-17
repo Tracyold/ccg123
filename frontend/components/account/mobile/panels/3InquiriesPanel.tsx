@@ -152,18 +152,19 @@ export default function InquiriesPanel3({ open, inquiries, onClose }: InquiriesP
     setLocalInquiries(prev => prev.filter(i => i.account_inquiry_id !== id));
     
     try {
+      // Soft delete: update is_archived to true instead of deleting the row
       const { error } = await supabase
         .from('account_inquiries')
-        .delete()
+        .update({ is_archived: true })
         .eq('account_inquiry_id', id);
       
       if (error) {
-        console.error('Delete error:', error);
+        console.error('Archive error:', error);
         alert('Failed to delete inquiry. Please try again.');
         setLocalInquiries(inquiries); // Rollback
       }
     } catch (err) {
-      console.error('Delete exception:', err);
+      console.error('Archive exception:', err);
       setLocalInquiries(inquiries); // Rollback
     }
   };
