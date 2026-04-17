@@ -8,8 +8,14 @@ interface FirstTimeTipsProps {
 }
 
 export default function FirstTimeTips({ type, show }: FirstTimeTipsProps) {
-  const [hasSeen, setHasSeen] = useState(true); // Default to true to avoid flash before effect
-  const storageKey = `ccg_tip_seen_${type}`;
+  const [hasSeen, setHasSeen] = useState(true); // Default to true to avoid flash
+  
+  // Use generic keys for gesture types so seeing ONE panel-down tip marks ALL as seen
+  const storageKey = type === 'menu-close' 
+    ? 'ccg_tip_seen_menu_close' 
+    : type === 'drawer-slide' 
+      ? 'ccg_tip_seen_drawer_slide' 
+      : 'ccg_tip_seen_panel_down';
 
   useEffect(() => {
     const seen = localStorage.getItem(storageKey);
@@ -51,8 +57,9 @@ export default function FirstTimeTips({ type, show }: FirstTimeTipsProps) {
 
         .tip-box {
           position: absolute;
-          background: var(--gold);
-          color: var(--bg-deep);
+          /* Changed from var(--gold) to a distinct color that pops against gold/dark backgrounds */
+          background: #38bdf8; /* Sky blue */
+          color: #0c0a09; /* Deep stone */
           padding: 6px 12px;
           border-radius: 20px;
           font-family: var(--font-mono);
@@ -87,9 +94,9 @@ export default function FirstTimeTips({ type, show }: FirstTimeTipsProps) {
           animation: tipBounceDown 1s ease-in-out infinite;
         }
 
-        .tip-arrow-right { border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid var(--bg-deep); }
-        .tip-arrow-left { border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-right: 8px solid var(--bg-deep); }
-        .tip-arrow-down { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid var(--bg-deep); }
+        .tip-arrow-right { border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #0c0a09; }
+        .tip-arrow-left { border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-right: 8px solid #0c0a09; }
+        .tip-arrow-down { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid #0c0a09; }
       `}</style>
 
       <div className="tip-overlay" onClick={markSeen}>
