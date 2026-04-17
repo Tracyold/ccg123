@@ -4,7 +4,7 @@ import { formatMoney, fmtDate, fmtTime } from '../../../lib/utils';
 
 // STATUS_COLORS — lines 7–13 of [id].tsx
 const STATUS_COLORS: Record<string, { bg: string; color: string }> = {
-  CREATED:   { bg: 'rgba(184,154,42,0.08)',   color: 'var(--gold)' },
+  CREATED:   { bg: 'rgba(var(--gold-rgb), 0.08)',   color: 'var(--gold)' },
   ACCEPTED:  { bg: 'rgba(90,150,90,0.1)',      color: 'var(--accent)' },
   COMPLETED: { bg: 'rgba(80,120,200,0.1)',     color: 'var(--text-muted)' },
   CONFIRMED: { bg: 'rgba(120,80,200,0.12)',    color: 'var(--text-muted)' },

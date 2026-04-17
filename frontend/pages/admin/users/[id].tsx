@@ -297,7 +297,7 @@ export default function AdminUserDetail() {
                     <p style={{ fontSize: '17px', color: 'var(--tx)', marginBottom: '7px' }}>{sr.description}</p>
                     <span style={{ fontSize: '17px', color: 'var(--d1)' }}>{fmtDate(sr.created_at)}</span>
                     {sr.wizard_results && (
-                      <div style={{ marginTop: '12px', padding: '12px', background: 'rgba(255,211,105,0.04)', border: '0.5px solid rgba(255,211,105,0.2)', borderRadius: '4px' }}>
+                      <div style={{ marginTop: '12px', padding: '12px', background: 'rgba(var(--gold-rgb), 0.04)', border: '0.5px solid rgba(var(--gold-rgb), 0.2)', borderRadius: '4px' }}>
                         <div style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gl)', marginBottom: '8px' }}>Linked Wizard Result</div>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
                           <div><div style={{ fontSize: '10px', color: 'var(--d1)', marginBottom: '2px' }}>Stone</div><div style={{ fontSize: '13px', color: 'var(--tx)' }}>{[sr.wizard_results.stone_variety, sr.wizard_results.stone_species].filter(Boolean).join(' ') || '—'}</div></div>

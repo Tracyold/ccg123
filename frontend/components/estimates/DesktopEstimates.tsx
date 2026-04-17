@@ -60,13 +60,13 @@ export default function DesktopEstimates() {
         .dest-tag {
           display: inline-block;
           padding: 4px 12px;
-          background: rgba(212,175,55,0.12);
-          border: 1px solid #d4af37;
+          background: rgba(var(--gold-rgb), 0.12);
+          border: 1px solid var(--gold);
           font-family: var(--font-body);
           font-size: 17px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: rgba(212,175,55,0.9);
+          color: rgba(var(--gold-rgb), 0.9);
           margin-bottom: 16px;
         }
         .dest-title {
@@ -78,8 +78,8 @@ export default function DesktopEstimates() {
         }
         .dest-warning {
           padding: 14px 18px;
-          background: rgba(212,175,55,0.06);
-          border-left: 2px solid #d4af37;
+          background: rgba(var(--gold-rgb), 0.06);
+          border-left: 2px solid var(--gold);
           font-family: var(--font-body);
           font-size: 17px;
           color: rgba(255,220,100,0.95);
@@ -115,7 +115,7 @@ export default function DesktopEstimates() {
           width: 4px;
           height: 4px;
           border-radius: 50%;
-          background: rgba(212,175,55,0.5);
+          background:rgba(var(--gold-rgb), 0.45);
           flex-shrink: 0;
           margin-top: 7px;
         }
@@ -124,9 +124,9 @@ export default function DesktopEstimates() {
           align-items: center;
           gap: 8px;
           padding: 12px 24px;
-          border: 1px solid #d4af37;
+          border: 1px solid var(--gold);
           background: transparent;
-          color: rgba(212,175,55,0.85);
+          color: rgba(var(--gold-rgb), 0.5);
           font-family: var(--font-body);
           font-size: 17px;
           letter-spacing: 0.15em;
@@ -134,7 +134,7 @@ export default function DesktopEstimates() {
           text-decoration: none;
           transition: background 200ms;
         }
-        .dest-cta-btn:hover { background: rgba(212,175,55,0.08); }
+        .dest-cta-btn:hover { background: rgba(var(--gold-rgb), 0.85); }
       `}</style>
 
       <div className="dest-grid">

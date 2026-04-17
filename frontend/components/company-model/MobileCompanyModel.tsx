@@ -56,8 +56,8 @@ export default function MobileCompanyModel() {
         .mob-stat {
           display: inline-block;
           padding: 24px 28px;
-          border: 1px solid #d4af37;
-          background: rgba(212,175,55,0.04);
+          border: 1px solid var(--gold);
+          background: rgba(var(--gold-rgb), 0.04);
           margin: 12px 0 36px;
         }
         .mob-stat-value {
@@ -107,7 +107,7 @@ export default function MobileCompanyModel() {
           align-items: center;
           gap: 8px;
           padding: 16px 32px;
-          border: 1px solid #d4af37;
+          border: 1px solid var(--gold);
           background: transparent;
           color: var(--gold);
           font-family: var(--font-body);

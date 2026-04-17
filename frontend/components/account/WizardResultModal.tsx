@@ -133,7 +133,7 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
               onClick={() => window.print()}
               style={{
                 width: '100%', background: 'transparent', color: 'var(--accent)',
-                border: '0.5px solid rgba(255,211,105,0.4)', padding: '13px 20px',
+                border: '0.5px solid rgba(var(--gold-rgb), 0.4)', padding: '13px 20px',
                 fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 600,
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 cursor: 'pointer', borderRadius: 3, transition: 'all 200ms ease',

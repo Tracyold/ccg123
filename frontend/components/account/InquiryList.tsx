@@ -53,7 +53,7 @@ export default function InquiryList({
           <button className="acc-btn-gold" style={{ marginBottom: '16px', width: 'auto', padding: '10px 20px' }} onClick={onOpenSRForm}>
             Submit Service Request
           </button>
-          {srGateMsg && <p style={{ fontSize: '12px', color: 'var(--text-muted)', background: 'rgba(214,180,70,0.08)', padding: '12px', marginBottom: '16px', lineHeight: 1.6 }}>{srGateMsg}</p>}
+          {srGateMsg && <p style={{ fontSize: '12px', color: 'var(--text-muted)', background: 'rgba(var(--gold-rgb), 0.08)', padding: '12px', marginBottom: '16px', lineHeight: 1.6 }}>{srGateMsg}</p>}
 
           {showSRForm && (
             <div style={{ background: 'var(--bg)', border: '1px solid var(--border)', padding: '20px', marginBottom: '16px' }}>

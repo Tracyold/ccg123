@@ -56,7 +56,7 @@ export default function WizardResultsTab({ onCreateServiceRequest }: WizardResul
           fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 600,
           letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'var(--accent)', textDecoration: 'none',
-          border: '0.5px solid rgba(255,211,105,0.4)',
+          border: '0.5px solid rgba(var(--gold-rgb), 0.4)',
           padding: '12px 28px', borderRadius: 3,
         }}
       >
@@ -120,7 +120,7 @@ export default function WizardResultsTab({ onCreateServiceRequest }: WizardResul
                 onClick={() => onCreateServiceRequest(r)}
                 style={{
                   background: 'transparent',
-                  border: '0.5px solid rgba(255,211,105,0.4)',
+                  border: '0.5px solid rgba(var(--gold-rgb), 0.4)',
                   color: 'var(--accent)',
                   padding: '7px 10px',
                   fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600,

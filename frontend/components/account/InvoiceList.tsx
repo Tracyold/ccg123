@@ -20,7 +20,7 @@ export default function InvoiceList({ invoices }: Props) {
               </div>
               <div style={{ textAlign: 'right' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '17px', color: 'rgb(48, 177, 98)' }}>{formatMoney(inv.total_amount)}</div>
-                <span style={{ fontSize: '8px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '2px 6px', background: 'rgba(255,211,105,0.08)', color: 'var(--accent)' }}>PAID</span>
+                <span style={{ fontSize: '8px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '2px 6px', background: 'rgba(var(--gold-rgb), 0.08)', color: 'var(--accent)' }}>PAID</span>
               </div>
             </div>
           </div>

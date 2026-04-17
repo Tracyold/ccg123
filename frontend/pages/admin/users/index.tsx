@@ -133,7 +133,7 @@ export default function AdminUsersPage() {
               <div style={{ fontSize: '9px', color: 'var(--d2)', fontStyle: 'italic', marginTop: '4px' }}>This account receives all non-logged-in inquiries and product invoices</div>
             </div>
             {guestUnread > 0 && (
-              <div style={{ background: '#cfb040', color: 'var(--bg)', fontSize: '19px', fontWeight: 700, width: '18px', height: '18px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ background: 'var(--gold)', color: 'var(--bg)', fontSize: '19px', fontWeight: 700, width: '18px', height: '18px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {guestUnread > 9 ? '9+' : guestUnread}
               </div>
             )}
@@ -169,7 +169,7 @@ export default function AdminUsersPage() {
                     <td><span className={`pill ${u.status === 'ACTIVE' ? 'pill-A' : 'pill-I'}`}>{u.status}</span></td>
                     <td>
                       {uCount > 0 && (
-                        <div style={{ background: '#cfb040', color: 'var(--bg)', fontSize: '13px', fontWeight: 700, width: '18px', height: '18px', borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ background: 'var(--gold)', color: 'var(--bg)', fontSize: '13px', fontWeight: 700, width: '18px', height: '18px', borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
                           {uCount > 9 ? '9+' : uCount}
                         </div>
                       )}

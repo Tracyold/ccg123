@@ -53,8 +53,8 @@ export default function DesktopCompanyModel() {
         }
         .dtop-nav-btn:hover { color: var(--text-muted); }
         .dtop-nav-btn.active {
-          color: #d4af37;
-          border-left-color: #d4af37;
+          color: var(--gold);
+          border-left-color: var(--gold);
           padding-left: 14px;
         }
         .dtop-chapter {
@@ -95,8 +95,8 @@ export default function DesktopCompanyModel() {
         .dtop-stat {
           margin-top: 40px;
           padding: 24px 28px;
-          border: 1px solid #d4af37;
-          background: rgba(212,175,55,0.04);
+          border: 1px solid var(--gold);
+          background: rgba(var(--gold-rgb), 0.04);
           display: inline-block;
         }
         .dtop-stat-value {
@@ -151,7 +151,7 @@ export default function DesktopCompanyModel() {
           align-items: center;
           gap: 10px;
           padding: 15px 36px;
-          border: 1px solid #d4af37;
+          border: 1px solid var(--gold);
           background: transparent;
           color: var(--gold);
           font-family: var(--font-body);
@@ -163,8 +163,8 @@ export default function DesktopCompanyModel() {
           transition: background 200ms, color 200ms;
         }
         .dtop-cta-btn:hover {
-          background: rgba(212,175,55,0.1);
-          color: #d4af37;
+          background: rgba(var(--gold-rgb), 0.1);
+          color: var(--gold);
         }
       `}</style>
 

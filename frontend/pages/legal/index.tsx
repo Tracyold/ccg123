@@ -164,7 +164,7 @@ export default function LegalUnified() {
           border-left: 2px solid transparent;
         }
         .toc-btn:hover { color: var(--text-muted); background: transparent; }
-        .toc-btn.active { color: var(--accent); background: rgba(255,211,105,0.08); border-left-color: var(--accent); padding-left: 12px; }
+        .toc-btn.active { color: var(--accent); background: rgba(var(--gold-rgb), 0.08); border-left-color: var(--accent); padding-left: 12px; }
         .toc-group-label {
           font-family: var(--font-body);
           font-size: 9px; letter-spacing: 0.3em;

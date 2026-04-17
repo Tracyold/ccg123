@@ -15,7 +15,7 @@ export const adminCss = `
 :root{
   --k0:#060606;--k1:#0d0d0d;--k2:#131313;--k3:#191919;--k4:#202020;
   --ln:var(--border);--ln2:rgba(255,255,255,0.11);
-  --g:#b89a2a;--gl:#cfb040;--gbg:rgba(184,154,42,0.07);
+  --g:var(--gold);--gl:var(--gold);--gbg:rgba(var(--gold-rgb), 0.07);
   --tx:#ddd;--d1:#777;--d2:#444;--wh:#f0f0f0;--er:#b54040;
   --serif:'Oranienbaum',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
 }
@@ -132,7 +132,7 @@ export const adminCss = `
 .photo-preview-empty{width:100%;aspect-ratio:1/1;background:var(--k3);display:flex;align-items:center;justify-content:center;font-size:32px;opacity:.08;margin-top:9px;border:1px solid var(--ln)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .card{position:relative;cursor:pointer;background:var(--k2);border:1px solid var(--ln)}.card:hover{border-color:var(--ln2)}
-.card.selected{border-color:var(--gold);box-shadow:0 0 0 1px rgba(212,175,55,0.2)}
+.card.selected{border-color:var(--gold);box-shadow:0 0 0 1px rgba(var(--gold-rgb), 0.2)}
 .card-thumb{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:var(--k3)}
 .card-thumb-empty{width:100%;aspect-ratio:1/1;background:var(--k3);display:flex;align-items:center;justify-content:center;font-size:28px;opacity:.1}
 .card-meta{padding:12px 14px;border-top:1px solid var(--ln)}
@@ -182,13 +182,13 @@ export const adminCss = `
     height:52px;padding:0 16px;
     background:#0a0a0a;border-bottom:1px solid var(--border)
   }
-  .mob-brand{font-family:var(--serif);font-size:15px;color:#d4af37;letter-spacing:.05em}
+  .mob-brand{font-family:var(--serif);font-size:15px;color:var(--gold);letter-spacing:.05em}
   .mob-burger{
     display:flex;flex-direction:column;justify-content:center;gap:5px;
     width:28px;height:28px;background:none;cursor:pointer;padding:5px;
     border:0.5px solid var(--border);transition:border-color .2s
   }
-  .mob-burger:hover{border-color:#d4af37}
+  .mob-burger:hover{border-color:var(--gold)}
   .mob-burger .mb{width:100%;height:1px;background:var(--text);transition:all .25s ease;transform-origin:center}
   .mob-burger.open .mb:nth-child(1){transform:translateY(6px) rotate(45deg)}
   .mob-burger.open .mb:nth-child(2){opacity:0;transform:scaleX(0)}
@@ -215,7 +215,7 @@ export const adminCss = `
   }
   .mob-dropdown-item:last-child{border-bottom:none}
   .mob-dropdown-item:hover{color:#fff}
-  .mob-dropdown-item.on{color:#d4af37}
+  .mob-dropdown-item.on{color:var(--gold)}
   .mob-dropdown-signout{
     display:block;width:100%;text-align:left;
     font-family:var(--sans);font-size:10px;font-weight:400;

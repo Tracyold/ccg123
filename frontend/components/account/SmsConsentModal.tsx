@@ -47,7 +47,7 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
     }}>
       <div style={{
         background: 'var(--bg-deep)',
-        border: '1px solid rgba(224,176,20,0.3)',
+        border: '1px solid rgba(var(--gold-rgb), 0.3)',
         maxWidth: '681px', width: '100%',
         padding: '32px',
       }}>
@@ -63,7 +63,7 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
         </p>
 
         {copy.requirement && (
-          <div style={{ background: 'rgba(255,211,105,0.08)', border: '1px solid rgba(255,211,105,0.25)', padding: '15px 19px', marginBottom: '21px' }}>
+          <div style={{ background: 'rgba(var(--gold-rgb), 0.08)', border: '1px solid rgba(var(--gold-rgb), 0.25)', padding: '15px 19px', marginBottom: '21px' }}>
             <p style={{ fontSize: '12px', lineHeight: 1.75, color: 'var(--accent)', margin: 0 }}>
               {copy.requirement}
             </p>
@@ -77,8 +77,8 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
         <div onClick={() => setChecked(c => !c)} style={{ display: 'flex', alignItems: 'flex-start', gap: '11px', marginBottom: '24px', cursor: 'pointer' }}>
           <div style={{
             width: '19px', height: '19px', borderRadius: '3px', flexShrink: 0, marginTop: '1px',
-            border: '1px solid rgba(224, 176, 20, 0.5)',
-            background: checked ? '#e5c55c' : 'transparent',
+            border: '1px solid rgba(var(--gold-rgb), 0.5)',
+            background: checked ? 'var(--gold)' : 'transparent',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             transition: 'background 200ms',
           }}>
@@ -97,8 +97,8 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
             onClick={() => { if (checked) onConfirm(); }}
             style={{
               flex: 2, padding: '17px',
-              background: checked ? 'var(--accent)' : 'rgba(255,211,105,0.2)',
-              border: 'none', color: checked ? '#000000e9' : 'rgba(255, 210, 11, 0.3)',
+              background: checked ? 'var(--accent)' : 'rgba(var(--gold-rgb), 0.2)',
+              border: 'none', color: checked ? '#000000e9' : 'rgba(var(--gold-rgb), 0.3)',
               fontSize: '15px', letterSpacing: '0.15em', textTransform: 'uppercase',
               cursor: checked ? 'pointer' : 'not-allowed',
               transition: 'all 300ms',

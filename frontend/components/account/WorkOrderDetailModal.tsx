@@ -2,7 +2,7 @@ import { supabase } from '../../lib/supabase';
 import { formatMoney, fmtDate, fmtTime } from '../../lib/utils';
 
 const STATUS_COLORS: Record<string, { bg: string; color: string }> = {
-  CREATED: { bg: 'rgba(212,175,55,0.12)', color: 'var(--gold)' },
+  CREATED: { bg: 'rgba(var(--gold-rgb), 0.12)', color: 'var(--gold)' },
   ACCEPTED: { bg: 'rgba(45,212,191,0.12)', color: 'var(--accent)' },
   COMPLETED: { bg: 'var(--border)', color: 'var(--text-muted)' },
   CONFIRMED: { bg: 'rgba(120,80,200,0.12)', color: 'var(--text-muted)' },
@@ -174,7 +174,7 @@ export default function WorkOrderDetailModal({
           </div>
         )}
         {selectedWO.status === 'COMPLETED' && selectedWO.paid_outside_site && (
-          <div style={{ marginTop: '16px', padding: '14px', background: 'rgba(255,211,105,0.06)', border: '1px solid var(--border)' }}>
+          <div style={{ marginTop: '16px', padding: '14px', background: 'rgba(var(--gold-rgb), 0.06)', border: '1px solid var(--border)' }}>
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--accent)' }}>✓ Payment received — thank you!</span>
           </div>
         )}
