@@ -23,7 +23,7 @@ export default function ProfileTile3({ profile, onClick }: ProfileTileProps) {
           color: 'rgba(255,255,255,0.85)', 
           flexShrink: 0,
           textShadow: '0 2px 4px rgba(0,0,0,0.3)'
-        }}>⚙︎</div>
+        }}>👤</div>
         <div style={{ flex: 1 }}>
           <div style={{ 
             fontFamily: 'var(--font-display)', 

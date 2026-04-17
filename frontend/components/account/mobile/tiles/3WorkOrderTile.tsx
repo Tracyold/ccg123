@@ -29,7 +29,7 @@ export default function WorkOrderTile3({ workOrders, onClick }: WorkOrderTilePro
           color: lit ? 'var(--tile-orders)' : 'rgba(255,255,255,0.85)', 
           flexShrink: 0,
           textShadow: '0 2px 4px rgba(0,0,0,0.3)'
-        }}>⚙︎</div>
+        }}>✓</div>
         <div style={{ 
           fontFamily: 'var(--font-display)', 
           fontSize: 18, 
