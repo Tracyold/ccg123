@@ -42,7 +42,7 @@ export default function InvoiceDrawer3({
           position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)',
           zIndex: 499, opacity: open ? 1 : 0,
           pointerEvents: open ? 'all' : 'none',
-          transition: 'opacity 320ms ease',
+          transition: 'opacity 550ms ease',
         }}
         onClick={onClose}
       />

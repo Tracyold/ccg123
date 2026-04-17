@@ -48,7 +48,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
           position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)',
           zIndex: 499, opacity: open ? 1 : 0,
           pointerEvents: open ? 'all' : 'none',
-          transition: 'opacity 320ms ease',
+          transition: 'opacity 550ms ease',
         }}
         onClick={onClose}
       />
