@@ -64,12 +64,35 @@ function ShopTile({
         )}
       </div>
 
-      <div className="shop-info">
-        <div className="shop-name">{item.title}</div>
-        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)' }}>
-          {price}
-        </div>
+      <div className="shop-info" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="shop-name" style={{ flex: 1, marginRight: 8 }}>{item.title}</div>
+        
+        {/* Favorite icon moved to the bottom right of the card info area */}
+        <button
+          type="button"
+          onClick={handleFav}
+          style={{
+            background: 'none',
+            border: 'none',
+            padding: 0,
+            fontSize: 22,
+            color: isFav ? 'var(--gold)' : 'var(--text-muted)',
+            opacity: isFav ? 1 : 0.4,
+            transform: animating ? 'translateY(-10px) scale(1.3)' : 'none',
+            transition: animating
+              ? 'transform 400ms ease, opacity 400ms ease'
+              : 'color 120ms ease, opacity 120ms ease',
+            cursor: 'pointer',
+            flexShrink: 0
+          }}
+          aria-label={isFav ? 'Remove from saved items' : 'Add to saved items'}
+        >
+          {isFav ? '☻' : '☹︎'}
+        </button>
       </div>
+
+      {/* Price is hidden from the main card info as requested */}
+      {/* <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)' }}>{price}</div> */}
 
       <div className="inv-overlay" style={{ flexDirection: 'column', gap: 6 }}>
         <div
@@ -93,27 +116,9 @@ function ShopTile({
             textAlign: 'center',
           }}
         >
-          Tap again to view
+          Tap to view
         </div>
       </div>
-
-      <button
-        type="button"
-        className="heart-btn"
-        onClick={handleFav}
-        style={{
-          fontSize: 22,
-          color: isFav ? 'var(--gold)' : 'rgba(255,255,255,0.5)',
-          transform: animating ? 'translateY(-20px) scale(1.3)' : 'none',
-          opacity: animating ? 0 : 1,
-          transition: animating
-            ? 'transform 400ms ease, opacity 400ms ease'
-            : 'color 120ms ease',
-        }}
-        aria-label={isFav ? 'Remove from saved items' : 'Add to saved items'}
-      >
-        {isFav ? '☻' : '☹︎'}
-      </button>
     </div>
   );
 }
