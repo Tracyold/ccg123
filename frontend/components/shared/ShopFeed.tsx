@@ -38,6 +38,7 @@ function ShopTile({
     if (icon) {
       icon.style.animation = 'none';
       void icon.offsetWidth;
+      // Use the existing favPop animation
       icon.style.animation = 'favPop 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275)';
     }
 
@@ -125,7 +126,8 @@ function ShopTile({
               pointerEvents: 'none'
             }}
           >
-            {isFav ? '☻' : '☹︎'}
+            {/* The smiley face icons: ☻ (filled) and ☺ (outline) */}
+            {isFav ? '☻' : '☺'}
           </span>
         </button>
       </div>
