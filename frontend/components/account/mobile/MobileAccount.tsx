@@ -15,6 +15,9 @@
 
 
 import { useState } from 'react';
+import { useAuth } from '../shared/hooks/useAuth';
+import { useServiceRequest } from '../shared/hooks/useServiceRequest';
+import { useDeleteAccount } from '../shared/hooks/useDeleteAccount';
 
 // ── UI components ──
 import Nav3           from './ui/3Nav';
@@ -103,6 +106,14 @@ type PanelName =
 type DrawerName = 'workorder' | 'invoice' | 'servicereq' | null;
 
 export default function MobileAccount(props: MobileAccountProps) {
+
+  // ── Shared hooks ──
+  const { signOut } = useAuth();
+  const srHook = useServiceRequest(props.session, (sr) => {
+    // This callback updates the service requests list when a new one is submitted
+    // The parent (pages/account.tsx) will handle the actual state update
+  });
+  const deleteHook = useDeleteAccount(props.session);
 
   // ── Panel state ──
   // Only one panel can be open at a time.
@@ -324,6 +335,7 @@ export default function MobileAccount(props: MobileAccountProps) {
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
         onNavigate={(panel) => { setMenuOpen(false); openPanel(panel); }}
+        onSignOut={signOut}
       />
 
       {/* ── Panels ── */}
@@ -368,6 +380,17 @@ export default function MobileAccount(props: MobileAccountProps) {
         session={props.session}
         onSelectSR={(sr) => openDrawer('servicereq', sr)}
         onClose={closePanel}
+        // Service request form logic
+        showSRForm={srHook.showSRForm}
+        setShowSRForm={srHook.setShowSRForm}
+        srType={srHook.srType}
+        setSrType={srHook.setSrType}
+        srDesc={srHook.srDesc}
+        setSrDesc={srHook.setSrDesc}
+        srSubmitting={srHook.srSubmitting}
+        srGateMsg={srHook.srGateMsg}
+        openSRForm={srHook.openSRForm}
+        submitSR={srHook.submitSR}
       />
 
       <InquiriesPanel3
@@ -379,6 +402,10 @@ export default function MobileAccount(props: MobileAccountProps) {
       <WizardResultsPanel3
         open={activePanel === 'wizard'}
         onClose={closePanel}
+        onCreateServiceRequest={(result) => {
+          srHook.handleWizardServiceRequest(result, () => {}, () => {});
+          openPanel('servicereq');
+        }}
       />
 
       <ProfilePanel3
@@ -396,6 +423,15 @@ export default function MobileAccount(props: MobileAccountProps) {
         saveProfile={props.saveProfile}
         onSmsToggle={handleSmsClick}
         onClose={closePanel}
+        // Delete account logic
+        showDeleteModal={deleteHook.showDeleteModal}
+        setShowDeleteModal={deleteHook.setShowDeleteModal}
+        deleteConfirmText={deleteHook.deleteConfirmText}
+        setDeleteConfirmText={deleteHook.setDeleteConfirmText}
+        deleteError={deleteHook.deleteError}
+        deleting={deleteHook.deleting}
+        onOpenDeleteModal={deleteHook.openDeleteModal}
+        onDeleteAccount={deleteHook.deleteAccount}
       />
 
       {/* ── Drawers ── */}

@@ -22,6 +22,17 @@ interface ServiceRequestPanelProps {
   session:         any;
   onSelectSR:      (sr: any) => void;
   onClose:         () => void;
+  // Service request form logic from useServiceRequest hook
+  showSRForm:      boolean;
+  setShowSRForm:   (v: boolean) => void;
+  srType:          string;
+  setSrType:       (v: string) => void;
+  srDesc:          string;
+  setSrDesc:       (v: string) => void;
+  srSubmitting:    boolean;
+  srGateMsg:       string;
+  openSRForm:      () => Promise<void>;
+  submitSR:        () => Promise<void>;
 }
 
 // Tooltip IDs and their text -- from the HTML nr-tooltip divs
@@ -37,21 +48,13 @@ const TOOLTIPS: Record<string, string> = {
 
 export default function ServiceRequestPanel3({
   open, serviceRequests, session, onSelectSR, onClose,
+  showSRForm, setShowSRForm, srType, setSrType, srDesc, setSrDesc,
+  srSubmitting, srGateMsg, openSRForm, submitSR,
 }: ServiceRequestPanelProps) {
 
   // ── New request form state ──
-  const [sheetOpen,   setSheetOpen]   = useState(false);
-  const [name,        setName]        = useState('');
-  const [phone,       setPhone]       = useState('');
-  const [email,       setEmail]       = useState('');
-  const [gem,         setGem]         = useState('');
-  const [color,       setColor]       = useState('');
-  const [weight,      setWeight]      = useState('');
-  const [dims,        setDims]        = useState('');
-  const [serviceType, setServiceType] = useState('');
-  const [wizardRef,   setWizardRef]   = useState('');
-  const [desc,        setDesc]        = useState('');
-  const [photos,      setPhotos]      = useState<string[]>([]);
+  // Note: srType and srDesc are now managed by the parent via useServiceRequest hook
+  // We keep local state for form UI that isn't part of the submission
   const [activeTip,   setActiveTip]   = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -60,32 +63,24 @@ export default function ServiceRequestPanel3({
 
   // Handle photo file selection
   const handlePhotos = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
-    files.forEach(file => {
-      const reader = new FileReader();
-      reader.onload = ev => {
-        setPhotos(prev => [...prev, ev.target?.result as string]);
-      };
-      reader.readAsDataURL(file);
-    });
+    // TODO: In production, upload photos to Supabase Storage and attach to submission
+    // For now, this is a placeholder for future photo upload functionality
   };
 
-  const removePhoto = (idx: number) => {
-    setPhotos(prev => prev.filter((_, i) => i !== idx));
+  const handleOpenForm = async () => {
+    await openSRForm();
+    if (!srGateMsg) {
+      setShowSRForm(true);
+    }
   };
 
-  const submitForm = () => {
-    if (!name.trim() || !phone.trim() || !email.trim()) {
-      alert('Name, phone number, and email are required.');
+  const handleSubmitForm = async () => {
+    if (!srType.trim() || !srDesc.trim()) {
+      alert('Service type and description are required.');
       return;
     }
-    // In production: call Supabase insert here
-    // For now close the sheet
-    setSheetOpen(false);
-    // Reset form
-    setName(''); setPhone(''); setEmail(''); setGem(''); setColor('');
-    setWeight(''); setDims(''); setServiceType(''); setWizardRef('');
-    setDesc(''); setPhotos([]);
+    await submitSR();
+    setShowSRForm(false);
   };
 
   // ── Info button -- the gold circle "i" ──
@@ -117,7 +112,7 @@ export default function ServiceRequestPanel3({
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             {/* + New button -- opens the new request sheet */}
             <button
-              onClick={() => setSheetOpen(true)}
+              onClick={handleOpenForm}
               style={{
                 background: 'var(--gold)', color: 'var(--bg-deep)', border: 'none',
                 padding: '5px 12px', fontFamily: 'var(--font-mono)', fontSize: 8,
@@ -129,6 +124,16 @@ export default function ServiceRequestPanel3({
             <button className="panel-close" onClick={onClose}>✕</button>
           </div>
         </div>
+        
+        {/* Gate message -- shown if user doesn't have phone or SMS prefs */}
+        {srGateMsg && (
+          <div style={{
+            background: 'var(--bg-light)', color: 'var(--text-muted)', padding: '16px',
+            margin: '8px', borderRadius: '4px', fontSize: 12, textAlign: 'center',
+          }}>
+            {srGateMsg}
+          </div>
+        )}
 
         {/* sr-list: the list of existing service request cards */}
         <div className="sr-list">
@@ -172,11 +177,11 @@ export default function ServiceRequestPanel3({
       {/* Converted from <!-- NEW SERVICE REQUEST SHEET --> */}
       {/* nr-overlay: dark background behind the sheet */}
       <div
-        className={`nr-overlay${sheetOpen ? ' open' : ''}`}
-        onClick={() => setSheetOpen(false)}
+        className={`nr-overlay${showSRForm ? ' open' : ''}`}
+        onClick={() => setShowSRForm(false)}
       />
       {/* nr-sheet: the bottom sheet that slides up */}
-      <div className={`nr-sheet${sheetOpen ? ' open' : ''}`}>
+      <div className={`nr-sheet${showSRForm ? ' open' : ''}`}>
 
         {/* Drag handle bar */}
         <div className="nr-handle" />
@@ -184,92 +189,47 @@ export default function ServiceRequestPanel3({
         {/* Sheet header */}
         <div className="nr-head">
           <span className="nr-title">New Service Request</span>
-          <button className="nr-close" onClick={() => setSheetOpen(false)}>✕</button>
+          <button className="nr-close" onClick={() => setShowSRForm(false)}>✕</button>
         </div>
 
         {/* Scrollable form body */}
         <div className="nr-body">
 
-          {/* ── CONTACT SECTION ── */}
-          <div className="nr-section-divider">Contact</div>
+          {/* Note: Contact info is pre-filled from the user's profile */}
+          <div className="nr-section-divider">Service Details</div>
 
-          {/* Full Name -- required (nr-input req has gold left border) */}
+          {/* Service Type */}
           <div className="nr-field">
             <div className="nr-field-head">
               <span className="nr-label">
-                Full Name <span style={{ color: 'var(--gold)', fontSize: 7 }}>REQUIRED</span>
+                Service Type <span style={{ color: 'var(--gold)', fontSize: 7 }}>REQUIRED</span>
               </span>
+              <InfoBtn id="service" />
             </div>
+            <Tip id="service" />
             <input
               className="nr-input req"
-              placeholder="Your full name"
-              value={name}
-              onChange={e => setName(e.target.value)}
+              placeholder="e.g. Cutting, Polishing, Setting"
+              value={srType}
+              onChange={e => setSrType(e.target.value)}
             />
           </div>
 
-          {/* Phone -- required */}
+          {/* Description */}
           <div className="nr-field">
             <div className="nr-field-head">
               <span className="nr-label">
-                Phone Number <span style={{ color: 'var(--gold)', fontSize: 7 }}>REQUIRED</span>
+                Description <span style={{ color: 'var(--gold)', fontSize: 7 }}>REQUIRED</span>
               </span>
+              <InfoBtn id="desc" />
             </div>
-            <input
+            <Tip id="desc" />
+            <textarea
               className="nr-input req"
-              type="tel"
-              placeholder="+1 (555) 000-0000"
-              value={phone}
-              onChange={e => setPhone(e.target.value)}
-            />
-          </div>
-
-          {/* Email -- required */}
-          <div className="nr-field">
-            <div className="nr-field-head">
-              <span className="nr-label">
-                Email <span style={{ color: 'var(--gold)', fontSize: 7 }}>REQUIRED</span>
-              </span>
-            </div>
-            <input
-              className="nr-input req"
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-            />
-          </div>
-
-          {/* ── STONE DETAILS SECTION ── */}
-          <div className="nr-section-divider">Stone Details</div>
-
-          {/* Gem Type */}
-          <div className="nr-field">
-            <div className="nr-field-head">
-              <span className="nr-label">Gem Type</span>
-              <InfoBtn id="gem" />
-            </div>
-            <Tip id="gem" />
-            <input
-              className="nr-input"
-              placeholder="e.g. Sapphire, Tourmaline, Unknown"
-              value={gem}
-              onChange={e => setGem(e.target.value)}
-            />
-          </div>
-
-          {/* Color */}
-          <div className="nr-field">
-            <div className="nr-field-head">
-              <span className="nr-label">Color</span>
-              <InfoBtn id="color" />
-            </div>
-            <Tip id="color" />
-            <input
-              className="nr-input"
-              placeholder="e.g. Royal blue, pale yellow-green"
-              value={color}
-              onChange={e => setColor(e.target.value)}
+              placeholder="Tell us about the stone and what you need..."
+              value={srDesc}
+              onChange={e => setSrDesc(e.target.value)}
+              style={{ minHeight: '100px', fontFamily: 'var(--font-ui)', resize: 'vertical' }}
             />
           </div>
 
@@ -417,8 +377,8 @@ export default function ServiceRequestPanel3({
 
         {/* Sheet footer with submit button */}
         <div className="nr-footer">
-          <button className="nr-submit-btn" onClick={submitForm}>
-            Submit Service Request →
+          <button className="nr-submit-btn" onClick={handleSubmitForm} disabled={srSubmitting}>
+            {srSubmitting ? 'Submitting...' : 'Submit Service Request →'}
           </button>
           <div className="nr-req-note">
             Fields marked <span style={{ color: 'var(--gold)' }}>REQUIRED</span> must be filled before submitting.

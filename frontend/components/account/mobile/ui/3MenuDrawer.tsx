@@ -7,6 +7,7 @@ interface MenuDrawerProps {
   open:       boolean;
   onClose:    () => void;
   onNavigate: (panel: PanelName) => void;
+  onSignOut:  () => Promise<void>;
 }
 
 // Panel items — null panel means "close drawer and go to dashboard"
@@ -21,7 +22,7 @@ const PANEL_ITEMS: { label: string; panel: PanelName }[] = [
   { label: 'Profile',          panel: 'profile'     },
 ];
 
-export default function MenuDrawer3({ open, onClose, onNavigate }: MenuDrawerProps) {
+export default function MenuDrawer3({ open, onClose, onNavigate, onSignOut }: MenuDrawerProps) {
   return (
     <>
       <div className={`menu-overlay${open ? ' open' : ''}`} onClick={onClose} />
@@ -65,8 +66,7 @@ export default function MenuDrawer3({ open, onClose, onNavigate }: MenuDrawerPro
           {/* Sign out */}
           <div className="menu-item" onClick={() => {
             onClose();
-            // In production: call supabase.auth.signOut() then router.push('/')
-            window.location.href = '/';
+            onSignOut();
           }}>
             <div className="menu-item-dot" style={{ background: '#f87171' }} />
             <span className="menu-item-label" style={{ color: '#f87171' }}>Sign Out</span>

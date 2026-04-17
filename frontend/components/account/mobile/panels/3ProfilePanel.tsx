@@ -40,6 +40,15 @@ interface ProfilePanelProps {
   saveProfile:       () => void;
   onSmsToggle:       (toggle: any) => void;
   onClose:           () => void;
+  // Delete account logic from useDeleteAccount hook
+  showDeleteModal:       boolean;
+  setShowDeleteModal:    (v: boolean) => void;
+  deleteConfirmText:     string;
+  setDeleteConfirmText:  (v: string) => void;
+  deleteError:           string;
+  deleting:              boolean;
+  onOpenDeleteModal:     () => void;
+  onDeleteAccount:       () => Promise<void>;
 }
 
 // Pill toggle component -- the on/off switch
@@ -61,6 +70,8 @@ export default function ProfilePanel3({
   open, profile, editProfile, smsPrefs, profileSaving, profileFlash,
   hasProfileChanges, invoiceCount, invoiceTotal, hasOpenWorkOrder,
   setEditProfile, saveProfile, onSmsToggle, onClose,
+  showDeleteModal, setShowDeleteModal, deleteConfirmText, setDeleteConfirmText,
+  deleteError, deleting, onOpenDeleteModal, onDeleteAccount,
 }: ProfilePanelProps) {
   return (
     <div className={`slide-panel${open ? ' open' : ''}`}>
@@ -218,17 +229,90 @@ export default function ProfilePanel3({
 
         {/* Delete account section */}
         <div style={{ marginTop: 32, paddingTop: 24, borderTop: '0.5px solid var(--bdr2)' }}>
-          <button style={{
-            background: 'none', border: '0.5px solid rgba(248,113,113,0.3)',
-            color: 'rgba(248,113,113,0.7)', width: '100%', padding: 13,
-            fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.18em',
-            textTransform: 'uppercase', cursor: 'pointer',
-          }}>
+          <button
+            onClick={onOpenDeleteModal}
+            style={{
+              background: 'none', border: '0.5px solid rgba(248,113,113,0.3)',
+              color: 'rgba(248,113,113,0.7)', width: '100%', padding: 13,
+              fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.18em',
+              textTransform: 'uppercase', cursor: 'pointer',
+            }}
+          >
             Delete Account
           </button>
         </div>
 
       </div>{/* end profile-body */}
+
+      {/* Delete Account Modal */}
+      {showDeleteModal && (
+        <>
+          <div
+            style={{
+              position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+              background: 'rgba(0,0,0,0.5)', zIndex: 1000,
+            }}
+            onClick={() => setShowDeleteModal(false)}
+          />
+          <div
+            style={{
+              position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+              background: 'var(--bg)', border: '1px solid var(--bdr2)', borderRadius: 8,
+              padding: 24, maxWidth: 320, zIndex: 1001, boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+            }}
+          >
+            <div style={{ fontFamily: 'var(--font-ui)', fontSize: 16, fontWeight: 600, marginBottom: 12, color: 'var(--text)' }}>
+              Delete Account?
+            </div>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: 13, color: 'var(--text-muted)', marginBottom: 16, lineHeight: 1.5 }}>
+              This action cannot be undone. All your data will be permanently deleted.
+            </p>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: 12, color: 'var(--text-muted)', marginBottom: 16 }}>
+              Type <strong>DELETE</strong> to confirm:
+            </p>
+            <input
+              type="text"
+              value={deleteConfirmText}
+              onChange={e => setDeleteConfirmText(e.target.value)}
+              placeholder="Type DELETE"
+              style={{
+                width: '100%', padding: 10, fontFamily: 'var(--font-ui)', fontSize: 12,
+                border: '1px solid var(--bdr2)', borderRadius: 4, background: 'var(--bg-light)',
+                color: 'var(--text)', marginBottom: 12, boxSizing: 'border-box',
+              }}
+            />
+            {deleteError && (
+              <div style={{ fontFamily: 'var(--font-ui)', fontSize: 11, color: '#f87171', marginBottom: 12 }}>
+                {deleteError}
+              </div>
+            )}
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                style={{
+                  flex: 1, padding: 10, fontFamily: 'var(--font-ui)', fontSize: 12,
+                  border: '1px solid var(--bdr2)', background: 'var(--bg-light)', color: 'var(--text)',
+                  borderRadius: 4, cursor: 'pointer',
+                }}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={onDeleteAccount}
+                disabled={deleting}
+                style={{
+                  flex: 1, padding: 10, fontFamily: 'var(--font-ui)', fontSize: 12,
+                  border: 'none', background: '#f87171', color: 'white',
+                  borderRadius: 4, cursor: deleting ? 'not-allowed' : 'pointer',
+                  opacity: deleting ? 0.6 : 1,
+                }}
+              >
+                {deleting ? 'Deleting...' : 'Delete'}
+              </button>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
