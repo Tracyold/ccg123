@@ -201,6 +201,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
           width: 90%; /* Leaves 10% on the left */
           height: 100dvh;
           background: var(--bg);
+          color: var(--text); /* Force text color inheritance */
           z-index: 10101;
           transform: translateX(100%);
           transition: transform 500ms cubic-bezier(0.33, 1, 0.68, 1);
@@ -274,7 +275,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
           font-family: var(--font-display);
           font-size: 28px; /* Big font for native feel */
           line-height: 1.2;
-          color: var(--text);
+          color: var(--text) !important; /* Force visibility */
           margin-bottom: 0.5rem;
         }
         .shop-item-price {
@@ -299,7 +300,8 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
           font-family: var(--font-body);
           font-size: 16px;
           line-height: 1.6;
-          color: var(--text-muted);
+          color: var(--text) !important; /* Force visibility */
+          opacity: 0.8;
         }
         .shop-item-footer {
           padding: 1.25rem;
@@ -413,7 +415,8 @@ function SpecRow({ label, value }: { label: string; value: string | null }) {
       <span style={{
         fontFamily: 'var(--font-ui)',
         fontSize: '14px',
-        color: 'var(--text)'
+        color: 'var(--text)',
+        fontWeight: 500
       }}>{value}</span>
     </div>
   );
