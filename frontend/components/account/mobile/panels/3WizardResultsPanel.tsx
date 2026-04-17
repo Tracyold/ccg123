@@ -30,18 +30,18 @@ const BAND_LABEL: Record<string, string> = {
 };
 
 function ScoreRing({ pct, color }: { pct: number; color: string }) {
-  const r      = 19;
+  const r      = 40;
   const circ   = 2 * Math.PI * r;
   const offset = circ * (1 - pct / 100);
   return (
     <div className="wiz-score-ring">
-      <svg width="48" height="48" viewBox="0 0 48 48">
-        <circle cx="24" cy="24" r={r} fill="none" stroke="var(--bdr2)" strokeWidth="2.5" />
-        <circle cx="24" cy="24" r={r} fill="none" stroke={color} strokeWidth="2.5"
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r={r} fill="none" stroke="var(--bdr2)" strokeWidth="5" />
+        <circle cx="50" cy="50" r={r} fill="none" stroke={color} strokeWidth="5"
           strokeDasharray={circ} strokeDashoffset={offset}
-          strokeLinecap="round" transform="rotate(-90 24 24)" />
+          strokeLinecap="round" transform="rotate(-90 50 50)" />
       </svg>
-      <div className="wiz-score-num" style={{ color }}>{pct}</div>
+      <div className="wiz-score-num" style={{ color, fontSize: '28px' }}>{pct}</div>
     </div>
   );
 }

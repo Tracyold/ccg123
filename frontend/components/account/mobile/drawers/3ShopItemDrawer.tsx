@@ -206,7 +206,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
           transform: translateX(100%);
           transition: transform 500ms cubic-bezier(0.33, 1, 0.68, 1);
           display: flex;
-          box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+          /* box-shadow: -10px 0 30px rgba(0,0,0,0.5); */
         }
         .shop-item-drawer.open {
           transform: translateX(0);
