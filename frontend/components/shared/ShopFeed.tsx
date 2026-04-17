@@ -20,20 +20,12 @@ function ShopTile({
   onFav: (id: string) => void;
   onClick?: (item: ShopProduct) => void;
 }) {
-  const [tapped, setTapped] = useState(false);
   const [animating, setAnimating] = useState(false);
 
-  const handleTap = () => {
+  const handlePhotoClick = () => {
     if (onClick) {
       onClick(item);
-      return;
     }
-    if (!tapped) {
-      setTapped(true);
-      return;
-    }
-    setTapped(false);
-    window.location.href = '/shop';
   };
 
   const handleFav = (e: React.MouseEvent) => {
@@ -47,12 +39,9 @@ function ShopTile({
   const price = formatPrice(item.total_price);
 
   return (
-    <div
-      className={`shop-thumb${tapped ? ' tapped' : ''}`}
-      onClick={handleTap}
-      style={{ position: 'relative' }}
-    >
-      <div className="shop-img">
+    <div className="shop-thumb" style={{ position: 'relative' }}>
+      {/* ONLY the photo area is clickable to open the drawer */}
+      <div className="shop-img" onClick={handlePhotoClick} style={{ cursor: 'pointer' }}>
         {photoUrl ? (
           <img
             src={photoUrl}
@@ -62,18 +51,42 @@ function ShopTile({
         ) : (
           '💎'
         )}
+        
+        {/* Overlay appears only on the image area */}
+        <div className="inv-overlay" style={{ flexDirection: 'column', gap: 6 }}>
+          <div
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 16,
+              fontWeight: 700,
+              color: '#fff',
+              textAlign: 'center',
+            }}
+          >
+            {price}
+          </div>
+          <div
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 9,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.7)',
+              textAlign: 'center',
+            }}
+          >
+            Tap to view
+          </div>
+        </div>
       </div>
 
       <div className="shop-info" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div className="shop-name" style={{ flex: 1, marginRight: 8 }}>{item.title}</div>
         
-        {/* Favorite icon moved to the bottom right of the card info area */}
+        {/* Favorite icon in the bottom right of the card info area */}
         <button
           type="button"
-          onClick={(e) => {
-            e.stopPropagation(); // Prevents the drawer from opening
-            handleFav(e);
-          }}
+          onClick={handleFav}
           style={{
             background: 'none',
             border: 'none',
@@ -92,35 +105,6 @@ function ShopTile({
         >
           {isFav ? '☻' : '☹︎'}
         </button>
-      </div>
-
-      {/* Price is hidden from the main card info as requested */}
-      {/* <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)' }}>{price}</div> */}
-
-      <div className="inv-overlay" style={{ flexDirection: 'column', gap: 6 }}>
-        <div
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 16,
-            fontWeight: 700,
-            color: '#fff',
-            textAlign: 'center',
-          }}
-        >
-          {price}
-        </div>
-        <div
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 9,
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.7)',
-            textAlign: 'center',
-          }}
-        >
-          Tap to view
-        </div>
       </div>
     </div>
   );

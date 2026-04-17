@@ -31,7 +31,7 @@ export async function fetchAvailableProducts(page: number = 0, pageSize: number 
   // Primary: use the public view — no RLS issues for authenticated users
   const { data: viewData, error: viewError } = await supabase
     .from('shop_active_products')
-    .select('product_id, title, total_price, photo_url, product_state, created_at')
+    .select('*')
     .order('created_at', { ascending: false })
     .range(from, to)
 
@@ -43,7 +43,7 @@ export async function fetchAvailableProducts(page: number = 0, pageSize: number 
   console.warn('shop_active_products view unavailable, falling back to products table:', viewError)
   const { data, error } = await supabase
     .from('products')
-    .select('product_id, title, total_price, photo_url, product_state, created_at')
+    .select('*')
     .in('product_state', ['PUBLISHED', 'ACTIVE'])
     .order('created_at', { ascending: false })
     .range(from, to)
