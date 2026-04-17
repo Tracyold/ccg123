@@ -32,7 +32,12 @@ export default function OrdersPanel3({
         <span className="panel-title">Work Orders</span>
         <button className="panel-close" onClick={onClose}>✕</button>
       </div>
-      <div className="orders-list" style={{ padding: '20px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div className="orders-list" style={{ 
+        padding: 'clamp(1rem, 4.5vw, 1.25rem)', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        gap: 'clamp(0.875rem, 4vw, 1.125rem)' 
+      }}>
         {workOrders.length === 0 && (
           <div style={{
             padding: '60px 20px', textAlign: 'center',

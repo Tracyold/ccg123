@@ -67,7 +67,9 @@ function SwipeableInquiry({ inq, onDelete }: { inq: any; onDelete: (id: string) 
         onTouchEnd={handleTouchEnd}
         className="tile dim"
         style={{
-          minHeight: 'auto', padding: 16, cursor: 'default',
+          minHeight: 'auto', 
+          padding: 'clamp(1rem, 4.5vw, 1.25rem) clamp(1.125rem, 5vw, 1.5rem)', 
+          cursor: 'default',
           position: 'relative', zIndex: 2,
           transform: `translateX(${offsetX}px)`,
           transition: isSwiping ? 'none' : 'transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1)',
@@ -172,7 +174,14 @@ export default function InquiriesPanel3({ open, inquiries, onClose }: InquiriesP
         <button className="panel-close" onClick={onClose}>✕</button>
       </div>
 
-      <div style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column', gap: 10 }}>
+      <div style={{ 
+        flex: 1, 
+        overflowY: 'auto', 
+        padding: 'clamp(1rem, 4.5vw, 1.25rem)', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        gap: 'clamp(0.875rem, 4vw, 1.125rem)' 
+      }}>
         {localInquiries.length === 0 ? (
           <p style={{
             fontFamily: 'var(--font-ui)', fontSize: 11, color: 'var(--text-muted)',
