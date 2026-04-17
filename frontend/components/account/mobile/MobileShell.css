@@ -230,21 +230,27 @@ button, [role="button"] { touch-action: manipulation; }
   display: flex; flex-direction: column;
   min-height: clamp(110px, 30vw, 150px);
   -webkit-tap-highlight-color: transparent;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18), 0 0 0 0 transparent;
   border-radius: 12px;
 }
+/* Top color-edge line — driven by --tc custom property set per tile */
 .tile::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: rgba(255,255,255,0.15); opacity: 0; transition: opacity 300ms ease;
+  background: var(--tc, rgba(255,255,255,0.15)); opacity: 0;
+  transition: opacity 300ms ease;
 }
 .tile.lit::before { opacity: 1; }
-.tile.lit { border-color: rgba(255,255,255,0.22); }
-.tile.dim { opacity: 0.6; }
-.tile.dim:hover { opacity: 0.85; }
-.tile:hover { 
-  transform: translateY(-3px); 
-  border-color: var(--gold);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+/* Lit tiles: tinted border using the tile color */
+.tile.lit {
+  border-color: color-mix(in srgb, var(--tc, rgba(255,255,255,0.22)) 35%, var(--bdr2));
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18), 0 0 12px color-mix(in srgb, var(--tc, transparent) 8%, transparent);
+}
+.tile.dim { opacity: 0.62; }
+.tile.dim:hover { opacity: 0.88; }
+.tile:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--tc, var(--gold)) 70%, var(--bdr2));
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 16px color-mix(in srgb, var(--tc, transparent) 12%, transparent);
 }
 .tile:active { transform: scale(0.96); }
 .tile.wide {
@@ -408,21 +414,24 @@ button, [role="button"] { touch-action: manipulation; }
 .msg-wrap.me { align-items: flex-end; }
 .msg-wrap.them { align-items: flex-start; }
 .bubble {
-  max-width: 78%;
-  padding: clamp(0.5rem, 2.3vw, 0.75rem) clamp(0.625rem, 3vw, 0.9375rem);
+  max-width: 82%;
+  padding: clamp(0.625rem, 2.8vw, 0.875rem) clamp(0.75rem, 3.5vw, 1rem);
   font-family: var(--font-ui);
-  font-size: clamp(17px, 5vw, 25px);
+  font-size: clamp(16px, 4.5vw, 22px);
   line-height: 1.5; word-break: break-word;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: relative;
 }
 .bubble.me {
-  background: color-mix(in srgb,var(--gold) 55%,#3a3000);
-  border-radius: 1.1em 1.1em 0.2em 1.1em;
+  background: linear-gradient(135deg, var(--gold), color-mix(in srgb, var(--gold) 85%, #000));
+  border-radius: 1.25em 1.25em 0.25em 1.25em;
   color: #1a1200;
+  border: 0.5px solid rgba(255,255,255,0.2);
 }
 .bubble.them {
-  background: var(--bubble-them);
+  background: var(--bg-card);
   border: 0.5px solid var(--bdr2);
-  border-radius: 1.1em 1.1em 1.1em 0.2em;
+  border-radius: 1.25em 1.25em 1.25em 0.25em;
   color: var(--text);
 }
 .msg-time {
@@ -456,14 +465,19 @@ button, [role="button"] { touch-action: manipulation; }
   cursor: pointer; font-size: clamp(14px, 3.7vw, 17px); flex-shrink: 0;
 }
 .chat-input {
-  flex: 1; background: var(--bg); border: 0.5px solid var(--bdr2);
-  border-radius: 0.375em;
-  padding: clamp(0.5rem, 2.3vw, 0.6875rem) clamp(0.6875rem, 3vw, 0.9375rem);
+  flex: 1; background: var(--bg-deep); border: 0.5px solid var(--bdr2);
+  border-radius: 24px !important;
+  padding: clamp(0.6rem, 2.5vw, 0.8rem) clamp(1rem, 4vw, 1.25rem);
   color: var(--text); font-family: var(--font-ui);
-  font-size: clamp(17px, 4.5vw, 20px);
-  outline: none; transition: border-color 150ms ease;
+  font-size: clamp(16px, 4.2vw, 19px);
+  outline: none; transition: all 220ms ease;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
-.chat-input:focus { border-color: var(--gold); }
+.chat-input:focus { 
+  border-color: var(--gold); 
+  background: var(--bg);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1), 0 0 0 3px color-mix(in srgb, var(--gold) 12%, transparent);
+}
 .chat-send {
   background: var(--gold); border: none;
   width: clamp(32px, 8.5vw, 38px); height: clamp(32px, 8.5vw, 38px);
@@ -614,9 +628,23 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .order-tile {
   background: var(--bg-card); border: 0.5px solid var(--bdr2);
-  padding: clamp(0.75rem, 3.5vw, 1.125rem); cursor: pointer; transition: all 200ms ease;
+  padding: clamp(0.75rem, 3.5vw, 1.125rem); cursor: pointer;
+  transition: all 260ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-.order-tile:hover { border-color: color-mix(in srgb,var(--tile-orders) 40%,var(--bdr2)); }
+.order-tile::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: var(--tile-orders); opacity: 0; transition: opacity 260ms ease;
+}
+.order-tile:hover::before { opacity: 1; }
+.order-tile:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--tile-orders) 45%, var(--bdr2));
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+.order-tile:active { transform: scale(0.98); }
 .order-status {
   display: inline-flex; padding: 0.125em 0.5em;
   font-family: var(--font-mono);
@@ -658,13 +686,19 @@ button, [role="button"] { touch-action: manipulation; }
   color: var(--text-muted); margin-bottom: 0.375em; display: block;
 }
 .profile-input {
-  width: 100%; background: var(--bg-card); border: 0.5px solid var(--bdr2);
+  width: 100%; background: var(--bg-deep); border: 0.5px solid var(--bdr2);
   color: var(--text); font-family: var(--font-ui);
   font-size: clamp(17px, 4.5vw, 20px);
   padding: clamp(0.5625rem, 2.5vw, 0.8125rem) clamp(0.625rem, 3vw, 0.875rem);
-  outline: none; transition: border-color 150ms ease;
+  outline: none; transition: all 220ms ease;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
 }
-.profile-input:focus { border-color: var(--gold); }
+.profile-input:focus { 
+  border-color: var(--gold); 
+  background: var(--bg-card);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 0 3px color-mix(in srgb, var(--gold) 15%, transparent);
+}
 .profile-save {
   width: 100%; background: var(--gold); color: var(--bg-deep); border: none;
   padding: clamp(0.6875rem, 3vw, 0.9375rem); font-family: var(--font-mono);
@@ -684,8 +718,22 @@ button, [role="button"] { touch-action: manipulation; }
   background: var(--bg-card); border: 0.5px solid var(--bdr2);
   border-left: 3px solid var(--gold);
   padding: clamp(0.625rem, 3vw, 0.9375rem) clamp(0.75rem, 3.5vw, 1.125rem);
-  cursor: pointer; transition: all 200ms ease;
+  cursor: pointer; transition: all 260ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
+.sr-card::after {
+  content: ''; position: absolute; top: 0; left: 3px; right: 0; height: 1px;
+  background: var(--gold); opacity: 0; transition: opacity 260ms ease;
+}
+.sr-card:hover::after { opacity: 0.7; }
+.sr-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--gold) 45%, var(--bdr2));
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25), 0 0 12px color-mix(in srgb, var(--gold) 8%, transparent);
+}
+.sr-card:active { transform: scale(0.98); }
 .sr-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.375em; }
 .sr-card-stone {
   font-family: var(--font-display);
@@ -773,13 +821,19 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .nr-tooltip.show { display: block; }
 .nr-input, .nr-select, .nr-textarea {
-  width: 100%; background: var(--bg-card); border: 0.5px solid var(--bdr2);
+  width: 100%; background: var(--bg-deep); border: 0.5px solid var(--bdr2);
   color: var(--text); font-family: var(--font-ui);
-  font-size: clamp(12px, 3.2vw, 13px);
-  padding: clamp(0.5625rem, 2.5vw, 0.8125rem) clamp(0.625rem, 3vw, 0.875rem);
-  outline: none; transition: border-color 150ms ease;
+  font-size: clamp(15px, 4vw, 17px);
+  padding: clamp(0.6875rem, 3vw, 0.875rem) clamp(0.75rem, 3.5vw, 1rem);
+  outline: none; transition: all 220ms ease;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
-.nr-input:focus, .nr-select:focus, .nr-textarea:focus { border-color: var(--gold); }
+.nr-input:focus, .nr-select:focus, .nr-textarea:focus { 
+  border-color: var(--gold); 
+  background: var(--bg-card);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1), 0 0 0 3px color-mix(in srgb, var(--gold) 15%, transparent);
+}
 .nr-input.req { border-left: 2px solid var(--gold); }
 .nr-select { appearance: none; cursor: pointer; }
 .nr-textarea { resize: none; line-height: 1.6; }

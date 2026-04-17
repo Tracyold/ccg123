@@ -255,13 +255,15 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
         .shop-item-hero {
           width: 100%;
           aspect-ratio: 1;
-          background: var(--bg-card);
-          border-radius: 8px;
+          background: var(--bg-deep);
+          border: 0.5px solid var(--bdr2);
+          border-radius: 12px;
           overflow: hidden;
           margin-bottom: 1.5rem;
           display: flex;
           align-items: center;
           justify-content: center;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         .shop-item-hero img {
           width: 100%;
@@ -316,17 +318,19 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
         .shop-item-btn {
           flex: 1;
           height: 54px;
-          border-radius: 8px;
+          border-radius: 12px;
           font-family: var(--font-mono);
           font-size: 14px;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: opacity 0.2s;
+          transition: all 0.2s ease;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.15);
         }
+        .shop-item-btn:active { transform: scale(0.96); }
         .shop-item-btn.buy {
           background: var(--gold);
           color: var(--bg-deep);
@@ -345,14 +349,21 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
         }
         .shop-item-inq-input {
           width: 100%;
-          background: var(--bg-card);
-          border: 1px solid var(--bdr2);
-          border-radius: 8px;
+          background: var(--bg-deep);
+          border: 0.5px solid var(--bdr2);
+          border-radius: 12px;
           color: var(--text);
-          padding: 12px;
+          padding: 14px;
           font-family: var(--font-ui);
           font-size: 16px;
           outline: none;
+          transition: all 0.2s ease;
+          box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .shop-item-inq-input:focus {
+          border-color: var(--gold);
+          background: var(--bg-card);
+          box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 0 3px color-mix(in srgb, var(--gold) 15%, transparent);
         }
         .shop-item-inq-actions {
           display: flex;
