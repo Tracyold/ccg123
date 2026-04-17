@@ -11,14 +11,25 @@ export default function InquiriesTile3({ inquiries, onClick }: InquiriesTileProp
       className="tile dim"
       style={{
         '--tc': 'var(--tile-est)',
-        minHeight: 110, cursor: 'pointer', padding: '16px 14px',
+        minHeight: 110, cursor: 'pointer', padding: '20px 18px',
         justifyContent: 'center', flexDirection: 'row', alignItems: 'center',
       } as React.CSSProperties}
       onClick={onClick}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1 }}>
-        <div style={{ fontSize: 22, lineHeight: 1, color: 'rgba(255,255,255,0.35)', flexShrink: 0 }}>◈</div>
-        <div style={{ fontFamily: 'var(--font-display)', fontSize: 14, color: 'var(--text)' }}>Inquiries</div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 14, flex: 1 }}>
+        <div style={{ 
+          fontSize: 32, 
+          lineHeight: 1, 
+          color: 'rgba(255,255,255,0.85)', 
+          flexShrink: 0,
+          textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+        }}>💎</div>
+        <div style={{ 
+          fontFamily: 'var(--font-display)', 
+          fontSize: 18, 
+          color: 'var(--text)',
+          fontWeight: 500
+        }}>Inquiries</div>
       </div>
     </div>
   );

@@ -14,19 +14,28 @@ export default function InvoicesTile3({ invoices, invoiceTotal, onClick }: Invoi
       className={`tile ${hasUnpaid ? 'lit' : 'dim'}`}
       style={{
         '--tc': 'var(--tile-invoice)',
-        minHeight: 110, cursor: 'pointer',
-        flexDirection: 'row', alignItems: 'center', gap: 14, padding: '16px 14px',
+        minHeight: 120, cursor: 'pointer',
+        flexDirection: 'row', alignItems: 'center', gap: 16, padding: '20px 18px',
+        background: hasUnpaid ? 'rgba(192,132,252,0.05)' : 'var(--bg-card)'
       } as React.CSSProperties}
       onClick={onClick}
     >
       {hasUnpaid && <div className="t-badge" />}
-      <div style={{ fontFamily: 'var(--font-display)', fontSize: 13, color: 'var(--text)', flex: 1 }}>
+      <div style={{ 
+        fontFamily: 'var(--font-display)', 
+        fontSize: 18, 
+        color: 'var(--text)', 
+        flex: 1,
+        fontWeight: 500
+      }}>
         Invoices
       </div>
       <div style={{
-        fontFamily: 'var(--font-mono)', fontSize: 38, fontWeight: 700,
-        lineHeight: 1, color: 'rgba(90,90,90,0.6)',
-        WebkitTextStroke: '1.5px rgba(207,221,78,0.7)',
+        fontFamily: 'var(--font-mono)', fontSize: 48, fontWeight: 800,
+        lineHeight: 1, color: hasUnpaid ? 'var(--tile-invoice)' : 'var(--text)',
+        textShadow: '0 4px 10px rgba(0,0,0,0.4)',
+        opacity: hasUnpaid ? 1 : 0.8,
+        WebkitTextStroke: hasUnpaid ? '1px rgba(255,255,255,0.2)' : 'none'
       } as React.CSSProperties}>
         {invoices.length}
       </div>

@@ -11,7 +11,7 @@ export default function FeedbackTile3() {
   if (reviewed) return null;
 
   return (
-    <div className="fb-tile" style={{ marginTop: 8 }}>
+    <div className="fb-tile" style={{ marginTop: 12 }}>
       {!expanded ? (
         /* Collapsed state -- tap to expand */
         <div
@@ -19,21 +19,24 @@ export default function FeedbackTile3() {
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }}
         >
           <div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 15, color: 'var(--text)', marginBottom: 2 }}>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 18, color: 'var(--text)', marginBottom: 4, fontWeight: 500 }}>
               How was your experience?
             </div>
-            <div style={{ fontFamily: 'var(--font-ui)', fontSize: 11, color: 'var(--text-muted)' }}>
+            <div style={{ fontFamily: 'var(--font-ui)', fontSize: 14, color: 'var(--text-muted)', opacity: 0.8 }}>
               Tap to leave a review
             </div>
           </div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-muted)', opacity: 0.6 }}>
-            Rate →
+          <div style={{ 
+            fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--gold)', 
+            fontWeight: 600, letterSpacing: '0.1em' 
+          }}>
+            RATE →
           </div>
         </div>
       ) : (
         /* Expanded state -- star rating + text */
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <div style={{ fontFamily: 'var(--font-display)', fontSize: 15, color: 'var(--text)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontSize: 18, color: 'var(--text)', fontWeight: 500 }}>
             Rate your experience
           </div>
           <div className="fb-stars">
@@ -43,6 +46,7 @@ export default function FeedbackTile3() {
                 className={`fb-star${n <= stars ? ' active' : ''}`}
                 onClick={() => setStars(n)}
                 aria-label={`${n} star${n !== 1 ? 's' : ''}`}
+                style={{ fontSize: 32 }}
               >
                 ★
               </button>
@@ -54,21 +58,41 @@ export default function FeedbackTile3() {
             placeholder="Tell us about your experience (optional)..."
             rows={3}
             className="fb-input"
+            style={{ 
+              fontSize: 15, 
+              padding: 12, 
+              borderRadius: 8, 
+              background: 'rgba(255,255,255,0.03)',
+              border: '0.5px solid var(--bdr2)',
+              color: 'var(--text)'
+            }}
           />
-          <div style={{ display: 'flex', gap: 8 }}>
+          <div style={{ display: 'flex', gap: 12 }}>
             <button
               onClick={() => { if (stars > 0) setReviewed(true); }}
               disabled={stars === 0}
               className="fb-send"
+              style={{ 
+                flex: 1, 
+                padding: '12px', 
+                fontSize: 14, 
+                fontWeight: 600, 
+                background: 'var(--gold)', 
+                color: 'var(--bg-deep)',
+                borderRadius: 8,
+                border: 'none',
+                cursor: 'pointer'
+              }}
             >
-              Submit
+              Submit Review
             </button>
             <button
               onClick={() => setExpanded(false)}
               style={{
                 background: 'none', border: '0.5px solid var(--bdr2)', color: 'var(--text-muted)',
-                padding: '10px 16px', fontFamily: 'var(--font-mono)', fontSize: 9,
+                padding: '12px 20px', fontFamily: 'var(--font-mono)', fontSize: 11,
                 letterSpacing: '0.18em', textTransform: 'uppercase', cursor: 'pointer',
+                borderRadius: 8
               }}
             >
               Later

@@ -19,29 +19,30 @@ function getBandColor(pct: number): string {
   if (pct >= 80) return '#38bdf8';
   if (pct >= 60) return '#4ec994';
   if (pct >= 40) return '#a3e635';
-  if (pct >= 18) return '#94a3b8';
+  if (pct >= 18) return '#67e8f9';
   return '#f87171';
 }
 
 function ScoreRing({ pct }: { pct: number }) {
   const color = getBandColor(pct);
-  const r     = 14;
+  const r     = 16;
   const circ  = 2 * Math.PI * r;
   const offset = circ * (1 - pct / 100);
   return (
-    <div style={{ position: 'relative', width: 36, height: 36, flexShrink: 0 }}>
-      <svg width="36" height="36" viewBox="0 0 36 36">
-        <circle cx="18" cy="18" r={r} fill="none" stroke="var(--bdr2)" strokeWidth="2" />
-        <circle cx="18" cy="18" r={r} fill="none" stroke={color} strokeWidth="2"
+    <div style={{ position: 'relative', width: 44, height: 44, flexShrink: 0 }}>
+      <svg width="44" height="44" viewBox="0 0 44 44">
+        <circle cx="22" cy="22" r={r} fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" />
+        <circle cx="22" cy="22" r={r} fill="none" stroke={color} strokeWidth="3"
           strokeDasharray={circ} strokeDashoffset={offset}
-          strokeLinecap="round" transform="rotate(-90 18 18)" />
+          strokeLinecap="round" transform="rotate(-90 22 22)" />
       </svg>
       <div style={{
         position: 'absolute', inset: 0,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontFamily: 'var(--font-mono)', fontSize: 9, fontWeight: 700, color,
+        fontFamily: 'var(--font-mono)', fontSize: 11, fontWeight: 700, color,
+        textShadow: '0 1px 2px rgba(0,0,0,0.5)'
       }}>
-        {pct}%
+        {pct}
       </div>
     </div>
   );
@@ -53,18 +54,18 @@ export default function FeasibilityTile3({ results, onClick }: FeasibilityTilePr
   return (
     <div
       className="tile dim"
-      style={{ minHeight: 'auto', cursor: 'pointer', padding: 16, flexDirection: 'column', gap: 12 } as React.CSSProperties}
+      style={{ minHeight: 'auto', cursor: 'pointer', padding: '22px 20px', flexDirection: 'column', gap: 16 } as React.CSSProperties}
       onClick={onClick}
     >
       <div style={{
-        fontFamily: 'var(--font-mono)', fontSize: 7.5,
-        letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)',
+        fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.25em',
+        textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 600, opacity: 0.9
       }}>
         Recent Wizard Results
       </div>
 
       {recent.length === 0 ? (
-        <div style={{ fontFamily: 'var(--font-display)', fontSize: 13, color: 'var(--text-muted)', fontStyle: 'italic' }}>
+        <div style={{ fontFamily: 'var(--font-display)', fontSize: 15, color: 'var(--text-muted)', fontStyle: 'italic' }}>
           No results yet -- run the wizard to get started
         </div>
       ) : recent.map(r => {
@@ -72,13 +73,13 @@ export default function FeasibilityTile3({ results, onClick }: FeasibilityTilePr
         const stone = [r.stone_variety, r.stone_species].filter(Boolean).join(' ') || 'Unknown stone';
         const date  = new Date(r.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
         return (
-          <div key={r.id} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div key={r.id} style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <ScoreRing pct={pct} />
             <div style={{ flex: 1 }}>
-              <div style={{ fontFamily: 'var(--font-display)', fontSize: 13, color: 'var(--text)' }}>
+              <div style={{ fontFamily: 'var(--font-display)', fontSize: 16, color: 'var(--text)', fontWeight: 500 }}>
                 {r.recommendation}
               </div>
-              <div style={{ fontFamily: 'var(--font-ui)', fontSize: 10, color: 'var(--text-muted)' }}>
+              <div style={{ fontFamily: 'var(--font-ui)', fontSize: 13, color: 'var(--text-muted)', marginTop: 2 }}>
                 {stone} · {date}
               </div>
             </div>

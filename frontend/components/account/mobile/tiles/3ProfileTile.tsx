@@ -11,21 +11,35 @@ export default function ProfileTile3({ profile, onClick }: ProfileTileProps) {
       className="tile dim"
       style={{
         '--tc': '#888',
-        minHeight: 0, padding: '13px 17px',
-        flexDirection: 'row', alignItems: 'center', gap: 14, cursor: 'pointer',
+        minHeight: 110, cursor: 'pointer', padding: '20px 18px',
+        justifyContent: 'center', flexDirection: 'row', alignItems: 'center',
       } as React.CSSProperties}
       onClick={onClick}
     >
-      <div style={{ fontSize: 24, flexShrink: 0, lineHeight: 1 }}>⚙︎</div>
-      <div style={{ flex: 1 }}>
-        <div style={{ fontFamily: 'var(--font-display)', fontSize: 14, color: 'var(--text)' }}>
-          Profile
+      <div style={{ display: 'flex', alignItems: 'center', gap: 14, flex: 1 }}>
+        <div style={{ 
+          fontSize: 32, 
+          lineHeight: 1, 
+          color: 'rgba(255,255,255,0.85)', 
+          flexShrink: 0,
+          textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+        }}>⚙︎</div>
+        <div style={{ flex: 1 }}>
+          <div style={{ 
+            fontFamily: 'var(--font-display)', 
+            fontSize: 18, 
+            color: 'var(--text)',
+            fontWeight: 500
+          }}>Profile</div>
+          {profile?.name && (
+            <div style={{
+              fontFamily: 'var(--font-ui)', fontSize: 14,
+              color: 'var(--text-muted)', marginTop: 4, opacity: 0.8
+            }}>
+              {profile.name}
+            </div>
+          )}
         </div>
-        {profile?.name && (
-          <div style={{ fontFamily: 'var(--font-ui)', fontSize: 11, color: 'var(--text-muted)', marginTop: 2 }}>
-            {profile.name}
-          </div>
-        )}
       </div>
     </div>
   );
