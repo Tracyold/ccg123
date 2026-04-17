@@ -44,8 +44,13 @@ export default function OrdersPanel3({
         )}
         {workOrders.map(wo => {
           const s = STATUS_STYLE[wo.status] ?? STATUS_STYLE.CREATED;
+          const isLit = wo.status === 'CREATED' || wo.status === 'ACCEPTED';
           return (
-            <div key={wo.work_order_id} className="order-tile" onClick={() => onSelectWO(wo)}>
+            <div 
+              key={wo.work_order_id} 
+              className={`order-tile ${isLit ? 'lit' : 'dim'}`} 
+              onClick={() => onSelectWO(wo)}
+            >
               <div className="order-status" style={{ background: s.bg, color: s.color }}>
                 {wo.status}
               </div>
@@ -59,6 +64,7 @@ export default function OrdersPanel3({
               {wo.status === 'CREATED' && (
                 <button
                   className="order-accept"
+                  style={{ borderRadius: '8px !important' } as React.CSSProperties}
                   onClick={e => { e.stopPropagation(); onAcceptWO(wo); }}
                 >
                   Accept Work Order

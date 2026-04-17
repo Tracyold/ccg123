@@ -134,6 +134,7 @@ export default function ServiceRequestPanel3({
                 background: 'var(--gold)', color: 'var(--bg-deep)', border: 'none',
                 padding: '5px 12px', fontFamily: 'var(--font-mono)', fontSize: 8,
                 letterSpacing: '0.18em', textTransform: 'uppercase', cursor: 'pointer',
+                borderRadius: '4px'
               }}
             >
               + New

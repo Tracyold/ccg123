@@ -45,7 +45,8 @@ export default function InquiriesPanel3({ open, inquiries, onClose }: InquiriesP
               // Each inquiry card -- background, border, padding from HTML
               <div
                 key={inq.account_inquiry_id}
-                style={{ background: 'var(--bg-card)', border: '0.5px solid var(--bdr2)', padding: 16 }}
+                className="tile dim"
+                style={{ minHeight: 'auto', padding: 16, cursor: 'default' } as React.CSSProperties}
               >
                 {/* Top row: product name + status badge */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
