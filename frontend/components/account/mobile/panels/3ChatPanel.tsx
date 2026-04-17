@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { supabase } from '../../../../lib/supabase';
 import { fmtTime } from '../../../../lib/utils';
 import { useSwipeDownToClose } from '../../shared/hooks/useSwipeDownToClose';
+import FirstTimeTips from '../ui/FirstTimeTips';
 
 interface ChatPanelProps {
   open:           boolean;
@@ -59,6 +60,7 @@ export default function ChatPanel3({
 
   return (
     <div ref={elementRef} className={`slide-panel${open ? ' open' : ''}`}>
+      <FirstTimeTips type="panel-down" show={open} />
 
       <div className="panel-header" {...touchHandlers}>
         <span className="panel-title">Messages</span>

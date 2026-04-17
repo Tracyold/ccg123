@@ -3,6 +3,7 @@ import { supabase } from '../../../../lib/supabase';
 import { formatMoney } from '../../../../lib/utils';
 import { getPhotoUrl } from '../../shared/utils/photoUrl';
 import { useSwipeToClose } from '../../shared/hooks/useSwipeToClose';
+import FirstTimeTips from '../ui/FirstTimeTips';
 
 interface ShopProduct {
   product_id:        string;
@@ -93,6 +94,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
         className={`shop-item-drawer${open ? ' open' : ''}`}
         {...touchHandlers}
       >
+        <FirstTimeTips type="drawer-slide" show={open} />
         {/* Visual handle on the left edge */}
         <div className="shop-item-handle" />
 

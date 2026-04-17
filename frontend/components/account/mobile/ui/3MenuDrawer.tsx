@@ -1,5 +1,6 @@
 // components/account/mobile/ui/3MenuDrawer.tsx - Force Refresh
 import { useSwipeDownToClose } from '../../shared/hooks/useSwipeDownToClose';
+import FirstTimeTips from './FirstTimeTips';
 
 type PanelName = 'chat' | 'orders' | 'invoices' | 'servicereq'
   | 'inquiries' | 'wizard' | 'profile' | null;
@@ -31,6 +32,7 @@ export default function MenuDrawer3({ open, onClose, onNavigate, onSignOut }: Me
       <div className={`menu-overlay${open ? ' open' : ''}`} onClick={onClose} />
 
       <div ref={elementRef} className={`menu-drawer${open ? ' open' : ''}`}>
+        <FirstTimeTips type="menu-close" show={open} />
         <div className="menu-drawer-handle" {...touchHandlers} />
         <div className="menu-drawer-head" {...touchHandlers}>
           <span className="menu-drawer-title">Navigate</span>

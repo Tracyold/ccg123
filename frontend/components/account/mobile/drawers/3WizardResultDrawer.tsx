@@ -18,6 +18,7 @@
 
 import type { WizardResult } from '../../../../lib/wizardResultsService';
 import { useSwipeToClose } from '../../shared/hooks/useSwipeToClose';
+import FirstTimeTips from '../ui/FirstTimeTips';
 
 interface WizardResultDrawerProps {
   open:                    boolean;
@@ -135,6 +136,7 @@ export default function WizardResultDrawer3({
         {/* res-handle: left drag zone -- visual indicator */}
         <div className="res-handle" />
 
+        <FirstTimeTips type="drawer-slide" show={open} />
         {/* res-body: the main content area */}
         <div className="res-body">
 

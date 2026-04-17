@@ -12,6 +12,7 @@
 import { useState } from 'react';
 import { formatMoney, fmtDate, fmtTime } from '../../../../lib/utils';
 import { useSwipeDownToClose } from '../../shared/hooks/useSwipeDownToClose';
+import FirstTimeTips from '../ui/FirstTimeTips';
 
 interface InvoicesPanelProps {
   open:            boolean;
@@ -57,6 +58,7 @@ export default function InvoicesPanel3({
 
   return (
     <div ref={elementRef} className={`slide-panel${open ? ' open' : ''}`}>
+      <FirstTimeTips type="panel-down" show={open} />
 
       {/* Panel header -- from .panel-header in HTML */}
       <div className="panel-header" {...touchHandlers}>

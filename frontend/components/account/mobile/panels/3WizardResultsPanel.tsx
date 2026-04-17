@@ -6,6 +6,7 @@ import type { WizardResult } from '../../../../lib/wizardResultsService';
 // FIX 4: import the drawer
 import WizardResultDrawer3 from '../drawers/3WizardResultDrawer';
 import { useSwipeDownToClose } from '../../shared/hooks/useSwipeDownToClose';
+import FirstTimeTips from '../ui/FirstTimeTips';
 
 interface WizardResultsPanelProps {
   open:                    boolean;
@@ -76,6 +77,7 @@ export default function WizardResultsPanel3({
   return (
     <>
       <div ref={elementRef} className={`slide-panel${open ? ' open' : ''}`}>
+        <FirstTimeTips type="panel-down" show={open} />
         <div className="panel-header" {...touchHandlers}>
           <span className="panel-title">Wizard Results</span>
           <button className="panel-close" onClick={onClose}>✕</button>

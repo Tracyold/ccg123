@@ -13,9 +13,11 @@
 //   for=        → htmlFor=
 //   style="..." → style={{ camelCase }}
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { fmtDate, fmtTime } from '../../../../lib/utils';
 import { useSwipeDownToClose } from '../../shared/hooks/useSwipeDownToClose';
+import { supabase } from '../../../../lib/supabase';
+import FirstTimeTips from '../ui/FirstTimeTips';
 
 interface ServiceRequestPanelProps {
   open:            boolean;
@@ -117,11 +119,99 @@ export default function ServiceRequestPanel3({
     </div>
   );
 
+  // ── Swipeable Tile Component ──
+  function SwipeableSR({ sr, onSelect, onDelete }: { sr: any; onSelect: (sr: any) => void; onDelete: (id: string) => void }) {
+    const [startX, setStartX] = useState(0);
+    const [offsetX, setOffsetX] = useState(0);
+    const [isSwiping, setIsSwiping] = useState(false);
+    const threshold = -80;
+
+    const handleTouchStart = (e: React.TouchEvent) => {
+      setStartX(e.touches[0].clientX - offsetX);
+      setIsSwiping(true);
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+      if (!isSwiping) return;
+      const currentX = e.touches[0].clientX;
+      const diff = currentX - startX;
+      if (diff <= 0) {
+        setOffsetX(Math.max(diff, threshold - 20));
+      }
+    };
+
+    const handleTouchEnd = () => {
+      setIsSwiping(false);
+      if (offsetX < threshold / 2) {
+        setOffsetX(threshold);
+      } else {
+        setOffsetX(0);
+      }
+    };
+
+    return (
+      <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '12px' }}>
+        <button
+          onClick={(e) => { e.stopPropagation(); onDelete(sr.service_request_id); }}
+          style={{
+            position: 'absolute', right: 0, top: 0, bottom: 0, width: 80,
+            background: '#ef4444', color: 'white', border: 'none',
+            fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 700,
+            letterSpacing: '0.1em', textTransform: 'uppercase',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            zIndex: 1
+          }}
+        >
+          Delete
+        </button>
+
+        <div
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          className="sr-card"
+          onClick={() => onSelect(sr)}
+          style={{
+            position: 'relative', zIndex: 2,
+            transform: `translateX(${offsetX}px)`,
+            transition: isSwiping ? 'none' : 'transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1)',
+            minHeight: '140px', // Increased height to fit content
+            display: 'flex', flexDirection: 'column', justifyContent: 'center'
+          }}
+        >
+          <div className="sr-card-top">
+            <div className="sr-card-stone">
+              {sr.service_type?.includes('Unknown') ? 'Unknown Stone' : sr.service_type || 'Service Request'}
+            </div>
+            <span className="sr-card-status">Pending</span>
+          </div>
+          <div className="sr-card-rec">{sr.service_type}</div>
+          <div className="sr-card-date">
+            {sr.created_at ? `${fmtDate(sr.created_at)} · ${fmtTime(sr.created_at)}` : '--'}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const [localSRs, setLocalSRs] = useState(serviceRequests);
+  useEffect(() => { setLocalSRs(serviceRequests); }, [serviceRequests]);
+
+  const handleDeleteSR = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this service request?')) return;
+    setLocalSRs(prev => prev.filter(s => s.service_request_id !== id));
+    try {
+      const { error } = await supabase.from('service_requests').delete().eq('service_request_id', id);
+      if (error) { alert('Failed to delete. Please try again.'); setLocalSRs(serviceRequests); }
+    } catch (err) { setLocalSRs(serviceRequests); }
+  };
+
   return (
     <>
       {/* ── SERVICE REQUESTS LIST PANEL ── */}
       {/* Converted from <div class="slide-panel" id="servicereq-panel"> */}
       <div ref={panelRef} className={`slide-panel${open ? ' open' : ''}`}>
+        <FirstTimeTips type="panel-down" show={open} />
 
         {/* Panel header with + New button */}
         <div className="panel-header" {...panelHandlers}>
@@ -155,8 +245,7 @@ export default function ServiceRequestPanel3({
 
         {/* sr-list: the list of existing service request cards */}
         <div className="sr-list">
-          {serviceRequests.length === 0 ? (
-            // Empty state -- shown when no service requests exist
+          {localSRs.length === 0 ? (
             <div style={{
               fontFamily: 'var(--font-ui)', fontSize: 12, color: 'var(--text-muted)',
               textAlign: 'center', padding: '40px 0', fontStyle: 'italic', opacity: 0.6,
@@ -164,28 +253,13 @@ export default function ServiceRequestPanel3({
               No service requests yet.<br />Create one from your wizard results or tap + New.
             </div>
           ) : (
-            serviceRequests.map(sr => (
-              // sr-card: each service request card
-              // border-left gold accent, clickable to open drawer
-              <div
+            localSRs.map(sr => (
+              <SwipeableSR
                 key={sr.service_request_id}
-                className="sr-card"
-                onClick={() => onSelectSR(sr)}
-              >
-                {/* sr-card-top: stone name + status badge */}
-                <div className="sr-card-top">
-                  <div className="sr-card-stone">
-                    {sr.service_type?.includes('Unknown') ? 'Unknown Stone' : sr.service_type || 'Service Request'}
-                  </div>
-                  <span className="sr-card-status">Pending</span>
-                </div>
-                {/* sr-card-rec: the recommendation/service type */}
-                <div className="sr-card-rec">{sr.service_type}</div>
-                {/* sr-card-date: submission timestamp */}
-                <div className="sr-card-date">
-                  {sr.created_at ? `${fmtDate(sr.created_at)} · ${fmtTime(sr.created_at)}` : '--'}
-                </div>
-              </div>
+                sr={sr}
+                onSelect={onSelectSR}
+                onDelete={handleDeleteSR}
+              />
             ))
           )}
         </div>
@@ -200,6 +274,7 @@ export default function ServiceRequestPanel3({
       />
       {/* nr-sheet: the bottom sheet that slides up */}
       <div ref={sheetRef} className={`nr-sheet${showSRForm ? ' open' : ''}`}>
+        <FirstTimeTips type="panel-down" show={showSRForm} />
 
         {/* Drag handle bar */}
         <div className="nr-handle" {...sheetHandlers} />

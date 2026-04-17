@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { fmtDate } from '../../../../lib/utils';
 import { useSwipeDownToClose } from '../../shared/hooks/useSwipeDownToClose';
 import { supabase } from '../../../../lib/supabase';
+import FirstTimeTips from '../ui/FirstTimeTips';
 
 interface InquiriesPanelProps {
   open:      boolean;
@@ -169,6 +170,7 @@ export default function InquiriesPanel3({ open, inquiries, onClose }: InquiriesP
 
   return (
     <div ref={elementRef} className={`slide-panel${open ? ' open' : ''}`}>
+      <FirstTimeTips type="panel-down" show={open} />
       <div className="panel-header" {...touchHandlers}>
         <span className="panel-title">Inquiries</span>
         <button className="panel-close" onClick={onClose}>✕</button>

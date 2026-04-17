@@ -15,6 +15,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../../../../lib/supabase';
 import { formatMoney, fmtDate, fmtTime } from '../../../../lib/utils';
 import { useSwipeToClose } from '../../shared/hooks/useSwipeToClose';
+import FirstTimeTips from '../ui/FirstTimeTips';
 
 const STATUS_CLASS: Record<string, string> = {
   CREATED:   'wo-s-created',
@@ -88,6 +89,7 @@ export default function WorkOrderDrawer3({
         className={`wo-drawer${open ? ' open' : ''}`}
         {...touchHandlers}
       >
+        <FirstTimeTips type="drawer-slide" show={open} />
         {/* wo-handle: left drag strip -- visual indicator */}
         <div className="wo-handle" />
 

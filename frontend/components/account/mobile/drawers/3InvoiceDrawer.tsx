@@ -13,6 +13,7 @@
 
 import { formatMoney, fmtDate, fmtTime } from '../../../../lib/utils';
 import { useSwipeToClose } from '../../shared/hooks/useSwipeToClose';
+import FirstTimeTips from '../ui/FirstTimeTips';
 
 interface InvoiceDrawerProps {
   open:      boolean;
@@ -45,6 +46,7 @@ export default function InvoiceDrawer3({
         className={`inv-drawer${open ? ' open' : ''}`}
         {...touchHandlers}
       >
+        <FirstTimeTips type="drawer-slide" show={open} />
         {/* inv-drawer-handle: left drag zone -- visual indicator */}
         <div className="inv-drawer-handle" />
 

@@ -9,6 +9,7 @@
 
 import { formatMoney } from '../../../../lib/utils';
 import { useSwipeDownToClose } from '../../shared/hooks/useSwipeDownToClose';
+import FirstTimeTips from '../ui/FirstTimeTips';
 
 const PROFILE_FIELDS = [
   { label: 'Full Name',        key: 'name',             placeholder: 'Full name'         },
@@ -78,6 +79,7 @@ export default function ProfilePanel3({
 
   return (
     <div ref={elementRef} className={`slide-panel${open ? ' open' : ''}`}>
+      <FirstTimeTips type="panel-down" show={open} />
 
       {/* Panel header */}
       <div className="panel-header" {...touchHandlers}>

@@ -2,6 +2,7 @@
 
 import { formatMoney, fmtDate, fmtTime } from '../../../../lib/utils';
 import { useSwipeDownToClose } from '../../shared/hooks/useSwipeDownToClose';
+import FirstTimeTips from '../ui/FirstTimeTips';
 
 const STATUS_STYLE: Record<string, { bg: string; color: string }> = {
   CREATED:   { bg: 'rgba(207,221,78,0.12)',  color: 'var(--gold)' },
@@ -28,6 +29,7 @@ export default function OrdersPanel3({
 
   return (
     <div ref={elementRef} className={`slide-panel${open ? ' open' : ''}`}>
+      <FirstTimeTips type="panel-down" show={open} />
       <div className="panel-header" {...touchHandlers}>
         <span className="panel-title">Work Orders</span>
         <button className="panel-close" onClick={onClose}>✕</button>

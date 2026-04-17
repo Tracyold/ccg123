@@ -13,6 +13,7 @@
 
 import { fmtDate, fmtTime } from '../../../../lib/utils';
 import { useSwipeToClose } from '../../shared/hooks/useSwipeToClose';
+import FirstTimeTips from '../ui/FirstTimeTips';
 
 interface ServiceRequestDrawerProps {
   open:    boolean;
@@ -51,6 +52,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
         className={`shop-item-drawer${open ? ' open' : ''}`}
         {...touchHandlers}
       >
+        <FirstTimeTips type="drawer-slide" show={open} />
         {/* Visual handle on the left edge */}
         <div className="shop-item-handle" />
 
