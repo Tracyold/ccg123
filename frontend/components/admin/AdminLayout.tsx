@@ -27,7 +27,7 @@ export const adminCss = `
 .sb-nav{flex:1;padding:12px 0}
 .ni{display:flex;align-items:center;gap:12px;padding:14px 24px;font-size:13px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;border:none;background:none;width:100%;text-align:left;transition:color .15s;position:relative;font-family:var(--sans)}
 .ni::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gl);opacity:0;transition:opacity .15s}
-.ni.on{color:#d4af37}.ni.on::before{opacity:1}.ni:hover:not(.on){color:#aaa}
+.ni.on{color:var(--gold)}.ni.on::before{opacity:1}.ni:hover:not(.on){color:#aaa}
 .ni-ic{display:none}
 .ni-bell{position:relative;margin-left:auto}
 .ni-badge{position:absolute;top:-6px;right:-8px;background:var(--gl);color:#000;font-size:7.5px;font-weight:700;min-width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0 3px}
@@ -40,7 +40,7 @@ export const adminCss = `
 .ph-actions{display:flex;gap:8px;align-items:center}
 .err-bar{font-size:9.5px;color:var(--er);letter-spacing:.08em;padding:6px 12px;border:1px solid rgba(181,64,64,.25);background:rgba(181,64,64,.07)}
 .btn-add{display:flex;align-items:center;gap:8px;background:var(--gl);color:#000;border:none;padding:11px 20px;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .15s}
-.btn-add:hover:not(:disabled){background:#dcc056}.btn-add:disabled{opacity:.4;cursor:not-allowed}
+.btn-add:hover:not(:disabled){opacity:0.85}.btn-add:disabled{opacity:.4;cursor:not-allowed}
 .btn-sel{background:transparent;color:var(--d1);border:1px solid var(--ln2);padding:11px 20px;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .15s}
 .btn-sel:hover{border-color:var(--g);color:var(--gl)}
 .btn-sel.on{border-color:rgba(207,176,64,.4);color:var(--gl);background:var(--gbg)}
@@ -124,7 +124,7 @@ export const adminCss = `
 .bn{padding:10px 16px;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;border:1px solid rgba(207,176,64,.28);background:var(--gbg);color:var(--gl);cursor:pointer;transition:all .15s}
 .bn:hover{background:var(--gl);color:#000}
 .bp{padding:10px 20px;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;border:none;background:var(--gl);color:#000;cursor:pointer;transition:background .15s}
-.bp:hover:not(:disabled){background:#dcc056}.bp:disabled{opacity:.4;cursor:not-allowed}
+.bp:hover:not(:disabled){opacity:0.85}.bp:disabled{opacity:.4;cursor:not-allowed}
 .photo-blk{background:var(--k2);border:1px solid var(--ln);padding:16px 18px;margin-bottom:14px}
 .photo-l{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--d1);margin-bottom:10px}
 .photo-mr{display:flex;gap:0;margin-bottom:10px}

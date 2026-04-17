@@ -53,8 +53,8 @@ export default function FeasibilityReportPage() {
             <div className="fr-card-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2px' }}>
               {valueProps.map(v => (
                 <div key={v.n} className="fr-card" style={{ padding: '36px 32px', background: 'var(--bg)', border: '1px solid var(--border)' }}>
-                  <p className="fr-card-num" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(80px, 14vw, 140px)', letterSpacing: '0', color: 'var(--gold)', marginBottom: '0', lineHeight: '1' }}>{v.n}</p>
-                  <h3 className="fr-card-title" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(21px, 2.5vw, 28px)', color: 'var(--gold)', marginBottom: '14px', lineHeight: 1.3 }}>{v.title}</h3>
+                  <p className="fr-card-num" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(80px, 14vw, 140px)', letterSpacing: '0', color: 'var(--text-muted)', marginBottom: '0', lineHeight: '1' }}>{v.n}</p>
+                  <h3 className="fr-card-title" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(21px, 2.5vw, 28px)', color: 'var(--text)', marginBottom: '14px', lineHeight: 1.3 }}>{v.title}</h3>
                   <p className="fr-card-body" style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'rgba(var(--text-rgb, 238,238,238),0.85)', lineHeight: 1.85 }}>{v.body}</p>
                 </div>
               ))}
@@ -70,7 +70,7 @@ export default function FeasibilityReportPage() {
             <div className="fr-card-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2px' }}>
               {useCases.map(u => (
                 <div key={u.title} className="fr-card" style={{ padding: '36px 32px', background: 'var(--bg)', border: '1px solid var(--border)' }}>
-                  <h3 className="fr-card-title" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(21px, 2.5vw, 28px)', color: 'var(--gold)', marginBottom: '14px', lineHeight: 1.3 }}>{u.title}</h3>
+                  <h3 className="fr-card-title" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(21px, 2.5vw, 28px)', color: 'var(--text)', marginBottom: '14px', lineHeight: 1.3 }}>{u.title}</h3>
                   <p className="fr-card-body" style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'rgba(var(--text-rgb, 238,238,238),0.85)', lineHeight: 1.85 }}>{u.body}</p>
                 </div>
               ))}

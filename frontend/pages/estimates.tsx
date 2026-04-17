@@ -34,7 +34,7 @@ export default function EstimatesPage() {
             </div>
 
             <div style={{ marginTop: '80px', padding: '64px 24px', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>Ready to start?</p>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '20px' }}>Ready to start?</p>
               <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(27px, 5vw, 48px)', color: 'var(--text)', lineHeight: 1.2, marginBottom: '24px' }}>Get an instant estimate now.</h2>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text)', lineHeight: 1.8, maxWidth: '480px', margin: '0 auto 40px' }}>
                 Answer seven quick questions about your stone and the service you need. No account required.

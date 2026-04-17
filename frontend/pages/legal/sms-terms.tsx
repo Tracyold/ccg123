@@ -9,7 +9,7 @@ const Li = ({ children }: { children: React.ReactNode }) => (
 );
 const Block = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div style={{ marginBottom: '40px' }}>
-    <h2 style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(29x, 17vw, 24px)', color: 'var(--text)', marginBottom: '16px', paddingBottom: '10px', borderBottom: '1px solid #d4af37' }}>{title}</h2>
+    <h2 style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(29x, 17vw, 24px)', color: 'var(--text)', marginBottom: '16px', paddingBottom: '10px', borderBottom: '1px solid var(--border)' }}>{title}</h2>
     {children}
   </div>
 );
@@ -43,9 +43,9 @@ export default function SmsTerms() {
           <p style={{ fontSize: '15px', color: 'var(--text-muted)', marginBottom: '48px' }}>Program Name: Cutting Corners Gems — User Opt-In/Out Account Notifications</p>
 
           {/* Intro */}
-          <div style={{ background: 'var(--gold)', border: '1px solid var(--gold)', padding: '20px 24px', marginBottom: '48px' }}>
+          <div style={{ background: 'var(--bg-deep)', border: '1px solid var(--border)', padding: '20px 24px', marginBottom: '48px' }}>
             <P>By providing a mobile phone number and enabling SMS notification toggles within your account dashboard, you consent to receive transactional SMS notifications related to your account activity. Notifications are optional and can be enabled or disabled individually at any time from your Account Dashboard.</P>
-            <p style={{ fontSize: '17px', color: 'var(--accent)', margin: 0 }}>Cutting Corners Gems does not send unsolicited marketing or promotional SMS messages. All messages are operational in nature and correspond to account activity you have chosen to track.</p>
+            <p style={{ fontSize: '17px', color: 'var(--text)', margin: 0 }}>Cutting Corners Gems does not send unsolicited marketing or promotional SMS messages. All messages are operational in nature and correspond to account activity you have chosen to track.</p>
           </div>
 
           {/* Program Categories */}
@@ -88,8 +88,8 @@ export default function SmsTerms() {
             <SampleMsg label="Work Order Complete" msg="Cutting Corners Gems: Your workorder [work_order_id] for [work_order_gem_type] [work_order_service_type]  is complete! Please click the link to review your invoice, notes, photos and payment options." />
             <SampleMsg label="Work Order Payment Completed" msg="Cutting Corners Gems: Workorder [work_order_id] for [work_order_gem_type] [work_order_service_type] payment is complete. Your item will be shipped to the address on the your workorder within 24 horus." />
             <SampleMsg label="Your item Is On the Way" msg="Cutting Corners Gems: Your gemsone for workorder [work_order_id] for [work_order_gem_type] [work_order_service_type] has been shipped! Please click the link to view tracking information [link]. Please opt in to shipping notifications in your account dashboard to recieve shipping updates" />  
-                        <div style={{ background: 'var(--gold)', border: '1px solid var(--gold)', padding: '16px 20px', marginTop: '16px' }}>
-              <p style={{ fontSize: '17px', color: 'var(--accent)', lineHeight: 1.75, margin: 0 }}>
+                        <div style={{ background: 'var(--bg-deep)', border: '1px solid var(--border)', padding: '16px 20px', marginTop: '16px' }}>
+              <p style={{ fontSize: '17px', color: 'var(--text)', lineHeight: 1.75, margin: 0 }}>
                 <strong>Active Work Order Requirement:</strong> Work order notifications cannot be disabled while you have an open work order. Because your gemstone is in our possession during this time, we require the ability to reach you with status updates and required confirmations. This toggle becomes available to turn off once your work order is complete and your item has been returned.
               </p>
             </div>
@@ -152,8 +152,8 @@ export default function SmsTerms() {
           </Block>
 
           {/* Contact */}
-          <div style={{ marginTop: '32px', padding: '24px', border: '1px solid var(--gold)', background: 'var(--gold)' }}>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '15px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '12px' }}>Contact</p>
+          <div style={{ marginTop: '32px', padding: '24px', border: '1px solid var(--border)', background: 'var(--bg-deep)' }}>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '15px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '12px' }}>Contact</p>
             <p style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 2, margin: 0 }}>
               Cutting Corners Gems<br />
               850 S River Dr #2117, Tempe, Arizona 85281<br />

@@ -10,7 +10,7 @@ import InquiryDetailModal from '../../../components/admin/users/InquiryDetailMod
 import WorkOrderDetailModal from '../../../components/admin/users/WorkOrderDetailModal';
 
 const STATUS_COLORS: Record<string, { bg: string; color: string }> = {
-  CREATED: { bg: 'rgba(184,154,42,0.08)', color: 'var(--gold)' },
+  CREATED: { bg: 'var(--bg-deep)', color: 'var(--gold)' },
   ACCEPTED: { bg: 'rgba(90,150,90,0.1)', color: 'var(--accent)' },
   COMPLETED: { bg: 'rgba(80,120,200,0.1)', color: 'var(--text-muted)' },
   CONFIRMED: { bg: 'rgba(120,80,200,0.12)', color: 'var(--text-muted)' },

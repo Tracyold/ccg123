@@ -282,16 +282,16 @@ const portfolioCss = `
 .portfolio-card-meta {
   padding: 8px 2px 0;
 }
-.portfolio-card-year {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 0.10em;
-  color: #fac825;
-  margin: 0;
-  text-align: left;
-}
+  .portfolio-card-year {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    color: var(--gold);
+    margin: 0;
+    text-align: left;
+  }
 @media (max-width: 767px) {
   .portfolio-card-year { font-size: 10px; }
 }
@@ -309,18 +309,17 @@ const portfolioCss = `
   from { opacity: 0; }
   to { opacity: 1; }
 }
-.portfolio-modal {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  box-shadow: 0 28px 90px rgba(0,0,0,0.70);
-  max-width: 680px;
-  max-height: 92vh;
-  overflow-y: auto;
-  position: relative;
-  width: 90%;
-  animation: modalScaleIn 220ms ease-out;
-}
+  .portfolio-modal {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    max-width: 680px;
+    max-height: 92vh;
+    overflow-y: auto;
+    position: relative;
+    width: 90%;
+    animation: modalScaleIn 220ms ease-out;
+  }
 @keyframes modalScaleIn {
   from { opacity: 0; transform: scale(0.985); }
   to { opacity: 1; transform: scale(1); }

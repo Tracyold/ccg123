@@ -9,7 +9,7 @@ const Li = ({ children }: { children: React.ReactNode }) => (
 );
 const Sec = ({ n, title, children }: { n: string; title: string; children: React.ReactNode }) => (
   <div style={{ marginBottom: '40px' }}>
-    <h2 style={{ fontFamily: 'var(--font-ui)', fontSize: '15px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.8)', marginBottom: '14px' }}>{n}. {title}</h2>
+    <h2 style={{ fontFamily: 'var(--font-ui)', fontSize: '15px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '14px' }}>{n}. {title}</h2>
     {children}
   </div>
 );
@@ -62,8 +62,8 @@ export default function PrivacyPolicy() {
             <P>SMS notifications are delivered through Twilio, a third-party communications provider. When SMS notifications are enabled in your account dashboard, your phone number may be transmitted to Twilio solely for delivering the operational notifications you have chosen to receive.</P>
             <P>Twilio operates under telecommunications industry regulations enforcing user opt-in requirements, opt-out capability, message transparency, and carrier compliance monitoring.</P>
             <P>Users may disable SMS notifications at any time within their Account Dashboard → Notification Settings, or by replying STOP to any message.</P>
-            <div style={{ background: 'var(--gold)', border: '1px solid var(--gold)', padding: '16px 20px', marginBottom: '16px' }}>
-              <p style={{ fontSize: '13px', color: 'var(--accent)', lineHeight: 1.75, margin: 0 }}>
+            <div style={{ background: 'var(--bg-deep)', border: '1px solid var(--border)', padding: '16px 20px', marginBottom: '16px' }}>
+              <p style={{ fontSize: '13px', color: 'var(--text)', lineHeight: 1.75, margin: 0 }}>
                 <strong>Exception for Active Work Orders:</strong> If you have an open or active work order, SMS notifications for work order status updates cannot be disabled until the work order is completed or closed. These notifications are required to ensure both parties remain informed while your gemstone is in our possession. Once the work order is completed, the toggle may be adjusted normally.
               </p>
             </div>
@@ -111,7 +111,7 @@ export default function PrivacyPolicy() {
           </Sec>
 
           <Sec n="15" title="Contact Information">
-            <div style={{ padding: '24px', border: '1px solid var(--gold)', background: 'var(--gold)' }}>
+            <div style={{ padding: '24px', border: '1px solid var(--border)', background: 'var(--bg-deep)' }}>
               <p style={{ fontSize: '13px', color: 'var(--text-muted)', lineHeight: 2, margin: 0 }}>
                 Cutting Corners Gems<br />
                 850 S River Dr #2117, Tempe, Arizona 85281<br />

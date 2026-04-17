@@ -73,18 +73,13 @@ export default function AdminLoginPage() {
       <div
         style={{
           background: 'var(--bg-deep)',
-          border: '0.5px solid rgba(214,180,70,0.55)',
+          border: '1px solid var(--border)',
           padding: '40px',
           maxWidth: '480px',
           width: '100%',
-          animation: 'adminGlow 4s ease-in-out infinite',
         }}
       >
         <style dangerouslySetInnerHTML={{ __html: `
-          @keyframes adminGlow {
-            0%, 100% { box-shadow: 0 0 40px rgba(214,180,70,0.08); }
-            50% { box-shadow: 0 0 60px rgba(214,180,70,0.18); }
-          }
           @keyframes adminFadeIn {
             from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
@@ -105,9 +100,9 @@ export default function AdminLoginPage() {
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            style={{ width: '100%', background: 'var(--bg)', border: '1px solid var(--border)', height: '40px', padding: '0 10px', color: 'var(--gold)', fontFamily: 'var(--font-body)', fontSize: '14px', marginBottom: '16px', outline: 'none', transition: 'border 200ms ease, box-shadow 200ms ease' }}
-            onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-            onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }}
+            style={{ width: '100%', background: 'var(--bg)', border: '1px solid var(--border)', height: '40px', padding: '0 10px', color: 'var(--text)', fontFamily: 'var(--font-body)', fontSize: '14px', marginBottom: '16px', outline: 'none', transition: 'border 200ms ease' }}
+            onFocus={e => { e.target.style.borderColor = 'var(--gold)'; }}
+            onBlur={e => { e.target.style.borderColor = 'var(--border)'; }}
             onKeyDown={e => { if (e.key === 'Enter') handleLogin(); }}
           />
 
@@ -119,9 +114,9 @@ export default function AdminLoginPage() {
               type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={e => setPassword(e.target.value)}
-              style={{ width: '100%', background: 'var(--bg)', border: '1px solid var(--border)', height: '40px', padding: '0 40px 0 10px', color: 'var(--gold)', fontFamily: 'var(--font-body)', fontSize: '14px', outline: 'none', transition: 'border 200ms ease, box-shadow 200ms ease' }}
-              onFocus={e => { e.target.style.borderColor = 'rgba(214,180,70,0.55)'; e.target.style.boxShadow = '0 0 10px rgba(214,180,70,0.15)'; }}
-              onBlur={e => { e.target.style.borderColor = 'var(--border)'; e.target.style.boxShadow = 'none'; }}
+              style={{ width: '100%', background: 'var(--bg)', border: '1px solid var(--border)', height: '40px', padding: '0 40px 0 10px', color: 'var(--text)', fontFamily: 'var(--font-body)', fontSize: '14px', outline: 'none', transition: 'border 200ms ease' }}
+              onFocus={e => { e.target.style.borderColor = 'var(--gold)'; }}
+              onBlur={e => { e.target.style.borderColor = 'var(--border)'; }}
               onKeyDown={e => { if (e.key === 'Enter') handleLogin(); }}
             />
             <button
@@ -138,7 +133,7 @@ export default function AdminLoginPage() {
           <button
             onClick={handleLogin}
             disabled={loading}
-            style={{ width: '100%', background: 'transparent', border: '1px solid rgba(214,180,70,0.9)', color: 'var(--gold)', fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', height: '44px', cursor: 'pointer', boxShadow: '0 0 14px rgba(214,180,70,0.35)', transition: 'all 200ms ease' }}
+            style={{ width: '100%', background: 'var(--gold)', border: 'none', color: 'var(--bg)', fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', height: '44px', cursor: 'pointer', transition: 'all 200ms ease' }}
           >
             {loading ? '...' : 'SIGN IN'}
           </button>

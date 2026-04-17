@@ -476,23 +476,20 @@ const shopCss = `
   transform: translateY(0px);
 }
 .shop-card:hover .shop-card-img {
-  border-color: rgba(0, 0, 0, 0.16);
-  box-shadow: 0 18px 48px rgba(0,0,0,0.65);
+  border-color: var(--border);
 }
 .shop-card-img {
   position: relative;
+  aspect-r.shop-card-img {
+  position: relative;
   aspect-ratio: 1 / 1;
-  background: #ffffff20;
-  border-radius: 1.7px;
-  border: 1.7px solid rgba(20, 16, 16, 0.98);
+  border: 1.7px solid var(--border);
   overflow: hidden;
-  box-shadow: 0 0px 1px rgba(0,0,0,0.35);
-  transition: border-color 10ms ease-out, box-shadow 50ms ease-in;
+  transition: border-color 10ms ease-out;
 }
 .shop-card-vignette {
   position: absolute;
   inset: 10px;
-  box-shadow: inset 8 0 30px 12px rgba(0, 0, 0, 0.12);
   pointer-events: none;
   z-index: 2;
 }
@@ -527,7 +524,7 @@ const shopCss = `
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: #d4af37;
+    color: var(--gold);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

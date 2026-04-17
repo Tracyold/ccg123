@@ -645,7 +645,7 @@ const accountCss = `
 .acc-label { font-family: var(--font-ui); font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 5px; }
 .acc-input { width: 100%; background: var(--border); border: 1px solid var(--border); padding: 10px 12px; color: var(--text); font-family: var(--font-body); font-size: 13px; outline: none; }
 .acc-input:focus { border-color: var(--gold); }
-.acc-btn-gold { background: var(--gold); color: #050505; border: none; padding: 12px 20px; font-family: var(--font-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; width: 100%; }
+.acc-btn-gold { background: var(--gold); color: var(--bg); border: none; padding: 12px 20px; font-family: var(--font-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; width: 100%; }
 .acc-btn-gold:disabled { opacity: 0.4; cursor: not-allowed; }
 .acc-btn-ghost { background: var(--bg); border: 1px solid var(--border); color: var(--accent); padding: 10px 16px; font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; }
 .acc-tab { padding: 10px 0; font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); background: none; border: none; border-bottom: 1px solid transparent; cursor: pointer; }
