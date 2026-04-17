@@ -20,7 +20,7 @@ function ShopTile({
   onFav: (id: string) => void;
   onClick?: (item: ShopProduct) => void;
 }) {
-  const [animating, setAnimating] = useState(false);
+  const heartIconRef = useRef<HTMLSpanElement>(null);
 
   const handlePhotoClick = (e: React.MouseEvent) => {
     // We only trigger the drawer if the click is directly on the photo area
@@ -33,18 +33,17 @@ function ShopTile({
     // CRITICAL: Stop the click from ever reaching any parent div
     e.preventDefault();
     e.stopPropagation();
-    
-    // Toggle the favorite
+
+    const icon = heartIconRef.current;
+    if (icon) {
+      icon.style.animation = 'none';
+      void icon.offsetWidth;
+      icon.style.animation = 'favPop 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+    }
+
+    // Toggle the favorite after the animation has been kicked off so the
+    // clicked icon always visibly pops, regardless of which list is rerendering.
     onFav(item.product_id);
-    
-    // Trigger the pop animation
-    setAnimating(false); // Reset first to allow re-triggering
-    window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => {
-        setAnimating(true);
-        window.setTimeout(() => setAnimating(false), 500);
-      });
-    });
   };
 
   const photoUrl = getPhotoUrl(item.photo_url);
@@ -98,7 +97,6 @@ function ShopTile({
           onMouseDown={(e) => e.stopPropagation()}
           onTouchStart={(e) => e.stopPropagation()}
           onClick={handleFav}
-          className={animating ? 'fav-pop' : ''}
           style={{
             background: 'none',
             border: 'none',
@@ -119,11 +117,14 @@ function ShopTile({
           }}
           aria-label={isFav ? 'Remove from saved items' : 'Add to saved items'}
         >
-          <span style={{ 
-            display: 'inline-block',
-            transform: 'none',
-            pointerEvents: 'none'
-          }}>
+          <span
+            ref={heartIconRef}
+            style={{
+              display: 'inline-block',
+              transform: 'none',
+              pointerEvents: 'none'
+            }}
+          >
             {isFav ? '☻' : '☹︎'}
           </span>
         </button>
