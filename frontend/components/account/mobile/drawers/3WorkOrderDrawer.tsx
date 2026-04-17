@@ -14,7 +14,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../../../../lib/supabase';
 import { formatMoney, fmtDate, fmtTime } from '../../../../lib/utils';
-import { useSwipeToClose } from '../shared/hooks/useSwipeToClose';
+import { useSwipeToClose } from '../../shared/hooks/useSwipeToClose';
 
 const STATUS_CLASS: Record<string, string> = {
   CREATED:   'wo-s-created',

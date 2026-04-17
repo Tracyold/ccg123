@@ -17,7 +17,7 @@
 //   style="..." → style={{ camelCase }}
 
 import type { WizardResult } from '../../../../lib/wizardResultsService';
-import { useSwipeToClose } from '../shared/hooks/useSwipeToClose';
+import { useSwipeToClose } from '../../shared/hooks/useSwipeToClose';
 
 interface WizardResultDrawerProps {
   open:                    boolean;

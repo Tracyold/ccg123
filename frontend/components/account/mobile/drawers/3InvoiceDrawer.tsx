@@ -12,7 +12,7 @@
 //   style="..." → style={{ camelCase }}
 
 import { formatMoney, fmtDate, fmtTime } from '../../../../lib/utils';
-import { useSwipeToClose } from '../shared/hooks/useSwipeToClose';
+import { useSwipeToClose } from '../../shared/hooks/useSwipeToClose';
 
 interface InvoiceDrawerProps {
   open:      boolean;

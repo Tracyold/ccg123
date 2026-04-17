@@ -12,7 +12,7 @@
 //   style="..." → style={{ camelCase }}
 
 import { fmtDate, fmtTime } from '../../../../lib/utils';
-import { useSwipeToClose } from '../shared/hooks/useSwipeToClose';
+import { useSwipeToClose } from '../../shared/hooks/useSwipeToClose';
 
 interface ServiceRequestDrawerProps {
   open:    boolean;
