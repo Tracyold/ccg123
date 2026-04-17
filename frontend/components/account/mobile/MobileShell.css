@@ -23,7 +23,7 @@
 /* ── Mobile browser fixes ── */
 html {
   /* Fluid base font size: scales between 14px and 18px based on viewport width */
-  font-size: clamp(14px, 4vw, 18px);
+  font-size: clamp(17px, 4.5vw, 20px);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -90,7 +90,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .nav-logo {
   font-family: var(--font-display);
-  font-size: clamp(11px, 2.8vw, 13px);
+  font-size: clamp(14px, 3.5vw, 16px);
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text);
@@ -108,7 +108,7 @@ button, [role="button"] { touch-action: manipulation; }
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: clamp(11px, 3vw, 14px);
+  font-size: clamp(15px, 4vw, 18px);
   transition: all 180ms ease;
   flex-shrink: 0;
 }
@@ -147,7 +147,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .dr-name {
   font-family: var(--font-display);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(17px, 4.5vw, 20px);
   letter-spacing: 0.04em;
 }
 .dr-close {
@@ -169,7 +169,7 @@ button, [role="button"] { touch-action: manipulation; }
 .dr-dot { width: 0.4375rem; height: 0.4375rem; border-radius: 50%; flex-shrink: 0; }
 .dr-lbl {
   font-family: var(--font-mono);
-  font-size: clamp(9px, 2.3vw, 11px);
+  font-size: clamp(13px, 3.5vw, 15px);
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--text-muted); flex: 1;
 }
@@ -187,7 +187,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .dr-foot-btn, .dr-exit {
   font-family: var(--font-mono);
-  font-size: clamp(9px, 2.3vw, 11px);
+  font-size: clamp(13px, 3.5vw, 15px);
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--text-muted); cursor: pointer;
 }
@@ -214,7 +214,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .welcome-meta {
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2.1vw, 9px);
+  font-size: clamp(12px, 3vw, 14px);
   letter-spacing: 0.26em; text-transform: uppercase; color: var(--text-muted);
 }
 .welcome-meta span { color: var(--gold); }
@@ -256,20 +256,20 @@ button, [role="button"] { touch-action: manipulation; }
 .tile.lit .t-badge { display: inline-flex; }
 .t-label {
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2.1vw, 9px);
+  font-size: clamp(12px, 3vw, 14px);
   letter-spacing: 0.24em; text-transform: uppercase;
   color: var(--text-muted); margin-bottom: 0.35em;
 }
 .t-main {
   font-family: var(--font-display);
-  font-size: clamp(15px, 4.5vw, 19px);
+  font-size: clamp(19px, 5.5vw, 23px);
   line-height: 1.3; color: var(--text);
   font-weight: 400; letter-spacing: 0.02em;
   transition: color 280ms ease;
 }
 .t-sub {
   font-family: var(--font-ui);
-  font-size: clamp(10px, 2.6vw, 11px);
+  font-size: clamp(17px, 4.5vw, 20px);
   color: var(--text-muted); margin-top: 0.35em; line-height: 1.5;
 }
 .feed-block { display: flex; flex-direction: column; gap: clamp(0.375rem, 2vw, 0.625rem); margin-bottom: clamp(0.375rem, 2vw, 0.625rem); }
@@ -281,7 +281,7 @@ button, [role="button"] { touch-action: manipulation; }
 .fdiv-line { flex: 1; height: 0.5px; background: var(--bdr2); }
 .fdiv-lbl {
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2.1vw, 9px);
+  font-size: clamp(12px, 3vw, 14px);
   letter-spacing: 0.26em; text-transform: uppercase;
   color: var(--text-muted); white-space: nowrap; opacity: 0.6;
 }
@@ -305,7 +305,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .shop-name {
   font-family: var(--font-display);
-  font-size: clamp(11px, 2.8vw, 13px);
+  font-size: clamp(14px, 3.5vw, 16px);
   color: var(--text); letter-spacing: 0.03em; margin-bottom: 0.125em;
 }
 /* overlay that appears on first tap */
@@ -318,12 +318,12 @@ button, [role="button"] { touch-action: manipulation; }
 .shop-thumb.tapped .inv-overlay { opacity: 1; }
 .inv-price {
   font-family: var(--font-mono);
-  font-size: clamp(15px, 4.5vw, 19px);
+  font-size: clamp(19px, 5.5vw, 23px);
   font-weight: 700; color: #fff; margin-bottom: 0.25em;
 }
 .inv-date {
   font-family: var(--font-ui);
-  font-size: clamp(9px, 2.3vw, 11px);
+  font-size: clamp(13px, 3.5vw, 15px);
   letter-spacing: 0.1em; color: rgba(255,255,255,0.7);
 }
 .inv-tap-hint {
@@ -450,7 +450,7 @@ button, [role="button"] { touch-action: manipulation; }
   border-radius: 0.375em;
   padding: clamp(0.5rem, 2.3vw, 0.6875rem) clamp(0.6875rem, 3vw, 0.9375rem);
   color: var(--text); font-family: var(--font-ui);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(17px, 4.5vw, 20px);
   outline: none; transition: border-color 150ms ease;
 }
 .chat-input:focus { border-color: var(--gold); }
@@ -491,7 +491,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .menu-drawer-title {
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2.1vw, 9px);
+  font-size: clamp(12px, 3vw, 14px);
   letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted);
 }
 .menu-drawer-close {
@@ -517,7 +517,7 @@ button, [role="button"] { touch-action: manipulation; }
   color: var(--text); flex: 1;
 }
 .menu-item-arrow {
-  font-size: clamp(11px, 2.5vw, 13px);
+  font-size: clamp(14px, 3.5vw, 16px);
   color: var(--text-muted); opacity: 0.35;
 }
 
@@ -550,7 +550,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .sms-mtitle {
   font-family: var(--font-mono);
-  font-size: clamp(9px, 2.3vw, 11px);
+  font-size: clamp(13px, 3.5vw, 15px);
   letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-muted);
 }
 .sms-mclose {
@@ -572,7 +572,7 @@ button, [role="button"] { touch-action: manipulation; }
 .sms-lbl.on { color: var(--gold); }
 .sms-desc {
   font-family: var(--font-ui);
-  font-size: clamp(10px, 2.6vw, 11px);
+  font-size: clamp(14px, 3.5vw, 16px);
   color: var(--text-muted); line-height: 1.45;
 }
 .pill {
@@ -617,7 +617,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .order-meta {
   font-family: var(--font-ui);
-  font-size: clamp(10px, 2.6vw, 11px);
+  font-size: clamp(14px, 3.5vw, 16px);
   color: var(--text-muted);
 }
 .order-price {
@@ -628,7 +628,7 @@ button, [role="button"] { touch-action: manipulation; }
 .order-accept {
   background: var(--gold); color: var(--bg-deep); border: none;
   padding: 0.5em 1em; font-family: var(--font-mono);
-  font-size: clamp(8px, 2.1vw, 9px);
+  font-size: clamp(12px, 3vw, 14px);
   letter-spacing: 0.18em; text-transform: uppercase;
   cursor: pointer; margin-top: clamp(0.5rem, 2.5vw, 0.75rem);
 }
@@ -640,14 +640,14 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .profile-label {
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2.1vw, 9px);
+  font-size: clamp(12px, 3vw, 14px);
   letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--text-muted); margin-bottom: 0.375em; display: block;
 }
 .profile-input {
   width: 100%; background: var(--bg-card); border: 0.5px solid var(--bdr2);
   color: var(--text); font-family: var(--font-ui);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(17px, 4.5vw, 20px);
   padding: clamp(0.5625rem, 2.5vw, 0.8125rem) clamp(0.625rem, 3vw, 0.875rem);
   outline: none; transition: border-color 150ms ease;
 }
@@ -655,7 +655,7 @@ button, [role="button"] { touch-action: manipulation; }
 .profile-save {
   width: 100%; background: var(--gold); color: var(--bg-deep); border: none;
   padding: clamp(0.6875rem, 3vw, 0.9375rem); font-family: var(--font-mono);
-  font-size: clamp(9px, 2.3vw, 11px);
+  font-size: clamp(13px, 3.5vw, 15px);
   letter-spacing: 0.2em; text-transform: uppercase;
   cursor: pointer; margin-top: var(--sp-2);
 }
@@ -676,7 +676,7 @@ button, [role="button"] { touch-action: manipulation; }
 .sr-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.375em; }
 .sr-card-stone {
   font-family: var(--font-display);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(17px, 4.5vw, 20px);
   color: var(--text);
 }
 .sr-card-status {
@@ -687,7 +687,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .sr-card-rec {
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2.1vw, 9px);
+  font-size: clamp(12px, 3vw, 14px);
   letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--text-muted); margin-bottom: 0.25em;
 }
@@ -725,7 +725,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .nr-title {
   font-family: var(--font-mono);
-  font-size: clamp(9px, 2.3vw, 11px);
+  font-size: clamp(13px, 3.5vw, 15px);
   letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-muted);
 }
 .nr-close {
@@ -737,7 +737,7 @@ button, [role="button"] { touch-action: manipulation; }
 .nr-field-head { display: flex; align-items: center; gap: 0.375em; margin-bottom: 0.375em; }
 .nr-label {
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2.1vw, 9px);
+  font-size: clamp(12px, 3vw, 14px);
   letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted);
 }
 .nr-info-btn {
@@ -755,7 +755,7 @@ button, [role="button"] { touch-action: manipulation; }
   padding: clamp(0.5rem, 2.5vw, 0.75rem) clamp(0.625rem, 3vw, 0.875rem);
   margin-bottom: clamp(0.5rem, 2.5vw, 0.75rem);
   font-family: var(--font-ui);
-  font-size: clamp(10px, 2.6vw, 11px);
+  font-size: clamp(14px, 3.5vw, 16px);
   color: var(--text-muted); line-height: 1.65;
 }
 .nr-tooltip.show { display: block; }
@@ -773,7 +773,7 @@ button, [role="button"] { touch-action: manipulation; }
 .nr-select-wrap { position: relative; }
 .nr-select-arrow {
   position: absolute; right: 0.75em; top: 50%; transform: translateY(-50%);
-  font-size: clamp(9px, 2.3vw, 11px); color: var(--text-muted); pointer-events: none;
+  font-size: clamp(13px, 3.5vw, 15px); color: var(--text-muted); pointer-events: none;
 }
 .nr-photo-area {
   border: 0.5px dashed var(--bdr2);
@@ -784,7 +784,7 @@ button, [role="button"] { touch-action: manipulation; }
 .nr-photo-area:hover { border-color: var(--gold); }
 .nr-photo-area-label {
   font-family: var(--font-ui);
-  font-size: clamp(11px, 2.8vw, 13px);
+  font-size: clamp(14px, 3.5vw, 16px);
   color: var(--text-muted); line-height: 1.6;
 }
 .nr-photo-area-icon { font-size: clamp(20px, 5.5vw, 26px); margin-bottom: 0.5em; opacity: 0.4; }
@@ -808,7 +808,7 @@ button, [role="button"] { touch-action: manipulation; }
 .nr-submit-btn {
   width: 100%; background: var(--gold); color: var(--bg-deep); border: none;
   padding: clamp(0.75rem, 3.5vw, 1rem); font-family: var(--font-mono);
-  font-size: clamp(9px, 2.3vw, 11px);
+  font-size: clamp(13px, 3.5vw, 15px);
   letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer;
 }
 .nr-req-note {
@@ -870,7 +870,7 @@ button, [role="button"] { touch-action: manipulation; }
 /* Badges and close buttons */
 .sr-drawer-badge, .wo-status-badge {
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2.1vw, 9px);
+  font-size: clamp(12px, 3vw, 14px);
   letter-spacing: 0.18em; text-transform: uppercase;
   padding: 0.2em 0.6em; flex-shrink: 0;
   background: rgba(0,0,0,0.15); color: var(--bg-deep);
@@ -886,7 +886,7 @@ button, [role="button"] { touch-action: manipulation; }
   background: none; border: 0.5px solid #ccc; color: #555;
   width: clamp(28px, 7.5vw, 34px); height: clamp(28px, 7.5vw, 34px);
   display: flex; align-items: center; justify-content: center;
-  cursor: pointer; font-size: clamp(13px, 3.5vw, 15px); border-radius: 50%;
+  cursor: pointer; font-size: clamp(17px, 4.5vw, 20px); border-radius: 50%;
 }
 
 /* Drawer scroll areas */
@@ -916,7 +916,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .sr-drawer-val {
   font-family: var(--font-ui);
-  font-size: clamp(11px, 2.8vw, 13px);
+  font-size: clamp(14px, 3.5vw, 16px);
   color: var(--text); text-align: right; max-width: 60%;
 }
 .sr-drawer-note {
@@ -951,13 +951,13 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .wo-log-change {
   font-family: var(--font-ui);
-  font-size: clamp(11px, 2.8vw, 13px);
+  font-size: clamp(14px, 3.5vw, 16px);
   color: var(--text); line-height: 1.5;
 }
 .wo-accept-btn {
   width: 100%; background: var(--gold); color: var(--bg-deep); border: none;
   padding: clamp(0.75rem, 3.5vw, 1rem); font-family: var(--font-mono);
-  font-size: clamp(9px, 2.3vw, 11px);
+  font-size: clamp(13px, 3.5vw, 15px);
   letter-spacing: 0.2em; text-transform: uppercase;
   cursor: pointer; margin-bottom: var(--sp-2);
 }
@@ -971,17 +971,17 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .pdf-brand { font-family: var(--font-display); font-size: clamp(15px, 4vw, 19px); color: #1a1a1a; letter-spacing: 0.04em; }
 .pdf-brand-sub { font-size: clamp(9px, 2.3vw, 10px); letter-spacing: 0.15em; text-transform: uppercase; color: #888; margin-top: 0.125em; }
-.pdf-inv-num { font-family: var(--font-mono); font-size: clamp(10px, 2.6vw, 11px); color: #888; text-align: right; }
+.pdf-inv-num { font-family: var(--font-mono); font-size: clamp(14px, 3.5vw, 16px); color: #888; text-align: right; }
 .pdf-label { font-size: clamp(8px, 2vw, 9px); letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-bottom: 0.25em; font-family: var(--font-mono); }
-.pdf-name { font-size: clamp(13px, 3.5vw, 15px); color: #1a1a1a; font-family: var(--font-ui); font-weight: 600; }
-.pdf-addr { font-size: clamp(11px, 2.8vw, 13px); color: #555; font-family: var(--font-ui); line-height: 1.6; }
+.pdf-name { font-size: clamp(17px, 4.5vw, 20px); color: #1a1a1a; font-family: var(--font-ui); font-weight: 600; }
+.pdf-addr { font-size: clamp(14px, 3.5vw, 16px); color: #555; font-family: var(--font-ui); line-height: 1.6; }
 .pdf-items { width: 100%; border-collapse: collapse; margin-bottom: clamp(1rem, 4.5vw, 1.375rem); }
 .pdf-items th { font-size: clamp(8px, 2vw, 9px); letter-spacing: 0.18em; text-transform: uppercase; color: #888; font-family: var(--font-mono); padding: clamp(0.4rem, 2vw, 0.625rem) 0; border-bottom: 1px solid #e0e0e0; text-align: left; font-weight: 400; }
 .pdf-items th:last-child { text-align: right; }
 .pdf-items td { font-size: clamp(12px, 3.2vw, 13px); color: #1a1a1a; font-family: var(--font-ui); padding: clamp(0.5rem, 2.5vw, 0.75rem) 0; border-bottom: 0.5px solid #f0f0f0; vertical-align: top; }
 .pdf-items td:last-child { text-align: right; font-family: var(--font-mono); }
 .pdf-total-row { display: flex; justify-content: space-between; align-items: center; padding: clamp(0.75rem, 3.5vw, 1rem) 0; border-top: 2px solid #1a1a1a; margin-top: 0.25em; }
-.pdf-total-lbl { font-size: clamp(10px, 2.6vw, 11px); letter-spacing: 0.2em; text-transform: uppercase; color: #1a1a1a; font-family: var(--font-mono); }
+.pdf-total-lbl { font-size: clamp(14px, 3.5vw, 16px); letter-spacing: 0.2em; text-transform: uppercase; color: #1a1a1a; font-family: var(--font-mono); }
 .pdf-total-amt { font-size: clamp(18px, 4.7vw, 21px); font-weight: 700; color: #1a1a1a; font-family: var(--font-mono); }
 .pdf-footer { margin-top: clamp(1.25rem, 5.5vw, 1.75rem); padding-top: clamp(0.875rem, 4vw, 1.125rem); border-top: 0.5px solid #e0e0e0; text-align: center; }
 .pdf-footer-txt { font-size: clamp(9px, 2.3vw, 10px); color: #aaa; font-family: var(--font-ui); line-height: 1.6; }
@@ -1006,7 +1006,7 @@ button, [role="button"] { touch-action: manipulation; }
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
   font-family: var(--font-mono);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(17px, 4.5vw, 20px);
   font-weight: 700;
 }
 .wiz-band-label { display: none; }
@@ -1023,13 +1023,13 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .wiz-empty-sub {
   font-family: var(--font-ui);
-  font-size: clamp(11px, 2.8vw, 13px);
+  font-size: clamp(14px, 3.5vw, 16px);
   color: var(--text-muted); line-height: 1.6;
 }
 .wiz-empty-link {
   display: inline-block; margin-top: clamp(0.875rem, 4vw, 1.25rem);
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2.1vw, 9px);
+  font-size: clamp(12px, 3vw, 14px);
   letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--tile-feasib); border: 0.5px solid var(--tile-feasib);
   padding: clamp(0.5rem, 2.5vw, 0.75rem) clamp(1rem, 4.5vw, 1.375rem);
@@ -1045,7 +1045,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .res-band-badge {
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2.1vw, 9px);
+  font-size: clamp(12px, 3vw, 14px);
   letter-spacing: 0.18em; text-transform: uppercase;
   padding: 0.2em 0.6em; flex-shrink: 0;
   background: rgba(0,0,0,0.15); color: var(--bg-deep); border: none;
@@ -1062,11 +1062,11 @@ button, [role="button"] { touch-action: manipulation; }
 .res-ring { position: relative; width: clamp(60px, 16vw, 76px); height: clamp(60px, 16vw, 76px); flex-shrink: 0; }
 .res-ring-num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: clamp(13px, 3.7vw, 17px); font-weight: 700; }
 .res-stone-name { font-family: var(--font-display); font-size: clamp(15px, 4vw, 19px); color: var(--text); margin-bottom: 0.25em; line-height: 1.2; }
-.res-stone-meta { font-family: var(--font-ui); font-size: clamp(10px, 2.6vw, 11px); color: var(--text-muted); line-height: 1.6; }
-.res-rec { font-family: var(--font-mono); font-size: clamp(8px, 2.1vw, 9px); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 0.375em; }
+.res-stone-meta { font-family: var(--font-ui); font-size: clamp(14px, 3.5vw, 16px); color: var(--text-muted); line-height: 1.6; }
+.res-rec { font-family: var(--font-mono); font-size: clamp(12px, 3vw, 14px); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 0.375em; }
 .res-section { margin-bottom: clamp(1.125rem, 5vw, 1.375rem); }
-.res-section-label { font-family: var(--font-mono); font-size: clamp(8px, 2.1vw, 9px); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.625em; padding-bottom: 0.375em; border-bottom: 0.5px solid var(--border); }
-.res-date { font-family: var(--font-mono); font-size: clamp(8px, 2.1vw, 9px); letter-spacing: 0.14em; color: var(--text-muted); margin-top: clamp(1.125rem, 5vw, 1.375rem); opacity: 0.6; }
+.res-section-label { font-family: var(--font-mono); font-size: clamp(12px, 3vw, 14px); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.625em; padding-bottom: 0.375em; border-bottom: 0.5px solid var(--border); }
+.res-date { font-family: var(--font-mono); font-size: clamp(12px, 3vw, 14px); letter-spacing: 0.14em; color: var(--text-muted); margin-top: clamp(1.125rem, 5vw, 1.375rem); opacity: 0.6; }
 
 /* ── FEEDBACK TILE ── */
 .fb-tile {
@@ -1130,7 +1130,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .slide-tip.show { opacity: 1; transform: translateY(-50%) translateX(0); pointer-events: all; }
 .slide-tip-arrow { font-size: clamp(19px, 5vw, 25px); color: var(--gold); animation: slideHint 1.2s ease-in-out infinite; }
-.slide-tip-label { font-family: var(--font-mono); font-size: clamp(8px, 2.1vw, 9px); letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); }
+.slide-tip-label { font-family: var(--font-mono); font-size: clamp(12px, 3vw, 14px); letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); }
 
 /* ── SAFARI FIXES ── */
 @supports (-webkit-touch-callout: none) {
