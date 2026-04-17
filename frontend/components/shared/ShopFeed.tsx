@@ -34,9 +34,17 @@ function ShopTile({
     e.preventDefault();
     e.stopPropagation();
     
-    setAnimating(true);
+    // Toggle the favorite
     onFav(item.product_id);
-    window.setTimeout(() => setAnimating(false), 400);
+    
+    // Trigger the pop animation
+    setAnimating(false); // Reset first to allow re-triggering
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        setAnimating(true);
+        window.setTimeout(() => setAnimating(false), 500);
+      });
+    });
   };
 
   const photoUrl = getPhotoUrl(item.photo_url);
@@ -87,28 +95,37 @@ function ShopTile({
         {/* Favorite icon - explicitly handled to prevent any bubbling */}
         <button
           type="button"
-          onMouseDown={(e) => e.stopPropagation()} // Block mouse down
-          onTouchStart={(e) => e.stopPropagation()} // Block touch start
+          onMouseDown={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
           onClick={handleFav}
+          className={animating ? 'fav-pop' : ''}
           style={{
             background: 'none',
             border: 'none',
-            padding: '8px', // Larger hit area for mobile
-            margin: '-8px', // Offset padding
+            padding: '8px',
+            margin: '-8px',
             fontSize: 22,
             color: isFav ? 'var(--gold)' : 'var(--text-muted)',
             opacity: isFav ? 1 : 0.4,
-            transform: animating ? 'scale(1.8)' : 'scale(1)',
-            transition: animating
-              ? 'transform 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 400ms ease'
-              : 'transform 200ms ease, color 120ms ease, opacity 120ms ease',
             cursor: 'pointer',
             flexShrink: 0,
-            zIndex: 10 // Ensure it's on top
+            zIndex: 10,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            outline: 'none',
+            WebkitTapHighlightColor: 'transparent',
+            transition: 'color 200ms ease, opacity 200ms ease'
           }}
           aria-label={isFav ? 'Remove from saved items' : 'Add to saved items'}
         >
-          {isFav ? '☻' : '☹︎'}
+          <span style={{ 
+            display: 'inline-block',
+            transform: 'none',
+            pointerEvents: 'none'
+          }}>
+            {isFav ? '☻' : '☹︎'}
+          </span>
         </button>
       </div>
     </div>
