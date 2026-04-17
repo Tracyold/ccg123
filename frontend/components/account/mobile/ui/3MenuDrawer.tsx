@@ -1,4 +1,4 @@
-// components/account/mobile/ui/3MenuDrawer.tsx
+// components/account/mobile/ui/3MenuDrawer.tsx - Force Refresh
 import { useSwipeDownToClose } from '../../shared/hooks/useSwipeDownToClose';
 
 type PanelName = 'chat' | 'orders' | 'invoices' | 'servicereq'
