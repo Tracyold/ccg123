@@ -65,11 +65,11 @@ export default function ChatPanel3({
         <button className="panel-close" onClick={onClose}>✕</button>
       </div>
 
-      <div className="chat-msgs">
+      <div className="chat-msgs" style={{ padding: '24px 16px', display: 'flex', flexDirection: 'column', gap: 12 }}>
         {messages.length === 0 && (
           <p style={{
-            fontFamily: 'var(--font-ui)', fontStyle: 'italic', fontSize: 17,
-            color: 'var(--text-muted)', textAlign: 'center', margin: 'auto', opacity: 0.6,
+            fontFamily: 'var(--font-ui)', fontStyle: 'italic', fontSize: 19,
+            color: 'var(--text-muted)', textAlign: 'center', margin: '60px auto', opacity: 0.6,
           }}>
             No messages yet -- say hello!
           </p>

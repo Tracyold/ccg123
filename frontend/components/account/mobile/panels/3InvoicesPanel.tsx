@@ -23,15 +23,16 @@ interface InvoicesPanelProps {
 const INPUT_STYLE: React.CSSProperties = {
   width: '100%',
   background: 'var(--bg-card)',
-  border: '0.5px solid var(--bdr2)',
+  border: '1px solid var(--bdr2)',
   color: 'var(--text)',
   fontFamily: 'var(--font-mono)',
-  fontSize: 10,
-  padding: '7px 10px',
+  fontSize: 16,
+  padding: '12px 16px',
   outline: 'none',
   appearance: 'none',
   WebkitAppearance: 'none',
-  transition: 'border-color 150ms ease',
+  transition: 'all 200ms ease',
+  borderRadius: '8px',
 };
 
 export default function InvoicesPanel3({
@@ -64,58 +65,59 @@ export default function InvoicesPanel3({
       </div>
 
       {/* Search + export bar -- converted from inline styles in HTML */}
-      <div style={{ padding: '10px 14px', borderBottom: '0.5px solid var(--bdr2)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={{ padding: '20px 24px', borderBottom: '1px solid var(--bdr2)', display: 'flex', flexDirection: 'column', gap: 16, background: 'var(--bg-deep)' }}>
 
         {/* Date range row */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{ flex: 1, position: 'relative' }}>
+            <label style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--gold)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.1em' }}>From</label>
             <input
               type="date"
               value={dateFrom}
               onChange={e => setDateFrom(e.target.value)}
               style={INPUT_STYLE}
-              onFocus={e  => { e.currentTarget.style.borderColor = 'var(--gold)'; }}
-              onBlur={e   => { e.currentTarget.style.borderColor = 'var(--bdr2)'; }}
-              placeholder="From"
+              onFocus={e  => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.boxShadow = '0 0 0 2px rgba(207,221,78,0.1)'; }}
+              onBlur={e   => { e.currentTarget.style.borderColor = 'var(--bdr2)'; e.currentTarget.style.boxShadow = 'none'; }}
             />
           </div>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--text-muted)', flexShrink: 0 }}>to</span>
           <div style={{ flex: 1 }}>
+            <label style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--gold)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.1em' }}>To</label>
             <input
               type="date"
               value={dateTo}
               onChange={e => setDateTo(e.target.value)}
               style={INPUT_STYLE}
-              onFocus={e  => { e.currentTarget.style.borderColor = 'var(--gold)'; }}
-              onBlur={e   => { e.currentTarget.style.borderColor = 'var(--bdr2)'; }}
+              onFocus={e  => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.boxShadow = '0 0 0 2px rgba(207,221,78,0.1)'; }}
+              onBlur={e   => { e.currentTarget.style.borderColor = 'var(--bdr2)'; e.currentTarget.style.boxShadow = 'none'; }}
             />
           </div>
           <button
             onClick={clearSearch}
             title="Clear"
             style={{
-              background: 'transparent', border: '0.5px solid var(--bdr2)',
-              color: 'var(--text-muted)', fontSize: 12,
-              width: 30, height: 30, display: 'flex', alignItems: 'center',
+              background: 'rgba(255,255,255,0.05)', border: '1px solid var(--bdr2)',
+              color: 'var(--text)', fontSize: 16,
+              width: 44, height: 44, display: 'flex', alignItems: 'center',
               justifyContent: 'center', cursor: 'pointer', flexShrink: 0,
+              borderRadius: '8px', marginTop: 20
             }}
           >✕</button>
         </div>
 
         {/* Count row */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 4 }}>
           <span style={{
-            fontFamily: 'var(--font-mono)', fontSize: 9,
+            fontFamily: 'var(--font-mono)', fontSize: 13,
             letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)',
           }}>
             {filtered.length} invoice{filtered.length !== 1 ? 's' : ''}
           </span>
           <button style={{
-            display: 'flex', alignItems: 'center', gap: 5,
-            background: 'transparent', border: '0.5px solid var(--bdr2)',
-            color: 'var(--text-muted)', fontFamily: 'var(--font-mono)',
-            fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase',
-            padding: '5px 11px', cursor: 'pointer',
+            display: 'flex', alignItems: 'center', gap: 8,
+            background: 'var(--gold)', border: 'none',
+            color: 'var(--bg-deep)', fontFamily: 'var(--font-mono)',
+            fontSize: 12, fontWeight: '700', letterSpacing: '0.14em', textTransform: 'uppercase',
+            padding: '10px 18px', cursor: 'pointer', borderRadius: '6px'
           }}>
             ⬇ Export All
           </button>
