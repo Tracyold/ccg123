@@ -1,28 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
-import { supabase } from '../../lib/supabase';
 import { getPhotoUrl } from '../account/shared/utils/photoUrl';
-
-interface ShopProduct {
-  product_id: string;
-  title: string;
-  total_price: number | null;
-  photo_url: string | null;
-  product_state?: string | null;
-}
+import { ShopProduct, formatPrice, fetchAvailableProducts } from '../account/shared/1ShopList';
 
 interface SharedShopFeedProps {
   sectionLabel?: string;
   savedLabel?: string;
   emptyLabel?: string;
-}
-
-function formatPrice(value: number | null | undefined) {
-  if (typeof value !== 'number' || Number.isNaN(value)) return 'Price on request';
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0,
-  }).format(value);
 }
 
 function ShopTile({
@@ -42,7 +25,6 @@ function ShopTile({
       setTapped(true);
       return;
     }
-
     setTapped(false);
     window.location.href = '/shop';
   };
@@ -140,31 +122,15 @@ export default function SharedShopFeed({
 
   useEffect(() => {
     let isMounted = true;
-
-    async function loadProducts() {
-      const { data, error } = await supabase
-        .from('products')
-        .select('product_id, title, total_price, photo_url, product_state, created_at')
-        .eq('product_state', 'available')
-        .order('created_at', { ascending: false });
-
-      if (!isMounted) return;
-
-      if (error) {
-        console.error('Failed to load shop products', error);
-        setItems([]);
-      } else {
-        setItems((data ?? []) as ShopProduct[]);
+    async function load() {
+      const data = await fetchAvailableProducts();
+      if (isMounted) {
+        setItems(data);
+        setLoading(false);
       }
-
-      setLoading(false);
     }
-
-    loadProducts();
-
-    return () => {
-      isMounted = false;
-    };
+    load();
+    return () => { isMounted = false; };
   }, []);
 
   const toggleFav = (id: string) => {
