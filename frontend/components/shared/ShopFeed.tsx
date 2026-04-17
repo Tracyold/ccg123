@@ -98,10 +98,10 @@ function ShopTile({
             fontSize: 22,
             color: isFav ? 'var(--gold)' : 'var(--text-muted)',
             opacity: isFav ? 1 : 0.4,
-            transform: animating ? 'translateY(-10px) scale(1.3)' : 'none',
+            transform: animating ? 'scale(1.8)' : 'scale(1)',
             transition: animating
-              ? 'transform 400ms ease, opacity 400ms ease'
-              : 'color 120ms ease, opacity 120ms ease',
+              ? 'transform 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 400ms ease'
+              : 'transform 200ms ease, color 120ms ease, opacity 120ms ease',
             cursor: 'pointer',
             flexShrink: 0,
             zIndex: 10 // Ensure it's on top
