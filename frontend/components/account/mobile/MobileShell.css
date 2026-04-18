@@ -618,6 +618,24 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .pill.on .pill-thumb { left: calc(50% + 0px); }
 .pill.off .pill-thumb { left: 2px; }
+.pill-action-btn {
+  background: color-mix(in srgb, var(--gold) 75%, transparent);
+  border: 0.5px solid color-mix(in srgb, var(--bg-deep) 20%, transparent);
+  border-radius: 999px;
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: clamp(13px, 3.5vw, 15px);
+  letter-spacing: 0.08em;
+  padding: clamp(0.6rem, 2.5vw, 0.875rem) clamp(1.5rem, 6vw, 2rem);
+  cursor: pointer;
+  transition: all 150ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.pill-action-btn:active {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
 
 /* ── ORDERS PANEL ── */
 .orders-list {

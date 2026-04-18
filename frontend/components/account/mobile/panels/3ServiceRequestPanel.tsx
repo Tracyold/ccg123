@@ -193,16 +193,16 @@ export default function ServiceRequestPanel3({
         )}
 
         {/* ── New button + divider ── */}
-        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: 'clamp(0.75rem, 3.5vw, 1rem) clamp(1rem, 4.5vw, 1.25rem) 0' }}>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', borderRadius:'999px', padding: 'clamp(0.75rem, 3.5vw, 1rem) clamp(1rem, 4.5vw, 1.25rem) 0' }}>
           <button
             onClick={handleOpenForm}
             onMouseDown={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)'; }}
-            onMouseUp={e => { e.currentTarget.style.background = 'rgba(207,221,78,0.75)'; e.currentTarget.style.borderColor = 'rgba(26,26,27,0.2)'; e.currentTarget.style.color = 'var(--text)'; }}
+            onMouseUp={e => { e.currentTarget.style.background = 'var(--gold)'; e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text)'; }}
             onTouchStart={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)'; }}
-            onTouchEnd={e => { e.currentTarget.style.background = 'rgba(207,221,78,0.75)'; e.currentTarget.style.borderColor = 'rgba(26,26,27,0.2)'; e.currentTarget.style.color = 'var(--text)'; }}
+            onTouchEnd={e => { e.currentTarget.style.background = 'var(--gold)'; e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text)'; }}
             style={{
-              background: 'rgba(207,221,78,0.75)',
-              border: '0.5px solid rgba(26,26,27,0.2)',
+              background: 'var(--gold)',
+              border: '0.5px solid var(--border)',
               borderRadius: '999px',
               color: 'var(--text)',
               fontFamily: 'var(--font-ui)',
