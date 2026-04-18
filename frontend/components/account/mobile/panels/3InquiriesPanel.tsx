@@ -42,7 +42,18 @@ function SwipeableInquiry({ inq, onDelete }: { inq: any; onDelete: (id: string) 
     }
   };
 
-  const isPending = !inq.reply_body;
+  const isPending = !inq.reply;
+
+  // Product info comes from the join on products(title, weight, shape, total_price).
+  // Compose a small meta string from whichever fields are present.
+  const productTitle = inq.products?.title;
+  const productMetaParts: string[] = [];
+  if (inq.products?.weight) productMetaParts.push(`${inq.products.weight} ct`);
+  if (inq.products?.shape)  productMetaParts.push(inq.products.shape);
+  if (inq.products?.total_price != null) {
+    productMetaParts.push(`$${Number(inq.products.total_price).toLocaleString()}`);
+  }
+  const productMeta = productMetaParts.join(' · ');
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '12px' }}>
@@ -81,17 +92,18 @@ function SwipeableInquiry({ inq, onDelete }: { inq: any; onDelete: (id: string) 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
           <div>
             <div style={{ fontFamily: 'var(--font-display)', fontSize: 15, color: 'var(--text)', marginBottom: 2 }}>
-              {inq.product_title || 'Product Inquiry'}
+              {productTitle || 'Product Inquiry'}
             </div>
-            {inq.product_meta && (
+            {productMeta && (
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.12em', color: 'var(--text-muted)' }}>
-                {inq.product_meta}
+                {productMeta}
               </div>
             )}
           </div>
           <span style={{
             fontFamily: 'var(--font-mono)', fontSize: 8, letterSpacing: '0.15em',
-            textTransform: 'uppercase', padding: '2px 8px', flexShrink: 0,
+            textTransform: 'uppercase', padding: '3px 10px', flexShrink: 0,
+            borderRadius: 999,
             background: isPending ? 'rgba(207,221,78,0.1)' : 'rgba(45,212,191,0.1)',
             color: isPending ? 'var(--gold)' : '#2dd4bf',
           }}>
@@ -113,7 +125,7 @@ function SwipeableInquiry({ inq, onDelete }: { inq: any; onDelete: (id: string) 
         </div>
 
         {/* Reply block */}
-        {inq.reply_body && (
+        {inq.reply && (
           <div style={{
             fontFamily: 'var(--font-ui)', fontSize: 12, color: 'var(--text)',
             lineHeight: 1.6, borderTop: '0.5px solid var(--bdr2)', paddingTop: 8, marginTop: 8,
@@ -124,7 +136,7 @@ function SwipeableInquiry({ inq, onDelete }: { inq: any; onDelete: (id: string) 
             }}>
               Michael replied
             </span>
-            "{inq.reply_body}"
+            "{inq.reply}"
             {inq.replied_at && (
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 8.5, color: 'var(--text-muted)', marginTop: 6, opacity: 0.6 }}>
                 {fmtDate(inq.replied_at)}

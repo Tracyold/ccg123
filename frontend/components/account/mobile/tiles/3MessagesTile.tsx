@@ -7,8 +7,10 @@ interface MessagesTileProps {
 }
 
 export default function MessagesTile3({ chatThread, messages, onClick }: MessagesTileProps) {
-  const hasUnread   = !!chatThread?.account_has_unread;
-  const unreadCount = messages.filter(m => m.actor !== 'ACCOUNT').length;
+  const hasUnread = !!chatThread?.account_has_unread;
+  // We don't have a last_read_at column, so we can't compute a true per-message unread
+  // count. Keep it simple: dim when caught up, lit with a "new" label when there's
+  // something waiting. Total message count is still available if we want it later.
 
   return (
     <div
@@ -34,12 +36,12 @@ export default function MessagesTile3({ chatThread, messages, onClick }: Message
         {hasUnread ? (
           <>
             <span style={{
-              fontFamily: 'var(--font-mono)', fontSize: 42, fontWeight: 800,
-              color: 'var(--gold)', lineHeight: 1,
-              textShadow: '0 4px 8px rgba(0,0,0,0.5)',
-              letterSpacing: '-0.05em'
+              fontFamily: 'var(--font-mono)', fontSize: 12, fontWeight: 700,
+              color: 'var(--gold)', letterSpacing: '0.18em', textTransform: 'uppercase',
+              padding: '4px 10px', borderRadius: 999,
+              background: 'rgba(207,221,78,0.12)',
             }}>
-              {unreadCount}
+              New
             </span>
             <span style={{ 
               fontFamily: 'var(--font-display)', 
@@ -47,7 +49,7 @@ export default function MessagesTile3({ chatThread, messages, onClick }: Message
               color: 'var(--text)',
               fontWeight: 500
             }}>
-              new message{unreadCount !== 1 ? 's' : ''}
+              message from the shop
             </span>
           </>
         ) : (

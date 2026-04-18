@@ -26,9 +26,12 @@ interface ShopItemDrawerProps {
   item:    ShopProduct | null;
   session: any;
   onClose: () => void;
+  // Called after a successful inquiry insert so the inquiries panel shows
+  // the new row immediately even when realtime events lag or are missing.
+  refreshInquiries?: () => Promise<void>;
 }
 
-export default function ShopItemDrawer3({ open, item, session, onClose }: ShopItemDrawerProps) {
+export default function ShopItemDrawer3({ open, item, session, onClose, refreshInquiries }: ShopItemDrawerProps) {
   const [inquiryOpen,    setInquiryOpen]    = useState(false);
   const [inquiryText,    setInquiryText]    = useState('');
   const [inquirySent,    setInquirySent]    = useState(false);
@@ -55,14 +58,26 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
     if (!inquiryText.trim() || !item || !session) return;
     setInquirySending(true);
     setInquiryError(null);
-    
+
+    // Race the insert against a 15-second timeout so the Send button can never
+    // hang forever. If we hit the timeout the user gets a real error message
+    // and the button re-enables.
+    const insertPromise = supabase.from('account_inquiries').insert({
+      account_user_id: session.user.id,
+      product_id:      item.product_id,
+      description:     inquiryText.trim(),
+      status:          'pending',
+    });
+    const timeoutPromise = new Promise<{ error: { message: string } }>((resolve) =>
+      setTimeout(
+        () => resolve({ error: { message: 'Request timed out after 15s. Check your connection and try again.' } }),
+        15000
+      )
+    );
+
     try {
-      const { error } = await supabase.from('account_inquiries').insert({
-        account_user_id: session.user.id,
-        product_id:      item.product_id,
-        description:     inquiryText.trim(),
-        status:          'pending',
-      });
+      const result = await Promise.race([insertPromise, timeoutPromise]);
+      const error = (result as any).error;
 
       if (error) {
         console.error('Inquiry error:', error);
@@ -71,10 +86,16 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
         setInquirySent(true);
         setInquiryOpen(false);
         setInquiryText('');
+        // Fallback refresh — if realtime doesn't fire (e.g. realtime not enabled
+        // on account_inquiries at the supabase level), this still pulls the new
+        // row into the inquiries panel.
+        if (refreshInquiries) {
+          try { await refreshInquiries(); } catch (e) { console.warn('refreshInquiries failed', e); }
+        }
       }
     } catch (err: any) {
       console.error('Inquiry exception:', err);
-      setInquiryError(err.message || 'An unexpected error occurred');
+      setInquiryError(err?.message || 'An unexpected error occurred');
     } finally {
       setInquirySending(false);
     }
@@ -459,3 +480,4 @@ function SpecRow({ label, value }: { label: string; value: string | null }) {
     </div>
   );
 }
+

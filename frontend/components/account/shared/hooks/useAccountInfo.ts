@@ -16,6 +16,31 @@ export function useAccountData(session: any) {
   const [latestWizardResult, setLatestWizardResult] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
+  // ── Manual refresh functions ──
+  // These exist as fallbacks for when realtime events don't arrive (for example,
+  // if realtime replication isn't enabled on a table at the supabase level, or
+  // the WebSocket is reconnecting). Child components call these after performing
+  // a write so the UI updates even if realtime misses.
+  const refreshInquiries = async () => {
+    if (!session) return;
+    const { data } = await supabase
+      .from('account_inquiries')
+      .select(`*, products(title, weight, shape, total_price)`)
+      .eq('account_user_id', session.user.id)
+      .order('created_at', { ascending: false });
+    if (data) setInquiries(data);
+  };
+
+  const refreshServiceRequests = async () => {
+    if (!session) return;
+    const { data } = await supabase
+      .from('service_requests')
+      .select('*')
+      .eq('account_user_id', session.user.id)
+      .order('created_at', { ascending: false });
+    if (data) setServiceRequests(data);
+  };
+
   useEffect(() => {
     if (!session) return;
     const uid = session.user.id;
@@ -75,7 +100,7 @@ export function useAccountData(session: any) {
       srChannel = supabase.channel('user-sr-' + uid)
         .on('postgres_changes', {
           event: '*', schema: 'public', table: 'service_requests',
-          filter: `account_user_id=eq.\${uid}`,
+          filter: `account_user_id=eq.${uid}`,
         }, (payload) => {
           if (payload.eventType === 'INSERT') {
             setServiceRequests(prev => [payload.new as any, ...prev]);
@@ -121,10 +146,12 @@ export function useAccountData(session: any) {
           table: 'account_inquiries',
           filter: `account_user_id=eq.${uid}`,
         }, (payload) => {
-          // Admin replied — update that inquiry in place with reply + status
+          // Admin replied — update in place but KEEP the existing `products` join,
+          // since payload.new only contains raw account_inquiries columns and would
+          // otherwise wipe the product info off the card.
           setInquiries(prev => prev.map(inq =>
             inq.account_inquiry_id === (payload.new as any).account_inquiry_id
-              ? { ...inq, ...payload.new }
+              ? { ...inq, ...payload.new, products: inq.products }
               : inq
           ));
         })
@@ -150,7 +177,8 @@ export function useAccountData(session: any) {
       }
 
       const { data: wiz } = await supabase.from('wizard_results').select('*')
-        .order('created_at', { ascending: false }).limit(1).single();
+        .eq('user_id', uid)
+        .order('created_at', { ascending: false }).limit(1).maybeSingle();
       if (wiz) setLatestWizardResult(wiz);
       setLoading(false);
     }
@@ -177,5 +205,8 @@ export function useAccountData(session: any) {
     messages, setMessages,
     latestWizardResult,
     loading,
+    // Manual refresh callbacks for fallback when realtime misses.
+    refreshInquiries,
+    refreshServiceRequests,
   };
 }
