@@ -147,9 +147,6 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
           <div className="shop-item-footer">
             {!inquiryOpen && !inquirySent && (
               <div className="shop-item-btns">
-<<<<<<< HEAD
-                <button className="shop-item-btn buy">Buy Now</button>
-=======
                 {item.stripe_payment_link ? (
                   <a 
                     href={item.stripe_payment_link} 
@@ -163,7 +160,6 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
                 ) : (
                   <button className="shop-item-btn buy" onClick={() => alert('Please inquire for purchase details.')}>🛒 Buy Now</button>
                 )}
->>>>>>> eb6a58a0a6bd66fdc2e0e5fa698cb021a13d42df
                 <button className="shop-item-btn inq" onClick={() => setInquiryOpen(true)}>✉ Inquire</button>
               </div>
             )}
@@ -202,9 +198,6 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
             {inquirySent && (
               <div className="shop-item-success">
                 <div className="shop-item-btns">
-<<<<<<< HEAD
-                  <button className="shop-item-btn buy">Buy Now</button>
-=======
                   {item.stripe_payment_link ? (
                     <a 
                       href={item.stripe_payment_link} 
@@ -218,7 +211,6 @@ export default function ShopItemDrawer3({ open, item, session, onClose }: ShopIt
                   ) : (
                     <button className="shop-item-btn buy" onClick={() => alert('Please inquire for purchase details.')}>🛒 Buy Now</button>
                   )}
->>>>>>> eb6a58a0a6bd66fdc2e0e5fa698cb021a13d42df
                   <button className="shop-item-btn inq" onClick={() => setInquiryOpen(true)}>✉ Inquire Again</button>
                 </div>
                 <div className="shop-item-success-msg">Success!</div>
