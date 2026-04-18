@@ -126,3 +126,26 @@ export async function submitInquiryReply(
   if (error) { console.error('submitInquiryReply error:', error); return false }
   return true
 }
+// ── Fetch helpers ─────────────────────────────────────────────────────────
+
+export async function fetchInquiries(userId: string): Promise<Inquiry[]> {
+  const { data, error } = await supabase
+    .from('account_inquiries')
+    .select('*, products(title, weight, shape, total_price)')
+    .eq('account_user_id', userId)
+    .eq('is_archived', false)
+    .order('created_at', { ascending: false })
+  if (error) { console.error('fetchInquiries error:', error); return [] }
+  return data || []
+}
+
+export async function fetchServiceRequests(userId: string): Promise<ServiceRequest[]> {
+  const { data, error } = await supabase
+    .from('service_requests')
+    .select('*')
+    .eq('account_user_id', userId)
+    .eq('is_archived', false)
+    .order('created_at', { ascending: false })
+  if (error) { console.error('fetchServiceRequests error:', error); return [] }
+  return data || []
+}

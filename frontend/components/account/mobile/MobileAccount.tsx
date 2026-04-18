@@ -15,9 +15,10 @@
 
 
 import { useState } from 'react';
-import { supabase } from '../../../../lib/supabase';
+import { supabase } from '@/lib/supabase'
+import { WizardResult } from '@/components/account/mobile/tiles/3FeasibilityTile';
+
 import { useAuth } from '../shared/hooks/useAuth';
-import { useServiceRequest } from '../shared/hooks/useServiceRequest';
 import { useDeleteAccount } from '../shared/hooks/useDeleteAccount';
 
 // ── UI components ──
@@ -53,6 +54,7 @@ import WorkOrderDrawer3      from './drawers/3WorkOrderDrawer';
 import InvoiceDrawer3        from './drawers/3InvoiceDrawer';
 import ServiceRequestDrawer3 from './drawers/3ServiceRequestDrawer';
 
+
 // ── Prop types ──
 // These are ALL the values that pages/account.tsx passes down.
 // Every piece of data the mobile UI needs comes through here.
@@ -83,7 +85,7 @@ export interface MobileAccountProps {
   chatEndRef:        React.RefObject<HTMLDivElement>;
   chatFileRef:       React.RefObject<HTMLInputElement>;
   // Wizard
-  latestWizardResult?: any;
+latestWizardResult?: WizardResult;
   // Setters
   setEditProfile:    (v: any) => void;
   setChatInput:      (v: string) => void;
@@ -112,7 +114,6 @@ export default function MobileAccount(props: MobileAccountProps) {
   // ── Shared hooks ──
   const { signOut } = useAuth();
   const deleteHook = useDeleteAccount(props.session);
-
   // ── Panel state ──
   // Only one panel can be open at a time.
   // Panels slide up from the bottom.
@@ -139,6 +140,7 @@ export default function MobileAccount(props: MobileAccountProps) {
   const [srType, setSrType] = useState('');
   const [srDesc, setSrDesc] = useState('');
   const [srSubmitting, setSrSubmitting] = useState(false);
+
 
   // ── Panel helpers ──
   const openPanel  = (name: PanelName) => setActivePanel(name);
@@ -221,6 +223,17 @@ export default function MobileAccount(props: MobileAccountProps) {
     } finally {
       setSrSubmitting(false);
     }
+  };
+
+  const handleWizardServiceRequest = (result: any) => {
+    setSrType(result.recommendation ?? '');
+    const stone = [result.stone_variety, result.stone_species].filter(Boolean).join(' ');
+    setSrDesc(
+      'Stone: ' + stone +
+      '\nWizard Score: ' + Math.round(result.feasibility_percent) + '%' +
+      '\nRecommendation: ' + result.recommendation
+    );
+    setShowSRForm(true);
   };
 
   // ── Derived values used in the welcome block ──
@@ -328,7 +341,7 @@ export default function MobileAccount(props: MobileAccountProps) {
 
           {/* Feasibility -- wide variant */}
           <FeasibilityTile3
-            wizardResults={wizardResults}
+            results={wizardResults}
             onClick={() => openPanel('wizard')}
           />
 
@@ -442,7 +455,7 @@ export default function MobileAccount(props: MobileAccountProps) {
         open={activePanel === 'wizard'}
         onClose={closePanel}
         onCreateServiceRequest={(result) => {
-          srHook.handleWizardServiceRequest(result, () => {}, () => {});
+          handleWizardServiceRequest(result);
           openPanel('servicereq');
         }}
       />

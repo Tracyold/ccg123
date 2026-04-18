@@ -1,7 +1,7 @@
 // components/account/mobile/tiles/3FeasibilityTile.tsx
 // Shows the 3 most recent wizard results with score rings.
 
-interface WizardResult {
+export interface WizardResult {
   id:                  string;
   feasibility_percent: number;
   recommendation:      string;
@@ -10,7 +10,7 @@ interface WizardResult {
   created_at:          string;
 }
 
-interface FeasibilityTileProps {
+export interface FeasibilityTileProps {
   results: WizardResult[];
   onClick: () => void;
 }
@@ -23,7 +23,7 @@ function getBandColor(pct: number): string {
   return '#f87171';
 }
 
-function ScoreRing({ pct }: { pct: number }) {
+export function ScoreRing({ pct }: { pct: number }) {
   const color = getBandColor(pct);
   const r     = 16;
   const circ  = 2 * Math.PI * r;

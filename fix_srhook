@@ -1,0 +1,41 @@
+import re
+
+path = "frontend/components/account/mobile/ui/MobileAccount.tsx"
+with open(path, "r") as f:
+    content = f.read()
+
+# Remove broken srHook line and useServiceRequest import
+content = content.replace(
+    "import { useServiceRequest } from '../shared/hooks/useServiceRequest';\n", ""
+)
+content = content.replace("  const srHook = \n", "")
+
+# Add handleWizardServiceRequest after handleSubmitSR closing brace
+wizard_fn = """
+  const handleWizardServiceRequest = (result: any) => {
+    setSrType(result.recommendation ?? '');
+    const stone = [result.stone_variety, result.stone_species].filter(Boolean).join(' ');
+    setSrDesc(
+      'Stone: ' + stone +
+      '\\nWizard Score: ' + Math.round(result.feasibility_percent) + '%' +
+      '\\nRecommendation: ' + result.recommendation
+    );
+    setShowSRForm(true);
+  };
+"""
+content = content.replace(
+    "  // ── Derived values used in the welcome block ──",
+    wizard_fn + "\n  // ── Derived values used in the welcome block ──",
+)
+
+# Fix WizardResultsPanel3 onCreateServiceRequest
+old = """          srHook.handleWizardServiceRequest(result, () => {}, () => {});
+          openPanel('servicereq');"""
+new = """          handleWizardServiceRequest(result);
+          openPanel('servicereq');"""
+content = content.replace(old, new)
+
+with open(path, "w") as f:
+    f.write(content)
+
+print("Done!")
