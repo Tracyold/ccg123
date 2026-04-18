@@ -28,7 +28,6 @@ export function useServiceRequest(session: any, setServiceRequests: (fn: any) =>
       service_type: srType,
       description: srDesc,
       photo_url: null,
-      wizard_result_id: wizardPrefill?.id ?? null,
     });
     await supabase.functions.invoke('send-admin-notification', {
       body: { event_type: 'service_requests', user_id: session.user.id },

@@ -19,7 +19,6 @@ import { supabase } from '@/lib/supabase'
 import { WizardResult } from '@/components/account/mobile/tiles/3FeasibilityTile';
 
 import { useAuth } from '../shared/hooks/useAuth';
-import { useAccountData } from '../shared/hooks/useAccountInfo';
 import { useDeleteAccount } from '../shared/hooks/useDeleteAccount';
 
 // ── UI components ──
@@ -117,13 +116,12 @@ export default function MobileAccount(props: MobileAccountProps) {
   const deleteHook = useDeleteAccount(props.session);
 
   // ── All account data ──
-  const accountData = useAccountData(props.session);
-  const inquiries       = accountData.inquiries;
-  const serviceRequests = accountData.serviceRequests;
-  const workOrders      = accountData.workOrders;
-  const invoices        = accountData.invoices;
-  const invoiceTotal    = accountData.invoiceTotal;
-  const invoiceCount    = accountData.invoiceCount;
+  const inquiries       = props.inquiries;
+  const serviceRequests = props.serviceRequests;
+  const workOrders      = props.workOrders;
+  const invoices        = props.invoices;
+  const invoiceTotal    = props.invoiceTotal;
+  const invoiceCount    = props.invoiceCount;
 
   // ── Panel state ──
   // Only one panel can be open at a time.

@@ -133,7 +133,6 @@ export async function fetchInquiries(userId: string): Promise<Inquiry[]> {
     .from('account_inquiries')
     .select('*, products(title, weight, shape, total_price)')
     .eq('account_user_id', userId)
-    .eq('is_archived', false)
     .order('created_at', { ascending: false })
   if (error) { console.error('fetchInquiries error:', error); return [] }
   return data || []
@@ -144,7 +143,6 @@ export async function fetchServiceRequests(userId: string): Promise<ServiceReque
     .from('service_requests')
     .select('*')
     .eq('account_user_id', userId)
-    .eq('is_archived', false)
     .order('created_at', { ascending: false })
   if (error) { console.error('fetchServiceRequests error:', error); return [] }
   return data || []

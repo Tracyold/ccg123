@@ -22,6 +22,7 @@ export function useAccountData(session: any) {
     let woChannel: any = null;
     let chatChannel: any = null;
     let srChannel: any = null;
+    let inqChannel: any = null;
 
     async function loadAll() {
       const [
@@ -53,9 +54,8 @@ export function useAccountData(session: any) {
             )
           `)
           .eq('account_user_id', uid)
-          .neq('is_archived', true)
           .order('created_at', { ascending: false }),
-        supabase.from('service_requests').select('*').eq('account_user_id', uid).neq('is_archived', true).order('created_at', { ascending: false }),
+        supabase.from('service_requests').select('*').eq('account_user_id', uid).order('created_at', { ascending: false }),
         supabase.from('invoices').select('*').eq('account_user_id', uid).order('paid_at', { ascending: false }),
         supabase.from('chat_threads').select('*').eq('account_user_id', uid).single(),
       ]);
@@ -81,13 +81,9 @@ export function useAccountData(session: any) {
             setServiceRequests(prev => [payload.new as any, ...prev]);
           } else if (payload.eventType === 'UPDATE') {
             const updated = payload.new as any;
-            if (updated.is_archived) {
-              setServiceRequests(prev => prev.filter(s => s.service_request_id !== updated.service_request_id));
-            } else {
-              setServiceRequests(prev => prev.map(s =>
-                s.service_request_id === updated.service_request_id ? updated : s
-              ));
-            }
+            setServiceRequests(prev => prev.map(s =>
+              s.service_request_id === updated.service_request_id ? updated : s
+            ));
           } else if (payload.eventType === 'DELETE') {
             setServiceRequests(prev => prev.filter(s => s.service_request_id !== (payload.old as any).service_request_id));
           }
@@ -104,7 +100,7 @@ export function useAccountData(session: any) {
           }).subscribe();
 
       // ── Realtime inquiries — new submissions + admin replies ──
-      const inqChannel = supabase.channel('user-inq-' + uid)
+      inqChannel = supabase.channel('user-inq-' + uid)
         .on('postgres_changes', {
           event: 'INSERT',
           schema: 'public',
@@ -116,7 +112,6 @@ export function useAccountData(session: any) {
             .from('account_inquiries')
             .select(`*, products(title, weight, shape, total_price)`)
             .eq('account_user_id', uid)
-            .neq('is_archived', true)
             .order('created_at', { ascending: false });
           if (fresh) setInquiries(fresh);
         })
@@ -165,7 +160,7 @@ export function useAccountData(session: any) {
       if (woChannel) supabase.removeChannel(woChannel);
       if (chatChannel) supabase.removeChannel(chatChannel);
       if (srChannel) supabase.removeChannel(srChannel);
-      supabase.removeChannel(supabase.channel('user-inq-' + uid));
+      if (inqChannel) supabase.removeChannel(inqChannel);
     };
   }, [session]);
 
