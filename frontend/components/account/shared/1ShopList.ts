@@ -5,9 +5,10 @@ export interface ShopProduct {
   product_id:    string
   title:         string
   total_price:   number | null
-  photo_url:     string | null
-  product_state: string | null
-  created_at:    string
+  photo_url:           string | null
+  product_state:       string | null
+  stripe_payment_link: string | null
+  created_at:          string
 }
 
 // ── Pure helpers ───────────────────────────────────────────────────────────
