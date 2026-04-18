@@ -21,6 +21,7 @@ export function useAccountData(session: any) {
     const uid = session.user.id;
     let woChannel: any = null;
     let chatChannel: any = null;
+    let srChannel: any = null;
 
     async function loadAll() {
       const [
@@ -70,6 +71,28 @@ export function useAccountData(session: any) {
       setInquiries(inq || []);
       setServiceRequests(sr || []);
       setInvoices(inv || []);
+
+      srChannel = supabase.channel('user-sr-' + uid)
+        .on('postgres_changes', {
+          event: '*', schema: 'public', table: 'service_requests',
+          filter: `account_user_id=eq.\${uid}`,
+        }, (payload) => {
+          if (payload.eventType === 'INSERT') {
+            setServiceRequests(prev => [payload.new as any, ...prev]);
+          } else if (payload.eventType === 'UPDATE') {
+            const updated = payload.new as any;
+            if (updated.is_archived) {
+              setServiceRequests(prev => prev.filter(s => s.service_request_id !== updated.service_request_id));
+            } else {
+              setServiceRequests(prev => prev.map(s =>
+                s.service_request_id === updated.service_request_id ? updated : s
+              ));
+            }
+          } else if (payload.eventType === 'DELETE') {
+            setServiceRequests(prev => prev.filter(s => s.service_request_id !== (payload.old as any).service_request_id));
+          }
+        }).subscribe();
+
       setChatThread(thread);
 
       woChannel = supabase.channel('user-wo-' + uid)
@@ -141,6 +164,7 @@ export function useAccountData(session: any) {
     return () => {
       if (woChannel) supabase.removeChannel(woChannel);
       if (chatChannel) supabase.removeChannel(chatChannel);
+      if (srChannel) supabase.removeChannel(srChannel);
       supabase.removeChannel(supabase.channel('user-inq-' + uid));
     };
   }, [session]);

@@ -455,8 +455,8 @@ export default function MobileAccount(props: MobileAccountProps) {
         setSrDesc={setSrDesc}
         srSubmitting={srSubmitting}
         srGateMsg={""}
-        openSRForm={handleOpenSRForm}
-        submitSR={handleSubmitSR}
+        openSRForm={props.openSRForm}
+        submitSR={props.submitSR}
       />
 
       <InquiriesPanel3
