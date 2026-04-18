@@ -202,7 +202,7 @@ export default function MobileAccount(props: MobileAccountProps) {
     
     setSrGateMsg('');
     if (!p?.phone || !prefs?.opt_in_work_orders) {
-      setSrGateMsg(
+      setSrGateMsg('To submit a service request, please add a phone number and enable work order notifications in your profile.');
       alert('To submit a service request you must have a phone number on file and work order SMS notifications enabled.');
       return;
     }
