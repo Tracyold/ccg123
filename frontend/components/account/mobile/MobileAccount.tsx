@@ -15,6 +15,7 @@
 
 
 import { useState } from 'react';
+import { supabase } from '../../../../lib/supabase';
 import { useAuth } from '../shared/hooks/useAuth';
 import { useServiceRequest } from '../shared/hooks/useServiceRequest';
 import { useDeleteAccount } from '../shared/hooks/useDeleteAccount';
