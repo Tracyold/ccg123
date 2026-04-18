@@ -14,11 +14,12 @@
 // are all done here. Tiles, panels, and drawers just receive what they need.
 
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase'
 import { WizardResult } from '@/components/account/mobile/tiles/3FeasibilityTile';
 
 import { useAuth } from '../shared/hooks/useAuth';
+import { fetchInquiries, fetchServiceRequests } from '../shared/1InquiryList';
 import { useDeleteAccount } from '../shared/hooks/useDeleteAccount';
 
 // ── UI components ──
@@ -114,6 +115,17 @@ export default function MobileAccount(props: MobileAccountProps) {
   // ── Shared hooks ──
   const { signOut } = useAuth();
   const deleteHook = useDeleteAccount(props.session);
+
+  // ── Inquiries + Service Requests ──
+  const [inquiries,       setInquiries]       = useState<any[]>([]);
+  const [serviceRequests, setServiceRequests] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!props.session?.user?.id) return;
+    fetchInquiries(props.session.user.id).then(setInquiries);
+    fetchServiceRequests(props.session.user.id).then(setServiceRequests);
+  }, [props.session?.user?.id]);
+
   // ── Panel state ──
   // Only one panel can be open at a time.
   // Panels slide up from the bottom.
@@ -348,7 +360,7 @@ export default function MobileAccount(props: MobileAccountProps) {
           {/* Inquiries + SMS -- two column row */}
           <div className="tile-row">
             <InquiriesTile3
-              inquiries={props.inquiries}
+              inquiries={inquiries}
               onClick={() => openPanel('inquiries')}
             />
             <SmsTile3
@@ -359,7 +371,7 @@ export default function MobileAccount(props: MobileAccountProps) {
 
           {/* Service Requests -- wide variant */}
           <ServiceRequestsTile3
-            serviceRequests={props.serviceRequests}
+            serviceRequests={serviceRequests}
             onClick={() => openPanel('servicereq')}
           />
 
@@ -428,7 +440,7 @@ export default function MobileAccount(props: MobileAccountProps) {
 
       <ServiceRequestPanel3
         open={activePanel === 'servicereq'}
-        serviceRequests={props.serviceRequests}
+        serviceRequests={serviceRequests}
         session={props.session}
         onSelectSR={(sr) => openDrawer('servicereq', sr)}
         onClose={closePanel}
@@ -447,7 +459,7 @@ export default function MobileAccount(props: MobileAccountProps) {
 
       <InquiriesPanel3
         open={activePanel === 'inquiries'}
-        inquiries={props.inquiries}
+        inquiries={inquiries}
         onClose={closePanel}
       />
 
