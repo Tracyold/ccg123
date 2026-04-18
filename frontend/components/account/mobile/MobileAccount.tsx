@@ -14,12 +14,12 @@
 // are all done here. Tiles, panels, and drawers just receive what they need.
 
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { supabase } from '@/lib/supabase'
 import { WizardResult } from '@/components/account/mobile/tiles/3FeasibilityTile';
 
 import { useAuth } from '../shared/hooks/useAuth';
-import { fetchInquiries, fetchServiceRequests } from '../shared/1InquiryList';
+import { useAccountData } from '../shared/hooks/useAccountInfo';
 import { useDeleteAccount } from '../shared/hooks/useDeleteAccount';
 
 // ── UI components ──
@@ -116,15 +116,14 @@ export default function MobileAccount(props: MobileAccountProps) {
   const { signOut } = useAuth();
   const deleteHook = useDeleteAccount(props.session);
 
-  // ── Inquiries + Service Requests ──
-  const [inquiries,       setInquiries]       = useState<any[]>([]);
-  const [serviceRequests, setServiceRequests] = useState<any[]>([]);
-
-  useEffect(() => {
-    if (!props.session?.user?.id) return;
-    fetchInquiries(props.session.user.id).then(setInquiries);
-    fetchServiceRequests(props.session.user.id).then(setServiceRequests);
-  }, [props.session?.user?.id]);
+  // ── All account data ──
+  const accountData = useAccountData(props.session);
+  const inquiries       = accountData.inquiries;
+  const serviceRequests = accountData.serviceRequests;
+  const workOrders      = accountData.workOrders;
+  const invoices        = accountData.invoices;
+  const invoiceTotal    = accountData.invoiceTotal;
+  const invoiceCount    = accountData.invoiceCount;
 
   // ── Panel state ──
   // Only one panel can be open at a time.
@@ -258,12 +257,12 @@ export default function MobileAccount(props: MobileAccountProps) {
   // Count how many notification categories have something new
   const updateCount = [
     !!props.chatThread?.account_has_unread,
-    props.workOrders.some(w => w.status === 'CREATED' || w.status === 'ACCEPTED'),
-    props.invoices.some(inv => !inv.paid_at),
+    workOrders.some(w => w.status === 'CREATED' || w.status === 'ACCEPTED'),
+    invoices.some(inv => !inv.paid_at),
   ].filter(Boolean).length;
 
   // Whether the user has an active work order (needed by SMS consent modal)
-  const hasOpenWorkOrder = props.workOrders.some(
+  const hasOpenWorkOrder = workOrders.some(
     w => w.status === 'CREATED' || w.status === 'ACCEPTED'
   );
 
@@ -341,12 +340,12 @@ export default function MobileAccount(props: MobileAccountProps) {
           {/* Work Orders + Invoices -- two column row */}
           <div className="tile-row">
             <WorkOrderTile3
-              workOrders={props.workOrders}
+              workOrders={workOrders}
               onClick={() => openPanel('orders')}
             />
             <InvoicesTile3
-              invoices={props.invoices}
-              invoiceTotal={props.invoiceTotal}
+              invoices={invoices}
+              invoiceTotal={invoiceTotal}
               onClick={() => openPanel('invoices')}
             />
           </div>
@@ -423,7 +422,7 @@ export default function MobileAccount(props: MobileAccountProps) {
 
       <OrdersPanel3
         open={activePanel === 'orders'}
-        workOrders={props.workOrders}
+        workOrders={workOrders}
         adminInfo={props.adminInfo}
         profile={props.profile}
         onSelectWO={(wo) => openDrawer('workorder', wo)}
@@ -433,7 +432,7 @@ export default function MobileAccount(props: MobileAccountProps) {
 
       <InvoicesPanel3
         open={activePanel === 'invoices'}
-        invoices={props.invoices}
+        invoices={invoices}
         onSelectInvoice={(inv) => openDrawer('invoice', inv)}
         onClose={closePanel}
       />
@@ -480,8 +479,8 @@ export default function MobileAccount(props: MobileAccountProps) {
         profileSaving={props.profileSaving}
         profileFlash={props.profileFlash}
         hasProfileChanges={props.hasProfileChanges}
-        invoiceCount={props.invoiceCount}
-        invoiceTotal={props.invoiceTotal}
+        invoiceCount={invoiceCount}
+        invoiceTotal={invoiceTotal}
         hasOpenWorkOrder={hasOpenWorkOrder}
         setEditProfile={props.setEditProfile}
         saveProfile={props.saveProfile}
