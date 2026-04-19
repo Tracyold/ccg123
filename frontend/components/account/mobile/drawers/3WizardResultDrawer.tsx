@@ -150,13 +150,6 @@ export default function WizardResultDrawer3({
           {/* res-topbar: band badge + stone name + close button */}
           {/* Converted from the topbar section of openResDrawer() */}
           <div className="res-topbar">
-            {/* res-band-badge: colored badge showing the score band */}
-            <span
-              className="res-band-badge"
-              style={{ color, borderColor: color }}
-            >
-              {result.band}
-            </span>
             <span style={{
               fontFamily: 'var(--font-mono)', fontSize: 10,
               letterSpacing: '0.16em', textTransform: 'uppercase',
@@ -221,31 +214,6 @@ export default function WizardResultDrawer3({
               )}
             </Section>
 
-            {/* ── Correctable issues ── */}
-            <Section label="Correctable Issues">
-              {correctable.length > 0 ? (
-                correctable.map((item, i) => (
-                  <div key={i} style={{
-                    display: 'flex', justifyContent: 'space-between',
-                    gap: 10, padding: '8px 0',
-                    borderBottom: '0.5px solid var(--border)',
-                  }}>
-                    <span style={{ fontFamily: 'var(--font-ui)', fontSize: 13, color: 'var(--text)' }}>
-                      {item.key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}
-                    </span>
-                    <span style={{
-                      fontFamily: 'var(--font-mono)', fontSize: 11,
-                      letterSpacing: '0.1em', textTransform: 'uppercase',
-                      color: '#facc15',
-                    }}>{item.val}</span>
-                  </div>
-                ))
-              ) : (
-                <div style={{ fontFamily: 'var(--font-ui)', fontSize: 12, color: 'var(--text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
-                  None selected
-                </div>
-              )}
-            </Section>
 
             {/* Date stamp */}
             <div className="res-date">{date}</div>
