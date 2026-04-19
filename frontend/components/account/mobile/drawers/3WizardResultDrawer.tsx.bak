@@ -116,18 +116,11 @@ export default function WizardResultDrawer3({
     month: 'long', day: 'numeric', year: 'numeric',
   });
 
-  // Selections come from the wizard_results table as jsonb arrays/objects.
-  // Supabase's JS client auto-parses jsonb so these are real JS arrays/objects.
-  const positive:   string[] = Array.isArray(result.positive_selections)   ? result.positive_selections   : [];
-  const limiting:   string[] = Array.isArray(result.limiting_selections)   ? result.limiting_selections   : [];
-  const structural: string[] = Array.isArray(result.structural_selections) ? result.structural_selections : [];
-
-  // Correctable selections is a map { issueKey: severity | null }.
-  // Only show entries that actually have a non-null value.
-  const correctableObj = (result.correctable_selections || {}) as Record<string, string | null>;
-  const correctable: Array<{ key: string; val: string }> = Object.entries(correctableObj)
-    .filter(([, v]) => v != null && v !== '')
-    .map(([k, v]) => ({ key: k, val: v as string }));
+  // These arrays come from the WizardResult type
+  // In the mockup they were populated from resData -- here they come from Supabase
+  const positive:   string[] = (result as any).positive_factors   || [];
+  const limiting:   string[] = (result as any).limiting_factors   || [];
+  const structural: string[] = (result as any).structural_factors || [];
 
   return (
     <>
@@ -214,32 +207,6 @@ export default function WizardResultDrawer3({
             <Section label="Structural Condition">
               {structural.length > 0 ? (
                 structural.map((item, i) => <ListItem key={i} text={item} color="#fb923c" />)
-              ) : (
-                <div style={{ fontFamily: 'var(--font-ui)', fontSize: 12, color: 'var(--text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
-                  None selected
-                </div>
-              )}
-            </Section>
-
-            {/* ── Correctable issues ── */}
-            <Section label="Correctable Issues">
-              {correctable.length > 0 ? (
-                correctable.map((item, i) => (
-                  <div key={i} style={{
-                    display: 'flex', justifyContent: 'space-between',
-                    gap: 10, padding: '8px 0',
-                    borderBottom: '0.5px solid var(--border)',
-                  }}>
-                    <span style={{ fontFamily: 'var(--font-ui)', fontSize: 13, color: 'var(--text)' }}>
-                      {item.key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}
-                    </span>
-                    <span style={{
-                      fontFamily: 'var(--font-mono)', fontSize: 11,
-                      letterSpacing: '0.1em', textTransform: 'uppercase',
-                      color: '#facc15',
-                    }}>{item.val}</span>
-                  </div>
-                ))
               ) : (
                 <div style={{ fontFamily: 'var(--font-ui)', fontSize: 12, color: 'var(--text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
                   None selected
