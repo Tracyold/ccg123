@@ -1858,3 +1858,42 @@ button, [role="button"] { touch-action: manipulation; }
   border-radius: 12px;
   padding: clamp(0.625rem, 3vw, 0.875rem) clamp(0.75rem, 3.5vw, 1rem);
 }
+/* Wizard result drawer body — fix scrollability.
+   The parent .res-drawer is display:flex with fixed height (100dvh).
+   .res-body needs to be a flex column that takes the remaining space
+   (after the res-handle on the left) so that .res-scroll inside it
+   can actually scroll. */
+.res-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.res-handle {
+  width: clamp(28px, 7vw, 38px);
+  background: transparent;
+  flex-shrink: 0;
+  cursor: grab;
+  position: relative;
+}
+.res-handle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: clamp(30px, 9vw, 42px);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.18);
+}
+.res-topbar {
+  flex-shrink: 0;
+  padding: clamp(1rem, 4.5vw, 1.25rem);
+  border-bottom: 0.5px solid var(--bdr2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-deep);
+}
