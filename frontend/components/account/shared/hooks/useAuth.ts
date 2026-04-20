@@ -5,6 +5,7 @@ import { supabase } from '../../../../lib/supabase';
 export function useAuth() {
   const router = useRouter();
   const [session, setSession] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   const signOut = async () => {
     await supabase.auth.signOut();
@@ -35,22 +36,52 @@ export function useAuth() {
     };
   }, []);
 
-  useEffect(() => {
-    const guestId = process.env.NEXT_PUBLIC_GUEST_ACCOUNT_USER_ID;
-    supabase.auth.getSession().then(async ({ data: { session: s } }) => {
-      if (!s) { router.replace('/login'); return; }
-      const { data: adminCheck } = await supabase.from('admin_users').select('admin_user_id').eq('admin_user_id', s.user.id).single();
-      if (s.user.id === guestId || adminCheck) { router.replace('/login'); return; }
-      setSession(s);
-    });
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_e, s) => {
-      if (!s || s.user.id === guestId) { router.replace('/login'); return; }
-      const { data: adminCheck } = await supabase.from('admin_users').select('admin_user_id').eq('admin_user_id', s.user.id).single();
-      if (adminCheck) router.replace('/admin/dashboard');
-      else setSession(s);
-    });
-    return () => subscription.unsubscribe();
-  }, [router]);
+   useEffect(() => {
+  let mounted = true;
 
-  return { session, signOut };
-}
+  const init = async () => {
+    const guestId = process.env.NEXT_PUBLIC_GUEST_ACCOUNT_USER_ID;
+    const { data: { session: s } } = await supabase.auth.getSession();
+
+    if (!mounted) return;
+
+    if (!s || s.user.id === guestId) {
+      setLoading(false);
+      return;
+    }
+
+    const { data: adminCheck } = await supabase
+      .from('admin_users')
+      .select('admin_user_id')
+      .eq('admin_user_id', s.user.id)
+      .single();
+
+    if (adminCheck) {
+      setLoading(false);
+      return;
+    }
+
+    setSession(s);
+    setLoading(false);
+  };
+
+  init();
+
+  const { data: { subscription } } =
+    supabase.auth.onAuthStateChange((_e, s) => {
+      if (!s) {
+        setSession(null);
+        setLoading(false);
+      } else {
+        setSession(s);
+        setLoading(false);
+      }
+    });
+
+  return () => {
+    mounted = false;
+    subscription.unsubscribe();
+  };
+}, []);
+
+return { session, loading, signOut };}

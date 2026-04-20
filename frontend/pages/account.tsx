@@ -32,11 +32,31 @@ import TopNav                  from '../components/shared/TopNav';
 
 export default function AccountPage() {
   // ── Auth ──
-  const { session, signOut } = useAuth();
+  const { session, signOut, loading: authLoading } = useAuth();
   const { isMobile }         = useIsMobile();
+
+  // ── EARLY AUTH GUARD (must be here) ──
+if (authLoading) {
+  return <div style={{ background: 'var(--bg-deep)', minHeight: '100vh' }} />;
+}
+
+if (!session) {
+  // let useAuth/router handle redirect
+  return null;
+  
+}
+
 
   // ── All data + realtime ──
   const data = useAccountData(session);
+  
+  if (data.loading) {
+  return <div style={{ background: 'var(--bg-deep)', minHeight: '100vh' }} />;
+}
+// ── Loading guard ──
+  if (!session || data.loading) {
+    return <div style={{ background: 'var(--bg-deep)', minHeight: '100vh' }} />;
+  }
 
   // ── Business logic hooks ──
   const profileHook = useProfile(session, data.profile, data.setProfile, data.setSmsPrefs);
