@@ -53,10 +53,6 @@ if (!session) {
   if (data.loading) {
   return <div style={{ background: 'var(--bg-deep)', minHeight: '100vh' }} />;
 }
-// ── Loading guard ──
-  if (!session || data.loading) {
-    return <div style={{ background: 'var(--bg-deep)', minHeight: '100vh' }} />;
-  }
 
   // ── Business logic hooks ──
   const profileHook = useProfile(session, data.profile, data.setProfile, data.setSmsPrefs);
