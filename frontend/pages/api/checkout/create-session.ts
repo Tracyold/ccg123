@@ -76,8 +76,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       : account_user_id;
 
     // DB price is in dollars — Stripe needs cents
-    const unitAmountCents = Math.round(Number(product.total_price) * 100);
-
+    const unitAmountCents = Math.floor(
+      Math.round(Number(product.total_price) * 100)
+    );
+    
     // Create Stripe Checkout Session
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
