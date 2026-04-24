@@ -255,7 +255,7 @@ export default function DesktopAccount(props: DesktopAccountProps) {
       {/* ══════════════════════════════════════════
           LEFT COLUMN — dashboard feed
       ══════════════════════════════════════════ */}
-      <div className="desktop-left">
+      <div className="mobile-shell desktop-left">
 
         {/* Sticky top nav */}
         <Nav3
