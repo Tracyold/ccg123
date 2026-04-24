@@ -60,6 +60,9 @@
   flex-direction: column;
   transform: translateZ(0); /* ← this is the key, forces fixed children to be contained here */
 }
+.desktop-shell .tab-bar {
+  display: none !important;
+}
 
 /* ── Tab bar pins to bottom of right column ── */
 .desktop-shell .tab-bar {
