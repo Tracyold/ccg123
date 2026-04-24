@@ -9,7 +9,7 @@ import '../styles/home.css';
 import '../styles/wizard.css';
 import '../components/account/mobile/MobileShell.css';
 import { useAuth } from '../components/account/shared/hooks/useAuth';
-
+import '../components/account/desktop/DesktopShell.css';
 import { useEffect, useState } from 'react';
 
 export function useIsMobile() {

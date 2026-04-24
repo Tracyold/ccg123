@@ -341,7 +341,7 @@ export default function MobileAccount(props: MobileAccountProps) {
             serviceRequests={serviceRequests}
             onClick={() => openPanel('servicereq')}
           />
-
+ 
           {/* Profile -- slim bar */}
           <ProfileTile3
             profile={props.profile}
