@@ -240,7 +240,7 @@ export default function DesktopAccount(props: DesktopAccountProps) {
   const wizardResults = props.latestWizardResult ? [props.latestWizardResult] : [];
 
   return (
-    <div className="mobile-shell desktop-shell">
+    <div className="desktop-shell">
 
       {/* ── SMS Consent Modal -- above everything ── */}
       {pendingSmsConsent && (
@@ -255,7 +255,7 @@ export default function DesktopAccount(props: DesktopAccountProps) {
       {/* ══════════════════════════════════════════
           LEFT COLUMN — dashboard feed
       ══════════════════════════════════════════ */}
-      <div className="mobile-shell desktop-left">
+      <div className="desktop-left">
 
         {/* Sticky top nav */}
         <Nav3
