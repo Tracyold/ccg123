@@ -294,7 +294,7 @@ export default function DesktopAccount(props: DesktopAccountProps) {
           </div>
 
           {/* Notification tiles */}
-          <div className="feed-block">
+          <div className="desktop-left .feed">
 
             <MessagesTile3
               chatThread={props.chatThread}
