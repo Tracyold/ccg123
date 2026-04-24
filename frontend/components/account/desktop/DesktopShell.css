@@ -1,82 +1,108 @@
 /* ═══════════════════════════════════════════════════════════════
    CCG Desktop Account Shell
-   Fully self-contained — does not rely on mobile-shell class.
-   Overrides ALL position:fixed from MobileShell.css to
-   position:absolute so everything is contained in the right column.
+   ───────────────────────────────────────────────────────────────
+   50/50 two-column layout on desktop (used only when root has
+   className="desktop-shell").
+
+   LEFT  : sticky top nav + scrollable feed (tiles + shop)
+   RIGHT : bottom tab bar + slide-up panels + right-side drawers
+
+   z-index stack INSIDE .desktop-right (scoped via isolation):
+     slide-panels     10
+     drawer overlays  15
+     tab-bar          20   ← always in front of panels
+     drawers          40   ← in front of everything in right col
+
+   MenuDrawer is a sibling of .desktop-right (direct child of
+   .desktop-shell) and keeps its position:fixed from MobileShell
+   so it overlays the whole viewport.
+
+   IMPORTANT: this file intentionally does NOT redeclare transform,
+   transition, or visibility on panels/drawers. Those cascade from
+   MobileShell.css unchanged, which avoids the specificity-tie bug
+   that was making panels flash and disappear on open.
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── Root shell: two column layout ── */
+
+/* Shell root ─────────────────────────────────────────────────── */
+
 .desktop-shell {
-  display: flex !important;
-  flex-direction: row !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  height: 100dvh !important;
-  overflow: hidden !important;
+  --desktop-tab-h: 68px;      /* matches natural tab-bar height */
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 100%;
+  height: 100dvh;
+  overflow: hidden;
   position: relative;
   background: var(--bg);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   LEFT COLUMN — dashboard feed
-   ═══════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════════════
+   LEFT COLUMN
+   ══════════════════════════════════════════════════════════════ */
 
 .desktop-left {
   width: 50%;
   height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  border-right: 1px solid var(--border);
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: var(--bg);
-  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+
+  /* Premium center divider */
+  border-right: 1px solid var(--bdr2);
+  box-shadow:
+    inset -1px 0 0 color-mix(in srgb, var(--gold) 18%, transparent),
+    6px 0 20px -6px rgba(0, 0, 0, 0.35);
 }
 
-/* Nav sits at top of left column */
 .desktop-left .nav {
   position: sticky !important;
   top: 0 !important;
   z-index: 10 !important;
 }
 
-/* Feed padding so tiles don't stretch wall to wall */
+/* Cap the feed so tiles don't stretch across the whole column */
 .desktop-left .feed {
-  padding: 0 1.5rem 2rem 1.5rem;
-  flex: 1;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 2.5vw, 2rem) clamp(2rem, 5vw, 3rem);
+  flex: 1 0 auto;
 }
 
-/* Welcome block top spacing */
 .desktop-left .welcome {
-  padding-top: 1.5rem;
+  padding-top: clamp(1.25rem, 3vw, 2rem);
 }
 
-/* Hide tab bar on left column — not needed */
+/* Tab bar is exclusive to the right column */
 .desktop-left .tab-bar {
   display: none !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   RIGHT COLUMN — panels + drawers
-   This must be the containing block for all fixed children.
-   ═══════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════════════
+   RIGHT COLUMN — containing block for all panels + drawers
+   ══════════════════════════════════════════════════════════════ */
 
 .desktop-right {
   width: 50%;
   height: 100%;
-  position: relative !important;
-  overflow: hidden !important;
-  background: var(--bg-deep);
-  display: flex;
-  flex-direction: column;
   flex-shrink: 0;
-  /* isolation creates a new stacking context to contain all children */
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-deep);
   isolation: isolate;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   TAB BAR — override fixed → absolute, pin to bottom of right col
-   ═══════════════════════════════════════════════════════════════ */
+
+/* TAB BAR ─────────────────────────────────────────────────────── */
 
 .desktop-right .tab-bar {
   position: absolute !important;
@@ -84,81 +110,63 @@
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
-  z-index: 30 !important;
+  height: var(--desktop-tab-h) !important;
+  z-index: 20 !important;
+  /* no home indicator on desktop */
+  padding-bottom: clamp(0.5rem, 2.5vw, 0.75rem) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   PANELS — override fixed → absolute, fill right column
-   ═══════════════════════════════════════════════════════════════ */
+
+/* SLIDE-UP PANELS ─────────────────────────────────────────────── */
+/* bottom stops at top of tab bar so tab bar stays visible.      */
+/* DO NOT touch transform / transition / visibility — they       */
+/* cascade from MobileShell.css.                                 */
 
 .desktop-right .slide-panel {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  bottom: 0 !important;
-  width: 100% !important;
+  bottom: var(--desktop-tab-h) !important;
+  width: auto !important;
+  height: auto !important;
+  max-height: none !important;
+  padding-bottom: 0 !important;
+  z-index: 10 !important;
+}
+
+
+/* DRAWERS — all variants ──────────────────────────────────────── */
+/* 85% of the right column, in front of everything in the column.*/
+
+.desktop-right .drawer,
+.desktop-right .sr-drawer,
+.desktop-right .wo-drawer,
+.desktop-right .inv-drawer,
+.desktop-right .res-drawer {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: auto !important;
+  bottom: auto !important;
   height: 100% !important;
-  max-height: 100% !important;
-  padding-bottom: 0 !important;   /* remove mobile tab-bar padding */
+  width: 85% !important;
   z-index: 40 !important;
-  transform: translateY(110%);
-  transition: transform 500ms cubic-bezier(0.33, 1, 0.68, 1), visibility 0s 500ms;
-  visibility: hidden;
-  pointer-events: none;
 }
 
-.desktop-right .slide-panel.open {
-  transform: translateY(0) !important;
-  visibility: visible !important;
-  pointer-events: all !important;
-  transition: transform 500ms cubic-bezier(0.33, 1, 0.68, 1), visibility 0s 0s !important;
-  z-index: 50 !important;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   DRAWERS — override fixed → absolute, slide from right over panel
-   ═══════════════════════════════════════════════════════════════ */
-
-.desktop-right .drawer {
-  position: absolute !important;
-  top: 0 !important;
-  right: 0 !important;
-  height: 100% !important;
-  width: 80% !important;
-  z-index: 60 !important;
-  transform: translateX(100%) !important;
-}
-
-.desktop-right .drawer.open {
-  transform: translateX(0) !important;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   MENU DRAWER — override fixed → absolute, inside right column
-   ═══════════════════════════════════════════════════════════════ */
-
-.desktop-right .menu-drawer {
-  position: absolute !important;
-  top: 0 !important;
-  right: 0 !important;
-  width: 80% !important;
-  height: 100% !important;
-  z-index: 70 !important;
-  transform: translateX(100%) !important;
-}
-
-.desktop-right .menu-drawer.open {
-  transform: translateX(0) !important;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   OVERLAYS — contain inside right column
-   ═══════════════════════════════════════════════════════════════ */
-
-.desktop-right .overlay,
-.desktop-right .menu-overlay {
+/* Backdrops rendered inside the right column */
+.desktop-right .overlay {
   position: absolute !important;
   inset: 0 !important;
-  z-index: 35 !important;
+  z-index: 15 !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   MENU DRAWER — sibling of .desktop-right, keeps viewport-fixed
+   positioning from MobileShell.css. Just cap its width.
+   ══════════════════════════════════════════════════════════════ */
+
+.desktop-shell > .menu-drawer {
+  width: min(420px, 35vw);
 }
