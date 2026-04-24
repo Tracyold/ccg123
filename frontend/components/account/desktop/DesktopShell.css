@@ -155,6 +155,7 @@
   width: 80% !important;
   z-index: 60 !important;
   transform: translateX(100%) !important;
+  
 }
 
 .desktop-right .drawer.open {
@@ -181,11 +182,4 @@
 
 /* ═══════════════════════════════════════════════════════════════
    OVERLAYS — contain inside right column
-   ═══════════════════════════════════════════════════════════════ */
-
-.desktop-right .overlay,
-.desktop-right .menu-overlay {
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 35 !important;
-}
+   ═══════════════════════════════════════════════════════════════ *
