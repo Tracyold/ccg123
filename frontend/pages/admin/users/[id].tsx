@@ -1,3 +1,5 @@
+// beginning of pages/admin/users/[id].tsx
+
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { supabase } from '../../../lib/supabase';
@@ -187,16 +189,52 @@ export default function AdminUserDetail() {
   return (
     <>
       <style>{adminCss}</style>
+<style>{`
+  /* ── Admin user detail — mobile fixes ── */
+  @media (max-width: 767px) {
+    /* Tab row scrolls horizontally instead of overflowing */
+    .user-tab-row {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      padding: 0 16px;
+      gap: 0;
+    }
+    /* Content padding */
+    .user-content {
+      padding: 16px !important;
+    }
+    /* Dashboard grid: single column */
+    .user-dash-grid {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+    }
+    /* Stat cards: 2 column on mobile */
+    .user-stat-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    /* Back button hidden on mobile — use browser back */
+    .user-back-btn {
+      display: none !important;
+    }
+    /* Top bar wraps on mobile */
+    .user-topbar {
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px 16px !important;
+    }
+  }
+`}</style>
       <div className="shell">
         {/* Top nav bar instead of sidebar */}
         <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100vh', overflow: 'hidden' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '19px', padding: '13px 25px', borderBottom: '1px solid var(--ln)', background: 'var(--k1)', flexShrink: 0 }}>
-            <button onClick={() => router.push('/admin/users')} className="hidden md:inline-block" style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '13px', letterSpacing: '.09em', textTransform: 'uppercase', fontFamily: "'Montserrat'", transition: 'color .15s' }} onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')} onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}>← USER LIST</button>
+          <div className="user-topbar" className="user-topbar" style={{ display: 'flex', alignItems: 'center', gap: '19px', padding: '13px 25px', borderBottom: '1px solid var(--ln)', background: 'var(--k1)', flexShrink: 0 }}>            <button onClick={() => router.push('/admin/users')} className="user-back-btn hidden md:inline-block" style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '13px', letterSpacing: '.09em', textTransform: 'uppercase', fontFamily: "'Montserrat'", transition: 'color .15s' }} onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')} onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}>← USER LIST</button>
             <div style={{ fontFamily: 'Montserrat', fontSize: '17px', textTransform: 'uppercase', color: 'var(--accent)' }}>
               <span style={{ fontSize: '5px', color: 'var(--d2)', textTransform: 'uppercase', letterSpacing: '.15em', marginRight: '11px' }}></span>
               {isGuest ? 'Guest Account' : user?.name || 'User'}
             </div>
-            <div style={{ display: 'flex', gap: '16px', marginLeft: '24px' }}>
+            <div className="user-tab-row" style={{ display: 'flex', gap: '16px', marginLeft: '24px' }}>
               {TABS.map(t => (
                 <button key={t.id} onClick={() => setActiveTab(t.id)}
                   style={{ padding: '13px 17px', fontFamily: 'var(--sans)', fontSize: '13px', letterSpacing: '.15em', textTransform: 'uppercase', background: 'none', border: 'none', borderBottom: activeTab === t.id ? '.5px solid var(--gl)' : '1px solid transparent', color: activeTab === t.id ? 'var(--wh)' : 'var(--d1)', cursor: 'pointer', position: 'relative' }}>
@@ -207,10 +245,10 @@ export default function AdminUserDetail() {
             </div>
           </div>
 
-          <div style={{ flex: 1, overflow: 'auto', padding: '29px 41px' }}>
+          <div className="user-content" style={{ flex: 1, overflow: 'auto', padding: '29px 41px' }}>
             {/* DASHBOARD TAB */}
             {activeTab === 'dashboard' && user && (
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '45px' }}>
+              <div className="user-dash-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '45px' }}>
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '19px' }}>
                     <span style={{ fontFamily: 'var(--serif)', fontSize: '25px', color: 'rgb(224, 187, 50)' }}>Account Info</span>
@@ -233,7 +271,7 @@ export default function AdminUserDetail() {
                     <span className={`pill ${user.status === 'ACTIVE' ? 'pill-A' : 'pill-I'}`}>{user.status}</span>
                   </div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '17px', alignContent: 'start' }}>
+                <div className="user-stat-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '17px', alignContent: 'start' }}>
                   <div className="stat-card"><div className="stat-val" style={{ color: 'var(--accent)', fontFamily: 'var(--font-mono)' }}>{woCount}</div><div className="stat-label">Work Orders</div></div>
                   <div className="stat-card"><div className="stat-val" style={{ color: 'var(--accent)', fontFamily: 'var(--font-mono)' }}>{formatMoney(invTotal)}</div><div className="stat-label">Total Invoiced</div></div>
                   <div className="stat-card"><div className="stat-val" style={{ color: 'var(--accent)', fontFamily: 'var(--font-mono)' }}>{inqCount}</div><div className="stat-label">Inquiries</div></div>
@@ -384,3 +422,6 @@ export default function AdminUserDetail() {
     </>
   );
 }
+
+
+// end of pages/admin/users/[id].tsx

@@ -1,3 +1,5 @@
+// beginning of components/admin/AdminLayout.tsx
+
 import { useState, useEffect, useRef, ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import { supabase } from '../../lib/supabase';
@@ -377,3 +379,5 @@ export default function AdminLayout({ children, activeNav }: AdminLayoutProps) {
     </>
   );
 }
+
+// end of components/admin/AdminLayout.tsx

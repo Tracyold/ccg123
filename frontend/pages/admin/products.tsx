@@ -1,3 +1,5 @@
+// start of pages/admin/products.tsx
+
 import { useState, useEffect, useRef } from 'react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import { supabase } from '../../lib/supabase';
@@ -264,3 +266,5 @@ export default function AdminProductsPage() {
     </AdminLayout>
   );
 }
+
+// end of pages/admin/products.tsx

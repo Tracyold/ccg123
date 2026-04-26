@@ -1,3 +1,5 @@
+// start of pages/admin/portfolio.tsx
+
 import { useState, useEffect, useRef } from 'react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import { supabase } from '../../lib/supabase';
@@ -298,3 +300,5 @@ export default function AdminPortfolioPage() {
     </AdminLayout>
   );
 }
+
+// end of pages/admin/portfolio.tsx

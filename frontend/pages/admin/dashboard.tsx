@@ -1,3 +1,4 @@
+// pages/admin/dashboard.tsx
 import { useState, useEffect } from 'react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import { supabase } from '../../lib/supabase';
@@ -333,3 +334,4 @@ export default function AdminDashboard() {
     </AdminLayout>
   );
 }
+// end of pages/admin/dashboard.tsx
