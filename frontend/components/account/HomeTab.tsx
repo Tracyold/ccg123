@@ -82,7 +82,7 @@ export default function HomeTab({
         />
       )}
 
-      <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--text)', marginBottom: '24px', fontWeight: 400 }}>Profile</h2>
+      <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--text)', marginBottom: '24px', fontWeight: 400 }}>Profile</h2>
 
       {editProfile && (
         <div style={{ display: 'grid', gap: '12px', maxWidth: '500px' }}>
@@ -111,24 +111,24 @@ export default function HomeTab({
               <button className="acc-btn-ghost" onClick={() => setEditProfile({ ...profile })}>Cancel</button>
             </div>
           )}
-          {profileFlash && <span style={{ color: 'var(--accent)', fontSize: '11px' }}>✓ Saved</span>}
+          {profileFlash && <span style={{ color: 'var(--accent)', fontSize: '0.6875rem' }}>✓ Saved</span>}
         </div>
       )}
 
       {/* Purchase stats */}
       <div style={{ marginTop: '32px', padding: '20px', background: 'var(--bg)', border: '1px solid var(--border)' }}>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '19px', color: 'rgb(48, 177, 98)' }}>{invoiceCount}</span>
-        <span style={{ fontSize: '17px', color: 'var(--text-muted)', marginLeft: '8px' }}>items purchased</span>
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '1.1875rem', color: 'rgb(48, 177, 98)' }}>{invoiceCount}</span>
+        <span style={{ fontSize: '1.0625rem', color: 'var(--text-muted)', marginLeft: '8px' }}>items purchased</span>
         <span style={{ margin: '0 12px', color: 'var(--border)' }}>|</span>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '18px', color: 'rgb(48, 177, 98)' }}>{invoiceTotal}</span>
-        <span style={{ fontSize: '12px', color: 'var(--text-muted)', marginLeft: '8px' }}>total spent</span>
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '1.125rem', color: 'rgb(48, 177, 98)' }}>{invoiceTotal}</span>
+        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginLeft: '8px' }}>total spent</span>
       </div>
 
       {/* SMS Preferences */}
       <div style={{ marginTop: '32px' }}>
         <h3 style={{
           fontFamily: 'var(--font-ui)',
-          fontSize: '11px',
+          fontSize: '0.6875rem',
           textTransform: 'uppercase',
           letterSpacing: '0.2em',
           color: 'var(--text-muted)',
@@ -169,7 +169,7 @@ export default function HomeTab({
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
                   <span style={{
                     fontFamily: 'var(--font-ui)',
-                    fontSize: '11px',
+                    fontSize: '0.6875rem',
                     fontWeight: 600,
                     borderRadius: '30px',
                     letterSpacing: '0.08em',
@@ -192,7 +192,7 @@ export default function HomeTab({
                 </div>
                 <p style={{
                   fontFamily: 'var(--font-body)',
-                  fontSize: '12px',
+                  fontSize: '0.75rem',
                   color: 'var(--text-muted)',
                   lineHeight: 1.55,
                   margin: 0,
@@ -204,7 +204,7 @@ export default function HomeTab({
           })}
         </div>
 
-        <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '12px', lineHeight: 1.65 }}>
+        <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: '12px', lineHeight: 1.65 }}>
           SMS alerts are sent to your phone number on file. Message & data rates may apply. Reply STOP to any message to opt out. For help reply HELP.
         </p>
       </div>

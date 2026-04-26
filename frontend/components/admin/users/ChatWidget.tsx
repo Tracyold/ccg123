@@ -104,40 +104,40 @@ export default function ChatWidget({ chatThread, messages, setMessages, user, id
     <div style={{ position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '479px', zIndex: 100 }}>
       {!chatExpanded ? (
         <div onClick={expandChat} style={{ height: '79px', background: 'var(--k1)', borderTop: '1px solid var(--ln)', border: '1px solid var(--ln)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 21px', cursor: 'pointer' }}>
-          <span style={{ fontFamily: 'var(--sans)', fontSize: '15px', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--gl)' }}>Chat · {user?.name || 'User'}</span>
-          <span style={{ color: 'var(--d1)', fontSize: '17px' }}>↑</span>
+          <span style={{ fontFamily: 'var(--sans)', fontSize: '0.9375rem', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--gl)' }}>Chat · {user?.name || 'User'}</span>
+          <span style={{ color: 'var(--d1)', fontSize: '1.0625rem' }}>↑</span>
         </div>
       ) : (
         <div style={{ height: '799px', background: 'var(--k1)', borderTop: '1px solid var(--ln)', border: '1px solid var(--ln)', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '13px 21px', borderBottom: '1px solid var(--ln)', flexShrink: 0 }}>
-            <span style={{ fontFamily: 'var(--sans)', fontSize: '17px', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--gl)' }}>Chat · {user?.name || 'User'}</span>
-            <button onClick={() => setChatExpanded(false)} style={{ background: 'none', border: 'none', color: 'var(--d1)', cursor: 'pointer', fontSize: '19px' }}>↓</button>
+            <span style={{ fontFamily: 'var(--sans)', fontSize: '1.0625rem', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--gl)' }}>Chat · {user?.name || 'User'}</span>
+            <button onClick={() => setChatExpanded(false)} style={{ background: 'none', border: 'none', color: 'var(--d1)', cursor: 'pointer', fontSize: '1.1875rem' }}>↓</button>
           </div>
           <div style={{ flex: 1, overflowY: 'auto', padding: '13px 21px' }}>
             {messages.map(m => (
               <div key={m.chat_message_id} style={{ display: 'flex', flexDirection: 'column', alignItems: m.actor === 'ADMIN' ? 'flex-end' : 'flex-start', marginBottom: '11px' }}>
-                <div style={{ maxWidth: '70%', padding: '11px 15px', borderRadius: '11px', background: m.actor === 'ADMIN' ? 'var(--gold)' : 'rgba(45,212,191,1)', color: 'var(--bg)', fontFamily: 'var(--font-body)', fontSize: '15px' }}>
+                <div style={{ maxWidth: '70%', padding: '11px 15px', borderRadius: '11px', background: m.actor === 'ADMIN' ? 'var(--gold)' : 'rgba(45,212,191,1)', color: 'var(--bg)', fontFamily: 'var(--font-body)', fontSize: '0.9375rem' }}>
                   {m.body && <div>{m.body}</div>}
                   {m.attachment_url && m.attachment_type?.startsWith('image/') && (
                     <img src={m.attachment_url.startsWith('http') ? m.attachment_url : supabase.storage.from('ChatUploads').getPublicUrl(m.attachment_url).data.publicUrl} alt="attachment" style={{ maxWidth: '200px', maxHeight: '200px', objectFit: 'cover', marginTop: m.body ? '6px' : '0', borderRadius: '6px' }} />
                   )}
                   {m.attachment_url && m.attachment_type === 'application/pdf' && (
-                    <div style={{ marginTop: m.body ? '7px' : '0', fontSize: '17px' }}>📄 <a href={m.attachment_url.startsWith('http') ? m.attachment_url : supabase.storage.from('ChatUploads').getPublicUrl(m.attachment_url).data.publicUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--bg)', textDecoration: 'underline' }}>Download PDF</a></div>
+                    <div style={{ marginTop: m.body ? '7px' : '0', fontSize: '1.0625rem' }}>📄 <a href={m.attachment_url.startsWith('http') ? m.attachment_url : supabase.storage.from('ChatUploads').getPublicUrl(m.attachment_url).data.publicUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--bg)', textDecoration: 'underline' }}>Download PDF</a></div>
                   )}
                 </div>
-                <span style={{ fontSize: '10px', color: 'var(--d2)', marginTop: '5px' }}>{fmtTime(m.created_at)}</span>
+                <span style={{ fontSize: '0.625rem', color: 'var(--d2)', marginTop: '5px' }}>{fmtTime(m.created_at)}</span>
               </div>
             ))}
             <div ref={chatEndRef} />
           </div>
           <div style={{ display: 'flex', gap: '9px', padding: '13px 21px', borderTop: '.5px solid var(--ln)', flexShrink: 0 }}>
             <input type="file" ref={chatFileRef} accept=".jpg,.jpeg,.png,.tiff,.tif,.dng,.heic,.pdf" style={{ display: 'none' }} onChange={handleChatFile} />
-            <button onClick={() => chatFileRef.current?.click()} disabled={chatUploading} style={{ background: 'none', border: '1px solid var(--ln)', color: 'var(--d1)', padding: '10px', cursor: 'pointer', fontSize: '14px', flexShrink: 0 }} title="Attach file">{chatUploading ? '...' : '📎'}</button>
+            <button onClick={() => chatFileRef.current?.click()} disabled={chatUploading} style={{ background: 'none', border: '1px solid var(--ln)', color: 'var(--d1)', padding: '10px', cursor: 'pointer', fontSize: '0.875rem', flexShrink: 0 }} title="Attach file">{chatUploading ? '...' : '📎'}</button>
             <input value={chatInput} onChange={e => setChatInput(e.target.value)} placeholder="Type a message..."
-              style={{ flex: 1, background: 'var(--k2)', border: '1px solid var(--ln)', padding: '11px 13px', color: 'var(--tx)', fontFamily: 'var(--sans)', fontSize: '15px', outline: 'none', height: '44px' }}
+              style={{ flex: 1, background: 'var(--k2)', border: '1px solid var(--ln)', padding: '11px 13px', color: 'var(--tx)', fontFamily: 'var(--sans)', fontSize: '0.9375rem', outline: 'none', height: '44px' }}
               onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); } }} />
             <button onClick={sendChat} disabled={chatSending || !chatInput.trim()}
-              style={{ background: 'var(--gl)', border: 'none', color: 'var(--bg)', padding: '11px 17px', cursor: 'pointer', fontWeight: 700, fontSize: '16px' }}>→</button>
+              style={{ background: 'var(--gl)', border: 'none', color: 'var(--bg)', padding: '11px 17px', cursor: 'pointer', fontWeight: 700, fontSize: '1.0rem' }}>→</button>
           </div>
         </div>
       )}

@@ -11,7 +11,7 @@ export default function EstimateDisplay({ input }: { input: EstimateInput }) {
     }}>
       <p style={{
         fontFamily: 'var(--font-body)',
-        fontSize: '17px',
+        fontSize: '1.0625rem',
         color: 'var(--text-muted)',
         margin: '0 0 10px',
       }}>
@@ -19,7 +19,7 @@ export default function EstimateDisplay({ input }: { input: EstimateInput }) {
       </p>
       <p style={{
         fontFamily: 'var(--font-body)',
-        fontSize: '19px',
+        fontSize: '1.1875rem',
         color: 'var(--text)',
         margin: '0 0 8px',
         fontWeight: 500,
@@ -28,7 +28,7 @@ export default function EstimateDisplay({ input }: { input: EstimateInput }) {
       </p>
       <p style={{
         fontFamily: 'var(--font-body)',
-        fontSize: '19px',
+        fontSize: '1.1875rem',
         color: 'var(--text-muted)',
         lineHeight: 1.7,
         margin: 0,

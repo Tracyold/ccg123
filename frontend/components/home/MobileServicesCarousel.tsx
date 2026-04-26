@@ -257,7 +257,7 @@ export default function MobileServicesCarousel() {
             <p
               style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: '16px',
+                fontSize: '1.0rem',
                 lineHeight: 1.7,
                 color: 'var(--text)',
                 textAlign: 'left',
@@ -289,7 +289,7 @@ export default function MobileServicesCarousel() {
         <span
           style={{
             fontFamily: 'var(--font-ui)',
-            fontSize: '10px',
+            fontSize: '0.625rem',
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
             color: 'var(--text-muted)',

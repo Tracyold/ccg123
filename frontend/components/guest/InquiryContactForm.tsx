@@ -158,7 +158,7 @@ export function InquiryContactForm({ onSubmit, onClose }: { onSubmit: (info: any
             </select>
         <input style={{ ...inputStyle, flex: 1, marginBottom: 0 }} placeholder="ZIP" value={zip} onChange={e => setZip(e.target.value)} onFocus={inputFocus} onBlur={inputBlur} />
       </div>
-      {err && <p style={{ fontSize: '11px', color: 'var(--text-muted)', marginBottom: '10px' }}>{err}</p>}
+      {err && <p style={{ fontSize: '0.6875rem', color: 'var(--text-muted)', marginBottom: '10px' }}>{err}</p>}
       <button style={goldBtnStyle} onClick={() => {
         if (!firstName.trim() || !lastName.trim() || !phone.trim() || !email.trim()) { setErr('All fields are required.'); return; }
         const shipping = [addr1.trim(), addr2.trim(), city.trim(), addrState.trim(), zip.trim(), country.trim()].filter(Boolean).join(', ');

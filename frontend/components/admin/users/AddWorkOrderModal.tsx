@@ -17,7 +17,7 @@ export default function AddWorkOrderModal({ showAddWO, setShowAddWO, user, id, s
   const [woSaving, setWoSaving] = useState(false);
 
   // inputStyle — line 320 of [id].tsx
-  const inputStyle: React.CSSProperties = { background: 'var(--k2)', border: '1px solid var(--ln)', color: 'var(--tx)', padding: '10px 12px', fontFamily: 'var(--sans)', fontSize: '15px', width: '100%', outline: 'none', height: '39px' };
+  const inputStyle: React.CSSProperties = { background: 'var(--k2)', border: '1px solid var(--ln)', color: 'var(--tx)', padding: '10px 12px', fontFamily: 'var(--sans)', fontSize: '0.9375rem', width: '100%', outline: 'none', height: '39px' };
 
   // Create work order — lines 156–178 of [id].tsx
   const createWO = async () => {
@@ -50,10 +50,10 @@ export default function AddWorkOrderModal({ showAddWO, setShowAddWO, user, id, s
   return (
     <div className="ov" onClick={e => { if (e.target === e.currentTarget) setShowAddWO(false); }}>
       <div style={{ margin: 'auto', background: 'var(--k1)', border: '.5px solid var(--ln)', padding: '29px', maxWidth: '479px', width: '90%' }}>
-        <div style={{ fontFamily: 'var(--serif)', fontSize: '23px', color: 'var(--wh)', marginBottom: '21px' }}>New Work Order</div>
+        <div style={{ fontFamily: 'var(--serif)', fontSize: '1.4375rem', color: 'var(--wh)', marginBottom: '21px' }}>New Work Order</div>
         {/* Service Type dropdown */}
         <div style={{ marginBottom: '13px' }}>
-          <label style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Service Type</label>
+          <label style={{ fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Service Type</label>
           <select value={woForm.service_type} onChange={e => setWoForm({ ...woForm, service_type: e.target.value })}
             style={{ ...inputStyle, background: 'var(--k2)' }}>
             <option value="">Select service type</option>
@@ -76,20 +76,20 @@ export default function AddWorkOrderModal({ showAddWO, setShowAddWO, user, id, s
           { label: 'Notes', key: 'notes', placeholder: 'Internal notes' },
         ].map(f => (
           <div key={f.key} style={{ marginBottom: '13px' }}>
-            <label style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>{f.label}</label>
+            <label style={{ fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>{f.label}</label>
             <input value={(woForm as any)[f.key]} onChange={e => setWoForm({ ...woForm, [f.key]: e.target.value })} placeholder={f.placeholder} style={inputStyle} />
           </div>
         ))}
         <div style={{ marginBottom: '13px' }}>
-          <label style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Description *</label>
+          <label style={{ fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Description *</label>
           <textarea value={woForm.description} onChange={e => setWoForm({ ...woForm, description: e.target.value })} placeholder="Work order description"
             style={{ ...inputStyle, minHeight: '80px', resize: 'vertical' }} />
         </div>
         {/* Shipping address preview */}
         {user?.shipping_address && (
           <div style={{ marginBottom: '13px', padding: '12px', background: 'var(--k0)', border: '.5px solid var(--ln)' }}>
-            <div style={{ fontSize: '10px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '5px' }}>Return Address (from user profile)</div>
-            <div style={{ fontSize: '13px', color: 'var(--tx)' }}>{user.shipping_address}</div>
+            <div style={{ fontSize: '0.625rem', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '5px' }}>Return Address (from user profile)</div>
+            <div style={{ fontSize: '0.8125rem', color: 'var(--tx)' }}>{user.shipping_address}</div>
           </div>
         )}
         <div style={{ display: 'flex', gap: '9px' }}>

@@ -42,7 +42,7 @@ export default function CheckItem({ item, checked, onChange }: CheckItemProps) {
       <span style={{
         flex: 1,
         fontFamily: 'var(--font-body)',
-        fontSize: 17,
+        fontSize: 1.0625rem,
         fontWeight: checked ? 400 : 300,
         color: checked ? 'var(--text)' : 'var(--text-muted)',
         transition: 'color 200ms ease',

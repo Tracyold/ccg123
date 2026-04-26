@@ -1273,19 +1273,19 @@ button, [role="button"] { touch-action: manipulation; }
 /* ── MEDIA QUERIES ── */
 /* Small phones (≤ 375px — iPhone SE) */
 @media (max-width: 375px) {
-  html { font-size: 14px; }
+  html { font-size: 0.875rem; }
   .tile { min-height: clamp(80px, 22vw, 110px); }
   .tile.wide { min-height: clamp(60px, 17vw, 80px); }
 }
 
 /* Standard phones (376px – 430px) */
 @media (min-width: 376px) and (max-width: 430px) {
-  html { font-size: 15px; }
+  html { font-size: 0.9375rem; }
 }
 
 /* Larger phones / small tablets (> 430px) */
 @media (min-width: 431px) {
-  html { font-size: 16px; }
+  html { font-size: 1.0rem; }
   .mobile-shell { border-left: 0.5px solid var(--bdr2); border-right: 0.5px solid var(--bdr2); }
 }
 

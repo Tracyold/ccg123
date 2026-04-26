@@ -41,7 +41,7 @@ const css = `
 }
 .tnav-brand {
   font-family: var(--font-sig), Georgia, serif;
-  font-size: 49px;
+  font-size: 3.0625rem;
   font-weight: 250;
   color: var(--text);
   text-decoration: none;
@@ -57,7 +57,7 @@ const css = `
 }
 .tnav-link {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -78,7 +78,7 @@ const css = `
 .tnav-link:hover::after { right: 0; }
 .tnav-auth {
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: 0.625rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -142,7 +142,7 @@ const css = `
 }
 .tnav-drawer-link {
   font-family: var(--font-body);
-  font-size: 25px;
+  font-size: 1.5625rem;
   font-weight: 500;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -156,7 +156,7 @@ const css = `
 .tnav-drawer-link:last-child { border-bottom: none; }
 .tnav-drawer-auth {
   font-family: var(--font-body);
-  font-size: 27px;
+  font-size: 1.6875rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -184,7 +184,7 @@ const css = `
   width: auto;
   height: 36px;
   cursor: pointer;
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 0.15em;
   font-family: var(--font-ui);
   white-space: nowrap;

@@ -53,7 +53,7 @@ export const inputStyle: React.CSSProperties = {
   padding: '10px 12px',
   color: 'var(--text)',
   fontFamily: 'var(--font-body)',
-  fontSize: '13px',
+  fontSize: '0.8125rem',
   outline: 'none',
   marginBottom: '10px',
 };
@@ -68,7 +68,7 @@ export const inputBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaEle
 
 export const labelStyle: React.CSSProperties = {
   fontFamily: 'var(--font-ui)',
-  fontSize: '9px', fontWeight: 600,
+  fontSize: '0.5625rem', fontWeight: 600,
   textTransform: 'uppercase',
   letterSpacing: '0.18em',
   color: 'var(--text-muted)',
@@ -77,7 +77,7 @@ export const labelStyle: React.CSSProperties = {
 export const goldBtnStyle: React.CSSProperties = {
   width: '100%', textAlign: 'center',
   fontFamily: 'var(--font-ui)',
-  fontSize: '11px', fontWeight: 600,
+  fontSize: '0.6875rem', fontWeight: 600,
   textTransform: 'uppercase',
   letterSpacing: '0.3em',
   background: 'transparent',
@@ -91,7 +91,7 @@ export const goldBtnStyle: React.CSSProperties = {
 export const ghostBtnStyle: React.CSSProperties = {
   width: '100%', textAlign: 'center',
   fontFamily: 'var(--font-ui)',
-  fontSize: '10px', fontWeight: 500,
+  fontSize: '0.625rem', fontWeight: 500,
   textTransform: 'uppercase',
   letterSpacing: '0.18em',
   backgroundColor: 'transparent',

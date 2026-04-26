@@ -164,7 +164,7 @@ export default function StudioSection() {
         borderRadius: '12px', textAlign: 'left',
       }}>
         <p ref={labelRef} className="uppercase text-gray-400"
-          style={{ fontSize: '12px', letterSpacing: '0.25em', marginBottom: '16px' }}>
+          style={{ fontSize: '0.75rem', letterSpacing: '0.25em', marginBottom: '16px' }}>
           Where It Happens
         </p>
         <h2 ref={titleRef} className="title-xl"

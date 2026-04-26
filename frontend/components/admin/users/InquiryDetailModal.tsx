@@ -21,22 +21,22 @@ export default function InquiryDetailModal({ selectedInq, setSelectedInq, select
 
         {/* Header */}
         <div style={{ marginBottom: '20px' }}>
-          <div style={{ fontFamily: 'var(--sans)', fontSize: '10px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '6px' }}>
+          <div style={{ fontFamily: 'var(--sans)', fontSize: '0.625rem', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '6px' }}>
             {selectedInq.guest_inquiry_id ? 'Guest Inquiry' : 'Account Inquiry'}
           </div>
-          <div style={{ fontFamily: 'var(--serif)', fontSize: '22px', color: 'var(--wh)' }}>
+          <div style={{ fontFamily: 'var(--serif)', fontSize: '1.375rem', color: 'var(--wh)' }}>
             {selectedInq.name || user?.name || 'Inquiry'}
           </div>
-          {selectedInq.email && <div style={{ fontSize: '13px', color: 'var(--d1)', marginTop: '3px' }}>{selectedInq.email}</div>}
-          {selectedInq.phone && <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '2px' }}>{selectedInq.phone}</div>}
+          {selectedInq.email && <div style={{ fontSize: '0.8125rem', color: 'var(--d1)', marginTop: '3px' }}>{selectedInq.email}</div>}
+          {selectedInq.phone && <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: '2px' }}>{selectedInq.phone}</div>}
         </div>
 
         <div style={{ height: '1px', background: 'var(--ln)', margin: '16px 0' }} />
 
         {/* Message */}
         <div style={{ marginBottom: '20px' }}>
-          <div style={{ fontFamily: 'var(--sans)', fontSize: '10px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '8px' }}>Message</div>
-          <p style={{ fontSize: '15px', color: 'var(--tx)', lineHeight: 1.7 }}>{selectedInq.description}</p>
+          <div style={{ fontFamily: 'var(--sans)', fontSize: '0.625rem', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '8px' }}>Message</div>
+          <p style={{ fontSize: '0.9375rem', color: 'var(--tx)', lineHeight: 1.7 }}>{selectedInq.description}</p>
         </div>
 
         <div style={{ height: '1px', background: 'var(--ln)', margin: '16px 0' }} />
@@ -44,7 +44,7 @@ export default function InquiryDetailModal({ selectedInq, setSelectedInq, select
         {/* Product info */}
         {selectedInqProduct ? (
           <div>
-            <div style={{ fontFamily: 'var(--sans)', fontSize: '10px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '12px' }}>Product Inquired About</div>
+            <div style={{ fontFamily: 'var(--sans)', fontSize: '0.625rem', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', marginBottom: '12px' }}>Product Inquired About</div>
             {selectedInqProduct.photo_url && (
               <div style={{ marginBottom: '16px', borderRadius: '8px', overflow: 'hidden', aspectRatio: '4/3', maxHeight: '220px' }}>
                 <img
@@ -54,8 +54,8 @@ export default function InquiryDetailModal({ selectedInq, setSelectedInq, select
                 />
               </div>
             )}
-            <div style={{ fontFamily: 'var(--serif)', fontSize: '20px', color: 'var(--wh)', marginBottom: '4px' }}>{selectedInqProduct.title}</div>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '18px', color: 'var(--accent)', marginBottom: '14px' }}>{selectedInqProduct.total_price ? '$' + Number(selectedInqProduct.total_price).toLocaleString() : ''}</div>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: '1.25rem', color: 'var(--wh)', marginBottom: '4px' }}>{selectedInqProduct.title}</div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.125rem', color: 'var(--accent)', marginBottom: '14px' }}>{selectedInqProduct.total_price ? '$' + Number(selectedInqProduct.total_price).toLocaleString() : ''}</div>
             {[
               { label: 'Product ID', val: selectedInqProduct.product_id },
               { label: 'Gem Type', val: selectedInqProduct.gem_type },
@@ -68,23 +68,23 @@ export default function InquiryDetailModal({ selectedInq, setSelectedInq, select
               { label: 'Price / ct', val: selectedInqProduct.price_per_carat ? '$' + Number(selectedInqProduct.price_per_carat).toLocaleString() : null },
             ].filter(r => r.val).map(r => (
               <div key={r.label} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '7px' }}>
-                <span style={{ fontFamily: 'var(--sans)', fontSize: '10px', letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--d1)' }}>{r.label}</span>
-                <span style={{ fontSize: '13px', color: 'var(--tx)', textAlign: 'right', maxWidth: '60%', wordBreak: 'break-all' }}>{r.val}</span>
+                <span style={{ fontFamily: 'var(--sans)', fontSize: '0.625rem', letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--d1)' }}>{r.label}</span>
+                <span style={{ fontSize: '0.8125rem', color: 'var(--tx)', textAlign: 'right', maxWidth: '60%', wordBreak: 'break-all' }}>{r.val}</span>
               </div>
             ))}
             {selectedInqProduct.description && (
-              <p style={{ fontSize: '13px', color: 'var(--d2)', lineHeight: 1.7, marginTop: '12px' }}>{selectedInqProduct.description}</p>
+              <p style={{ fontSize: '0.8125rem', color: 'var(--d2)', lineHeight: 1.7, marginTop: '12px' }}>{selectedInqProduct.description}</p>
             )}
           </div>
         ) : (
-          <div style={{ fontSize: '12px', color: 'var(--d2)', fontStyle: 'italic' }}>No product linked to this inquiry</div>
+          <div style={{ fontSize: '0.75rem', color: 'var(--d2)', fontStyle: 'italic' }}>No product linked to this inquiry</div>
         )}
 
         <div style={{ height: '1px', background: 'var(--ln)', margin: '20px 0 16px' }} />
-        <div style={{ fontSize: '11px', color: 'var(--d2)' }}>{fmtDate(selectedInq.created_at)} · {fmtTime(selectedInq.created_at)}</div>
+        <div style={{ fontSize: '0.6875rem', color: 'var(--d2)' }}>{fmtDate(selectedInq.created_at)} · {fmtTime(selectedInq.created_at)}</div>
 
         <button onClick={onClose}
-          style={{ marginTop: '20px', background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '10px 20px', fontFamily: 'var(--sans)', fontSize: '10px', letterSpacing: '.18em', textTransform: 'uppercase', cursor: 'pointer' }}>
+          style={{ marginTop: '20px', background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '10px 20px', fontFamily: 'var(--sans)', fontSize: '0.625rem', letterSpacing: '.18em', textTransform: 'uppercase', cursor: 'pointer' }}>
           Close
         </button>
       </div>

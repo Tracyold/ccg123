@@ -56,7 +56,7 @@ export default function PhilosophySection() {
       <div className="container-custom" style={{ maxWidth: '1400px', width: '100%' }}>
         <p
           className="uppercase text-gray-500 mb-4 text-center"
-          style={{ fontSize: '12px', letterSpacing: '0.20em' }}
+          style={{ fontSize: '0.75rem', letterSpacing: '0.20em' }}
         >
           Philosophy
         </p>

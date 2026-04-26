@@ -4,20 +4,20 @@ import { precut, postcut } from './shared-feasibility';
 function SeverityBadge({ level }: { level: string }) {
   const colors: Record<string, string> = { Minor: 'rgba(100,200,120,0.15)', Moderate: 'rgba(220,160,60,0.15)', Significant: 'rgba(220,100,60,0.15)', Critical: 'rgba(220,80,80,0.15)' };
   const text: Record<string, string> = { Minor: 'rgba(100,200,120,0.9)', Moderate: 'rgba(220,160,60,0.9)', Significant: 'rgba(220,100,60,0.9)', Critical: 'rgba(220,80,80,0.9)' };
-  return <span style={{ display: 'inline-block', padding: '3px 10px', background: colors[level] || 'var(--border)', color: text[level] || 'var(--text-muted)', fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', borderRadius: '2px' }}>{level}</span>;
+  return <span style={{ display: 'inline-block', padding: '3px 10px', background: colors[level] || 'var(--border)', color: text[level] || 'var(--text-muted)', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.12em', textTransform: 'uppercase', borderRadius: '2px' }}>{level}</span>;
 }
 
 function ResultBadge({ result }: { result: string }) {
   const isGood = ['Resolved', 'Improved', 'Left Intact'].includes(result);
-  return <span style={{ display: 'inline-block', padding: '3px 10px', background: isGood ? 'rgba(100,200,120,0.1)' : 'rgba(180,180,180,0.08)', color: isGood ? 'rgba(100,200,120,0.9)' : 'rgba(180,180,180,0.75)', fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', borderRadius: '2px' }}>{result}</span>;
+  return <span style={{ display: 'inline-block', padding: '3px 10px', background: isGood ? 'rgba(100,200,120,0.1)' : 'rgba(180,180,180,0.08)', color: isGood ? 'rgba(100,200,120,0.9)' : 'rgba(180,180,180,0.75)', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.12em', textTransform: 'uppercase', borderRadius: '2px' }}>{result}</span>;
 }
 
-const SL = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: 'rgba(212,175,55,0.9)', marginBottom: '14px', marginTop: '28px', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.07)' };
-const FL = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--accent)', marginBottom: '4px' };
-const FV = { fontFamily: 'var(--font-body)', fontSize: '17px', color: 'var(--text)', marginBottom: '17px' };
-const TH = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: 'var(--accent)', padding: '9px 8px', borderBottom: '1px solid rgba(255,255,255,0.07)', textAlign: 'left' as const };
-const TC = { fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', padding: '9px 8px', borderBottom: '1px solid rgba(30,60,120,0.4)', verticalAlign: 'top' as const };
-const BODY = { fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', lineHeight: 1.8 };
+const SL = { fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: 'rgba(212,175,55,0.9)', marginBottom: '14px', marginTop: '28px', paddingBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.07)' };
+const FL = { fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--accent)', marginBottom: '4px' };
+const FV = { fontFamily: 'var(--font-body)', fontSize: '1.0625rem', color: 'var(--text)', marginBottom: '17px' };
+const TH = { fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: 'var(--accent)', padding: '9px 8px', borderBottom: '1px solid rgba(255,255,255,0.07)', textAlign: 'left' as const };
+const TC = { fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)', padding: '9px 8px', borderBottom: '1px solid rgba(30,60,120,0.4)', verticalAlign: 'top' as const };
+const BODY = { fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)', lineHeight: 1.8 };
 
 export default function FeasibilityMobile() {
   const [activeTab, setActiveTab] = useState<'precut' | 'postcut'>('precut');
@@ -26,15 +26,15 @@ export default function FeasibilityMobile() {
     <>
       <style>{`
         .fm-tabs { display: flex; gap: 2px; margin-bottom: 28px; }
-        .fm-tab { flex: 1; padding: 15px 0; text-align: center; font-family: var(--font-ui); font-size: 15px; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid var(--border); background: transparent; color: var(--text); cursor: pointer; transition: all 200ms; }
+        .fm-tab { flex: 1; padding: 15px 0; text-align: center; font-family: var(--font-ui); font-size: 0.9375rem; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid var(--border); background: transparent; color: var(--text); cursor: pointer; transition: all 200ms; }
         .fm-tab.active { border-color: #d4af37; color: rgba(212,175,55,0.9); background: rgba(212,175,55,0.04); }
         .fm-card { background: var(--bg-deep); border: 1px solid var(--border); padding: 28px 22px; }
         .fm-plot { background: rgba(0,0,0,0.4); border: 1px solid var(--border); padding: 18px; position: relative; min-height: 160px; margin-bottom: 8px; }
-        .fm-plot-label { font-family: var(--font-ui); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block; }
+        .fm-plot-label { font-family: var(--font-ui); font-size: 0.8125rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block; }
         .fm-plot-shape { display: flex; align-items: center; justify-content: center; }
         .fm-option { padding: 15px; border: 1px solid var(--border); margin-bottom: 9px; background: var(--bg-card); }
         .fm-option.rec { border-color: #d4af37; background: rgba(212,175,55,0.04); }
-        .fm-disclaimer { margin-top: 25px; padding: 15px; border: 1px solid var(--border); background: var(--bg-card); font-family: var(--font-body); font-size: 13px; color: var(--text-muted); line-height: 1.75; }
+        .fm-disclaimer { margin-top: 25px; padding: 15px; border: 1px solid var(--border); background: var(--bg-card); font-family: var(--font-body); font-size: 0.8125rem; color: var(--text-muted); line-height: 1.75; }
       `}</style>
 
       <div className="fm-tabs">
@@ -45,9 +45,9 @@ export default function FeasibilityMobile() {
       {activeTab === 'precut' && (
         <div className="fm-card">
           {/* Header */}
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
           <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.3125rem, 6vw, 1.6875rem)', color: 'var(--text)', lineHeight: 1.1, marginBottom: '6px' }}>Pre-Cut Evaluation</p>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>Report #{precut.id} · {precut.date} · {precut.analyst}</p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--text-muted)', marginBottom: '20px' }}>Report #{precut.id} · {precut.date} · {precut.analyst}</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 16px', marginBottom: '8px' }}>
             <div><p style={FL}>Client</p><p style={FV}>{precut.clientName}</p></div>
             <div><p style={FL}>Stone ID</p><p style={FV}>{precut.stoneId}</p></div>
@@ -76,9 +76,9 @@ export default function FeasibilityMobile() {
           <p style={SL}>3 — Symbol Legend</p>
           {precut.symbolLegend.map(s => (
             <div key={s.symbol} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', marginBottom: '10px' }}>
-              <span style={{ fontFamily: 'monospace', fontSize: '17px', color: 'var(--gold)', minWidth: '21px' }}>{s.symbol}</span>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)' }}>
-                <span style={{ color: 'var(--accent)', marginRight: '8px', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{s.type}</span>
+              <span style={{ fontFamily: 'monospace', fontSize: '1.0625rem', color: 'var(--gold)', minWidth: '21px' }}>{s.symbol}</span>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)' }}>
+                <span style={{ color: 'var(--accent)', marginRight: '8px', fontSize: '0.8125rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{s.type}</span>
                 {s.desc}
               </p>
             </div>
@@ -148,7 +148,7 @@ export default function FeasibilityMobile() {
             <tbody>{precut.structuralTable.map((r, i) => (
               <tr key={i}>
                 <td style={TC}>{i + 1}</td>
-                <td style={TC}>{r.feature}<br /><span style={{ color: 'var(--accent)', fontSize: '13px' }}>{r.location} · {r.view}</span></td>
+                <td style={TC}>{r.feature}<br /><span style={{ color: 'var(--accent)', fontSize: '0.8125rem' }}>{r.location} · {r.view}</span></td>
                 <td style={TC}><SeverityBadge level={r.severity} /></td>
               </tr>
             ))}</tbody>
@@ -167,7 +167,7 @@ export default function FeasibilityMobile() {
           <p style={{ ...BODY, marginBottom: '13px', color: 'var(--text-muted)' }}>High yield outcomes are more probable IF:</p>
           {precut.conditionals.map((c, i) => (
             <div key={i} style={{ display: 'flex', gap: '11px', marginBottom: '11px' }}>
-              <span style={{ color: 'var(--gold)', fontSize: '15px', flexShrink: 0 }}>—</span>
+              <span style={{ color: 'var(--gold)', fontSize: '0.9375rem', flexShrink: 0 }}>—</span>
               <p style={BODY}>{c}</p>
             </div>
           ))}
@@ -177,8 +177,8 @@ export default function FeasibilityMobile() {
           {precut.options.map((o, i) => (
             <div key={i} className={`fm-option${i === 1 ? ' rec' : ''}`}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '7px' }}>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', fontWeight: 600, color: 'var(--gold)' }}>{o.label}</p>
-                {i === 1 && <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--gold)' }}>Recommended</span>}
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', fontWeight: 600, color: 'var(--gold)' }}>{o.label}</p>
+                {i === 1 && <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--gold)' }}>Recommended</span>}
               </div>
               <p style={BODY}>{o.desc}</p>
             </div>
@@ -202,9 +202,9 @@ export default function FeasibilityMobile() {
       {activeTab === 'postcut' && (
         <div className="fm-card">
           {/* Header */}
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
           <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.3125rem, 6vw, 1.6875rem)', color: 'var(--text)', lineHeight: 1.1, marginBottom: '6px' }}>Post-Cut Change Report</p>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>Report #{postcut.id} · {postcut.date} · {postcut.analyst}</p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--text-muted)', marginBottom: '20px' }}>Report #{postcut.id} · {postcut.date} · {postcut.analyst}</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 16px', marginBottom: '8px' }}>
             <div><p style={FL}>Client</p><p style={FV}>{postcut.clientName}</p></div>
             <div><p style={FL}>Original Report</p><p style={FV}>#{postcut.originalReportId}</p></div>
@@ -226,7 +226,7 @@ export default function FeasibilityMobile() {
           <p style={FL}>Primary Objectives</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', margin: '9px 0 17px' }}>
             {postcut.beforeAfter.objectives.map((o, i) => (
-              <span key={i} style={{ padding: '6px 13px', border: '1px solid var(--gold)', background: 'var(--gold)', fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', display: 'inline-block' }}>{o}</span>
+              <span key={i} style={{ padding: '6px 13px', border: '1px solid var(--gold)', background: 'var(--gold)', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', display: 'inline-block' }}>{o}</span>
             ))}
           </div>
           <p style={FL}>Summary Notes</p>
@@ -239,7 +239,7 @@ export default function FeasibilityMobile() {
             <tbody>{postcut.changeTable.map((r, i) => (
               <tr key={i}>
                 <td style={TC}>{i + 1}</td>
-                <td style={TC}>{r.feature}<br /><span style={{ color: 'var(--accent)', fontSize: '13px' }}>{r.action}</span></td>
+                <td style={TC}>{r.feature}<br /><span style={{ color: 'var(--accent)', fontSize: '0.8125rem' }}>{r.action}</span></td>
                 <td style={TC}><ResultBadge result={r.result} /></td>
               </tr>
             ))}</tbody>
@@ -298,8 +298,8 @@ export default function FeasibilityMobile() {
             <thead><tr>{['Aspect', 'Rating'].map(h => <th key={h} style={TH}>{h}</th>)}</tr></thead>
             <tbody>{postcut.optical.map((r, i) => (
               <tr key={i}>
-                <td style={TC}>{r.aspect}<br /><span style={{ color: 'var(--accent)', fontSize: '13px' }}>{r.note}</span></td>
-                <td style={TC}><span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--gold)', fontWeight: 600 }}>{r.rating}</span></td>
+                <td style={TC}>{r.aspect}<br /><span style={{ color: 'var(--accent)', fontSize: '0.8125rem' }}>{r.note}</span></td>
+                <td style={TC}><span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--gold)', fontWeight: 600 }}>{r.rating}</span></td>
               </tr>
             ))}</tbody>
           </table>
@@ -327,8 +327,8 @@ export default function FeasibilityMobile() {
             ['Client Approval Recorded', postcut.documentation.clientApproval],
           ].map(([l, v]) => (
             <div key={l} style={{ display: 'flex', justifyContent: 'space-between', padding: '11px 0', borderBottom: '1px solid rgba(30,60,120,0.4)' }}>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--accent)' }}>{l}</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', fontWeight: 600, color: v === 'Yes' ? 'rgba(100,200,120,0.9)' : 'rgba(220,80,80,0.9)' }}>{v}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--accent)' }}>{l}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', fontWeight: 600, color: v === 'Yes' ? 'rgba(100,200,120,0.9)' : 'rgba(220,80,80,0.9)' }}>{v}</p>
             </div>
           ))}
 

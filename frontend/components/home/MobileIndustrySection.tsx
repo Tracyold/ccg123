@@ -46,7 +46,7 @@ export default function MobileIndustrySection() {
       <p
         className="uppercase mb-2"
         style={{
-          fontSize: '11px',
+          fontSize: '0.6875rem',
           letterSpacing: '0.29em',
           color: 'var(--text-muted)',
         }}
@@ -56,14 +56,14 @@ export default function MobileIndustrySection() {
       <p
         id="mobile-years"
         style={{
-          fontSize: '24px',
+          fontSize: '1.5rem',
           fontWeight: 600,
           color: 'var(--text)',
         }}
       >
         13 Years
       </p>
-      <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px' }}>
+      <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>
         Cutting for <span id="mobile-seven">Seven</span>
       </p>
     </section>

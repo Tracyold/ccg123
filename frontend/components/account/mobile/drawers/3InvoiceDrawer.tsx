@@ -69,7 +69,7 @@ export default function InvoiceDrawer3({
               </div>
               <div className="pdf-inv-num">
                 Invoice #{invoice.invoice_number || '1000'}<br />
-                <span style={{ fontSize: 10 }}>
+                <span style={{ fontSize: 0.625rem }}>
                   Issued: {paidDate}
                 </span>
               </div>

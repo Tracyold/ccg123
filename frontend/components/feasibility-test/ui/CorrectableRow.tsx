@@ -104,7 +104,7 @@ export default function CorrectableRow({
                   border: '0.5px solid var(--border)',
                   padding: '12px 16px',
                   fontFamily: 'var(--font-body)',
-                  fontSize: 12,
+                  fontSize: 0.75rem,
                   fontWeight: 500,
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
@@ -125,7 +125,7 @@ export default function CorrectableRow({
                   border: '0.5px solid rgba(255,211,105,0.45)',
                   padding: '12px 16px',
                   fontFamily: 'var(--font-body)',
-                  fontSize: 12,
+                  fontSize: 0.75rem,
                   fontWeight: 600,
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
@@ -144,11 +144,11 @@ export default function CorrectableRow({
       {/* Relevant selections */}
       {selectedItems.length > 0 && (
         <div style={{ marginBottom: 20, paddingBottom: 14, borderBottom: '0.5px solid var(--border)' }}>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', opacity: 0.5, margin: '0 0 10px' }}>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.625rem, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', opacity: 0.5, margin: '0 0 10px' }}>
             Your selections
           </p>
           {selectedItems.map(id => (
-            <p key={id} style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 300, color: 'var(--text-muted)', margin: '0 0 4px' }}>
+            <p key={id} style={{ fontFamily: 'var(--font-body)', fontSize: 0.8125rem, fontWeight: 300, color: 'var(--text-muted)', margin: '0 0 4px' }}>
               — {LABEL_MAP[id] ?? id}
             </p>
           ))}
@@ -167,7 +167,7 @@ export default function CorrectableRow({
               onClick={() => handleClick(opt.value)}
               style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: 13,
+                fontSize: 0.8125rem,
                 fontWeight: isSelected ? 400 : 300,
                 color: isSelected ? 'var(--text)' : 'var(--text-muted)',
                 padding: '18px 12px',
@@ -192,7 +192,7 @@ export default function CorrectableRow({
                   position: 'absolute',
                   top: 6, right: 8,
                   fontFamily: 'var(--font-body)',
-                  fontSize: 9,
+                  fontSize: 0.5625rem,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
                   color: 'var(--accent)',

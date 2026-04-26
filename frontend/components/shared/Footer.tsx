@@ -21,7 +21,7 @@ const footerCss = `
 }
 .ccg-footer-link {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -33,12 +33,12 @@ const footerCss = `
 }
 .ccg-footer-separator {
   color: var(--border);
-  font-size: 12px;
+  font-size: 0.75rem;
   user-select: none;
 }
 .ccg-footer-email {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 0.8125rem;
   letter-spacing: 0.05em;
   color: var(--text-muted);
   text-decoration: none;

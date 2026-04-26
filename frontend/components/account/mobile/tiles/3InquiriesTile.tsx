@@ -18,7 +18,7 @@ export default function InquiriesTile3({ inquiries, onClick }: InquiriesTileProp
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 14, flex: 1 }}>
         <div style={{ 
-          fontSize: 32, 
+          fontSize: 2.0rem, 
           lineHeight: 1, 
           color: 'rgba(255,255,255,0.85)', 
           flexShrink: 0,
@@ -26,7 +26,7 @@ export default function InquiriesTile3({ inquiries, onClick }: InquiriesTileProp
         }}>✎</div>
         <div style={{ 
           fontFamily: 'var(--font-display)', 
-          fontSize: 18, 
+          fontSize: 1.125rem, 
           color: 'var(--text)',
           fontWeight: 500
         }}>Inquiries</div>

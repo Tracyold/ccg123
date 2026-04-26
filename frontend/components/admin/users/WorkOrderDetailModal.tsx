@@ -27,7 +27,7 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
   const [woClientAddrEdit, setWoClientAddrEdit] = useState('');
 
   // inputStyle — line 320 of [id].tsx
-  const inputStyle: React.CSSProperties = { background: 'var(--k2)', border: '1px solid var(--ln)', color: 'var(--tx)', padding: '10px 12px', fontFamily: 'var(--sans)', fontSize: '15px', width: '100%', outline: 'none', height: '39px' };
+  const inputStyle: React.CSSProperties = { background: 'var(--k2)', border: '1px solid var(--ln)', color: 'var(--tx)', padding: '10px 12px', fontFamily: 'var(--sans)', fontSize: '0.9375rem', width: '100%', outline: 'none', height: '39px' };
 
   // appendLog — lines 180–184 of [id].tsx
   const appendLog = (wo: any, action: string, by: string) => {
@@ -78,21 +78,21 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
           <div>
-            <div style={{ fontSize: '10px', letterSpacing: '.3em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '4px' }}>Work Order</div>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: '22px', color: 'var(--wh)' }}>{selectedWO.title}</div>
+            <div style={{ fontSize: '0.625rem', letterSpacing: '.3em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '4px' }}>Work Order</div>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: '1.375rem', color: 'var(--wh)' }}>{selectedWO.title}</div>
           </div>
-          <span style={{ fontSize: '9px', fontWeight: 500, letterSpacing: '.17em', textTransform: 'uppercase', padding: '4px 9px', background: STATUS_COLORS[selectedWO.status]?.bg, color: STATUS_COLORS[selectedWO.status]?.color }}>{selectedWO.status}</span>
+          <span style={{ fontSize: '0.5625rem', fontWeight: 500, letterSpacing: '.17em', textTransform: 'uppercase', padding: '4px 9px', background: STATUS_COLORS[selectedWO.status]?.bg, color: STATUS_COLORS[selectedWO.status]?.color }}>{selectedWO.status}</span>
         </div>
 
         {/* Admin address — SEND TO THIS ADDRESS */}
         {adminInfo && (
           <div style={{ marginBottom: '16px', padding: '18px', background: 'var(--k0)', border: '.5px solid var(--ln)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-              <div style={{ fontSize: '11px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)' }}>Admin Address</div>
-              <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>← CLIENT SENDS ITEM HERE</div>
+              <div style={{ fontSize: '0.6875rem', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)' }}>Admin Address</div>
+              <div style={{ fontSize: '0.625rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>← CLIENT SENDS ITEM HERE</div>
             </div>
-            <div style={{ fontSize: '15px', color: 'var(--text)', lineHeight: 2 }}>
-              <div style={{ color: 'var(--gl)', fontWeight: 600, fontSize: '16px' }}>{adminInfo.business_name}</div>
+            <div style={{ fontSize: '0.9375rem', color: 'var(--text)', lineHeight: 2 }}>
+              <div style={{ color: 'var(--gl)', fontWeight: 600, fontSize: '1.0rem' }}>{adminInfo.business_name}</div>
               <div>{adminInfo.full_name}</div>
               <div style={{ fontWeight: 600, color: 'rgba(var(--text-rgb, 238,238,238),0.85)' }}>{adminInfo.address}</div>
               <div>{adminInfo.contact_email}</div>
@@ -105,11 +105,11 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
         {user && (
           <div style={{ marginBottom: '20px', padding: '18px', background: 'var(--k0)', border: '.5px solid var(--ln)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-              <div style={{ fontSize: '11px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)' }}>Client Return Address</div>
+              <div style={{ fontSize: '0.6875rem', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)' }}>Client Return Address</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>RETURN ITEM HERE →</div>
+                <div style={{ fontSize: '0.625rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>RETURN ITEM HERE →</div>
                 <button onClick={() => { setEditingWOAddr(true); setWoClientAddrEdit(selectedWO.wo_shipping_address || user.shipping_address || ''); setWoAdminAddrEdit(adminInfo?.address || ''); }}
-                  style={{ fontSize: '10px', letterSpacing: '.15em', textTransform: 'uppercase', background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '3px 8px', cursor: 'pointer' }}>
+                  style={{ fontSize: '0.625rem', letterSpacing: '.15em', textTransform: 'uppercase', background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '3px 8px', cursor: 'pointer' }}>
                   Edit
                 </button>
               </div>
@@ -117,14 +117,14 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
             {editingWOAddr ? (
               <div>
                 <div style={{ marginBottom: '8px' }}>
-                  <label style={{ fontSize: '10px', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--d2)', display: 'block', marginBottom: '4px' }}>Admin Address (send to)</label>
+                  <label style={{ fontSize: '0.625rem', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--d2)', display: 'block', marginBottom: '4px' }}>Admin Address (send to)</label>
                   <input value={woAdminAddrEdit} onChange={e => setWoAdminAddrEdit(e.target.value)}
-                    style={{ width: '100%', background: 'var(--k2)', border: '1px solid var(--ln)', color: 'var(--tx)', padding: '8px 10px', fontSize: '13px', fontFamily: 'var(--sans)', outline: 'none', marginBottom: '8px' }} />
+                    style={{ width: '100%', background: 'var(--k2)', border: '1px solid var(--ln)', color: 'var(--tx)', padding: '8px 10px', fontSize: '0.8125rem', fontFamily: 'var(--sans)', outline: 'none', marginBottom: '8px' }} />
                 </div>
                 <div style={{ marginBottom: '10px' }}>
-                  <label style={{ fontSize: '10px', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--d2)', display: 'block', marginBottom: '4px' }}>Client Return Address</label>
+                  <label style={{ fontSize: '0.625rem', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--d2)', display: 'block', marginBottom: '4px' }}>Client Return Address</label>
                   <input value={woClientAddrEdit} onChange={e => setWoClientAddrEdit(e.target.value)}
-                    style={{ width: '100%', background: 'var(--k2)', border: '1px solid var(--ln)', color: 'var(--tx)', padding: '8px 10px', fontSize: '13px', fontFamily: 'var(--sans)', outline: 'none' }} />
+                    style={{ width: '100%', background: 'var(--k2)', border: '1px solid var(--ln)', color: 'var(--tx)', padding: '8px 10px', fontSize: '0.8125rem', fontFamily: 'var(--sans)', outline: 'none' }} />
                 </div>
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <button className="bp" onClick={async () => {
@@ -141,13 +141,13 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
                 </div>
               </div>
             ) : (
-              <div style={{ fontSize: '15px', color: 'var(--text)', lineHeight: 2 }}>
-                <div style={{ color: 'var(--accent)', fontSize: '16px' }}>{user.name}</div>
+              <div style={{ fontSize: '0.9375rem', color: 'var(--text)', lineHeight: 2 }}>
+                <div style={{ color: 'var(--accent)', fontSize: '1.0rem' }}>{user.name}</div>
                 <div>{user.email}</div>
                 {user.phone && <div>{user.phone}</div>}
                 <div style={{ fontWeight: 600, color: 'rgba(var(--text-rgb, 238,238,238),0.85)' }}>{selectedWO.wo_shipping_address || user.shipping_address || 'No address on file'}</div>
                 {selectedWO.wo_shipping_address && selectedWO.wo_shipping_address !== user.shipping_address && (
-                  <div style={{ fontSize: '11px', color: 'var(--accent)', marginTop: '4px', fontStyle: 'italic' }}>* Custom address for this work order only</div>
+                  <div style={{ fontSize: '0.6875rem', color: 'var(--accent)', marginTop: '4px', fontStyle: 'italic' }}>* Custom address for this work order only</div>
                 )}
               </div>
             )}
@@ -168,40 +168,40 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
           { label: 'Cancelled',        val: selectedWO.cancelled_at ? fmtDate(selectedWO.cancelled_at) : null },
         ].filter(r => r.val).map(r => (
           <div key={r.label} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-            <span style={{ fontSize: '12px', letterSpacing: '.17em', textTransform: 'uppercase', color: 'var(--d2)' }}>{r.label}</span>
-            <span style={{ fontSize: '15px', color: 'var(--text)' }}>{r.val}</span>
+            <span style={{ fontSize: '0.75rem', letterSpacing: '.17em', textTransform: 'uppercase', color: 'var(--d2)' }}>{r.label}</span>
+            <span style={{ fontSize: '0.9375rem', color: 'var(--text)' }}>{r.val}</span>
           </div>
         ))}
 
         <div style={{ marginTop: '16px' }}>
-          <div style={{ fontSize: '11px', letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '8px' }}>Description</div>
-          <p style={{ fontSize: '15px', color: 'var(--text)', lineHeight: 1.8 }}>{selectedWO.description}</p>
+          <div style={{ fontSize: '0.6875rem', letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '8px' }}>Description</div>
+          <p style={{ fontSize: '0.9375rem', color: 'var(--text)', lineHeight: 1.8 }}>{selectedWO.description}</p>
         </div>
 
         {selectedWO.notes && (
           <div style={{ marginTop: '16px' }}>
-            <div style={{ fontSize: '11px', letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '8px' }}>Internal Notes</div>
-            <p style={{ fontSize: '15px', color: 'var(--text-muted)', lineHeight: 1.8 }}>{selectedWO.notes}</p>
+            <div style={{ fontSize: '0.6875rem', letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '8px' }}>Internal Notes</div>
+            <p style={{ fontSize: '0.9375rem', color: 'var(--text-muted)', lineHeight: 1.8 }}>{selectedWO.notes}</p>
           </div>
         )}
 
         {selectedWO.estimated_price && (
           <div style={{ marginTop: '19px', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '14px', background: 'var(--k0)', border: '1px solid var(--ln)' }}>
-            <span style={{ fontSize: '11px', letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--d2)' }}>Quoted Price</span>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '22px', color: 'rgb(34, 158, 114)' }}>{formatMoney(selectedWO.estimated_price)}</span>
+            <span style={{ fontSize: '0.6875rem', letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--d2)' }}>Quoted Price</span>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '1.375rem', color: 'rgb(34, 158, 114)' }}>{formatMoney(selectedWO.estimated_price)}</span>
           </div>
         )}
 
         {/* Payment section — only when COMPLETED */}
         {selectedWO.status === 'COMPLETE' && (
           <div style={{ marginTop: '16px', padding: '16px', background: 'var(--k0)', border: '.5px solid var(--ln)' }}>
-            <div style={{ fontSize: '11px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '12px' }}>Payment</div>
+            <div style={{ fontSize: '0.6875rem', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '12px' }}>Payment</div>
             {selectedWO.paid_outside_site ? (
-              <div style={{ fontSize: '13px', color: 'var(--accent)' }}>✓ Marked as paid outside site</div>
+              <div style={{ fontSize: '0.8125rem', color: 'var(--accent)' }}>✓ Marked as paid outside site</div>
             ) : selectedWO.stripe_payment_link ? (
               <div>
-                <div style={{ fontSize: '11px', color: 'var(--d2)', marginBottom: '6px' }}>Stripe payment link:</div>
-                <a href={selectedWO.stripe_payment_link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gl)', fontSize: '13px', wordBreak: 'break-all' }}>{selectedWO.stripe_payment_link}</a>
+                <div style={{ fontSize: '0.6875rem', color: 'var(--d2)', marginBottom: '6px' }}>Stripe payment link:</div>
+                <a href={selectedWO.stripe_payment_link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gl)', fontSize: '0.8125rem', wordBreak: 'break-all' }}>{selectedWO.stripe_payment_link}</a>
               </div>
             ) : (
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
@@ -247,14 +247,14 @@ export default function WorkOrderDetailModal({ selectedWO, setSelectedWO, user, 
         {/* Edit History Log */}
         {selectedWO.edit_history && selectedWO.edit_history.length > 0 && (
           <div style={{ marginTop: '28px', borderTop: '1px solid var(--ln)', paddingTop: '16px' }}>
-            <div style={{ fontSize: '10px', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '10px' }}>Activity Log</div>
+            <div style={{ fontSize: '0.625rem', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d2)', marginBottom: '10px' }}>Activity Log</div>
             {[...selectedWO.edit_history].reverse().map((entry: any, i: number) => (
               <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '8px 0', borderBottom: '1px solid var(--border)', gap: '12px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', padding: '2px 6px', background: entry.by === 'admin' ? 'var(--gold)' : 'rgba(45,212,191,0.1)', color: entry.by === 'admin' ? '#cfb040' : 'rgba(45,212,191,0.9)' }}>{entry.by}</span>
-                  <span style={{ fontSize: '13px', color: 'var(--tx)' }}>{entry.action}</span>
+                  <span style={{ fontSize: '0.625rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', padding: '2px 6px', background: entry.by === 'admin' ? 'var(--gold)' : 'rgba(45,212,191,0.1)', color: entry.by === 'admin' ? '#cfb040' : 'rgba(45,212,191,0.9)' }}>{entry.by}</span>
+                  <span style={{ fontSize: '0.8125rem', color: 'var(--tx)' }}>{entry.action}</span>
                 </div>
-                <span style={{ fontSize: '10px', color: 'var(--d2)', whiteSpace: 'nowrap', flexShrink: 0 }}>{fmtDate(entry.at)} · {fmtTime(entry.at)}</span>
+                <span style={{ fontSize: '0.625rem', color: 'var(--d2)', whiteSpace: 'nowrap', flexShrink: 0 }}>{fmtDate(entry.at)} · {fmtTime(entry.at)}</span>
               </div>
             ))}
           </div>

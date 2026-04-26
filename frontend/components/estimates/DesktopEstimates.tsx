@@ -63,7 +63,7 @@ export default function DesktopEstimates() {
           background: rgba(var(--gold-rgb), 0.12);
           border: 1px solid var(--gold);
           font-family: var(--font-body);
-          font-size: 17px;
+          font-size: 1.0625rem;
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: rgba(var(--gold-rgb), 0.9);
@@ -81,14 +81,14 @@ export default function DesktopEstimates() {
           background: rgba(var(--gold-rgb), 0.06);
           border-left: 2px solid var(--gold);
           font-family: var(--font-body);
-          font-size: 17px;
+          font-size: 1.0625rem;
           color: rgba(255,220,100,0.95);
           line-height: 1.7;
           margin-bottom: 20px;
         }
         .dest-body {
           font-family: var(--font-body);
-          font-size: 19px;
+          font-size: 1.1875rem;
           color: #e8dcc8;
           line-height: 1.85;
           margin-bottom: 28px;
@@ -106,7 +106,7 @@ export default function DesktopEstimates() {
           gap: 10px;
           align-items: flex-start;
           font-family: var(--font-body);
-          font-size: 17px;
+          font-size: 1.0625rem;
           color: #d4c9b0;
           line-height: 1.6;
         }
@@ -128,7 +128,7 @@ export default function DesktopEstimates() {
           background: transparent;
           color: rgba(var(--gold-rgb), 0.5);
           font-family: var(--font-body);
-          font-size: 17px;
+          font-size: 1.0625rem;
           letter-spacing: 0.15em;
           text-transform: uppercase;
           text-decoration: none;

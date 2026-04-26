@@ -245,25 +245,25 @@ export default function InstantEstimate() {
         .eq-inner { width: 100%; max-width: 600px; }
         .eq-bar { width: 100%; height: 1px; background: var(--border); margin-bottom: 48px; position: relative; }
         .eq-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--accent); transition: width 300ms ease; }
-        .eq-step { font-family: var(--font-ui); font-size: 15px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(212,175,55,0.9); margin-bottom: 20px; }
+        .eq-step { font-family: var(--font-ui); font-size: 0.9375rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(212,175,55,0.9); margin-bottom: 20px; }
         .eq-q { font-family: 'Oranienbaum', serif; font-size: clamp(1.6875rem, 4.5vw, 2.5rem); color: var(--text); line-height: 1.2; margin-bottom: 40px; }
-        .eq-sub { font-family: var(--font-ui); font-size: 15px; color: var(--text); margin-bottom: 20px; letter-spacing: 0.05em; }
+        .eq-sub { font-family: var(--font-ui); font-size: 0.9375rem; color: var(--text); margin-bottom: 20px; letter-spacing: 0.05em; }
         .eq-opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 40px; }
-        .eq-opt { padding: 17px 22px; border: 1px solid var(--border); background: transparent; color: rgba(var(--text-rgb, 238,238,238),0.85); font-family: var(--font-ui); font-size: 19px; text-align: left; cursor: pointer; transition: all 150ms; letter-spacing: 0.02em; width: 100%; }
+        .eq-opt { padding: 17px 22px; border: 1px solid var(--border); background: transparent; color: rgba(var(--text-rgb, 238,238,238),0.85); font-family: var(--font-ui); font-size: 1.1875rem; text-align: left; cursor: pointer; transition: all 150ms; letter-spacing: 0.02em; width: 100%; }
         .eq-opt:hover { border-color: #d4af37; color: var(--text); background: rgba(212,175,55,0.04); }
         .eq-opt.sel { border-color: #d4af37; color: var(--text); background: rgba(212,175,55,0.08); }
         .eq-acts { display: flex; gap: 12px; }
-        .eq-next { padding: 15px 36px; background: #d4af37; border: none; color: #050505; font-family: var(--font-ui); font-size: 15px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; cursor: pointer; }
+        .eq-next { padding: 15px 36px; background: #d4af37; border: none; color: #050505; font-family: var(--font-ui); font-size: 0.9375rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; cursor: pointer; }
         .eq-next:disabled { opacity: 0.25; cursor: not-allowed; }
-        .eq-back { padding: 15px 22px; background: none; border: 1px solid rgba(255,255,255,0.25); color: var(--text); font-family: var(--font-ui); font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; }
+        .eq-back { padding: 15px 22px; background: none; border: 1px solid rgba(255,255,255,0.25); color: var(--text); font-family: var(--font-ui); font-size: 0.9375rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; }
         .res-row { display: flex; justify-content: space-between; align-items: baseline; padding: 13px 0; border-bottom: 1px solid var(--border); }
-        .res-lbl { font-family: var(--font-ui); font-size: 15px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
-        .res-val { font-family: var(--font-body); font-size: 17px; color: var(--text); }
-        .flag-item { padding: 12px 16px; border-left: 2px solid rgba(220,80,80,0.7); margin-bottom: 8px; background: rgba(220,80,80,0.06); font-family: var(--font-body); font-size: 15px; color: rgba(220,80,80,0.95); line-height: 1.6; }
-        .online-item { padding: 12px 16px; border-left: 2px solid var(--accent); margin-bottom: 8px; background: rgba(255,211,105,0.05); font-family: var(--font-body); font-size: 15px; color: var(--accent); line-height: 1.6; }
+        .res-lbl { font-family: var(--font-ui); font-size: 0.9375rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+        .res-val { font-family: var(--font-body); font-size: 1.0625rem; color: var(--text); }
+        .flag-item { padding: 12px 16px; border-left: 2px solid rgba(220,80,80,0.7); margin-bottom: 8px; background: rgba(220,80,80,0.06); font-family: var(--font-body); font-size: 0.9375rem; color: rgba(220,80,80,0.95); line-height: 1.6; }
+        .online-item { padding: 12px 16px; border-left: 2px solid var(--accent); margin-bottom: 8px; background: rgba(255,211,105,0.05); font-family: var(--font-body); font-size: 0.9375rem; color: var(--accent); line-height: 1.6; }
         .price-box { padding: 28px; border: 1px solid #d4af37; background: rgba(212,175,55,0.03); margin-bottom: 24px; }
-        .price-note { font-family: var(--font-ui); font-size: 15px; color: var(--text); line-height: 1.85; margin-top: 12px; }
-        .eq-close { position: fixed; top: 18px; right: 18px; width: 40px; height: 40px; background: none; border: 1px solid var(--border); color: var(--text-muted); font-size: 19px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100; transition: border-color 150ms, color 150ms; }
+        .price-note { font-family: var(--font-ui); font-size: 0.9375rem; color: var(--text); line-height: 1.85; margin-top: 12px; }
+        .eq-close { position: fixed; top: 18px; right: 18px; width: 40px; height: 40px; background: none; border: 1px solid var(--border); color: var(--text-muted); font-size: 1.1875rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100; transition: border-color 150ms, color 150ms; }
         .eq-close:hover { border-color: #d4af37; color: #d4af37; }
         .feas-box { padding: 20px 24px; border: 1px solid #d4af37; background: rgba(212,175,55,0.03); margin-bottom: 24px; }
       `}</style>
@@ -467,14 +467,14 @@ export default function InstantEstimate() {
               {(totalTriggers > 0 || st.flags.length > 0) && (
                 <div style={{ marginBottom: 28, padding: '16px 20px', border: '1px solid var(--border)', background: 'var(--bg-card)' }}>
                   {totalTriggers > 0 && (
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 17, color: 'var(--text-muted)', lineHeight: 1.8 }}>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 1.0625rem, color: 'var(--text-muted)', lineHeight: 1.8 }}>
                       {totalTriggers === 1
                         ? '1 of your answers pointed toward a different path.'
                         : `${totalTriggers} of your answers pointed toward a different path.`}
                     </p>
                   )}
                   {st.flags.length > 0 && (
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 17, color: 'rgba(220,80,80,0.9)', lineHeight: 1.8, marginTop: totalTriggers > 0 ? 8 : 0 }}>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 1.0625rem, color: 'rgba(220,80,80,0.9)', lineHeight: 1.8, marginTop: totalTriggers > 0 ? 8 : 0 }}>
                       {st.flags.length === 1
                         ? '1 of your answers raised a structural concern.'
                         : `${st.flags.length} of your answers raised structural concerns.`}
@@ -508,12 +508,12 @@ export default function InstantEstimate() {
               {/* Online estimate recommendation */}
               {hasOnline && (
                 <div style={{ padding: '20px 24px', border: '1px solid var(--border)', background: 'var(--bg-card)', marginBottom: 28 }}>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(100,160,220,0.9)', marginBottom: 8 }}>Recommended Next Step</p>
-                  <p style={{ fontFamily: 'var(--font-display)', fontSize: 27, color: 'rgba(100,160,220,0.95)', marginBottom: 12 }}>Online Estimate — $3</p>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'rgba(var(--text-rgb, 238,238,238),0.85)', lineHeight: 1.85, marginBottom: 16 }}>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: 0.9375rem, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(100,160,220,0.9)', marginBottom: 8 }}>Recommended Next Step</p>
+                  <p style={{ fontFamily: 'var(--font-display)', fontSize: 1.6875rem, color: 'rgba(100,160,220,0.95)', marginBottom: 12 }}>Online Estimate — $3</p>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.9375rem, color: 'rgba(var(--text-rgb, 238,238,238),0.85)', lineHeight: 1.85, marginBottom: 16 }}>
                     Based on your answers, we recommend starting with an online estimate. This lets our cutter review your stone through photos before committing to a service.
                   </p>
-                  <a href="/estimates" style={{ display: 'inline-block', padding: '11px 24px', background: 'rgba(100,160,220,0.1)', border: '1px solid rgba(100,160,220,0.3)', color: 'rgba(100,160,220,0.95)', fontFamily: 'var(--font-ui)', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>View Online Estimate Options →</a>
+                  <a href="/estimates" style={{ display: 'inline-block', padding: '11px 24px', background: 'rgba(100,160,220,0.1)', border: '1px solid rgba(100,160,220,0.3)', color: 'rgba(100,160,220,0.95)', fontFamily: 'var(--font-ui)', fontSize: 0.9375rem, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>View Online Estimate Options →</a>
                 </div>
               )}
 
@@ -521,16 +521,16 @@ export default function InstantEstimate() {
               {!hasOnline && (hasFeasibility || hasInPerson) && (
                 <>
                   <div className="feas-box" style={{ marginBottom: 16 }}>
-                    <p style={{ fontFamily: 'var(--font-ui)', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 8 }}>Recommended Next Step</p>
-                    <p style={{ fontFamily: 'var(--font-display)', fontSize: 27, color: 'var(--gold)', marginBottom: 12 }}>Feasibility Report — $30</p>
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'rgba(var(--text-rgb, 238,238,238),0.85)', lineHeight: 1.85 }}>
+                    <p style={{ fontFamily: 'var(--font-ui)', fontSize: 0.9375rem, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 8 }}>Recommended Next Step</p>
+                    <p style={{ fontFamily: 'var(--font-display)', fontSize: 1.6875rem, color: 'var(--gold)', marginBottom: 12 }}>Feasibility Report — $30</p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.9375rem, color: 'rgba(var(--text-rgb, 238,238,238),0.85)', lineHeight: 1.85 }}>
                       A feasibility report will determine what is possible for your stone before any service is quoted. If services are rendered after the report, the $30 fee is waived and the report is included when your gemstone is returned.
                     </p>
                   </div>
                   <div style={{ padding: '20px 24px', border: '1px solid var(--border)', background: 'var(--bg-card)', marginBottom: 28 }}>
-                    <p style={{ fontFamily: 'var(--font-ui)', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 }}>Alternative Option</p>
-                    <p style={{ fontFamily: 'var(--font-display)', fontSize: 27, color: 'var(--text)', marginBottom: 12 }}>In-Person Evaluation — $10</p>
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'var(--text)', lineHeight: 1.85 }}>
+                    <p style={{ fontFamily: 'var(--font-ui)', fontSize: 0.9375rem, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 }}>Alternative Option</p>
+                    <p style={{ fontFamily: 'var(--font-display)', fontSize: 1.6875rem, color: 'var(--text)', marginBottom: 12 }}>In-Person Evaluation — $10</p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.9375rem, color: 'var(--text)', lineHeight: 1.85 }}>
                       Your stone has characteristics that require hands-on evaluation before any estimate can be made. The $10 fee is credited toward any service you proceed with.
                     </p>
                   </div>
@@ -540,18 +540,18 @@ export default function InstantEstimate() {
               {/* Price estimate — always show */}
               {(
                 <div className="price-box">
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 8 }}>Estimate Range</p>
-                  <p style={{ fontFamily: 'var(--font-display)', fontSize: 56, color: 'var(--gold)', lineHeight: 1 }}>${totalLow} – ${totalHigh}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: 0.9375rem, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 8 }}>Estimate Range</p>
+                  <p style={{ fontFamily: 'var(--font-display)', fontSize: 3.5rem, color: 'var(--gold)', lineHeight: 1 }}>${totalLow} – ${totalHigh}</p>
                   <p className="price-note">{st.flags.length > 0 ? 'This estimate assumes the structural concerns identified do not compromise the stone. If the feasibility report reveals deeper damage, this number will change — potentially significantly. This is an estimate only, not a quote.' : 'This is an estimate — not a quote. An estimate is an informed guess based on your answers and is not binding. A quote is a firm price offered by the cutter after personally reviewing your stone. All prices shown here are subject to change once your gemstone is examined.'}</p>
                   {st.svcRecs.length > 0 && (
                     <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--border)' }}>
-                      <p style={{ fontFamily: 'var(--font-ui)', fontSize: 15, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: 8 }}>Recommended Service</p>
-                      {st.svcRecs.map((r, i) => <p key={i} style={{ fontFamily: 'var(--font-body)', fontSize: 17, color: 'var(--text)', marginBottom: 4 }}>{r}</p>)}
+                      <p style={{ fontFamily: 'var(--font-ui)', fontSize: 0.9375rem, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: 8 }}>Recommended Service</p>
+                      {st.svcRecs.map((r, i) => <p key={i} style={{ fontFamily: 'var(--font-body)', fontSize: 1.0625rem, color: 'var(--text)', marginBottom: 4 }}>{r}</p>)}
                     </div>
                   )}
                   {st.svcCmp && st.svcCmp !== 'Not sure' && st.svcRecs.length > 0 && !st.svcRecs.includes(st.svcCmp) && (
                     <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid var(--border)' }}>
-                      <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'rgba(var(--text-rgb, 238,238,238),0.85)', lineHeight: 1.85 }}>
+                      <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.9375rem, color: 'rgba(var(--text-rgb, 238,238,238),0.85)', lineHeight: 1.85 }}>
                         You were hoping for <strong style={{ color: 'var(--text)' }}>{st.svcCmp}</strong>. Based on your answers, <strong style={{ color: 'var(--gold)' }}>{st.svcRecs[0]}</strong> may be more appropriate.
                       </p>
                     </div>
@@ -561,7 +561,7 @@ export default function InstantEstimate() {
 
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                 <button className="eq-next" onClick={() => { setSt(INIT); setSel(''); setMulti([]); }}>Start Over</button>
-                <a href="/estimates" style={{ display: 'flex', alignItems: 'center', padding: '15px 22px', background: 'none', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--text)', fontFamily: 'var(--font-ui)', fontSize: 15, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>All Estimates</a>
+                <a href="/estimates" style={{ display: 'flex', alignItems: 'center', padding: '15px 22px', background: 'none', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--text)', fontFamily: 'var(--font-ui)', fontSize: 0.9375rem, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>All Estimates</a>
               </div>
             </>);
           })()}

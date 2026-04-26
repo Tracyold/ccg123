@@ -40,21 +40,21 @@ export default function WorkOrderDetailModal({
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
           <div>
-            <div style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '4px' }}>Work Order</div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: '23px', color: 'rgba(255,255,255,0.88)' }}>{selectedWO.title}</div>
+            <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '4px' }}>Work Order</div>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.4375rem', color: 'rgba(255,255,255,0.88)' }}>{selectedWO.title}</div>
           </div>
-          <span style={{ fontSize: '9px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '4px 9px', background: STATUS_COLORS[selectedWO.status]?.bg, color: STATUS_COLORS[selectedWO.status]?.color }}>{selectedWO.status}</span>
+          <span style={{ fontSize: '0.5625rem', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '4px 9px', background: STATUS_COLORS[selectedWO.status]?.bg, color: STATUS_COLORS[selectedWO.status]?.color }}>{selectedWO.status}</span>
         </div>
 
         {/* Admin address — SEND TO THIS ADDRESS */}
         {adminInfo && (
           <div style={{ marginBottom: '16px', padding: '17px', background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <div style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Send To</div>
-              <div style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>← SEND TO THIS ADDRESS</div>
+              <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Send To</div>
+              <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>← SEND TO THIS ADDRESS</div>
             </div>
-            <div style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text-muted)', lineHeight: 2 }}>
-              <div style={{ color: 'var(--gold)', fontWeight: 600, fontSize: '16px' }}>{adminInfo.business_name}</div>
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text-muted)', lineHeight: 2 }}>
+              <div style={{ color: 'var(--gold)', fontWeight: 600, fontSize: '1.0rem' }}>{adminInfo.business_name}</div>
               <div>{adminInfo.full_name}</div>
               <div>{adminInfo.address}</div>
               <div>{adminInfo.contact_email}</div>
@@ -67,24 +67,24 @@ export default function WorkOrderDetailModal({
         {profile && (
           <div style={{ marginBottom: '21px', padding: '17px', background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <div style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Return To</div>
+              <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Return To</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>RETURN TO THIS ADDRESS →</div>
+                <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)' }}>RETURN TO THIS ADDRESS →</div>
                 {selectedWO.status === 'CREATED' && (
                   <button onClick={() => { setTempAddress(selectedWO.wo_shipping_address || profile.shipping_address || ''); setShowAddressEdit(true); }}
-                    style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase', background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '4px 8px', cursor: 'pointer' }}>
+                    style={{ fontFamily: 'var(--font-ui)', fontSize: '0.5625rem', letterSpacing: '0.15em', textTransform: 'uppercase', background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '4px 8px', cursor: 'pointer' }}>
                     Edit
                   </button>
                 )}
               </div>
             </div>
-            <div style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text-muted)', lineHeight: 2 }}>
-              <div style={{ color: 'rgba(var(--text-rgb, 238,238,238),0.85)', fontSize: '16px' }}>{profile.name}</div>
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text-muted)', lineHeight: 2 }}>
+              <div style={{ color: 'rgba(var(--text-rgb, 238,238,238),0.85)', fontSize: '1.0rem' }}>{profile.name}</div>
               <div>{profile.email}</div>
               {profile.phone && <div>{profile.phone}</div>}
               <div style={{ color: 'var(--text)' }}>{selectedWO.wo_shipping_address || profile.shipping_address || 'No address on file'}</div>
               {selectedWO.wo_shipping_address && selectedWO.wo_shipping_address !== profile.shipping_address && (
-                <div style={{ fontSize: '10px', color: 'var(--accent)', marginTop: '4px', fontStyle: 'italic' }}>* Custom address for this work order only</div>
+                <div style={{ fontSize: '0.625rem', color: 'var(--accent)', marginTop: '4px', fontStyle: 'italic' }}>* Custom address for this work order only</div>
               )}
             </div>
           </div>
@@ -95,13 +95,13 @@ export default function WorkOrderDetailModal({
           <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', padding: '16px', marginBottom: '16px', borderRadius: '4px' }}>
             {!addressConfirmed ? (
               <>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '8px' }}>Update Return Address</p>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.6 }}>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '8px' }}>Update Return Address</p>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '12px', lineHeight: 1.6 }}>
                   This change applies to this work order only and does not update your profile. By confirming, you agree this is the address we will ship your item to upon completion.
                 </p>
                 <input value={tempAddress} onChange={e => setTempAddress(e.target.value)}
                   placeholder="Enter address for this work order..."
-                  style={{ width: '100%', background: 'var(--bg-card)', border: '1px solid var(--border)', padding: '10px 12px', color: 'var(--text)', fontFamily: 'var(--font-body)', fontSize: '13px', outline: 'none', marginBottom: '10px' }} />
+                  style={{ width: '100%', background: 'var(--bg-card)', border: '1px solid var(--border)', padding: '10px 12px', color: 'var(--text)', fontFamily: 'var(--font-body)', fontSize: '0.8125rem', outline: 'none', marginBottom: '10px' }} />
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <button onClick={async () => {
                     if (!tempAddress.trim()) return;
@@ -111,17 +111,17 @@ export default function WorkOrderDetailModal({
                     setWorkOrders((prev: any[]) => prev.map(w => w.work_order_id === selectedWO.work_order_id ? { ...w, wo_shipping_address: tempAddress.trim(), edit_history: log } : w));
                     setAddressConfirmed(true);
                   }}
-                    style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', background: 'var(--gold)', color: 'var(--bg)', border: 'none', padding: '10px 16px', cursor: 'pointer' }}>
+                    style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', background: 'var(--gold)', color: 'var(--bg)', border: 'none', padding: '10px 16px', cursor: 'pointer' }}>
                     Confirm Address
                   </button>
                   <button onClick={() => setShowAddressEdit(false)}
-                    style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '10px 16px', cursor: 'pointer' }}>
+                    style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', letterSpacing: '0.15em', textTransform: 'uppercase', background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '10px 16px', cursor: 'pointer' }}>
                     Cancel
                   </button>
                 </div>
               </>
             ) : (
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--accent)' }}>✓ Address updated for this work order.</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--accent)' }}>✓ Address updated for this work order.</p>
             )}
           </div>
         )}
@@ -139,50 +139,50 @@ export default function WorkOrderDetailModal({
           { label: 'Completed', val: selectedWO.completed_at ? fmtDate(selectedWO.completed_at) + ' · ' + fmtTime(selectedWO.completed_at) : null },
         ].filter(r => r.val).map(r => (
           <div key={r.label} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <span style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{r.label}</span>
-            <span style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)' }}>{r.val}</span>
+            <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{r.label}</span>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)' }}>{r.val}</span>
           </div>
         ))}
 
         <div style={{ marginTop: '16px' }}>
-          <div style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '6px' }}>Description</div>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', lineHeight: 1.8 }}>{selectedWO.description}</p>
+          <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '6px' }}>Description</div>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)', lineHeight: 1.8 }}>{selectedWO.description}</p>
         </div>
 
         {selectedWO.notes && (
           <div style={{ marginTop: '16px' }}>
-            <div style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '6px' }}>Notes</div>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.7 }}>{selectedWO.notes}</p>
+            <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '6px' }}>Notes</div>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>{selectedWO.notes}</p>
           </div>
         )}
 
         {selectedWO.estimated_price && (
           <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '16px', background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
-            <span style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Quoted Price</span>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '22px', color: 'var(--accent)' }}>{formatMoney(selectedWO.estimated_price)}</span>
+            <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Quoted Price</span>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '1.375rem', color: 'var(--accent)' }}>{formatMoney(selectedWO.estimated_price)}</span>
           </div>
         )}
 
         {/* Payment — show stripe link if completed */}
         {selectedWO.status === 'COMPLETED' && selectedWO.stripe_payment_link && (
           <div style={{ marginTop: '16px', padding: '16px', background: 'var(--gold)', border: '1px solid var(--gold)' }}>
-            <div style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px' }}>Payment</div>
+            <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px' }}>Payment</div>
             <a href={selectedWO.stripe_payment_link} target="_blank" rel="noopener noreferrer"
-              style={{ fontFamily: 'var(--font-ui)', fontSize: '11px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', background: 'var(--gold)', color: 'var(--bg)', padding: '12px 20px', textDecoration: 'none', display: 'inline-block' }}>
+              style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', background: 'var(--gold)', color: 'var(--bg)', padding: '12px 20px', textDecoration: 'none', display: 'inline-block' }}>
               Pay Now
             </a>
           </div>
         )}
         {selectedWO.status === 'COMPLETED' && selectedWO.paid_outside_site && (
           <div style={{ marginTop: '16px', padding: '14px', background: 'rgba(var(--gold-rgb), 0.06)', border: '1px solid var(--border)' }}>
-            <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--accent)' }}>✓ Payment received — thank you!</span>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--accent)' }}>✓ Payment received — thank you!</span>
           </div>
         )}
 
         {/* CONFIRMED status notice */}
         {selectedWO.status === 'CONFIRMED' && (
           <div style={{ marginTop: '16px', padding: '14px', background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
               Your work order has been confirmed! Please send your item to the address above. We'll notify you when we receive it.
             </p>
           </div>
@@ -201,14 +201,14 @@ export default function WorkOrderDetailModal({
         {/* Activity Log */}
         {selectedWO.edit_history && selectedWO.edit_history.length > 0 && (
           <div style={{ marginTop: '28px', borderTop: '1px solid var(--border)', paddingTop: '16px' }}>
-            <div style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px' }}>Activity Log</div>
+            <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px' }}>Activity Log</div>
             {[...selectedWO.edit_history].reverse().map((entry: any, i: number) => (
               <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '8px 0', borderBottom: '1px solid var(--border)', gap: '12px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                  <span style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '2px 6px', background: entry.by === 'admin' ? 'var(--gold)' : 'rgba(45,212,191,0.1)', color: entry.by === 'admin' ? 'var(--gold)' : 'rgba(45,212,191,0.9)' }}>{entry.by}</span>
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)' }}>{entry.action}</span>
+                  <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '2px 6px', background: entry.by === 'admin' ? 'var(--gold)' : 'rgba(45,212,191,0.1)', color: entry.by === 'admin' ? 'var(--gold)' : 'rgba(45,212,191,0.9)' }}>{entry.by}</span>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>{entry.action}</span>
                 </div>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'rgba(255,255,255,0.3)', whiteSpace: 'nowrap', flexShrink: 0 }}>{fmtDate(entry.at)} · {fmtTime(entry.at)}</span>
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.625rem', color: 'rgba(255,255,255,0.3)', whiteSpace: 'nowrap', flexShrink: 0 }}>{fmtDate(entry.at)} · {fmtTime(entry.at)}</span>
               </div>
             ))}
           </div>

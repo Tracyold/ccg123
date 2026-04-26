@@ -51,26 +51,26 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
         maxWidth: '681px', width: '100%',
         padding: '32px',
       }}>
-        <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '8px' }}>
+        <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '8px' }}>
           SMS Consent Required
         </p>
-        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '25px', color: 'var(--text)', marginBottom: '22px' }}>
+        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5625rem', color: 'var(--text)', marginBottom: '22px' }}>
           {copy.title}
         </h2>
 
-        <p style={{ fontSize: '13px', lineHeight: 1.75, color: 'var(--text-muted)', marginBottom: '16px' }}>
+        <p style={{ fontSize: '0.8125rem', lineHeight: 1.75, color: 'var(--text-muted)', marginBottom: '16px' }}>
           {copy.body}
         </p>
 
         {copy.requirement && (
           <div style={{ background: 'rgba(var(--gold-rgb), 0.08)', border: '1px solid rgba(var(--gold-rgb), 0.25)', padding: '15px 19px', marginBottom: '21px' }}>
-            <p style={{ fontSize: '12px', lineHeight: 1.75, color: 'var(--accent)', margin: 0 }}>
+            <p style={{ fontSize: '0.75rem', lineHeight: 1.75, color: 'var(--accent)', margin: 0 }}>
               {copy.requirement}
             </p>
           </div>
         )}
 
-        <p style={{ fontSize: '15px', lineHeight: 1.65, color: 'var(--text-muted)', marginBottom: '21px' }}>
+        <p style={{ fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-muted)', marginBottom: '21px' }}>
           Cutting Corners Gems will never sell or share your phone number. You can manage your notification preferences at any time from your account dashboard. For help reply HELP. To stop all messages reply STOP.
         </p>
 
@@ -82,15 +82,15 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             transition: 'background 200ms',
           }}>
-            {checked && <span style={{ color: 'var(--bg)', fontSize: '15px', fontWeight: 700 }}>✓</span>}
+            {checked && <span style={{ color: 'var(--bg)', fontSize: '0.9375rem', fontWeight: 700 }}>✓</span>}
           </div>
-          <span style={{ fontSize: '15px', color: 'var(--text)', lineHeight: 1.65 }}>
+          <span style={{ fontSize: '0.9375rem', color: 'var(--text)', lineHeight: 1.65 }}>
             I agree to receive SMS notifications from Cutting Corners Gems. I understand I can opt out at any time by replying STOP, and that message & data rates may apply.
           </span>
         </div>
 
         <div style={{ display: 'flex', gap: '17px' }}>
-          <button onClick={onCancel} style={{ flex: 1, padding: '17px', background: 'transparent', border: '1px solid var(--border)', color: 'var(--text-muted)', fontSize: '15px', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>
+          <button onClick={onCancel} style={{ flex: 1, padding: '17px', background: 'transparent', border: '1px solid var(--border)', color: 'var(--text-muted)', fontSize: '0.9375rem', letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer' }}>
             Cancel
           </button>
           <button
@@ -99,7 +99,7 @@ export default function SmsConsentModal({ toggle, onConfirm, onCancel, hasOpenWo
               flex: 2, padding: '17px',
               background: checked ? 'var(--accent)' : 'rgba(var(--gold-rgb), 0.2)',
               border: 'none', color: checked ? '#000000e9' : 'rgba(var(--gold-rgb), 0.3)',
-              fontSize: '15px', letterSpacing: '0.15em', textTransform: 'uppercase',
+              fontSize: '0.9375rem', letterSpacing: '0.15em', textTransform: 'uppercase',
               cursor: checked ? 'pointer' : 'not-allowed',
               transition: 'all 300ms',
             }}

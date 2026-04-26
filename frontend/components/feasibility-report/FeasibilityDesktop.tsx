@@ -3,19 +3,19 @@ import { precut, postcut } from './shared-feasibility';
 function SeverityBadge({ level }: { level: string }) {
   const colors: Record<string, string> = { Low: 'rgba(100,200,120,0.15)', Moderate: 'rgba(220,160,60,0.15)', High: 'rgba(220,80,80,0.15)' };
   const text: Record<string, string> = { Low: 'rgba(100,200,120,0.9)', Moderate: 'rgba(220,160,60,0.9)', High: 'rgba(220,80,80,0.9)' };
-  return <span style={{ display: 'inline-block', padding: '2px 8px', background: colors[level] || 'var(--border)', color: text[level] || 'var(--text-muted)', fontFamily: 'var(--font-ui)', fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase', borderRadius: '2px' }}>{level}</span>;
+  return <span style={{ display: 'inline-block', padding: '2px 8px', background: colors[level] || 'var(--border)', color: text[level] || 'var(--text-muted)', fontFamily: 'var(--font-ui)', fontSize: '0.5625rem', letterSpacing: '0.15em', textTransform: 'uppercase', borderRadius: '2px' }}>{level}</span>;
 }
 
 function ResultBadge({ result }: { result: string }) {
   const isGood = ['Resolved', 'Improved', 'Excellent'].includes(result);
-  return <span style={{ display: 'inline-block', padding: '2px 8px', background: isGood ? 'rgba(100,200,120,0.1)' : 'rgba(180,180,180,0.08)', color: isGood ? 'rgba(100,200,120,0.9)' : 'rgba(180,180,180,0.6)', fontFamily: 'var(--font-ui)', fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase', borderRadius: '2px' }}>{result}</span>;
+  return <span style={{ display: 'inline-block', padding: '2px 8px', background: isGood ? 'rgba(100,200,120,0.1)' : 'rgba(180,180,180,0.08)', color: isGood ? 'rgba(100,200,120,0.9)' : 'rgba(180,180,180,0.6)', fontFamily: 'var(--font-ui)', fontSize: '0.5625rem', letterSpacing: '0.15em', textTransform: 'uppercase', borderRadius: '2px' }}>{result}</span>;
 }
 
-const SL = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: 'rgba(212,175,55,0.9)', marginBottom: '12px', marginTop: '32px', paddingBottom: '8px', borderBottom: '1px solid var(--border)' };
-const FL = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--accent)', marginBottom: '4px' };
-const FV = { fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', marginBottom: '17px' };
-const TH = { fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--accent)', padding: '8px 10px', borderBottom: '1px solid var(--border)', textAlign: 'left' as const };
-const TC = { fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', padding: '10px', borderBottom: '1px solid var(--border)', verticalAlign: 'top' as const };
+const SL = { fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: 'rgba(212,175,55,0.9)', marginBottom: '12px', marginTop: '32px', paddingBottom: '8px', borderBottom: '1px solid var(--border)' };
+const FL = { fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--accent)', marginBottom: '4px' };
+const FV = { fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)', marginBottom: '17px' };
+const TH = { fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'var(--accent)', padding: '8px 10px', borderBottom: '1px solid var(--border)', textAlign: 'left' as const };
+const TC = { fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)', padding: '10px', borderBottom: '1px solid var(--border)', verticalAlign: 'top' as const };
 
 const CARD: React.CSSProperties = { background: 'var(--bg-deep)', border: '1px solid var(--gold)', padding: '48px', width: '100%' };
 
@@ -28,11 +28,11 @@ export default function FeasibilityDesktop() {
         .fd-gem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
         .fd-sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .fd-plot { background: rgba(0,0,0,0.4); border: 1px solid var(--border); padding: 20px; position: relative; min-height: 140px; }
-        .fd-plot-label { font-family: var(--font-ui); font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); position: absolute; top: 10px; left: 12px; }
+        .fd-plot-label { font-family: var(--font-ui); font-size: 0.8125rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); position: absolute; top: 10px; left: 12px; }
         .fd-plot-shape { display: flex; align-items: center; justify-content: center; height: 100px; }
         .fd-option { padding: 16px; border: 1px solid var(--border); margin-bottom: 8px; background: var(--bg-card); }
         .fd-option.rec { border-color: #d4af37; background: rgba(212,175,55,0.04); }
-        .fd-disclaimer { margin-top: 32px; padding: 16px; border: 1px solid var(--border); background: var(--bg-card); font-family: var(--font-body); font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+        .fd-disclaimer { margin-top: 32px; padding: 16px; border: 1px solid var(--border); background: var(--bg-card); font-family: var(--font-body); font-size: 0.8125rem; color: var(--text-muted); line-height: 1.7; }
       `}</style>
 
       <div className="fd-grid">
@@ -40,9 +40,9 @@ export default function FeasibilityDesktop() {
         <div style={CARD}>
           <div className="fd-header">
             <div>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '21px', color: 'var(--text)', lineHeight: 1.1, marginBottom: '4px' }}>Pre-Cut Evaluation</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--text)' }}>Report #{precut.id}</p>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.3125rem', color: 'var(--text)', lineHeight: 1.1, marginBottom: '4px' }}>Pre-Cut Evaluation</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--text)' }}>Report #{precut.id}</p>
             </div>
             <div style={{ textAlign: 'right' }}>
               <p style={FL}>Date</p><p style={{ ...FV, marginBottom: '8px' }}>{precut.date}</p>
@@ -58,16 +58,16 @@ export default function FeasibilityDesktop() {
           </div>
 
           <p style={SL}>Current Condition Summary</p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 24px', marginBottom: '12px' }}><div><p style={FL}>Surface Condition</p><p style={FV}>{precut.condition.surfaceCondition}</p></div><div><p style={FL}>Structural Stability</p><p style={FV}>{precut.condition.structuralStability}</p></div></div><p style={FL}>Intake Notes</p><p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', lineHeight: 1.75, marginTop: '6px' }}>{precut.condition.intakeNotes}</p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 24px', marginBottom: '12px' }}><div><p style={FL}>Surface Condition</p><p style={FV}>{precut.condition.surfaceCondition}</p></div><div><p style={FL}>Structural Stability</p><p style={FV}>{precut.condition.structuralStability}</p></div></div><p style={FL}>Intake Notes</p><p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)', lineHeight: 1.75, marginTop: '6px' }}>{precut.condition.intakeNotes}</p>
 
           <p style={SL}>Symbol Legend</p>
           <div className="fd-sym-grid">
             {precut.symbolLegend.map(s => (
               <div key={s.symbol} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '6px' }}>
-                <span style={{ fontFamily: 'monospace', fontSize: '14px', color: 'var(--gold)', minWidth: '17px' }}>{s.symbol}</span>
+                <span style={{ fontFamily: 'monospace', fontSize: '0.875rem', color: 'var(--gold)', minWidth: '17px' }}>{s.symbol}</span>
                 <div>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '1px' }}>{s.type}</p>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)' }}>{s.desc}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '1px' }}>{s.type}</p>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)' }}>{s.desc}</p>
                 </div>
               </div>
             ))}
@@ -122,8 +122,8 @@ export default function FeasibilityDesktop() {
           <p style={SL}>Conditional Factors</p>
           {precut.conditionals.map((c, i) => (
             <div key={i} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
-              <span style={{ color: 'var(--gold)', fontSize: '15px', marginTop: '2px', flexShrink: 0 }}>—</span>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', lineHeight: 1.7 }}>{c}</p>
+              <span style={{ color: 'var(--gold)', fontSize: '0.9375rem', marginTop: '2px', flexShrink: 0 }}>—</span>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)', lineHeight: 1.7 }}>{c}</p>
             </div>
           ))}
 
@@ -131,15 +131,15 @@ export default function FeasibilityDesktop() {
           {precut.options.map((o, i) => (
             <div key={i} className={`fd-option${i === 1 ? ' rec' : ''}`}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '15px', fontWeight: 600, color: 'var(--gold)', letterSpacing: '0.1em' }}>{o.label}</p>
-                {i === 1 && <span style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)' }}>Recommended</span>}
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.9375rem', fontWeight: 600, color: 'var(--gold)', letterSpacing: '0.1em' }}>{o.label}</p>
+                {i === 1 && <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)' }}>Recommended</span>}
               </div>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', lineHeight: 1.7 }}>{o.desc}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)', lineHeight: 1.7 }}>{o.desc}</p>
             </div>
           ))}
 
           <p style={SL}>Summary Evaluation</p>
-          <p style={FL}>Overall Assessment</p><p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', lineHeight: 1.75, marginTop: '6px', marginBottom: '16px' }}>{precut.summary.assessment}</p><p style={FL}>Recommended Direction</p><p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', lineHeight: 1.75, marginTop: '6px' }}>{precut.summary.recommendation}</p>
+          <p style={FL}>Overall Assessment</p><p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)', lineHeight: 1.75, marginTop: '6px', marginBottom: '16px' }}>{precut.summary.assessment}</p><p style={FL}>Recommended Direction</p><p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)', lineHeight: 1.75, marginTop: '6px' }}>{precut.summary.recommendation}</p>
           <div className="fd-disclaimer">This report is an analytical evaluation only and does not constitute a price quote, guarantee of outcome, or appraisal. All observations are based on visual and optical examination under standard conditions. CCG Cut Feasibility Reports are the proprietary product of Cutting Corners Gems.</div>
         </div>
 
@@ -147,9 +147,9 @@ export default function FeasibilityDesktop() {
         <div style={CARD}>
           <div className="fd-header">
             <div>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '21px', color: 'var(--text)', lineHeight: 1.1, marginBottom: '4px' }}>Post-Cut Change Report</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--text)' }}>Report #{postcut.id}</p>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.3125rem', color: 'var(--text)', lineHeight: 1.1, marginBottom: '4px' }}>Post-Cut Change Report</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--text)' }}>Report #{postcut.id}</p>
             </div>
             <div style={{ textAlign: 'right' }}>
               <p style={FL}>Date</p><p style={{ ...FV, marginBottom: '8px' }}>{postcut.date}</p>
@@ -160,11 +160,11 @@ export default function FeasibilityDesktop() {
           <p style={SL}>Before & After</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px', marginBottom: '8px' }}>
             <div style={{ padding: '17px', background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '8px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)', marginBottom: '10px' }}>Before</p>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.5rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)', marginBottom: '10px' }}>Before</p>
               {[['Weight', postcut.overview.originalWeight], ['Measurements', postcut.overview.originalMeasurements], ['Cut', postcut.overview.originalShapeStyle]].map(([l, v]) => <div key={l}><p style={FL}>{l}</p><p style={FV}>{v}</p></div>)}
             </div>
             <div style={{ padding: '17px', background: 'var(--gold)', border: '1px solid var(--gold)' }}>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '8px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '10px' }}>After</p>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.5rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '10px' }}>After</p>
               {[['Weight', postcut.overview.finalWeight], ['Measurements', postcut.overview.finalMeasurements], ['Cut', postcut.overview.finalShapeStyle]].map(([l, v]) => <div key={l}><p style={FL}>{l}</p><p style={FV}>{v}</p></div>)}
             </div>
           </div>
@@ -172,16 +172,16 @@ export default function FeasibilityDesktop() {
           <div style={{ padding: '16px 20px', background: 'rgba(100,200,120,0.05)', border: '1px solid rgba(100,200,120,0.15)', marginBottom: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <p style={{ ...FL, marginBottom: '4px' }}>Final Yield</p>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '28px', color: 'rgba(100,200,120,0.9)', lineHeight: 1 }}>{postcut.weightChange.yieldPercent}</p>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', color: 'rgba(100,200,120,0.9)', lineHeight: 1 }}>{postcut.weightChange.yieldPercent}</p>
             </div>
-            <span style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(100,200,120,0.7)', padding: '4px 10px', border: '1px solid rgba(100,200,120,0.2)' }}>{postcut.weightChange.category}</span>
+            <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.5625rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(100,200,120,0.7)', padding: '4px 10px', border: '1px solid rgba(100,200,120,0.2)' }}>{postcut.weightChange.category}</span>
           </div>
 
           <p style={SL}>Primary Cutting Objectives</p>
           {postcut.beforeAfter.objectives.map((o, i) => (
             <div key={i} style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}>
-              <span style={{ color: 'var(--gold)', fontSize: '15px', marginTop: '2px', flexShrink: 0 }}>—</span>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--text)', lineHeight: 1.65 }}>{o}</p>
+              <span style={{ color: 'var(--gold)', fontSize: '0.9375rem', marginTop: '2px', flexShrink: 0 }}>—</span>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text)', lineHeight: 1.65 }}>{o}</p>
             </div>
           ))}
 
@@ -221,14 +221,14 @@ export default function FeasibilityDesktop() {
           <p style={SL}>Optical Performance Observation</p>
           <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '8px' }}>
             <thead><tr>{['Aspect', 'Rating', 'Note'].map(h => <th key={h} style={TH}>{h}</th>)}</tr></thead>
-            <tbody>{postcut.optical.map((r, i) => <tr key={i}><td style={TC}>{r.aspect}</td><td style={TC}><span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--gold)', fontWeight: 600 }}>{r.rating}</span></td><td style={TC}>{r.note}</td></tr>)}</tbody>
+            <tbody>{postcut.optical.map((r, i) => <tr key={i}><td style={TC}>{r.aspect}</td><td style={TC}><span style={{ fontFamily: 'var(--font-body)', fontSize: '0.625rem', color: 'var(--gold)', fontWeight: 600 }}>{r.rating}</span></td><td style={TC}>{r.note}</td></tr>)}</tbody>
           </table>
 
           <p style={SL}>Documentation Record</p>
           {[['Before Photos', postcut.documentation.beforePhotos], ['After Photos', postcut.documentation.afterPhotos], ['Plot Maps', postcut.documentation.plotMaps], ['Client Approval', postcut.documentation.clientApproval]].map(([l, v]) => (
             <div key={l} style={{ display: 'flex', justifyContent: 'space-between', padding: '9px 0', borderBottom: '1px solid var(--border)' }}>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--accent)' }}>{l}</p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 600, color: v === 'Yes' ? 'rgba(100,200,120,0.9)' : 'rgba(220,80,80,0.9)' }}>{v}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--accent)' }}>{l}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', fontWeight: 600, color: v === 'Yes' ? 'rgba(100,200,120,0.9)' : 'rgba(220,80,80,0.9)' }}>{v}</p>
             </div>
           ))}
           <div className="fd-disclaimer">This report documents the completed cutting service and is issued as a permanent record. Observations reflect conditions at time of completion. CCG Cut Feasibility Reports are the proprietary product of Cutting Corners Gems.</div>

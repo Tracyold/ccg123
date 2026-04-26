@@ -93,7 +93,7 @@ function Tile({ color, lit, wide, style, onClick, children }: TileProps) {
       {onClick && (
         <div style={{
           position: 'absolute', bottom: 11, right: 13,
-          fontSize: 11, color: lit ? color : 'var(--text-muted)',
+          fontSize: 0.6875rem, color: lit ? color : 'var(--text-muted)',
           opacity: lit ? 0.65 : 0.3,
           transition: 'transform 180ms ease',
           transform: hovered ? 'translateX(2px)' : 'none',
@@ -107,7 +107,7 @@ function Tile({ color, lit, wide, style, onClick, children }: TileProps) {
 function TLabel({ children }: { children: React.ReactNode }) {
   return (
     <div style={{
-      fontFamily: 'var(--font-mono)', fontSize: 8.5,
+      fontFamily: 'var(--font-mono)', fontSize: '0.5312rem',
       letterSpacing: '0.24em', textTransform: 'uppercase',
       color: 'var(--text-muted)', marginBottom: 5,
     }}>{children}</div>
@@ -117,7 +117,7 @@ function TLabel({ children }: { children: React.ReactNode }) {
 function TMain({ children, color, lit }: { children: React.ReactNode; color?: string; lit?: boolean }) {
   return (
     <div style={{
-      fontFamily: 'var(--font-display)', fontSize: 16,
+      fontFamily: 'var(--font-display)', fontSize: 1.0rem,
       lineHeight: 1.3, fontWeight: 400, letterSpacing: '0.02em',
       color: lit && color ? color : 'var(--text)',
       transition: 'color 280ms ease',
@@ -128,7 +128,7 @@ function TMain({ children, color, lit }: { children: React.ReactNode; color?: st
 function TSub({ children }: { children: React.ReactNode }) {
   return (
     <div style={{
-      fontFamily: 'var(--font-ui)', fontSize: 10.5,
+      fontFamily: 'var(--font-ui)', fontSize: '0.6562rem',
       color: 'var(--text-muted)', marginTop: 5,
       lineHeight: 1.5, letterSpacing: '0.03em',
     }}>{children}</div>
@@ -150,7 +150,7 @@ function ScoreRing({ pct, color }: { pct: number; color: string }) {
       <div style={{
         position: 'absolute', inset: 0, display: 'flex',
         alignItems: 'center', justifyContent: 'center',
-        fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 700, color,
+        fontFamily: 'var(--font-mono)', fontSize: 0.625rem, fontWeight: 700, color,
       }}>{pct}%</div>
     </div>
   )
@@ -230,13 +230,13 @@ export default function MobileDashboard({
         {/* ── Welcome ── */}
         <div style={{ marginBottom: 26, paddingBottom: 22, borderBottom: '0.5px solid var(--border)' }}>
           <div style={{
-            fontFamily: 'var(--font-sig)', fontSize: 32,
+            fontFamily: 'var(--font-sig)', fontSize: 2.0rem,
             fontStyle: 'italic', color: 'var(--text)', lineHeight: 1.15, marginBottom: 5,
           }}>
             {greeting}, {firstName}.
           </div>
           <div style={{
-            fontFamily: 'var(--font-mono)', fontSize: 9,
+            fontFamily: 'var(--font-mono)', fontSize: 0.5625rem,
             letterSpacing: '0.26em', textTransform: 'uppercase', color: 'var(--text-muted)',
           }}>
             {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
@@ -253,7 +253,7 @@ export default function MobileDashboard({
 
           {/* Messages — full width */}
           <Tile color={C.chat} lit={hasNewMsg} wide onClick={openChatDrawer}>
-            <div style={{ fontSize: 26, flexShrink: 0 }}>✉</div>
+            <div style={{ fontSize: 1.625rem, flexShrink: 0 }}>✉</div>
             <div style={{ flex: 1 }}>
               <TLabel>Messages</TLabel>
               <TMain color={C.chat} lit={hasNewMsg}>
@@ -272,7 +272,7 @@ export default function MobileDashboard({
           {/* Work Orders + Invoices */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
             <Tile color={C.orders} lit={woLit} onClick={() => onTabChange('workorders')}>
-              <div style={{ fontSize: 20, marginBottom: 10 }}>⚙</div>
+              <div style={{ fontSize: 1.25rem, marginBottom: 10 }}>⚙</div>
               <TLabel>Work Order</TLabel>
               <TMain color={C.orders} lit={woLit}>
                 {hasNewWO ? <><strong>New</strong> order</> : hasUpdatedWO ? <>Status <strong>updated</strong></> : recentWO ? recentWO.status : 'None active'}
@@ -281,7 +281,7 @@ export default function MobileDashboard({
             </Tile>
 
             <Tile color={C.invoice} lit={invLit} onClick={() => onTabChange('invoices')}>
-              <div style={{ fontSize: 20, marginBottom: 10 }}>◈</div>
+              <div style={{ fontSize: 1.25rem, marginBottom: 10 }}>◈</div>
               <TLabel>Invoices</TLabel>
               <TMain color={C.invoice} lit={invLit}>
                 {invLit ? <>Payment <strong>due</strong></> : <><strong>{invoices.length}</strong> {invoices.length === 1 ? 'invoice' : 'invoices'}</>}
@@ -307,7 +307,7 @@ export default function MobileDashboard({
             </Tile>
           ) : (
             <Tile color={C.feasib} wide onClick={() => onTabChange('wizard')}>
-              <div style={{ fontSize: 22, flexShrink: 0 }}>◇</div>
+              <div style={{ fontSize: 1.375rem, flexShrink: 0 }}>◇</div>
               <div style={{ flex: 1 }}>
                 <TLabel>Feasibility Wizard</TLabel>
                 <TMain>No results yet</TMain>
@@ -319,14 +319,14 @@ export default function MobileDashboard({
           {/* Estimates + Profile */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
             <Tile color={C.est} onClick={() => onTabChange('inquiries')}>
-              <div style={{ fontSize: 20, marginBottom: 10 }}>◻</div>
+              <div style={{ fontSize: 1.25rem, marginBottom: 10 }}>◻</div>
               <TLabel>Estimates</TLabel>
               <TMain>Inquiries</TMain>
               <TSub>Submit a request</TSub>
             </Tile>
 
             <Tile color="#888" onClick={() => onTabChange('home')}>
-              <div style={{ fontSize: 20, marginBottom: 10 }}>○</div>
+              <div style={{ fontSize: 1.25rem, marginBottom: 10 }}>○</div>
               <TLabel>Profile</TLabel>
               <TMain>{profile?.name ? <>{profile.name.split(' ')[0]}</> : 'Your info'}</TMain>
               <TSub>Edit profile</TSub>
@@ -341,11 +341,11 @@ export default function MobileDashboard({
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
               <div style={{
-                fontFamily: 'var(--font-mono)', fontSize: 8.5,
+                fontFamily: 'var(--font-mono)', fontSize: '0.5312rem',
                 letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--text-muted)',
               }}>SMS Notifications</div>
               <div style={{
-                fontFamily: 'var(--font-ui)', fontSize: 9,
+                fontFamily: 'var(--font-ui)', fontSize: 0.5625rem,
                 letterSpacing: '0.1em', textTransform: 'uppercase',
                 color: C.sms, opacity: 0.8,
               }}>Mobile alerts</div>
@@ -371,13 +371,13 @@ export default function MobileDashboard({
                   >
                     <div>
                       <div style={{
-                        fontFamily: 'var(--font-ui)', fontSize: 12,
+                        fontFamily: 'var(--font-ui)', fontSize: 0.75rem,
                         fontWeight: 500, color: isOn ? C.sms : 'var(--text)',
                         letterSpacing: '0.03em', marginBottom: 1,
                         transition: 'color 200ms ease',
                       }}>{t.label}</div>
                       <div style={{
-                        fontFamily: 'var(--font-body)', fontSize: 10.5,
+                        fontFamily: 'var(--font-body)', fontSize: '0.6562rem',
                         color: 'var(--text-muted)', lineHeight: 1.4,
                       }}>{t.desc}</div>
                     </div>
@@ -394,7 +394,7 @@ export default function MobileDashboard({
             </div>
 
             <p style={{
-              fontFamily: 'var(--font-body)', fontSize: 10,
+              fontFamily: 'var(--font-body)', fontSize: 0.625rem,
               color: 'var(--text-muted)', marginTop: 12, lineHeight: 1.6, opacity: 0.7,
             }}>
               Sent to your phone number on file. Msg & data rates may apply. Reply STOP to opt out.

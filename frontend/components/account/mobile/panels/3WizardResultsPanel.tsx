@@ -42,7 +42,7 @@ function ScoreRing({ pct, color }: { pct: number; color: string }) {
           strokeDasharray={circ} strokeDashoffset={offset}
           strokeLinecap="round" transform="rotate(-90 50 50)" />
       </svg>
-      <div className="wiz-score-num" style={{ color, fontSize: '28px' }}>{pct}</div>
+      <div className="wiz-score-num" style={{ color, fontSize: '1.75rem' }}>{pct}</div>
     </div>
   );
 }
@@ -97,7 +97,7 @@ export default function WizardResultsPanel3({
 
         {loading ? (
           <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: 14, color: 'var(--text-muted)' }}>Loading...</p>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: 0.875rem, color: 'var(--text-muted)' }}>Loading...</p>
           </div>
         ) : loadError ? (
           <div style={{

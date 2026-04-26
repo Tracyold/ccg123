@@ -66,16 +66,16 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
           {/* Header */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
             <div>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 4px' }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.6875rem, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 4px' }}>
                 Wizard Result
               </p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-muted)', margin: 0 }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.8125rem, color: 'var(--text-muted)', margin: 0 }}>
                 {date}
               </p>
             </div>
             <button
               onClick={onClose}
-              style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: 20, lineHeight: 1, padding: 4 }}
+              style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: 1.25rem, lineHeight: 1, padding: 4 }}
             >
               ✕
             </button>
@@ -84,14 +84,14 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
           {/* Stone info */}
           {stoneFields.length > 0 && (
             <div style={{ border: '0.5px solid var(--border)', padding: '16px 20px' }}>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 12px' }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.625rem, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 12px' }}>
                 Stone Information
               </p>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 20px' }}>
                 {stoneFields.map(f => (
                   <div key={f.label}>
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 3px' }}>{f.label}</p>
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'var(--text)', margin: 0 }}>{f.value}</p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.625rem, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 3px' }}>{f.label}</p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.9375rem, color: 'var(--text)', margin: 0 }}>{f.value}</p>
                   </div>
                 ))}
               </div>
@@ -105,7 +105,7 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
             display: 'flex', flexDirection: 'column', gap: 12,
             boxShadow: `0 0 24px ${color}18`,
           }}>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0 }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.6875rem, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0 }}>
               Feasibility Score
             </p>
             <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(56px, 14vw, 96px)', fontWeight: 400, color, margin: 0, lineHeight: 1 }}>
@@ -115,13 +115,13 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
               <div style={{ height: '100%', width: `${result.feasibility_percent}%`, background: color }} />
             </div>
             <div style={{ width: 32, height: 0.5, background: color, margin: '0 auto', opacity: 0.5 }} />
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0 }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.625rem, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: 0 }}>
               Recommended Service
             </p>
             <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(20px, 4vw, 28px)', color: 'var(--text)', margin: 0 }}>
               {result.recommendation}
             </p>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text-muted)', margin: 0 }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.875rem, color: 'var(--text-muted)', margin: 0 }}>
               Estimated material loss: <span style={{ color: 'var(--text)', fontWeight: 500 }}>{result.weight_loss}</span>
             </p>
           </div>
@@ -134,7 +134,7 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
               style={{
                 width: '100%', background: 'transparent', color: 'var(--accent)',
                 border: '0.5px solid rgba(var(--gold-rgb), 0.4)', padding: '13px 20px',
-                fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 600,
+                fontFamily: 'var(--font-body)', fontSize: 0.75rem, fontWeight: 600,
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 cursor: 'pointer', borderRadius: 3, transition: 'all 200ms ease',
               }}
@@ -147,7 +147,7 @@ export default function WizardResultModal({ result, onClose, onDelete }: WizardR
               style={{
                 width: '100%', background: 'transparent', color: 'var(--text-muted)',
                 border: '0.5px solid var(--border)', padding: '13px 20px',
-                fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 400,
+                fontFamily: 'var(--font-body)', fontSize: 0.75rem, fontWeight: 400,
                 letterSpacing: '0.15em', textTransform: 'uppercase',
                 cursor: 'pointer', borderRadius: 3, transition: 'all 200ms ease', opacity: 0.5,
               }}

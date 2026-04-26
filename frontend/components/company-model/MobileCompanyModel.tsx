@@ -26,7 +26,7 @@ export default function MobileCompanyModel() {
         }
         .mob-chapter-label {
           font-family: var(--font-body);
-          font-size: 13px;
+          font-size: 0.8125rem;
           letter-spacing: 0.3em;
           text-transform: uppercase;
           color: var(--gold);
@@ -62,14 +62,14 @@ export default function MobileCompanyModel() {
         }
         .mob-stat-value {
           font-family: 'Oranienbaum', serif;
-          font-size: 52px;
+          font-size: 3.25rem;
           color: var(--gold);
           line-height: 1;
           margin-bottom: 6px;
         }
         .mob-stat-label {
           font-family: var(--font-body);
-          font-size: 13px;
+          font-size: 0.8125rem;
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: var(--text);
@@ -111,7 +111,7 @@ export default function MobileCompanyModel() {
           background: transparent;
           color: var(--gold);
           font-family: var(--font-body);
-          font-size: 15px;
+          font-size: 0.9375rem;
           letter-spacing: 0.15em;
           text-transform: uppercase;
           text-decoration: none;
@@ -140,7 +140,7 @@ export default function MobileCompanyModel() {
                     border: '1px solid rgba(80,200,120,0.7)',
                     color: 'var(--accent)',
                     fontFamily: 'var(--font-body)',
-                    fontSize: '14px', letterSpacing: '0.12em', textTransform: 'uppercase',
+                    fontSize: '0.875rem', letterSpacing: '0.12em', textTransform: 'uppercase',
                     textDecoration: 'none',
                   }}>
                     {(ch as any).link.label} →
@@ -153,7 +153,7 @@ export default function MobileCompanyModel() {
                     border: '1px solid rgba(80,200,120,0.7)',
                     color: 'var(--accent)',
                     fontFamily: 'var(--font-body)',
-                    fontSize: '14px', letterSpacing: '0.12em', textTransform: 'uppercase',
+                    fontSize: '0.875rem', letterSpacing: '0.12em', textTransform: 'uppercase',
                     textDecoration: 'none',
                   }}>
                     {(ch as any).link2.label} →

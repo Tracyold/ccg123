@@ -211,7 +211,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
                   }}>Cancel</button>
                 </div>
                 {inquiryError && (
-                  <div style={{ color: '#ff4d4d', fontSize: '12px', marginTop: '8px', fontFamily: 'var(--font-mono)' }}>
+                  <div style={{ color: '#ff4d4d', fontSize: '0.75rem', marginTop: '8px', fontFamily: 'var(--font-mono)' }}>
                     Error: {inquiryError}
                   </div>
                 )}
@@ -287,7 +287,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
         }
         .shop-item-header-title {
           font-family: var(--font-mono);
-          font-size: 12px;
+          font-size: 0.75rem;
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: var(--text-muted);
@@ -296,7 +296,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           background: none;
           border: none;
           color: var(--text-muted);
-          font-size: 18px;
+          font-size: 1.125rem;
           cursor: pointer;
         }
         .shop-item-scroll {
@@ -326,18 +326,18 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           object-fit: cover;
         }
         .shop-item-no-img {
-          font-size: 64px;
+          font-size: 4.0rem;
         }
         .shop-item-title {
           font-family: var(--font-display);
-          font-size: 28px; /* Big font for native feel */
+          font-size: 1.75rem; /* Big font for native feel */
           line-height: 1.2;
           color: var(--text) !important; /* Force visibility */
           margin-bottom: 0.5rem;
         }
         .shop-item-price {
           font-family: var(--font-mono);
-          font-size: 22px;
+          font-size: 1.375rem;
           color: var(--gold);
           margin-bottom: 2rem;
         }
@@ -347,7 +347,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
         }
         .shop-item-desc-label {
           font-family: var(--font-mono);
-          font-size: 10px;
+          font-size: 0.625rem;
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: var(--text-muted);
@@ -355,7 +355,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
         }
         .shop-item-desc p {
           font-family: var(--font-body);
-          font-size: 16px;
+          font-size: 1.0rem;
           line-height: 1.6;
           color: var(--text) !important; /* Force visibility */
           opacity: 0.8;
@@ -375,7 +375,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           height: 54px;
           border-radius: 12px;
           font-family: var(--font-mono);
-          font-size: 14px;
+          font-size: 0.875rem;
           letter-spacing: 0.12em;
           text-transform: uppercase;
           cursor: pointer;
@@ -410,7 +410,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           color: var(--text);
           padding: 14px;
           font-family: var(--font-ui);
-          font-size: 16px;
+          font-size: 1.0rem;
           outline: none;
           transition: all 0.2s ease;
           box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
@@ -432,7 +432,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           border: none;
           color: var(--text-muted);
           font-family: var(--font-mono);
-          font-size: 12px;
+          font-size: 0.75rem;
           text-transform: uppercase;
           cursor: pointer;
         }
@@ -443,7 +443,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           padding: 10px 20px;
           border-radius: 6px;
           font-family: var(--font-mono);
-          font-size: 12px;
+          font-size: 0.75rem;
           text-transform: uppercase;
           font-weight: 700;
           cursor: pointer;
@@ -453,7 +453,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           margin-top: 12px;
           color: #4ec994;
           font-family: var(--font-mono);
-          font-size: 14px;
+          font-size: 0.875rem;
           text-transform: uppercase;
           font-weight: 700;
         }
@@ -473,14 +473,14 @@ function SpecRow({ label, value }: { label: string; value: string | null }) {
     }}>
       <span style={{
         fontFamily: 'var(--font-mono)',
-        fontSize: '10px',
+        fontSize: '0.625rem',
         letterSpacing: '0.15em',
         textTransform: 'uppercase',
         color: 'var(--text-muted)'
       }}>{label}</span>
       <span style={{
         fontFamily: 'var(--font-ui)',
-        fontSize: '14px',
+        fontSize: '0.875rem',
         color: 'var(--text)',
         fontWeight: 500
       }}>{value}</span>

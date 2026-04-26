@@ -26,14 +26,14 @@ function Bubble({ message }: { message: SmsMessage }) {
         borderRadius: incoming ? "18px 18px 18px 4px" : "18px 18px 4px 18px",
         whiteSpace: "pre-wrap",
         fontFamily: "-apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif",
-        fontSize: "13px",
+        fontSize: "0.8125rem",
         lineHeight: 1.5,
         background: incoming ? "#1c1c1e" : "#2c6bed",
         color: incoming ? "#e5e5ea" : "#ffffff",
       }}>
         {message.text}
         {message.time && (
-          <div style={{ marginTop: "4px", fontSize: "10px", opacity: 0.5, textAlign: incoming ? "left" : "right" }}>
+          <div style={{ marginTop: "4px", fontSize: "0.625rem", opacity: 0.5, textAlign: incoming ? "left" : "right" }}>
             {message.time}
           </div>
         )}
@@ -48,7 +48,7 @@ export default function SmsPreview({ examples }: Props) {
       {examples.map((example) => (
         <div key={example.title}>
           {/* label */}
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: "10px", letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(212,175,55,0.6)", marginBottom: "12px" }}>{example.title}</p>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: "0.625rem", letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(212,175,55,0.6)", marginBottom: "12px" }}>{example.title}</p>
 
           {/* phone shell */}
           <div style={{
@@ -76,7 +76,7 @@ export default function SmsPreview({ examples }: Props) {
             }}>
               {/* status bar */}
               <div style={{ padding: "14px 20px 6px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ fontFamily: "-apple-system, sans-serif", fontSize: "12px", fontWeight: 600, color: "#fff" }}>9:41</span>
+                <span style={{ fontFamily: "-apple-system, sans-serif", fontSize: "0.75rem", fontWeight: 600, color: "#fff" }}>9:41</span>
                 <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
                   <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
                     <rect x="0" y="3" width="3" height="9" rx="1" fill="white" opacity="0.4"/>
@@ -106,10 +106,10 @@ export default function SmsPreview({ examples }: Props) {
               {/* messages header */}
               <div style={{ padding: "4px 16px 10px", textAlign: "center", borderBottom: "1px solid var(--border)" }}>
                 <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "linear-gradient(135deg, #2c6bed, #1a4fb0)", margin: "0 auto 6px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <span style={{ fontSize: "16px" }}>💎</span>
+                  <span style={{ fontSize: "1.0rem" }}>💎</span>
                 </div>
-                <p style={{ fontFamily: "-apple-system, sans-serif", fontSize: "13px", fontWeight: 600, color: "#fff", margin: 0 }}>Cutting Corners Gems</p>
-                <p style={{ fontFamily: "-apple-system, sans-serif", fontSize: "11px", color: "var(--text-muted)", margin: "2px 0 0" }}>Business Messages</p>
+                <p style={{ fontFamily: "-apple-system, sans-serif", fontSize: "0.8125rem", fontWeight: 600, color: "#fff", margin: 0 }}>Cutting Corners Gems</p>
+                <p style={{ fontFamily: "-apple-system, sans-serif", fontSize: "0.6875rem", color: "var(--text-muted)", margin: "2px 0 0" }}>Business Messages</p>
               </div>
 
               {/* messag
@@ -125,7 +125,7 @@ export default function SmsPreview({ examples }: Props) {
               {/* input bar */}
               <div style={{ padding: "8px 12px 16px", display: "flex", alignItems: "center", gap: "8px" }}>
                 <div style={{ flex: 1, background: "#1c1c1e", borderRadius: "18px", padding: "8px 14px", border: "1px solid rgba(255,255,255,0.08)" }}>
-                  <span style={{ fontFamily: "-apple-system, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.25)" }}>iMessage</span>
+                  <span style={{ fontFamily: "-apple-system, sans-serif", fontSize: "0.8125rem", color: "rgba(255,255,255,0.25)" }}>iMessage</span>
                 </div>
                 <div style={{ width: "30px", height: "30px", borderRadius: "50%", background: "#2c6bed", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="white">

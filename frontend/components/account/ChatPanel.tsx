@@ -169,7 +169,7 @@ export default function ChatPanel({
           color: 'var(--text-muted)',
           width: 36, height: 36,
           borderRadius: 0,
-          cursor: 'pointer', fontSize: 16,
+          cursor: 'pointer', fontSize: 1.0rem,
           flexShrink: 0,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'border-color 150ms ease',
@@ -189,7 +189,7 @@ export default function ChatPanel({
           padding: '9px 13px',
           color: 'var(--text)',
           fontFamily: 'var(--font-ui)',
-          fontSize: 15,
+          fontSize: 0.9375rem,
           outline: 'none',
           transition: 'border-color 150ms ease',
         }}
@@ -209,7 +209,7 @@ export default function ChatPanel({
           width: 36, height: 36,
           color: chatInput.trim() ? 'var(--bg)' : 'var(--text-muted)',
           fontWeight: 700, cursor: chatSending || !chatInput.trim() ? 'not-allowed' : 'pointer',
-          fontSize: 16, flexShrink: 0,
+          fontSize: 1.0rem, flexShrink: 0,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'background 150ms ease',
         }}
@@ -229,7 +229,7 @@ export default function ChatPanel({
         {messages.length === 0 && (
           <p style={{
             fontFamily: 'var(--font-ui)', fontStyle: 'italic',
-            fontSize: 14, color: 'var(--text-muted)',
+            fontSize: 0.875rem, color: 'var(--text-muted)',
             textAlign: 'center', margin: 'auto', opacity: 0.6,
           }}>No messages yet — say hello!</p>
         )}
@@ -255,12 +255,12 @@ export default function ChatPanel({
       <div ref={chatRef} className="acc-right" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
         <div style={{ padding: '14px 16px', borderBottom: '0.5px solid var(--border)', flexShrink: 0 }}>
           <span style={{
-            fontFamily: 'var(--font-ui)', fontSize: 11,
+            fontFamily: 'var(--font-ui)', fontSize: 0.6875rem,
             textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--gold)',
           }}>Chat</span>
           <p style={{
             fontFamily: 'var(--font-ui)', fontStyle: 'italic',
-            fontSize: 12, color: 'var(--text-muted)', margin: '4px 0 0',
+            fontSize: 0.75rem, color: 'var(--text-muted)', margin: '4px 0 0',
           }}>We're here to help</p>
         </div>
         {messageList(chatEndRef)}
@@ -290,7 +290,7 @@ export default function ChatPanel({
         >
           <span style={{
             fontFamily: 'var(--font-ui)',
-            fontSize: 12, fontWeight: 700,
+            fontSize: 0.75rem, fontWeight: 700,
             letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--bg)',
           }}>Chat</span>
@@ -304,7 +304,7 @@ export default function ChatPanel({
                 color: 'var(--bg)',
                 width: 30, height: 30,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                cursor: 'pointer', fontSize: 14, fontWeight: 700,
+                cursor: 'pointer', fontSize: 0.875rem, fontWeight: 700,
                 borderRadius: 0,
               }}
             >✕</button>

@@ -30,7 +30,7 @@ export default function IntroScreen({
             background: 'transparent', border: 'none',
             color: 'var(--text-muted)',
             fontFamily: 'var(--font-body)',
-            fontSize: '13px', fontWeight: 700,
+            fontSize: '0.8125rem', fontWeight: 700,
             textTransform: 'uppercase', letterSpacing: '0.18em',
             padding: 0, cursor: 'pointer', opacity: 0.75,
             transition: 'opacity 200ms ease', zIndex: 10,

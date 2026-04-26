@@ -44,7 +44,7 @@ export default function DesktopCompanyModel() {
           border-left: 2px solid transparent;
           padding: 10px 16px;
           font-family: var(--font-body);
-          font-size: 11px;
+          font-size: 0.6875rem;
           letter-spacing: 0.12em;
           text-transform: uppercase;
           color: var(--text-muted);
@@ -65,7 +65,7 @@ export default function DesktopCompanyModel() {
         .dtop-chapter:last-of-type { border-bottom: none; }
         .dtop-chapter-label {
           font-family: var(--font-body);
-          font-size: 10px;
+          font-size: 0.625rem;
           letter-spacing: 0.3em;
           text-transform: uppercase;
           color: var(--gold);
@@ -101,14 +101,14 @@ export default function DesktopCompanyModel() {
         }
         .dtop-stat-value {
           font-family: 'Oranienbaum', serif;
-          font-size: 48px;
+          font-size: 3.0rem;
           color: var(--gold);
           line-height: 1;
           margin-bottom: 6px;
         }
         .dtop-stat-label {
           font-family: var(--font-body);
-          font-size: 10px;
+          font-size: 0.625rem;
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: var(--text-muted);
@@ -119,7 +119,7 @@ export default function DesktopCompanyModel() {
           gap: 8px;
           margin-top: 20px;
           font-family: var(--font-body);
-          font-size: 11px;
+          font-size: 0.6875rem;
           letter-spacing: 0.15em;
           text-transform: uppercase;
           color: var(--accent);
@@ -141,7 +141,7 @@ export default function DesktopCompanyModel() {
         }
         .dtop-cta-sub {
           font-family: var(--font-body);
-          font-size: 14px;
+          font-size: 0.875rem;
           color: var(--text-muted);
           margin-bottom: 36px;
           line-height: 1.8;
@@ -155,7 +155,7 @@ export default function DesktopCompanyModel() {
           background: transparent;
           color: var(--gold);
           font-family: var(--font-body);
-          font-size: 12px;
+          font-size: 0.75rem;
           letter-spacing: 0.18em;
           text-transform: uppercase;
           cursor: pointer;
@@ -170,7 +170,7 @@ export default function DesktopCompanyModel() {
 
       <div style={{ display: 'flex', gap: '80px', alignItems: 'flex-start' }}>
         <nav className="dtop-sidebar" aria-label="Section navigation">
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '9px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.18)', marginBottom: '12px', paddingLeft: '16px' }}>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.5625rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.18)', marginBottom: '12px', paddingLeft: '16px' }}>
             In this section
           </p>
           {chapters.map(ch => (
@@ -201,7 +201,7 @@ export default function DesktopCompanyModel() {
                       border: '1px solid rgba(80,200,120,0.7)',
                       color: 'var(--accent)',
                       fontFamily: 'var(--font-body)',
-                      fontSize: '14px', letterSpacing: '0.12em', textTransform: 'uppercase',
+                      fontSize: '0.875rem', letterSpacing: '0.12em', textTransform: 'uppercase',
                       textDecoration: 'none',
                       transition: 'background 200ms',
                     }}
@@ -217,7 +217,7 @@ export default function DesktopCompanyModel() {
                       border: '1px solid rgba(80,200,120,0.7)',
                       color: 'var(--accent)',
                       fontFamily: 'var(--font-body)',
-                      fontSize: '14px', letterSpacing: '0.12em', textTransform: 'uppercase',
+                      fontSize: '0.875rem', letterSpacing: '0.12em', textTransform: 'uppercase',
                       textDecoration: 'none',
                       transition: 'background 200ms',
                     }}

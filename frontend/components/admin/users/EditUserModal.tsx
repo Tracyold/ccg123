@@ -19,7 +19,7 @@ export default function EditUserModal({ showEditUser, setShowEditUser, user, id,
   }, [showEditUser]);
 
   // inputStyle — line 320 of [id].tsx
-  const inputStyle: React.CSSProperties = { background: 'var(--k2)', border: '1px solid var(--ln)', color: 'var(--tx)', padding: '10px 12px', fontFamily: 'var(--sans)', fontSize: '15px', width: '100%', outline: 'none', height: '39px' };
+  const inputStyle: React.CSSProperties = { background: 'var(--k2)', border: '1px solid var(--ln)', color: 'var(--tx)', padding: '10px 12px', fontFamily: 'var(--sans)', fontSize: '0.9375rem', width: '100%', outline: 'none', height: '39px' };
 
   // Save user edit — lines 219–227 of [id].tsx
   const saveUser = async () => {
@@ -37,22 +37,22 @@ export default function EditUserModal({ showEditUser, setShowEditUser, user, id,
   return (
     <div className="ov" onClick={e => { if (e.target === e.currentTarget) setShowEditUser(false); }}>
       <div style={{ margin: 'auto', background: 'var(--k1)', border: '1px solid var(--ln)', padding: '29px', maxWidth: '480px', width: '90%' }}>
-        <div style={{ fontFamily: 'var(--serif)', fontSize: '23px', color: 'var(--wh)', marginBottom: '21px' }}>Edit User</div>
+        <div style={{ fontFamily: 'var(--serif)', fontSize: '1.4375rem', color: 'var(--wh)', marginBottom: '21px' }}>Edit User</div>
         {[
           { label: 'Name', key: 'name' }, { label: 'Email', key: 'email' },
           { label: 'Phone', key: 'phone' }, { label: 'Business Name', key: 'business_name' },
         ].map(f => (
           <div key={f.key} style={{ marginBottom: '13px' }}>
-            <label style={{ fontSize: '15px', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>{f.label}</label>
+            <label style={{ fontSize: '0.9375rem', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>{f.label}</label>
             <input value={editUser[f.key] || ''} onChange={e => setEditUser({ ...editUser, [f.key]: e.target.value })} style={inputStyle} />
           </div>
         ))}
         <div style={{ marginBottom: '13px' }}>
-          <label style={{ fontSize: '15px', fontWeight: 500, letterSpacing: '.3em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Shipping Address</label>
+          <label style={{ fontSize: '0.9375rem', fontWeight: 500, letterSpacing: '.3em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Shipping Address</label>
           <textarea value={editUser.shipping_address || ''} onChange={e => setEditUser({ ...editUser, shipping_address: e.target.value })} style={{ ...inputStyle, minHeight: '60px', resize: 'vertical' }} />
         </div>
         <div style={{ marginBottom: '17px' }}>
-          <label style={{ fontSize: '15px', fontWeight: 500, letterSpacing: '.3em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Status</label>
+          <label style={{ fontSize: '0.9375rem', fontWeight: 500, letterSpacing: '.3em', textTransform: 'uppercase', color: 'var(--d1)', display: 'block', marginBottom: '5px' }}>Status</label>
           <select value={editUser.status || 'ACTIVE'} onChange={e => setEditUser({ ...editUser, status: e.target.value })}
             style={{ ...inputStyle, cursor: 'pointer' }}>
             <option value="ACTIVE">ACTIVE</option>

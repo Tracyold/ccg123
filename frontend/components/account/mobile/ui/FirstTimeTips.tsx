@@ -63,7 +63,7 @@ export default function FirstTimeTips({ type, show }: FirstTimeTipsProps) {
           padding: 6px 12px;
           border-radius: 20px;
           font-family: var(--font-body);
-          font-size: 11px;
+          font-size: 0.6875rem;
           font-weight: 700;
           letter-spacing: 0.05em;
           text-transform: uppercase;

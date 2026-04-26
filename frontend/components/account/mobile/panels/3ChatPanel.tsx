@@ -80,7 +80,7 @@ export default function ChatPanel3({
       <div className="chat-msgs" style={{ padding: '24px 16px', display: 'flex', flexDirection: 'column', gap: 12, flex: 1, overflowY: 'auto' }}>
         {messages.length === 0 && pendingUploads.length === 0 && (
           <p style={{
-            fontFamily: 'var(--font-ui)', fontStyle: 'italic', fontSize: 19,
+            fontFamily: 'var(--font-ui)', fontStyle: 'italic', fontSize: 1.1875rem,
             color: 'var(--text-muted)', textAlign: 'center', margin: '60px auto', opacity: 0.6,
           }}>
             No messages yet -- say hello!
@@ -117,7 +117,7 @@ export default function ChatPanel3({
                     />
                   )}
                   {m.attachment_url && m.attachment_type === 'application/pdf' && (
-                    <div style={{ marginTop: m.body ? 6 : 0, fontSize: 13 }}>
+                    <div style={{ marginTop: m.body ? 6 : 0, fontSize: 0.8125rem }}>
                       📄{' '}
                       <a
                         href={getAttachmentUrl(m.attachment_url)}
@@ -160,7 +160,7 @@ export default function ChatPanel3({
                   />
                 )}
                 {isPdf && (
-                  <div style={{ fontSize: 13, opacity: p.error ? 0.5 : 0.85 }}>
+                  <div style={{ fontSize: 0.8125rem, opacity: p.error ? 0.5 : 0.85 }}>
                     📄 {p.error ? 'PDF failed to upload' : 'Uploading PDF…'}
                   </div>
                 )}
@@ -240,7 +240,7 @@ export default function ChatPanel3({
             onClick={clearChatError}
             style={{
               background: 'transparent', border: 'none', color: 'inherit',
-              fontSize: 16, cursor: 'pointer', padding: 0, marginLeft: 4,
+              fontSize: 1.0rem, cursor: 'pointer', padding: 0, marginLeft: 4,
               lineHeight: 1,
             }}
             aria-label="Dismiss error"

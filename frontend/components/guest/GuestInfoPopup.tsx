@@ -19,10 +19,10 @@ export function GuestInfoPopup({ onSubmit, onClose }: { onSubmit: (info: GuestIn
   return (
     <div style={popupOverlayStyle}>
       <div style={popupBoxStyle}>
-        <p style={{ fontFamily: 'var(--font-ui)', fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', color: 'var(--text-muted)', marginBottom: '6px' }}>
+        <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.20em', color: 'var(--text-muted)', marginBottom: '6px' }}>
           Your Information
         </p>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '20px', lineHeight: 1.6 }}>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '20px', lineHeight: 1.6 }}>
           Please enter your details before continuing.
         </p>
 
@@ -38,7 +38,7 @@ export function GuestInfoPopup({ onSubmit, onClose }: { onSubmit: (info: GuestIn
         <label style={labelStyle}>Shipping Address *</label>
         <input style={inputStyle} placeholder="123 Main St, City, State, ZIP" value={address} onChange={e => setAddress(e.target.value)} onFocus={inputFocus} onBlur={inputBlur} />
 
-        {err && <p style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '10px' }}>{err}</p>}
+        {err && <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.6875rem', color: 'var(--text-muted)', marginBottom: '10px' }}>{err}</p>}
 
         <button style={goldBtnStyle} onClick={handleSubmit}>Continue</button>
         <button style={ghostBtnStyle} onClick={onClose}>Cancel</button>
