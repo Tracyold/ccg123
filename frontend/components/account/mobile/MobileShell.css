@@ -23,7 +23,7 @@
 /* ── Mobile browser fixes ── */
 html {
   /* Fluid base font size: scales between 14px and 18px based on viewport width */
-  font-size: clamp(17px, 4.5vw, 20px);
+  font-size: clamp(1.0625rem, 4.5vw, 1.25rem);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -90,7 +90,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .nav-logo {
   font-family: var(--font-display);
-  font-size: clamp(14px, 3.5vw, 16px);
+  font-size: clamp(0.875rem, 3.5vw, 1.0rem);
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text);
@@ -108,14 +108,14 @@ button, [role="button"] { touch-action: manipulation; }
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: clamp(15px, 4vw, 18px);
+  font-size: clamp(0.9375rem, 4vw, 1.125rem);
   transition: all 180ms ease;
   flex-shrink: 0;
 }
 .icon-btn.lg {
   width: clamp(36px, 10vw, 46px);
   height: clamp(36px, 10vw, 46px);
-  font-size: clamp(15px, 4vw, 19px);
+  font-size: clamp(0.9375rem, 4vw, 1.1875rem);
 }
 .icon-btn:hover { border-color: var(--gold); color: var(--gold); }
 
@@ -148,13 +148,13 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .dr-name {
   font-family: var(--font-display);
-  font-size: clamp(17px, 4.5vw, 20px);
+  font-size: clamp(1.0625rem, 4.5vw, 1.25rem);
   letter-spacing: 0.04em;
 }
 .dr-close {
   background: none; border: none;
   color: var(--text-muted);
-  font-size: clamp(15px, 4vw, 17px);
+  font-size: clamp(0.9375rem, 4vw, 1.0625rem);
   cursor: pointer; padding: 0.125em 0.3em;
 }
 .dr-links { flex: 1; overflow-y: auto; padding: var(--sp-2) 0; }
@@ -170,13 +170,13 @@ button, [role="button"] { touch-action: manipulation; }
 .dr-dot { width: 0.4375rem; height: 0.4375rem; border-radius: 50%; flex-shrink: 0; }
 .dr-lbl {
   font-family: var(--font-mono);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(0.8125rem, 3.5vw, 0.9375rem);
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--text-muted); flex: 1;
 }
 .dr-badge {
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2vw, 9px);
+  font-size: clamp(0.5rem, 2vw, 0.5625rem);
   font-weight: 700;
   padding: 0.125em 0.375em;
   letter-spacing: 0.05em;
@@ -188,7 +188,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .dr-foot-btn, .dr-exit {
   font-family: var(--font-mono);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(0.8125rem, 3.5vw, 0.9375rem);
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--text-muted); cursor: pointer;
 }
@@ -209,13 +209,13 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .welcome-name {
   font-family: var(--font-sig);
-  font-size: clamp(27px, 7.5vw, 35px);
+  font-size: clamp(1.6875rem, 7.5vw, 2.1875rem);
   font-style: italic; color: var(--text);
   line-height: 1.15; margin-bottom: 0.3em;
 }
 .welcome-meta {
   font-family: var(--font-mono);
-  font-size: clamp(12px, 3vw, 14px);
+  font-size: clamp(0.75rem, 3vw, 0.875rem);
   letter-spacing: 0.26em; text-transform: uppercase; color: var(--text-muted);
 }
 .welcome-meta span { color: var(--gold); }
@@ -269,21 +269,21 @@ button, [role="button"] { touch-action: manipulation; }
 .tile.lit .t-badge { display: inline-flex; }
 .t-label {
   font-family: var(--font-mono);
-  font-size: clamp(12px, 3.2vw, 14px);
+  font-size: clamp(0.75rem, 3.2vw, 0.875rem);
   letter-spacing: 0.24em; text-transform: uppercase;
   color: var(--text-muted); margin-bottom: 0.5em;
   opacity: 0.8;
 }
 .t-main {
   font-family: var(--font-display);
-  font-size: clamp(24px, 6.5vw, 28px);
+  font-size: clamp(1.5rem, 6.5vw, 1.75rem);
   line-height: 1.2; color: var(--text);
   font-weight: 500; letter-spacing: 0.02em;
   transition: color 280ms ease;
 }
 .t-sub {
   font-family: var(--font-ui);
-  font-size: clamp(16px, 4.2vw, 18px);
+  font-size: clamp(1.0rem, 4.2vw, 1.125rem);
   color: var(--text-muted); margin-top: 0.5em; line-height: 1.4;
 }
 .feed-block { display: flex; flex-direction: column; gap: clamp(0.375rem, 2vw, 0.625rem); margin-bottom: clamp(0.375rem, 2vw, 0.625rem); }
@@ -295,7 +295,7 @@ button, [role="button"] { touch-action: manipulation; }
 .fdiv-line { flex: 1; height: 0.5px; background: var(--bdr2); }
 .fdiv-lbl {
   font-family: var(--font-mono);
-  font-size: clamp(12px, 3vw, 14px);
+  font-size: clamp(0.75rem, 3vw, 0.875rem);
   letter-spacing: 0.26em; text-transform: uppercase;
   color: var(--text-muted); white-space: nowrap; opacity: 0.6;
 }
@@ -311,7 +311,7 @@ button, [role="button"] { touch-action: manipulation; }
 .shop-thumb:hover { transform: translateY(-2px); border-color: color-mix(in srgb,var(--gold) 40%,var(--bdr2)); }
 .shop-img {
   flex: 1; display: flex; align-items: center; justify-content: center;
-  font-size: clamp(32px, 9vw, 44px); background: var(--bg-deep);
+  font-size: clamp(2.0rem, 9vw, 2.75rem); background: var(--bg-deep);
 }
 .shop-info {
   padding: clamp(0.5rem, 2.5vw, 0.75rem) clamp(0.5625rem, 2.8vw, 0.8125rem);
@@ -319,7 +319,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .shop-name {
   font-family: var(--font-display);
-  font-size: clamp(14px, 3.5vw, 16px);
+  font-size: clamp(0.875rem, 3.5vw, 1.0rem);
   color: var(--text); letter-spacing: 0.03em; margin-bottom: 0.125em;
 }
 /* overlay that appears on first tap */
@@ -332,17 +332,17 @@ button, [role="button"] { touch-action: manipulation; }
 .shop-thumb.tapped .inv-overlay { opacity: 1; }
 .inv-price {
   font-family: var(--font-mono);
-  font-size: clamp(19px, 5.5vw, 23px);
+  font-size: clamp(1.1875rem, 5.5vw, 1.4375rem);
   font-weight: 700; color: #fff; margin-bottom: 0.25em;
 }
 .inv-date {
   font-family: var(--font-ui);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(0.8125rem, 3.5vw, 0.9375rem);
   letter-spacing: 0.1em; color: rgba(255,255,255,0.7);
 }
 .inv-tap-hint {
   font-family: var(--font-ui);
-  font-size: clamp(8px, 2vw, 9px);
+  font-size: clamp(0.5rem, 2vw, 0.5625rem);
   letter-spacing: 0.12em; text-transform: uppercase;
   color: rgba(255,255,255,0.5); margin-top: clamp(0.375rem, 2vw, 0.625rem);
 }
@@ -350,7 +350,7 @@ button, [role="button"] { touch-action: manipulation; }
   position: absolute; bottom: clamp(2.5rem, 10vw, 3rem); left: 0; right: 0;
   background: color-mix(in srgb,var(--gold) 90%,transparent);
   color: var(--bg); font-family: var(--font-mono);
-  font-size: clamp(8px, 2vw, 9px);
+  font-size: clamp(0.5rem, 2vw, 0.5625rem);
   letter-spacing: 0.22em; text-transform: uppercase;
   padding: 0.5em; text-align: center; font-weight: 700;
   opacity: 0; transform: translateY(6px); transition: all 220ms ease;
@@ -394,12 +394,12 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .panel-title {
   font-family: var(--font-mono);
-  font-size: clamp(17px, 4.5vw, 20px);
+  font-size: clamp(1.0625rem, 4.5vw, 1.25rem);
   letter-spacing: 0.24em; text-transform: uppercase; color: var(--bg-deep);
 }
 .panel-close {
   background: rgba(0,0,0,0.15); border: none; color: var(--bg-deep);
-  font-size: clamp(17px, 4.5vw, 21px);
+  font-size: clamp(1.0625rem, 4.5vw, 1.3125rem);
   cursor: pointer; padding: 0.2em 0.45em; border-radius: 4px; font-weight: 700; line-height: 1;
   min-width: 2em; min-height: 2em; display: flex; align-items: center; justify-content: center;
 }
@@ -417,7 +417,7 @@ button, [role="button"] { touch-action: manipulation; }
   max-width: 82%;
   padding: clamp(0.625rem, 2.8vw, 0.875rem) clamp(0.75rem, 3.5vw, 1rem);
   font-family: var(--font-ui);
-  font-size: clamp(16px, 4.5vw, 22px);
+  font-size: clamp(1.0rem, 4.5vw, 1.375rem);
   line-height: 1.5; word-break: break-word;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   position: relative;
@@ -436,7 +436,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .msg-time {
   font-family: var(--font-ui);
-  font-size: clamp(9px, 2.3vw, 10px);
+  font-size: clamp(0.5625rem, 2.3vw, 0.625rem);
   color: var(--text-muted); margin-top: 0.2em; padding: 0 0.2em;
 }
 .date-divider {
@@ -447,7 +447,7 @@ button, [role="button"] { touch-action: manipulation; }
 .date-divider-line { flex: 1; height: 0.5px; background: var(--bdr2); }
 .date-divider-lbl {
   font-family: var(--font-ui);
-  font-size: clamp(9px, 2.3vw, 10px);
+  font-size: clamp(0.5625rem, 2.3vw, 0.625rem);
   letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--text-muted); white-space: nowrap; opacity: 0.6;
 }
@@ -462,14 +462,14 @@ button, [role="button"] { touch-action: manipulation; }
   color: var(--text-muted);
   width: clamp(32px, 8.5vw, 38px); height: clamp(32px, 8.5vw, 38px);
   display: flex; align-items: center; justify-content: center;
-  cursor: pointer; font-size: clamp(14px, 3.7vw, 17px); flex-shrink: 0;
+  cursor: pointer; font-size: clamp(0.875rem, 3.7vw, 1.0625rem); flex-shrink: 0;
 }
 .chat-input {
   flex: 1; background: var(--bg-deep); border: 0.5px solid var(--bdr2);
   border-radius: 24px !important;
   padding: clamp(0.6rem, 2.5vw, 0.8rem) clamp(1rem, 4vw, 1.25rem);
   color: var(--text); font-family: var(--font-ui);
-  font-size: clamp(16px, 4.2vw, 19px);
+  font-size: clamp(1.0rem, 4.2vw, 1.1875rem);
   outline: none; transition: all 220ms ease;
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
@@ -482,7 +482,7 @@ button, [role="button"] { touch-action: manipulation; }
   background: var(--gold); border: none;
   width: clamp(32px, 8.5vw, 38px); height: clamp(32px, 8.5vw, 38px);
   color: var(--bg-deep); font-weight: 700; cursor: pointer;
-  font-size: clamp(14px, 3.7vw, 17px);
+  font-size: clamp(0.875rem, 3.7vw, 1.0625rem);
   flex-shrink: 0; display: flex; align-items: center; justify-content: center;
 }
 .chat-send:disabled { opacity: 0.35; cursor: not-allowed; }
@@ -518,14 +518,14 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .menu-drawer-title {
   font-family: var(--font-mono);
-  font-size: clamp(12px, 3vw, 14px);
+  font-size: clamp(0.75rem, 3vw, 0.875rem);
   letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted);
 }
 .menu-drawer-close {
   background: none; border: 0.5px solid var(--bdr2); color: var(--text-muted);
   width: clamp(24px, 6.5vw, 30px); height: clamp(24px, 6.5vw, 30px);
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  cursor: pointer; font-size: clamp(11px, 3vw, 13px);
+  cursor: pointer; font-size: clamp(0.6875rem, 3vw, 0.8125rem);
 }
 .menu-items { padding: 0.25rem 0 0.5rem; }
 .menu-item {
@@ -540,11 +540,11 @@ button, [role="button"] { touch-action: manipulation; }
 .menu-item-dot { width: 0.4375rem; height: 0.4375rem; border-radius: 50%; flex-shrink: 0; }
 .menu-item-label {
   font-family: var(--font-display);
-  font-size: clamp(15px, 3.7vw, 17px);
+  font-size: clamp(0.9375rem, 3.7vw, 1.0625rem);
   color: var(--text); flex: 1;
 }
 .menu-item-arrow {
-  font-size: clamp(14px, 3.5vw, 16px);
+  font-size: clamp(0.875rem, 3.5vw, 1.0rem);
   color: var(--text-muted); opacity: 0.35;
 }
 
@@ -577,12 +577,12 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .sms-mtitle {
   font-family: var(--font-mono);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(0.8125rem, 3.5vw, 0.9375rem);
   letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-muted);
 }
 .sms-mclose {
   background: none; border: none; color: var(--text-muted);
-  font-size: clamp(15px, 4vw, 17px); cursor: pointer; padding: 0.125em 0.375em;
+  font-size: clamp(0.9375rem, 4vw, 1.0625rem); cursor: pointer; padding: 0.125em 0.375em;
 }
 .sms-row {
   display: flex; align-items: center; justify-content: space-between;
@@ -593,13 +593,13 @@ button, [role="button"] { touch-action: manipulation; }
 .sms-row:last-of-type { border-bottom: none; }
 .sms-lbl {
   font-family: var(--font-ui);
-  font-size: clamp(12px, 3.2vw, 13px);
+  font-size: clamp(0.75rem, 3.2vw, 0.8125rem);
   font-weight: 500; color: var(--text); margin-bottom: 0.1875em;
 }
 .sms-lbl.on { color: var(--gold); }
 .sms-desc {
   font-family: var(--font-ui);
-  font-size: clamp(14px, 3.5vw, 16px);
+  font-size: clamp(0.875rem, 3.5vw, 1.0rem);
   color: var(--text-muted); line-height: 1.45;
 }
 .pill {
@@ -624,7 +624,7 @@ button, [role="button"] { touch-action: manipulation; }
   border-radius: 999px;
   color: var(--text);
   font-family: var(--font-ui);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(0.8125rem, 3.5vw, 0.9375rem);
   letter-spacing: 0.08em;
   padding: clamp(0.6rem, 2.5vw, 0.875rem) clamp(1.5rem, 6vw, 2rem);
   cursor: pointer;
@@ -666,28 +666,28 @@ button, [role="button"] { touch-action: manipulation; }
 .order-status {
   display: inline-flex; padding: 0.125em 0.5em;
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2vw, 9px);
+  font-size: clamp(0.5rem, 2vw, 0.5625rem);
   letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5em;
 }
 .order-title {
   font-family: var(--font-display);
-  font-size: clamp(15px, 3.7vw, 17px);
+  font-size: clamp(0.9375rem, 3.7vw, 1.0625rem);
   color: var(--text); margin-bottom: 0.25em;
 }
 .order-meta {
   font-family: var(--font-ui);
-  font-size: clamp(14px, 3.5vw, 16px);
+  font-size: clamp(0.875rem, 3.5vw, 1.0rem);
   color: var(--text-muted);
 }
 .order-price {
   font-family: var(--font-mono);
-  font-size: clamp(15px, 4vw, 17px);
+  font-size: clamp(0.9375rem, 4vw, 1.0625rem);
   color: #30b162; margin-top: 0.375em;
 }
 .order-accept {
   background: var(--gold); color: var(--bg-deep); border: none;
   padding: 0.5em 1em; font-family: var(--font-mono);
-  font-size: clamp(12px, 3vw, 14px);
+  font-size: clamp(0.75rem, 3vw, 0.875rem);
   letter-spacing: 0.18em; text-transform: uppercase;
   cursor: pointer; margin-top: clamp(0.5rem, 2.5vw, 0.75rem);
 }
@@ -699,14 +699,14 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .profile-label {
   font-family: var(--font-mono);
-  font-size: clamp(12px, 3vw, 14px);
+  font-size: clamp(0.75rem, 3vw, 0.875rem);
   letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--text-muted); margin-bottom: 0.375em; display: block;
 }
 .profile-input {
   width: 100%; background: var(--bg-deep); border: 0.5px solid var(--bdr2);
   color: var(--text); font-family: var(--font-ui);
-  font-size: clamp(17px, 4.5vw, 20px);
+  font-size: clamp(1.0625rem, 4.5vw, 1.25rem);
   padding: clamp(0.5625rem, 2.5vw, 0.8125rem) clamp(0.625rem, 3vw, 0.875rem);
   outline: none; transition: all 220ms ease;
   border-radius: 8px !important;
@@ -720,7 +720,7 @@ button, [role="button"] { touch-action: manipulation; }
 .profile-save {
   width: 100%; background: var(--gold); color: var(--bg-deep); border: none;
   padding: clamp(0.6875rem, 3vw, 0.9375rem); font-family: var(--font-mono);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(0.8125rem, 3.5vw, 0.9375rem);
   letter-spacing: 0.2em; text-transform: uppercase;
   cursor: pointer; margin-top: var(--sp-2);
 }
@@ -758,24 +758,24 @@ button, [role="button"] { touch-action: manipulation; }
 .sr-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.375em; }
 .sr-card-stone {
   font-family: var(--font-display);
-  font-size: clamp(17px, 4.5vw, 20px);
+  font-size: clamp(1.0625rem, 4.5vw, 1.25rem);
   color: var(--text);
 }
 .sr-card-status {
   font-family: var(--font-mono);
-  font-size: clamp(7px, 1.9vw, 9px);
+  font-size: clamp(0.4375rem, 1.9vw, 0.5625rem);
   letter-spacing: 0.15em; text-transform: uppercase;
   padding: 0.125em 0.5em; background: rgba(207,221,78,0.1); color: var(--gold);
 }
 .sr-card-rec {
   font-family: var(--font-mono);
-  font-size: clamp(12px, 3vw, 14px);
+  font-size: clamp(0.75rem, 3vw, 0.875rem);
   letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--text-muted); margin-bottom: 0.25em;
 }
 .sr-card-date {
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2vw, 9px);
+  font-size: clamp(0.5rem, 2vw, 0.5625rem);
   color: var(--text-muted); opacity: 0.6;
 }
 
@@ -807,26 +807,26 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .nr-title {
   font-family: var(--font-mono);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(0.8125rem, 3.5vw, 0.9375rem);
   letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-muted);
 }
 .nr-close {
   background: none; border: none; color: var(--text-muted);
-  font-size: clamp(15px, 4vw, 17px); cursor: pointer; padding: 0.125em 0.375em;
+  font-size: clamp(0.9375rem, 4vw, 1.0625rem); cursor: pointer; padding: 0.125em 0.375em;
 }
 .nr-body { flex: 1; overflow-y: auto; padding: clamp(1rem, 4.5vw, 1.25rem) clamp(1.125rem, 5vw, 1.375rem) 0.5rem; }
 .nr-field { margin-bottom: clamp(0.75rem, 3.5vw, 1.125rem); }
 .nr-field-head { display: flex; align-items: center; gap: 0.375em; margin-bottom: 0.375em; }
 .nr-label {
   font-family: var(--font-mono);
-  font-size: clamp(12px, 3vw, 14px);
+  font-size: clamp(0.75rem, 3vw, 0.875rem);
   letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted);
 }
 .nr-info-btn {
   width: clamp(14px, 3.5vw, 17px); height: clamp(14px, 3.5vw, 17px);
   border-radius: 50%; border: 0.5px solid var(--gold);
   background: none; color: var(--gold); font-family: var(--font-mono);
-  font-size: clamp(8px, 2vw, 9px);
+  font-size: clamp(0.5rem, 2vw, 0.5625rem);
   cursor: pointer; display: flex; align-items: center; justify-content: center;
   flex-shrink: 0; line-height: 1; opacity: 0.7;
 }
@@ -837,14 +837,14 @@ button, [role="button"] { touch-action: manipulation; }
   padding: clamp(0.5rem, 2.5vw, 0.75rem) clamp(0.625rem, 3vw, 0.875rem);
   margin-bottom: clamp(0.5rem, 2.5vw, 0.75rem);
   font-family: var(--font-ui);
-  font-size: clamp(14px, 3.5vw, 16px);
+  font-size: clamp(0.875rem, 3.5vw, 1.0rem);
   color: var(--text-muted); line-height: 1.65;
 }
 .nr-tooltip.show { display: block; }
 .nr-input, .nr-select, .nr-textarea {
   width: 100%; background: var(--bg-deep); border: 0.5px solid var(--bdr2);
   color: var(--text); font-family: var(--font-ui);
-  font-size: clamp(15px, 4vw, 17px);
+  font-size: clamp(0.9375rem, 4vw, 1.0625rem);
   padding: clamp(0.6875rem, 3vw, 0.875rem) clamp(0.75rem, 3.5vw, 1rem);
   outline: none; transition: all 220ms ease;
   border-radius: 8px !important;
@@ -861,7 +861,7 @@ button, [role="button"] { touch-action: manipulation; }
 .nr-select-wrap { position: relative; }
 .nr-select-arrow {
   position: absolute; right: 0.75em; top: 50%; transform: translateY(-50%);
-  font-size: clamp(13px, 3.5vw, 15px); color: var(--text-muted); pointer-events: none;
+  font-size: clamp(0.8125rem, 3.5vw, 0.9375rem); color: var(--text-muted); pointer-events: none;
 }
 .nr-photo-area {
   border: 0.5px dashed var(--bdr2);
@@ -872,20 +872,20 @@ button, [role="button"] { touch-action: manipulation; }
 .nr-photo-area:hover { border-color: var(--gold); }
 .nr-photo-area-label {
   font-family: var(--font-ui);
-  font-size: clamp(14px, 3.5vw, 16px);
+  font-size: clamp(0.875rem, 3.5vw, 1.0rem);
   color: var(--text-muted); line-height: 1.6;
 }
-.nr-photo-area-icon { font-size: clamp(20px, 5.5vw, 26px); margin-bottom: 0.5em; opacity: 0.4; }
+.nr-photo-area-icon { font-size: clamp(1.25rem, 5.5vw, 1.625rem); margin-bottom: 0.5em; opacity: 0.4; }
 .nr-photo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.375em; margin-top: 0.625em; }
 .nr-photo-thumb {
   aspect-ratio: 1; background: var(--bg-deep); border: 0.5px solid var(--bdr2);
   display: flex; align-items: center; justify-content: center;
-  font-size: clamp(18px, 5vw, 23px); position: relative;
+  font-size: clamp(1.125rem, 5vw, 1.4375rem); position: relative;
 }
 .nr-photo-rm {
   position: absolute; top: 3px; right: 3px;
   background: rgba(0,0,0,0.6); border: none; color: #fff;
-  font-size: clamp(9px, 2.3vw, 10px);
+  font-size: clamp(0.5625rem, 2.3vw, 0.625rem);
   cursor: pointer; width: clamp(15px, 4vw, 19px); height: clamp(15px, 4vw, 19px);
   border-radius: 50%; display: flex; align-items: center; justify-content: center; line-height: 1;
 }
@@ -896,17 +896,17 @@ button, [role="button"] { touch-action: manipulation; }
 .nr-submit-btn {
   width: 100%; background: var(--gold); color: var(--bg-deep); border: none;
   padding: clamp(0.75rem, 3.5vw, 1rem); font-family: var(--font-mono);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(0.8125rem, 3.5vw, 0.9375rem);
   letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer;
 }
 .nr-req-note {
   font-family: var(--font-ui);
-  font-size: clamp(9px, 2.3vw, 10px);
+  font-size: clamp(0.5625rem, 2.3vw, 0.625rem);
   color: var(--text-muted); text-align: center; margin-top: 0.625em; opacity: 0.6;
 }
 .nr-section-divider {
   font-family: var(--font-mono);
-  font-size: clamp(7px, 1.9vw, 9px);
+  font-size: clamp(0.4375rem, 1.9vw, 0.5625rem);
   letter-spacing: 0.24em; text-transform: uppercase;
   color: var(--text-muted);
   padding: clamp(0.75rem, 3.5vw, 1rem) 0 clamp(0.5rem, 2.5vw, 0.75rem);
@@ -963,7 +963,7 @@ button, [role="button"] { touch-action: manipulation; }
 /* Badges and close buttons */
 .sr-drawer-badge, .wo-status-badge {
   font-family: var(--font-mono);
-  font-size: clamp(12px, 3vw, 14px);
+  font-size: clamp(0.75rem, 3vw, 0.875rem);
   letter-spacing: 0.18em; text-transform: uppercase;
   padding: 0.2em 0.6em; flex-shrink: 0;
   background: rgba(0,0,0,0.15); color: var(--bg-deep);
@@ -972,14 +972,14 @@ button, [role="button"] { touch-action: manipulation; }
   background: rgba(0,0,0,0.15); border: none; color: var(--bg-deep);
   width: clamp(30px, 8vw, 36px); height: clamp(30px, 8vw, 36px);
   display: flex; align-items: center; justify-content: center;
-  cursor: pointer; font-size: clamp(17px, 4.5vw, 21px);
+  cursor: pointer; font-size: clamp(1.0625rem, 4.5vw, 1.3125rem);
   border-radius: 4px; font-weight: 700;
 }
 .inv-drawer-close {
   background: none; border: 0.5px solid #ccc; color: #555;
   width: clamp(28px, 7.5vw, 34px); height: clamp(28px, 7.5vw, 34px);
   display: flex; align-items: center; justify-content: center;
-  cursor: pointer; font-size: clamp(17px, 4.5vw, 20px); border-radius: 50%;
+  cursor: pointer; font-size: clamp(1.0625rem, 4.5vw, 1.25rem); border-radius: 50%;
 }
 
 /* Drawer scroll areas */
@@ -992,7 +992,7 @@ button, [role="button"] { touch-action: manipulation; }
 .sr-drawer-section { margin-bottom: clamp(1.125rem, 5vw, 1.5rem); }
 .sr-drawer-section-label {
   font-family: var(--font-mono);
-  font-size: clamp(7px, 1.9vw, 9px);
+  font-size: clamp(0.4375rem, 1.9vw, 0.5625rem);
   letter-spacing: 0.24em; text-transform: uppercase;
   color: var(--text-muted); margin-bottom: 0.5em;
   padding-bottom: 0.375em; border-bottom: 0.5px solid var(--bdr2);
@@ -1004,17 +1004,17 @@ button, [role="button"] { touch-action: manipulation; }
 .sr-drawer-field:last-child { border-bottom: none; }
 .sr-drawer-key {
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2vw, 9px);
+  font-size: clamp(0.5rem, 2vw, 0.5625rem);
   letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted);
 }
 .sr-drawer-val {
   font-family: var(--font-ui);
-  font-size: clamp(14px, 3.5vw, 16px);
+  font-size: clamp(0.875rem, 3.5vw, 1.0rem);
   color: var(--text); text-align: right; max-width: 60%;
 }
 .sr-drawer-note {
   font-family: var(--font-ui);
-  font-size: clamp(12px, 3.2vw, 13px);
+  font-size: clamp(0.75rem, 3.2vw, 0.8125rem);
   color: var(--text); line-height: 1.7; font-style: italic;
 }
 
@@ -1039,18 +1039,18 @@ button, [role="button"] { touch-action: manipulation; }
 .wo-log-entry.user::before  { background: var(--gold); }
 .wo-log-stamp {
   font-family: var(--font-mono);
-  font-size: clamp(8px, 2vw, 9px);
+  font-size: clamp(0.5rem, 2vw, 0.5625rem);
   letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.25em;
 }
 .wo-log-change {
   font-family: var(--font-ui);
-  font-size: clamp(14px, 3.5vw, 16px);
+  font-size: clamp(0.875rem, 3.5vw, 1.0rem);
   color: var(--text); line-height: 1.5;
 }
 .wo-accept-btn {
   width: 100%; background: var(--gold); color: var(--bg-deep); border: none;
   padding: clamp(0.75rem, 3.5vw, 1rem); font-family: var(--font-mono);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(0.8125rem, 3.5vw, 0.9375rem);
   letter-spacing: 0.2em; text-transform: uppercase;
   cursor: pointer; margin-bottom: var(--sp-2);
 }
@@ -1062,22 +1062,22 @@ button, [role="button"] { touch-action: manipulation; }
   padding-bottom: clamp(0.875rem, 4vw, 1.125rem);
   border-bottom: 1px solid #e0e0e0;
 }
-.pdf-brand { font-family: var(--font-display); font-size: clamp(15px, 4vw, 19px); color: #1a1a1a; letter-spacing: 0.04em; }
-.pdf-brand-sub { font-size: clamp(9px, 2.3vw, 10px); letter-spacing: 0.15em; text-transform: uppercase; color: #888; margin-top: 0.125em; }
-.pdf-inv-num { font-family: var(--font-mono); font-size: clamp(14px, 3.5vw, 16px); color: #888; text-align: right; }
-.pdf-label { font-size: clamp(8px, 2vw, 9px); letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-bottom: 0.25em; font-family: var(--font-mono); }
-.pdf-name { font-size: clamp(17px, 4.5vw, 20px); color: #1a1a1a; font-family: var(--font-ui); font-weight: 600; }
-.pdf-addr { font-size: clamp(14px, 3.5vw, 16px); color: #555; font-family: var(--font-ui); line-height: 1.6; }
+.pdf-brand { font-family: var(--font-display); font-size: clamp(0.9375rem, 4vw, 1.1875rem); color: #1a1a1a; letter-spacing: 0.04em; }
+.pdf-brand-sub { font-size: clamp(0.5625rem, 2.3vw, 0.625rem); letter-spacing: 0.15em; text-transform: uppercase; color: #888; margin-top: 0.125em; }
+.pdf-inv-num { font-family: var(--font-mono); font-size: clamp(0.875rem, 3.5vw, 1.0rem); color: #888; text-align: right; }
+.pdf-label { font-size: clamp(0.5rem, 2vw, 0.5625rem); letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-bottom: 0.25em; font-family: var(--font-mono); }
+.pdf-name { font-size: clamp(1.0625rem, 4.5vw, 1.25rem); color: #1a1a1a; font-family: var(--font-ui); font-weight: 600; }
+.pdf-addr { font-size: clamp(0.875rem, 3.5vw, 1.0rem); color: #555; font-family: var(--font-ui); line-height: 1.6; }
 .pdf-items { width: 100%; border-collapse: collapse; margin-bottom: clamp(1rem, 4.5vw, 1.375rem); }
-.pdf-items th { font-size: clamp(8px, 2vw, 9px); letter-spacing: 0.18em; text-transform: uppercase; color: #888; font-family: var(--font-mono); padding: clamp(0.4rem, 2vw, 0.625rem) 0; border-bottom: 1px solid #e0e0e0; text-align: left; font-weight: 400; }
+.pdf-items th { font-size: clamp(0.5rem, 2vw, 0.5625rem); letter-spacing: 0.18em; text-transform: uppercase; color: #888; font-family: var(--font-mono); padding: clamp(0.4rem, 2vw, 0.625rem) 0; border-bottom: 1px solid #e0e0e0; text-align: left; font-weight: 400; }
 .pdf-items th:last-child { text-align: right; }
-.pdf-items td { font-size: clamp(12px, 3.2vw, 13px); color: #1a1a1a; font-family: var(--font-ui); padding: clamp(0.5rem, 2.5vw, 0.75rem) 0; border-bottom: 0.5px solid #f0f0f0; vertical-align: top; }
+.pdf-items td { font-size: clamp(0.75rem, 3.2vw, 0.8125rem); color: #1a1a1a; font-family: var(--font-ui); padding: clamp(0.5rem, 2.5vw, 0.75rem) 0; border-bottom: 0.5px solid #f0f0f0; vertical-align: top; }
 .pdf-items td:last-child { text-align: right; font-family: var(--font-mono); }
 .pdf-total-row { display: flex; justify-content: space-between; align-items: center; padding: clamp(0.75rem, 3.5vw, 1rem) 0; border-top: 2px solid #1a1a1a; margin-top: 0.25em; }
-.pdf-total-lbl { font-size: clamp(14px, 3.5vw, 16px); letter-spacing: 0.2em; text-transform: uppercase; color: #1a1a1a; font-family: var(--font-mono); }
-.pdf-total-amt { font-size: clamp(18px, 4.7vw, 21px); font-weight: 700; color: #1a1a1a; font-family: var(--font-mono); }
+.pdf-total-lbl { font-size: clamp(0.875rem, 3.5vw, 1.0rem); letter-spacing: 0.2em; text-transform: uppercase; color: #1a1a1a; font-family: var(--font-mono); }
+.pdf-total-amt { font-size: clamp(1.125rem, 4.7vw, 1.3125rem); font-weight: 700; color: #1a1a1a; font-family: var(--font-mono); }
 .pdf-footer { margin-top: clamp(1.25rem, 5.5vw, 1.75rem); padding-top: clamp(0.875rem, 4vw, 1.125rem); border-top: 0.5px solid #e0e0e0; text-align: center; }
-.pdf-footer-txt { font-size: clamp(9px, 2.3vw, 10px); color: #aaa; font-family: var(--font-ui); line-height: 1.6; }
+.pdf-footer-txt { font-size: clamp(0.5625rem, 2.3vw, 0.625rem); color: #aaa; font-family: var(--font-ui); line-height: 1.6; }
 
 /* ── WIZARD RESULTS PANEL ── */
 .wiz-grid {
@@ -1107,13 +1107,13 @@ button, [role="button"] { touch-action: manipulation; }
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
   font-family: var(--font-mono);
-  font-size: clamp(17px, 5vw, 25px);
+  font-size: clamp(1.0625rem, 5vw, 1.5625rem);
   font-weight: 800;
 }
 .wiz-band-label {
   display: block;
   font-family: var(--font-mono);
-  font-size: clamp(13px, 2vw, 17px);
+  font-size: clamp(0.8125rem, 2vw, 1.0625rem);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-align: center;
@@ -1122,7 +1122,7 @@ button, [role="button"] { touch-action: manipulation; }
 .wiz-stone {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(13px, 3.2vw, 19px);
+  font-size: clamp(0.8125rem, 3.2vw, 1.1875rem);
   color: var(--text);
   text-align: center;
   line-height: 1.3;
@@ -1131,7 +1131,7 @@ button, [role="button"] { touch-action: manipulation; }
 .wiz-date {
   display: block;
   font-family: var(--font-mono);
-  font-size: clamp(7px, 1.8vw, 8px);
+  font-size: clamp(0.4375rem, 1.8vw, 0.5rem);
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1144,18 +1144,18 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .wiz-empty-title {
   font-family: var(--font-display);
-  font-size: clamp(19px, 5vw, 23px);
+  font-size: clamp(1.1875rem, 5vw, 1.4375rem);
   font-style: italic; color: var(--text); margin-bottom: 0.625em;
 }
 .wiz-empty-sub {
   font-family: var(--font-ui);
-  font-size: clamp(14px, 3.5vw, 16px);
+  font-size: clamp(0.875rem, 3.5vw, 1.0rem);
   color: var(--text-muted); line-height: 1.6;
 }
 .wiz-empty-link {
   display: inline-block; margin-top: clamp(0.875rem, 4vw, 1.25rem);
   font-family: var(--font-mono);
-  font-size: clamp(12px, 3vw, 14px);
+  font-size: clamp(0.75rem, 3vw, 0.875rem);
   letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--tile-feasib); border: 0.5px solid var(--tile-feasib);
   padding: clamp(0.5rem, 2.5vw, 0.75rem) clamp(1rem, 4.5vw, 1.375rem);
@@ -1171,7 +1171,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .res-band-badge {
   font-family: var(--font-mono);
-  font-size: clamp(12px, 3vw, 14px);
+  font-size: clamp(0.75rem, 3vw, 0.875rem);
   letter-spacing: 0.18em; text-transform: uppercase;
   padding: 0.2em 0.6em; flex-shrink: 0;
   background: rgba(0,0,0,0.15); color: var(--bg-deep); border: none;
@@ -1180,19 +1180,19 @@ button, [role="button"] { touch-action: manipulation; }
   background: rgba(0,0,0,0.15); border: none; color: var(--bg-deep);
   width: clamp(30px, 8vw, 36px); height: clamp(30px, 8vw, 36px);
   display: flex; align-items: center; justify-content: center;
-  cursor: pointer; font-size: clamp(17px, 4.5vw, 21px);
+  cursor: pointer; font-size: clamp(1.0625rem, 4.5vw, 1.3125rem);
   border-radius: 4px; font-weight: 700;
 }
 .res-scroll { flex: 1; overflow-y: auto; padding: clamp(1.125rem, 5vw, 1.375rem) clamp(1rem, 4.5vw, 1.25rem); }
 .res-hero { display: flex; align-items: center; gap: clamp(0.875rem, 4vw, 1.25rem); margin-bottom: clamp(1.125rem, 5vw, 1.5rem); padding-bottom: clamp(0.875rem, 4vw, 1.125rem); border-bottom: 0.5px solid var(--border); }
 .res-ring { position: relative; width: clamp(90px, 24vw, 110px); height: clamp(90px, 24vw, 110px); flex-shrink: 0; }
-.res-ring-num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: clamp(24px, 6vw, 32px); font-weight: 700; }
-.res-stone-name { font-family: var(--font-display); font-size: clamp(18px, 4.8vw, 22px); color: var(--text); margin-bottom: 0.25em; line-height: 1.2; }
-.res-stone-meta { font-family: var(--font-ui); font-size: clamp(17px, 4.5vw, 20px); color: var(--text-muted); line-height: 1.6; }
-.res-rec { font-family: var(--font-mono); font-size: clamp(17px, 4.5vw, 20px); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 0.375em; }
+.res-ring-num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: clamp(1.5rem, 6vw, 2.0rem); font-weight: 700; }
+.res-stone-name { font-family: var(--font-display); font-size: clamp(1.125rem, 4.8vw, 1.375rem); color: var(--text); margin-bottom: 0.25em; line-height: 1.2; }
+.res-stone-meta { font-family: var(--font-ui); font-size: clamp(1.0625rem, 4.5vw, 1.25rem); color: var(--text-muted); line-height: 1.6; }
+.res-rec { font-family: var(--font-mono); font-size: clamp(1.0625rem, 4.5vw, 1.25rem); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 0.375em; }
 .res-section { margin-bottom: clamp(1.125rem, 5vw, 1.375rem); }
-.res-section-label { font-family: var(--font-mono); font-size: clamp(17px, 4.5vw, 20px); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.625em; padding-bottom: 0.375em; border-bottom: 0.5px solid var(--border); }
-.res-date { font-family: var(--font-mono); font-size: clamp(17px, 4.5vw, 20px); letter-spacing: 0.14em; color: var(--text-muted); margin-top: clamp(1.125rem, 5vw, 1.375rem); opacity: 0.6; }
+.res-section-label { font-family: var(--font-mono); font-size: clamp(1.0625rem, 4.5vw, 1.25rem); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.625em; padding-bottom: 0.375em; border-bottom: 0.5px solid var(--border); }
+.res-date { font-family: var(--font-mono); font-size: clamp(1.0625rem, 4.5vw, 1.25rem); letter-spacing: 0.14em; color: var(--text-muted); margin-top: clamp(1.125rem, 5vw, 1.375rem); opacity: 0.6; }
 
 /* ── FEEDBACK TILE ── */
 .fb-tile {
@@ -1204,7 +1204,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .fb-stars { display: flex; gap: clamp(0.25rem, 1.5vw, 0.5rem); margin-bottom: 0.25em; }
 .fb-star {
-  font-size: clamp(19px, 5vw, 23px);
+  font-size: clamp(1.1875rem, 5vw, 1.4375rem);
   cursor: pointer; color: #ffffff; opacity: 0.3;
   transition: color 200ms ease, opacity 200ms ease;
 }
@@ -1227,10 +1227,10 @@ button, [role="button"] { touch-action: manipulation; }
   padding: 0.125em clamp(0.625rem, 3.5vw, 1rem);
   position: relative;
 }
-.tab-icon { font-size: clamp(15px, 4vw, 19px); opacity: 0.45; transition: all 180ms ease; }
+.tab-icon { font-size: clamp(0.9375rem, 4vw, 1.1875rem); opacity: 0.45; transition: all 180ms ease; }
 .tab-lbl {
   font-family: var(--font-mono);
-  font-size: clamp(7px, 1.9vw, 9px);
+  font-size: clamp(0.4375rem, 1.9vw, 0.5625rem);
   letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--text-muted); transition: all 180ms ease;
 }
@@ -1257,8 +1257,8 @@ button, [role="button"] { touch-action: manipulation; }
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
 }
 .slide-tip.show { opacity: 1; transform: translateY(-50%) translateX(0); pointer-events: all; }
-.slide-tip-arrow { font-size: clamp(19px, 5vw, 25px); color: var(--gold); animation: slideHint 1.2s ease-in-out infinite; }
-.slide-tip-label { font-family: var(--font-mono); font-size: clamp(17px, 4.5vw, 20px); letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); }
+.slide-tip-arrow { font-size: clamp(1.1875rem, 5vw, 1.5625rem); color: var(--gold); animation: slideHint 1.2s ease-in-out infinite; }
+.slide-tip-label { font-family: var(--font-mono); font-size: clamp(1.0625rem, 4.5vw, 1.25rem); letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); }
 
 /* ── SAFARI FIXES ── */
 @supports (-webkit-touch-callout: none) {
@@ -1355,7 +1355,7 @@ button, [role="button"] { touch-action: manipulation; }
   border: 0.5px solid var(--bdr2);
   color: var(--text-muted);
   font-family: var(--font-ui);
-  font-size: clamp(13px, 3.5vw, 14px);
+  font-size: clamp(0.8125rem, 3.5vw, 0.875rem);
   letter-spacing: 0.08em;
   padding: clamp(0.5rem, 2.3vw, 0.6rem) clamp(1rem, 4vw, 1.25rem);
   border-radius: 999px;
@@ -1411,7 +1411,7 @@ button, [role="button"] { touch-action: manipulation; }
   color: #ffffff;
   border: none;
   font-family: var(--font-mono);
-  font-size: clamp(9px, 2.5vw, 11px);
+  font-size: clamp(0.5625rem, 2.5vw, 0.6875rem);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1439,7 +1439,7 @@ button, [role="button"] { touch-action: manipulation; }
    Keeps it vertically centered regardless of tab. */
 .sr-empty {
   font-family: var(--font-ui);
-  font-size: clamp(13px, 3.5vw, 14px);
+  font-size: clamp(0.8125rem, 3.5vw, 0.875rem);
   color: var(--text-muted);
   text-align: center;
   padding: 40px 0;
@@ -1466,7 +1466,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .srf-section-title {
   font-family: var(--font-mono);
-  font-size: clamp(10px, 2.6vw, 11px);
+  font-size: clamp(0.625rem, 2.6vw, 0.6875rem);
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -1502,7 +1502,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .srf-contact-label {
   font-family: var(--font-mono);
-  font-size: clamp(9px, 2.4vw, 10px);
+  font-size: clamp(0.5625rem, 2.4vw, 0.625rem);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -1513,7 +1513,7 @@ button, [role="button"] { touch-action: manipulation; }
 }
 .srf-contact-value {
   font-family: var(--font-ui);
-  font-size: clamp(13px, 3.5vw, 15px);
+  font-size: clamp(0.8125rem, 3.5vw, 0.9375rem);
   color: var(--text);
   line-height: 1.4;
   word-break: break-word;
@@ -1522,7 +1522,7 @@ button, [role="button"] { touch-action: manipulation; }
 .srf-required-tag {
   color: var(--gold);
   font-family: var(--font-mono);
-  font-size: clamp(9px, 2.4vw, 10px);
+  font-size: clamp(0.5625rem, 2.4vw, 0.625rem);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   margin-left: 0.5em;
@@ -1536,7 +1536,7 @@ button, [role="button"] { touch-action: manipulation; }
   text-align: center;
   padding: 0;
   font-family: var(--font-mono);
-  font-size: clamp(15px, 4vw, 18px);
+  font-size: clamp(0.9375rem, 4vw, 1.125rem);
 }
 
 
@@ -1555,7 +1555,7 @@ button, [role="button"] { touch-action: manipulation; }
 /* ── UNIT SUFFIX ── non-editable "ct", "mm" labels ── */
 .srf-unit-suffix {
   font-family: var(--font-mono);
-  font-size: clamp(11px, 2.8vw, 13px);
+  font-size: clamp(0.6875rem, 2.8vw, 0.8125rem);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -1578,13 +1578,13 @@ button, [role="button"] { touch-action: manipulation; }
   gap: 4px;
 }
 .srf-size-box .srf-unit-suffix {
-  font-size: clamp(9px, 2.4vw, 10px);
+  font-size: clamp(0.5625rem, 2.4vw, 0.625rem);
   opacity: 0.7;
 }
 /* Big × character — sized to match box height roughly */
 .srf-size-sep {
   font-family: var(--font-display);
-  font-size: clamp(22px, 6vw, 30px);
+  font-size: clamp(1.375rem, 6vw, 1.875rem);
   color: var(--text-muted);
   opacity: 0.8;
   line-height: 1;
@@ -1606,7 +1606,7 @@ button, [role="button"] { touch-action: manipulation; }
   border: 0.5px dashed var(--bdr2);
   color: var(--text);
   font-family: var(--font-mono);
-  font-size: clamp(11px, 2.8vw, 12px);
+  font-size: clamp(0.6875rem, 2.8vw, 0.75rem);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: clamp(0.4rem, 2vw, 0.55rem) clamp(0.625rem, 3vw, 0.875rem);
@@ -1629,7 +1629,7 @@ button, [role="button"] { touch-action: manipulation; }
   border: 0.5px solid var(--gold);
   color: var(--text);
   font-family: var(--font-mono);
-  font-size: clamp(11px, 2.8vw, 12px);
+  font-size: clamp(0.6875rem, 2.8vw, 0.75rem);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: clamp(0.4rem, 2vw, 0.55rem) clamp(0.625rem, 3vw, 0.875rem);
@@ -1645,7 +1645,7 @@ button, [role="button"] { touch-action: manipulation; }
   background: transparent;
   border: 0.5px solid var(--bdr2);
   color: var(--text-muted);
-  font-size: clamp(11px, 2.8vw, 13px);
+  font-size: clamp(0.6875rem, 2.8vw, 0.8125rem);
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
@@ -1663,7 +1663,7 @@ button, [role="button"] { touch-action: manipulation; }
   border: 0.5px dashed var(--bdr2);
   color: var(--text-muted);
   font-family: var(--font-ui);
-  font-size: clamp(13px, 3.4vw, 14px);
+  font-size: clamp(0.8125rem, 3.4vw, 0.875rem);
   letter-spacing: 0.08em;
   padding: clamp(0.6rem, 2.8vw, 0.75rem) clamp(1rem, 4vw, 1.25rem);
   border-radius: 999px;
@@ -1702,7 +1702,7 @@ button, [role="button"] { touch-action: manipulation; }
   background: rgba(0,0,0,0.45);
   color: #fff;
   font-family: var(--font-mono);
-  font-size: clamp(9px, 2.4vw, 10px);
+  font-size: clamp(0.5625rem, 2.4vw, 0.625rem);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   display: flex;
@@ -1717,7 +1717,7 @@ button, [role="button"] { touch-action: manipulation; }
   background: var(--ok);
   color: var(--bg-deep);
   font-family: var(--font-mono);
-  font-size: clamp(9px, 2.4vw, 10px);
+  font-size: clamp(0.5625rem, 2.4vw, 0.625rem);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1741,7 +1741,7 @@ button, [role="button"] { touch-action: manipulation; }
   background: rgba(0,0,0,0.55);
   border: none;
   color: #fff;
-  font-size: clamp(11px, 2.8vw, 13px);
+  font-size: clamp(0.6875rem, 2.8vw, 0.8125rem);
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
@@ -1764,7 +1764,7 @@ button, [role="button"] { touch-action: manipulation; }
   gap: clamp(0.5rem, 2.5vw, 0.75rem);
   cursor: pointer;
   font-family: var(--font-ui);
-  font-size: clamp(13px, 3.4vw, 14px);
+  font-size: clamp(0.8125rem, 3.4vw, 0.875rem);
   color: var(--text);
   line-height: 1.55;
 }
@@ -1779,7 +1779,7 @@ button, [role="button"] { touch-action: manipulation; }
 .srf-consent-note {
   margin: clamp(0.625rem, 3vw, 0.875rem) 0 0;
   font-family: var(--font-ui);
-  font-size: clamp(13px, 3.4vw, 14px);
+  font-size: clamp(0.8125rem, 3.4vw, 0.875rem);
   color: var(--text-muted);
   line-height: 1.55;
   font-style: italic;
@@ -1791,7 +1791,7 @@ button, [role="button"] { touch-action: manipulation; }
   border-radius: 12px;
   padding: clamp(0.75rem, 3.5vw, 1rem) clamp(0.875rem, 4vw, 1.125rem);
   font-family: var(--font-ui);
-  font-size: clamp(13px, 3.4vw, 14px);
+  font-size: clamp(0.8125rem, 3.4vw, 0.875rem);
   color: var(--ok);
   line-height: 1.55;
 }
@@ -1805,7 +1805,7 @@ button, [role="button"] { touch-action: manipulation; }
   border-radius: 10px;
   padding: clamp(0.625rem, 3vw, 0.875rem) clamp(0.75rem, 3.5vw, 1rem);
   font-family: var(--font-ui);
-  font-size: clamp(13px, 3.4vw, 14px);
+  font-size: clamp(0.8125rem, 3.4vw, 0.875rem);
   line-height: 1.5;
   margin-bottom: clamp(0.75rem, 3.5vw, 1rem);
 }
@@ -1827,7 +1827,7 @@ button, [role="button"] { touch-action: manipulation; }
    Rendered using text-shadow + transparent fill so we don't need
    separate icon assets. Thicker "border" effect via multiple stacked shadows. */
 .fb-star-outline {
-  font-size: clamp(20px, 5.5vw, 23px);
+  font-size: clamp(1.25rem, 5.5vw, 1.4375rem);
   line-height: 1;
   color: transparent;
   /* Outline effect — stacked text-shadows around the glyph */

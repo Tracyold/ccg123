@@ -137,7 +137,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
               <div style={{ marginBottom: '1.25rem' }}>
                 <span style={{
                   fontFamily: 'var(--font-mono)',
-                  fontSize: 'clamp(10px, 2.6vw, 11px)',
+                  fontSize: 'clamp(0.625rem, 2.6vw, 0.6875rem)',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
                   padding: '4px 10px',
@@ -168,7 +168,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
                       }}>
                         <span style={{
                           fontFamily: 'var(--font-mono)',
-                          fontSize: 'clamp(9px, 2.4vw, 10px)',
+                          fontSize: 'clamp(0.5625rem, 2.4vw, 0.625rem)',
                           letterSpacing: '0.18em',
                           textTransform: 'uppercase',
                           color: 'var(--text-muted)',
@@ -177,7 +177,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
                         }}>{c.label}</span>
                         <span style={{
                           fontFamily: 'var(--font-ui)',
-                          fontSize: 'clamp(13px, 3.5vw, 15px)',
+                          fontSize: 'clamp(0.8125rem, 3.5vw, 0.9375rem)',
                           color: 'var(--text)',
                           wordBreak: 'break-word',
                           textAlign: 'right',
@@ -201,14 +201,14 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
                     }}>
                       <span style={{
                         fontFamily: 'var(--font-mono)',
-                        fontSize: 'clamp(10px, 2.6vw, 11px)',
+                        fontSize: 'clamp(0.625rem, 2.6vw, 0.6875rem)',
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
                         color: 'var(--text-muted)',
                       }}>{s.label}</span>
                       <span style={{
                         fontFamily: 'var(--font-ui)',
-                        fontSize: 'clamp(13px, 3.6vw, 15px)',
+                        fontSize: 'clamp(0.8125rem, 3.6vw, 0.9375rem)',
                         color: 'var(--text)',
                       }}>{s.val}</span>
                     </div>
@@ -231,7 +231,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
                     }}>
                       <span style={{
                         fontFamily: 'var(--font-mono)',
-                        fontSize: 'clamp(10px, 2.6vw, 11px)',
+                        fontSize: 'clamp(0.625rem, 2.6vw, 0.6875rem)',
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
                         color: 'var(--text-muted)',
@@ -241,7 +241,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
                       }}>{cf.label}</span>
                       <span style={{
                         fontFamily: 'var(--font-ui)',
-                        fontSize: 'clamp(13px, 3.6vw, 15px)',
+                        fontSize: 'clamp(0.8125rem, 3.6vw, 0.9375rem)',
                         color: 'var(--text)',
                         textAlign: 'right',
                         wordBreak: 'break-word',
@@ -256,7 +256,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
               {sr.wizard_result_id && (
                 <div className="shop-item-desc" style={{ marginTop: '1.5rem' }}>
                   <div className="shop-item-desc-label">Wizard Result</div>
-                  <p style={{ color: 'var(--tile-feasib)', fontFamily: 'var(--font-mono)', fontSize: 'clamp(13px, 3.5vw, 15px)' }}>
+                  <p style={{ color: 'var(--tile-feasib)', fontFamily: 'var(--font-mono)', fontSize: 'clamp(0.8125rem, 3.5vw, 0.9375rem)' }}>
                     {sr.wizard_result_id.slice(0, 8)}
                   </p>
                 </div>
@@ -310,7 +310,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
                   border: '0.5px solid var(--bdr2)',
                   borderRadius: '10px',
                   fontFamily: 'var(--font-ui)',
-                  fontSize: 'clamp(13px, 3.4vw, 14px)',
+                  fontSize: 'clamp(0.8125rem, 3.4vw, 0.875rem)',
                   color: 'var(--text-muted)',
                   lineHeight: 1.55,
                 }}>
@@ -321,7 +321,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
               {/* Submission Info */}
               <div style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: 'clamp(9px, 2.4vw, 10px)',
+                fontSize: 'clamp(0.5625rem, 2.4vw, 0.625rem)',
                 color: 'var(--text-muted)',
                 opacity: 0.6,
                 marginTop: '2rem',
@@ -375,7 +375,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
         }
         .shop-item-header-title {
           font-family: var(--font-mono);
-          font-size: clamp(11px, 2.8vw, 13px);
+          font-size: clamp(0.6875rem, 2.8vw, 0.8125rem);
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: var(--text-muted);
@@ -384,7 +384,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
           background: none;
           border: none;
           color: var(--text-muted);
-          font-size: clamp(17px, 4.5vw, 20px);
+          font-size: clamp(1.0625rem, 4.5vw, 1.25rem);
           cursor: pointer;
         }
         .shop-item-scroll {
@@ -401,7 +401,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
         }
         .shop-item-desc-label {
           font-family: var(--font-mono);
-          font-size: clamp(10px, 2.6vw, 11px);
+          font-size: clamp(0.625rem, 2.6vw, 0.6875rem);
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: var(--text-muted);
@@ -409,7 +409,7 @@ export default function ServiceRequestDrawer3({ open, sr, onClose }: ServiceRequ
         }
         .shop-item-desc p {
           font-family: var(--font-body);
-          font-size: clamp(14px, 3.8vw, 16px);
+          font-size: clamp(0.875rem, 3.8vw, 1.0rem);
           line-height: 1.6;
           color: var(--text) !important;
           opacity: 0.85;

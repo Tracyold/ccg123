@@ -299,7 +299,7 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
         /* Tool title inside modal */
         .wiz-tool-title {
           font-family: var(--font-display);
-          font-size: clamp(18px, 4vw, 28px);
+          font-size: clamp(1.125rem, 4vw, 1.75rem);
           font-weight: 400;
           color: var(--text);
           letter-spacing: 0.04em;
@@ -363,11 +363,11 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
           {/* Section label + instruction */}
           {!isResults && !isComplete && label && (
             <div className="wiz-slide" key={`header-${stepIndex}`}>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(22px, 5vw, 30px)', fontWeight: 400, color: 'var(--text)', margin: '0 0 16px', letterSpacing: '0.02em', lineHeight: 1.2 }}>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.375rem, 5vw, 1.875rem)', fontWeight: 400, color: 'var(--text)', margin: '0 0 16px', letterSpacing: '0.02em', lineHeight: 1.2 }}>
                 {label}
               </p>
               {instruction && (
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(14px, 2vw, 16px)', color: 'var(--text-muted)', lineHeight: 1.75, margin: '0 0 28px', paddingBottom: 24, borderBottom: '1px solid var(--border)' }}>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.875rem, 2vw, 1.0rem)', color: 'var(--text-muted)', lineHeight: 1.75, margin: '0 0 28px', paddingBottom: 24, borderBottom: '1px solid var(--border)' }}>
                   {instruction}
                 </p>
               )}
@@ -379,10 +379,10 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
             <div className="wiz-complete" key={`complete-${stepIndex}`} style={{ paddingTop: 16 }}>
               <div style={{ textAlign: 'center', marginBottom: 40 }}>
                 <div style={{ fontSize: 44, marginBottom: 18 }}>✦</div>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(26px, 5vw, 38px)', fontWeight: 400, color: 'var(--text)', margin: '0 0 14px', letterSpacing: '0.02em' }}>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.625rem, 5vw, 2.375rem)', fontWeight: 400, color: 'var(--text)', margin: '0 0 14px', letterSpacing: '0.02em' }}>
                   {currentStep.title}
                 </h2>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(15px, 2vw, 17px)', color: currentStep.isLastBeforeResults ? 'var(--accent)' : 'var(--text-muted)', lineHeight: 1.7, margin: 0, fontStyle: currentStep.isLastBeforeResults ? 'normal' : 'italic', fontWeight: currentStep.isLastBeforeResults ? 600 : 400 }}>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.9375rem, 2vw, 1.0625rem)', color: currentStep.isLastBeforeResults ? 'var(--accent)' : 'var(--text-muted)', lineHeight: 1.7, margin: 0, fontStyle: currentStep.isLastBeforeResults ? 'normal' : 'italic', fontWeight: currentStep.isLastBeforeResults ? 600 : 400 }}>
                   {currentStep.message}
                 </p>
               </div>

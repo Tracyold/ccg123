@@ -46,7 +46,7 @@ export default function FeasibilityMobile() {
         <div className="fm-card">
           {/* Header */}
           <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(212,175,55,0.9)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
-          <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(21px, 6vw, 27px)', color: 'var(--text)', lineHeight: 1.1, marginBottom: '6px' }}>Pre-Cut Evaluation</p>
+          <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.3125rem, 6vw, 1.6875rem)', color: 'var(--text)', lineHeight: 1.1, marginBottom: '6px' }}>Pre-Cut Evaluation</p>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>Report #{precut.id} · {precut.date} · {precut.analyst}</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 16px', marginBottom: '8px' }}>
             <div><p style={FL}>Client</p><p style={FV}>{precut.clientName}</p></div>
@@ -203,7 +203,7 @@ export default function FeasibilityMobile() {
         <div className="fm-card">
           {/* Header */}
           <p style={{ fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '6px' }}>CCG Cut Feasibility Report</p>
-          <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(21px, 6vw, 27px)', color: 'var(--text)', lineHeight: 1.1, marginBottom: '6px' }}>Post-Cut Change Report</p>
+          <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.3125rem, 6vw, 1.6875rem)', color: 'var(--text)', lineHeight: 1.1, marginBottom: '6px' }}>Post-Cut Change Report</p>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>Report #{postcut.id} · {postcut.date} · {postcut.analyst}</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 16px', marginBottom: '8px' }}>
             <div><p style={FL}>Client</p><p style={FV}>{postcut.clientName}</p></div>

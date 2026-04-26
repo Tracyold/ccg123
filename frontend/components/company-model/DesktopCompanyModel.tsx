@@ -73,20 +73,20 @@ export default function DesktopCompanyModel() {
         }
         .dtop-chapter-heading {
           font-family: 'Oranienbaum', serif;
-          font-size: clamp(28px, 3.5vw, 48px);
+          font-size: clamp(1.75rem, 3.5vw, 3.0rem);
           color: var(--text);
           line-height: 1.15;
           margin-bottom: 32px;
         }
         .dtop-chapter-body p {
           font-family: var(--font-body);
-          font-size: clamp(14px, 1.4vw, 16px);
+          font-size: clamp(0.875rem, 1.4vw, 1.0rem);
           color: var(--text-muted);
           line-height: 1.9;
           margin-bottom: 20px;
         }
         .dtop-chapter-body p:first-child {
-          font-size: clamp(14px, 1.4vw, 16px);
+          font-size: clamp(0.875rem, 1.4vw, 1.0rem);
           color: var(--accent);
           font-family: var(--font-body);
           font-weight: 600;
@@ -135,7 +135,7 @@ export default function DesktopCompanyModel() {
         }
         .dtop-cta-heading {
           font-family: 'Oranienbaum', serif;
-          font-size: clamp(22px, 3vw, 36px);
+          font-size: clamp(1.375rem, 3vw, 2.25rem);
           color: var(--text);
           margin-bottom: 16px;
         }

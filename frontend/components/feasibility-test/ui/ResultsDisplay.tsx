@@ -89,7 +89,7 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, positiveS
         }
         .stone-eyebrow {
           font-family: var(--font-body);
-          font-size: clamp(19px, 2.2vw, 21px);
+          font-size: clamp(1.1875rem, 2.2vw, 1.3125rem);
           color: var(--accent); margin: 0 0 16px;
         }
         .stone-grid {
@@ -98,12 +98,12 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, positiveS
         @media (max-width: 400px) { .stone-grid { grid-template-columns: 1fr; } }
         .stone-field-label {
           font-family: var(--font-body);
-          font-size: clamp(19px, 2.2vw, 21px);
+          font-size: clamp(1.1875rem, 2.2vw, 1.3125rem);
           color: var(--text-muted); margin: 0 0 4px;
         }
         .stone-field-value {
           font-family: var(--font-body);
-          font-size: clamp(19px, 2.2vw, 21px);
+          font-size: clamp(1.1875rem, 2.2vw, 1.3125rem);
           color: var(--text); margin: 0;
         }
 
@@ -113,7 +113,7 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, positiveS
         }
         .disclaimer p {
           font-family: var(--font-body);
-          font-size: clamp(19px, 2.2vw, 21px);
+          font-size: clamp(1.1875rem, 2.2vw, 1.3125rem);
           line-height: 1.8; color: var(--text-muted); margin: 0 0 14px;
         }
         .disclaimer p:last-child { margin: 0; }
@@ -127,7 +127,7 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, positiveS
           background: transparent; color: var(--accent);
           border: 0.5px solid rgba(255,211,105,0.35);
           padding: clamp(19px, 2.2vw, 21px) 20px;
-          font-family: var(--font-body); font-size: clamp(19px, 2.2vw, 21px);
+          font-family: var(--font-body); font-size: clamp(1.1875rem, 2.2vw, 1.3125rem);
           font-weight: 600;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
         }
@@ -136,7 +136,7 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, positiveS
           width: 100%; display: flex; align-items: center; justify-content: center;
           background: var(--accent); color: var(--bg); border: none;
           padding: clamp(18px, 2.5vw, 22px) 20px;
-          font-family: var(--font-body); font-size: clamp(19px, 2.2vw, 21px);
+          font-family: var(--font-body); font-size: clamp(1.1875rem, 2.2vw, 1.3125rem);
           font-weight: 700;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
           box-shadow: 0 4px 16px rgba(255,211,105,0.18);
@@ -147,7 +147,7 @@ export default function ResultsDisplay({ results, weightCt, stoneInfo, positiveS
           background: transparent; color: var(--text-muted);
           border: 0.5px solid var(--border);
           padding: clamp(19px, 2.2vw, 21px) 20px;
-          font-family: var(--font-body); font-size: clamp(19px, 2.2vw, 21px);
+          font-family: var(--font-body); font-size: clamp(1.1875rem, 2.2vw, 1.3125rem);
           font-weight: 500;
           cursor: pointer; border-radius: 14px; transition: all 220ms ease;
         }

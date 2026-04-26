@@ -51,7 +51,7 @@ export default function DesktopEstimates() {
         }
         .dest-num {
           font-family: 'Oranienbaum', serif;
-          font-size: clamp(72px, 10vw, 120px);
+          font-size: clamp(4.5rem, 10vw, 7.5rem);
           line-height: 1;
           color: rgb(60,60,60);
           margin-bottom: 24px;
@@ -71,7 +71,7 @@ export default function DesktopEstimates() {
         }
         .dest-title {
           font-family: 'Oranienbaum', serif;
-          font-size: clamp(22px, 2.5vw, 32px);
+          font-size: clamp(1.375rem, 2.5vw, 2.0rem);
           color: var(--text);
           margin-bottom: 16px;
           line-height: 1.2;
