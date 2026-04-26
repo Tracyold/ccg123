@@ -80,8 +80,8 @@ function ListItem({ text, color }: { text: string; color?: string }) {
       display: 'flex', alignItems: 'flex-start', gap: 10,
       padding: '8px 0', borderBottom: '0.5px solid var(--border)',
     }}>
-      <span style={{ color: color || 'var(--gold)', fontSize: 0.75rem, flexShrink: 0, marginTop: 1 }}>✓</span>
-      <span style={{ fontFamily: 'var(--font-ui)', fontSize: 0.8125rem, color: 'var(--text)' }}>{text}</span>
+      <span style={{ color: color || 'var(--gold)', fontSize: '0.75rem', flexShrink: 0, marginTop: 1 }}>✓</span>
+      <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', color: 'var(--text)' }}>{text}</span>
     </div>
   );
 }
@@ -151,7 +151,7 @@ export default function WizardResultDrawer3({
           {/* Converted from the topbar section of openResDrawer() */}
           <div className="res-topbar">
             <span style={{
-              fontFamily: 'var(--font-mono)', fontSize: 0.625rem,
+              fontFamily: 'var(--font-mono)', fontSize: '0.625rem',
               letterSpacing: '0.16em', textTransform: 'uppercase',
               color: 'var(--text-muted)', flex: 1,
             }}>
@@ -186,7 +186,7 @@ export default function WizardResultDrawer3({
               {positive.length > 0 ? (
                 positive.map((item, i) => <ListItem key={i} text={item} color="var(--gold)" />)
               ) : (
-                <div style={{ fontFamily: 'var(--font-ui)', fontSize: 0.75rem, color: 'var(--text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
+                <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
                   None selected
                 </div>
               )}
@@ -197,7 +197,7 @@ export default function WizardResultDrawer3({
               {limiting.length > 0 ? (
                 limiting.map((item, i) => <ListItem key={i} text={item} color="#f87171" />)
               ) : (
-                <div style={{ fontFamily: 'var(--font-ui)', fontSize: 0.75rem, color: 'var(--text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
+                <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
                   None selected
                 </div>
               )}
@@ -208,7 +208,7 @@ export default function WizardResultDrawer3({
               {structural.length > 0 ? (
                 structural.map((item, i) => <ListItem key={i} text={item} color="#fb923c" />)
               ) : (
-                <div style={{ fontFamily: 'var(--font-ui)', fontSize: 0.75rem, color: 'var(--text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
+                <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
                   None selected
                 </div>
               )}
@@ -227,7 +227,7 @@ export default function WizardResultDrawer3({
                   style={{
                     width: '100%', background: 'var(--gold)', color: 'var(--bg-deep)',
                     border: 'none', padding: 13, fontFamily: 'var(--font-mono)',
-                    fontSize: 0.625rem, letterSpacing: '0.22em', textTransform: 'uppercase',
+                    fontSize: '0.625rem', letterSpacing: '0.22em', textTransform: 'uppercase',
                     cursor: 'pointer', transition: 'opacity 180ms ease',
                   }}
                   onMouseOver={e => { (e.currentTarget as HTMLButtonElement).style.opacity = '0.85'; }}

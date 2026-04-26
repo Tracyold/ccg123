@@ -30,7 +30,7 @@ export default function SectionIntroCard({ step, stepIndex, onContinue }: Sectio
         paddingTop: 40,
         animation: 'wizFlyIn 300ms cubic-bezier(0.16,1,0.3,1) both',
       }}>
-        <div style={{ fontSize: 1.75rem, color: 'var(--text-muted)', opacity: 0.2 }}>✦</div>
+        <div style={{ fontSize: '1.75rem', color: 'var(--text-muted)', opacity: 0.2 }}>✦</div>
         <p style={{
           fontFamily: 'var(--font-display)',
           fontStyle: 'italic',
@@ -65,7 +65,7 @@ export default function SectionIntroCard({ step, stepIndex, onContinue }: Sectio
             border: '0.5px solid rgba(255,211,105,0.4)',
             padding: '13px 40px',
             fontFamily: 'var(--font-body)',
-            fontSize: 1.0625rem,
+            fontSize: '1.0625rem',
             fontWeight: 500,
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
@@ -100,7 +100,7 @@ export default function SectionIntroCard({ step, stepIndex, onContinue }: Sectio
         <p style={{
           fontFamily: 'var(--font-body)',
           fontWeight: 700,
-          fontSize: 0.8125rem,
+          fontSize: '0.8125rem',
           letterSpacing: '0.18em',
           textTransform: 'uppercase',
           color: 'var(--accent)',
@@ -154,7 +154,7 @@ export default function SectionIntroCard({ step, stepIndex, onContinue }: Sectio
           border: '0.5px solid rgba(255,211,105,0.4)',
           padding: '12px 32px',
           fontFamily: 'var(--font-body)',
-          fontSize: 0.8125rem,
+          fontSize: '0.8125rem',
           fontWeight: 500,
           letterSpacing: '0.2em',
           textTransform: 'uppercase',

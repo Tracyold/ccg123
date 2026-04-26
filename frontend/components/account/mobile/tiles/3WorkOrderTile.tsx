@@ -24,7 +24,7 @@ export default function WorkOrderTile3({ workOrders, onClick }: WorkOrderTilePro
       {lit && <div className="t-badge" />}
       <div style={{ display: 'flex', alignItems: 'center', gap: 14, flex: 1 }}>
         <div style={{ 
-          fontSize: 2.0rem, 
+          fontSize: '2.0rem', 
           lineHeight: 1, 
           color: lit ? 'var(--tile-orders)' : 'rgba(255,255,255,0.85)', 
           flexShrink: 0,
@@ -32,7 +32,7 @@ export default function WorkOrderTile3({ workOrders, onClick }: WorkOrderTilePro
         }}>✓</div>
         <div style={{ 
           fontFamily: 'var(--font-display)', 
-          fontSize: 1.125rem, 
+          fontSize: '1.125rem', 
           color: 'var(--text)', 
           lineHeight: 1.4,
           fontWeight: 500
@@ -49,7 +49,7 @@ export default function WorkOrderTile3({ workOrders, onClick }: WorkOrderTilePro
           ) : hasUpdated ? (
             <>Status <strong style={{ color: 'var(--tile-orders)' }}>updated</strong></>
           ) : workOrders.length > 0 ? (
-            <span style={{ fontSize: 1.25rem, fontWeight: 600 }}>
+            <span style={{ fontSize: '1.25rem', fontWeight: 600 }}>
               {workOrders.length} order{workOrders.length !== 1 ? 's' : ''}
             </span>
           ) : (

@@ -145,23 +145,23 @@ function SelectionReference({ positiveChecked, limitingChecked, structuralChecke
 
   return (
     <div style={{ background: 'var(--bg-deep)', border: '1px solid var(--border)', borderRadius: 14, padding: '16px 18px', marginBottom: 24 }}>
-      <p style={{ fontFamily: 'var(--font-ui)', fontSize: 0.5625rem, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 14px' }}>
+      <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.5625rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 14px' }}>
         Your Selections
       </p>
       {checked.length === 0 && (
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.9375rem, color: 'var(--text-muted)', opacity: 0.5, margin: 0, fontStyle: 'italic' }}>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--text-muted)', opacity: 0.5, margin: 0, fontStyle: 'italic' }}>
           No items selected in previous sections.
         </p>
       )}
       {Object.entries(grouped).map(([section, labels]) => (
         <div key={section} style={{ marginBottom: 14 }}>
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: 0.5625rem, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 8px' }}>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.5625rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '0 0 8px' }}>
             {section}
           </p>
           {labels.map(label => (
             <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 5 }}>
               <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--accent)', opacity: 0.6, flexShrink: 0 }} />
-              <span style={{ fontFamily: 'var(--font-ui)', fontSize: 0.8125rem, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text)', lineHeight: 1.4 }}>
+              <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text)', lineHeight: 1.4 }}>
                 {label}
               </span>
             </div>
@@ -345,11 +345,11 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
               })}
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontFamily: 'var(--font-ui)', fontSize: 0.8125rem, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+              <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)' }}>
                 {PHASES[currentPhase] ?? 'Results'}
               </span>
               {phaseSteps.length > 1 && phaseIndex >= 0 && (
-                <span style={{ fontFamily: 'var(--font-ui)', fontSize: 0.8125rem, color: 'var(--text-muted)' }}>
+                <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
                   {phaseIndex + 1} / {phaseSteps.length}
                 </span>
               )}
@@ -378,7 +378,7 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
           {currentStep.type === 'category-complete' && (
             <div className="wiz-complete" key={`complete-${stepIndex}`} style={{ paddingTop: 16 }}>
               <div style={{ textAlign: 'center', marginBottom: 40 }}>
-                <div style={{ fontSize: 2.75rem, marginBottom: 18 }}>✦</div>
+                <div style={{ fontSize: '2.75rem', marginBottom: 18 }}>✦</div>
                 <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.625rem, 5vw, 2.375rem)', fontWeight: 400, color: 'var(--text)', margin: '0 0 14px', letterSpacing: '0.02em' }}>
                   {currentStep.title}
                 </h2>
@@ -387,9 +387,9 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
                 </p>
               </div>
               <div style={{ background: 'var(--bg)', border: '1px solid var(--border)', borderLeft: '3px solid var(--accent)', padding: '22px 24px', marginBottom: 32 }}>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: 0.5625rem, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 10px' }}>Up Next</p>
-                <p style={{ fontFamily: 'var(--font-display)', fontSize: 1.375rem, color: 'var(--text)', margin: '0 0 10px' }}>{currentStep.nextTitle}</p>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 1.0625rem, color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>{currentStep.nextDescription}</p>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.5625rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--accent)', margin: '0 0 10px' }}>Up Next</p>
+                <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', color: 'var(--text)', margin: '0 0 10px' }}>{currentStep.nextTitle}</p>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.0625rem', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>{currentStep.nextDescription}</p>
               </div>
               <button type="button" onClick={handleNext} className="wiz-btn-primary" style={{ width: '100%' }}>
                 {currentStep.isLastBeforeResults ? 'Begin Final Section' : 'Continue'}
@@ -408,7 +408,7 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
                 { key: 'cut',        label: 'Current Cut / Shape', placeholder: 'e.g. Oval Mixed Cut' },
               ].map(field => (
                 <div key={field.key}>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-ui)', fontSize: 0.8125rem, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 }}>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 }}>
                     {field.label}
                   </label>
                   <input type="text" className="wiz-input" value={stoneInfo[field.key as keyof StoneInfo]} onChange={e => setStoneInfo(prev => ({ ...prev, [field.key]: e.target.value }))} placeholder={field.placeholder} />
@@ -458,7 +458,7 @@ export default function FeasibilityWizard({ onRequestQuote }: FeasibilityWizardP
                 structuralChecked={structuralChecked}
               />
               {!canProceed && (
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 1.0625rem, color: 'var(--accent)', opacity: 0.8, marginTop: 12 }}>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.0625rem', color: 'var(--accent)', opacity: 0.8, marginTop: 12 }}>
                   Please make a selection to continue.
                 </p>
               )}

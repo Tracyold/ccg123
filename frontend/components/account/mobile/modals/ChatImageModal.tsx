@@ -101,7 +101,7 @@ export default function ChatImageModal({ open, imageUrl, onClose }: ChatImageMod
           background: 'rgba(255, 255, 255, 0.12)',
           border: 'none',
           color: '#fff',
-          fontSize: 1.375rem,
+          fontSize: '1.375rem',
           fontWeight: 400,
           lineHeight: 1,
           cursor: 'pointer',

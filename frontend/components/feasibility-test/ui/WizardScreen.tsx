@@ -97,7 +97,7 @@ export default function WizardScreen({
 
   const labelStyle: React.CSSProperties = {
     fontFamily: 'var(--font-body)',
-    fontSize: 0.625rem,
+    fontSize: '0.625rem',
     fontWeight: 600,
     letterSpacing: '0.2em',
     textTransform: 'uppercase',
@@ -107,7 +107,7 @@ export default function WizardScreen({
 
   const sublabelStyle: React.CSSProperties = {
     fontFamily: 'var(--font-body)',
-    fontSize: 0.625rem,
+    fontSize: '0.625rem',
     fontWeight: 500,
     letterSpacing: '0.18em',
     textTransform: 'uppercase',
@@ -253,7 +253,7 @@ export default function WizardScreen({
             structuralChecked={structuralChecked}
           />
           {!canProceed && (
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 0.75rem, color: 'var(--accent)', opacity: 0.6, marginTop: 12, textAlign: 'center' }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'var(--accent)', opacity: 0.6, marginTop: 12, textAlign: 'center' }}>
               Please make a selection to continue.
             </p>
           )}
@@ -291,7 +291,7 @@ export default function WizardScreen({
             {stepIndex > 0 && (
               <button type="button" onClick={handleBack} style={{
                 background: 'none', border: 'none', cursor: 'pointer',
-                fontFamily: 'var(--font-body)', fontSize: 0.6875rem,
+                fontFamily: 'var(--font-body)', fontSize: '0.6875rem',
                 fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase',
                 color: 'var(--text-muted)', opacity: 0.55, padding: 0,
                 transition: 'opacity 180ms ease',
@@ -301,7 +301,7 @@ export default function WizardScreen({
             )}
             <button type="button" onClick={handleStartOver} style={{
               background: 'none', border: 'none', cursor: 'pointer',
-              fontFamily: 'var(--font-body)', fontSize: 0.6875rem, fontWeight: 500,
+              fontFamily: 'var(--font-body)', fontSize: '0.6875rem', fontWeight: 500,
               letterSpacing: '0.15em', textTransform: 'uppercase',
               color: 'var(--text-muted)', opacity: 0.55, padding: 0,
               textDecoration: 'none',
@@ -321,7 +321,7 @@ export default function WizardScreen({
               border: `0.5px solid ${canProceed ? 'rgba(255,211,105,0.45)' : 'var(--border)'}`,
               padding: '13px 32px',
               fontFamily: 'var(--font-body)',
-              fontSize: 0.6875rem, fontWeight: 500,
+              fontSize: '0.6875rem', fontWeight: 500,
               letterSpacing: '0.2em', textTransform: 'uppercase',
               cursor: canProceed ? 'pointer' : 'not-allowed',
               borderRadius: 4,

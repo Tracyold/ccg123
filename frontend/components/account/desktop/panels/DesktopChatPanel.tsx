@@ -1,30 +1,35 @@
-// components/account/mobile/panels/3ChatPanel.tsx
+// components/account/desktop/panels/DesktopChatPanel.tsx
+//
+// Desktop version of ChatPanel3.
+// Same logic and props as the mobile version but without:
+//   - Keyboard push-up behavior
+//   - Swipe down to close
+//   - Dynamic viewport height adjustments
+// Input bar is absolutely pinned to the bottom of the right column.
 
 import { useEffect, useState } from 'react';
 import { supabase } from '../../../../lib/supabase';
 import { fmtTime } from '../../../../lib/utils';
-import { useSwipeDownToClose } from '../../shared/hooks/useSwipeDownToClose';
-import FirstTimeTips from '../ui/FirstTimeTips';
 import type { PendingUpload } from '../../shared/hooks/useChat';
-import ChatImageModal from '../modals/ChatImageModal';
+import ChatImageModal from '../../mobile/modals/ChatImageModal';
 
-interface ChatPanelProps {
-  open:                 boolean;
-  messages:             any[];
-  chatInput:            string;
-  chatSending:          boolean;
-  chatUploading:        boolean;
-  chatError?:           string | null;
-  clearChatError?:      () => void;
-  pendingUploads?:      PendingUpload[];
+interface DesktopChatPanelProps {
+  open:                  boolean;
+  messages:              any[];
+  chatInput:             string;
+  chatSending:           boolean;
+  chatUploading:         boolean;
+  chatError?:            string | null;
+  clearChatError?:       () => void;
+  pendingUploads?:       PendingUpload[];
   dismissPendingUpload?: (tempId: string) => void;
-  chatEndRef:           React.RefObject<HTMLDivElement>;
-  chatFileRef:          React.RefObject<HTMLInputElement>;
-  setChatInput:         (v: string) => void;
-  sendChat:             () => void;
-  handleChatFile:       (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onClose:              () => void;
-  onOpen:               () => void;
+  chatEndRef:            React.RefObject<HTMLDivElement>;
+  chatFileRef:           React.RefObject<HTMLInputElement>;
+  setChatInput:          (v: string) => void;
+  sendChat:              () => void;
+  handleChatFile:        (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onClose:               () => void;
+  onOpen:                () => void;
 }
 
 function getAttachmentUrl(url: string): string {
@@ -34,26 +39,23 @@ function getAttachmentUrl(url: string): string {
 }
 
 function formatDate(iso: string): string {
-  const d = new Date(iso);
-  const today = new Date();
+  const d         = new Date(iso);
+  const today     = new Date();
   const yesterday = new Date();
   yesterday.setDate(today.getDate() - 1);
-  if (d.toDateString() === today.toDateString()) return 'Today';
+  if (d.toDateString() === today.toDateString())     return 'Today';
   if (d.toDateString() === yesterday.toDateString()) return 'Yesterday';
   return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 }
 
-export default function ChatPanel3({
+export default function DesktopChatPanel({
   open, messages, chatInput, chatSending, chatUploading,
   chatError, clearChatError,
   pendingUploads = [], dismissPendingUpload,
   chatEndRef, chatFileRef, setChatInput, sendChat, handleChatFile,
   onClose, onOpen,
-}: ChatPanelProps) {
+}: DesktopChatPanelProps) {
 
-  const { elementRef, touchHandlers } = useSwipeDownToClose({ onClose });
-
-  // ── Image modal state ──
   const [modalImageUrl, setModalImageUrl] = useState<string | null>(null);
   const openImageModal  = (url: string) => setModalImageUrl(url);
   const closeImageModal = () => setModalImageUrl(null);
@@ -69,18 +71,37 @@ export default function ChatPanel3({
   let lastDate = '';
 
   return (
-    <div ref={elementRef} className={`slide-panel${open ? ' open' : ''}`}>
-      <FirstTimeTips type="panel-down" show={open} />
+    <div className={`slide-panel${open ? ' open' : ''}`} style={{
+      display:       'flex',
+      flexDirection: 'column',
+      height:        '100%',
+      position:      'absolute',
+      inset:         0,
+      transform:     open ? 'translateY(0)' : 'translateY(100%)',
+      transition:    'transform 0.3s ease',
+      background:    'var(--bg-deep)',
+      zIndex:        50,
+    }}>
 
-      <div className="panel-header" {...touchHandlers}>
+      {/* ── Header ── */}
+      <div className="panel-header" style={{ flexShrink: 0 }}>
         <span className="panel-title">Messages</span>
         <button className="panel-close" onClick={onClose}>✕</button>
       </div>
 
-      <div className="chat-msgs" style={{ padding: '24px 16px', display: 'flex', flexDirection: 'column', gap: 12, flex: 1, overflowY: 'auto' }}>
+      {/* ── Messages ── */}
+      <div className="chat-msgs" style={{
+        flex:          1,
+        overflowY:     'auto',
+        padding:       '24px 16px',
+        display:       'flex',
+        flexDirection: 'column',
+        gap:           12,
+        paddingBottom: 80,
+      }}>
         {messages.length === 0 && pendingUploads.length === 0 && (
           <p style={{
-            fontFamily: 'var(--font-ui)', fontStyle: 'italic', fontSize: '1.1875rem',
+            fontFamily: 'var(--font-ui)', fontStyle: 'italic', fontSize: 19,
             color: 'var(--text-muted)', textAlign: 'center', margin: '60px auto', opacity: 0.6,
           }}>
             No messages yet -- say hello!
@@ -117,7 +138,7 @@ export default function ChatPanel3({
                     />
                   )}
                   {m.attachment_url && m.attachment_type === 'application/pdf' && (
-                    <div style={{ marginTop: m.body ? 6 : 0, fontSize: '0.8125rem' }}>
+                    <div style={{ marginTop: m.body ? 6 : 0, fontSize: 13 }}>
                       📄{' '}
                       <a
                         href={getAttachmentUrl(m.attachment_url)}
@@ -136,7 +157,7 @@ export default function ChatPanel3({
           );
         })}
 
-        {/* ── PENDING UPLOADS ── */}
+        {/* ── Pending uploads ── */}
         {pendingUploads.map(p => {
           const isImage = p.fileType.startsWith('image/');
           const isPdf   = p.fileType === 'application/pdf';
@@ -147,9 +168,7 @@ export default function ChatPanel3({
                   <img
                     src={p.objectUrl}
                     alt="uploading"
-                    onClick={() => {
-                      if (!p.uploading && !p.error) openImageModal(p.objectUrl);
-                    }}
+                    onClick={() => { if (!p.uploading && !p.error) openImageModal(p.objectUrl); }}
                     style={{
                       maxWidth: '100%', maxHeight: 180, objectFit: 'cover',
                       display: 'block', borderRadius: 8,
@@ -160,54 +179,39 @@ export default function ChatPanel3({
                   />
                 )}
                 {isPdf && (
-                  <div style={{ fontSize: '0.8125rem', opacity: p.error ? 0.5 : 0.85 }}>
+                  <div style={{ fontSize: 13, opacity: p.error ? 0.5 : 0.85 }}>
                     📄 {p.error ? 'PDF failed to upload' : 'Uploading PDF…'}
                   </div>
                 )}
                 {(p.uploading || p.error) && (
-                  <div
-                    style={{
-                      position: 'absolute', inset: 0,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      background: 'rgba(0,0,0,0.25)',
-                      borderRadius: 8,
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: 'clamp(10px, 2.8vw, 12px)',
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase',
-                      color: '#fff',
-                      textAlign: 'center',
-                      pointerEvents: p.error ? 'auto' : 'none',
-                      padding: '0 12px',
-                    }}
-                  >
+                  <div style={{
+                    position: 'absolute', inset: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    background: 'rgba(0,0,0,0.25)', borderRadius: 8,
+                    fontFamily: 'var(--font-mono)', fontSize: 12,
+                    letterSpacing: '0.1em', textTransform: 'uppercase',
+                    color: '#fff', textAlign: 'center',
+                    pointerEvents: p.error ? 'auto' : 'none', padding: '0 12px',
+                  }}>
                     {p.error ? (
                       <div>
                         <div style={{ marginBottom: 6 }}>Upload failed</div>
-                        <div style={{ fontSize: 'clamp(9px, 2.4vw, 10px)', opacity: 0.8, textTransform: 'none', letterSpacing: 'normal', marginBottom: 8 }}>
+                        <div style={{ fontSize: 10, opacity: 0.8, textTransform: 'none', letterSpacing: 'normal', marginBottom: 8 }}>
                           {p.error}
                         </div>
                         <button
                           onClick={() => dismissPendingUpload?.(p.tempId)}
                           style={{
-                            background: 'transparent',
-                            border: '0.5px solid #fff',
-                            color: '#fff',
-                            borderRadius: 999,
-                            padding: '4px 12px',
-                            fontFamily: 'var(--font-mono)',
-                            fontSize: 'clamp(9px, 2.4vw, 10px)',
-                            letterSpacing: '0.1em',
-                            textTransform: 'uppercase',
-                            cursor: 'pointer',
+                            background: 'transparent', border: '0.5px solid #fff',
+                            color: '#fff', borderRadius: 999, padding: '4px 12px',
+                            fontFamily: 'var(--font-mono)', fontSize: 10,
+                            letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer',
                           }}
                         >
                           Dismiss
                         </button>
                       </div>
-                    ) : (
-                      'Uploading…'
-                    )}
+                    ) : 'Uploading…'}
                   </div>
                 )}
               </div>
@@ -219,36 +223,26 @@ export default function ChatPanel3({
         <div ref={chatEndRef} />
       </div>
 
-      {/* ── ERROR BANNER ── */}
+      {/* ── Error banner ── */}
       {chatError && (
         <div style={{
-          margin: '0 clamp(0.75rem, 3.5vw, 1rem) clamp(0.5rem, 2.5vw, 0.75rem)',
-          padding: 'clamp(0.625rem, 3vw, 0.875rem) clamp(0.75rem, 3.5vw, 1rem)',
+          margin: '0 1rem 0.75rem', padding: '0.75rem 1rem',
           background: 'rgba(239, 68, 68, 0.08)',
           border: '0.5px solid rgba(239, 68, 68, 0.35)',
-          color: '#ef4444',
-          borderRadius: 10,
-          fontFamily: 'var(--font-ui)',
-          fontSize: 'clamp(13px, 3.4vw, 14px)',
-          lineHeight: 1.5,
-          display: 'flex',
-          alignItems: 'flex-start',
-          gap: 8,
+          color: '#ef4444', borderRadius: 10,
+          fontFamily: 'var(--font-ui)', fontSize: 14, lineHeight: 1.5,
+          display: 'flex', alignItems: 'flex-start', gap: 8, flexShrink: 0,
         }}>
           <span style={{ flex: 1 }}>{chatError}</span>
-          <button
-            onClick={clearChatError}
-            style={{
-              background: 'transparent', border: 'none', color: 'inherit',
-              fontSize: '1.0rem', cursor: 'pointer', padding: 0, marginLeft: 4,
-              lineHeight: 1,
-            }}
-            aria-label="Dismiss error"
-          >✕</button>
+          <button onClick={clearChatError} style={{
+            background: 'transparent', border: 'none', color: 'inherit',
+            fontSize: 16, cursor: 'pointer', padding: 0, lineHeight: 1,
+          }}>✕</button>
         </div>
       )}
 
-      <div className="chat-input-bar">
+      {/* ── Input bar -- pinned to bottom, never moves ── */}
+      <div className="chat-input-bar" style={{ flexShrink: 0 }}>
         <input
           type="file"
           ref={chatFileRef}
@@ -282,12 +276,13 @@ export default function ChatPanel3({
         </button>
       </div>
 
-      {/* ── IMAGE MODAL ── full-screen viewer with pinch-to-zoom ── */}
+      {/* ── Image modal ── */}
       <ChatImageModal
         open={modalImageUrl !== null}
         imageUrl={modalImageUrl}
         onClose={closeImageModal}
       />
+
     </div>
   );
 }

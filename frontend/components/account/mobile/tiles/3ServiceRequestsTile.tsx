@@ -26,7 +26,7 @@ export default function ServiceRequestsTile3({ serviceRequests, onClick }: Servi
     >
       <div style={{ flex: 1 }}>
         <div style={{
-          fontFamily: 'var(--font-mono)', fontSize: 0.6875rem, letterSpacing: '0.25em',
+          fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', letterSpacing: '0.25em',
           textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8,
           fontWeight: 600, opacity: 0.9
         }}>
@@ -34,7 +34,7 @@ export default function ServiceRequestsTile3({ serviceRequests, onClick }: Servi
         </div>
         <div style={{
           fontFamily: 'var(--font-ui)',
-          fontSize: 0.875rem,
+          fontSize: '0.875rem',
           color: 'var(--text)',
           lineHeight: 1.5,
           opacity: 0.8
@@ -43,7 +43,7 @@ export default function ServiceRequestsTile3({ serviceRequests, onClick }: Servi
         </div>
       </div>
       <div style={{
-        fontFamily: 'var(--font-mono)', fontSize: 3.5rem, fontWeight: 800,
+        fontFamily: 'var(--font-mono)', fontSize: '3.5rem', fontWeight: 800,
         color: 'var(--gold)', letterSpacing: '-0.02em', lineHeight: 1,
         textShadow: '0 4px 12px rgba(0,0,0,0.4)',
         opacity: 0.9

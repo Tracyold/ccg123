@@ -39,7 +39,7 @@ export function ScoreRing({ pct }: { pct: number }) {
       <div style={{
         position: 'absolute', inset: 0,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontFamily: 'var(--font-mono)', fontSize: 0.6875rem, fontWeight: 700, color,
+        fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', fontWeight: 700, color,
         textShadow: '0 1px 2px rgba(0,0,0,0.5)'
       }}>
         {pct}
@@ -58,14 +58,14 @@ export default function FeasibilityTile3({ results, onClick }: FeasibilityTilePr
       onClick={onClick}
     >
       <div style={{
-        fontFamily: 'var(--font-mono)', fontSize: 0.6875rem, letterSpacing: '0.25em',
+        fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', letterSpacing: '0.25em',
         textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 600, opacity: 0.9
       }}>
         Recent Wizard Results
       </div>
 
       {recent.length === 0 ? (
-        <div style={{ fontFamily: 'var(--font-display)', fontSize: 0.9375rem, color: 'var(--text-muted)', fontStyle: 'italic' }}>
+        <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.9375rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
           No results yet -- run the wizard to get started
         </div>
       ) : recent.map(r => {
@@ -76,10 +76,10 @@ export default function FeasibilityTile3({ results, onClick }: FeasibilityTilePr
           <div key={r.id} style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <ScoreRing pct={pct} />
             <div style={{ flex: 1 }}>
-              <div style={{ fontFamily: 'var(--font-display)', fontSize: 1.0rem, color: 'var(--text)', fontWeight: 500 }}>
+              <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.0rem', color: 'var(--text)', fontWeight: 500 }}>
                 {r.recommendation}
               </div>
-              <div style={{ fontFamily: 'var(--font-ui)', fontSize: 0.8125rem, color: 'var(--text-muted)', marginTop: 2 }}>
+              <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: 2 }}>
                 {stone} · {date}
               </div>
             </div>

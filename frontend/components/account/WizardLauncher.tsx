@@ -45,15 +45,15 @@ function TermsScreen({ onAccept }: TermsProps) {
 
   return (
     <div style={{ flex: 1, overflowY: 'auto', padding: '32px 20px', display: 'flex', flexDirection: 'column' }}>
-      <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 1.5rem, fontWeight: 400, color: 'var(--text)', marginBottom: 8, lineHeight: 1.2 }}>
+      <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 400, color: 'var(--text)', marginBottom: 8, lineHeight: 1.2 }}>
         Before you begin
       </h2>
-      <p style={{ fontFamily: 'var(--font-ui)', fontSize: 0.8125rem, color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 28 }}>
+      <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 28 }}>
         The Cut Feasibility Wizard provides an estimate based on the information you provide. Results are for reference only and do not constitute a professional assessment or guarantee of outcome.
       </p>
 
       <div style={{ background: 'var(--bg-card)', border: '0.5px solid var(--border)', padding: '20px', marginBottom: 20 }}>
-        <p style={{ fontFamily: 'var(--font-ui)', fontSize: 0.75rem, color: 'var(--text-muted)', lineHeight: 1.75 }}>
+        <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.75 }}>
           By proceeding you acknowledge that:<br/><br/>
           · Results depend entirely on the accuracy of your inputs<br/>
           · A high feasibility score does not guarantee a successful cut<br/>
@@ -70,7 +70,7 @@ function TermsScreen({ onAccept }: TermsProps) {
           onChange={e => setChecked(e.target.checked)}
           style={{ marginTop: 3, flexShrink: 0, accentColor: 'var(--gold)', width: 16, height: 16 }}
         />
-        <span style={{ fontFamily: 'var(--font-ui)', fontSize: 0.8125rem, color: 'var(--text)', lineHeight: 1.5 }}>
+        <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', color: 'var(--text)', lineHeight: 1.5 }}>
           I understand and agree to the above terms
         </span>
       </label>
@@ -83,7 +83,7 @@ function TermsScreen({ onAccept }: TermsProps) {
           onChange={e => setSavePreference(e.target.checked)}
           style={{ marginTop: 3, flexShrink: 0, accentColor: 'var(--gold)', width: 16, height: 16 }}
         />
-        <span style={{ fontFamily: 'var(--font-ui)', fontSize: 0.8125rem, color: 'var(--text-muted)', lineHeight: 1.5 }}>
+        <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
           Don't show this again — skip directly to the wizard next time
         </span>
       </label>
@@ -95,7 +95,7 @@ function TermsScreen({ onAccept }: TermsProps) {
           width: '100%', background: checked ? 'var(--gold)' : 'var(--border)',
           color: checked ? 'var(--bg-deep)' : 'var(--text-muted)',
           border: 'none', padding: '14px',
-          fontFamily: 'var(--font-mono)', fontSize: 0.625rem,
+          fontFamily: 'var(--font-mono)', fontSize: '0.625rem',
           letterSpacing: '0.22em', textTransform: 'uppercase',
           cursor: checked ? 'pointer' : 'not-allowed',
           transition: 'all 200ms ease',
@@ -185,7 +185,7 @@ export default function WizardLauncher({ session, onClose }: Props) {
   if (status === 'loading') {
     return (
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <p style={{ fontFamily: 'var(--font-ui)', fontSize: 0.8125rem, color: 'var(--text-muted)' }}>Loading...</p>
+        <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>Loading...</p>
       </div>
     )
   }

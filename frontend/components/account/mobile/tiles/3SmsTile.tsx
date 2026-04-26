@@ -23,7 +23,7 @@ export default function SmsTile3({ smsPrefs, onClick }: SmsTileProps) {
       <div style={{ flex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, flex: 1 }}>
           <div style={{ 
-            fontSize: 2.0rem, 
+            fontSize: '2.0rem', 
             lineHeight: 1, 
             color: activeCount > 0 ? 'var(--tile-sms)' : 'rgba(255,255,255,0.85)', 
             flexShrink: 0,
@@ -31,13 +31,13 @@ export default function SmsTile3({ smsPrefs, onClick }: SmsTileProps) {
           }}>📱</div>
           <div style={{ 
             fontFamily: 'var(--font-display)', 
-            fontSize: 1.125rem, 
+            fontSize: '1.125rem', 
             color: 'var(--text)',
             fontWeight: 500
           }}>SMS Alerts</div>
         </div>
         <div style={{
-          fontFamily: 'var(--font-mono)', fontSize: 0.6875rem,
+          fontFamily: 'var(--font-mono)', fontSize: '0.6875rem',
           letterSpacing: '0.15em', textTransform: 'uppercase',
           color: activeCount > 0 ? 'var(--tile-sms)' : 'var(--text-muted)',
           marginTop: 8, fontWeight: 600

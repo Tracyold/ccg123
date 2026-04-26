@@ -26,7 +26,7 @@ export default function MessagesTile3({ chatThread, messages, onClick }: Message
     >
       {hasUnread && <div className="t-badge" />}
       <div style={{ 
-        fontSize: 2.0rem, 
+        fontSize: '2.0rem', 
         flexShrink: 0, 
         lineHeight: 1, 
         color: hasUnread ? 'var(--gold)' : 'rgba(255,255,255,0.85)',
@@ -36,7 +36,7 @@ export default function MessagesTile3({ chatThread, messages, onClick }: Message
         {hasUnread ? (
           <>
             <span style={{
-              fontFamily: 'var(--font-mono)', fontSize: 0.75rem, fontWeight: 700,
+              fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 700,
               color: 'var(--gold)', letterSpacing: '0.18em', textTransform: 'uppercase',
               padding: '4px 10px', borderRadius: 999,
               background: 'rgba(207,221,78,0.12)',
@@ -45,7 +45,7 @@ export default function MessagesTile3({ chatThread, messages, onClick }: Message
             </span>
             <span style={{ 
               fontFamily: 'var(--font-display)', 
-              fontSize: 1.125rem, 
+              fontSize: '1.125rem', 
               color: 'var(--text)',
               fontWeight: 500
             }}>
@@ -55,7 +55,7 @@ export default function MessagesTile3({ chatThread, messages, onClick }: Message
         ) : (
           <span style={{ 
             fontFamily: 'var(--font-display)', 
-            fontSize: 1.125rem, 
+            fontSize: '1.125rem', 
             color: 'var(--text)',
             opacity: 0.9
           }}>

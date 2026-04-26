@@ -97,7 +97,7 @@ export default function WizardResultsPanel3({
 
         {loading ? (
           <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: 0.875rem, color: 'var(--text-muted)' }}>Loading...</p>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.875rem', color: 'var(--text-muted)' }}>Loading...</p>
           </div>
         ) : loadError ? (
           <div style={{

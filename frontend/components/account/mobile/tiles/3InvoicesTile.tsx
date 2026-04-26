@@ -23,7 +23,7 @@ export default function InvoicesTile3({ invoices, invoiceTotal, onClick }: Invoi
       {hasUnpaid && <div className="t-badge" />}
       <div style={{ 
         fontFamily: 'var(--font-display)', 
-        fontSize: 1.125rem, 
+        fontSize: '1.125rem', 
         color: 'var(--text)', 
         flex: 1,
         fontWeight: 500
@@ -31,7 +31,7 @@ export default function InvoicesTile3({ invoices, invoiceTotal, onClick }: Invoi
         Invoices
       </div>
       <div style={{
-        fontFamily: 'var(--font-mono)', fontSize: 3.0rem, fontWeight: 800,
+        fontFamily: 'var(--font-mono)', fontSize: '3.0rem', fontWeight: 800,
         lineHeight: 1, color: hasUnpaid ? 'var(--tile-invoice)' : 'var(--text)',
         textShadow: '0 4px 10px rgba(0,0,0,0.4)',
         opacity: hasUnpaid ? 1 : 0.8,

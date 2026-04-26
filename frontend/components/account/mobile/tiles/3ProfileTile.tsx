@@ -18,7 +18,7 @@ export default function ProfileTile3({ profile, onClick }: ProfileTileProps) {
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 14, flex: 1 }}>
         <div style={{ 
-          fontSize: 2.0rem, 
+          fontSize: '2.0rem', 
           lineHeight: 1, 
           color: 'rgba(255,255,255,0.85)', 
           flexShrink: 0,
@@ -27,13 +27,13 @@ export default function ProfileTile3({ profile, onClick }: ProfileTileProps) {
         <div style={{ flex: 1 }}>
           <div style={{ 
             fontFamily: 'var(--font-display)', 
-            fontSize: 1.125rem, 
+            fontSize: '1.125rem', 
             color: 'var(--text)',
             fontWeight: 500
           }}>Profile</div>
           {profile?.name && (
             <div style={{
-              fontFamily: 'var(--font-ui)', fontSize: 0.875rem,
+              fontFamily: 'var(--font-ui)', fontSize: '0.875rem',
               color: 'var(--text-muted)', marginTop: 4, opacity: 0.8
             }}>
               {profile.name}

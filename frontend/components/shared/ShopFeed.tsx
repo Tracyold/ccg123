@@ -76,10 +76,10 @@ function ShopTile({
 
         {/* Overlay only on the image */}
         <div className="inv-overlay" style={{ flexDirection: 'column', gap: 6 }}>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 1.0rem, fontWeight: 700, color: '#fff', textAlign: 'center' }}>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.0rem', fontWeight: 700, color: '#fff', textAlign: 'center' }}>
             {price}
           </div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 0.5625rem, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', textAlign: 'center' }}>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', textAlign: 'center' }}>
             Tap to view
           </div>
         </div>
@@ -109,7 +109,7 @@ function ShopTile({
             border: 'none',
             padding: '8px',
             margin: '-8px',
-            fontSize: 1.375rem,
+            fontSize: '1.375rem',
             color: isFav ? 'var(--gold)' : 'var(--text-muted)',
             opacity: isFav ? 1 : 0.4,
             cursor: 'pointer',
@@ -247,11 +247,11 @@ export default function SharedShopFeed({
       </div>
 
       {loading && items.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '16px 0 8px', fontFamily: 'var(--font-mono)', fontSize: 0.5625rem, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)', opacity: 0.5 }}>
+        <div style={{ textAlign: 'center', padding: '16px 0 8px', fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)', opacity: 0.5 }}>
           Loading
         </div>
       ) : items.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '16px 0 8px', fontFamily: 'var(--font-ui)', fontSize: 0.8125rem, color: 'var(--text-muted)', opacity: 0.8 }}>
+        <div style={{ textAlign: 'center', padding: '16px 0 8px', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', color: 'var(--text-muted)', opacity: 0.8 }}>
           {emptyLabel}
         </div>
       ) : (
@@ -269,11 +269,11 @@ export default function SharedShopFeed({
           </div>
           {hasMore && <div ref={sentinelRef} style={{ height: 1, marginBottom: 8 }} />}
           {loadingMore && (
-            <div style={{ textAlign: 'center', padding: '12px 0 4px', fontFamily: 'var(--font-mono)', fontSize: 0.5625rem, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)', opacity: 0.5 }}>
+            <div style={{ textAlign: 'center', padding: '12px 0 4px', fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)', opacity: 0.5 }}>
               Loading
             </div>
           )}
-          <div style={{ textAlign: 'center', padding: '16px 0 8px', fontFamily: 'var(--font-mono)', fontSize: 0.5625rem, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)', opacity: 0.5 }}>
+          <div style={{ textAlign: 'center', padding: '16px 0 8px', fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--text-muted)', opacity: 0.5 }}>
             · · ·
           </div>
         </>
