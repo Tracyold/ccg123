@@ -56,8 +56,8 @@ button, [role="button"] { touch-action: manipulation; }
   --font-sig:     'Palatino Linotype', Georgia, serif;
 }
 :root[data-theme="dark"] {
-  --bg:#212223; --bg-card:#272829; --bg-deep:#1a1a1b;
-  --text:#ebebeb; --text-muted:#777878;
+  --bg:#2a2b2c; --bg-card:#353636; --bg-deep:#1b1b1c;
+  --text:#ebebeb; --text-muted:#8a8b8b;
   --border:#2c2d2d; --bdr2:#bfd754;
   --gold:#cfdd4e; --shadow:#111;
   --bg-gradient:linear-gradient(187deg,#212223 3%,#1e1f21 16%,#202021 37%,#242425 58%,#202021 79%,#212223 100%);
