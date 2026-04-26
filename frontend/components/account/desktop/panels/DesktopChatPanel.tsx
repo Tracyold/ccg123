@@ -71,7 +71,7 @@ export default function DesktopChatPanel({
   let lastDate = '';
 
   return (
-    <div className={`desktop-shell slide-panel${open ? ' open' : ''}`} style={{
+    <div className={`slide-panel${open ? ' open' : ''}`} style={{
       display:       'flex',
       flexDirection: 'column',
       height:        '100%',

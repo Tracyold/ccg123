@@ -6,7 +6,6 @@ export default function Document() {
       <Head>
         {/* FIX: This one line makes the page fill the phone screen correctly.
             viewport-fit=cover handles the iPhone notch and home bar. */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
       </Head>
       <body>
         <script dangerouslySetInnerHTML={{ __html: `
