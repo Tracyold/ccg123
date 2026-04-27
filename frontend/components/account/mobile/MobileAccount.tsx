@@ -274,14 +274,15 @@ export default function MobileAccount(props: MobileAccountProps) {
             {updateCount > 0 ? (
               <span>{updateCount} update{updateCount !== 1 ? 's' : ''}</span>
             ) : (
-              <span style={{ color: 'var(--text-muted)' }}>All caught up</span>
+              <span style={{ 
+                color: 'var(--text-muted)' }}>All caught up</span>
             )}
           </div>
           {/* Login timestamp -- set dynamically */}
           <div
             id="login-stamp"
             style={{
-              fontFamily: 'var(--font-mono)', fontSize: 8,
+              fontFamily: 'var(--font-mono-mob)', fontSize: '1vem',
               letterSpacing: '0.18em', textTransform: 'uppercase',
               color: 'var(--text-muted)', marginTop: 6, opacity: 0.6,
             }}

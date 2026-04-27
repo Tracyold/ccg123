@@ -14,32 +14,37 @@ export default function ServiceRequestsTile3({ serviceRequests, onClick }: Servi
   // Active-only count — archived rows live on the Archive tab inside the panel.
   const activeCount = serviceRequests.filter(sr => !sr.is_archived).length;
 
+
   return (
     <div
       className="tile dim"
       style={{
-        '--tc': 'var(--gold)',
-        minHeight: 0, padding: '22px 22px',
+        '--tc': 'var(--muted)',
+        minHeight: 2, padding: '2em',
         flexDirection: 'row', alignItems: 'center', gap: 20, cursor: 'pointer',
       } as React.CSSProperties}
       onClick={onClick}
     >
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 2 }}>
         <div style={{
-          fontFamily: 'var(--font-mono-mob)', fontSize: '0.6875rem', letterSpacing: '0.25em',
-          textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8,
+          fontFamily: 'var(--font-ui)', fontSize: '1.33rem', letterSpacing: '0.1em',
+          textTransform: 'uppercase', color: 'var(--background)', marginBottom: 8,
           fontWeight: 600, opacity: 0.9
         }}>
-          Service Requests
+          New Service Requests
         </div>
         <div style={{
-          fontFamily: 'var(--font-ui-mob)',
-          fontSize: '0.875rem',
-          color: 'var(--text)',
+          fontFamily: 'var(--font-ui)',
+          fontSize: '1.2rem',
+          color: '0 4px 5px var(--text)',
+          textTransform: 'uppercase',
+          letterSpacing: '.1em',
           lineHeight: 1.5,
-          opacity: 0.8
+          border: '.1px',
+          borderColor: '0 .1px .1px var(--bg-card)',
+          opacity: .9
         }}>
-          Submitted over your account history
+          Active Service Requests
         </div>
       </div>
       <div style={{
