@@ -41,7 +41,7 @@ button, [role="button"] { touch-action: manipulation; }
   overflow-x: clip; /* Changed from hidden to clip to prevent right-side scroll/shadow issues */
   position: relative;
   background: var(--bg-mob-gradient);
-  background-color: var(--bg-mob);
+  background-color: var(--text-mob);
   /* Ensure it fills the screen on mobile */
   display: flex;
   flex-direction: column;
@@ -288,7 +288,7 @@ button, [role="button"] { touch-action: manipulation; }
 .buy-btn {
   position: absolute; bottom: clamp(2.5rem, 10vw, 3rem); left: 0; right: 0;
   background: color-mix(in srgb,var(--gold) 90%,transparent);
-  color: var(--bg-mob); font-family: var(--font-mob-mono);
+  color: var(--text-mob); font-family: var(--font-mob-mono);
   font-size: clamp(0.5rem, 2vw, 0.5625rem);
   letter-spacing: 0.22em; text-transform: uppercase;
   padding: 0.5em; text-align: center; font-weight: 700;
@@ -364,7 +364,7 @@ button, [role="button"] { touch-action: manipulation; }
 .bubble.me {
   background: linear-gradient(187deg, var(--opposite), color-mix(in srgb, var(--foreground) 30%, #6b6969));
   border-radius: 1.25em 1.25em 0.25em 1.25em;
-  color: var(--bg-mob);
+  color: var(--text-mob);
   border: 0.5px solid rgb(153, 153, 153);
 }
 .bubble.them {
