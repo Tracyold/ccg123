@@ -6,6 +6,7 @@ import type { AppProps } from 'next/app';
 import '../styles/globals.css';
 import '../styles/shopCardEffect.css';
 import '../styles/home.css';
+import '../components/account/mobile/css/WizardShell.css'
 import '../styles/wizard.css';
 import '../components/account/mobile/MobileShell.css';
 import { useAuth } from '../components/account/shared/hooks/useAuth';

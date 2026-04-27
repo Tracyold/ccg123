@@ -47,10 +47,12 @@ export interface WizardResult {
   raw_scores:              Record<string, number>
   disclaimer1_confirmed_at?: string
   disclaimer2_confirmed_at?: string
+  // Added for soft-delete and folder support
+  is_archived:             boolean
+  folder_id:               string | null
 }
 
-export async function saveWizardResult(payload: WizardResultPayload): Promise<{ id: string } | null> {
-  const { data: { user } } = await supabase.auth.getUser()
+export async function saveWizardResult(payload: WizardResultPayload, folderId?: string): Promise<{ id: string } | null> {  const { data: { user } } = await supabase.auth.getUser()
   if (!user) return null
 
   const { data, error } = await supabase

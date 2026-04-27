@@ -1,0 +1,287 @@
+/* ═══════════════════════════════════════════════════════════════
+   Wizard Folders — paste these into MobileShell.css
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Add Folder button in the tab row ── */
+.wiz-add-folder-btn {
+  margin-left: auto;
+  color: var(--gold) !important;
+  border-color: transparent !important;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+/* ── Back button inside panel header ── */
+.wiz-back-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-mob-muted);
+  font-family: var(--font-ui-mob);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Folder grid ── */
+.wiz-folder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(10px, 3vw, 14px);
+  padding: clamp(1rem, 4.5vw, 1.25rem);
+}
+
+/* ── Folder tile ── */
+.wiz-folder-tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.wiz-folder-tile-inner {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: clamp(10px, 3vw, 16px);
+  text-align: center;
+}
+
+.wiz-folder-icon {
+  font-size: 2rem;
+  color: var(--gold);
+  opacity: 0.7;
+  line-height: 1;
+}
+
+.wiz-folder-name {
+  font-family: var(--font-ui-mob);
+  font-size: clamp(11px, 3vw, 13px);
+  font-weight: 600;
+  color: var(--text-mob);
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.wiz-folder-count {
+  font-family: var(--font-mono-mob);
+  font-size: 10px;
+  color: var(--text-mob-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ── Rename / delete buttons on folder tile ── */
+.wiz-folder-actions {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 150ms;
+}
+
+.wiz-folder-tile:hover .wiz-folder-actions {
+  opacity: 1;
+}
+
+/* Always show on touch (no hover available) */
+@media (hover: none) {
+  .wiz-folder-actions {
+    opacity: 1;
+  }
+}
+
+.wiz-folder-action-btn {
+  background: var(--bg-mob-card);
+  border: 0.5px solid var(--border-mob);
+  color: var(--text-mob-muted);
+  font-size: 11px;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* ── Folder row in result drawer ── */
+.wiz-drawer-folder-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px clamp(1rem, 4.5vw, 1.25rem);
+  border-bottom: 0.5px solid var(--border-mob);
+  background: var(--bg-mob-card);
+}
+
+.wiz-drawer-folder-label {
+  font-family: var(--font-ui-mob);
+  font-size: 0.75rem;
+  color: var(--text-mob-muted);
+  flex: 1;
+}
+
+.wiz-drawer-folder-label strong {
+  color: var(--text-mob);
+  font-weight: 600;
+}
+
+.wiz-drawer-folder-change {
+  background: transparent;
+  border: none;
+  color: var(--gold);
+  font-family: var(--font-ui-mob);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Folder modals ── */
+.wiz-modal-box {
+  background: var(--bg-mob-deep);
+  border: 1px solid var(--border-mob);
+  border-radius: 12px;
+  padding: clamp(1.25rem, 5vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wiz-modal-title {
+  font-family: var(--font-ui-mob);
+  font-size: clamp(15px, 4vw, 17px);
+  font-weight: 600;
+  color: var(--text-mob);
+}
+
+.wiz-modal-body {
+  font-family: var(--font-ui-mob);
+  font-size: 0.8125rem;
+  color: var(--text-mob-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.wiz-modal-input {
+  background: var(--bg-mob-card);
+  border: 1px solid var(--border-mob);
+  border-radius: 6px;
+  color: var(--text-mob);
+  font-family: var(--font-ui-mob);
+  font-size: 0.9375rem;
+  padding: 12px 14px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.wiz-modal-input:focus {
+  border-color: var(--gold);
+}
+
+.wiz-modal-folder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.wiz-modal-folder-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  background: var(--bg-mob-card);
+  border: 1px solid var(--border-mob);
+  border-radius: 8px;
+  color: var(--text-mob);
+  font-family: var(--font-ui-mob);
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 150ms;
+}
+
+.wiz-modal-folder-item.selected {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.wiz-modal-folder-icon {
+  font-size: 1rem;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.wiz-modal-folder-default {
+  margin-left: auto;
+  font-family: var(--font-mono-mob);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-mob-muted);
+  opacity: 0.6;
+}
+
+.wiz-modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.wiz-modal-cancel {
+  background: transparent;
+  border: 1px solid var(--border-mob);
+  color: var(--text-mob-muted);
+  font-family: var(--font-ui-mob);
+  font-size: 0.8125rem;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.wiz-modal-submit {
+  background: var(--gold);
+  border: none;
+  color: var(--bg-mob-deep);
+  font-family: var(--font-ui-mob);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 150ms;
+}
+
+.wiz-modal-submit:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.wiz-modal-delete {
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  color: #f87171;
+  font-family: var(--font-ui-mob);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
