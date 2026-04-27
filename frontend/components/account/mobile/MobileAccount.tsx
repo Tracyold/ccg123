@@ -451,11 +451,6 @@ export default function MobileAccount(props: MobileAccountProps) {
         onClose={closePanel}
       />
 
-      <FeasibilityPanel
-        open={activePanel === 'feasibility'}
-        onClose={closePanel}
-      />
-
       <ProfilePanel3
         open={activePanel === 'profile'}
         profile={props.profile}
