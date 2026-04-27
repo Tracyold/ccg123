@@ -542,21 +542,21 @@ button, [role="button"] { touch-action: manipulation; }
   color: var(--text-mob-muted); line-height: 1.45;
 }
 .pill {
-  width: clamp(38px, 10vw, 46px); height: clamp(21px, 5.5vw, 25px);
-  border-radius: 999px; border: none; cursor: pointer;
+  width: clamp(52px, 13vw, 62px); height: clamp(29px, 7.5vw, 35px);
+  border-radius: 999px !important; border: none; cursor: pointer;
   position: relative; flex-shrink: 0; transition: background 200ms ease; outline: none;
 }
 .pill.on { background: var(--gold); }
 .pill.off { background: var(--bdr2-mob); }
 .pill-thumb {
-  position: absolute; top: 2px;
-  width: calc(50% - 2px); aspect-ratio: 1;
-  border-radius: 999px; background: #fff;
+  position: absolute; top: 3px;
+  width: calc(50% - 3px); aspect-ratio: 1;
+  border-radius: 999px !important; background: #fff;
   box-shadow: 0 1px 3px rgba(0,0,0,0.3);
   transition: left 200ms ease; display: block;
 }
-.pill.on .pill-thumb { left: calc(50% + 0px); }
-.pill.off .pill-thumb { left: 2px; }
+.pill.on .pill-thumb { left: calc(50% + 1px); }
+.pill.off .pill-thumb { left: 3px; }
 .pill-action-btn {
   background: color-mix(in srgb, var(--gold) 75%, transparent);
   border: 0.5px solid color-mix(in srgb, var(--bg-mob-deep) 20%, transparent);
