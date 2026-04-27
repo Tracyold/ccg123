@@ -162,5 +162,25 @@
   [
     "tile",
     "tiles"
+  ],
+  [
+    "feas-test",
+    "feasibility-test"
+  ],
+  [
+    "ui",
+    "ui"
+  ],
+  [
+    "CheckIt",
+    "CheckItem.tsx"
+  ],
+  [
+    "correct",
+    "CorrectablRow.tsx"
+  ],
+  [
+    "estim",
+    "EstimateDisplay.tsx"
   ]
 ]

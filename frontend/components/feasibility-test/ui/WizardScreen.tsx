@@ -1,3 +1,4 @@
+// /workspaces/ccg123/frontend/components/feasibility-test/ui/WizardScreen.tsx << 'EOF'
 import { Dispatch, SetStateAction, useCallback } from 'react'
 import { positiveItems, limitingItems, structuralItems, correctableRows } from '../data/questions'
 import type { CorrectableOption } from '../data/questions'
@@ -97,7 +98,7 @@ export default function WizardScreen({
 
   const labelStyle: React.CSSProperties = {
     fontFamily: 'var(--font-body)',
-    fontSize: '0.625rem',
+    fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
     fontWeight: 600,
     letterSpacing: '0.2em',
     textTransform: 'uppercase',
@@ -105,39 +106,31 @@ export default function WizardScreen({
     margin: 0,
   }
 
-  const sublabelStyle: React.CSSProperties = {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.625rem',
-    fontWeight: 500,
-    letterSpacing: '0.18em',
-    textTransform: 'uppercase',
-    color: 'var(--accent)',
-    marginLeft: 8,
-  }
-
   return (
     <div style={{
       width: '100%',
-      maxWidth: 560,
+      maxWidth: '100%',
       margin: '0 auto',
-      padding: '0 24px 80px',
+      padding: 'clamp(16px, 4vw, 40px) clamp(20px, 5vw, 48px) 80px',
       display: 'flex',
       flexDirection: 'column',
       flex: 1,
+      boxSizing: 'border-box',
     }}>
 
       {/* ── Progress ── */}
       {!isResults && (
-        <div style={{ marginBottom: 32 }}>
-          <div style={{ display: 'flex', gap: 4, marginBottom: 10 }}>
+        <div style={{ marginBottom: 'clamp(24px, 4vw, 40px)' }}>
+          <div style={{ display: 'flex', gap: 6, marginBottom: 12 }}>
             {PHASES.map((ph, i) => {
               const filled = i < currentPhase || (i === currentPhase && !isComplete)
               return (
                 <div key={ph} style={{ flex: 1 }}>
                   <div style={{
-                    height: 1.5,
+                    height: 2,
                     background: filled ? 'var(--accent)' : 'var(--border)',
                     opacity: filled ? 1 : 0.3,
+                    borderRadius: 21,
                     transition: 'background 300ms ease',
                   }} />
                 </div>
@@ -145,8 +138,7 @@ export default function WizardScreen({
             })}
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
-            <div>
-            </div>
+            <div />
             {phaseSteps.length > 1 && phaseIndex >= 0 && (
               <span style={{ ...labelStyle, opacity: 0.4 }}>
                 {phaseIndex + 1} / {phaseSteps.length}
@@ -168,7 +160,7 @@ export default function WizardScreen({
       {/* ── Stone info ── */}
       {currentStep.type === 'stone-info' && (
         <div key={`si-${stepIndex}`} style={{
-          display: 'flex', flexDirection: 'column', gap: 18,
+          display: 'flex', flexDirection: 'column', gap: 'clamp(16px, 3vw, 24px)',
           animation: 'wizFlyIn 300ms cubic-bezier(0.16,1,0.3,1) both',
         }}>
           {[
@@ -179,7 +171,7 @@ export default function WizardScreen({
             { key: 'cut',        label: 'Current Cut / Shape', placeholder: 'e.g. Oval Mixed Cut' },
           ].map(field => (
             <div key={field.key}>
-              <label style={{ display: 'block', ...labelStyle, marginBottom: 8 }}>
+              <label style={{ display: 'block', ...labelStyle, marginBottom: 10 }}>
                 {field.label}
               </label>
               <input
@@ -196,13 +188,7 @@ export default function WizardScreen({
 
       {/* ── Positive ── */}
       {currentStep.type === 'positive-group' && (
-        <div key={`pg-${stepIndex}`} style={{ animation: 'wizFlyIn 300ms cubic-bezier(0.16,1,0.3,1) both' }}>
-        <p style={{
-          fontFamily: 'var(--font-body)',
-          fontWeight: 700,
-        }}>
-        </p>
-
+        <div key={`pg-${stepIndex}`} className="wiz-checks-wrapper" style={{ animation: 'wizFlyIn 300ms cubic-bezier(0.16,1,0.3,1) both' }}>
           {positiveGroups[currentStep.group]?.map(item => (
             <CheckItem key={item.id} item={item} checked={positiveChecked.has(item.id)} onChange={toggleChecked(setPositiveChecked)} />
           ))}
@@ -211,13 +197,7 @@ export default function WizardScreen({
 
       {/* ── Limiting ── */}
       {currentStep.type === 'limiting-group' && (
-        <div key={`lg-${stepIndex}`} style={{ animation: 'wizFlyIn 300ms cubic-bezier(0.16,1,0.3,1) both' }}>
-        <p style={{
-          fontFamily: 'var(--font-body)',
-          fontWeight: 700,
-        }}>
-        </p>
-
+        <div key={`lg-${stepIndex}`} className="wiz-checks-wrapper" style={{ animation: 'wizFlyIn 300ms cubic-bezier(0.16,1,0.3,1) both' }}>
           {limitingGroups[currentStep.group]?.map(item => (
             <CheckItem key={item.id} item={item} checked={limitingChecked.has(item.id)} onChange={toggleChecked(setLimitingChecked)} />
           ))}
@@ -226,13 +206,7 @@ export default function WizardScreen({
 
       {/* ── Structural ── */}
       {currentStep.type === 'structural-group' && (
-        <div key={`sg-${stepIndex}`} style={{ animation: 'wizFlyIn 300ms cubic-bezier(0.16,1,0.3,1) both' }}>
-        <p style={{
-          fontFamily: 'var(--font-body)',
-          fontWeight: 700,
-        }}>
-        </p>
-
+        <div key={`sg-${stepIndex}`} className="wiz-checks-wrapper" style={{ animation: 'wizFlyIn 300ms cubic-bezier(0.16,1,0.3,1) both' }}>
           {structuralGroup[currentStep.group]?.map(item => (
             <CheckItem key={item.id} item={item} checked={structuralChecked.has(item.id)} onChange={toggleChecked(setStructuralChecked)} />
           ))}
@@ -253,7 +227,11 @@ export default function WizardScreen({
             structuralChecked={structuralChecked}
           />
           {!canProceed && (
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'var(--accent)', opacity: 0.6, marginTop: 12, textAlign: 'center' }}>
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
+              color: 'var(--accent)', opacity: 0.6, marginTop: 16, textAlign: 'center',
+            }}>
               Please make a selection to continue.
             </p>
           )}
@@ -283,31 +261,27 @@ export default function WizardScreen({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          marginTop: 40,
-          paddingTop: 18,
+          marginTop: 'clamp(32px, 5vw, 56px)',
+          paddingTop: 'clamp(16px, 3vw, 24px)',
           borderTop: '0.5px solid var(--border)',
+          gap: 16,
         }}>
-          <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: 'clamp(16px, 3vw, 28px)', alignItems: 'center' }}>
             {stepIndex > 0 && (
-              <button type="button" onClick={handleBack} style={{
-                background: 'none', border: 'none', cursor: 'pointer',
-                fontFamily: 'var(--font-body)', fontSize: '0.6875rem',
-                fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase',
-                color: 'var(--text-muted)', opacity: 0.55, padding: 0,
-                transition: 'opacity 180ms ease',
-              }}>
+              <button
+                type="button"
+                onClick={handleBack}
+                className="wiz-nav-btn-ghost"
+              >
                 Back
               </button>
             )}
-            <button type="button" onClick={handleStartOver} style={{
-              background: 'none', border: 'none', cursor: 'pointer',
-              fontFamily: 'var(--font-body)', fontSize: '0.6875rem', fontWeight: 500,
-              letterSpacing: '0.15em', textTransform: 'uppercase',
-              color: 'var(--text-muted)', opacity: 0.55, padding: 0,
-              textDecoration: 'none',
-              transition: 'opacity 180ms ease',
-            }}>
-              start over
+            <button
+              type="button"
+              onClick={handleStartOver}
+              className="wiz-nav-btn-ghost"
+            >
+              Start Over
             </button>
           </div>
 
@@ -315,20 +289,7 @@ export default function WizardScreen({
             type="button"
             onClick={handleNext}
             disabled={!canProceed}
-            style={{
-              background: 'transparent',
-              color: canProceed ? 'var(--accent)' : 'var(--text-muted)',
-              border: `0.5px solid ${canProceed ? 'rgba(255,211,105,0.45)' : 'var(--border)'}`,
-              padding: '13px 32px',
-              fontFamily: 'var(--font-body)',
-              fontSize: '0.6875rem', fontWeight: 500,
-              letterSpacing: '0.2em', textTransform: 'uppercase',
-              cursor: canProceed ? 'pointer' : 'not-allowed',
-              borderRadius: 4,
-              transition: 'all 200ms ease',
-              opacity: canProceed ? 1 : 0.3,
-              boxShadow: canProceed ? '0 2px 16px rgba(0,0,0,0.18), 0 0 16px rgba(255,211,105,0.03)' : 'none',
-            }}
+            className={`wiz-nav-btn-next${canProceed ? '' : ' disabled'}`}
           >
             {STEPS[stepIndex + 1]?.type === 'category-complete' ? 'Done' : 'Next →'}
           </button>
@@ -338,3 +299,5 @@ export default function WizardScreen({
     </div>
   )
 }
+
+

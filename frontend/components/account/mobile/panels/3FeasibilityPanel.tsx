@@ -34,7 +34,7 @@ function buildSteps(): StepKind[] {
   Object.keys(limitingGroups).forEach(g => s.push({ type: 'limiting-group', group: g }))
   s.push({ type: 'category-complete', phase: 3, title: 'Category 3', sectionName: 'Structural Condition', description: 'This section addresses physical damage and internal features. Select anything that currently applies. These factors directly affect whether the stone can safely be worked on.', message: '', nextTitle: 'Structural Condition', nextDescription: '' })
   Object.keys(structuralGroup).forEach(g => s.push({ type: 'structural-group', group: g }))
-  s.push({ type: 'category-complete', phase: 4, title: "You're almost done.", message: 'The next section answers are auto selected based on your answers, but can still be manually changed.', nextTitle: 'Correctable Likelihood', nextDescription: "For each category you'll see your selections so far as a reference. One answer per row — this is the final step.", isLastBeforeResults: true })
+  s.push({ type: 'category-complete', phase: 4, title: "You're Done!", message: '', nextTitle: 'Correctable Likelihood', nextDescription: "For each category you'll see your selections so far as a reference. One answer per row — this is the final step.", isLastBeforeResults: true })
   correctableRows.forEach(r => s.push({ type: 'correctable-row', rowId: r.id }))
   s.push({ type: 'results' })
   return s
@@ -97,12 +97,22 @@ export default function FeasibilityPanel({ open, onClose }: FeasibilityPanelProp
   }
 
   const handleNext = () => {
-    const nextStep = STEPS[stepIndex + 1]
+    let nextIndex = stepIndex + 1
+    const nextStep = STEPS[nextIndex]
+
+    // Auto-select correctable rows when entering that section
+    const autoSelected = autoSelectAll(limitingChecked, structuralChecked)
     if (nextStep?.type === 'correctable-row' && STEPS[stepIndex]?.type === 'category-complete') {
-      setCorrectableSelections({ ...autoSelectAll(limitingChecked, structuralChecked) })
+      setCorrectableSelections({ ...autoSelected })
     }
-    if (nextStep?.type === 'results') {
-      const r = calculateAll(positiveChecked, limitingChecked, structuralChecked, correctableSelections)
+
+    // Skip all correctable rows — run in background, never shown
+    while (nextIndex < STEPS.length - 1 && STEPS[nextIndex]?.type === 'correctable-row') {
+      nextIndex++
+    }
+
+    if (STEPS[nextIndex]?.type === 'results') {
+      const r = calculateAll(positiveChecked, limitingChecked, structuralChecked, autoSelected)
       setResults(r)
       const sessionId = getOrCreateSessionId()
       trackWizardAnalytics({
@@ -116,7 +126,7 @@ export default function FeasibilityPanel({ open, onClose }: FeasibilityPanelProp
         disclaimer2ConfirmedAt: disc2ConfirmedAt,
       }, sessionId, true, 'results')
     }
-    setStepIndex(i => Math.min(i + 1, STEPS.length - 1))
+    setStepIndex(Math.min(nextIndex, STEPS.length - 1))
     scrollTop()
   }
 
@@ -160,10 +170,7 @@ export default function FeasibilityPanel({ open, onClose }: FeasibilityPanelProp
 
         {/* Scrollable content */}
         <div className="feasibility-panel-scroll" style={{ flex: 1, overflowY: 'auto' }}>
-          <p className={`tool-title ${inWizard ? 'wizard-size' : 'intro-size'}`}>
-            The Cut Feasibility Wizard
-          </p>
-          <div className={`tool-rule ${inWizard ? 'wizard-rule' : 'intro-rule'}`} />
+
 
           {!inWizard && (
             <IntroScreen
