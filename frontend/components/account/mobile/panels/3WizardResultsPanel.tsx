@@ -344,17 +344,16 @@ export default function WizardResultsPanel3({
                       key={r.id}
                       className="wiz-thumb"
                       style={{
-                        borderColor: 'var(--border-mob)',
+                        borderColor: color + '80',
                         cursor: 'pointer',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
                         gap: 6,
-                        padding: '16px 10px',
+                        padding: '20px 12px',
                         boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(0,0,0,0.3)',
                         transition: 'box-shadow 120ms ease',
-                        maxWidth: 120,
                       }}
                       onClick={() => setSelectedResult(r)}
                       onPointerDown={e => { (e.currentTarget as HTMLDivElement).style.boxShadow = 'inset 0 2px 8px rgba(0,0,0,0.55)'; }}
@@ -414,7 +413,7 @@ export default function WizardResultsPanel3({
                       key={r.id}
                       className="wiz-thumb"
                       style={{
-                        borderColor: 'var(--border-mob)',
+                        borderColor: color + '80',
                         cursor: 'default',
                         opacity: 0.45,
                         display: 'flex',
@@ -422,8 +421,7 @@ export default function WizardResultsPanel3({
                         alignItems: 'center',
                         justifyContent: 'center',
                         gap: 6,
-                        padding: '16px 10px',
-                        maxWidth: 120,
+                        padding: '20px 12px',
                       }}
                     >
                       <ScoreRing pct={pct} color={color} />

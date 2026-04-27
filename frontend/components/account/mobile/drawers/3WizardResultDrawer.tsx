@@ -50,7 +50,7 @@ function HeroRing({ pct, color }: { pct: number; color: string }) {
           strokeDasharray={circ} strokeDashoffset={offset}
           strokeLinecap="round" transform="rotate(-90 50 50)" />
       </svg>
-      <div className="res-ring-num" style={{ color, fontSize: '2.0rem' }}>{pct}</div>
+      <div className="res-ring-num" style={{ color, fontSize: '2.75rem' }}>{pct}</div>
     </div>
   );
 }
@@ -58,11 +58,11 @@ function HeroRing({ pct, color }: { pct: number; color: string }) {
 function ListItem({ text, color }: { text: string; color?: string }) {
   return (
     <div style={{
-      display: 'flex', alignItems: 'flex-start', gap: 10,
-      padding: '8px 0', borderBottom: '0.5px solid var(--border-mob)',
+      display: 'flex', alignItems: 'flex-start', gap: 12,
+      padding: '11px 0', borderBottom: '0.5px solid var(--border-mob)',
     }}>
-      <span style={{ color: color || 'var(--gold)', fontSize: '0.75rem', flexShrink: 0, marginTop: 1 }}>✓</span>
-      <span style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '0.8125rem', color: 'var(--text-mob)' }}>{text}</span>
+      <span style={{ color: color || 'var(--gold)', fontSize: '1.0625rem', flexShrink: 0, marginTop: 2 }}>✓</span>
+      <span style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '1.0625rem', color: 'var(--text-mob)', lineHeight: 1.5 }}>{text}</span>
     </div>
   );
 }
@@ -119,7 +119,7 @@ export default function WizardResultDrawer3({
 
           <div className="res-topbar">
             <span style={{
-              fontFamily: 'var(--font-mono-mob)', fontSize: '0.625rem',
+              fontFamily: 'var(--font-mono-mob)', fontSize: '0.75rem',
               letterSpacing: '0.16em', textTransform: 'uppercase',
               color: 'var(--text-mob-muted)', flex: 1,
             }}>
@@ -159,21 +159,21 @@ export default function WizardResultDrawer3({
             <Section label="Positive Characteristics">
               {positive.length > 0
                 ? positive.map((item, i) => <ListItem key={i} text={item} color="var(--gold)" />)
-                : <div style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '0.75rem', color: 'var(--text-mob-muted)', fontStyle: 'italic', padding: '6px 0' }}>None selected</div>
+                : <div style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '1.0625rem', color: 'var(--text-mob-muted)', fontStyle: 'italic', padding: '10px 0' }}>None selected</div>
               }
             </Section>
 
             <Section label="Limiting Characteristics">
               {limiting.length > 0
                 ? limiting.map((item, i) => <ListItem key={i} text={item} color="#f87171" />)
-                : <div style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '0.75rem', color: 'var(--text-mob-muted)', fontStyle: 'italic', padding: '6px 0' }}>None selected</div>
+                : <div style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '1.0625rem', color: 'var(--text-mob-muted)', fontStyle: 'italic', padding: '10px 0' }}>None selected</div>
               }
             </Section>
 
             <Section label="Structural Condition">
               {structural.length > 0
                 ? structural.map((item, i) => <ListItem key={i} text={item} color="#fb923c" />)
-                : <div style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '0.75rem', color: 'var(--text-mob-muted)', fontStyle: 'italic', padding: '6px 0' }}>None selected</div>
+                : <div style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '1.0625rem', color: 'var(--text-mob-muted)', fontStyle: 'italic', padding: '10px 0' }}>None selected</div>
               }
             </Section>
 
@@ -183,13 +183,8 @@ export default function WizardResultDrawer3({
             {onCreateServiceRequest && (
               <div style={{ marginTop: 24 }}>
                 <button
+                  className="wiz-btn-pill wiz-btn-pill-gold"
                   onClick={() => onCreateServiceRequest(result)}
-                  style={{
-                    width: '100%', background: 'var(--gold)', color: 'var(--bg-mob-deep)',
-                    border: 'none', padding: 13, fontFamily: 'var(--font-mono-mob)',
-                    fontSize: '0.625rem', letterSpacing: '0.22em', textTransform: 'uppercase',
-                    cursor: 'pointer', transition: 'opacity 180ms ease',
-                  }}
                   onMouseOver={e => { (e.currentTarget as HTMLButtonElement).style.opacity = '0.85'; }}
                   onMouseOut={e  => { (e.currentTarget as HTMLButtonElement).style.opacity = '1'; }}
                 >
@@ -206,9 +201,10 @@ export default function WizardResultDrawer3({
                   width: '100%', background: 'transparent',
                   border: '0.5px solid var(--border-mob)',
                   color: 'var(--text-mob-muted)',
-                  padding: 13, fontFamily: 'var(--font-mono-mob)',
-                  fontSize: '0.625rem', letterSpacing: '0.22em', textTransform: 'uppercase',
+                  padding: '18px 24px', fontFamily: 'var(--font-mono-mob)',
+                  fontSize: '0.875rem', letterSpacing: '0.22em', textTransform: 'uppercase',
                   cursor: 'pointer', transition: 'opacity 180ms ease',
+                  borderRadius: '999px',
                 }}
                 onMouseOver={e => { (e.currentTarget as HTMLButtonElement).style.opacity = '0.6'; }}
                 onMouseOut={e  => { (e.currentTarget as HTMLButtonElement).style.opacity = '1'; }}
