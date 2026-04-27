@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo } from 'react'
-import '../../../../styles/wizard.css'
 import IntroScreen from '../../../feasibility-test/ui/IntroScreen'
 import WizardScreen from '../../../feasibility-test/ui/WizardScreen'
 import type { IntroPhase, StepKind, StoneInfo } from '../../../feasibility-test/logic/feasibility-types'
