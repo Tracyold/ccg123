@@ -149,7 +149,7 @@ export default function FeasibilityPanel({ open, onClose }: FeasibilityPanelProp
 
   return (
     <>
-      <div className={`overlay${open ? ' open' : ''}`} onClick={onClose} />
+      <style>{wizardCss}</style>
       <div className={`slide-panel${open ? ' open' : ''}`}>
 
         {/* Header */}
@@ -206,3 +206,29 @@ export default function FeasibilityPanel({ open, onClose }: FeasibilityPanelProp
     </>
   )
 }
+const wizardCss = `
+.full-screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex: 1;
+}
+.tool-title {
+  font-family: var(--font-display);
+  text-align: center;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.tool-title.intro-size { font-size: 29px; padding-top: 60px; }
+.tool-title.wizard-size { font-size: 16px; padding-top: 20px; }
+.tool-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto;
+}
+.tool-rule.intro-rule { margin: 0 auto clamp(41px, 9vh, 71px); }
+.tool-rule.wizard-rule { margin: 0 auto 25px; }
+`

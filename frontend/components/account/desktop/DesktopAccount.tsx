@@ -46,6 +46,7 @@ import InvoicesPanel3       from '../mobile/panels/3InvoicesPanel';
 import ServiceRequestPanel3 from '../mobile/panels/3ServiceRequestPanel';
 import InquiriesPanel3      from '../mobile/panels/3InquiriesPanel';
 import WizardResultsPanel3  from '../mobile/panels/3WizardResultsPanel';
+import FeasibilityPanel     from '../mobile/panels/3FeasibilityPanel';
 import ProfilePanel3        from '../mobile/panels/3ProfilePanel';
 
 // ── Drawers ──
@@ -110,7 +111,7 @@ export interface DesktopAccountProps {
 // Panel names -- which slide-up panel is open
 type PanelName =
   | 'chat' | 'orders' | 'invoices' | 'servicereq'
-  | 'inquiries' | 'wizard' | 'profile' | null;
+  | 'inquiries' | 'wizard' | 'profile' | 'feasibility' | null;
 
 // Drawer names -- which right-slide drawer is open
 type DrawerName = 'workorder' | 'invoice' | 'servicereq' | 'shopitem' | null;
@@ -438,6 +439,11 @@ export default function DesktopAccount(props: DesktopAccountProps) {
           }}
         />
 
+        <FeasibilityPanel
+          open={activePanel === 'feasibility'}
+          onClose={closePanel}
+        />
+
         <ProfilePanel3
           open={activePanel === 'profile'}
           profile={props.profile}
@@ -503,7 +509,7 @@ export default function DesktopAccount(props: DesktopAccountProps) {
       <MenuDrawer3
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
-        onNavigate={(panel) => { setMenuOpen(false); openPanel(panel); }}
+        onNavigate={(panel: any) => { setMenuOpen(false); openPanel(panel); }}
         onSignOut={signOut}
       />
 

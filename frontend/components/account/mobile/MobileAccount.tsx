@@ -485,7 +485,7 @@ export default function MobileAccount(props: MobileAccountProps) {
       <MenuDrawer3
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
-        onNavigate={(panel) => { setMenuOpen(false); openPanel(panel); }}
+        onNavigate={(panel: any) => { setMenuOpen(false); openPanel(panel); }}
         onSignOut={signOut}
       />
 
