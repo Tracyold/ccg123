@@ -59,17 +59,17 @@ function InquiryBody({ inq, archived = false }: { inq: any; archived?: boolean }
       {/* Top row: product name + status badge */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
         <div>
-          <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(14px, 3.8vw, 16px)', color: 'var(--text)', marginBottom: 2 }}>
+          <div style={{ fontFamily: 'var(--font-display-mob)', fontSize: 'clamp(14px, 3.8vw, 16px)', color: 'var(--text)', marginBottom: 2 }}>
             {productTitle || 'Product Inquiry'}
           </div>
           {productMeta && (
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(9px, 2.4vw, 10px)', letterSpacing: '0.12em', color: 'var(--text-muted)' }}>
+            <div style={{ fontFamily: 'var(--font-mono-mob)', fontSize: 'clamp(9px, 2.4vw, 10px)', letterSpacing: '0.12em', color: 'var(--text-muted)' }}>
               {productMeta}
             </div>
           )}
         </div>
         <span style={{
-          fontFamily: 'var(--font-mono)',
+          fontFamily: 'var(--font-mono-mob)',
           fontSize: 'clamp(9px, 2.4vw, 10px)',
           letterSpacing: '0.15em',
           textTransform: 'uppercase',
@@ -89,7 +89,7 @@ function InquiryBody({ inq, archived = false }: { inq: any; archived?: boolean }
 
       {/* Customer message */}
       <div style={{
-        fontFamily: 'var(--font-ui)',
+        fontFamily: 'var(--font-ui-mob)',
         fontSize: 'clamp(13px, 3.4vw, 14px)',
         color: 'var(--text-muted)',
         lineHeight: 1.6,
@@ -101,14 +101,14 @@ function InquiryBody({ inq, archived = false }: { inq: any; archived?: boolean }
       </div>
 
       {/* Submitted timestamp */}
-      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(9px, 2.4vw, 10px)', color: 'var(--text-muted)', marginTop: 8, opacity: 0.6 }}>
+      <div style={{ fontFamily: 'var(--font-mono-mob)', fontSize: 'clamp(9px, 2.4vw, 10px)', color: 'var(--text-muted)', marginTop: 8, opacity: 0.6 }}>
         Submitted {inq.created_at ? fmtDate(inq.created_at) : '--'}
       </div>
 
       {/* Reply block */}
       {inq.reply && (
         <div style={{
-          fontFamily: 'var(--font-ui)',
+          fontFamily: 'var(--font-ui-mob)',
           fontSize: 'clamp(13px, 3.4vw, 14px)',
           color: 'var(--text)',
           lineHeight: 1.6,
@@ -117,7 +117,7 @@ function InquiryBody({ inq, archived = false }: { inq: any; archived?: boolean }
           marginTop: 8,
         }}>
           <span style={{
-            fontFamily: 'var(--font-mono)',
+            fontFamily: 'var(--font-mono-mob)',
             fontSize: 'clamp(9px, 2.4vw, 10px)',
             color: 'var(--gold)',
             letterSpacing: '0.1em',
@@ -129,7 +129,7 @@ function InquiryBody({ inq, archived = false }: { inq: any; archived?: boolean }
           </span>
           "{inq.reply}"
           {inq.replied_at && (
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(9px, 2.4vw, 10px)', color: 'var(--text-muted)', marginTop: 6, opacity: 0.6 }}>
+            <div style={{ fontFamily: 'var(--font-mono-mob)', fontSize: 'clamp(9px, 2.4vw, 10px)', color: 'var(--text-muted)', marginTop: 6, opacity: 0.6 }}>
               {fmtDate(inq.replied_at)}
             </div>
           )}
@@ -329,7 +329,7 @@ export default function InquiriesPanel3({
 
         {activeTab === 'active' && activeList.length > 0 && (
           <p style={{
-            fontFamily: 'var(--font-ui)',
+            fontFamily: 'var(--font-ui-mob)',
             fontSize: 'clamp(13px, 3.4vw, 14px)',
             color: 'var(--text-muted)',
             textAlign: 'center',

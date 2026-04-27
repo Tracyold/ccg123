@@ -211,7 +211,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
                   }}>Cancel</button>
                 </div>
                 {inquiryError && (
-                  <div style={{ color: '#ff4d4d', fontSize: '0.75rem', marginTop: '8px', fontFamily: 'var(--font-mono)' }}>
+                  <div style={{ color: '#ff4d4d', fontSize: '0.75rem', marginTop: '8px', fontFamily: 'var(--font-mono-mob)' }}>
                     Error: {inquiryError}
                   </div>
                 )}
@@ -286,7 +286,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           background: var(--bg-deep);
         }
         .shop-item-header-title {
-          font-family: var(--font-mono);
+          font-family: var(--font-mono-mob);
           font-size: 0.75rem;
           letter-spacing: 0.2em;
           text-transform: uppercase;
@@ -329,14 +329,14 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           font-size: 4.0rem;
         }
         .shop-item-title {
-          font-family: var(--font-display);
+          font-family: var(--font-display-mob);
           font-size: 1.75rem; /* Big font for native feel */
           line-height: 1.2;
           color: var(--text) !important; /* Force visibility */
           margin-bottom: 0.5rem;
         }
         .shop-item-price {
-          font-family: var(--font-mono);
+          font-family: var(--font-mono-mob);
           font-size: 1.375rem;
           color: var(--gold);
           margin-bottom: 2rem;
@@ -346,7 +346,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           border-top: 0.5px solid var(--bdr2);
         }
         .shop-item-desc-label {
-          font-family: var(--font-mono);
+          font-family: var(--font-mono-mob);
           font-size: 0.625rem;
           letter-spacing: 0.2em;
           text-transform: uppercase;
@@ -374,7 +374,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           flex: 1;
           height: 54px;
           border-radius: 12px;
-          font-family: var(--font-mono);
+          font-family: var(--font-mono-mob);
           font-size: 0.875rem;
           letter-spacing: 0.12em;
           text-transform: uppercase;
@@ -409,7 +409,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           border-radius: 12px;
           color: var(--text);
           padding: 14px;
-          font-family: var(--font-ui);
+          font-family: var(--font-ui-mob);
           font-size: 1.0rem;
           outline: none;
           transition: all 0.2s ease;
@@ -431,7 +431,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           background: none;
           border: none;
           color: var(--text-muted);
-          font-family: var(--font-mono);
+          font-family: var(--font-mono-mob);
           font-size: 0.75rem;
           text-transform: uppercase;
           cursor: pointer;
@@ -442,7 +442,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           border: none;
           padding: 10px 20px;
           border-radius: 6px;
-          font-family: var(--font-mono);
+          font-family: var(--font-mono-mob);
           font-size: 0.75rem;
           text-transform: uppercase;
           font-weight: 700;
@@ -452,7 +452,7 @@ export default function ShopItemDrawer3({ open, item, session, onClose, refreshI
           text-align: center;
           margin-top: 12px;
           color: #4ec994;
-          font-family: var(--font-mono);
+          font-family: var(--font-mono-mob);
           font-size: 0.875rem;
           text-transform: uppercase;
           font-weight: 700;
@@ -472,14 +472,14 @@ function SpecRow({ label, value }: { label: string; value: string | null }) {
       borderBottom: '0.5px solid var(--bdr2)'
     }}>
       <span style={{
-        fontFamily: 'var(--font-mono)',
+        fontFamily: 'var(--font-mono-mob)',
         fontSize: '0.625rem',
         letterSpacing: '0.15em',
         textTransform: 'uppercase',
         color: 'var(--text-muted)'
       }}>{label}</span>
       <span style={{
-        fontFamily: 'var(--font-ui)',
+        fontFamily: 'var(--font-ui-mob)',
         fontSize: '0.875rem',
         color: 'var(--text)',
         fontWeight: 500

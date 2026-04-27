@@ -96,7 +96,7 @@ export default function Home() {
               Professional gemstone cutter focused on color, yield, and stone potential for jewelry professionals nationwide.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="/feasibility-check" style={{ display: 'inline-block', padding: '17px 40px', background: 'var(--accent)', color: 'var(--bg)', fontFamily: 'var(--font-ui)', fontSize: '13rem', fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
+              <a href="/feasibility-check" style={{ display: 'inline-block', padding: '17px 40px', background: 'var(--accent)', color: 'var(--bg)', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>
                Feasibility Check
               </a>
               <a href="/shop" style={{ display: 'inline-block', padding: '17px 40px', background: 'none', border: '1px solid var(--accent)', color: 'var(--text)', fontFamily: 'var(--font-ui)', fontSize: '13px', letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none' }}>

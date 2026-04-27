@@ -97,7 +97,7 @@ export default function WizardResultsPanel3({
 
         {loading ? (
           <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.875rem', color: 'var(--text-muted)' }}>Loading...</p>
+            <p style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '0.875rem', color: 'var(--text-muted)' }}>Loading...</p>
           </div>
         ) : loadError ? (
           <div style={{
@@ -105,7 +105,7 @@ export default function WizardResultsPanel3({
             padding: 'clamp(1rem, 4.5vw, 1.5rem)', textAlign: 'center',
           }}>
             <p style={{
-              fontFamily: 'var(--font-ui)',
+              fontFamily: 'var(--font-ui-mob)',
               fontSize: 'clamp(13px, 3.5vw, 14px)',
               color: 'var(--text-muted)',
             }}>

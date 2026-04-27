@@ -80,7 +80,7 @@ export default function ChatPanel3({
       <div className="chat-msgs" style={{ padding: '24px 16px', display: 'flex', flexDirection: 'column', gap: 12, flex: 1, overflowY: 'auto' }}>
         {messages.length === 0 && pendingUploads.length === 0 && (
           <p style={{
-            fontFamily: 'var(--font-ui)', fontStyle: 'italic', fontSize: '1.1875rem',
+            fontFamily: 'var(--font-ui-mob)', fontStyle: 'italic', fontSize: '1.1875rem',
             color: 'var(--text-muted)', textAlign: 'center', margin: '60px auto', opacity: 0.6,
           }}>
             No messages yet -- say hello!
@@ -171,7 +171,7 @@ export default function ChatPanel3({
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       background: 'rgba(0,0,0,0.25)',
                       borderRadius: 8,
-                      fontFamily: 'var(--font-mono)',
+                      fontFamily: 'var(--font-mono-mob)',
                       fontSize: 'clamp(10px, 2.8vw, 12px)',
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
@@ -195,7 +195,7 @@ export default function ChatPanel3({
                             color: '#fff',
                             borderRadius: 999,
                             padding: '4px 12px',
-                            fontFamily: 'var(--font-mono)',
+                            fontFamily: 'var(--font-mono-mob)',
                             fontSize: 'clamp(9px, 2.4vw, 10px)',
                             letterSpacing: '0.1em',
                             textTransform: 'uppercase',
@@ -228,7 +228,7 @@ export default function ChatPanel3({
           border: '0.5px solid rgba(239, 68, 68, 0.35)',
           color: '#ef4444',
           borderRadius: 10,
-          fontFamily: 'var(--font-ui)',
+          fontFamily: 'var(--font-ui-mob)',
           fontSize: 'clamp(13px, 3.4vw, 14px)',
           lineHeight: 1.5,
           display: 'flex',

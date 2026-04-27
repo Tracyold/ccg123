@@ -36,7 +36,7 @@ export default function MessagesTile3({ chatThread, messages, onClick }: Message
         {hasUnread ? (
           <>
             <span style={{
-              fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 700,
+              fontFamily: 'var(--font-mono-mob)', fontSize: '0.75rem', fontWeight: 700,
               color: 'var(--gold)', letterSpacing: '0.18em', textTransform: 'uppercase',
               padding: '4px 10px', borderRadius: 999,
               background: 'rgba(207,221,78,0.12)',
@@ -44,7 +44,7 @@ export default function MessagesTile3({ chatThread, messages, onClick }: Message
               New
             </span>
             <span style={{ 
-              fontFamily: 'var(--font-display)', 
+              fontFamily: 'var(--font-display-mob)', 
               fontSize: '1.125rem', 
               color: 'var(--text)',
               fontWeight: 500
@@ -54,7 +54,7 @@ export default function MessagesTile3({ chatThread, messages, onClick }: Message
           </>
         ) : (
           <span style={{ 
-            fontFamily: 'var(--font-display)', 
+            fontFamily: 'var(--font-display-mob)', 
             fontSize: '1.125rem', 
             color: 'var(--text)',
             opacity: 0.9

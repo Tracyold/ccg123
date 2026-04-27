@@ -444,6 +444,70 @@ def op_delete(lines, text):
             del lines[i]; return lines
     print(f'WARNING: "{text}" not found — nothing deleted.'); return lines
 
+def _parse_exact(token):
+    """Strip ¿ boundary markers. ¿foo¿ -> ('foo', True). foo -> ('foo', False)."""
+    if token.startswith('¿') and token.endswith('¿') and len(token) > 2:
+        return token[1:-1], True
+    return token, False
+
+
+def op_replace_all(lines, search, replacement, exact=False, filepath=None):
+    """Replace ALL occurrences of search text with replacement across all lines."""
+    count = 0
+    new_lines = []
+    if exact:
+        pattern = re.compile(r'(?<![a-zA-Z0-9\-])' + re.escape(search) + r'(?![a-zA-Z0-9\-])')
+        for line in lines:
+            new_line, n = pattern.subn(replacement, line)
+            count += n
+            new_lines.append(new_line)
+    else:
+        for line in lines:
+            if search in line:
+                count += line.count(search)
+                new_lines.append(line.replace(search, replacement))
+            else:
+                new_lines.append(line)
+    label = filepath or 'file'
+    print(f'  ✓ {count} replacement(s) in {label}')
+    return new_lines, count
+
+
+def op_replace_all_in_dir(cur_dir, search, replacement, exact=False):
+    """Replace ALL occurrences across all files in a directory recursively."""
+    import glob as _glob
+    matched_files = []
+    for ext in EXTENSIONS:
+        matched_files += _glob.glob(
+            os.path.join(cur_dir, '**', f'*{ext}'),
+            recursive=True
+        )
+    matched_files = sorted(set(matched_files))
+    total = 0
+    pattern = re.compile(r'(?<![a-zA-Z0-9\-])' + re.escape(search) + r'(?![a-zA-Z0-9\-])') if exact else None
+    for fpath in matched_files:
+        try:
+            with open(fpath, 'r') as f:
+                original = f.read()
+        except:
+            continue
+        if exact:
+            updated, count = pattern.subn(replacement, original)
+        else:
+            if search not in original:
+                continue
+            count = original.count(search)
+            updated = original.replace(search, replacement)
+        if count == 0:
+            continue
+        with open(fpath, 'w') as f:
+            f.write(updated)
+        rel = os.path.relpath(fpath, cur_dir)
+        print(f'  ✓ {rel}: {count} replacement(s)')
+        total += count
+    print(f'  ─── {total} total replacement(s) across directory')
+
+
 def op_create(base_dir, folder_name, file_name=None, file_ext=None):
     """
     Create a folder inside base_dir, and optionally a file inside it.
@@ -799,6 +863,39 @@ def execute(cmd_str: str):
         elif cmd == 'del':
             req(cur_file, "go> must point to a file for del>")
             lines = op_delete(lines, content); modified = True
+
+        # ── replace: -- replace all instances of last found text ─────────────
+        elif cmd == 'replace':
+            req(cur_file or cur_dir, "go: must come before replace:")
+            req(cur_match or content, "replace: needs a search term (use find: first or replace:old=new)")
+
+            # Support two syntaxes:
+            # 1. find:foo // replace:bar   -- uses cur_match as search
+            # 2. replace:foo=bar           -- inline search=replacement
+            if cur_match and '=' not in content:
+                raw_search, raw_replacement = cur_match, content
+            elif '=' in content and not cur_match:
+                raw_search, raw_replacement = content.split('=', 1)
+            elif cur_match:
+                raw_search, raw_replacement = cur_match, content
+            else:
+                parts = content.split('=', 1)
+                raw_search, raw_replacement = parts[0], parts[1] if len(parts) > 1 else ''
+
+            search,      exact_s = _parse_exact(raw_search)
+            replacement, exact_r = _parse_exact(raw_replacement)
+            exact = exact_s or exact_r
+            if exact:
+                print(f'  Exact-boundary mode: ¿{search}¿ → ¿{replacement}¿')
+
+            if cur_dir and not cur_file:
+                op_replace_all_in_dir(cur_dir, search, replacement, exact=exact)
+            elif lines is not None:
+                lines, _ = op_replace_all(lines, search, replacement, exact=exact, filepath=cur_file)
+                modified = True
+            else:
+                print("ERROR: go: must point to a file or directory for replace:")
+                sys.exit(1)
 
         # ── folder ───────────────────────────────────────────────────────────
         elif cmd == 'folder':

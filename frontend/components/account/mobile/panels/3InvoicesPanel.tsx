@@ -26,7 +26,7 @@ const INPUT_STYLE: React.CSSProperties = {
   background: 'var(--bg-card)',
   border: '1px solid var(--bdr2)',
   color: 'var(--text)',
-  fontFamily: 'var(--font-mono)',
+  fontFamily: 'var(--font-mono-mob)',
   fontSize: '1.0rem',
   padding: '12px 16px',
   outline: 'none',
@@ -72,7 +72,7 @@ export default function InvoicesPanel3({
         {/* Date range row */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{ flex: 1, position: 'relative' }}>
-            <label style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', color: 'var(--gold)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.1em' }}>From</label>
+            <label style={{ display: 'block', fontFamily: 'var(--font-mono-mob)', fontSize: '0.6875rem', color: 'var(--gold)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.1em' }}>From</label>
             <input
               type="date"
               value={dateFrom}
@@ -83,7 +83,7 @@ export default function InvoicesPanel3({
             />
           </div>
           <div style={{ flex: 1 }}>
-            <label style={{ display: 'block', fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', color: 'var(--gold)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.1em' }}>To</label>
+            <label style={{ display: 'block', fontFamily: 'var(--font-mono-mob)', fontSize: '0.6875rem', color: 'var(--gold)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.1em' }}>To</label>
             <input
               type="date"
               value={dateTo}
@@ -109,7 +109,7 @@ export default function InvoicesPanel3({
         {/* Count row */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 4 }}>
           <span style={{
-            fontFamily: 'var(--font-mono)', fontSize: '0.8125rem',
+            fontFamily: 'var(--font-mono-mob)', fontSize: '0.8125rem',
             letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)',
           }}>
             {filtered.length} invoice{filtered.length !== 1 ? 's' : ''}
@@ -117,7 +117,7 @@ export default function InvoicesPanel3({
           <button style={{
             display: 'flex', alignItems: 'center', gap: 8,
             background: 'var(--gold)', border: 'none',
-            color: 'var(--bg-deep)', fontFamily: 'var(--font-mono)',
+            color: 'var(--bg-deep)', fontFamily: 'var(--font-mono-mob)',
             fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.14em', textTransform: 'uppercase',
             padding: '10px 18px', cursor: 'pointer', borderRadius: '6px'
           }}>

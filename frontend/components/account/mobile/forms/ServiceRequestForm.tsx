@@ -702,7 +702,7 @@ export default function ServiceRequestForm({
                 placeholder="Tell us about the stone and what you need..."
                 value={srDesc}
                 onChange={e => setSrDesc(e.target.value)}
-                style={{ minHeight: '100px', fontFamily: 'var(--font-ui)', resize: 'vertical' }}
+                style={{ minHeight: '100px', fontFamily: 'var(--font-ui-mob)', resize: 'vertical' }}
               />
             </div>
           </div>

@@ -167,7 +167,7 @@ export default function ChatImageModal({ open, imageUrl, onClose }: ChatImageMod
         bottom: 'max(env(safe-area-inset-bottom), 16px)',
         left: 0, right: 0,
         textAlign: 'center',
-        fontFamily: 'var(--font-mono)',
+        fontFamily: 'var(--font-mono-mob)',
         fontSize: 'clamp(10px, 2.6vw, 11px)',
         letterSpacing: '0.15em',
         textTransform: 'uppercase',

@@ -238,15 +238,15 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }}
         >
           <div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(16px, 4.2vw, 18px)', color: '#000', marginBottom: 4, fontWeight: 500 }}>
+            <div style={{ fontFamily: 'var(--font-display-mob)', fontSize: 'clamp(16px, 4.2vw, 18px)', color: '#000', marginBottom: 4, fontWeight: 500 }}>
               How was your experience?
             </div>
-            <div style={{ fontFamily: 'var(--font-ui)', fontSize: 'clamp(13px, 3.5vw, 14px)', color: '#000', opacity: 0.75 }}>
+            <div style={{ fontFamily: 'var(--font-ui-mob)', fontSize: 'clamp(13vem, 3.5vw, 14vem)', color: '#000', opacity: 0.75 }}>
               Tap to leave a review
             </div>
           </div>
           <div style={{
-            fontFamily: 'var(--font-mono)', fontSize: 'clamp(11px, 2.8vw, 12px)', color: '#000',
+            fontFamily: 'var(--font-mono-mob)', fontSize: 'clamp(11px, 2.8vw, 12px)', color: '#000',
             fontWeight: 600, letterSpacing: '0.1em',
           }}>
             RATE →
@@ -257,7 +257,7 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
       {/* STATE 2 — form (new OR edit) */}
       {formOpen && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(16px, 4.2vw, 18px)', color: 'var(--text)', fontWeight: 500 }}>
+          <div style={{ fontFamily: 'var(--font-display-mob)', fontSize: 'clamp(16px, 4.2vw, 18px)', color: 'var(--text)', fontWeight: 500 }}>
             {editingId ? 'Edit your review' : 'Leave a review'}
           </div>
 
@@ -275,7 +275,7 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
               background: 'rgba(255,255,255,0.03)',
               border: '0.5px solid var(--bdr2)',
               color: 'var(--text)',
-              fontFamily: 'var(--font-ui)',
+              fontFamily: 'var(--font-ui-mob)',
               resize: 'vertical',
             }}
           />
@@ -283,7 +283,7 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
           {/* Consent block — locked on edit */}
           <div className="srf-consent-block" style={{ padding: 'clamp(0.625rem, 3vw, 0.875rem)' }}>
             {editingId ? (
-              <div style={{ fontFamily: 'var(--font-ui)', fontSize: 'clamp(13px, 3.4vw, 14px)', color: 'var(--text-muted)' }}>
+              <div style={{ fontFamily: 'var(--font-ui-mob)', fontSize: 'clamp(13px, 3.4vw, 14px)', color: 'var(--text-muted)' }}>
                 ✓ You consented to public display when you first submitted this review.
               </div>
             ) : (
@@ -303,10 +303,10 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
 
           {/* Name preference */}
           <div className="fb-name-pref">
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(10px, 2.6vw, 11px)', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 }}>
+            <div style={{ fontFamily: 'var(--font-mono-mob)', fontSize: 'clamp(10px, 2.6vw, 11px)', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 }}>
               Display name
             </div>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6, cursor: 'pointer', fontFamily: 'var(--font-ui)', fontSize: 'clamp(13px, 3.4vw, 14px)', color: 'var(--text)' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6, cursor: 'pointer', fontFamily: 'var(--font-ui-mob)', fontSize: 'clamp(13px, 3.4vw, 14px)', color: 'var(--text)' }}>
               <input
                 type="radio"
                 checked={fUseReal}
@@ -315,7 +315,7 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
               />
               Use my real name
             </label>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer', fontFamily: 'var(--font-ui)', fontSize: 'clamp(13px, 3.4vw, 14px)', color: 'var(--text)' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer', fontFamily: 'var(--font-ui-mob)', fontSize: 'clamp(13px, 3.4vw, 14px)', color: 'var(--text)' }}>
               <input
                 type="radio"
                 checked={!fUseReal}
@@ -337,7 +337,7 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
                   background: 'rgba(255,255,255,0.03)',
                   border: '0.5px solid var(--bdr2)',
                   color: 'var(--text)',
-                  fontFamily: 'var(--font-ui)',
+                  fontFamily: 'var(--font-ui-mob)',
                   width: '100%',
                 }}
               />
@@ -355,7 +355,7 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
               style={{
                 flex: 1, padding: '12px',
                 fontSize: 'clamp(13px, 3.5vw, 14px)',
-                fontFamily: 'var(--font-ui)',
+                fontFamily: 'var(--font-ui-mob)',
                 fontWeight: 600,
                 background: 'var(--gold)',
                 color: 'var(--bg-deep)',
@@ -374,7 +374,7 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
                 border: '0.5px solid var(--bdr2)',
                 color: 'var(--text-muted)',
                 padding: '12px 18px',
-                fontFamily: 'var(--font-mono)',
+                fontFamily: 'var(--font-mono-mob)',
                 fontSize: 'clamp(10px, 2.6vw, 11px)',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
@@ -394,7 +394,7 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
             <StarsDisplay value={review.stars} />
             <span style={{
-              fontFamily: 'var(--font-mono)',
+              fontFamily: 'var(--font-mono-mob)',
               fontSize: 'clamp(9px, 2.4vw, 10px)',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
@@ -411,7 +411,7 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
           <div
             className="fb-review-text"
             style={{
-              fontFamily: 'var(--font-display)',
+              fontFamily: 'var(--font-display-mob)',
               fontStyle: 'italic',
               fontWeight: 700,
               fontSize: 'clamp(14px, 3.8vw, 16px)',
@@ -424,7 +424,7 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8, marginTop: 2 }}>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(9px, 2.4vw, 10px)', color: 'var(--text-muted)', opacity: 0.7, letterSpacing: '0.08em' }}>
+            <div style={{ fontFamily: 'var(--font-mono-mob)', fontSize: 'clamp(9px, 2.4vw, 10px)', color: 'var(--text-muted)', opacity: 0.7, letterSpacing: '0.08em' }}>
               — {review.use_real_name ? 'You' : review.display_name} · {new Date(review.created_at).toLocaleDateString()}
             </div>
             <div style={{ display: 'flex', gap: 6 }}>
@@ -436,7 +436,7 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
                   border: '0.5px solid var(--bdr2)',
                   color: 'var(--text-muted)',
                   padding: '4px 10px',
-                  fontFamily: 'var(--font-mono)',
+                  fontFamily: 'var(--font-mono-mob)',
                   fontSize: 'clamp(9px, 2.4vw, 10px)',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
@@ -452,7 +452,7 @@ export default function FeedbackTile3({ session }: FeedbackTileProps) {
                   border: '0.5px solid var(--bdr2)',
                   color: 'var(--text-muted)',
                   padding: '4px 10px',
-                  fontFamily: 'var(--font-mono)',
+                  fontFamily: 'var(--font-mono-mob)',
                   fontSize: 'clamp(9px, 2.4vw, 10px)',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',

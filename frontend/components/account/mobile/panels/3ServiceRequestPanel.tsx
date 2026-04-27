@@ -279,7 +279,7 @@ export default function ServiceRequestPanel3({
                   border: '0.5px solid var(--border)',
                   borderRadius: '999px',
                   color: 'var(--text)',
-                  fontFamily: 'var(--font-ui)',
+                  fontFamily: 'var(--font-ui-mob)',
                   fontSize: 'clamp(13px, 3.5vw, 15px)',
                   letterSpacing: '0.08em',
                   padding: 'clamp(0.6rem, 2.5vw, 0.875rem) clamp(1.5rem, 6vw, 2rem)',

@@ -287,9 +287,8 @@ button, input, textarea, select { border-radius: 0 !important; }
   box-shadow: 0 0 31px var(--shadow);
 }
 
-   ═══════════════════════════════════════════════════════
-   BUTTON SYSTEM -- pill shape, embossed, press-inward effect
-   ═══════════════════════════════════════════════════════ */
+/* BUTTON SYSTEM -- pill shape, embossed, press-inward effect
+*/
 
 /* ── Shared base ── */
 .btn-primary,

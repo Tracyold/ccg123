@@ -125,7 +125,7 @@ export default function ProfilePanel3({
               style={{
                 background: 'none', border: '0.5px solid var(--bdr2)',
                 color: 'var(--text-muted)', padding: '13px 16px',
-                fontFamily: 'var(--font-mono)', fontSize: '0.9375rem',
+                fontFamily: 'var(--font-mono-mob)', fontSize: '0.9375rem',
                 letterSpacing: '0.18em', textTransform: 'uppercase', cursor: 'pointer',
               }}
             >
@@ -136,7 +136,7 @@ export default function ProfilePanel3({
 
         {/* Flash confirmation -- "✓ Saved" appears briefly after saving */}
         {profileFlash && (
-          <div style={{ fontFamily: 'var(--font-ui)', fontSize: '1.0rem', color: 'var(--accent)', marginBottom: 16 }}>
+          <div style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '1.0rem', color: 'var(--accent)', marginBottom: 16 }}>
             ✓ Saved
           </div>
         )}
@@ -147,14 +147,14 @@ export default function ProfilePanel3({
           background: 'var(--bg-card)', border: '0.5px solid var(--bdr2)',
           padding: 16, marginBottom: 28,
         }}>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '1.5625rem', color: 'var(--accent)' }}>
+          <span style={{ fontFamily: 'var(--font-mono-mob)', fontSize: '1.5625rem', color: 'var(--accent)' }}>
             {invoiceCount}
           </span>
           <span style={{ fontSize: '1.0625rem', color: 'var(--text-muted)', marginLeft: 8 }}>
             items purchased
           </span>
           <span style={{ margin: '0 10px', color: 'var(--bdr2)' }}>|</span>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '1.1875rem', color: 'var(--accent)' }}>
+          <span style={{ fontFamily: 'var(--font-mono-mob)', fontSize: '1.1875rem', color: 'var(--accent)' }}>
             {formatMoney(invoiceTotal)}
           </span>
           <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginLeft: 8 }}>
@@ -166,17 +166,17 @@ export default function ProfilePanel3({
         {/* Converted from the wizard terms toggle section in the HTML */}
         <div style={{ marginBottom: 28, paddingBottom: 22, borderBottom: '0.5px solid var(--bdr2)' }}>
           <div style={{
-            fontFamily: 'var(--font-mono)', fontSize: '0.8125rem', letterSpacing: '0.22em',
+            fontFamily: 'var(--font-mono-mob)', fontSize: '0.8125rem', letterSpacing: '0.22em',
             textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 14,
           }}>
             Wizard Preferences
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: '12px 0' }}>
             <div>
-              <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, color: 'var(--text)', marginBottom: 3 }}>
+              <div style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '0.8125rem', fontWeight: 500, color: 'var(--text)', marginBottom: 3 }}>
                 Skip wizard intro screen
               </div>
-              <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.45 }}>
+              <div style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.45 }}>
                 Jump straight to step 1 each time you open the wizard
               </div>
             </div>
@@ -185,7 +185,7 @@ export default function ProfilePanel3({
               <span className="pill-thumb" />
             </button>
           </div>
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.9375rem', color: 'var(--text-muted)', marginTop: 8, lineHeight: 1.6, opacity: 0.7 }}>
+          <p style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '0.9375rem', color: 'var(--text-muted)', marginTop: 8, lineHeight: 1.6, opacity: 0.7 }}>
             Turn off to see the terms screen again next time you open the wizard.
           </p>
         </div>
@@ -194,7 +194,7 @@ export default function ProfilePanel3({
         {/* Converted from the sms-row list in the SMS modal, adapted for the profile panel */}
         <div style={{ marginBottom: 8 }}>
           <div style={{
-            fontFamily: 'var(--font-mono)', fontSize: '0.8125rem', letterSpacing: '0.22em',
+            fontFamily: 'var(--font-mono-mob)', fontSize: '0.8125rem', letterSpacing: '0.22em',
             textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 14,
           }}>
             SMS Notifications
@@ -239,7 +239,7 @@ export default function ProfilePanel3({
             style={{
               background: 'none', border: '0.5px solid rgba(248,113,113,0.3)',
               color: 'rgba(248,113,113,0.7)', width: '100%', padding: 13,
-              fontFamily: 'var(--font-mono)', fontSize: '0.8125rem', letterSpacing: '0.18em',
+              fontFamily: 'var(--font-mono-mob)', fontSize: '0.8125rem', letterSpacing: '0.18em',
               textTransform: 'uppercase', cursor: 'pointer',
             }}
           >
@@ -266,13 +266,13 @@ export default function ProfilePanel3({
               padding: 24, maxWidth: 320, zIndex: 20001, boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
             }}
           >
-            <div style={{ fontFamily: 'var(--font-ui)', fontSize: '1.0rem', fontWeight: 600, marginBottom: 12, color: 'var(--text)' }}>
+            <div style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '1.0rem', fontWeight: 600, marginBottom: 12, color: 'var(--text)' }}>
               Delete Account?
             </div>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', color: 'var(--text-muted)', marginBottom: 16, lineHeight: 1.5 }}>
+            <p style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '0.8125rem', color: 'var(--text-muted)', marginBottom: 16, lineHeight: 1.5 }}>
               This action cannot be undone. All your data will be permanently deleted.
             </p>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '1.0rem', color: 'var(--text-muted)', marginBottom: 16 }}>
+            <p style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '1.0rem', color: 'var(--text-muted)', marginBottom: 16 }}>
               Type <strong>DELETE</strong> to confirm:
             </p>
             <input
@@ -281,13 +281,13 @@ export default function ProfilePanel3({
               onChange={e => setDeleteConfirmText(e.target.value)}
               placeholder="Type DELETE"
               style={{
-                width: '100%', padding: 10, fontFamily: 'var(--font-ui)', fontSize: '1.0rem',
+                width: '100%', padding: 10, fontFamily: 'var(--font-ui-mob)', fontSize: '1.0rem',
                 border: '1px solid var(--bdr2)', borderRadius: 4, background: 'var(--bg-light)',
                 color: 'var(--text)', marginBottom: 12, boxSizing: 'border-box',
               }}
             />
             {deleteError && (
-              <div style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', color: '#f87171', marginBottom: 12 }}>
+              <div style={{ fontFamily: 'var(--font-ui-mob)', fontSize: '0.8125rem', color: '#f87171', marginBottom: 12 }}>
                 {deleteError}
               </div>
             )}
@@ -295,7 +295,7 @@ export default function ProfilePanel3({
               <button
                 onClick={() => setShowDeleteModal(false)}
                 style={{
-                  flex: 1, padding: 10, fontFamily: 'var(--font-ui)', fontSize: '1.0rem',
+                  flex: 1, padding: 10, fontFamily: 'var(--font-ui-mob)', fontSize: '1.0rem',
                   border: '1px solid var(--bdr2)', background: 'var(--bg-light)', color: 'var(--text)',
                   borderRadius: 4, cursor: 'pointer',
                 }}
@@ -306,7 +306,7 @@ export default function ProfilePanel3({
                 onClick={onDeleteAccount}
                 disabled={deleting}
                 style={{
-                  flex: 1, padding: 10, fontFamily: 'var(--font-ui)', fontSize: '1.0rem',
+                  flex: 1, padding: 10, fontFamily: 'var(--font-ui-mob)', fontSize: '1.0rem',
                   border: 'none', background: '#f87171', color: 'white',
                   borderRadius: 4, cursor: deleting ? 'not-allowed' : 'pointer',
                   opacity: deleting ? 0.6 : 1,

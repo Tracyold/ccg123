@@ -26,14 +26,14 @@ export default function ProfileTile3({ profile, onClick }: ProfileTileProps) {
         }}>👤</div>
         <div style={{ flex: 1 }}>
           <div style={{ 
-            fontFamily: 'var(--font-display)', 
+            fontFamily: 'var(--font-display-mob)', 
             fontSize: '1.125rem', 
             color: 'var(--text)',
             fontWeight: 500
           }}>Profile</div>
           {profile?.name && (
             <div style={{
-              fontFamily: 'var(--font-ui)', fontSize: '0.875rem',
+              fontFamily: 'var(--font-ui-mob)', fontSize: '0.875rem',
               color: 'var(--text-muted)', marginTop: 4, opacity: 0.8
             }}>
               {profile.name}
