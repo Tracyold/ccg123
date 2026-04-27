@@ -150,6 +150,10 @@ const portfolioCss = `
   position: relative;
   aspect-ratio: 1 / 1;
   overflow: hidden;
+  border-radius: 50%;
+  transition: border-radius 400ms ease;
+}
+.portfolio-thumb:hover {
   border-radius: 1.7px;
 }
 .portfolio-thumb img {
