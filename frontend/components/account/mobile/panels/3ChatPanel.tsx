@@ -81,7 +81,7 @@ export default function ChatPanel3({
         {messages.length === 0 && pendingUploads.length === 0 && (
           <p style={{
             fontFamily: 'var(--font-ui-mob)', fontStyle: 'italic', fontSize: '1.1875rem',
-            color: 'var(--text-mob-muted)', textAlign: 'center', margin: '60px auto', opacity: 0.6,
+            color: 'var(--text-mob)', textAlign: 'center', margin: '60px auto', opacity: 0.6,
           }}>
             No messages yet -- say hello!
           </p>
