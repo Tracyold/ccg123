@@ -161,6 +161,11 @@ const portfolioCss = `
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transform: scale(1.08);
+  transition: transform 400ms ease;
+}
+.portfolio-thumb:hover img {
+  transform: scale(1.0);
 }
 .portfolio-card-meta {
   padding: 8px 2px 0;
